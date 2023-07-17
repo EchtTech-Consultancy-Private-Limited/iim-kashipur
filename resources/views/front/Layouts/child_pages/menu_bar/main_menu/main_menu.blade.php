@@ -670,6 +670,8 @@
 
                     </div>
                 @else
+
+
                     <div class="col-md-9">
                         <div class="innerpagecontent">
                             <h3><span>
@@ -680,6 +682,54 @@
                                     @endif
                                 </span>
                             </h3>
+
+
+
+                            @isset($membersList)
+                            <div class="row">
+
+                            @foreach ($membersList as $membersLists)
+
+                            <div class="col-md-4 col-lg-4 mb-2">
+
+                                <a href="{{ url($membersLists->slug) }}">
+
+                                    <div class="profilewraper withinfo addevent-box">
+
+                                        <figure><img src="{{ asset('uploads/organisation/' . $membersLists->image) }}"
+                                                alt="{{ $membersLists->title ?? '' }}"
+                                                title="{{ $membersLists->title ?? '' }}"></figure>
+
+                                        <h4>
+                                            @if (GetLang() == 'en')
+                                                {{ $membersLists->title ?? '' }}
+                                            @else
+                                                {{ $membersLists->title_h ?? '' }}
+                                            @endif
+                                        </h4>
+                                        <p>
+                                            @if (GetLang() == 'en')
+                                                {{ $membersLists->designation ?? '' }}
+                                            @else
+                                                {{ $membersLists->designation_h ?? '' }}
+                                            @endif
+                                        </p>
+
+                                    </div>
+
+
+
+                                </a>
+
+                            </div>
+
+                            @endforeach
+
+                        </div>
+
+                            @endisset
+
+
                             @if ($item[0]->cover_image != '' && $item[0]->cover_image != 'default.jpg')
                                 <div class="row mt-4">
                                     <div class="col-md-3">
