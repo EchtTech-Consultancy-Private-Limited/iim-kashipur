@@ -383,13 +383,13 @@
          <div class="col-md-4 col-lg-4 p-0">
            <div class="fb-set">
              <h3 class="social-heading"> Facebook Feed </h3>
-              
-             
+
+
              <div class="fb-page" style="width: 100%" data-href="https://www.facebook.com/IndianInstituteOfManagementKashipur" data-tabs="timeline" data-width="" data-height="" data-small-header="false" data-adapt-container-width="true" data-hide-cover="true" data-show-facepile="true"><blockquote cite="https://www.facebook.com/IndianInstituteOfManagementKashipur" class="fb-xfbml-parse-ignore"><a href="https://www.facebook.com/IndianInstituteOfManagementKashipur">IIM Kashipur</a></blockquote></div>
 <!--               <img src="{{ asset('assets/images/fb-img.PNG') }}" alt="facebook" title="facebook">          -->
             </div>
          </div>
-         
+
          <!------------------------------------------- facebook End--------------------------------------------- -->
         <div class="col-md-8 col-lg-8">
             <div class="post-wrap row p-0">
@@ -399,10 +399,7 @@
                         <h2 class="heading-white text-right">
                            @if(GetLang()=='en') {{ $M->Section }} @else {{ $M->Section_h }}  @endif
                         </h2>
-                        <a href="javascript:void(0);" class="white-link text-end">
-                        @lang('common.READ_MORE')
-                        <i class="material-icons-round">east</i>
-                        </a>
+
                      </div>
                      <ul class="list text-right" data-aos="fade-right" data-aos-duration="3000">
                         @if(count(Getstundentdetail($M->id))>0)
@@ -423,6 +420,7 @@
                <div class="post-card col-md-6 box-2">
                <img src="{{ asset('uploads/header_top/'.$n->image) }}" title="{{ $n->Image_Title }}" alt="{{ $n->Image_Alt }}" class="img-fluid">
                 </div>
+
                <div class="post-card col-md-12 box-3">
 
                   <div class="blog-newstyle-2" style="font-size: 20px;">
@@ -430,9 +428,9 @@
 
                         <h2 style="font-size: 40px;color">
 
-                            <a style="color:#c1272d"  @if($n->external=='yes') onclick="return confirm('Are you sure  external window open?')" target="_blank"   href="{{$n->url}}" @elseif($n->external=='no')  href="{{url($n->url)}}" @endif href="{{$n->slug}}">   @if(GetLang()=='en') {{ $n->title }} @else {{ $n->title_h }}  @endif
+                     <a style="color:#c1272d"  @if($n->external=='yes') onclick="return confirm('Are you sure  external window open?')" target="_blank"   href="{{$n->url}}" @elseif($n->external=='no')  href="{{url($n->url)}}" @endif href="{{$n->slug}}">   @if(GetLang()=='en') {{ $n->title }} @else {{ $n->title_h }}  @endif </a>
 
-                            </a></h2>
+                      </h2>
 
 
                      </div>
@@ -440,7 +438,7 @@
 
                      {{-- @if(GetLang()=='en')   {{substr_replace($n->short,'...',135)}} @else  {{substr_replace($n->short,'...',400)}}  @endif --}}
 
-                     <a href="#" class="view-btn" style="font-size: 18px;">View all <i class="material-icons-round">east</i></a>
+                     <a @if($n->external=='yes') onclick="return confirm('Are you sure  external window open?')" target="_blank"   href="{{$n->url}}" @elseif($n->external=='no')  href="{{url($n->url)}}" @endif href="{{$n->slug}}" class="view-btn" style="font-size: 18px;">View all <i class="material-icons-round">east</i></a>
                   </div>
 
                </div>
