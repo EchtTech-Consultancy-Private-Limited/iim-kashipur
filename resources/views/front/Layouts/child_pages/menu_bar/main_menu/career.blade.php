@@ -47,10 +47,14 @@
             <td>{{$value->name_of_the_post}} </td>
             <td> {{$value->opening_date}} </td>
             <td> {{$value->closing_date}} </td>
-            <td>{{$value->online_link}}</td>
-            <td><img src="{{ asset('uploads/fo/' . $value->detail_advertisement) }}"
+            <td><a href="{{$value->online_link}}" target="_blank">Apply Here</a></td>
+            <td>
+			<a href="{{ asset('uploads/fo/' . $value->detail_advertisement) }}" target="_blank"><i class="fa fa-download"></i> Download</a>
+			
+			<!--<img src="{{ asset('uploads/fo/' . $value->detail_advertisement) }}"
                                                             alt="" title=""
-                                                            style="height: 100px;  width: 100px;"></td>
+                                                            style="height: 100px;  width: 100px;">-->
+			</td>
             <td>{{$value->note}}</td>
             <td>{{$value->corrigendum}}</td>
              </tr>

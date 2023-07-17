@@ -43,9 +43,12 @@
             <tr>
                 <td>{{$K+1}}</td>
                 <td>{{$value->vendor_name}} </td>
-                <td> <img src="{{ asset('uploads/vendorsdebarred/' . $value->related_document) }}"
+				
+                <td> 
+				<a href="{{ asset('uploads/vendorsdebarred/' . $value->related_document) }}" target="_blank"><i class="fa fa-download"></i> Download</a>
+				<!--<img src="{{ asset('uploads/vendorsdebarred/' . $value->related_document) }}"
                                                                 alt="" title=""
-                                                                style="height: 100px;  width: 100px;"> </td>
+                                                                style="height: 100px;  width: 100px;"> --></td>
                 </tr>
 
             @endforeach

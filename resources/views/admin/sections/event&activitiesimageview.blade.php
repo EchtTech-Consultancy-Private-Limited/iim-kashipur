@@ -1,6 +1,6 @@
 @extends('admin.Layout.master')
 
-@section('title', 'Manage Club Images ')
+@section('title', 'Manage Event Images ')
 
 @section('content')
 
@@ -46,7 +46,7 @@
                     <div class="card">
 
                         <div class="card-body">
-                            <h4 class="card-title">Manage Committee Images</h4>
+                            <h4 class="card-title">Manage Event Images</h4>
 
                             <div class="row">
 

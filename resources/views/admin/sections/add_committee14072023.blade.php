@@ -56,21 +56,6 @@
 
                             @csrf
 
-
-                            <div class="col-md-12">
-                                <label for="inputText" class="col-form-label">type*</label>
-                                <div class="">
-								
-                                    <select class="form-control" name="type" required>
-                                        <option value=""> Select Type </option>
-                                        <option  value="1" {{$data->type  == '1'  ? 'selected' : ''}}>committees</option>
-                                        <option  value="2" {{$data->type == '2'  ? 'selected' : ''}}>placement committee</option>
-                                        <option  value="3" {{$data->type  == '3'  ? 'selected' : ''}}>Internal Complaints Committee</option>
-
-                                    </select>
-                                    </div>
-                            </div>
-
                             <div class="col-md-3">
                                 <label for="inputText" class="col-form-label">Committee Name*</label>
                                 <div class="">
@@ -160,30 +145,10 @@
                                 </div>
                             </div>
 
-
-                            <div class="col-md-3">
-                                <label for="inputText" class="col-form-label">Placement*</label>
-                                <div class="">
-
-                                    <select class="form-control" name="Placement" >
-                                        <option value=""> Select Type </option>
-                                        @foreach ($profile as $profiles )
-                                        <option  value="{{$profiles->id }}" {{$profiles->id == $data->placement  ? 'selected' : ''}}>{{$profiles->title}}</option>
-                                        @endforeach
-
-                                    </select>
-
-
-                                </div>
-                            </div>
-
-
-
                             {{-- <div class="col-md-3">
                                 <label for="Commmittee_type" class="col-form-label">Commmittee Type</label>
                                 <div class="">
                                     <select class="form-control" name="Commmittee_type">
-									
                                         <option value=""> Select Type </option>
                                         <option  value="0" {{ ($data->Commmittee_type==0) ? 'selected' : '' }} > Academic Club </option>
                                         <option  value="1" {{ ($data->Commmittee_type==1) ? 'selected' : '' }} > Non-Academic Club </option>

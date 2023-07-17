@@ -103,7 +103,8 @@
                                         <tr>
                                             <td>{{ $K+1 }}</td>
                                             <td>{{ $datas->title }}</td>
-                                            <td><a href="{{url('uploads/rti/'.$datas->pdf)}}" download  class="pdf-links"> <i class="fa fa-file-pdf-o"></i>  <span>Annual Report 2021-22.pdf </span></a></td>
+                                            <td><a href="{{url('uploads/rti/'.$datas->pdf)}}" download  class="pdf-links"> <i class="fa fa-file-pdf-o"></i>  <span>{{ $datas->title }}
+</span></a></td>
                                         </tr>
 
                                           @endif
@@ -138,7 +139,7 @@
                                 <tr>
                                     <td>{{ $i++ }}</td>
                                     <td>{{ $datas->title }}</td>
-                                    <td><a href="{{url('uploads/rti/'.$datas->pdf)}}" download  class="pdf-links"> <i class="fa fa-file-pdf-o"></i>  <span>Annual Report 2021-22.pdf </span></a></td>
+                                    <td><a href="{{url('uploads/rti/'.$datas->pdf)}}" download  class="pdf-links"> <i class="fa fa-file-pdf-o"></i>  <span>{{ $datas->title }} </span></a></td>
                                 </tr>
 
                                   @endif
@@ -170,34 +171,54 @@
 
                             <tbody>
 
-                            @foreach ($data as $K=>$datas)
+                             @foreach ($value as $K=>$values)
 
-                                @if($datas->Quarterly_section == '3')
+
 
                                 <tr>
                                     <td>{{ $K+1 }}</td>
-                                    <td> 2022-23 </td>
-
-                                    {{-- @if($datas->Quarterly_type == '1')
-                                    <td><a href="" class="pdf-links"> <i class="fa fa-file-pdf-o"></i>  <span>Q1-2022-23.pdf </span></a></td>
-                                     @endif
+                                    <td> {{ date('Y', strtotime($values->year )) -1}} - {{ date('Y', strtotime($values->year ))}} </td>
 
 
-                                   @if($datas->Quarterly_type == '2')
-                                    <td><a href="" class="pdf-links"> <i class="fa fa-file-pdf-o"></i>  <span>Q2-2022-23.pdf </span></a></td>
-                                    @endif
 
-                                   @if($datas->Quarterly_type == '3')
-                                    <td><a href="" class="pdf-links"> <i class="fa fa-file-pdf-o"></i>  <span>Q3-2022-23.pdf </span></a></td>
-                                   @endif
+                                    <td>
+                                        @if($values->pdf_first != "" )
+                                        <a href="{{url('uploads/rti/'.$values->pdf_first)}}" download class="pdf-links"> <i class="fa fa-file-pdf-o"></i>  <span>{{ $values->pdf_first }} </span></a>
+                                        @endif
+                                    </td>
 
-                                   @if($datas->Quarterly_type == '4')
-                                    <td><a href="" class="pdf-links"> <i class="fa fa-file-pdf-o"></i>  <span>Q4-2022-23.pdf </span></a></td>
-                                   @endif--}}
+
+
+                                    <td>
+
+                                        @if($values->pdf_second != "" )
+                                        <a href="{{url('uploads/rti/'.$values->pdf_second)}}" download class="pdf-links"> <i class="fa fa-file-pdf-o"></i>  <span>{{ $values->pdf_second }}  </span></a>
+                                        @endif
+
+                                    </td>
+
+
+
+                                    <td>
+                                        @if($values->pdf_third != "" )
+                                        <a href="{{url('uploads/rti/'.$values->pdf_third)}}" download class="pdf-links"> <i class="fa fa-file-pdf-o"></i>   <span>{{ $values->pdf_third }}</span></a>
+                                        @endif
+                                    </td>
+
+
+
+                                    <td>
+                                        @if($values->pdf_fourth != "" )
+                                        <a href="{{url('uploads/rti/'.$values->pdf_fourth)}}" download class="pdf-links"> <i class="fa fa-file-pdf-o"></i><span>{{ $values->pdf_fourth }}</span></a>
+                                        @endif
+                                    </td>
+
+
+
                                 </tr>
 
 
-                              @endif
+
 
                             @endforeach
 
