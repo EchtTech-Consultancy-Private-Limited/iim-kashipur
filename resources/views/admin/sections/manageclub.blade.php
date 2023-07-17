@@ -86,25 +86,17 @@
                                                         <td>{{ $K + 1 }}</td>
 
 
-                                                        <td>{{ $D->title }}</td>
+                                                        <td>{{ $D->club_name }}</td>
+
+                                                        <td>{{ $D->club_type }}</td>
 
 
-                                                        @if($D->type == 0)
 
-                                                        <td>Academic Club </td>
-
-                                                        @else
-
-                                                        <td>Non-Academic Club</td>
-
-                                                        @endif
-
-
-                                                        <td><img src="{{ asset('uploads/club/' . $D->logo) }}"
+                                                        <td><img src="{{ asset('uploads/club/' . $D->club_logo) }}"
                                                                 alt="" title=""
                                                                 style="height: 100px;  width: 100px;"></td>
 
-                                                        <td><img src="{{ asset('uploads/club/' . $D->image) }}"
+                                                        <td><img src="{{ asset('uploads/club/' . $D->club_image) }}"
                                                                 alt="" title=""
                                                                 style="height: 100px;  width: 100px;"></td>
 
