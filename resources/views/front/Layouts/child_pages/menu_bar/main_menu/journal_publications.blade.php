@@ -686,7 +686,7 @@
                                             <select class="form-control" style="width: 100px;" name="year">
                                                 <option value="">--Year--</option>
                                                 @for ($i=2011; $i<= date('Y'); $i++)
-                                                <option value="{{ $i }}"> {{ $i }}</option>
+                                                <option value="{{ $i }}" {{ (request('year') ==$i)?'selected':'' }}> {{ $i }}</option>
                                                 @endfor
                                             </select>
 
