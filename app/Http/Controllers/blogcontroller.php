@@ -22,7 +22,6 @@ class blogcontroller extends Controller
     public function show_blog_page_list()
     {
         $data=blog::get();
-        dd('Hi');
         return view("admin.blog.show_blog",['data'=>$data]);
     }
     
