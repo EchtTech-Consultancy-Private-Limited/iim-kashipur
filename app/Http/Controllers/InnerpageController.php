@@ -1026,8 +1026,12 @@ public function screen_reader_access()
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 //sub menu
-    public function sub_barInnerpage($main_slug,$slug)  //content page sub menu
+    public function sub_barInnerpage($main_slug,$slug ,Request $request)  //content page sub menu
     {
+
+
+        $request->all();
+
     $sub_menu="sub menu";
     $type=SubMenu::whereslug($slug)->get();
    // dd($type);
@@ -1269,11 +1273,19 @@ public function screen_reader_access()
         }
 
 
-  elseif($type[0]->url == '/journal-publications')
+         elseif($type[0]->url == '/journal-publications')
         {
             $data=SubMenu::whereslug($slug)->get();
             if(Count($data)>0){
-            $item=journal_publication::wherestatus('1')->get();
+
+if($request->year){
+    $item=journal_publication::wherestatus('1')->whereYear('year',$request->year)->get();
+}else{
+    $item=journal_publication::wherestatus('1')->get();
+}
+
+
+
             $type=SubMenu::whereslug($slug)->get();
             if(count($type)>0){
            return view('front.Layouts.child_pages.menu_bar.main_menu.journal_publications',['item'=>$item,'sub_menu'=>$sub_menu,'type'=>$type,'data'=>$data]);

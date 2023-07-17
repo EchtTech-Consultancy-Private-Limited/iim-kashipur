@@ -65,6 +65,25 @@
                                     <label for="title" id="title-error" class="error"></label>
                                 </div>
                             </div>
+
+
+
+                            <div class="form-group col-md-6">
+
+                                <label for="image_text">year*</label>
+
+                                <input type="date" name="year" placeholder="Enter your Image Text"
+                                    class="form-last-name form-control" id="form-last-name" autocomplete="off">
+
+
+                                <label for="image_text" id="image_text-error" class="error">
+                                </label>
+
+                            </div>
+
+
+
+
                             <div class="col-md-12"  >
 
                   <div class="form-group"> <label for="form_name">
@@ -77,7 +96,7 @@
                  <input  type="text" name="url1" @if($id) value="{{$data->url}}"  @else value="{{old('url1')}}" @endif  placeholder="please enter external                        url" class="form-control"  >
 
                   </div>
-  
+
               </div>
 
 
