@@ -28,7 +28,7 @@ use App\Http\Controllers\StudentProfileController;
 | contains the "web" middleware group. Now create something great!
 |utes
 */
-
+dd('Testing is OK!!');
 Route::get('/optimize-clear', function() {
     $exitCode = Artisan::call('optimize:clear');
     return 'Optimized successfully';
