@@ -1,0 +1,493 @@
+
+
+#nav li {
+
+background:#3B3B3B;
+
+}
+
+.header-top {
+    background: #ede6e6;
+    padding: 10px 0;
+}
+
+
+
+
+.nav-wrapper ul li.open ul li a {
+
+background:#454545 !important;
+
+color:#ffff00 !important;
+
+}
+
+.nav-wrapper ul li.open ul li:hover a {
+
+background:none !important;
+
+color:#ffff00 !important;
+
+}
+
+ .nav-wrapper ul li a, a.readmore, .body-panel2 ul li span.list-content {
+
+color:#ffff00 !important;
+
+}
+
+ .nav-wrapper ul li:hover a {
+
+background:none !important;
+
+color:#ffff00 !important;
+
+}
+
+.nav-wrapper ul li.open ul li a {
+
+color:#ffff00 !important;
+
+}
+
+
+
+.whats-new-area {
+
+	background:#484848;
+
+}
+
+.minister-name span, .content-bottom h2, .links-holder h4 {
+
+	color:#fff;
+
+}
+
+.footer-top-wrapper ul li a, .interact-area a, .document-area ul li a:hover, .top-body-wrapper-right ul li a, .body-panel2 ul li span.list-content {
+
+	color:#ffff00 !important;
+
+}
+
+
+
+
+
+.nav-wrapper ul li a{color:#ffff00 !important;}
+
+
+
+
+
+.footer-top-wrapper ul li:hover a, .footer-top-wrapper ul li.selected a {
+
+	color:#fff !important;
+
+}
+
+.document-area ul li, .links-holder ul li {
+
+	background:url(../images/blt-link.png) no-repeat 0px 3px;
+
+}
+
+.header-wrapper{background:#000;}
+
+.header-wrapper, .whats-new-panel {
+
+	border-bottom:1px solid #fff;
+
+}
+
+a.readmore, .body-panel2-wrapper{
+
+	border:1px solid #333;
+
+}
+
+.body-panel3-wrapper{border-top:1px solid #333;border-bottom:1px solid #333;}
+
+
+
+.whats-new-panel, a.readmore, .content-image, .top-body-wrapper-right, .body-panel2-wrapper, .body-panel3-wrapper, .carousel-wrapper {
+
+	background:#000;
+
+	color:#FFF;
+
+}
+
+.whats-new-text-cont, .panel-3 h3, .news-list li span, .body-panel2 h3, .top-body-wrapper-right h5 {
+
+	color:#FFF;
+
+}
+
+
+
+.quicktabs_main.quicktabs-style-basic{background:#333;}
+
+.gallery{background:#000;}
+
+.whats-new-image{background:none;}
+
+.sw-logo {
+
+    background: transparent;
+
+}
+
+ul.quicktabs-tabs.quicktabs-style-basic {
+
+    background: #0e0e0e;
+
+}
+
+ul.quicktabs-tabs.quicktabs-style-basic li.active a, ul.quicktabs-tabs.quicktabs-style-basic a:hover {
+
+    background: #1b1919;
+
+    color: #fff;
+
+}
+
+.more-link a {
+
+    background: #222;
+
+    color: #ffff00;
+
+}
+
+#block-views-news-block-1 h2 {
+
+    color: #fff;
+
+}
+
+.shade-bg {
+
+    display: none;
+
+}
+
+.connecting-bharat {
+
+    background: #101010;
+
+}
+
+.connecting-bharat ul li a, .flex-pauseplay a {
+
+    color: #ffff00;
+
+}
+
+.connecting-bharat ul li {
+
+    background: rgba(0,0,0,0.6);
+
+}
+
+.content-download, .content-download:hover{
+
+	background: url(/sites/all/themes/cmf/images/download.png) no-repeat center center #222;
+
+    border-color: #222;
+
+}
+
+.logo{
+
+	background:none;
+
+}
+
+.block-webspeech button, .left-sidebar ul.menu{
+
+    background:#222 !important;
+
+    color: #ffff00;
+
+}
+
+.left-sidebar ul li:hover a, .left-sidebar ul li a, .breadcam a{
+
+	color: #ffff00;
+
+}
+
+.inner-body-wrapper h3.heading, .breadcam span{
+
+    color: #fff;
+
+}
+
+.breadcrumb-wrapper {
+
+    background: #131212 none repeat scroll 0 0;
+
+    border-bottom: 1px solid #131212;
+
+}
+
+.nav-wrapper ul li:hover a, .nav-wrapper ul li.hover a, .nav-wrapper ul li.active a, .nav-wrapper ul li.is-active-trail a {
+
+    background: #1b1b1b;
+
+}
+
+ul.pager li a {
+
+    background: #222 none repeat scroll 0 0;
+
+    color: #ffff00;
+
+}
+
+.body-container .rightportion table th, .body-container .rightportion table th {
+
+    background: #141415;
+
+    color: #fff;
+
+}
+
+.body-container .rightportion table tr:nth-child(odd), .body-container .rightportion table tr:nth-child(odd) {
+
+    background-color: #111;
+
+}
+
+.body-container .rightportion table tr:nth-child(even), .body-container .rightportion table tr:nth-child(even){
+
+    background-color: #000;
+
+}
+
+.views-exposed-form .views-exposed-widget .form-submit {
+
+    background: #222;
+
+    color: #ffff00;
+
+    border: solid #222 1px;
+
+}
+
+.gallery_all h2 {
+
+    background: #1B1919;
+
+}
+
+.gallery_all a {
+
+    background: #000 none repeat scroll 0 0;
+
+    color: #ffff00;
+
+}
+
+.inner-body-wrapper h1.heading {
+
+    color: #fff;
+
+}
+
+.breadcam a {
+
+    background: url(../images/bredcam-arrow-yellow.png) no-repeat right 7px;
+
+}
+
+.common-right ul li ul {
+
+     background: #222;
+
+}
+
+.common-right ul li.ico-accessibility ul li a:focus, .common-right ul li.ico-social ul li a:focus{
+
+    outline:dotted 1px #000 !important;
+
+}
+
+@media all and (min-width:640px) and (max-width:929px){
+
+.common-left ul li span {
+
+    display: inline-block;
+
+    font-size: 120%;
+
+}
+
+.common-left a {
+
+    display: inline-block;
+
+    float: none;
+
+}
+
+.common-left a:first-child{
+
+	border-right:solid 1px #eee;
+
+}
+
+.heading-black {
+    font-size: 2.5em;
+    font-weight: bold;
+    line-height: 0.8;
+    color: #fff;
+    margin: 0 0 30px 0;
+}
+
+
+.event-body .title {
+    font-size: 1.25em;
+    font-weight: bold;
+    line-height: 30px;
+    letter-spacing: 0.6px;
+    /* color: #273549; */
+    color: #fff !important;
+    text-transform: uppercase;
+    margin: 0;
+    padding: 15px 0;
+}
+
+
+}
+
+
+a, button{
+    color:#ffff00 !important;
+}
+
+button{
+    background-color: #000 !important;
+}
+body{
+    background-color: #000 !important;
+}
+
+div{
+    background-color: #000 !important;
+}
+
+p, h1, h2, h3, h5, h4, h6, .copyright-text, span{
+    color: #fff !important;
+}
+
+a.btn {
+    background: black !important;
+}
+
+.corner-wrap .post-body ul li  {
+    color: #fff;
+}
+
+.corner-wrap .post-body ul li .user-img img {
+   background-color: #fff;
+    color: #fff !important;
+}
+
+.excellence-wrap #excellenceTab .nav-link {
+   color: #fff;
+}
+
+
+.carousel-caption{
+    display: block;
+}
+
+.text-banner p.b-white, .text-banner h2, .text-banner p.text-nb{
+    color: #fff !important;
+}
+
+
+button.carousel-control-prev
+
+button.carousel-control-next, button.carousel-control-prev {
+    background-color: unset !important;
+}
+button.carousel-control-next {
+    background-color: unset !important;
+}
+
+.academic-card .title {
+
+    color: #ffff00 !important;
+}
+
+.site-header .navbar-nav .dropdown-menu li a {
+    padding: 8px 15px;
+    background-color: #000;
+}
+
+.header-top-right .skipwrap .select-wrap .form-select {
+    background-color: #000;
+    color: yellow;
+    cursor: pointer;
+}
+
+.site-header .logo-wrap {
+    padding: 15px 0px;
+}
+.site-header .navbar, .about-content {
+    background: #000000 !important;
+}
+
+.header-top-right{
+    padding: 5px 0;
+}
+
+.academic-slider .owl-nav{
+    background:transparent !important;
+}
+
+.academic-body {
+    border: 1px solid #353535 !important;
+    border-top: 0;
+}
+
+.counter-wrap.mt-5.aos-init.aos-animate {
+    margin-top: 0px !important;
+    margin-bottom: 15px;
+}
+
+.media.d-flex .flex-grow-1.ms-2 {
+    color: #fff;
+}
+
+/* section.event-wrap {
+    background: #000;
+} */
+
+section.event-wrap .event-card.aos-init.aos-animate {
+    padding: 25px 0px;
+}
+.excellence-wrap #excellenceTab .nav-link {
+    background: #262626 !important;
+    border: 1px solid #fff !important;
+}
+
+.site-footer .footer-top{
+    padding:20px 0 30px;
+}
+.btn-white:hover {
+    background: #252323 !important;
+}
+
+.corner-wrap .post-body ul li .user-img {
+    background: #ffffff !important;
+}
+
+
+
+/* .site-footer .footer-top .address-wrap p, .site-footer .footer-bottom .copyright-text, .site-footer .footer-bottom .visitor-title {
+    color: yellow !important;
+} */

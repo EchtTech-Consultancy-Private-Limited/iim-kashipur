@@ -1,0 +1,33 @@
+<?php
+
+return [
+  'Notification'=>'अधिसूचना',
+  'UpcomingEventsProgrammes'=>'आगामी कार्यक्रम / कार्यक्रम',
+  'Circulars'=>'परिपत्र',
+  'QuickLinks'=>'त्वरित संपर्क',
+  'PhotoGallery'=>'चित्र प्रदर्शनी',
+  'VideoGallery'=>'वीडियो प्रदर्शनी',
+  'AboutUs'=>'हमारे बारे में',
+  'SkiptoMainContent'=>'मुख्य विषयवस्तु में जाएं',
+  'ScreenReaderAccess'=>'स्क्रीन रीडर एक्सेस',
+  'ReadMore'=>'अधिक पढ़ें',
+  'NoContentAvailable'=>'कोई सामग्री उपलब्ध नहीं',
+  'Viewall'=>'सभी को देखें',
+  'Address'=>'पता',
+  'Phone'=>'फ़ोन',
+  'Email'=>'ईमेल',
+  'WebsiteContentManagedby'=>'वेबसाइट सामग्री प्रबंधन',
+  'DesignedDevelopedandHostedby'=>'डिजाइन, विकास और होस्ट कर्ता',
+  'TotalVisitors'=>'कुल आगंतुक',
+  'LastUpdated'=>'आखरी अपडेट',
+  'FollowUson'=>'फॉलो करें',
+  'copyright'=>'कॉपीराइट © 2022। सर्वाधिकार सुरक्षित',
+  'Feedback'=>'प्रतिपुष्टि',
+  'Howtoreachus'=>'हम तक कैसे पहुंचे',
+  'ContactUs'=>'संपर्क करें',
+  'EmployeesCorner'=>'कर्मचारी कॉर्नर',
+  'PrivacyPolicy'=>'गोपनीयता नीति',
+  'Disclaimer'=>'अस्वीकरण',
+  'Help'=>'मदद',
+];
+

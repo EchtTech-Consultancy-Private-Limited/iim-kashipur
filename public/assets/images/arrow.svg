@@ -1,0 +1,13 @@
+<svg version="1.2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 15 15" width="15" height="15">
+	<title>arrow-svg</title>
+	<style>
+		.s0 { fill: #ffffff } 
+		.s1 { fill: none;stroke: #707070 } 
+		.s2 { opacity: .8;fill: #ffffff } 
+	</style>
+	<g id="Rectangle_9270" style="opacity: 0">
+		<path id="Layer" class="s0" d="m0 0h15v15h-15z"/>
+		<path id="Layer" class="s1" d="m0.5 0.5h14v14h-14z"/>
+	</g>
+	<path id="Path_15768" class="s2" d="m8.5 7.4l-3.3-3.3q-0.2-0.2-0.2-0.5 0-0.2 0.2-0.4 0.2-0.2 0.4-0.2 0.3 0 0.5 0.2l3.7 3.7q0.1 0.1 0.1 0.2 0.1 0.1 0.1 0.2 0 0.2 0 0.3-0.1 0.1-0.2 0.2l-3.7 3.7q-0.2 0.2-0.5 0.2-0.2 0-0.4-0.2-0.2-0.1-0.2-0.4 0-0.3 0.2-0.4z"/>
+</svg>

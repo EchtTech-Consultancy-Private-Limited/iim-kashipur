@@ -1,0 +1,35 @@
+
+body{
+    background: #ffffff;
+    color: #000;
+}
+
+.dark-mode,.topheader{
+    background: #000;
+    color: #fff;
+}
+
+.dark-mode a, .dark-mode-a {
+    background: #000;
+    color: #fff000 !important;
+}
+
+
+
+
+.text-increase{
+    font-size:20px;
+}
+.text-increase a, .text-increase .navbar-nav li a{
+    font-size:20px;
+}
+
+.text-increase2{
+    font-size:24px;
+}
+.text-increase2 a, .text-increase2 .navbar-nav li a{
+    font-size:24px;
+}
+
+
+
