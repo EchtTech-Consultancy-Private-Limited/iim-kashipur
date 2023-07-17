@@ -63,7 +63,7 @@
 
                                                     <th>Commmittee name</th>
 
-                                                    <th>Commmittee Type</th>
+                                                    {{-- <th>Commmittee Type</th> --}}
 
                                                     <th>Commmittee Logo</th>
 
@@ -86,17 +86,17 @@
                                                         <td>{{ $K + 1 }}</td>
 
 
-                                                        <td>{{ $D->Commmittee_name }}</td>
+                                                        <td>{{ $D->title }}</td>
 
-                                                        <td>{{ $D->Commmittee_type}}</td>
+                                                        {{-- <td>{{ $D->Commmittee_type}}</td> --}}
 
 
 
-                                                        <td><img src="{{ asset('uploads/Commmittee/' . $D->Commmittee_logo) }}"
+                                                        <td><img src="{{ asset('uploads/club/' . $D->logo) }}"
                                                                 alt="" title=""
                                                                 style="height: 100px;  width: 100px;"></td>
 
-                                                        <td><img src="{{ asset('uploads/Commmittee/' . $D->Commmittee_image) }}"
+                                                        <td><img src="{{ asset('uploads/club/' . $D->image) }}"
                                                             alt="" title=""
                                                             style="height: 100px;  width: 100px;"></td>
 

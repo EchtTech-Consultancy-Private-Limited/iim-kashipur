@@ -248,7 +248,7 @@
 
                                 <label for="image_text">year*</label>
 
-                                <input type="data" name="year" placeholder="Enter your Image Text"
+                                <input type="date" name="year" placeholder="Enter your Image Text"
                                     class="form-last-name form-control" id="form-last-name" autocomplete="off">
 
 
@@ -334,11 +334,12 @@
                                 <label for="filename" id="filename-error" class="error">
                                 </label>
 
-                                <a href="" download class="pdf_class">
+                                 <a href=""  download id='QUARTER_pdf1' class="pdf_class">
 
-                                    <img src="{{ asset('admin/images/viewpdf.jpg') }}" width="170" height="70">
+									 <img src="{{ asset('admin/images/viewpdf.jpg') }}"  width="170" height="70">
 
-                                </a>
+								</a>
+
 
                             </div>
 
@@ -353,11 +354,13 @@
                                 <label for="filename" id="filename-error" class="error">
                                 </label>
 
-                                <a href="" download class="pdf_class">
+                                 <a href=""  download id='QUARTER_pdf2' class="pdf_class">
 
-                                    <img src="{{ asset('admin/images/viewpdf.jpg') }}" width="170" height="70">
+									 <img src="{{ asset('admin/images/viewpdf.jpg') }}"  width="170" height="70">
 
-                                </a>
+								  </a>
+
+
 
                             </div>
                             <div class="form-group col-md-6">
@@ -370,11 +373,12 @@
                                 <label for="filename" id="filename-error" class="error">
                                 </label>
 
-                                <a href="" download class="pdf_class">
+                                 <a href=""  download id='QUARTER_pdf3' class="pdf_class">
 
-                                    <img src="{{ asset('admin/images/viewpdf.jpg') }}" width="170" height="70">
+     <img src="{{ asset('admin/images/viewpdf.jpg') }}"  width="170" height="70">
 
-                                </a>
+  </a>
+
 
                             </div>
 
@@ -389,11 +393,13 @@
                                 <label for="filename" id="filename-error" class="error">
                                 </label>
 
-                                <a href="" download class="pdf_class">
+                                <a href=""  download id='QUARTER_pdf4' class="pdf_class">
 
-                                    <img src="{{ asset('admin/images/viewpdf.jpg') }}" width="170" height="70">
+     <img src="{{ asset('admin/images/viewpdf.jpg') }}"  width="170" height="70">
 
-                                </a>
+  </a>
+
+
 
                             </div>
 
@@ -403,8 +409,8 @@
 
                                 <label for="image_text">year*</label>
 
-                                <input type="data" name="year" placeholder="Enter your Image Text" id="year"
-                                    class="form-last-name form-control" id="form-last-name" autocomplete="off">
+                                <input type="date" name="year" placeholder="Enter your Image Text" id="year"
+                                    class="form-last-name form-control" autocomplete="off">
 
 
                                 <label for="image_text" id="image_text-error" class="error">

@@ -798,9 +798,10 @@ public function add_committee(Request $request,$id=NULL)
         ]);
         $data->title=$request->Commmittee_name;
         $data->chairperson= $request->chairperson;
-        $data->type= $request->Commmittee_type;
+        $data->type= $request->type;
         $data->about_details=$request->about_details;
         $data->activites= $request->activeites;
+        $data->placement= $request->Placement;
         $data->event= $request->event;
         $data->status= $request->status;
         $data->logo_title= $request->Committee_logo_title;

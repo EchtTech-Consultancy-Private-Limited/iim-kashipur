@@ -1124,5 +1124,41 @@ $("#url").change(function(e) {
     });
     </script>
 
+{{-- -------------------------------------------- placement-committee ----------------------------------------------------------- --}}
+<script>
+    $("#url").change(function(e) {
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+        });
 
+        var data3 = $("#url").val();
+          //alert(data3)
+
+        if (data3 == 'placement-committee') {
+
+            $.ajax({
+                url: "{{ url('Accounts/cells') }}",
+                type: "get",
+                success: function(data) {
+
+                    console.log(data)
+
+                    var resdata = data;
+
+                   // alert(resdata);
+
+                    var formoption = "<option value='0'>Please select</option>";
+                    for (i = 0; i < resdata.length; i++) {
+                        formoption += "<option value='" + resdata[i].id + "'>" + resdata[i].title +
+                            "</option>";
+                    }
+                    $('#countries').html(formoption);
+
+                }
+            });
+        }
+    });
+</script>
     @endsection

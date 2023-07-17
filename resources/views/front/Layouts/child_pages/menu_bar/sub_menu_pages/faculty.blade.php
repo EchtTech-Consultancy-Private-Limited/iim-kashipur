@@ -1,84 +1,11 @@
-<!doctype html>
-<html lang="en">
-
-<head>
-
-    <meta charset="utf-8">
-
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-
-    @if(isset($item[0]))
-        <title>@if(GetLang()=='en'){{GetOrganisationAllDetails('name')}} @else {{GetOrganisationAllDetails('name_h')}} @endif - {{$item[0]->meta_title}}</title>
-    @else
-        <title>@if(GetLang()=='en'){{GetOrganisationAllDetails('name')}} @else {{GetOrganisationAllDetails('name_h')}} @endif</title>
-    @endif
-
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-
-    <link href="{{asset('assets/css/bootstrap.min.css')}}" rel="stylesheet">
-
-    <link href="{{asset('assets/css/owl.carousel.min.css')}}" rel="stylesheet">
-
-    <link href="{{asset('assets/css/swiper-bundle.min.css')}}" rel="stylesheet">
-
-    <link href="{{asset('assets/css/aos.css')}}" rel="stylesheet">
-
-    <link href="{{asset('assets/css/style.css')}}" rel="stylesheet">
-
-    <link rel="shortcut icon" type="image/png" href="{{asset('uploads/site-logo/'.GetOrganisationAllDetails('fevicon'))}}">
-
-    <link href="{{asset('assets/css/custom.css')}}" rel="stylesheet">
-
-
-  <!-- custom css file link  -->
-
-  <link rel="stylesheet" href="{{ asset('assets/css/styles.css') }}">
-
-    <link rel="shortcut icon" href="@if(GetOrganisationAllDetails('fevicon')){{asset('uploads/site-logo/'.GetOrganisationAllDetails('fevicon'))}} @else {{asset('assets/images/'.GetOrganisationAllDetails('fevicon'))}} @endif" type="image/vnd.microsoft.icon" />
-
-    @if(isset($item[0]))
-
-    <meta name="title" content="{{$item[0]->meta_title ?? ''}}">
-
-    <meta name="keywords" content="{{$item[0]->meta_keywords ?? ''}}">
-
-    <meta name="description" content="{{$item[0]->meta_description ?? ''}}">
-
-@else
-
-    <meta name="title" content="{{GetOrganisationAllDetails('meta_title') ?? ''}}">
-
-    <meta name="keywords" content="{{GetOrganisationAllDetails('meta_keywords') ?? ''}}">
-
-    <meta name="description" content="{{GetOrganisationAllDetails('meta_description') ?? ''}}">
-
-@endif
-
-
-</style>
 
 
 
-</head>
+@extends('front.Layouts.master')
 
 
 
-<body>
-
-
-
-
-
-    @include('front.Layouts.child_pages.header')
-
-
-
-
-
-
-
-        <div class="wrapper" id="skipCont"></div>
-
+@section('content')
 
 
         @php
@@ -164,7 +91,7 @@
 
 
                                          @else
-                                            <li><a href={{url($C->url."/".$mmenu[0]->slug."/".$S->slug."/".$C->slug)}}>  @if(GetLang()=='en') {{ $C->name ?? ''}} @else {{ $C->name_h ?? ''}} @endif</a></li>
+                                            <li><a href={{url($mmenu[0]->slug."/".$S->slug."/".$C->slug)}}>  @if(GetLang()=='en') {{ $C->name ?? ''}} @else {{ $C->name_h ?? ''}} @endif</a></li>
                                          @endif
 
                                      @endforeach
@@ -184,7 +111,7 @@
 
                                     @else
 
-                                    <li><a href="{{ url($S->url."/".$mmenu[0]->slug."/".$S->slug) }}" @if($S->id==$type[0]->id) class="active" @endif>  @if(GetLang()=='en') {{ $S->name ?? ''}} @else {{ $S->name_h ?? ''}} @endif  </a></li>
+                                    <li><a href="{{ url($mmenu[0]->slug."/".$S->slug) }}" @if($S->id==$type[0]->id) class="active" @endif>  @if(GetLang()=='en') {{ $S->name ?? ''}} @else {{ $S->name_h ?? ''}} @endif  </a></li>
 
                                     @endif
 
@@ -248,7 +175,7 @@
 
                                 <div class="col-md-5 col-lg-4 ">
 
-                                    <a href="{{ url('profile'.'/'.$type[0]->slug.'/'.$items->slug)}}">
+                                    <a href="{{ $type[0]->slug ?? '' }}/{{ $items->slug ??'' }}" >
 
                                     <div class="profilewraper withinfo addevent-box">
 
@@ -299,82 +226,5 @@
 
     </section>
 
-
-
-
-
-
-
-    @if(FindSiteSettings('Home','footer'))
-
-    @include('front.Layouts.footers.'.FindSiteSettings('Home','footer'))
-
-    @endif
-
-
-
-
-
-    <script src="{{asset('assets/js/jquery-3.6.0.min.js')}}"></script>
-
-    <script src="{{asset('assets/js/bootstrap.bundle.min.js')}}"></script>
-
-    <script src="{{asset('assets/js/owl.carousel.min.js')}}"></script>
-
-    <script src="{{asset('assets/js/swiper-bundle.min.js')}}"></script>
-
-    <script src="{{asset('assets/js/aos.js')}}"></script>
-
-    <script src="{{asset('assets/js/custom.js')}}"></script>
-
-
-
-
-
-
-
-<!-- custom js file link  -->
-
-<script src="{{ asset('assets/js/scripts.js') }}"></script>
-
-
-
-
-
-
-
-    <script>
-
-        AOS.init({
-
-            disable: 'mobile'
-
-        });
-
-    </script>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
-
-
-
-
-</body>
-
-
-
-</html>
+    @endsection
 

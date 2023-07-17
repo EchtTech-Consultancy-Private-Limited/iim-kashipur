@@ -61,6 +61,7 @@ public function RTI_view()
         $item=rti::wherestatus('1')->get();
         $data=rit_report_section::get();
         $value=quarter_report::get();
+		//dd($value);
         return view('front.Layouts.child_pages.menu_bar.main_menu.rti',['item'=>$item,'data'=>$data,'value'=>$value]);
     }
 
@@ -1177,8 +1178,47 @@ public function screen_reader_access()
                 }
             }
         }
+		elseif($type[0]->url == '/Club-Cells-Committee')
+        {
+
+
+                $data=SubMenu::whereslug($slug)->get();
+                $data1=commmittee::wherestatus('1')->wheretype('1')->get();
+                $data=club::wherestatus('1')->get();
+                $data2=cell::wherestatus('1')->get();
+                $type=SubMenu::whereslug($slug)->get();
+                if(count($type)>0){
+                    return view('front.Layouts.child_pages.menu_bar.main_menu.clube_committee',['sub_menu'=>$sub_menu,'type'=>$type,'data'=>$data,'data1'=>$data1,'data2'=>$data2]);
+
+                }else{
+                    return abort(401);
+                }
+
+        }
+
+
+
+        elseif($type[0]->url == '/placement-committee')
+        {
+
+                    $item=commmittee::wherestatus('1')->wheretype('2')->get();
+                    if(count($type)>0){
+                    $data=SubMenu::whereslug($slug)->get();
+                    $type=SubMenu::whereslug($slug)->get();
+                    $chairperson=OrganisationStructure::whereid($item[0]->chairperson)->get();
+                    $chairpersone=OrganisationStructure::whereid($item[0]->placement)->get();
+                    $chairpersons=OrganisationStructure::wherecommittee($item[0]->id)->get();
+                    $data=committee_multiple_image::whereparent_id($item[0]->id)->get();
+                    return view('front.Layouts.child_pages.menu_bar.main_menu.placement-committee',['chairpersone'=>$chairpersone,'data'=>$data,'chairperson'=>$chairperson,'chairpersons'=>$chairpersons,'sub_menu'=>$sub_menu,'type'=>$type,'data'=>$data,'item'=>$item]);
+
+                }else{
+                    return abort(401);
+                }
+
+
+        }
         
-        elseif($type[0]->url == '/Club-Cells-Committee')
+       /* elseif($type[0]->url == '/Club-Cells-Committee')
         {
 
         $data1=commmittee::wherestatus('1')->wheretype('2')->where('placement','!=',NULL)->first();
@@ -1212,7 +1252,7 @@ public function screen_reader_access()
 
         }
 
-        }
+        }*/
         elseif($type[0]->url == '/Wellness-Facilities')
         {
             $type=SubMenu::whereslug($slug)->get();

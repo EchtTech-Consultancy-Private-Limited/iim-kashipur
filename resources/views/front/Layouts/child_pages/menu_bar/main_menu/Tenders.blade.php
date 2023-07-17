@@ -49,7 +49,9 @@
                 <td>{{$value->published_date}}</td>
                 <td>{{$value->submission_date}}</td>
                 <td>{{$value->title}}</td>
-                <td>{{$value->tender_document}}</td>
+                <td>
+				<a href="{{ asset('uploads/tenders/' . $value->tender_document) }}" target="_blank"><i class="fa fa-download"></i> Download</a>
+				</td>
                 <td>{{$value->corrigendum}}</td>
 
 
