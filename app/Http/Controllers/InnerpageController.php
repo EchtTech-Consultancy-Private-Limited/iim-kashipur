@@ -1293,25 +1293,26 @@ public function screen_reader_access()
                 return abort(401);
             }
         }
-        elseif($type[0]->url == '/Organisation-Journey')
-        {
+        // elseif($type[0]->url == '/Organisation-Journey')
+        // {
 
-            $data=SubMenu::whereslug($slug)->get();
-            $item=press_media::get();
-            if(Count($item)>0){
-            $chairperson=OrganisationStructure::whereid($item[0]->chairperson)->get();
-            $chairpersons=OrganisationStructure::where('MEDIA_COORDINATORS','=','1')->get();
-            $type=SubMenu::whereslug($slug)->get();
-            if(count($type)>0){
-            return view('front.Layouts.child_pages.menu_bar.main_menu.story',['item'=>$item,'item'=>$item,'type'=>$type,'sub_menu'=>$sub_menu,'chairperson'=>$chairperson,'chairpersons'=>$chairpersons]);
 
-            }else{
-                return abort(401);
-            }
-            }else{
-                return abort(401);
-            }
-        }
+        //     $data=SubMenu::whereslug($slug)->get();
+        //     $item=press_media::get();
+        //     if(Count($item)>0){
+        //     $chairperson=OrganisationStructure::whereid($item[0]->chairperson)->get();
+        //     $chairpersons=OrganisationStructure::where('MEDIA_COORDINATORS','=','1')->get();
+        //     $type=SubMenu::whereslug($slug)->get();
+        //     if(count($type)>0){
+        //     return view('front.Layouts.child_pages.menu_bar.main_menu.story',['item'=>$item,'item'=>$item,'type'=>$type,'sub_menu'=>$sub_menu,'chairperson'=>$chairperson,'chairpersons'=>$chairpersons]);
+
+        //     }else{
+        //         return abort(401);
+        //     }
+        //     }else{
+        //         return abort(401);
+        //     }
+        // }
   elseif($type[0]->url == '/student-council')
         {
 

@@ -1305,6 +1305,9 @@
                                     <div class="row">
 
                                         @foreach ($data as $datas)
+
+                                         @if($datas->event != '' )
+
                                             <div class="col-md-4">
                                                 <div class="text-box">
                                                     <div class="text-b">
@@ -1317,6 +1320,7 @@
 
                                                 </div>
                                             </div>
+                                         @endif
                                         @endforeach
 
                                     </div>
