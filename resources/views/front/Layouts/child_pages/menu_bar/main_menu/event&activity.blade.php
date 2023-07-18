@@ -210,82 +210,140 @@
                                                 </svg>
                                             </a>
 
+
+                                            {{-- child menu --}}
                                             <ul>
-
                                                 @foreach (GetchildMenusFront($gets[0]->menu_id, $S->id) as $key2 => $C)
-                                                    @if ($C->external == 'yes')
-                                                        <li><a @if ($C->id == $gets[0]->id) class="active" @endif
-                                                                href="{{ url($C->url) }}"
-                                                                onclick="return confirm('Are you sure  external window open?')"
-                                                                target="_blank">
+                                                    @if (count(GetsubchildMenusFront($gets[0]->menu_id, $S->id, $C->id)) > 0)
+                                                        <li class="hasnested">
+                                                            <a @if ($C->id == $gets[0]->id) class="active" @endif>
                                                                 @if (GetLang() == 'en')
                                                                     {{ $C->name ?? '' }}
                                                                 @else
                                                                     {{ $C->name_h ?? '' }}
                                                                 @endif
-                                                            </a>
-                                                        </li>
-                                                    @elseif($C->external == 'no')
-                                                        <li><a href="{{ url($C->url) }}">
-                                                                @if (GetLang() == 'en')
-                                                                    {{ $C->name ?? '' }}
-                                                                @else
-                                                                    {{ $C->name_h ?? '' }}
-                                                                @endif
-                                                            </a>
-                                                        </li>
-                                                    @else
-                                                        <li><a
-                                                                href={{ url($mmenu[0]->slug . '/' . $S->slug . '/' . $C->slug) }}>
-                                                                @if (GetLang() == 'en')
-                                                                    {{ $C->name ?? '' }}
-                                                                @else
-                                                                    {{ $C->name_h ?? '' }}
-                                                                @endif
-                                                            </a>
-                                                        </li>
-                                                    @endif
-                                                @endforeach
 
-                                            </ul>
+                                                                <svg class="minus internal-menu-minus" viewBox="0 0 24 24">
+                                                                    <g data-name="Layer 2">
+                                                                        <path d="M19 13H5a1 1 0 0 1 0-2h14a1 1 0 0 1 0 2z"
+                                                                            data-name="minus" />
+                                                                    </g>
+                                                                </svg><svg viewBox="0 0 24 24" class="plus internal-menu-plus">
+                                                                    <path
+                                                                        d="M19,11H13V5a1,1,0,0,0-2,0v6H5a1,1,0,0,0,0,2h6v6a1,1,0,0,0,2,0V13h6a1,1,0,0,0,0-2Z" />
+                                                                </svg>
+                                                                </a>
+
+
+                                                            @foreach (GetsubchildMenusFront($gets[0]->menu_id, $S->id, $C->id) as $k => $D)
+                                                                <ul>
+                                                                    @if ($D->external == 'yes')
+                                                                        <li><a href="{{ url($D->url) }}"
+                                                                                onclick="return confirm('Are you sure  external window open?')"
+                                                                                target="_blank">
+                                                                                @if (GetLang() == 'en')
+                                                                                    {{ $D->name ?? '' }}
+                                                                                @else
+                                                                                    {{ $D->name_h ?? '' }}
+                                                                                @endif
+                                                                            </a>
+                                                                        </li>
+                                                                    @elseif($D->external == 'no')
+                                                                        <li><a href="{{ url($D->url) }}">
+                                                                                @if (GetLang() == 'en')
+                                                                                    {{ $D->name ?? '' }}
+                                                                                @else
+                                                                                    {{ $D->name_h ?? '' }}
+                                                                                @endif
+                                                                            </a>
+                                                                        </li>
+                                                                    @else
+                                                                        <li><a
+                                                                                href={{ url($mmenu[0]->slug . '/' . $S->slug . '/' . $C->slug . '/' . $D->slug) }}>
+                                                                                @if (GetLang() == 'en')
+                                                                                    {{ $D->name ?? '' }}
+                                                                                @else
+                                                                                    {{ $D->name_h ?? '' }}
+                                                                                @endif
+                                                                            </a></li>
+                                                                    @endif
+                                                                </ul>
+                                                            @endforeach
+                                                        </li>
+
 
                                         </li>
                                     @else
-                                        @if ($S->external == 'yes')
-                                            <li><a href="{{ url($S->url) }}"
+                                        @if ($C->external == 'yes')
+                                            <li><a href="{{ url($C->url) }}"
                                                     onclick="return confirm('Are you sure  external window open?')"
                                                     target="_blank">
                                                     @if (GetLang() == 'en')
-                                                        {{ $S->name ?? '' }}
+                                                        {{ $C->name ?? '' }}
                                                     @else
-                                                        {{ $S->name_h ?? '' }}
+                                                        {{ $C->name_h ?? '' }}
                                                     @endif
-                                                </a></li>
-                                        @elseif($S->external == 'no')
-                                            <li><a href="{{ url($S->url) }}">
+                                                </a>
+                                            </li>
+                                        @elseif($C->external == 'no')
+                                            <li><a href="{{ url($C->url) }}">
                                                     @if (GetLang() == 'en')
-                                                        {{ $S->name ?? '' }}
+                                                        {{ $C->name ?? '' }}
                                                     @else
-                                                        {{ $S->name_h ?? '' }}
+                                                        {{ $C->name_h ?? '' }}
                                                     @endif
-                                                </a></li>
+                                                </a>
+                                            </li>
                                         @else
-                                            <li><a href="{{ url($mmenu[0]->slug . '/' . $S->slug) }}"
-                                                    @if ($S->id == $get[0]->id) class="active" @endif>
+                                            <li><a href={{ url($mmenu[0]->slug . '/' . $S->slug . '/' . $C->slug) }}>
                                                     @if (GetLang() == 'en')
-                                                        {{ $S->name ?? '' }}
+                                                        {{ $C->name ?? '' }}
                                                     @else
-                                                        {{ $S->name_h ?? '' }}
+                                                        {{ $C->name_h ?? '' }}
                                                     @endif
                                                 </a></li>
                                         @endif
                                     @endif
+                            @endforeach
+                            </ul>
 
-                                </ul>
+                            </li>
+                        @else
+                            @if ($S->external == 'yes')
+                                <li><a href="{{ url($S->url) }}"
+                                        onclick="return confirm('Are you sure  external window open?')" target="_blank">
+                                        @if (GetLang() == 'en')
+                                            {{ $S->name ?? '' }}
+                                        @else
+                                            {{ $S->name_h ?? '' }}
+                                        @endif
+                                    </a></li>
+                            @elseif($S->external == 'no')
+                                <li><a href="{{ url($S->url) }}">
+                                        @if (GetLang() == 'en')
+                                            {{ $S->name ?? '' }}
+                                        @else
+                                            {{ $S->name_h ?? '' }}
+                                        @endif
+                                    </a></li>
+                            @else
+                                <li><a href="{{ url($mmenu[0]->slug . '/' . $S->slug) }}"
+                                        @if ($S->id == $get[0]->id) class="active" @endif>
+                                        @if (GetLang() == 'en')
+                                            {{ $S->name ?? '' }}
+                                        @else
+                                            {{ $S->name_h ?? '' }}
+                                        @endif
+                                    </a></li>
+                            @endif
+                            @endif
+
+                            </ul>
                             @endforeach
 
                         </div>
                     </div>
+
 
 
 
@@ -369,7 +427,6 @@
 
                             @foreach (GetSubMenusFront($type[0]->menu_id) as $key1 => $S)
                                 <ul>
-
                                     @if (count(GetchildMenusFront($type[0]->menu_id, $S->id)) > 0)
                                         <li class="hasnested"><a @if ($S->id == $type[0]->id) class="active" @endif>
                                                 @if (GetLang() == 'en')
@@ -388,83 +445,140 @@
                                                 </svg>
                                             </a>
 
+                                            {{-- child menu --}}
                                             <ul>
-
                                                 @foreach (GetchildMenusFront($type[0]->menu_id, $S->id) as $key2 => $C)
-                                                    @if ($C->external == 'yes')
-                                                        <li><a href="{{ url($C->url) }}"
-                                                                onclick="return confirm('Are you sure  external window open?')"
-                                                                target="_blank">
+                                                    @if (count(GetsubchildMenusFront($type[0]->menu_id, $S->id, $C->id)) > 0)
+                                                        <li class="hasnested">
+                                                            <a @if ($C->id == $type[0]->id) class="active" @endif>
                                                                 @if (GetLang() == 'en')
                                                                     {{ $C->name ?? '' }}
                                                                 @else
                                                                     {{ $C->name_h ?? '' }}
                                                                 @endif
-                                                            </a>
-                                                        </li>
-                                                    @elseif($C->external == 'no')
-                                                        <li><a href="{{ url($C->url) }}">
-                                                                @if (GetLang() == 'en')
-                                                                    {{ $C->name ?? '' }}
-                                                                @else
-                                                                    {{ $C->name_h ?? '' }}
-                                                                @endif
-                                                            </a>
-                                                        </li>
-                                                    @else
-                                                        <li><a
-                                                                href={{ url($mmenu[0]->slug . '/' . $S->slug . '/' . $C->slug) }}>
-                                                                @if (GetLang() == 'en')
-                                                                    {{ $C->name ?? '' }}
-                                                                @else
-                                                                    {{ $C->name_h ?? '' }}
-                                                                @endif
-                                                            </a>
-                                                        </li>
-                                                    @endif
-                                                @endforeach
 
-                                            </ul>
+                                                                <svg class="minus internal-menu-minus" viewBox="0 0 24 24">
+                                                                    <g data-name="Layer 2">
+                                                                        <path d="M19 13H5a1 1 0 0 1 0-2h14a1 1 0 0 1 0 2z"
+                                                                            data-name="minus" />
+                                                                    </g>
+                                                                </svg><svg viewBox="0 0 24 24" class="plus internal-menu-plus">
+                                                                    <path
+                                                                        d="M19,11H13V5a1,1,0,0,0-2,0v6H5a1,1,0,0,0,0,2h6v6a1,1,0,0,0,2,0V13h6a1,1,0,0,0,0-2Z" />
+                                                                </svg>
+                                                                </a>
+                                                            <ul>
+                                                            @foreach (GetsubchildMenusFront($type[0]->menu_id, $S->id, $C->id) as $k => $D)
+
+                                                                    @if ($D->external == 'yes')
+                                                                        <li><a href="{{ url($D->url) }}"
+                                                                                onclick="return confirm('Are you sure  external window open?')"
+                                                                                target="_blank">
+                                                                                @if (GetLang() == 'en')
+                                                                                    {{ $D->name ?? '' }}
+                                                                                @else
+                                                                                    {{ $D->name_h ?? '' }}
+                                                                                @endif
+                                                                            </a>
+                                                                        </li>
+                                                                    @elseif($D->external == 'no')
+                                                                        <li><a href="{{ url($D->url) }}">
+                                                                                @if (GetLang() == 'en')
+                                                                                    {{ $D->name ?? '' }}
+                                                                                @else
+                                                                                    {{ $D->name_h ?? '' }}
+                                                                                @endif
+                                                                            </a>
+                                                                        </li>
+                                                                    @else
+                                                                        <li><a
+                                                                                href={{ url($mmenu[0]->slug . '/' . $S->slug . '/' . $C->slug . '/' . $D->slug) }}>
+                                                                                @if (GetLang() == 'en')
+                                                                                    {{ $D->name ?? '' }}
+                                                                                @else
+                                                                                    {{ $D->name_h ?? '' }}
+                                                                                @endif
+                                                                            </a></li>
+                                                                    @endif
+
+                                                            @endforeach
+                                                        </ul>
+                                                        </li>
+
 
                                         </li>
                                     @else
-                                        @if ($S->external == 'yes')
-                                            <li><a href="{{ url($S->url) }}"
+                                        @if ($C->external == 'yes')
+                                            <li><a href="{{ url($C->url) }}"
                                                     onclick="return confirm('Are you sure  external window open?')"
                                                     target="_blank">
                                                     @if (GetLang() == 'en')
-                                                        {{ $S->name ?? '' }}
+                                                        {{ $C->name ?? '' }}
                                                     @else
-                                                        {{ $S->name_h ?? '' }}
+                                                        {{ $C->name_h ?? '' }}
                                                     @endif
-                                                </a></li>
-                                        @elseif($S->external == 'no')
-                                            <li><a href="{{ url($S->url) }}">
+                                                </a>
+                                            </li>
+                                        @elseif($C->external == 'no')
+                                            <li><a href="{{ url($C->url) }}">
                                                     @if (GetLang() == 'en')
-                                                        {{ $S->name ?? '' }}
+                                                        {{ $C->name ?? '' }}
                                                     @else
-                                                        {{ $S->name_h ?? '' }}
+                                                        {{ $C->name_h ?? '' }}
                                                     @endif
-                                                </a></li>
+                                                </a>
+                                            </li>
                                         @else
-                                            <li><a href="{{ url($mmenu[0]->slug . '/' . $S->slug) }}"
-                                                    @if ($S->id == $type[0]->id) class="active" @endif>
+                                            <li><a href={{ url($mmenu[0]->slug . '/' . $S->slug . '/' . $C->slug) }}>
                                                     @if (GetLang() == 'en')
-                                                        {{ $S->name ?? '' }}
+                                                        {{ $C->name ?? '' }}
                                                     @else
-                                                        {{ $S->name_h ?? '' }}
+                                                        {{ $C->name_h ?? '' }}
                                                     @endif
                                                 </a></li>
                                         @endif
                                     @endif
-
-                                </ul>
                             @endforeach
+                            </ul>
+
+                            </li>
+                        @else
+                            @if ($S->external == 'yes')
+                                <li><a href="{{ url($S->url) }}"
+                                        onclick="return confirm('Are you sure  external window open?')" target="_blank">
+                                        @if (GetLang() == 'en')
+                                            {{ $S->name ?? '' }}
+                                        @else
+                                            {{ $S->name_h ?? '' }}
+                                        @endif
+                                    </a></li>
+                            @elseif($S->external == 'no')
+                                <li><a href="{{ url($S->url) }}">
+                                        @if (GetLang() == 'en')
+                                            {{ $S->name ?? '' }}
+                                        @else
+                                            {{ $S->name_h ?? '' }}
+                                        @endif
+                                    </a></li>
+                            @else
+                                <li><a href="{{ url($mmenu[0]->slug . '/' . $S->slug) }}"
+                                        @if ($S->id == $type[0]->id) class="active" @endif>
+                                        @if (GetLang() == 'en')
+                                            {{ $S->name ?? '' }}
+                                        @else
+                                            {{ $S->name_h ?? '' }}
+                                        @endif
+                                    </a></li>
+                            @endif
+                            @endif
+                            </ul>
+                            @endforeach
+
+
 
                         </div>
 
                     </div>
-
 
 
 
@@ -494,33 +608,33 @@
                                     </h3>
 
 
-                                  
 
 
 
-                                                         
 
-                                               
+
+
+
                                   <div class="row">
-         
-                                            
+
+
  @foreach($data as $K=>$item)
                                   <div class="col-md-6 col-lg-6 mb-4">
 
                                     <div class="box-rti">
 
-                                        <a href="{{url('event-activity-image/'.dEncrypt($item->id))}}" class="text-black main-name"> {{$item->title}} </a> 
-                                       
+                                        <a href="{{url('event-activity-image/'.dEncrypt($item->id))}}" class="text-black main-name"> {{$item->title}} </a>
+
                                     </div>
                                 </div>
-                                            
+
 
   @endforeach
                                   </div>
 
 
 
-                                                
+
 
  </div>
 

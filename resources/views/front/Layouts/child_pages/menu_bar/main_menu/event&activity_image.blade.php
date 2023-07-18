@@ -4,7 +4,7 @@
 
 @section('content')
 
-<!-- <div class="internalpagebanner">
+<div class="internalpagebanner">
     @if(GetOrganisationAllDetails('default_banner_image')!='')
         <img src="{{asset('uploads/site-logo/'.GetOrganisationAllDetails('default_banner_image'))}}" style="height:auto;  min-height:200px; max-height:500px overflow:hidden;"  alt="{{ $type_child[0]->name ?? '' }}" title="{{ $type_child[0]->name ?? '' }}">
     @else
@@ -12,7 +12,7 @@
     @endif
 <div class="imagecaption">
         <div class="container">
-            <h1>{{ $type_child[0]->name  ?? '' }}</h1>
+            <h1>{{ $item[0]->title ?? '' }}</h1>
         </div>
     </div>
 </div>
@@ -22,11 +22,12 @@
         <ul>
             <li><a href="{{url('/')}}"><svg viewBox="0 0 24 24"><path fill="none" d="M0 0h24v24H0V0z"/><path d="M10 19v-5h4v5c0 .55.45 1 1 1h3c.55 0 1-.45 1-1v-7h1.7c.46 0 .68-.57.33-.87L12.67 3.6c-.38-.34-.96-.34-1.34 0l-8.36 7.53c-.34.3-.13.87.33.87H5v7c0 .55.45 1 1 1h3c.55 0 1-.45 1-1z"/></svg></a></li>
 
-            <li><span> @if(GetLang()=='en') {{ $type[0]->name ?? ''}}  @else {{ $type[0]->name_h ?? ''}}  @endif</span></li>
+            <li><span>Event & Activity</span></li>
+            <li><span>{{ $item[0]->title ?? '' }}</span></li>
         </ul>
     </div>
 </div>
- -->
+
 
       <section class="withsidebar-wrap ptb-60">
 
@@ -34,7 +35,7 @@
 
                 <div class="row">
 
-               
+
                     @if (collect($item)->isEmpty())
                         {{-- remember that $contact is your variable --}}
 
@@ -52,37 +53,37 @@
                             <div class="col-md-12">
                                 <div class="innerpagecontent">
                                     <h3>
-                                        <a href=""> 
+                                        <a href="">
                                         <span>
-                                        
+
                                             @if (GetLang() == 'en')
                                                 {{ $items->title ?? '' }}
                                             @else
                                                 {{ $items->title ?? '' }}
                                             @endif
                                         </span>
-                                       </a> 
+                                       </a>
                                     </h3>
 
 
 
-                        
+
 
                                 <!-- Gallery -->
 
 
                                     <div class="excellence-wrap back-img Activities img-gallery mt-3 mb-3">
                                         <div class="container">
-                                            <div class="row">              
+                                            <div class="row">
                                                 <div class="col-md-12 p-0">
                                                     <div class="excellence-gallery partnership-img">
                                                         <div class="row masonry-grid">
 
-                                                            
+
                                                             @foreach($data as $item)
                                                             <div class="col-md-3 col-lg-3">
                                                                 <div class="d-flex flex-column h-100">
-                                                                    <a href="http://localhost:8080/iim/public/gallery/multipimage/1686633740.jpg" class="image-link">
+                                                                    <a href="{{ asset('uploads/multiple/event_image/'.$item->image) }}" class="image-link">
                                                                         <div class="thumbnail p-relative">
                                                                             <img src="{{ asset('uploads/multiple/event_image/'.$item->image) }}"
                                                                 alt="{{$item->image_alt}}" title="{{$item->image_title}}"
@@ -102,7 +103,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                   
+
                             </div>
 
 

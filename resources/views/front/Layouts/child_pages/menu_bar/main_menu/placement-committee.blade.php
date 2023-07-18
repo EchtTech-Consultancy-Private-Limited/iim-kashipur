@@ -244,7 +244,16 @@
                                                                     {{ $C->name_h ?? '' }}
                                                                 @endif
 
-                                                            </a>
+                                                                <svg class="minus internal-menu-minus" viewBox="0 0 24 24">
+                                                                    <g data-name="Layer 2">
+                                                                        <path d="M19 13H5a1 1 0 0 1 0-2h14a1 1 0 0 1 0 2z"
+                                                                            data-name="minus" />
+                                                                    </g>
+                                                                </svg><svg viewBox="0 0 24 24" class="plus internal-menu-plus">
+                                                                    <path
+                                                                        d="M19,11H13V5a1,1,0,0,0-2,0v6H5a1,1,0,0,0,0,2h6v6a1,1,0,0,0,2,0V13h6a1,1,0,0,0,0-2Z" />
+                                                                </svg>
+                                                                </a>
                                                             <ul>
                                                             @foreach (GetsubchildMenusFront($gets[0]->menu_id, $S->id, $C->id) as $k => $D)
 
@@ -283,16 +292,7 @@
                                                         </ul>
                                                         </li>
 
-                                                        <svg class="minus internal-menu-minus" viewBox="0 0 24 24">
-                                                            <g data-name="Layer 2">
-                                                                <path d="M19 13H5a1 1 0 0 1 0-2h14a1 1 0 0 1 0 2z"
-                                                                    data-name="minus" />
-                                                            </g>
-                                                        </svg><svg viewBox="0 0 24 24" class="plus internal-menu-plus">
-                                                            <path
-                                                                d="M19,11H13V5a1,1,0,0,0-2,0v6H5a1,1,0,0,0,0,2h6v6a1,1,0,0,0,2,0V13h6a1,1,0,0,0,0-2Z" />
-                                                        </svg>
-                                                        </a>
+
                                         </li>
                                     @else
                                         @if ($C->external == 'yes')
@@ -428,7 +428,7 @@
                                             <div class="excellence-gallery partnership-img">
                                                 <div class="row masonry-grid">
 
-                                                    <div class="col-md-2 col-lg-2">
+                                                    <div class="col-md-3 col-lg-3">
                                                         <div class="d-flex flex-column h-100">
                                                             <a href="http://localhost/kashipur-design1/public/gallery/image/1677405700.png"
                                                                 class="image-link">
@@ -657,7 +657,7 @@
                                     <div class="row">
                                         <div class="col-md-4">
                                             <div class="multi-image-popup">
-                                                <a href="#gallery-1" class="btn-gallery">
+                                                <a href="https://iim.staggings.in/uploads/header_top/168690759793.jpg" class="btn-gallery image-link">
                                                     <img
                                                         src="https://iim.staggings.in/uploads/header_top/168690759793.jpg" />
                                                 </a>
@@ -683,7 +683,7 @@
 
                                         <div class="col-md-4">
                                             <div class="multi-image-popup">
-                                                <a href="#gallery-2" class="btn-gallery">
+                                                <a href="https://iim.staggings.in/uploads/header_top/168690759793.jpg" class="image-link">
                                                     <img
                                                         src="https://iim.staggings.in/uploads/header_top/168690671648.jpg" />
                                                 </a>
@@ -775,7 +775,17 @@
                                                                     {{ $C->name_h ?? '' }}
                                                                 @endif
 
-                                                            </a>
+                                                                <svg class="minus internal-menu-minus" viewBox="0 0 24 24">
+                                                                    <g data-name="Layer 2">
+                                                                        <path d="M19 13H5a1 1 0 0 1 0-2h14a1 1 0 0 1 0 2z"
+                                                                            data-name="minus" />
+                                                                    </g>
+                                                                </svg><svg viewBox="0 0 24 24" class="plus internal-menu-plus">
+                                                                    <path
+                                                                        d="M19,11H13V5a1,1,0,0,0-2,0v6H5a1,1,0,0,0,0,2h6v6a1,1,0,0,0,2,0V13h6a1,1,0,0,0,0-2Z" />
+                                                                </svg>
+                                                                </a>
+
                                                             <ul>
                                                             @foreach (GetsubchildMenusFront($type[0]->menu_id, $S->id, $C->id) as $k => $D)
 
@@ -814,16 +824,7 @@
                                                         </ul>
                                                         </li>
 
-                                                        <svg class="minus internal-menu-minus" viewBox="0 0 24 24">
-                                                            <g data-name="Layer 2">
-                                                                <path d="M19 13H5a1 1 0 0 1 0-2h14a1 1 0 0 1 0 2z"
-                                                                    data-name="minus" />
-                                                            </g>
-                                                        </svg><svg viewBox="0 0 24 24" class="plus internal-menu-plus">
-                                                            <path
-                                                                d="M19,11H13V5a1,1,0,0,0-2,0v6H5a1,1,0,0,0,0,2h6v6a1,1,0,0,0,2,0V13h6a1,1,0,0,0,0-2Z" />
-                                                        </svg>
-                                                        </a>
+
                                         </li>
                                     @else
                                         @if ($C->external == 'yes')
@@ -1010,7 +1011,7 @@
                                                 <div class="excellence-gallery partnership-img">
                                                     <div class="row masonry-grid">
                                                         @foreach ($chairpersons as $value)
-                                                            <div class="col-md-2 col-lg-2">
+                                                            <div class="col-md-3 col-lg-3">
                                                                 <div class="d-flex flex-column h-100">
 
                                                                     <a href="{{ asset('uploads/organisation/' . $value->image) ?? '' }}"
@@ -1061,7 +1062,7 @@
                                     <div class="row">
 
                                         @foreach ($data as $datas)
-                                            <div class="col-md-4">
+                                            <div class="col-md-6">
                                                 <div class="text-box">
                                                     <div class="text-b">
                                                         <p>
@@ -1087,7 +1088,7 @@
         <div class="col-md-4">
 
             <div class="multi-image-popup">
-                <a href="#gallery-1" class="btn-gallery">
+                <a href="{{ asset('uploads/multiple/club/' . $datas->image) ?? '' }}" class="image-link">
                     <img
                         src="{{ asset('uploads/multiple/club/' . $datas->image) ?? '' }}" />
                 </a>
@@ -1254,8 +1255,8 @@
                                                 <div class="excellence-gallery partnership-img">
                                                     <div class="row masonry-grid">
                                                         @foreach ($chairpersons as $value)
-                                                            <div class="col-md-2 col-lg-2">
-                                                                <div class="d-flex flex-column h-100">
+                                                            <div class="col-md-3 col-lg-3">
+                                                                <div class="d-flex flex-column h-100 grid-4">
 
                                                                     <a href="{{ asset('uploads/organisation/' . $value->image) ?? '' }}"
                                                                         class="image-link">
@@ -1335,7 +1336,7 @@
                                                 <div class="col-md-4">
 
                                                     <div class="multi-image-popup">
-                                                        <a href="#gallery-1" class="btn-gallery">
+                                                        <a href="{{ asset('uploads/multiple/club/' . $datas->image) ?? '' }}" class="image-link">
                                                             <img
                                                                 src="{{ asset('uploads/multiple/club/' . $datas->image) ?? '' }}" />
                                                         </a>
