@@ -35,10 +35,14 @@
 
   <link rel="stylesheet" href="{{ asset('assets/css/styles.css') }}">
 
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/magnific-popup.min.css">
+
+
+
    {{-- banner page css  --}}
 
   <link rel="stylesheet" href="{{asset('assets/bannercss/style.css')}}" type="text/css">
-  
+
   <script src="{{asset('assets/js/cdnjs.cloudflare.com_ajax_libs_jquery_3.1.1_jquery.min.js')}}"></script><!-- comment -->
    <script src="{{asset('assets/js/cdnjs.cloudflare.com_ajax_libs_slick-carousel_1.6.0_slick.min.js')}}"></script>
 
