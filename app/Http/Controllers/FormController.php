@@ -39,7 +39,7 @@ use App\Models\rit_report_section;
 use App\Models\quarter_report;
 class FormController extends Controller
 {
-    
+
     //Sanchit Code Starts
     public function viewtenders()
         {
@@ -54,7 +54,7 @@ class FormController extends Controller
         $title="Edit Tender Details";
         $msg="Tender Details Edited Successfully!";
         $tender=Tender::find(dDecrypt($id));
-        
+
 
     }
     else{
@@ -69,7 +69,7 @@ class FormController extends Controller
         $request->validate([
 
         ]);
-       
+
             $tender->published_date=$request->published_date;
             $tender->submission_date=$request->submission_date;
             $tender->title=$request->title;
@@ -106,7 +106,7 @@ class FormController extends Controller
         $title="Edit Details";
         $msg="Tender Details Edited Successfully!";
         $vendorsdebarred=Vendorsdebarred::find(dDecrypt($id));
-        
+
 
     }
     else{
@@ -120,7 +120,7 @@ class FormController extends Controller
     if($request->isMethod('post')){
         $request->validate([
             ]);
-        
+
             $vendorsdebarred->vendor_name=$request->vendor_name;
             if($request->hasFile('related_document')){
                 $file=$request->file('related_document');
@@ -131,7 +131,7 @@ class FormController extends Controller
             }
             $vendorsdebarred->status=$request->status;
             $vendorsdebarred->save();
-        
+
         return redirect()->route('admin.vendordebarred')->with('success',$msg);
     }
     return view('admin.sections.editvendor',compact('vendorsdebarred','title','id'));
@@ -158,7 +158,7 @@ class FormController extends Controller
         $title="Edit Details";
         $msg="Details Edited Successfully!";
         $career=Career::find(dDecrypt($id));
-        
+
 
     }
     else{
@@ -166,13 +166,13 @@ class FormController extends Controller
           $title="Add Details";
           $msg="Details Added Successfully!";
           $career=new Career;
-        
+
     }
 
     if($request->isMethod('post')){
         $request->validate([
             ]);
-       
+
             $career->name_of_the_post=$request->name_of_the_post;
             if($request->hasFile('detail_advertisement')){
                 $file=$request->file('detail_advertisement');
@@ -188,10 +188,10 @@ class FormController extends Controller
             $career->corrigendum=$request->corrigendum;
             $career->status=$request->status;
             $career->save();
-        
+
         return redirect()->route('admin.careershow')->with('success',$msg);
     }
-    
+
     return view('admin.sections.careers',compact('career','title','id'));
     }
 
@@ -200,7 +200,7 @@ class FormController extends Controller
         return redirect()->back()->with('success','Debarred deleted Successfully');
     }
     //Sanchit Code Ends
-    
+
     function View_OrganisationStructure(Request $request){
         if(!empty($request->dp))$data=OrganisationStructure::where('organisation_structures.department',$request->dp)->orderby('id','Desc')->paginate(10);
         else $data=OrganisationStructure::orderby('id','Desc')->paginate(10);
@@ -221,12 +221,12 @@ function Add_OrganisationStructure(Request $request,$id=null){
  $data1=cell::get();
         $data2=commmittee::get();
         $data3=club::get();
-        
+
         if($id){
             $title="Edit Organisation Structure";
             $msg="Organisation Structure Edited Successfully!";
             $data=OrganisationStructure::find(dDecrypt($id));
-           
+
             $faculty_dept= FacultyDepartment::where('faculty_id',$data->id)->first();
             if($faculty_dept)
             {
@@ -304,13 +304,13 @@ function Add_OrganisationStructure(Request $request,$id=null){
 
             $data->save();
 
-         
+
             $faculty_dept->faculty_id=$data->id;
             $faculty_dept->faculty_dept_id=$request->faculty_dept_id;
             $faculty_dept->save();
             return redirect()->route('admin.people')->with('success',$msg);
         }
-       
+
         $departments=Department::all();
 
         //return $departments;
@@ -798,9 +798,10 @@ public function add_committee(Request $request,$id=NULL)
         ]);
         $data->title=$request->Commmittee_name;
         $data->chairperson= $request->chairperson;
-        $data->type= $request->Commmittee_type;
+        $data->type= $request->type;
         $data->about_details=$request->about_details;
         $data->activites= $request->activeites;
+        $data->placement= $request->Placement;
         $data->event= $request->event;
         $data->status= $request->status;
         $data->logo_title= $request->Committee_logo_title;
@@ -1160,13 +1161,13 @@ public function delete_cells_image($id){
           $msg="Details Added Successfully!";
           $event=new event_image;
           $data=Events::get();
-        
+
     }
 
     if($request->isMethod('post')){
         $request->validate([
             ]);
-       
+
           $event->image_title= $request->image_title;
           $event->image_alt= $request->image_alt;
           $event->order= $request->order;
@@ -1180,10 +1181,10 @@ public function delete_cells_image($id){
               $event->image    = $newname;
           }
           $event->save();
-        
+
         return redirect()->route('admin.title')->with('success',$msg);
     }
-    
+
     return view('admin.sections.event&activitiesimage',compact('event','title','id','data'));
     }
 
@@ -1216,7 +1217,7 @@ public function delete_cells_image($id){
     if($request->isMethod('post')){
         $request->validate([
             ]);
-       
+
           $data->date= $request->date;
           $data->title= $request->title;
           if($request->hasFile('attachement_file')){
@@ -1227,10 +1228,10 @@ public function delete_cells_image($id){
               $data->attachement_file    = $newname;
           }
           $data->save();
-        
+
         return redirect()->route('admin.industry')->with('success',$msg);
     }
-    
+
     return view('admin.sections.industry',compact('data','title','id'));
     }
 
@@ -1238,7 +1239,7 @@ public function delete_cells_image($id){
     {
     $data=Industry::orderBy('id')->get();
     return view('admin.sections.viewindustry',['data'=>$data]);
-    } 
+    }
     public function event_activity_show(){
 
     $data=Events::get();
@@ -1305,6 +1306,7 @@ public function journal_publications_index()
 public function Add_journal_publications(Request $request,$id=null)
 {
 
+
     if($id){
         $title="Edit journal publications Section";
         $msg="journal publications Section Edited Successfully!";
@@ -1325,9 +1327,10 @@ public function Add_journal_publications(Request $request,$id=null)
         $data->title=$request->title;
         $data->external=$request->external;
         $data->url=$request->url1;
+        $data->year=$request->year;
         $data->status=$request->status;
 
-       // dd($request->all());
+
 
         $data->save();
         return redirect('/Accounts/journal-publications')->with('success',$msg);

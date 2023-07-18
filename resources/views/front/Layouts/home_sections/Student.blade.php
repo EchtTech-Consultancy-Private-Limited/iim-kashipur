@@ -7,7 +7,7 @@
                 @foreach(Getheading($M->id) as $key=>$Ms)
 
 
-                
+
                 <div class="col-md-4">
                     <div class="event-card" data-aos="fade-up" data-aos-duration="3000">
                         <h2 class="heading-black text-start">
@@ -89,7 +89,7 @@
                 @endif
                 @endforeach
                 @endif
-                
+
                 @if(count(GetheadingI($M->id))>0)
                 @foreach(GetheadingI($M->id) as $key=>$Ms)
                 @if($key==0)
@@ -123,18 +123,18 @@
                 @endif
                 @endforeach
                 @endif
-                
+
                 <div class="col-md-4">
                     <div class="event-card aos-init aos-animate" data-aos="fade-up" data-aos-duration="3000">
                         <h2 class="heading-black text-start">Notice Board</h2>
                      <div class="myslider">
-                    
-                        
 
-                        <div class="marquee"> 
+
+
+                        <div class="marquee">
                         <div class="event-body item  marquee--inner">
                             @if(count(Getheading($M->id))>0)
-                            @foreach(Getheading($M->id) as $key=>$Ms) 
+                            @foreach(Getheading($M->id) as $key=>$Ms)
                             {{-- <div class="event-image">
                                <img src="{{ asset('uploads/header_top/'.$Ms->image) }}" title="{{ $Ms->title }}"  alt="{{ $Ms->title }}" class="img-fluid">
                             </div> --}}
@@ -147,15 +147,15 @@
                                 <div class="btn-wrap">
                                     <a  @if($Ms->external=='yes') onclick="return confirm('Are you sure  external window open?')"  href="{{$Ms->url}}" @elseif($Ms->external=='no')  href="{{url($Ms->url)}}"  @endif href="{{$Ms->slug}}" class="red-link">
                                         @lang('common.READ_MORE')  <img src="assets/images/read-more.svg" alt="read-more" class="img-fluid">
-                                    </a>  
+                                    </a>
                                 </div>
 
                             </div>
                             @endforeach
-                            @endif                         
+                            @endif
                         </div>
-                        
-                         
+
+
                         <!-- <div class="event-body item">
                             <div class="event-image">
                                 <img src="{{ asset('uploads/header_top/167776088848.png') }}" title="Notice Board" alt="Notice Board" class="img-fluid" loading="lazy">
@@ -191,10 +191,10 @@
         arrows: false,
         dots: false,
         autoplay: true,
-        vertical: true,        
+        vertical: true,
         verticalSwiping: true,
         margin: 20,
-            
+
         });
-	
+
         </script> --}}

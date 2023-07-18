@@ -14,6 +14,10 @@
         padding: 20px 26px;
     }
 
+    .modal{
+        overflow: auto !important;
+    }
+
     .form-group {
         margin-bottom: 0.5rem;
     }
@@ -67,8 +71,8 @@
                                             <thead>
                                                 <tr>
                                                     <th>S.No#</th>
-                                                    <th>Images</th>
-                                                    <th>Images Text</th>
+                                                    <th>Image</th>
+                                                    <th>Image Title</th>
                                                     <th>Status</th>
                                                     <th>Action </th>
                                                 </tr>
@@ -80,7 +84,7 @@
                                                 @foreach ($data as $item)
                                                     <tr>
                                                         <td>{{ $item->id }}</td>
-                                                        <td><img src="{{ asset('uploads/multiple/committee/'.$item->committee_image) }}"
+                                                        <td><img src="{{ asset('uploads/multiple/club/'.$item->image) }}"
                                                                 alt="" title=""
                                                                 style="height: 120px;  width: 120px;" loading="lazy"></td>
                                                         <td>{{ $item->committee_title }}</td>
@@ -157,7 +161,7 @@
 
                     <div class="modal-header">
 
-                        <h5 class="modal-title" id="exampleModalLabel">Insert Multiple image</h5>
+                        <h5 class="modal-title" id="exampleModalLabel">Insert image</h5>
 
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
 
@@ -178,7 +182,7 @@
 
                             <div class="form-group col-md-6">
 
-                                <label for="filename">Multiple Image</label>
+                                <label for="filename">Image</label>
 
                                 <input type="file" name="filename" placeholder="Enter your Image"
                                     class="form-first-name form-control" id="form-first-name">
@@ -191,7 +195,7 @@
 
                             <div class="form-group col-md-6">
 
-                                <label for="image_text">Image Text</label>
+                                <label for="image_text">Image Title</label>
 
                                 <input type="text" name="committee_title" placeholder="Enter your Image Text"
                                     class="form-last-name form-control" id="form-last-name" autocomplete="off">
@@ -215,6 +219,8 @@
 
                             </div>
 
+                            <input type="hidden" name="parent_id"  value="{{ $id }}">
+
                             <div class="form-group col-md-6">
 
                                 <label for="order">sort order</label>
@@ -226,6 +232,14 @@
                                 <label for="order" id="order-error" class="error">
                                 </label>
 
+                            </div>
+
+                            <div class="col-md-12">
+                                <label for="event" class="col-form-label">Events</label>
+                                <div class="">
+                                    <textarea class="form-control"  rows="4" name="event" placeholder="Please enter event"></textarea><br>
+                                    <label for="event" id="event-error" class="error"></label>
+                                </div>
                             </div>
 
                             <div class="form-group col-md-6">
@@ -291,7 +305,7 @@
                         <form action="" id="form" method="post" class="registration-form row"
                             enctype="multipart/form-data">
 
-                            <input type="hidden" name="_token" value="OPgrs1IhTwBqM9Swh6cYqEjsPsBQiiXxlxzsYv8k">
+                          @csrf
 
                             <div class="form-group col-md-6">
 
@@ -323,6 +337,7 @@
 
                             </div>
 
+                            <input type="hidden" name="parent_id"  value="{{ $id }}">
 
 
                             <div class="form-group col-md-6">
@@ -360,6 +375,15 @@
                             </div>
 
 
+                            <div class="col-md-12">
+                                <label for="event" class="col-form-label">Events</label>
+                                <div class="">
+                                    <textarea class="form-control" id="event" rows="4" name="event" placeholder="Please enter event"></textarea><br>
+                                    <label for="event" id="event-error" class="error"></label>
+                                </div>
+                            </div>
+
+
 
                             <div class="form-group col-md-6">
 
@@ -378,19 +402,21 @@
 
                             </div>
 
+
+                    <input type="hidden" name="gallery_id" placeholder="Enter your Gallery Tabel ID"
+                    class="form-first-name form-control" id="gallery_id" readonly="">
+
+                <div class="modal-footer">
+
+                    <button type="submit" class="btn btn-primary" id="savebtn">Save</button>
+
+
+                </div>
+
                         </form>
                     </div>
 
 
-                    <input type="hidden" name="gallery_id" placeholder="Enter your Gallery Tabel ID"
-                        class="form-first-name form-control" id="gallery_id" readonly="">
-
-                    <div class="modal-footer">
-
-                        <button type="submit" class="btn btn-primary" id="savebtn">Save</button>
-
-
-                    </div>
 
 
 
@@ -414,4 +440,43 @@
             }
         </script>
 
-    @endsection
+
+
+<script>
+    $(document).on("click", "#update", function() {
+        var UserName = $(this).data('id');
+       //alert(UserName);
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+        });
+
+
+        $.ajax({
+            url: "{{ url('/Accounts/committee-id-image') }}",
+            type: "get",
+            data: {
+                id: UserName
+            },
+            success: function(data) {
+
+                $('#form').attr('action', '{{ url('Accounts/edit-committee-image') }}'+
+                    '/'+data.item.id)
+                $("#imagetext").val(data.item.committee_title);
+                $("#imagealt").val(data.item.committee_alt);
+                $("#imagesort").val(data.item.sort_order);
+                $("#imageoldid").val(data.item.committee_image);
+                $("#event").val(data.item.event);
+                $('#image').html('<img src="{{ asset('uploads/multiple/club') }}/' + data.item
+                    .image + '" width="100" height="100" />')
+                $("#imagestatus").val(data.item.status);
+            }
+
+        });
+
+    });
+</script>
+
+
+@endsection

@@ -52,15 +52,16 @@ class InnerpageController extends Controller
 // {
 //   return view('front.Layouts.child_pages.menu_bar.main_menu.master');
 // }
-// 
-// 
-// 
+//
+//
+//
 //Monu - 12-07-2023
 public function RTI_view()
     {
         $item=rti::wherestatus('1')->get();
         $data=rit_report_section::get();
         $value=quarter_report::get();
+		//dd($value);
         return view('front.Layouts.child_pages.menu_bar.main_menu.rti',['item'=>$item,'data'=>$data,'value'=>$value]);
     }
 
@@ -91,24 +92,24 @@ public function RTI_view()
 
 
 
-    
-    
+
+
 public function  career(){
 
     $item=Career::wherestatus('1')->get();
     return view('front.Layouts.child_pages.menu_bar.main_menu.career',['item'=>$item]);
-  
-   
+
+
 }
 //Industry_Connect
 
     public function Industry_Connect()
     {
         $item=Industry::get();
-        return view('front.Layouts.child_pages.menu_bar.main_menu.Industry_connect',['item'=>$item]); 
+        return view('front.Layouts.child_pages.menu_bar.main_menu.Industry_connect',['item'=>$item]);
     }
 
-//evnet& activity 
+//evnet& activity
     public function event_activity_image($id)
     {
         $data=event_image::whereparent_id(dDecrypt($id))->get();
@@ -120,7 +121,7 @@ public function  Tenders(){
 
     $item=Tender::wherestatus('1')->get();
     return view('front.Layouts.child_pages.menu_bar.main_menu.Tenders',['item'=>$item]);
-    
+
 }
 
 // Vendors Debarred
@@ -272,13 +273,13 @@ public function screen_reader_access()
  //main menu
    /* public function Menu_barInnerpage($slug) //content page & who in who data
     {
-	
+
         $main_menu="main-menu";
         $item=OrganisationStructure::whereslug($slug)->get();
-		
-		
+
+
         if(MainMenu::whereslug($slug)->get('id')->count()){
-			
+
             $type=MainMenu::whereslug($slug)->get();
             if($type[0]->url == '/content-page'){
                // dd('hii');
@@ -372,7 +373,7 @@ public function screen_reader_access()
         }
 		//dd('Hello');
 		elseif(Count($item)>0){
-			
+
 
           //faculty profile section user main menu
            $item=OrganisationStructure::whereslug($slug)->get();
@@ -382,9 +383,9 @@ public function screen_reader_access()
             }else{
                 return abort(401);
             }
-			
+
         }
-		
+
         elseif(QuickLink::whereslug($slug)->get()->count()){
 
                 //  dd(QuickLink::whereslug($slug)->get());
@@ -547,7 +548,7 @@ public function screen_reader_access()
 
                     }
                     else{
-                        
+
                         if(club::whereslug($slug)->get()->count()){    //club single
 
                         $item=club::whereslug($slug)->get();
@@ -560,7 +561,7 @@ public function screen_reader_access()
                             return abort(401);
                         }
             }
-			
+
             elseif(commmittee::whereslug($slug)->get()->count()){    //commitee single
 
                 $item=commmittee::whereslug($slug)->get();
@@ -587,8 +588,8 @@ public function screen_reader_access()
                     return abort(401);
                 }
             }
-			
-                        
+
+
                         //return abort(402);
                     }
 					}else{
@@ -1025,8 +1026,12 @@ public function screen_reader_access()
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 //sub menu
-    public function sub_barInnerpage($main_slug,$slug)  //content page sub menu
+    public function sub_barInnerpage($main_slug,$slug ,Request $request)  //content page sub menu
     {
+
+
+        $request->all();
+
     $sub_menu="sub menu";
     $type=SubMenu::whereslug($slug)->get();
    // dd($type);
@@ -1177,8 +1182,47 @@ public function screen_reader_access()
                 }
             }
         }
-        
-        elseif($type[0]->url == '/Club-Cells-Committee')
+		elseif($type[0]->url == '/Club-Cells-Committee')
+        {
+
+
+                $data=SubMenu::whereslug($slug)->get();
+                $data1=commmittee::wherestatus('1')->wheretype('1')->get();
+                $data=club::wherestatus('1')->get();
+                $data2=cell::wherestatus('1')->get();
+                $type=SubMenu::whereslug($slug)->get();
+                if(count($type)>0){
+                    return view('front.Layouts.child_pages.menu_bar.main_menu.clube_committee',['sub_menu'=>$sub_menu,'type'=>$type,'data'=>$data,'data1'=>$data1,'data2'=>$data2]);
+
+                }else{
+                    return abort(401);
+                }
+
+        }
+
+
+
+        elseif($type[0]->url == '/placement-committee')
+        {
+
+                    $item=commmittee::wherestatus('1')->wheretype('2')->get();
+                    if(count($type)>0){
+                    $data=SubMenu::whereslug($slug)->get();
+                    $type=SubMenu::whereslug($slug)->get();
+                    $chairperson=OrganisationStructure::whereid($item[0]->chairperson)->get();
+                    $chairpersone=OrganisationStructure::whereid($item[0]->placement)->get();
+                    $chairpersons=OrganisationStructure::wherecommittee($item[0]->id)->get();
+                    $data=committee_multiple_image::whereparent_id($item[0]->id)->get();
+                    return view('front.Layouts.child_pages.menu_bar.main_menu.placement-committee',['chairpersone'=>$chairpersone,'data'=>$data,'chairperson'=>$chairperson,'chairpersons'=>$chairpersons,'sub_menu'=>$sub_menu,'type'=>$type,'data'=>$data,'item'=>$item]);
+
+                }else{
+                    return abort(401);
+                }
+
+
+        }
+
+       /* elseif($type[0]->url == '/Club-Cells-Committee')
         {
 
         $data1=commmittee::wherestatus('1')->wheretype('2')->where('placement','!=',NULL)->first();
@@ -1212,7 +1256,7 @@ public function screen_reader_access()
 
         }
 
-        }
+        }*/
         elseif($type[0]->url == '/Wellness-Facilities')
         {
             $type=SubMenu::whereslug($slug)->get();
@@ -1229,11 +1273,15 @@ public function screen_reader_access()
         }
 
 
-  elseif($type[0]->url == '/journal-publications')
+         elseif($type[0]->url == '/journal-publications')
         {
             $data=SubMenu::whereslug($slug)->get();
             if(Count($data)>0){
-            $item=journal_publication::wherestatus('1')->get();
+            if($request->year){
+                $item=journal_publication::wherestatus('1')->whereYear('year',$request->year)->get();
+            }else{
+                $item=journal_publication::wherestatus('1')->get();
+            }
             $type=SubMenu::whereslug($slug)->get();
             if(count($type)>0){
            return view('front.Layouts.child_pages.menu_bar.main_menu.journal_publications',['item'=>$item,'sub_menu'=>$sub_menu,'type'=>$type,'data'=>$data]);
@@ -1290,12 +1338,12 @@ public function screen_reader_access()
         elseif($type[0]->url == '/Events-Activites')
         {
 
- 
+
             $item=SubMenu::whereslug($slug)->get();
             if(Count($item)>0){
                // dd('dd');
             $data=Events::wherestatus('1')->get();
-            
+
             $type=SubMenu::whereslug($slug)->get();
             if(count($type)>0){
 
@@ -1327,7 +1375,7 @@ public function screen_reader_access()
                 return abort(401);
             }
         }
-        
+
         elseif($type[0]->url == '/photo-gallery')
         {
 
@@ -1455,13 +1503,13 @@ public function Child_barInnerpage($main_slug,$Sub_slug,$slug) //content page
 {
 
 
+
     $data=child_menu::whereslug($slug)->get();
 
     if(Count($data)>0){
-        
+
         if($slug=="student-profiles")
         {
-            //$item=content_page::whereid($data[0]->link_option)->get();
             $item = StudentProfile::orderBy('sort')->get();
             if(Count($item)>0){
             $type_sub=child_menu::whereslug($slug)->get();
@@ -1474,16 +1522,59 @@ public function Child_barInnerpage($main_slug,$Sub_slug,$slug) //content page
             }
         }
 
-        
+
         if($data[0]->url == '/content-page')
         {
+
+
             $item=content_page::whereid($data[0]->link_option)->get();
+
+            if($slug == 'communications'){
+                $membersList=OrganisationStructure::where('faculty_id',2)->get();
+
+            }elseif($slug == 'economics')
+            {
+                $membersList=OrganisationStructure::where('faculty_id',3)->get();
+
+            }elseif($slug == 'finance-and-accounting')
+            {
+                $membersList=OrganisationStructure::where('faculty_id',4)->get();
+            }
+            elseif($slug == 'information-technology-systems')
+            {
+                $membersList=OrganisationStructure::where('faculty_id',6)->get();
+            }
+
+            elseif($slug == 'marketing')
+            {
+                $membersList=OrganisationStructure::where('faculty_id',7)->get();
+            }
+            elseif($slug == 'operations-management-decision-sciences')
+            {
+                $membersList=OrganisationStructure::where('faculty_id',8)->get();
+            }
+            elseif($slug == 'organisational-behaviour-human-resource-management')
+            {
+                $membersList=OrganisationStructure::where('faculty_id',12)->get();
+            }else{
+
+                if(Count($item)>0){
+                    $type_sub=child_menu::whereslug($slug)->get();
+                    $gets=SubMenu::whereid($type_sub[0]->sub_id)->get();
+                    $get=MainMenu::whereid($type_sub[0]->menu_id)->get();
+                    $type_child=child_menu::whereslug($slug)->get();
+                    return view('front.Layouts.child_pages.menu_bar.main_menu.main_menu',['item'=>$item,'type_sub'=>$type_sub,'type_child'=>$type_child,'gets'=>$gets,'get'=>$get]);
+
+                }
+
+            }
+
             if(Count($item)>0){
             $type_sub=child_menu::whereslug($slug)->get();
             $gets=SubMenu::whereid($type_sub[0]->sub_id)->get();
             $get=MainMenu::whereid($type_sub[0]->menu_id)->get();
             $type_child=child_menu::whereslug($slug)->get();
-            return view('front.Layouts.child_pages.menu_bar.main_menu.main_menu',['item'=>$item,'type_sub'=>$type_sub,'type_child'=>$type_child,'gets'=>$gets,'get'=>$get]);
+            return view('front.Layouts.child_pages.menu_bar.main_menu.main_menu',['item'=>$item,'type_sub'=>$type_sub,'type_child'=>$type_child,'gets'=>$gets,'get'=>$get,'membersList'=>$membersList]);
             }else{
             return abort(401);
             }
@@ -1581,7 +1672,7 @@ public function Child_barInnerpage($main_slug,$Sub_slug,$slug) //content page
                 }
 
             }
-            
+
             elseif(isset($data[0]) && $data[0]->tpl_id == 4){    //visiting faculty
 
 
@@ -1611,9 +1702,9 @@ public function Child_barInnerpage($main_slug,$Sub_slug,$slug) //content page
                     }
                 }
             }
-            
-            
-            
+
+
+
             else{
 
 
