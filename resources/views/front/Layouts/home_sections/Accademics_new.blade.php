@@ -32,7 +32,7 @@
                                             @if(GetLang()=='en')  {{ $Ms->title }} @else {{ $Ms->title_h }}  @endif
                                         </h3>
                                         <p class="desc">
-                                          @if(GetLang()=='en')   {{substr_replace($Ms->short,'...',135)}} @else  {{substr_replace($Ms->short_h,'...',400)}}  @endif
+                                          @if(GetLang()=='en')   {{substr_replace($Ms->short,'...',130)}} @else  {{substr_replace($Ms->short_h,'...',400)}}  @endif
                                         </p>
                                         <span class="education">
                                             {{-- <img src="{{asset('assets/images/education.svg')}}" alt="education" class="img-fluid" /> Post Graduation (Analytics) --}}

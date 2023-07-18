@@ -837,7 +837,7 @@ public function add_committee(Request $request,$id=NULL)
 
     public function view_committee(){
     $data=commmittee:: orderBy('id')->get();
-   return view('admin.sections.managecommittee',['data'=>$data]);
+   return view('admin.sections.manageCommittee',['data'=>$data]);
 
 }
      public function cells_list()
