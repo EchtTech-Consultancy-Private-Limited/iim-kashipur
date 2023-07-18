@@ -50,7 +50,7 @@
             <div class="col-md-12">
                 <div class="innerpagecontent">
                     <h3><span>@lang('common.sitemap')</span></h3>
-
+<br>
 
                   @foreach(content_menus() as $key=>$M)
                       @if(count(GetSubMenusFront($M->id))>0)
@@ -101,7 +101,7 @@
                         <ul>
                           @foreach(GETfooterdatalink($M->id) as $key=>$Ms)
                             <li>
-                                <img src="{{ asset('assets/images/arrow.svg')}}" alt="arrow" class="img-fluid">
+                                {{-- <img src="{{ asset('assets/images/arrow.svg')}}" alt="arrow" class="img-fluid"> --}}
                                 <a href="{{url($Ms->slug)}}">@if(GetLang()=='en') {{ $Ms->title }} @else {{ $Ms->title_h }}  @endif</a>
                             </li>
                           @endforeach
@@ -117,11 +117,11 @@
                     <h2 class="footer-top-title">
 
                     </h2>
-                    <div class="footer-link mt-58">
+                    <div class="footer-link mt-2">
                         <ul>
                           @foreach(GETfooterdatalink($M->id) as $key=>$Ms)
                             <li>
-                                <img src="{{ asset('assets/images/arrow.svg')}}" alt="arrow" class="img-fluid">
+                                {{-- <img src="{{ asset('assets/images/arrow.svg')}}" alt="arrow" class="img-fluid"> --}}
                                 <a href="{{url($Ms->slug)}}">@if(GetLang()=='en') {{ $Ms->title }} @else {{ $Ms->title_h }}  @endif</a>
                             </li>
                           @endforeach

@@ -83,7 +83,7 @@
                                                             @foreach($data as $item)
                                                             <div class="col-md-3 col-lg-3">
                                                                 <div class="d-flex flex-column h-100">
-                                                                    <a href="http://localhost:8080/iim/public/gallery/multipimage/1686633740.jpg" class="image-link">
+                                                                    <a href="{{ asset('uploads/multiple/event_image/'.$item->image) }}" class="image-link">
                                                                         <div class="thumbnail p-relative">
                                                                             <img src="{{ asset('uploads/multiple/event_image/'.$item->image) }}"
                                                                 alt="{{$item->image_alt}}" title="{{$item->image_title}}"
