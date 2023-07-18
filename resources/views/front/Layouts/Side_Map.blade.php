@@ -50,7 +50,7 @@
             <div class="col-md-12">
                 <div class="innerpagecontent">
                     <h3><span>@lang('common.sitemap')</span></h3>
-
+<br>
 
                   @foreach(content_menus() as $key=>$M)
                       @if(count(GetSubMenusFront($M->id))>0)
