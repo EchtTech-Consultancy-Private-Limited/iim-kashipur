@@ -1277,15 +1277,11 @@ public function screen_reader_access()
         {
             $data=SubMenu::whereslug($slug)->get();
             if(Count($data)>0){
-
-if($request->year){
-    $item=journal_publication::wherestatus('1')->whereYear('year',$request->year)->get();
-}else{
-    $item=journal_publication::wherestatus('1')->get();
-}
-
-
-
+            if($request->year){
+                $item=journal_publication::wherestatus('1')->whereYear('year',$request->year)->get();
+            }else{
+                $item=journal_publication::wherestatus('1')->get();
+            }
             $type=SubMenu::whereslug($slug)->get();
             if(count($type)>0){
            return view('front.Layouts.child_pages.menu_bar.main_menu.journal_publications',['item'=>$item,'sub_menu'=>$sub_menu,'type'=>$type,'data'=>$data]);

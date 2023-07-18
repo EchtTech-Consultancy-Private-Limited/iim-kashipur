@@ -243,7 +243,16 @@
                                                                     {{ $C->name_h ?? '' }}
                                                                 @endif
 
-                                                            </a>
+                                                                <svg class="minus internal-menu-minus" viewBox="0 0 24 24">
+                                                                    <g data-name="Layer 2">
+                                                                        <path d="M19 13H5a1 1 0 0 1 0-2h14a1 1 0 0 1 0 2z"
+                                                                            data-name="minus" />
+                                                                    </g>
+                                                                </svg><svg viewBox="0 0 24 24" class="plus internal-menu-plus">
+                                                                    <path
+                                                                        d="M19,11H13V5a1,1,0,0,0-2,0v6H5a1,1,0,0,0,0,2h6v6a1,1,0,0,0,2,0V13h6a1,1,0,0,0,0-2Z" />
+                                                                </svg>
+                                                                </a>
                                                             <ul>
                                                             @foreach (GetsubchildMenusFront($gets[0]->menu_id, $S->id, $C->id) as $k => $D)
 
@@ -282,16 +291,7 @@
                                                         </ul>
                                                         </li>
 
-                                                        <svg class="minus internal-menu-minus" viewBox="0 0 24 24">
-                                                            <g data-name="Layer 2">
-                                                                <path d="M19 13H5a1 1 0 0 1 0-2h14a1 1 0 0 1 0 2z"
-                                                                    data-name="minus" />
-                                                            </g>
-                                                        </svg><svg viewBox="0 0 24 24" class="plus internal-menu-plus">
-                                                            <path
-                                                                d="M19,11H13V5a1,1,0,0,0-2,0v6H5a1,1,0,0,0,0,2h6v6a1,1,0,0,0,2,0V13h6a1,1,0,0,0,0-2Z" />
-                                                        </svg>
-                                                        </a>
+
                                         </li>
                                     @else
                                         @if ($C->external == 'yes')
@@ -469,7 +469,16 @@
                                                                     {{ $C->name_h ?? '' }}
                                                                 @endif
 
-                                                            </a>
+                                                                <svg class="minus internal-menu-minus" viewBox="0 0 24 24">
+                                                                    <g data-name="Layer 2">
+                                                                        <path d="M19 13H5a1 1 0 0 1 0-2h14a1 1 0 0 1 0 2z"
+                                                                            data-name="minus" />
+                                                                    </g>
+                                                                </svg><svg viewBox="0 0 24 24" class="plus internal-menu-plus">
+                                                                    <path
+                                                                        d="M19,11H13V5a1,1,0,0,0-2,0v6H5a1,1,0,0,0,0,2h6v6a1,1,0,0,0,2,0V13h6a1,1,0,0,0,0-2Z" />
+                                                                </svg>
+                                                                </a>
                                                             <ul>
                                                             @foreach (GetsubchildMenusFront($type[0]->menu_id, $S->id, $C->id) as $k => $D)
 
@@ -508,16 +517,7 @@
                                                         </ul>
                                                         </li>
 
-                                                        <svg class="minus internal-menu-minus" viewBox="0 0 24 24">
-                                                            <g data-name="Layer 2">
-                                                                <path d="M19 13H5a1 1 0 0 1 0-2h14a1 1 0 0 1 0 2z"
-                                                                    data-name="minus" />
-                                                            </g>
-                                                        </svg><svg viewBox="0 0 24 24" class="plus internal-menu-plus">
-                                                            <path
-                                                                d="M19,11H13V5a1,1,0,0,0-2,0v6H5a1,1,0,0,0,0,2h6v6a1,1,0,0,0,2,0V13h6a1,1,0,0,0,0-2Z" />
-                                                        </svg>
-                                                        </a>
+
                                         </li>
                                     @else
                                         @if ($C->external == 'yes')
