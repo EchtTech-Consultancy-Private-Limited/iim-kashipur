@@ -10,106 +10,118 @@
 
                 <div class="col-md-7 p-lg-0">
                     <div class="row">
-                        @foreach(Getfooterlink() as $key=>$M)
+                        @foreach (Getfooterlink() as $key => $M)
+                            <div class="col-md-4 width50 p-lg-0">
 
-                        <div class="col-md-4 width50 p-lg-0">
+                                <h2 class="footer-top-title">
 
-                            <h2 class="footer-top-title">
+                                    {{ $M->Section }}
 
-                               {{$M->Section}}
+                                </h2>
 
-                            </h2>
+                                <div class="footer-link">
 
-                            <div class="footer-link">
+                                    <ul>
 
-                                <ul>
+                                        @foreach (GETfooterdatalink($M->id) as $key => $Ms)
+                                            <li>
+                                                <img src="{{ asset('assets/images/arrow.svg') }}" alt="arrow"
+                                                    class="img-fluid">
 
-                                  @foreach(GETfooterdatalink($M->id) as $key=>$Ms)
+                                                <a
+                                                    @if ($Ms->external == 'yes') onclick="return confirm('Are you sure  external window open?')"  target="_blank" href="{{ url($Ms->url) }}" @elseif($Ms->external == 'no')  href="{{ url($Ms->url) }}" @else href="{{ url($Ms->slug) }}" @endif>
+                                                    @if (GetLang() == 'en')
+                                                        {{ $Ms->title }}
+                                                    @else
+                                                        {{ $Ms->title_h }}
+                                                    @endif
+                                                </a>
 
-                                    <li>
-                                        <img src="{{ asset('assets/images/arrow.svg')}}" alt="arrow" class="img-fluid">
+                                            </li>
+                                        @endforeach
 
-                                        <a @if($Ms->external=='yes')  onclick="return confirm('Are you sure  external window open?')"  target="_blank" href="{{url($Ms->url)}}" @elseif($Ms->external=='no')  href="{{url($Ms->url)}}" @else href="{{url($Ms->slug)}}" @endif>@if(GetLang()=='en') {{ $Ms->title }} @else {{ $Ms->title_h }}  @endif</a>
+                                    </ul>
 
-                                    </li>
-
-                                  @endforeach
-
-                                </ul>
-
-                            </div>
-
-                        </div>
-
-                      @endforeach
-
-                      @foreach(Getfooterlink2() as $key=>$M)
-
-                        <div class="col-md-4 width50 p-lg-0">
-
-                            <h2 class="footer-top-title">
-
-
-
-                            </h2>
-
-                            <div class="footer-link mt-58">
-
-                                <ul>
-
-                                  @foreach(GETfooterdatalink($M->id) as $key=>$Ms)
-
-                                    <li>
-
-                                        <img src="{{ asset('assets/images/arrow.svg')}}" alt="arrow" class="img-fluid">
-
-                                        <a  @if($Ms->external=='yes')  onclick="return confirm('Are you sure  external window open?')"  target="_blank" href="{{url($Ms->url)}}" @elseif($Ms->external=='no')  href="{{url($Ms->url)}}" @else href="{{url($Ms->slug)}}" @endif      >@if(GetLang()=='en') {{ $Ms->title }} @else {{ $Ms->title_h }}  @endif</a>
-
-                                    </li>
-
-                                  @endforeach
-
-                                </ul>
+                                </div>
 
                             </div>
+                        @endforeach
 
-                        </div>
+                        @foreach (Getfooterlink2() as $key => $M)
+                            <div class="col-md-4 width50 p-lg-0">
 
+                                <h2 class="footer-top-title">
+
+
+
+                                </h2>
+
+                                <div class="footer-link mt-58">
+
+                                    <ul>
+
+                                        @foreach (GETfooterdatalink($M->id) as $key => $Ms)
+                                            <li>
+
+                                                <img src="{{ asset('assets/images/arrow.svg') }}" alt="arrow"
+                                                    class="img-fluid">
+
+                                                <a
+                                                    @if ($Ms->external == 'yes') onclick="return confirm('Are you sure  external window open?')"  target="_blank" href="{{ url($Ms->url) }}" @elseif($Ms->external == 'no')  href="{{ url($Ms->url) }}" @else href="{{ url($Ms->slug) }}" @endif>
+                                                    @if (GetLang() == 'en')
+                                                        {{ $Ms->title }}
+                                                    @else
+                                                        {{ $Ms->title_h }}
+                                                    @endif
+                                                </a>
+
+                                            </li>
+                                        @endforeach
+
+                                    </ul>
+
+                                </div>
+
+                            </div>
                         @endforeach
 
 
-                        @foreach(Getfooterlink3() as $key=>$M)
+                        @foreach (Getfooterlink3() as $key => $M)
+                            <div class="col-md-4 p-lg-0">
 
-                        <div class="col-md-4 p-lg-0">
-
-                            <h2 class="footer-top-title">
-
+                                <h2 class="footer-top-title">
 
 
-                            </h2>
 
-                            <div class="footer-link mt-58">
+                                </h2>
 
-                                <ul>
+                                <div class="footer-link mt-58">
 
-                                  @foreach(GETfooterdatalink($M->id) as $key=>$Ms)
+                                    <ul>
 
-                                    <li>
+                                        @foreach (GETfooterdatalink($M->id) as $key => $Ms)
+                                            <li>
 
-                                        <img src="{{ asset('assets/images/arrow.svg')}}" alt="arrow" class="img-fluid">
+                                                <img src="{{ asset('assets/images/arrow.svg') }}" alt="arrow"
+                                                    class="img-fluid">
 
-                                        <a  @if($Ms->external=='yes')  onclick="return confirm('Are you sure  external window open?')"  target="_blank" href="{{url($Ms->url)}}" @elseif($Ms->external=='no')  href="{{url($Ms->url)}}" @else href="{{url($Ms->slug)}}" @endif      >@if(GetLang()=='en') {{ $Ms->title }} @else {{ $Ms->title_h }}  @endif</a>
+                                                <a
+                                                    @if ($Ms->external == 'yes') onclick="return confirm('Are you sure  external window open?')"  target="_blank" href="{{ url($Ms->url) }}" @elseif($Ms->external == 'no')  href="{{ url($Ms->url) }}" @else href="{{ url($Ms->slug) }}" @endif>
+                                                    @if (GetLang() == 'en')
+                                                        {{ $Ms->title }}
+                                                    @else
+                                                        {{ $Ms->title_h }}
+                                                    @endif
+                                                </a>
 
-                                    </li>
+                                            </li>
+                                        @endforeach
 
-                                  @endforeach
+                                    </ul>
 
-                                </ul>
+                                </div>
 
                             </div>
-
-                        </div>
-
                         @endforeach
                     </div>
                 </div>
@@ -128,13 +140,17 @@
 
                                 <p class="address">
 
-                                  @if(GetLang()=='en'){{GetOrganisationAllDetails('address')}} @else {{GetOrganisationAllDetails('address_h')}}  @endif
+                                    @if (GetLang() == 'en')
+                                        {{ GetOrganisationAllDetails('address') }}
+                                    @else
+                                        {{ GetOrganisationAllDetails('address_h') }}
+                                    @endif
 
                                 </p>
 
-                                <p class="phone">Phone:{{chunk_split(GetOrganisationAllDetails('contact'))}}</p>
+                                <p class="phone">Phone:{{ chunk_split(GetOrganisationAllDetails('contact')) }}</p>
 
-                                <a href="#" class="tel-no">Email:{{GetOrganisationAllDetails('email')}}</a>
+                                <a href="#" class="tel-no">Email:{{ GetOrganisationAllDetails('email') }}</a>
 
                             </div>
 
@@ -144,36 +160,52 @@
 
                                 <ul>
 
-                                    @if(GetOrganisationAllDetails('facebook')!='')
-                                    <li>
-                                        <a href="{{GetOrganisationAllDetails('facebook')}}" alt="{{GetOrganisationAllDetails('Facebook_Alt')}}"  title="{{GetOrganisationAllDetails('Facebook_title')}}"  onclick="return confirm('Are you sure  external window open?')" target="_blank">
-                                            <i class="fa fa-facebook" aria-hidden="true"></i>
-                                        </a>
-                                    </li>
-                                   @endif
-                                   @if(GetOrganisationAllDetails('twitter')!='')
-                                   <li>
-                                       <a href="{{GetOrganisationAllDetails('twitter')}}" alt="{{GetOrganisationAllDetails('twitter_Alt')}}" title="{{GetOrganisationAllDetails('Twitter_title')}}"  onclick="return confirm('Are you sure  external window open?')" target="_blank" >
-                                           <i class="fa fa-twitter" aria-hidden="true"></i>
-                                       </a>
-                                   </li>
-                               @endif
+                                    @if (GetOrganisationAllDetails('facebook') != '')
+                                        <li>
+                                            <a href="{{ GetOrganisationAllDetails('facebook') }}"
+                                                alt="{{ GetOrganisationAllDetails('Facebook_Alt') }}"
+                                                title="{{ GetOrganisationAllDetails('Facebook_title') }}"
+                                                onclick="return confirm('Are you sure  external window open?')"
+                                                target="_blank">
+                                                <i class="fa fa-facebook" aria-hidden="true"></i>
+                                            </a>
+                                        </li>
+                                    @endif
+                                    @if (GetOrganisationAllDetails('twitter') != '')
+                                        <li>
+                                            <a href="{{ GetOrganisationAllDetails('twitter') }}"
+                                                alt="{{ GetOrganisationAllDetails('twitter_Alt') }}"
+                                                title="{{ GetOrganisationAllDetails('Twitter_title') }}"
+                                                onclick="return confirm('Are you sure  external window open?')"
+                                                target="_blank">
+                                                <i class="fa fa-twitter" aria-hidden="true"></i>
+                                            </a>
+                                        </li>
+                                    @endif
 
-                               @if(GetOrganisationAllDetails('instagram')!='')
-                               <li>
-                                   <a href="{{GetOrganisationAllDetails('instagram')}}" alt="{{GetOrganisationAllDetails('Instagram_Alt')}}" title="{{GetOrganisationAllDetails('Instagram_title')}}"  onclick="return confirm('Are you sure  external window open?')" target="_blank" >
-                                       <i class="fa fa-instagram" aria-hidden="true"></i>
-                                   </a>
-                               </li>
-                              @endif
+                                    @if (GetOrganisationAllDetails('instagram') != '')
+                                        <li>
+                                            <a href="{{ GetOrganisationAllDetails('instagram') }}"
+                                                alt="{{ GetOrganisationAllDetails('Instagram_Alt') }}"
+                                                title="{{ GetOrganisationAllDetails('Instagram_title') }}"
+                                                onclick="return confirm('Are you sure  external window open?')"
+                                                target="_blank">
+                                                <i class="fa fa-instagram" aria-hidden="true"></i>
+                                            </a>
+                                        </li>
+                                    @endif
 
-                              @if(GetOrganisationAllDetails('linkedin')!='')
-                              <li>
-                                  <a href="{{GetOrganisationAllDetails('linkedin')}}" alt="{{GetOrganisationAllDetails('LinkedIn_Alt')}}" title="{{GetOrganisationAllDetails('LinkedIn_title')}}"  onclick="return confirm('Are you sure  external window open?')"  target="_blank">
-                                      <i class="fa fa-linkedin" aria-hidden="true"></i>
-                                  </a>
-                              </li>
-                             @endif
+                                    @if (GetOrganisationAllDetails('linkedin') != '')
+                                        <li>
+                                            <a href="{{ GetOrganisationAllDetails('linkedin') }}"
+                                                alt="{{ GetOrganisationAllDetails('LinkedIn_Alt') }}"
+                                                title="{{ GetOrganisationAllDetails('LinkedIn_title') }}"
+                                                onclick="return confirm('Are you sure  external window open?')"
+                                                target="_blank">
+                                                <i class="fa fa-linkedin" aria-hidden="true"></i>
+                                            </a>
+                                        </li>
+                                    @endif
 
 
 
@@ -184,20 +216,22 @@
 
                         </div>
 
-                    <div class="col-md-6 p-lg-0">
-                        <h2 class="footer-top-title">LOCATE US </h2>
+                        <div class="col-md-6 p-lg-0">
+                            <h2 class="footer-top-title">LOCATE US </h2>
 
                             <div class="footer-widget">
-                            @if(GetOrganisationAllDetails('location')!='')
-                            <iframe src="{{GetOrganisationAllDetails('location')}}" width="100%" height="200" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-                            @endif
+                                @if (GetOrganisationAllDetails('location') != '')
+                                    <iframe src="{{ GetOrganisationAllDetails('location') }}" width="100%"
+                                        height="200" style="border:0;" allowfullscreen="" loading="lazy"
+                                        referrerpolicy="no-referrer-when-downgrade"></iframe>
+                                @endif
                             </div>
 
-                          </div>
+                        </div>
 
                     </div>
-                    </div>
                 </div>
+            </div>
 
 
 
@@ -217,21 +251,26 @@
 
                     <div class="copyright-text">
 
-                    @lang('common.copyright') © {{ now()->format('Y') }} | @if(GetLang()=='en') {!! GetOrganisationAllDetails('name') !!} @else {!! GetOrganisationAllDetails('name_h') !!}  @endif
+                        @lang('common.copyright') © {{ now()->format('Y') }} | @if (GetLang() == 'en')
+                            {!! GetOrganisationAllDetails('name') !!}
+                        @else
+                            {!! GetOrganisationAllDetails('name_h') !!}
+                        @endif
 
                     </div>
 
                 </div>
 
                 <div class="col-md-6">
-                    
-                   
-                            
-                      
+
+
+
+
 
                     <div class="visitor-wrap">
-                    
-                    <h2 class="visitor-title">@lang('common.page_last_updated_on'): {{ now()->format('j F Y') }} &nbsp;&nbsp;&nbsp; @lang('common.visitor_counter'): <span class="visitor-count">{{GetVisits()}}</span></h2>
+
+                        <h2 class="visitor-title">@lang('common.page_last_updated_on'): {{ now()->format('j F Y') }} &nbsp;&nbsp;&nbsp;
+                            @lang('common.visitor_counter'): <span class="visitor-count">{{ GetVisits() }}</span></h2>
 
                     </div>
 
@@ -273,9 +312,3 @@
     }
 
 </script> --}}
-
-
-
-
-
-

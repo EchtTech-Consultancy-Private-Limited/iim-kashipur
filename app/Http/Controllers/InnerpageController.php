@@ -96,7 +96,7 @@ public function RTI_view()
 
 public function  career(){
 
-    $item=Career::wherestatus('1')->get();
+    $item=Career::wherestatus('1')->paginate(10);
     return view('front.Layouts.child_pages.menu_bar.main_menu.career',['item'=>$item]);
 
 
@@ -119,7 +119,7 @@ public function  career(){
 // Tenders
 public function  Tenders(){
 
-    $item=Tender::wherestatus('1')->get();
+    $item=Tender::wherestatus('1')->paginate(10);
     return view('front.Layouts.child_pages.menu_bar.main_menu.Tenders',['item'=>$item]);
 
 }
@@ -127,7 +127,7 @@ public function  Tenders(){
 // Vendors Debarred
 public function  Vendors_Debarred(){
 
-     $item=Vendorsdebarred::wherestatus('1')->get();
+     $item=Vendorsdebarred::wherestatus('1')->paginate(10);
      return view('front.Layouts.child_pages.menu_bar.main_menu.Vendors_Debarred',['item'=>$item]);
 }
 
@@ -1278,9 +1278,9 @@ public function screen_reader_access()
             $data=SubMenu::whereslug($slug)->get();
             if(Count($data)>0){
             if($request->year){
-                $item=journal_publication::wherestatus('1')->whereYear('year',$request->year)->get();
+                $item=journal_publication::wherestatus('1')->whereYear('year',$request->year)->paginate(10);
             }else{
-                $item=journal_publication::wherestatus('1')->get();
+                $item=journal_publication::wherestatus('1')->paginate(10);
             }
             $type=SubMenu::whereslug($slug)->get();
             if(count($type)>0){
@@ -1313,7 +1313,7 @@ public function screen_reader_access()
         //         return abort(401);
         //     }
         // }
-  elseif($type[0]->url == '/student-council')
+      elseif($type[0]->url == '/student-council')
         {
 
             $data=SubMenu::whereslug($slug)->get();

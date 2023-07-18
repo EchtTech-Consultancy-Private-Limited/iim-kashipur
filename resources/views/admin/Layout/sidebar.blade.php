@@ -67,16 +67,52 @@
                  <li class="nav-item"><a class="nav-link" href="{{route('admin.organisation')}}">Organisation Details</a></li>
               @endif
               @if(@checkRoute('website_index'))
-                 <li class="nav-item"><a class="nav-link"   href="{{url('/Accounts/website-index')}}">Organisation index </a></li>
-              @endif
-
-              @if(@checkRoute('Org-journey-index'))
-              <li class="nav-item"><a class="nav-link"   href="{{url('/Accounts/Org-journey-index')}}">Organisation Journey </a></li>
+                 <li class="nav-item"><a class="nav-link"   href="{{url('/Accounts/website-index')}}">Organisation Counter </a></li>
               @endif
 
               @if(@checkRoute('View_OrganisationDetails'))
-                 <li class="nav-item"> <a class="nav-link" href="{{route('admin.filetourl')}}">File2Url</a></li>
+                 <li class="nav-item"> <a class="nav-link" href="{{route('admin.filetourl')}}">Client Logo</a></li>
               @endif
+
+              @if(@checkRoute('View_OrganisationStructure'))
+              <li class="nav-item"><a class="nav-link" href="{{route('admin.people')}}">Organisation Members</a></li>
+              @endif
+
+              @if(@checkRoute('View_Banners'))
+              <li class="nav-item"><a class="nav-link" href="{{route('admin.banners')}}">Organisation Banner</a></li>
+              @endif
+
+              @if(@checkRoute('Industry'))
+              <li class="nav-item"><a class="nav-link" href="{{route('admin.industry')}}">Manage Industry Connect</a></li>
+              @endif
+
+
+            @if(@checkRoute('View_Banners'))
+            <li class="nav-item"><a class="nav-link" href="{{url('Accounts/News-Event')}}">Manage News & Events</a></li>
+            @endif
+
+
+            @if(@checkRoute('View_Banners'))
+            <li class="nav-item"><a class="nav-link" href="{{url('Accounts/press-media')}}">Manage Press & Media</a></li>
+            @endif
+
+            @if(@checkRoute('ANTI-RAGGING'))
+            <li class="nav-item"><a class="nav-link" href="{{url('Accounts/ANTI-RAGGING')}}">Manage Anti-Ragging  </a></li>
+            @endif
+
+
+            @if(@checkRoute('tenders'))
+            <li class="nav-item"><a class="nav-link" href="{{route('admin.viewtenders')}}">Manage Tenders</a></li>
+            @endif
+
+            @if(@checkRoute('careershow'))
+            <li class="nav-item"><a class="nav-link" href="{{route('admin.careershow')}}">Manage Career</a></li>
+            @endif
+
+            @if(@checkRoute('RTI'))
+            <li class="nav-item"><a class="nav-link" href="{{url('Accounts/RTI')}}">Manage RTI</a></li>
+            @endif
+
               </ul>
 
             </div>
@@ -189,9 +225,6 @@
               @if(@checkRoute('View_Menus'))
                  <li class="nav-item"> <a class="nav-link" href="{{route('admin.menusetting')}}">Manage Menus </a></li>
                  @endif
-                 @if(@checkRoute('View_OrganisationStructure'))
-                 <li class="nav-item"><a class="nav-link" href="{{route('admin.people')}}">Organisation Structure</a></li>
-                 @endif
 
 
                  @if(@checkRoute('manage-club'))
@@ -204,39 +237,42 @@
 
 
                  @if(@checkRoute('manage-cells'))
-                 <li class="nav-item"><a class="nav-link" href="{{url('Accounts/manage-cells')}}">Manage Cells</a></li>
+                 <li class="nav-item"><a class="nav-link" href="{{url('Accounts/manage-cells')}}">Manage Cell</a></li>
                  @endif
 
-                 @if(@checkRoute('tenders'))
-                 <li class="nav-item"><a class="nav-link" href="{{route('admin.viewtenders')}}">Manage Tenders</a></li>
+
+                 @if(@checkRoute('Org-journey-index'))
+                 <li class="nav-item"><a class="nav-link"   href="{{url('/Accounts/Org-journey-index')}}">Manage Our Journey</a></li>
                  @endif
+
 
                  @if(@checkRoute('tenders'))
                  <li class="nav-item"><a class="nav-link" href="{{route('admin.vendordebarred')}}">Manage Vendors Debarred</a></li>
                  @endif
-                 @if(@checkRoute('careershow'))
-                 <li class="nav-item"><a class="nav-link" href="{{route('admin.careershow')}}">Manage Career</a></li>
-                 @endif
+
                   @if(@checkRoute('Events & Activites'))
-                <li class="nav-item"><a class="nav-link" href="{{route('admin.title')}}">Events & Activites</a></li>
+                <li class="nav-item"><a class="nav-link" href="{{route('admin.title')}}">Manage Events & Activites</a></li>
                 @endif
-                @if(@checkRoute('Industry'))
-                <li class="nav-item"><a class="nav-link" href="{{route('admin.industry')}}">Industry</a></li>
-                @endif
-                 @if(@checkRoute('View_Banners'))
-                 <li class="nav-item"><a class="nav-link" href="{{url('Accounts/News-Event')}}">News & Event</a></li>
+
+                 @if(@checkRoute('student-council'))
+                 <li class="nav-item"><a class="nav-link" href="{{url('Accounts/student-council')}}">Manage Student Council</a></li>
                  @endif
 
-                 @if(@checkRoute('View_Banners'))
-                 <li class="nav-item"><a class="nav-link" href="{{url('Accounts/press-media')}}">Press & Media</a></li>
+                 @if(@checkRoute('journal-publications'))
+                 <li class="nav-item"><a class="nav-link" href="{{url('Accounts/journal-publications')}}">Manage Journal Publications </a></li>
                  @endif
 
 
-                 @if(@checkRoute('View_Banners'))
+                @if(@checkRoute('Wellness-Facilities'))
+                <li class="nav-item"><a class="nav-link" href="{{url('Accounts/Wellness-Facilities')}}">Manage Wellness Facilities </a></li>
+                @endif
+
+
+
+
+              {{-- @if(@checkRoute('View_Banners'))
                 <li class="nav-item"><a class="nav-link" href="{{route('admin.banners')}}">Banner/Sliders</a></li>
-                @endif
-
-
+                @endif --}}
 
                 {{-- @if(@checkRoute('View_Announcements'))
                 <li class="nav-item"><a class="nav-link" href="{{route('admin.announcements')}}">Manage Announcements</a></li>
@@ -285,30 +321,7 @@
               <li class="nav-item"> <a class="nav-link" href="{{ url("/Accounts/pages-list")}}">Pages List</a></li>
               @endif
 
-              @if(@checkRoute('student-council'))
-                 <li class="nav-item"><a class="nav-link" href="{{url('Accounts/student-council')}}">STUDENT COUNCIL </a></li>
-                 @endif
 
-                 @if(@checkRoute('journal-publications'))
-                 <li class="nav-item"><a class="nav-link" href="{{url('Accounts/journal-publications')}}">Journal Publications </a></li>
-                 @endif
-
-
-                 @if(@checkRoute('ANTI-RAGGING'))
-                 <li class="nav-item"><a class="nav-link" href="{{url('Accounts/ANTI-RAGGING')}}">ANTI-RAGGING </a></li>
-                 @endif
-
-                 @if(@checkRoute('View_Banners'))
-                <li class="nav-item"><a class="nav-link" href="{{route('admin.banners')}}">Banner/Sliders</a></li>
-                @endif
-
-              @if(@checkRoute('Wellness-Facilities'))
-              <li class="nav-item"><a class="nav-link" href="{{url('Accounts/Wellness-Facilities')}}">Wellness Facilities </a></li>
-              @endif
-
-              @if(@checkRoute('RTI'))
-              <li class="nav-item"><a class="nav-link" href="{{url('Accounts/RTI')}}">RTI</a></li>
-              @endif
               </ul>
 
               {{-- <ul class="nav flex-column sub-menu">
@@ -317,7 +330,7 @@
               @endif
               </ul> --}}
 
-              
+
 
             </div>
 
