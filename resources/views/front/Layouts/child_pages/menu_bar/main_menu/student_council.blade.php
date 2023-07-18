@@ -426,7 +426,7 @@
                                             <div class="excellence-gallery partnership-img">
                                                 <div class="row masonry-grid">
 
-                                                    <div class="col-md-2 col-lg-2">
+                                                    <div class="col-md-3 col-lg-3">
                                                         <div class="d-flex flex-column h-100">
                                                             <a href="http://localhost/kashipur-design1/public/gallery/image/1677405700.png"
                                                                 class="image-link">
@@ -440,7 +440,7 @@
                                                         </div>
                                                     </div>
 
-                                                    <div class="col-md-2 col-lg-2">
+                                                    <div class="col-md-3 col-lg-3">
                                                         <div class="d-flex flex-column h-100">
                                                             <a href="http://localhost/kashipur-design1/public/gallery/image/1677405680.png"
                                                                 class="image-link">
@@ -456,7 +456,7 @@
                                                     </div>
 
 
-                                                    <div class="col-md-2 col-lg-2">
+                                                    <div class="col-md-3 col-lg-3">
                                                         <div class="d-flex flex-column h-100">
                                                             <a href="http://localhost/kashipur-design1/public/gallery/image/1677559777.png"
                                                                 class="image-link">
@@ -471,7 +471,7 @@
                                                         </div>
                                                     </div>
 
-                                                    <div class="col-md-2 col-lg-2">
+                                                    <div class="col-md-3 col-lg-3">
                                                         <div class="d-flex flex-column h-100">
                                                             <a href="http://localhost/kashipur-design1/public/gallery/image/1677559777.png"
                                                                 class="image-link">
@@ -486,7 +486,7 @@
                                                         </div>
                                                     </div>
 
-                                                    <div class="col-md-2 col-lg-2">
+                                                    <div class="col-md-3 col-lg-3">
                                                         <div class="d-flex flex-column h-100">
                                                             <a href="http://localhost/kashipur-design1/public/gallery/image/1677559777.png"
                                                                 class="image-link">
@@ -501,7 +501,7 @@
                                                         </div>
                                                     </div>
 
-                                                    <div class="col-md-2 col-lg-2">
+                                                    <div class="col-md-3 col-lg-3">
                                                         <div class="d-flex flex-column h-100">
                                                             <a href="http://localhost/kashipur-design1/public/gallery/image/1677559777.png"
                                                                 class="image-link">
@@ -516,7 +516,7 @@
                                                         </div>
                                                     </div>
 
-                                                    <div class="col-md-2 col-lg-2">
+                                                    <div class="col-md-3 col-lg-3">
                                                         <div class="d-flex flex-column h-100">
                                                             <a href="http://localhost/kashipur-design1/public/gallery/image/1677559777.png"
                                                                 class="image-link">
@@ -531,7 +531,7 @@
                                                         </div>
                                                     </div>
 
-                                                    <div class="col-md-2 col-lg-2">
+                                                    <div class="col-md-3 col-lg-3">
                                                         <div class="d-flex flex-column h-100">
                                                             <a href="http://localhost/kashipur-design1/public/gallery/image/1677559777.png"
                                                                 class="image-link">
@@ -954,7 +954,7 @@
                                                 <div class="excellence-gallery partnership-img">
                                                     <div class="row masonry-grid">
                                                         @foreach ($chairpersons as $value)
-                                                            <div class="col-md-2 col-lg-2">
+                                                            <div class="col-md-3 col-lg-3">
                                                                 <div class="d-flex flex-column h-100">
 
                                                                     <a href="{{ asset('uploads/'.$value->student_image) ?? '' }}"
@@ -1129,7 +1129,7 @@
                                                 <div class="excellence-gallery partnership-img">
                                                     <div class="row masonry-grid">
                                                         @foreach ($chairpersons as $value)
-                                                            <div class="col-md-2 col-lg-2">
+                                                            <div class="col-md-3 col-lg-3">
                                                                 <div class="d-flex flex-column h-100">
 
                                                                     <a href="{{ asset('uploads/organisation/' . $value->image) ?? '' }}"
