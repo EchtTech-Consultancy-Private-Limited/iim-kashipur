@@ -2271,8 +2271,25 @@ a {
     }
 
 
+    .pt-50 {
+        padding-top: 20px !important;
+    }
+
+    .blog-newstyle-2 {
+        padding: 0px 20px !important;
+    }
+
     .main-timeline-section.vertical-line{
         display: none;
+    }
+
+    .image-section-iimkashipur img {
+        width: 100%;
+        height: auto !important;
+    }
+
+    .post-card.Student_Corner.box-1{
+        height: 200px !important;
     }
 
 
@@ -3960,7 +3977,7 @@ ul.navbar-nav li.nav-item {
     border-radius: 0;
     display: flex;
     align-items: center;
-    height: 290px;
+    /* height: 290px; */
 }
 .post-card.box-1 .list li a,
 .post-card.box-5 .list li a {
@@ -5417,17 +5434,16 @@ button.upload-btn.btn-info {
 
 .image-section-iimkashipur img {
     width: 100%;
-    border: 1px solid #e8e8e8;
-    box-shadow: 0px 0px 29px rgba(0, 0, 0, 0.1098039);
+    height: 450px;
 }
 
 .post-card.Student_Corner.box-1 {
     width: 350px;
     padding: 0px 75px 0 15px;
-    height: 180px;
+    height: 190px;
     position: absolute;
     bottom: 0;
-    left: 32%;
+    left: 27%;
     background: #c1272dd6;
 }
 
@@ -5437,4 +5453,31 @@ button.upload-btn.btn-info {
 
 .container-lined{
     border-radius: 0px !important   ;
+}
+
+.innerpagecontent.master-class table td img {
+    width: 40px;
+    margin-right: 15px;
+}
+
+.profilewraper.withinfo img {
+    height: 250px;
+}
+
+.profilewraper.withinfo {
+    height: 360px;
+}
+
+.master-class h3 a {
+    color: #fff;
+}
+
+h2.life_kashipur {
+    font-size: 55px;
+    font-weight: 700;
+    padding-bottom: 20px;
+}
+
+.pt-50 {
+    padding-top: 60px;
 }
