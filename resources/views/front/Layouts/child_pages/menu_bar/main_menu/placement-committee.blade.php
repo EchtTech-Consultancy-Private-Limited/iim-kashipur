@@ -428,7 +428,7 @@
                                             <div class="excellence-gallery partnership-img">
                                                 <div class="row masonry-grid">
 
-                                                    <div class="col-md-2 col-lg-2">
+                                                    <div class="col-md-3 col-lg-3">
                                                         <div class="d-flex flex-column h-100">
                                                             <a href="http://localhost/kashipur-design1/public/gallery/image/1677405700.png"
                                                                 class="image-link">
@@ -657,7 +657,7 @@
                                     <div class="row">
                                         <div class="col-md-4">
                                             <div class="multi-image-popup">
-                                                <a href="#gallery-1" class="btn-gallery">
+                                                <a href="https://iim.staggings.in/uploads/header_top/168690759793.jpg" class="btn-gallery image-link">
                                                     <img
                                                         src="https://iim.staggings.in/uploads/header_top/168690759793.jpg" />
                                                 </a>
@@ -683,7 +683,7 @@
 
                                         <div class="col-md-4">
                                             <div class="multi-image-popup">
-                                                <a href="#gallery-2" class="btn-gallery">
+                                                <a href="https://iim.staggings.in/uploads/header_top/168690759793.jpg" class="image-link">
                                                     <img
                                                         src="https://iim.staggings.in/uploads/header_top/168690671648.jpg" />
                                                 </a>
@@ -1011,7 +1011,7 @@
                                                 <div class="excellence-gallery partnership-img">
                                                     <div class="row masonry-grid">
                                                         @foreach ($chairpersons as $value)
-                                                            <div class="col-md-2 col-lg-2">
+                                                            <div class="col-md-3 col-lg-3">
                                                                 <div class="d-flex flex-column h-100">
 
                                                                     <a href="{{ asset('uploads/organisation/' . $value->image) ?? '' }}"
@@ -1062,7 +1062,7 @@
                                     <div class="row">
 
                                         @foreach ($data as $datas)
-                                            <div class="col-md-4">
+                                            <div class="col-md-6">
                                                 <div class="text-box">
                                                     <div class="text-b">
                                                         <p>
@@ -1088,7 +1088,7 @@
         <div class="col-md-4">
 
             <div class="multi-image-popup">
-                <a href="#gallery-1" class="btn-gallery">
+                <a href="{{ asset('uploads/multiple/club/' . $datas->image) ?? '' }}" class="image-link">
                     <img
                         src="{{ asset('uploads/multiple/club/' . $datas->image) ?? '' }}" />
                 </a>
@@ -1255,8 +1255,8 @@
                                                 <div class="excellence-gallery partnership-img">
                                                     <div class="row masonry-grid">
                                                         @foreach ($chairpersons as $value)
-                                                            <div class="col-md-2 col-lg-2">
-                                                                <div class="d-flex flex-column h-100">
+                                                            <div class="col-md-3 col-lg-3">
+                                                                <div class="d-flex flex-column h-100 grid-4">
 
                                                                     <a href="{{ asset('uploads/organisation/' . $value->image) ?? '' }}"
                                                                         class="image-link">
@@ -1336,7 +1336,7 @@
                                                 <div class="col-md-4">
 
                                                     <div class="multi-image-popup">
-                                                        <a href="#gallery-1" class="btn-gallery">
+                                                        <a href="{{ asset('uploads/multiple/club/' . $datas->image) ?? '' }}" class="image-link">
                                                             <img
                                                                 src="{{ asset('uploads/multiple/club/' . $datas->image) ?? '' }}" />
                                                         </a>
