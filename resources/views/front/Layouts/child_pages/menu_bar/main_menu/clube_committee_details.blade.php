@@ -55,7 +55,8 @@
                     </li>
                     <li><span>
                             @if (GetLang() == 'en')
-                                {{ $gets[0]->name ?? '' }}
+
+                              Club, Committee and Cells
                             @else
                                 {{ $gets[0]->name_h ?? '' }}
                             @endif
@@ -184,6 +185,12 @@
                             </svg></a></li>
 
                     <li><span>
+                           Students' Corner
+                        </span></li>
+                        <li><span>
+                            Club, Committee and Cells
+                        </span></li>
+                        <li><span>
                             @if (GetLang() == 'en')
                                 {{ $item[0]->title ?? '' }}
                             @else
@@ -1443,7 +1450,6 @@
                                 <h5>
                                     <span>Events</span>
                                 </h5>
-
                                 <p>{!! $item[0]->event ?? '' !!}</p>
                             @endif
 
@@ -1452,20 +1458,23 @@
                                     <div class="row">
 
                                         @foreach ($data as $datas)
+
+                                         @if($datas->event != '' )
+
                                             <div class="col-md-4">
                                                 <div class="text-box">
                                                     <div class="text-b">
                                                         <p>
                                                             {!! $datas->event !!}
                                                         </p>
-
                                                     </div>
                                                     <div class="top-text"> {{ $datas->image_title ?? '' }} </div>
-
                                                 </div>
                                             </div>
-                                        @endforeach
 
+                                          @endif
+
+                                        @endforeach
                                     </div>
                                 </div>
                             </div>
@@ -1483,7 +1492,7 @@
                                                 <div class="col-md-4">
 
                                                     <div class="multi-image-popup">
-                                                        <a href="#gallery-1" class="btn-gallery">
+                                                        <a href="{{ asset('uploads/multiple/club/' . $datas->image) ?? '' }}" class="image-link">
                                                             <img
                                                                 src="{{ asset('uploads/multiple/club/' . $datas->image) ?? '' }}" />
                                                         </a>
