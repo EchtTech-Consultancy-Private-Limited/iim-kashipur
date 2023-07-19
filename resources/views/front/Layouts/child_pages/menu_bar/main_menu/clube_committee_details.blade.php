@@ -1381,7 +1381,18 @@
                                             <h4>{{ $chairperson[0]->designation ?? '' }} </h6>
                                                 <h6>{{ $chairperson[0]->title ?? '' }} </h6>
                                                 <h6>{{ $chairperson[0]->phone ?? '' }} </h6>
-                                                <h6>{{ $chairperson[0]->email ?? '' }} </h6>
+
+
+
+                                                <?php
+                                                $email_address=$chairperson[0]->email;
+                                                $str = $email_address;
+                                                $var= str_replace('@','[at]',$str);
+                                                $email= str_replace('.','[dot]',$var);
+                                                 ?>
+
+
+                                                <h6>{{ $email ?? '' }} </h6>
                                         </div>
                                     </div>
                                 </div>

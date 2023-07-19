@@ -148,9 +148,19 @@
 
                                 </p>
 
-                                <p class="phone">Phone:{{ chunk_split(GetOrganisationAllDetails('contact')) }}</p>
+                                <p class="phone">Phone :&nbsp;{{chunk_split(GetOrganisationAllDetails('contact')) }}</p>
 
-                                <a href="#" class="tel-no">Email:{{ GetOrganisationAllDetails('email') }}</a>
+
+
+                                <?php
+                                $email_address=GetOrganisationAllDetails('email');
+                                $str = $email_address;
+                                $var= str_replace('@','[at]',$str);
+                                $email= str_replace('.','[dot]',$var);
+                               ?>
+
+                                <a href="javascript void(0);" class="tel-no">Email :&nbsp;{{ $email }}</a>
+
 
                             </div>
 
@@ -284,7 +294,7 @@
 
 </div>
 
-{{-- <script>
+<script>
     // disable right click
     document.addEventListener('contextmenu', event => event.preventDefault());
 
@@ -311,4 +321,4 @@
         }
     }
 
-</script> --}}
+</script>

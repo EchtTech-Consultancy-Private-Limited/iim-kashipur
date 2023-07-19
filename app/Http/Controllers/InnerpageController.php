@@ -908,8 +908,9 @@ public function screen_reader_access()
                         if(Count($data) >0){
                         $item=photo_gallery_image::wheregallery_id($data[0]->id)->get();
 
+
                             if(Count($item)>0){
-                            return view('front.Layouts.inner-page.gallerys.photo-category',['item'=>$item]);
+                            return view('front.Layouts.inner-page.gallerys.photo-category',['item'=>$item,'data'=>$data]);
                                 }else{
                                 return abort(401);
                             }
@@ -930,7 +931,7 @@ public function screen_reader_access()
 
 
                               if(Count($item)>0){
-                                return view('front.Layouts.inner-page.gallerys.video-miltimage',['item'=>$item]);
+                                return view('front.Layouts.inner-page.gallerys.video-miltimage',['item'=>$item,'data'=>$data]);
                               }else{
                                   return abort(401);
                               }
@@ -1715,7 +1716,6 @@ public function Child_barInnerpage($main_slug,$Sub_slug,$slug) //content page
         }elseif($data[0]->url == '/photo-gallery')
         {
                $item=photo_gallery::whereid($data[0]->link_option)->get();
-
                 if(Count($item)>0){
                 $value=photo_gallery_image::wheregallery_id($item[0]->id)->get();
                 //dd($value);
