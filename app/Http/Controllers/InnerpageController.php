@@ -678,7 +678,6 @@ public function screen_reader_access()
 }*/
  public function Menu_barInnerpage($slug) //content page & who in who data
     {
-
         $main_menu="main-menu";
         $item=OrganisationStructure::whereslug($slug)->get();
         if(MainMenu::whereslug($slug)->get('id')->count()){
@@ -904,7 +903,6 @@ public function screen_reader_access()
 
                         $photo_slug=QuickLink::whereslug($slug)->get();
                         $data=photo_gallery::whereid($photo_slug[0]->link_option)->get();
-
                         if(Count($data) >0){
                         $item=photo_gallery_image::wheregallery_id($data[0]->id)->get();
 
@@ -951,11 +949,12 @@ public function screen_reader_access()
         {
            // dd("hii");
             $data=photo_gallery::wherephoto_slug($slug)->get();
+            //dd($data);
             if(Count($data) >0){
             $item=photo_gallery_image::wheregallery_id($data[0]->id)->get();
            //dd($item);
                 if(Count($item)>0){
-                return view('front.Layouts.inner-page.gallerys.photo-category',['item'=>$item]);
+                return view('front.Layouts.inner-page.gallerys.photo-category',['item'=>$item,'data'=>$data]);
                     }else{
                     return abort(401);
                 }
@@ -972,7 +971,7 @@ public function screen_reader_access()
              $item=video_gallery_tittle::wheregallery_id($data[0]->id)->get();
 
             if(Count($item)>0){
-            return view('front.Layouts.inner-page.gallerys.video-miltimage',['item'=>$item]);
+            return view('front.Layouts.inner-page.gallerys.video-miltimage',['item'=>$item,'data'=>$data]);
             }else{
                 return abort(401);
             }
@@ -982,7 +981,6 @@ public function screen_reader_access()
         }else{
 
            if(club::whereslug($slug)->get()->count()){    //club single
-
 
                 $item=club::whereslug($slug)->get();
                 if(count($item) >0){

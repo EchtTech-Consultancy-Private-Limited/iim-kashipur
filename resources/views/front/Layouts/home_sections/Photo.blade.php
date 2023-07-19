@@ -181,7 +181,7 @@
 
                                 <div class="btn-wrap my-4 d-flex justify-content-center pt-3">
 
-                                    <a href="{{url('Multi-image')}}" class="btn btn-white">
+                                    <a href="{{url('multi-image')}}" class="btn btn-white">
 
                                     @lang('common.view_all')
 
