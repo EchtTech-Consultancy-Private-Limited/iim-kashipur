@@ -764,7 +764,7 @@
 
                                             <div class="col-md-4 col-lg-4">
                                                 <div class="d-flex flex-column h-100">
-                                                    <a href="http://localhost/kashipur-design1/public/gallery/image/1677405700.png" class="image-link">
+                                                    <a href="{{ asset('uploads/wellness/'.$items->image) ?? '' }}" class="image-link">
                                                         <div class="thumbnail p-relative">
                                                             <img src="{{ asset('uploads/wellness/'.$items->image) ?? '' }}" alt="gallery-img" class="img-fluid" loading="lazy">
                                                             <div class="top-text">{{ $items->image_title }}</div>
