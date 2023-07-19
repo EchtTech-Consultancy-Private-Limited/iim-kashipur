@@ -902,16 +902,16 @@
 
 
                             <!-- Content section  start-->
-                            <h5>
-                                <span>{{ $item[0]->student_council	??'' }}</span>
-                            </h5>
+                            <h3>
+                               {{ $item[0]->student_council	??'' }}
+                            </h3>
 
                             <p>{!! $item[0]->about_details ??'' !!}</p>
 
                             <!-- Chairpersons -->
 
                                 <h5>
-                                    Chairperson
+                                    <span> Chairperson </span>
                                 </h5>
 
                                 <div class="row mt-4 mb-5">
