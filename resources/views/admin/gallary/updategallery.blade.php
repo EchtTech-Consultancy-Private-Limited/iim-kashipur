@@ -64,7 +64,7 @@
 
 
 
-                            <form class="forms-sample row col-md-12" method="POST"
+                            <form class="forms-sample row col-md-12" method="POST" id="regForm"
                                 action="{{ url('/Accounts/addaction_gallerypost/' . dEncrypt($value->id)) }}"
                                 enctype="multipart/form-data">
 
@@ -72,14 +72,18 @@
 
                                 <div class="col-md-12">
 
-                                    <label for="inputText" class="col-sm-2 col-form-label">Page Title*</label>
+                                    <label for="inputText" class="col-sm-12 col-form-label">Page Title*</label>
 
                                     <div class="col-sm-12">
 
                                         <input type="text" class="form-control" name="name"
                                             placeholder="Please enter content page title" value="{{ $value->name }}">
 
-
+                                            <label for="name" id="name-error" class="error">
+                                                @error('name')
+                                                    {{ $message }}
+                                                @enderror
+                                            </label>
                                     </div>
 
                                 </div>
@@ -88,7 +92,7 @@
 
                                 <div class="col-md-12">
 
-                                    <label for="inputText" class="col-sm-2 col-form-label">शीर्षक*</label>
+                                    <label for="inputText" class="col-sm-12 col-form-label">शीर्षक*</label>
 
                                     <div class="col-sm-12">
 
@@ -96,6 +100,12 @@
                                             placeholder="Please enter content page title in hindi"
                                             value="{{ $value->name_h }}">
 
+
+                                            <label for="name_h" id="name_h-error" class="error">
+                                                @error('name_h')
+                                                    {{ $message }}
+                                                @enderror
+                                            </label>
                                     </div>
 
                                 </div>
@@ -103,7 +113,7 @@
 
                                 <div class="col-md-12">
 
-                                    <label for="inputText" class="col-sm-2 col-form-label">Page Content</label>
+                                    <label for="inputText" class="col-sm-12 col-form-label">Page Content</label>
 
                                     <div class="col-sm-12">
 
@@ -116,7 +126,7 @@
 
                                 <div class="col-md-12">
 
-                                    <label for="inputText" class="col-sm-2 col-form-label">विवरण</label>
+                                    <label for="inputText" class="col-sm-12 col-form-label">विवरण</label>
 
                                     <div class="col-sm-12">
 
@@ -131,7 +141,7 @@
 
                                 <div class="col-md-12">
 
-                                    <label for="inputText" class="col-sm-2 col-form-label">Meta Tittle*</label>
+                                    <label for="inputText" class="col-sm-12 col-form-label">Meta Tittle*</label>
 
                                     <div class="col-sm-12">
 
@@ -147,7 +157,7 @@
 
                                 <div class="col-md-12">
 
-                                    <label for="inputText" class="col-sm-2 col-form-label">Meta Keywords*</label>
+                                    <label for="inputText" class="col-sm-12 col-form-label">Meta Keywords*</label>
 
                                     <div class="col-sm-12">
 
@@ -163,7 +173,7 @@
 
                                 <div class="col-md-12">
 
-                                    <label for="inputText" class="col-sm-2 col-form-label">Meta Description*</label>
+                                    <label for="inputText" class="col-sm-12 col-form-label">Meta Description*</label>
 
                                     <div class="col-sm-12">
 
@@ -178,12 +188,12 @@
 
                                 <div class="col-md-12">
 
-                                    <label for="inputText" class="col-sm-2 col-form-label">PDF File</label>
+                                    <label for="inputText" class="col-sm-12 col-form-label">PDF File</label>
 
                                     <div class="col-sm-12">
 
                                         <input type="file" class="form-control" name="pdf"
-                                            placeholder="Please browse PDF file"><br>
+                                            placeholder="Please browse PDF file" accept="application/pdf,application/vnd.ms-excel"><br>
 
                                         <input type="hidden" class="form-control" name="pdfnameold"
                                             value="{{ $value->file_download }}"><br>
@@ -210,13 +220,13 @@
                                     <div class="col-sm-12">
 
                                         <input type="file" class="form-control" name="bannerimage"
-                                            placeholder="Please browse banner image"><br>
+                                            placeholder="Please browse banner image"   accept=".jpeg,.jpg,.gif,.png"><br>
 
 
 
                                         @if (isset($value->banner_image))
-                                            <img src="{{ asset('gallery/banner/' . $value->banner_image) }}" width="150"
-                                                height="120" />
+                                            <img src="{{ asset('gallery/banner/' . $value->banner_image) }}"
+                                                width="150" height="120" />
                                         @else
                                             <img src="public/banner.png" />
                                         @endif
@@ -267,7 +277,7 @@
                                     <div class="col-sm-12">
 
                                         <input type="file" class="form-control" name="imagename"
-                                            placeholder="Please browse content image"><br>
+                                            placeholder="Please browse content image"  accept=".jpeg,.jpg,.gif,.png"><br>
 
                                         @if (isset($value->cover_image))
                                             <img src="{{ asset('gallery/image/' . $value->cover_image) }}" width="150"
@@ -339,9 +349,11 @@
 
                                             <option selected>Please select status</option>
 
-                                            <option value="1" {{ $value->status == 1 ? 'selected' : '' }}>Active</option>
+                                            <option value="1" {{ $value->status == 1 ? 'selected' : '' }}>Active
+                                            </option>
 
-                                            <option value="0" {{ $value->status == 0 ? 'selected' : '' }}>Inactive</option>
+                                            <option value="0" {{ $value->status == 0 ? 'selected' : '' }}>Inactive
+                                            </option>
 
                                         </select>
 
@@ -395,7 +407,7 @@
                             {{-- gallery images --}}
 
                             <button type="button" class="btn btn-primary" data-toggle="modal"
-                                data-target="#exampleModal" data-whatever="@mdo">Multiple Image Upload Section</button>
+                                data-target="#exampleModal" data-whatever="@mdo">Add New Images</button>
 
                             <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog"
                                 aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -406,7 +418,7 @@
 
                                         <div class="modal-header">
 
-                                            <h5 class="modal-title" id="exampleModalLabel">Insert Multiple image</h5>
+                                            <h5 class="modal-title" id="exampleModalLabel">Add Multiple image</h5>
 
                                             <button type="button" class="close" data-dismiss="modal"
                                                 aria-label="Close">
@@ -419,9 +431,9 @@
 
                                         <div class="modal-body">
 
-                                            <form role="form" id="regForm" action="{{ url('/Accounts/multimagePost') }}"
-                                                method="post" class="registration-form row"
-                                                enctype="multipart/form-data">
+                                            <form role="form" id="regForm"
+                                                action="{{ url('/Accounts/multimagePost') }}" method="post"
+                                                class="registration-form row" enctype="multipart/form-data">
 
                                                 @csrf
 
@@ -430,13 +442,13 @@
                                                     <label for="filename">Multiple Image</label>
 
                                                     <input type="file" name="filename" placeholder="Enter your Image"
-                                                        class="form-first-name form-control" id="form-first-name">
+                                                        class="form-first-name form-control" id="form-first-name"  accept=".jpeg,.jpg,.gif,.png">
 
-                                                        <label for="filename" id="filename-error" class="error">
-                                                            @error('filename')
-                                                                {{ $message }}
-                                                            @enderror
-                                                        </label>
+                                                    <label for="filename" id="filename-error" class="error">
+                                                        @error('filename')
+                                                            {{ $message }}
+                                                        @enderror
+                                                    </label>
 
 
                                                 </div>
@@ -450,11 +462,11 @@
                                                         class="form-last-name form-control" id="form-last-name">
 
 
-                                                        <label for="image_text" id="image_text-error" class="error">
-                                                            @error('image_text')
-                                                                {{ $message }}
-                                                            @enderror
-                                                        </label>
+                                                    <label for="image_text" id="image_text-error" class="error">
+                                                        @error('image_text')
+                                                            {{ $message }}
+                                                        @enderror
+                                                    </label>
 
                                                 </div>
 
@@ -467,11 +479,11 @@
                                                         id="form-email">
 
 
-                                                        <label for="image_alt" id="image_alt-error" class="error">
-                                                            @error('image_alt')
-                                                                {{ $message }}
-                                                            @enderror
-                                                        </label>
+                                                    <label for="image_alt" id="image_alt-error" class="error">
+                                                        @error('image_alt')
+                                                            {{ $message }}
+                                                        @enderror
+                                                    </label>
 
                                                 </div>
 
@@ -484,11 +496,11 @@
                                                         id="form-email">
 
 
-                                                        <label for="order" id="order-error" class="error">
-                                                            @error('order')
-                                                                {{ $message }}
-                                                            @enderror
-                                                        </label>
+                                                    <label for="order" id="order-error" class="error">
+                                                        @error('order')
+                                                            {{ $message }}
+                                                        @enderror
+                                                    </label>
 
                                                 </div>
 
@@ -622,8 +634,8 @@
 
                                                     <div class="modal-header">
 
-                                                        <h5 class="modal-title" id="exampleModalLabel">Update Multiple
-                                                            image</h5>
+                                                        <h5 class="modal-title" id="exampleModalLabel">Update
+                                                            Multiple  Image</h5>
 
                                                         <button type="button" class="close" data-dismiss="modal"
                                                             aria-label="Close">
@@ -649,7 +661,7 @@
                                                                 <input type="file" name="filename"
                                                                     placeholder="Enter your Image"
                                                                     class="form-first-name form-control"
-                                                                    id="form-first-name" >
+                                                                    id="form-first-name"  accept=".jpeg,.jpg,.gif,.png">
 
                                                                 <div id="image"></div>
 
@@ -666,13 +678,15 @@
 
                                                                 <input type="text" name="image_text"
                                                                     placeholder="Enter your Image Text"
-                                                                    class="form-last-name form-control" id="imagetext" required>
+                                                                    class="form-last-name form-control" id="imagetext"
+                                                                    required>
 
-                                                                    <label for="image_text" id="image_text-error" class="error">
-                                                                        @error('image_text')
-                                                                            {{ $message }}
-                                                                        @enderror
-                                                                    </label>
+                                                                <label for="image_text" id="image_text-error"
+                                                                    class="error">
+                                                                    @error('image_text')
+                                                                        {{ $message }}
+                                                                    @enderror
+                                                                </label>
 
 
 
@@ -686,15 +700,17 @@
 
                                                                 <input type="text" name="image_alt"
                                                                     placeholder="Enter your image Alt"
-                                                                    class="form-email form-control" id="imagealt" required>
+                                                                    class="form-email form-control" id="imagealt"
+                                                                    required>
 
 
 
-                                                                    <label for="image_alt" id="image_alt-error" class="error">
-                                                                        @error('image_alt')
-                                                                            {{ $message }}
-                                                                        @enderror
-                                                                    </label>
+                                                                <label for="image_alt" id="image_alt-error"
+                                                                    class="error">
+                                                                    @error('image_alt')
+                                                                        {{ $message }}
+                                                                    @enderror
+                                                                </label>
 
 
 
@@ -712,11 +728,11 @@
                                                                     name="order" class="form-email form-control"
                                                                     id="imagesort" required>
 
-                                                                    <label for="order" id="order-error" class="error">
-                                                                        @error('order')
-                                                                            {{ $message }}
-                                                                        @enderror
-                                                                    </label>
+                                                                <label for="order" id="order-error" class="error">
+                                                                    @error('order')
+                                                                        {{ $message }}
+                                                                    @enderror
+                                                                </label>
 
 
 
@@ -810,7 +826,7 @@
                             return function(e) {
 
                                 var img = $('<img/>').addClass('thumb').attr('src', e.target
-                                .result); //create image thumb element
+                                    .result); //create image thumb element
 
                                 $('#thumb-output').append(img);
 

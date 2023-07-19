@@ -75,21 +75,21 @@
                                 </div>
                             </div>
 
-                            <div class="col-md-12">
+                            {{-- <div class="col-md-12">
                                 <label for="activites" class="col-form-label">DESCRIPTION</label>
                                 <div class="">
                                     <textarea class="form-control" id="activites" rows="4" name="activites" placeholder="Please enter Activite">@if($id){{$data->description}} @else {{old('activites')}} @endif</textarea><br>
                                     <label for="activites" id="activites-error" class="error"></label>
                                 </div>
-                            </div>
+                            </div> --}}
 
-                            <div class="col-md-12">
+                            {{-- <div class="col-md-12">
                                 <label for="event" class="col-form-label">Events</label>
                                 <div class="">
                                     <textarea class="form-control" id="event" rows="4" name="event" placeholder="Please enter event">@if($id){{$data->EVENTS}} @else {{old('event')}} @endif</textarea><br>
                                     <label for="event" id="event-error" class="error"></label>
                                 </div>
-                            </div>
+                            </div> --}}
 
                             <div class="col-md-12">
 

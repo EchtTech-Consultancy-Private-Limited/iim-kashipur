@@ -2,7 +2,7 @@
 
 
 
-@section('title', 'content table ')
+@section('title', 'Manage Content Section ')
 
 
 
@@ -78,7 +78,7 @@
 
 
 
-                  <p class="card-title">Pages List</p>
+                  <p class="card-title">Manage Content Section</p>
 
 
 
@@ -93,7 +93,7 @@
                       <button type="button" class="btn btn-primary" ><a href="{{url('/Accounts/add-page')}}?pid={{basename(request()->url())}}">Add New Entry</a></button>
 
 
-        
+
 
                     </div>
 
@@ -116,71 +116,16 @@
 
 
                         <table id="example" class="display expandable-table" style="width:100%">
-
-
-
                           <thead>
-
-
-
                             <tr>
-
-
-
                               <th>S.No#</th>
-
-
-
                               <th>Title</th>
-
-
-
                               <th>शीर्षक</th>
-
-
-
-                              <th>Content image</th>
-
-
-
-
-
-
-
-
-
-
-
-                            <th data-field="user-status">Status</th>
-
-
-
-
-
-
-
-                            <th>Sub Page</th>
-
-
-
-                            <th>Action </th>
-
-
-
-
-
-
-
-
-
+                              <th data-field="user-status">Status</th>
+                              <th>Sub Page</th>
+                              <th>Action </th>
                             </tr>
-
-
-
                           </thead>
-
-
-
                           <tbody>
 
 
@@ -203,18 +148,6 @@
 
                           <td>{{$value->name_h}}</td>
 
-
-
-                          <td><img src="{{ asset('page/image/'.$value->cover_image)}}" alt="{{ $value->cover_title }}" title="{{ $value->cover_alt }}" style="height: 100px;  width: 100px;"></td>
-
-
-
-
-
-                           {{-- <td><span class="badge bg-success text-light">{{$value->status}}</span></td></td> --}}
-
-
-
                            <td>
                             @if(@checkRoute('StatusChange'))
                                 @if($value->status==1) <a href="{{url('Accounts/status-change/0/'.dEncrypt($value->id).'/content_pages')}}" style="color:green;">Active</a> @else <a href="{{url('Accounts/status-change/1/'.dEncrypt($value->id).'/content_pages')}}" style="color:red;">Inactive</a> @endif
@@ -225,7 +158,7 @@
 
                           <td>
 
-                          <button type="submit" class="btn btn-primary btn-sm"><a href= "{{ url('/Accounts/pages-list/'.dEncrypt($value->id))}}" > Add Sub page</a></button>
+                          <button type="submit" class="btn btn-primary btn-sm"><a href= "{{ url('/Accounts/pages-list/'.dEncrypt($value->id))}}">Sub page</a></button>
 
                           </td>
 

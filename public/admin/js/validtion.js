@@ -3,13 +3,9 @@ $(document).ready(function() {
         rules: {
             name: {
                 required: true,
-                maxlength: 500,
-                minlength: 1
             },
             name_h:{
                 required: true,
-                maxlength: 500,
-                minlength: 1
             },
             menu_id:{
                 required: true,
@@ -236,14 +232,10 @@ $(document).ready(function() {
         },
         messages: {
             name: {
-                required: "Name is required",
-                maxlength: "Name cannot be more than 30 characters",
-                minlength: "Name cannot be more than 10 characters"
+                required: "name is required",
             },
             name_h:{
-                required: "Hindi Name is required",
-                maxlength: "Hindi Name must be of 50 characters",
-                minlength: "Hindi Name be of 1 characters"
+                required: "hindi name is required",
             },
             title:{
                 required: "This field is required",
@@ -318,19 +310,19 @@ $(document).ready(function() {
                 required: "Image Title is required",
             },
             tittle:{
-                required: "This field is required",
+                required: "meta field is required",
             },
             description:{
-                required: "This field is required",
+                required: "description field is required",
+            },
+            keyword:{
+                required: "keyword field is required",
             },
             content:{
                 minlength: "content  must be of 100 characters"
             },
             content_h:{
                 minlength: "content Hindi  must be of 100 characters"
-            },
-            keyword:{
-                required: "This field is required",
             },
             meta_description: {
                 required: "Website Meta Description is required",

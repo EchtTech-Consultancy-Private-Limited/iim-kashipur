@@ -2,7 +2,7 @@
 
 
 
-@section('title', 'Photo Gallery ')
+@section('title', 'Manage Image Section')
 
 
 
@@ -22,7 +22,7 @@
 
 
 
-                
+
               <div class="alert alert-success col-md-12 text-center">
 
 
@@ -79,7 +79,7 @@
 
 
 
-                  <p class="card-title">Photo Gallery</p>
+                  <p class="card-title">Manage Image Section</p>
 
 
 
@@ -88,11 +88,6 @@
 
 
                       <button type="button" class="btn btn-primary" ><a href="{{url('/Accounts/add_gallery')}}">Add New Entry</a></button>
-
-
-
-
-
 
 
                     </div>
@@ -141,16 +136,6 @@
 
                               <th>शीर्षक</th>
 
-
-
-                              <th>Content image</th>
-
-
-
-
-
-
-
                             <th data-field="user-status">Status</th>
 
 
@@ -190,9 +175,9 @@
                           <td>{{$value->name_h}}</td>
 
 
-
+{{--
                           <td><img src="{{ asset('gallery/image/'.$value->cover_image) }}" alt="" title=""  style="height: 100px;  width: 100px;" ></td>
-
+ --}}
 
 
 

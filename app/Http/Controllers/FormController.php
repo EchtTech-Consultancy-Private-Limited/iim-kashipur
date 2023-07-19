@@ -1833,8 +1833,11 @@ public function add_RTI(Request $request,$id=NULL)
         $item=quarter_report::whereid($request->id)->first();
         return response()->json(['item'=>$item]);
     }
+
+    public function Wellness_Facilities_index_id(Request $request){
+        $item=wellness_facilitie_image::whereid($request->id)->first();
+        return response()->json(['item'=>$item]);
+    }
 }
-
-
 //end
 

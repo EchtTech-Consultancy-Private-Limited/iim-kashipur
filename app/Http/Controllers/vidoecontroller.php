@@ -65,17 +65,13 @@ class vidoecontroller extends Controller
 
 
 
-       /* $request->validate(
+        $request->validate(
 
             [
 
-               'name'              =>      'required|string|max:200',
+               'name'              =>      'required',
 
-               'name_h'             =>      'required|string|max:200',
-
-               'content'              =>      'required|string|min:100',
-
-               'contnet_h'             =>      'required|string|max:200',
+               'name_h'             =>      'required',
 
                'imagename'          =>      'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
 
@@ -89,7 +85,7 @@ class vidoecontroller extends Controller
 
 
 
-        );  */
+        );
 
 
 
@@ -271,28 +267,19 @@ class vidoecontroller extends Controller
 
              [
 
-                'name'              =>      'required|string|max:200',
+                'name'              =>      'required',
 
-                'name_h'             =>      'required|string|max:200',
+                'name_h'             =>      'required',
 
                 'imagename'          =>      'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
 
                 'bannerimage'       =>       'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
 
-              //  'pdf'                =>       "mimes:pdf|max:10000"
+               'pdf'                =>       "mimes:pdf|max:10000"
 
              ]
 
          );
-
-
-
-
-
-
-
-
-
 
 
               //new banner image upload
