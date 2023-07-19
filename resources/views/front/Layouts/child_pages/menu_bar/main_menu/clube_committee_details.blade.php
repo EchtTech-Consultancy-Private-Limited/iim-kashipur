@@ -55,8 +55,7 @@
                     </li>
                     <li><span>
                             @if (GetLang() == 'en')
-
-                              Club, Committee and Cells
+                                {{ $gets[0]->name ?? '' }}
                             @else
                                 {{ $gets[0]->name_h ?? '' }}
                             @endif
@@ -185,12 +184,6 @@
                             </svg></a></li>
 
                     <li><span>
-                           Students' Corner
-                        </span></li>
-                        <li><span>
-                            Club, Committee and Cells
-                        </span></li>
-                        <li><span>
                             @if (GetLang() == 'en')
                                 {{ $item[0]->title ?? '' }}
                             @else
@@ -1388,7 +1381,18 @@
                                             <h4>{{ $chairperson[0]->designation ?? '' }} </h6>
                                                 <h6>{{ $chairperson[0]->title ?? '' }} </h6>
                                                 <h6>{{ $chairperson[0]->phone ?? '' }} </h6>
-                                                <h6>{{ $chairperson[0]->email ?? '' }} </h6>
+
+
+
+                                                <?php
+                                                $email_address=$chairperson[0]->email;
+                                                $str = $email_address;
+                                                $var= str_replace('@','[at]',$str);
+                                                $email= str_replace('.','[dot]',$var);
+                                                 ?>
+
+
+                                                <h6>{{ $email ?? '' }} </h6>
                                         </div>
                                     </div>
                                 </div>
@@ -1450,6 +1454,7 @@
                                 <h5>
                                     <span>Events</span>
                                 </h5>
+
                                 <p>{!! $item[0]->event ?? '' !!}</p>
                             @endif
 
@@ -1458,23 +1463,20 @@
                                     <div class="row">
 
                                         @foreach ($data as $datas)
-
-                                         @if($datas->event != '' )
-
                                             <div class="col-md-4">
                                                 <div class="text-box">
                                                     <div class="text-b">
                                                         <p>
                                                             {!! $datas->event !!}
                                                         </p>
+
                                                     </div>
                                                     <div class="top-text"> {{ $datas->image_title ?? '' }} </div>
+
                                                 </div>
                                             </div>
-
-                                          @endif
-
                                         @endforeach
+
                                     </div>
                                 </div>
                             </div>
@@ -1492,7 +1494,7 @@
                                                 <div class="col-md-4">
 
                                                     <div class="multi-image-popup">
-                                                        <a href="{{ asset('uploads/multiple/club/' . $datas->image) ?? '' }}" class="image-link">
+                                                        <a href="#gallery-1" class="btn-gallery">
                                                             <img
                                                                 src="{{ asset('uploads/multiple/club/' . $datas->image) ?? '' }}" />
                                                         </a>
