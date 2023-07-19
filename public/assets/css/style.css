@@ -2244,6 +2244,16 @@ a {
         height: 300px !important;
     }
 
+
+    .designation h6 {
+        font-size: 15px;
+        padding-top: 3px;
+        text-overflow: ellipsis;
+        width: 295px;
+        white-space: nowrap;
+        overflow: hidden;
+    }
+
     .blog-newstyle-2 h3 {
         font-weight: 400;
         max-width: 967px;
