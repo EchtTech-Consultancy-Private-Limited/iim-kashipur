@@ -459,7 +459,7 @@ Route::post('/add_feedback',[InnerpageController::class,'add_feedback']);
 Route::get('/contact-us',[InnerpageController::class,'contact_page']);
 Route::post('/add_contact',[InnerpageController::class,'add_contact']);
  //gallery section
-Route::get('/Multi-image',[InnerpageController::class,'photo_multi_Innerpage']);
+Route::get('/multi-image',[InnerpageController::class,'photo_multi_Innerpage']);
 //video section
 Route::get('/multi-video',[InnerpageController::class,'video_multi_Innerpage']);
 //main menu inner page

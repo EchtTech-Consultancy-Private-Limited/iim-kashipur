@@ -33,7 +33,7 @@
     <div class="container">
         <table class="table table-striped">
             <tr>
-                <th>S.No</th>
+                <th>Sr.No</th>
                 <th>Published Date</th>
                 <th>Submission Date</th>
                 <th>Title</th>
