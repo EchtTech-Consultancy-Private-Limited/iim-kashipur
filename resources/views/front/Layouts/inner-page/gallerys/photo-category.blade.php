@@ -13,6 +13,7 @@ img.hover-shadow.cursor {
 .col-md-2.p-relative:not(:last-child) {
     padding-right: 3px;
 }
+
   </style>
 
 <link rel="stylesheet" href="{{asset('assets/csss/style.css')}}">
