@@ -7,9 +7,13 @@ img.hover-shadow.cursor {
     height: 135px !important;
 }
 
-.col-md-2.p-relative {
-    padding: 3px;
+.col-md-2.p-relative:not(:first-child) {
+    padding-left: 3px;
 }
+.col-md-2.p-relative:not(:last-child) {
+    padding-right: 3px;
+}
+
   </style>
 
 <link rel="stylesheet" href="{{asset('assets/csss/style.css')}}">
@@ -45,10 +49,10 @@ img.hover-shadow.cursor {
 
             <div class="container">
 
-            <a href="javascript:void(0)" class="btn2 margin_bottom mb-4"> <!-- Photo Gallery  --> {{ $item[0]->image_title }} </a><br>
+            <a href="javascript:void(0)" class="btn2 margin_bottom"> <!-- Photo Gallery  --> {{ $item[0]->image_title }} </a><br>
 
 
-               <div class="row mt-5 mb-4">
+               <div class="row mt-3">
                     @foreach($item as  $M)
                         <div class="col-md-2 p-relative mb-4">
                           <!-- Image text -->
@@ -85,7 +89,7 @@ img.hover-shadow.cursor {
 
           </div>
         </div>
-
+</section>
 
 @endsection
 
