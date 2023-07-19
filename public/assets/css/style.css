@@ -5502,17 +5502,10 @@ h2.life_kashipur {
     margin-left: 10px;
 }
 
-.active>.page-link, .page-link.active {
-    z-index: 3;
-    color: var(--bs-pagination-active-color);
-    background-color: #f03340 !important;
-    border-color: #f03340 !important;
-}
-
 .page-link {
     position: relative;
     display: block;
-    padding: var(--bs-pagination-padding-y) var(--bs-pagination-padding-x);
+    padding: var(--bs-pagination-padding-y) var(--bs-paginationgit -padding-x);
     font-size: var(--bs-pagination-font-size);
     color: #f03340 !important;
     text-decoration: none;
@@ -5521,6 +5514,15 @@ h2.life_kashipur {
 }
 
 
+.active>.page-link, .page-link.active {
+    z-index: 3;
+    color: #fff !important;
+    background-color: #f03340 !important;
+    border-color: #f03340 !important;
+}
+
+
 .excellence-gallery.partnership-img img {
     height: 200px;
 }
+
