@@ -1,19 +1,6 @@
 @extends('front.Layouts.master')
 
 @section('content')
-
-    <style>
-        .submit-btn-apply {
-            background: #0a66c2 !important;
-            border: 0;
-            color: #fff !important;
-            padding: 8px 30px !important;
-            margin: 0;
-            font-size: 1rem;
-            margin-left: 10px;
-        }
-    </style>
-
     @php
         $mmenu = @content_menus($type[0]->menu_id);
     @endphp

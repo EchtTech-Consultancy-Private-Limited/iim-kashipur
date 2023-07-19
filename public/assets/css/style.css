@@ -5491,3 +5491,36 @@ h2.life_kashipur {
 .pt-50 {
     padding-top: 60px;
 }
+
+.submit-btn-apply {
+    background: #f03340 !important;
+    border: 0;
+    color: #fff !important;
+    padding: 8px 30px !important;
+    margin: 0;
+    font-size: 1rem;
+    margin-left: 10px;
+}
+
+.active>.page-link, .page-link.active {
+    z-index: 3;
+    color: var(--bs-pagination-active-color);
+    background-color: #f03340 !important;
+    border-color: #f03340 !important;
+}
+
+.page-link {
+    position: relative;
+    display: block;
+    padding: var(--bs-pagination-padding-y) var(--bs-pagination-padding-x);
+    font-size: var(--bs-pagination-font-size);
+    color: #f03340 !important;
+    text-decoration: none;
+    background-color: var(--bs-pagination-bg);
+    border: 1px solid #f03340 !important;
+}
+
+
+.excellence-gallery.partnership-img img {
+    height: 200px;
+}
