@@ -40,14 +40,11 @@ class pagecontroller extends Controller
 
         $request->validate(
         [
-        'name'              =>        'required|string|max:200',
-        'name_h'             =>       'required|string|max:200',
-        'content'              =>     'required|string|min:100',
-        'contnet_h'             =>    'string|min:100',
+        'name'              =>        'required',
+        'name_h'             =>       'required',
         'imagename'          =>       'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         'bannerimage'       =>        'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         "file"            =>          "mimes:pdf|max:10000"
-
         ]
 
         );
@@ -153,8 +150,8 @@ class pagecontroller extends Controller
 
         $request->validate(
         [
-        'name'              =>      'required|string|max:200',
-        'name_h'             =>      'required|string|max:200',
+        'name'              =>      'required',
+        'name_h'             =>      'required',
         'imagename'          =>      'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         'bannerimage'       =>       'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         'pdf'                =>       "mimes:pdf|max:10000"

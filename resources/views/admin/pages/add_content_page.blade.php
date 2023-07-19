@@ -115,7 +115,7 @@
                                     </div>
                                 </div>
 
-                                
+
                                 <div class="col-md-12">
                                     <label for="inputText" class="col-sm-2 col-form-label">Meta Tittle*</label>
                                     <div class="col-sm-12">
@@ -134,7 +134,7 @@
                                     </div>
 
                                     <div class="col-md-12">
-                                    <label for="inputText" class="col-sm-2 col-form-label">Meta Keywords*</label>
+                                    <label for="inputText" class="col-sm-12 col-form-label">Meta Keywords*</label>
                                     <div class="col-sm-12">
                                         <textarea class="form-control" id="keyword" rows="4" name="keyword"
                                             placeholder="Please enter meta keywords, use for seo">{{ old('keyword') }}</textarea><br>
@@ -152,7 +152,7 @@
                                 </div>
 
                                 <div class="col-md-12">
-                                    <label for="inputText" class="col-sm-2 col-form-label">Meta Description*</label>
+                                    <label for="inputText" class="col-sm-12 col-form-label">Meta Description*</label>
                                     <div class="col-sm-12">
                                         <textarea class="form-control"  rows="4" name="description"
                                             placeholder="Please enter meta description, use for seo">{{ old('description') }}</textarea><br>
@@ -169,10 +169,10 @@
 
 
                                 <div class="col-md-12">
-                                    <label for="inputText" class="col-sm-2 col-form-label">Content Photo</label>
+                                    <label for="inputText" class="col-sm-12 col-form-label">Content Image</label>
                                     <div class="col-sm-12">
                                         <input type="file" class="form-control" name="imagename"
-                                            placeholder="Please browse content image"><br>
+                                            placeholder="Please browse content image" accept=".jpeg,.jpg,.gif,.png"><br>
 
                                             {{-- <label for="name" id="name-error" class="error">
                                                 @error('name')
@@ -185,7 +185,7 @@
                                 </div>
 
                                 <div class="col-md-12">
-                                    <label for="inputText" class="col-sm-2 col-form-label">Content title </label>
+                                    <label for="inputText" class="col-sm-12 col-form-label">Content image title </label>
                                     <div class="col-sm-12">
                                         <input type="text" class="form-control"name="cover_title"
                                             placeholder="Please enter text for title of content photo, use for seo"
@@ -203,7 +203,7 @@
 
 
                                 <div class="col-md-12">
-                                    <label for="inputText" class="col-sm-2 col-form-label">Content alt </label>
+                                    <label for="inputText" class="col-sm-12 col-form-label">Content image alt </label>
                                     <div class="col-sm-12">
                                         <input type="text" class="form-control"name="cover_alt"
                                             placeholder="Please enter text for title of content photo, use for seo"
@@ -221,7 +221,7 @@
 
 
                                 <div class="col-md-12">
-                                    <label for="inputText" class="col-sm-2 col-form-label">Banner Image</label>
+                                    <label for="inputText" class="col-sm-12 col-form-label">Banner Image</label>
                                     <div class="col-sm-12">
                                         <input type="file" class="form-control" name="bannerimage"
                                             placeholder="Please browse banner image" accept=".jpeg,.jpg,.gif,.png"><br>
@@ -239,7 +239,7 @@
                                 </div>
 
                                 <div class="col-md-12">
-                                    <label for="inputText" class="col-sm-2 col-form-label">Banner title </label>
+                                    <label for="inputText" class="col-sm-12 col-form-label">Banner title </label>
                                     <div class="col-sm-12">
                                         <input type="text" class="form-control" name="banner_title"
                                             placeholder="Please enter text for title of banner photo, use for seo"
@@ -258,7 +258,7 @@
 
 
                                 <div class="col-md-12">
-                                    <label for="inputText" class="col-sm-2 col-form-label">Banner Alt </label>
+                                    <label for="inputText" class="col-sm-12 col-form-label">Banner Alt </label>
                                     <div class="col-sm-12">
                                         <input type="text" class="form-control" name="banner_alt"
                                             placeholder="Please enter text for alt of banner photo, use for seo"
@@ -278,7 +278,7 @@
                                     <label for="inputText" class="col-sm-2 col-form-label">PDF File</label>
                                     <div class="col-sm-12">
                                         <input type="file" class="form-control" name="pdf"
-                                            placeholder="Please browse PDF file" accept=".jpeg,.jpg,.gif,.png"><br>
+                                            placeholder="Please browse PDF file" accept="application/pdf,application/vnd.ms-excel"><br>
 {{--
                                             <label for="name" id="name-error" class="error">
                                                 @error('name')

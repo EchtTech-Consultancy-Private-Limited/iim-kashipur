@@ -682,8 +682,6 @@
 
                                     </p>
 
-
-
                                 </div>
 
 
@@ -696,10 +694,12 @@
 
                                     @foreach ($item as $items )
 
-
+                                    @if($items->DESCRIPTION != '')
                                     <ul>
                                         <li>{!! $items->DESCRIPTION !!}</li>
                                     </ul>
+
+                                    @endif
 
                                     @endforeach
 
@@ -709,28 +709,46 @@
                                         </span>
                                     </h5>
 
-                                    <div class="excellence-gallery partnership-img">
-                                        <div class="row masonry-grid">
 
-                                              @foreach ($chairpersons as  $chairperson)
+                                    <div class="excellence-wrap back-img Activities gallery-member img-gallery mb-3 mt-4">
+                                        <div class="container">
+                                            <div class="row">
+                                                <div class="col-md-12 p-0">
+                                                    <div class="excellence-gallery partnership-img">
+                                                        <div class="row masonry-grid">
+                                                            @foreach ($chairpersons as  $chairperson)
 
-                                            <div class="col-md-4 col-lg-4">
-                                                <div class="d-flex flex-column h-100">
-                                                    <a href="http://localhost/kashipur-design1/public/gallery/image/1677405700.png" class="image-link">
-                                                        <div class="thumbnail p-relative">
-                                                            <img src="{{ asset('uploads/organisation/' .$chairperson->image)}}" alt="gallery-img" class="img-fluid" loading="lazy">
-                                                            <div class="top-text"></div>
+
+                                                                <div class="col-md-3 col-lg-3">
+                                                                    <div class="d-flex flex-column h-100">
+
+                                                                        <a href="{{ asset('uploads/organisation/' .$chairperson->image) ?? '' }}"
+                                                                            class="image-link">
+                                                                            <div class="thumbnail p-relative">
+                                                                                <img src="{{ asset('uploads/organisation/' .$chairperson->image) ?? '' }}"
+                                                                                    alt="gallery-img" class="img-fluid"
+                                                                                    loading="lazy">
+                                                                                <div class="top-text">
+                                                                                    {{ $chairperson->title  ??''}}
+                                                                                </div>
+                                                                            </div>
+                                                                        </a>
+
+                                                                    </div>
+                                                                </div>
+
+
+
+                                                            @endforeach
                                                         </div>
-                                                    </a>
+                                                    </div>
                                                 </div>
                                             </div>
-
-
-
-                                            @endforeach
-
                                         </div>
                                     </div>
+
+
+
 
                                     <h5 class="mt-4">
                                         <span>
@@ -738,15 +756,17 @@
                                         </span>
                                     </h5>
 
-
                                     @foreach ($item as $items )
 
-
+                                    @if($items->event != '')
                                     <ul>
                                         <li>{!! $items->event !!}</li>
                                     </ul>
 
+                                    @endif
+
                                     @endforeach
+
 
 
                                     <h5 class="mt-4">
@@ -761,10 +781,11 @@
 
                                            @foreach ($item as $items)
 
+                                           @if($items->image != '')
 
                                             <div class="col-md-4 col-lg-4">
                                                 <div class="d-flex flex-column h-100">
-                                                    <a href="http://localhost/kashipur-design1/public/gallery/image/1677405700.png" class="image-link">
+                                                    <a href="{{ asset('uploads/wellness/'.$items->image) ?? '' }}" class="image-link">
                                                         <div class="thumbnail p-relative">
                                                             <img src="{{ asset('uploads/wellness/'.$items->image) ?? '' }}" alt="gallery-img" class="img-fluid" loading="lazy">
                                                             <div class="top-text">{{ $items->image_title }}</div>
@@ -772,6 +793,8 @@
                                                     </a>
                                                 </div>
                                             </div>
+
+                                            @endif
 
                                             @endforeach
 
