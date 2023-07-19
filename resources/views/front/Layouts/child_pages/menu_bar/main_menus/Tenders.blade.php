@@ -61,6 +61,7 @@
         </table>
 
     </div>
+    {{ $item->links('pagination::bootstrap-5') }}
 </section>
 
 

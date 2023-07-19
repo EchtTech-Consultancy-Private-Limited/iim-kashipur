@@ -237,7 +237,7 @@
                                                 @foreach (GetchildMenusFront($gets[0]->menu_id, $S->id) as $key2 => $C)
                                                     @if (count(GetsubchildMenusFront($gets[0]->menu_id, $S->id, $C->id)) > 0)
                                                         <li class="hasnested">
-                                                            <a @if ($C->id == $gets[0]->id) class="active" @endif>
+                                                            <a @if ($C->id == $type[0]->id) class="active" @endif>
                                                                 @if (GetLang() == 'en')
                                                                     {{ $C->name ?? '' }}
                                                                 @else
@@ -1305,6 +1305,9 @@
                                     <div class="row">
 
                                         @foreach ($data as $datas)
+
+                                         @if($datas->event != '' )
+
                                             <div class="col-md-4">
                                                 <div class="text-box">
                                                     <div class="text-b">
@@ -1317,6 +1320,7 @@
 
                                                 </div>
                                             </div>
+                                         @endif
                                         @endforeach
 
                                     </div>

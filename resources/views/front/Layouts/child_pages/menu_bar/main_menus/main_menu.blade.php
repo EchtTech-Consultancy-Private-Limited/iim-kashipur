@@ -298,7 +298,7 @@
                                                 @foreach (GetchildMenusFront($type[0]->menu_id, $S->id) as $key2 => $C)
                                                     @if (count(GetsubchildMenusFront($type[0]->menu_id, $S->id, $C->id)) > 0)
                                                         <li class="hasnested">
-                                                            <a @if ($C->id == $type[0]->id) class="active" @endif>
+                                                            <a @if ($C->id == $get[0]->id) class="active" @endif>
                                                                 @if (GetLang() == 'en')
                                                                     {{ $C->name ?? '' }}
                                                                 @else
@@ -474,7 +474,7 @@
                         @else
                             <div class="commontxt">
                                 <div class="row">
-                                    <div class="col-md-12 col-lg-12">
+                                    <div class="col-md-13 col-lg-12">
                                         <p>
                                             @if (GetLang() == 'en')
                                                 {!! $item[0]->content !!}
@@ -506,7 +506,9 @@
                         @foreach (GetSubMenusFront($gets[0]->menu_id) as $key1 => $S)
                             <ul>
 
+                                {{ $get[0]->id }}
                                 @if (count(GetchildMenusFront($gets[0]->menu_id, $S->id)) > 0)
+
                                     <li class="hasnested"><a @if ($S->id == $gets[0]->id) class="active" @endif>
                                             @if (GetLang() == 'en')
                                                 {{ $S->name ?? '' }}
@@ -528,9 +530,10 @@
                                         {{-- child menu --}}
                                         <ul>
                                             @foreach (GetchildMenusFront($gets[0]->menu_id, $S->id) as $key2 => $C)
+
                                                 @if (count(GetsubchildMenusFront($gets[0]->menu_id, $S->id, $C->id)) > 0)
                                                     <li class="hasnested">
-                                                        <a @if ($C->id == $gets[0]->id) class="active" @endif>
+                                                        <a @if ($C->id == $get[0]->id) class="active" @endif>
                                                             @if (GetLang() == 'en')
                                                                 {{ $C->name ?? '' }}
                                                             @else
@@ -757,7 +760,7 @@
                                     @else
                                         <div class="commontxt">
                                             <div class="row">
-                                                <div class="col-md-12 col-lg-12">
+                                                <div class="col-md-13 col-lg-12">
                                                     <p>
                                                         @if (GetLang() == 'en')
                                                             {!! $item[0]->content !!}
@@ -788,9 +791,12 @@
 
                     <div class="sidebarwraper">
 
+
+
                         @foreach (GetSubMenusFront($type[0]->menu_id) as $key1 => $S)
                             <ul>
                                 @if (count(GetchildMenusFront($type[0]->menu_id, $S->id)) > 0)
+
                                     <li class="hasnested"><a @if ($S->id == $type[0]->id) class="active" @endif>
                                             @if (GetLang() == 'en')
                                                 {{ $S->name ?? '' }}
@@ -997,7 +1003,7 @@
                                         <div class="commontxt">
                                             <div class="row">
 
-                                                <div class="col-md-12 col-lg-12">
+                                                <div class="col-md-13 col-lg-12">
 
                                                     <p>
 
@@ -1056,7 +1062,7 @@
                                 </span></h3>
                             <div class="commontxt">
                                 <div class="row">
-                                    <div class="col-md-12 col-lg-12">
+                                    <div class="col-md-13 col-lg-12">
                                         <p>
                                             @if (GetLang() == 'en')
                                                 {!! $item[0]->content !!}
@@ -1097,7 +1103,7 @@
                                 </span></h3>
                             <div class="commontxt">
                                 <div class="row">
-                                    <div class="col-md-12 col-lg-12">
+                                    <div class="col-md-13 col-lg-12">
                                         <p>
                                             @if (GetLang() == 'en')
                                                 {!! $org[0]->description !!}

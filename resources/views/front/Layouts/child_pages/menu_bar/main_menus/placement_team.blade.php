@@ -2,17 +2,6 @@
 
 @section('content')
 
-    <style>
-        .submit-btn-apply {
-            background: #0a66c2 !important;
-            border: 0;
-            color: #fff !important;
-            padding: 8px 30px !important;
-            margin: 0;
-            font-size: 1rem;
-            margin-left: 10px;
-        }
-    </style>
 
     @php
         $mmenu = @content_menus($type[0]->menu_id);
@@ -209,6 +198,7 @@
     @endif
 
 
+
     @if (isset($get))
 
 
@@ -248,7 +238,7 @@
                                                 @foreach (GetchildMenusFront($gets[0]->menu_id, $S->id) as $key2 => $C)
                                                     @if (count(GetsubchildMenusFront($gets[0]->menu_id, $S->id, $C->id)) > 0)
                                                         <li class="hasnested">
-                                                            <a @if ($C->id == $gets[0]->id) class="active" @endif>
+                                                            <a @if ($C->id == $type[0]->id) class="active" @endif>
                                                                 @if (GetLang() == 'en')
                                                                     {{ $C->name ?? '' }}
                                                                 @else
@@ -260,11 +250,12 @@
                                                                         <path d="M19 13H5a1 1 0 0 1 0-2h14a1 1 0 0 1 0 2z"
                                                                             data-name="minus" />
                                                                     </g>
-                                                                </svg><svg viewBox="0 0 24 24" class="plus internal-menu-plus">
+                                                                </svg><svg viewBox="0 0 24 24"
+                                                                    class="plus internal-menu-plus">
                                                                     <path
                                                                         d="M19,11H13V5a1,1,0,0,0-2,0v6H5a1,1,0,0,0,0,2h6v6a1,1,0,0,0,2,0V13h6a1,1,0,0,0,0-2Z" />
                                                                 </svg>
-                                                                </a>
+                                                            </a>
                                                             <ul>
                                                                 @foreach (GetsubchildMenusFront($gets[0]->menu_id, $S->id, $C->id) as $k => $D)
                                                                     @if ($D->external == 'yes')
@@ -376,134 +367,189 @@
 
 
 
-    <div class="col-md-9">
-        @if (collect($item)->isEmpty())
-            {{-- remember that $contact is your variable --}}
-            <div class="alert alert-success" role="alert">
-                <h4 class="alert-heading">something went wrong </h4>
-                <p>Data Not Found</p>
 
-            </div>
-        @else
+    @if (collect($item)->isEmpty())
+        {{-- remember that $contact is your variable --}}
+
+        <div class="alert alert-success" role="alert">
+
+            <h4 class="alert-heading">something went wrong </h4>
+
+            <p>Data Not Found</p>
+
+
+
+        </div>
+    @else
+        <div class="col-md-9">
+
             <div class="innerpagecontent">
-                <h3>
-                    <span>Club, Committee and Cells</span>
-                </h3>
-                <div class="commontxt">
-                    <div class="row">
+                {{--
+                        <h4 class="hp-4"> @if (GetLang() == 'en') {{ $type[0]->name ?? '' }}  @else {{ $type[0]->name_h ?? '' }}  @endif</h4> --}}
 
-                        <div class="col-md-12 col-lg-12">
-                            <h3 class="user-icon">
-                                <span><i class="fa fa-users"></i> Clubs</span>
-                            </h3>
-                        </div>
+                {{-- <a href="javascript:void(0)" class="btn2">The Team
+                            @if (GetLang() == 'en')
+                                {{ $type[0]->name ?? '' }}
+                            @else
+                                {{ $type[0]->name_h ?? '' }}
+                            @endif
+                        </a> --}}
 
-                        <div class="col-md-6 mt-4 pr-lg-0">
-                            <h2 class="heading-light h-club-box">
-                                ACADEMIC CLUBS
-                            </h2>
-                            <div class="border-club-left">
-                                <div class="box-club">
-                                    @foreach ($data as $items)
-                                        @if ($items->type == '0')
-                                            <div class="box-content">
-                                                <img src="{{ asset('uploads/club/' . $items->image) ?? '' }}"
-                                                    title="Club img" alt="club">
-                                                <h4 class="box-text"> <a
-                                                        href="{{ url($items->slug) }}">{{ $items->title }}</a> </h4>
-                                            </div>
+                <h4 class="hp-4">
+                    @if (GetLang() == 'en')
+                        {{ $type[0]->name ?? '' }}
+                    @else
+                        {{ $type[0]->name_h ?? '' }}
+                    @endif
+                </h4>
+                <a href="javascript:void(0)" class="btn2"> THE TEAM </a>
+
+
+
+
+
+
+                @foreach ($item as $items)
+                    @if ($items->department == '8')
+                        <div class="row mt-4">
+
+                            <div class="col-md-3">
+
+                                <div class="addevent-box top text-center mt-0">
+
+                                    <div class="profile-img">
+
+                                        <img src="{{ asset('uploads/organisation/' . $items->image) ?? '' }}"
+                                            alt="{{ $items->title }}" title="{{ $items->title }}">
+
+                                    </div>
+
+                                    <h5>
+                                        @if (GetLang() == 'en')
+                                            {{ $items->title ?? '' }}
+                                        @else
+                                            {{ $items->title_h ?? '' }}
                                         @endif
-                                    @endforeach
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="col-md-6 mt-4 pl-lg-0">
-                            <h2 class="heading-light h-club-box">
-                                NON-ACADEMIC CLUBS
-                            </h2>
-                            <div class="border-club-right">
-                                <div class="box-club">
-
-                                    @foreach ($data as $items)
-                                        @if ($items->type == '1')
-                                            <div class="box-content">
-                                                <img src="{{ asset('uploads/club/' . $items->image) ?? '' }}"
-                                                    title="Club img" alt="club">
-                                                <h4 class="box-text"> <a
-                                                        href="{{ url($items->slug) }}">{{ $items->title }}</a> </h4>
-                                            </div>
+                                    </h5>
+                                    <h6>
+                                        @if (GetLang() == 'en')
+                                            {{ $items->designation ?? '' }}
+                                        @else
+                                            {{ $items->designation_h ?? '' }}
                                         @endif
-                                    @endforeach
-                                </div>
-                            </div>
-                        </div>
+                                    </h6>
 
 
-                        <div class="col-md-12 col-lg-12 mt-5 pt-4">
-                            <h3 class="user-icon">
-                                <span><i class="fa fa-users"></i> Committee</span>
-                            </h3>
-                        </div>
 
-                        <div class="col-md-12 mt-2">
+                                    <div class="profile-socail-icon information">
 
-                            <div class="border-club">
-                                <div class="box-club single">
+                                        <a href="javascript:void(0)" class="socail-icon"><i
+                                                class="fab fa fa-facebook-f"></i></a>
 
-                                    @foreach ($data1 as $item1)
-                                        <div class="box-content width-5">
-                                            <img src="{{ asset('uploads/Commmittee/' . $item1->image) ?? '' }}"
-                                                title="Club img" alt="club">
-                                            <h4 class="box-text"> <a
-                                                    href="{{ url($item1->slug) }}">{{ $item1->title }}</a> </h4>
-                                        </div>
-                                    @endforeach
+                                        <a href="javascript:void(0)" class="socail-icon"><i
+                                                class="fab fa fa-twitter"></i></a>
 
+
+
+                                    </div>
 
                                 </div>
+
                             </div>
-                        </div>
 
 
-                        <div class="col-md-12 col-lg-12 mt-5 pt-4">
-                            <h3 class="user-icon">
-                                <span><i class="fa fa-users"></i> Cells</span>
-                            </h3>
-                        </div>
 
-                        <div class="col-md-12 mt-2">
 
-                            <div class="border-club">
-                                <div class="box-club single">
 
-                                    @foreach ($data2 as $item2)
-                                        <div class="box-content width-5">
-                                            <img src="{{ asset('uploads/cell/' . $item2->image) ?? '' }}" title="Club img"
-                                                alt="club">
-                                            <h4 class="box-text"> <a
-                                                    href="{{ url($item2->slug) }}">{{ $item2->title }}</a> </h4>
-                                        </div>
-                                    @endforeach
 
-                                </div>
+                            <div class="col-md-7 col-lg-8">
+
+                                <p>
+                                    @if (GetLang() == 'en')
+                                        {!! $items->description ?? '' !!}
+                                    @else
+                                        {!! $items->description_h ?? '' !!}
+                                    @endif
+                                </p>
                             </div>
-                        </div>
-                    </div>
+                    @endif
+                @endforeach
 
-                </div>
 
             </div>
-    </div>
+
+        </div>
+
+
+
+
+
+        <a href="javascript:void(0)" class="btn2 margin_top margin_bottom">SENIOR MEMBERS</a><br><br>
+
+        <div class="profilewithinfo">
+
+
+
+            <div class="row">
+
+                @foreach ($item as $items)
+                    @if ($items->department == '9')
+                        <div class="col-6 col-lg-4 col-xxl-3 mb-4">
+
+                            <div class="profilewraper">
+
+                                <figure><img src="{{ asset('uploads/organisation/' . $items->image) ?? '' }}"
+                                        alt="{{ $items->title ?? '' }}" title="{{ $items->title ?? '' }}">
+                                </figure><br>
+
+                                <h4>
+                                    @if (GetLang() == 'en')
+                                        {{ $items->title ?? '' }}
+                                    @else
+                                        {{ $items->title_h ?? '' }}
+                                    @endif
+                                </h4>
+
+                                @if (GetLang() == 'en')
+                                    {{ $items->designation ?? '' }}
+                                @else
+                                    {{ $items->designation_h ?? '' }}
+                                @endif
+
+                            </div>
+
+                        </div>
+                    @endif
+                @endforeach
+
+            </div>
+
+
+
+        </div>
+
+
+        </div>
+
+        </div>
+
+        </div>
     @endif
+
     </div>
+
+    </div>
+
     </section>
 
-    {{-- ------------------------------------------- Sub menu page content   ---------------------------------------------------  --}}
+    {{-- -------------------------------------- sub menu content --------------------------------------------- --}}
 @elseif(isset($sub_menu))
     <section class="withsidebar-wrap ptb-60">
+
         <div class="container">
+
             <div class="row">
+
                 <div class="col-md-3">
 
                     <div class="sidebarwraper">
@@ -540,17 +586,16 @@
                                                                 {{ $C->name_h ?? '' }}
                                                             @endif
 
-
                                                             <svg class="minus internal-menu-minus" viewBox="0 0 24 24">
                                                                 <g data-name="Layer 2">
                                                                     <path d="M19 13H5a1 1 0 0 1 0-2h14a1 1 0 0 1 0 2z"
                                                                         data-name="minus" />
                                                                 </g>
-                                                            </svg><svg viewBox="0 0 24 24" class="plus internal-menu-plus">
+                                                            </svg><svg viewBox="0 0 24 24"
+                                                                class="plus internal-menu-plus">
                                                                 <path
                                                                     d="M19,11H13V5a1,1,0,0,0-2,0v6H5a1,1,0,0,0,0,2h6v6a1,1,0,0,0,2,0V13h6a1,1,0,0,0,0-2Z" />
                                                             </svg>
-
                                                         </a>
                                                         <ul>
                                                             @foreach (GetsubchildMenusFront($type[0]->menu_id, $S->id, $C->id) as $k => $D)
@@ -663,341 +708,395 @@
 
                 </div>
 
-                @if (collect($data)->isEmpty())
+
+
+                @if (collect($item)->isEmpty())
                     {{-- remember that $contact is your variable --}}
+
                     <div class="alert alert-success" role="alert">
+
                         <h4 class="alert-heading">something went wrong </h4>
+
                         <p>Data Not Found</p>
 
                     </div>
                 @else
                     <div class="col-md-9">
+
                         <div class="innerpagecontent">
-                            <h3>
-                                <span>PUBLICATIONS</span>
-                            </h3>
-                            <div class="commontxt">
-                                <div class="row">
 
-                                    <div class="col-md-12 col-lg-12">
-                                        <form action="{{ url('/research/journal-publications') }}" method="get">
-                                        <div class="d-flex">
+                            <h4 class="hp-4">
+                                @if (GetLang() == 'en')
+                                    {{ $type[0]->name ?? '' }}
+                                @else
+                                    {{ $type[0]->name_h ?? '' }}
+                                @endif
+                            </h4>
+                            <a href="javascript:void(0)" class="btn2">
+                                @if (GetLang() == 'en')
+                                    {{ $type[0]->name ?? '' }}
+                                @else
+                                    {{ $type[0]->name_h ?? '' }}
+                                @endif
+                            </a>
 
-                                            <select class="form-control" style="width: 100px;" name="year">
-                                                <option value="">--Year--</option>
-                                                @for ($i=2011; $i<= date('Y'); $i++)
-                                                <option value="{{ $i }}" {{ (request('year') == $i)?'selected':'' }}> {{ $i }}</option>
-                                                @endfor
-                                            </select>
+                            @foreach ($item as $items)
+                                @if ($items->department == '11')
+                                    <div class="row mt-4">
 
-                                            <button type="submit" class="btn btn-info submit-btn-apply">Apply</button>
+                                        <div class="col-md-3">
+
+                                            <div class="addevent-box top text-center mt-0">
+
+                                                <div class="profile-img">
+
+                                                    <img src="{{ asset('uploads/organisation/' . $items->image) ?? '' }}"
+                                                        alt="{{ $items->title }}" title="{{ $items->title }}">
+
+                                                </div>
+
+                                                <h5>
+                                                    @if (GetLang() == 'en')
+                                                        {{ $items->title ?? '' }}
+                                                    @else
+                                                        {{ $items->title_h ?? '' }}
+                                                    @endif
+                                                </h5>
+                                                <h6>
+                                                    @if (GetLang() == 'en')
+                                                        {{ $items->designation ?? '' }}
+                                                    @else
+                                                        {{ $items->designation_h ?? '' }}
+                                                    @endif
+                                                </h6>
+
+
+
+                                                <div class="profile-socail-icon information">
+
+                                                    <a href="javascript:void(0)" class="socail-icon"><i
+                                                            class="fab fa fa-facebook-f"></i></a>
+
+                                                    <a href="javascript:void(0)" class="socail-icon"><i
+                                                            class="fab fa fa-twitter"></i></a>
+
+
+
+                                                </div>
+
+                                            </div>
 
                                         </div>
-                                    </form>
 
 
-                                    </div>
-
-                                    <div class="col-md-12">
-
-                                        <table>
-                                            <tbody>
-                                                <tr>
-                                                    <th>S.NO</th>
-                                                    <th>TITLE</th>
-                                                </tr>
-
-                                                 @foreach ($item as $K=>$items)
-                                                <tr>
-                                                    <td>{{ $K+1  ??''}}</td>
-                                                    <td> <a   @if($items->external=='yes')  onclick="return confirm('Are you sure  external window open?')"                                                       target="_blank" href="{{url($items->url)}}" @else href="{{url ('journal/'.dEncrypt($items->id)) }}"                                                       @endif  class="text-black"> {{ $items->title  ??''}} </a> </td>
-                                                </tr>
-
-                                         @endforeach
 
 
-                                            </tbody>
-                                        </table>
 
-                                    </div>
 
-                                </div>
-                            </div>
+                                        <div class="col-md-7 col-lg-8">
+
+                                            <p>
+                                                @if (GetLang() == 'en')
+                                                    {!! $items->description ?? '' !!}
+                                                @else
+                                                    {!! $items->description_h ?? '' !!}
+                                                @endif
+                                            </p>
+                                        </div>
+                                @endif
+                            @endforeach
+
+
                         </div>
+
                     </div>
-                @endif
+
+
+                    <a href="javascript:void(0)" class="btn2 margin_top margin_bottom">Administrative</a><br><br>
+
+                    <div class="profilewithinfo">
+
+                        <div class="row">
+
+                            @foreach ($item as $items)
+                                @if ($items->department == '12')
+                                    <div class="col-6 col-lg-4 col-xxl-3 mb-4">
+
+                                        <div class="profilewraper">
+
+                                            <figure><img src="{{ asset('uploads/organisation/' . $items->image) ?? '' }}"
+                                                    alt="{{ $items->title ?? '' }}" title="{{ $items->title ?? '' }}">
+                                            </figure><br>
+
+                                            <h4>
+                                                @if (GetLang() == 'en')
+                                                    {{ $items->title ?? '' }}
+                                                @else
+                                                    {{ $items->title_h ?? '' }}
+                                                @endif
+                                            </h4>
+
+                                            @if (GetLang() == 'en')
+                                                {{ $items->designation ?? '' }}
+                                            @else
+                                                {{ $items->designation_h ?? '' }}
+                                            @endif
+
+                                        </div>
+
+                                    </div>
+                                @endif
+                            @endforeach
+
+                        </div>
+
+
+
+                    </div>
+
+                    {{-- new section  --}}
+                    <a href="javascript:void(0)" class="btn2 margin_top margin_bottom">Student Coordinator</a><br><br>
+
+                    <div class="profilewithinfo">
+
+                        <div class="row">
+
+                            @foreach ($item as $items)
+                                @if ($items->department == '13')
+                                    <div class="col-6 col-lg-4 col-xxl-3 mb-4">
+
+                                        <div class="profilewraper">
+
+                                            <figure><img src="{{ asset('uploads/organisation/' . $items->image) ?? '' }}"
+                                                    alt="{{ $items->title ?? '' }}" title="{{ $items->title ?? '' }}">
+                                            </figure><br>
+
+                                            <h4>
+                                                @if (GetLang() == 'en')
+                                                    {{ $items->title ?? '' }}
+                                                @else
+                                                    {{ $items->title_h ?? '' }}
+                                                @endif
+                                            </h4>
+
+                                            @if (GetLang() == 'en')
+                                                {{ $items->designation ?? '' }}
+                                            @else
+                                                {{ $items->designation_h ?? '' }}
+                                            @endif
+
+                                        </div>
+
+                                    </div>
+                                @endif
+                            @endforeach
+
+                        </div>
+
+
+
+                    </div>
+
+
+
             </div>
+
         </div>
+
+        </div>
+        @endif
+
+        </div>
+
+        </div>
+
     </section>
 @else
     <section class="withsidebar-wrap ptb-60">
+
+
+
         <div class="container">
+
             <div class="row">
 
-                @if (collect($item)->isEmpty())
-                    {{-- remember that $contact is your variable --}}
-                    <div class="alert alert-success" role="alert">
-                        <h4 class="alert-heading">something went wrong </h4>
-                        <p>Data Not Found</p>
-
-                    </div>
-                @else
-                    <div class="col-md-11">
-                        <div class="innerpagecontent">
-                            <h3>
-                                <span>Club, Committee and Cells</span>
-                            </h3>
-                            <div class="commontxt">
-                                <div class="row">
-
-                                    <div class="col-md-12 col-lg-12">
-                                        <h3 class="user-icon">
-                                            <span><i class="fa fa-users"></i> Clubs</span>
-                                        </h3>
-                                    </div>
-
-                                    <div class="col-md-6 mt-4 pr-lg-0">
-                                        <h2 class="heading-light h-club-box">
-                                            ACADEMIC CLUBS
-                                        </h2>
-                                        <div class="border-club-left">
-                                            <div class="box-club">
-                                                @foreach ($data as $items)
-                                                    @if ($items->type == '0')
-                                                        <div class="box-content">
-                                                            <img src="{{ asset('uploads/club/' . $items->image) ?? '' }}"
-                                                                title="Club img" alt="club">
-                                                            <h4 class="box-text"> <a
-                                                                    href="{{ url($items->slug) }}">{{ $items->tittle ?? '' }}</a>
-                                                            </h4>
-                                                        </div>
-                                                    @endif
-                                                @endforeach
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="col-md-6 mt-4 pl-lg-0">
-                                        <h2 class="heading-light h-club-box">
-                                            NON-ACADEMIC CLUBS
-                                        </h2>
-                                        <div class="border-club-right">
-                                            <div class="box-club">
-
-                                                @foreach ($data as $items)
-                                                    @if ($items->type == '1')
-                                                        <div class="box-content">
-                                                            <img src="{{ asset('uploads/club/' . $items->image) ?? '' }}"
-                                                                title="Club img" alt="club">
-                                                            <h4 class="box-text"> <a
-                                                                    href="{{ url($items->slug) }}">{{ $items->title ?? '' }}</a>
-                                                            </h4>
-                                                        </div>
-                                                    @endif
-                                                @endforeach
-                                            </div>
-                                        </div>
-                                    </div>
-
-
-                                    <div class="col-md-12 col-lg-12 mt-5 pt-4">
-                                        <h3 class="user-icon">
-                                            <span><i class="fa fa-users"></i> Committee</span>
-                                        </h3>
-                                    </div>
-
-                                    <div class="col-md-12 mt-2">
-
-                                        <div class="border-club">
-                                            <div class="box-club single">
-
-                                                @foreach ($data1 as $item1)
-                                                    <div class="box-content width-5">
-                                                        <img src="{{ asset('uploads/Commmittee/' . $item1->image) ?? '' }}"
-                                                            title="Club img" alt="club">
-                                                        <h4 class="box-text"> <a
-                                                                href="{{ url($item1->slug) }}">{{ $item1->title ?? '' }}</a>
-                                                        </h4>
-                                                    </div>
-                                                @endforeach
-
-
-                                            </div>
-                                        </div>
-                                    </div>
-
-
-                                    <div class="col-md-12 col-lg-12 mt-5 pt-4">
-                                        <h3 class="user-icon">
-                                            <span><i class="fa fa-users"></i> Cells</span>
-                                        </h3>
-                                    </div>
-
-                                    <div class="col-md-12 mt-2">
-
-                                        <div class="border-club">
-                                            <div class="box-club single">
-
-                                                @foreach ($data2 as $item2)
-                                                    <div class="box-content width-5">
-                                                        <img src="{{ asset('uploads/cell/' . $item2->image) ?? '' }}"
-                                                            title="Club img" alt="club">
-                                                        <h4 class="box-text"> <a
-                                                                href="{{ url($item2->slug) }}">{{ $item2->title ?? '' }}</a>
-                                                        </h4>
-                                                    </div>
-                                                @endforeach
-
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                            </div>
-
-                        </div>
-                    </div>
-                @endif
-            </div>
-        </div>
-    </section>
-
-
-    @endif
-
-@endsection
-
-
-
-{{--
-<section class="withsidebar-wrap ptb-60">
-
-    <div class="container">
-
-        <div class="row">
-
-            <div class="col-md-3">
+                {{-- <div class="col-md-3">
 
                 <div class="sidebarwraper">
 
+                    <ul>
+                    @foreach (content_menus() as $key => $S)
 
+                        @if ($S->external == 'yes')
+                          <li><a href="{{ url($S->url) }}" onclick="return confirm('Are you sure  external window open?')" target="_blank">  @if (GetLang() == 'en') {{ $S->name  ?? ''}}  @else {{ $S->name_h  ?? ''}}  @endif </a></li>
+                         @elseif($S->external=='no')
+                           <li><a href="{{ url($S->url) }}">  @if (GetLang() == 'en') {{ $S->name  ?? ''}}  @else {{ $S->name_h  ?? ''}}  @endif </a></li>
+                        @else
+                          <li><a href="{{ url($S->slug) }}" @if ($S->id == $type[0]->id) class="active" @endif>  @if (GetLang() == 'en') {{ $S->name  ?? ''}}  @else {{ $S->name_h  ?? ''}}  @endif  </a></li>
+                        @endif
 
+                        @endforeach
 
-
-
-
-
+                    </ul>
                 </div>
 
-            </div>
+            </div> --}}
 
-            <div class="col-md-9">
-                <div class="innerpagecontent">
-                    <h3>
-                        <span>Club, Committee and Cells</span>
-                    </h3>
-                    <div class="commontxt">
-                        <div class="row">
 
-                            <div class="col-md-12 col-lg-12">
-                                <h3 class="user-icon">
-                                    <span><i class="fa fa-users"></i> Clubs</span>
-                                </h3>
-                            </div>
 
-                            <div class="col-md-6 mt-4 pr-lg-0">
-                                <h2 class="heading-light h-club-box">
-                                    ACADEMIC CLUBS
-                                </h2>
-                                <div class="border-club-left">
-                                    <div class="box-club">
-                                        @foreach ($data as $items)
-                                     @if ($items->club_type == '0')
-                                            <div class="box-content">
-                                                <img src="{{ asset('uploads/club/'.$items->club_image) ?? '' }}"
-                                                    title="Club img" alt="club">
-                                                <h4 class="box-text"> <a href="#">{{ $items->club_name }}</a> </h4>
+                @if (collect($item)->isEmpty())
+                    {{-- remember that $contact is your variable --}}
+
+                    <div class="alert alert-success" role="alert">
+
+                        <h4 class="alert-heading">something went wrong </h4>
+
+                        <p>Data Not Found</p>
+
+
+
+                    </div>
+                @else
+                    <div class="col-md-12">
+
+                        <div class="innerpagecontent">
+
+                            <h4 class="hp-4">
+                                @if (GetLang() == 'en')
+                                    {{ $type[0]->name ?? '' }}
+                                @else
+                                    {{ $type[0]->name_h ?? '' }}
+                                @endif
+                            </h4>
+                            <a href="javascript:void(0)" class="btn2"> THE TEAM </a>
+
+                            @foreach ($item as $items)
+                                @if ($items->department == '8')
+                                    <div class="row mt-4">
+
+                                        <div class="col-md-3">
+
+                                            <div class="addevent-box top text-center mt-0">
+
+                                                <div class="profile-img">
+
+                                                    <img src="{{ asset('uploads/organisation/' . $items->image) ?? '' }}"
+                                                        alt="{{ $items->title }}" title="{{ $items->title }}">
+
+                                                </div>
+
+                                                <h5>
+                                                    @if (GetLang() == 'en')
+                                                        {{ $items->title ?? '' }}
+                                                    @else
+                                                        {{ $items->title_h ?? '' }}
+                                                    @endif
+                                                </h5>
+                                                <h6>
+                                                    @if (GetLang() == 'en')
+                                                        {{ $items->designation ?? '' }}
+                                                    @else
+                                                        {{ $items->designation_h ?? '' }}
+                                                    @endif
+                                                </h6>
+
+
+
+                                                <div class="profile-socail-icon information">
+
+                                                    <a href="javascript:void(0)" class="socail-icon"><i
+                                                            class="fab fa fa-facebook-f"></i></a>
+
+                                                    <a href="javascript:void(0)" class="socail-icon"><i
+                                                            class="fab fa fa-twitter"></i></a>
+
+
+
+                                                </div>
+
                                             </div>
-                                      @endif
-                                        @endforeach
-                                    </div>
-                                </div>
-                            </div>
 
-                            <div class="col-md-6 mt-4 pl-lg-0">
-                                <h2 class="heading-light h-club-box">
-                                    NON-ACADEMIC CLUBS
-                                </h2>
-                                <div class="border-club-right">
-                                    <div class="box-club">
-
-                                        @foreach ($data as $items)
-                                        @if ($items->club_type == '1')
-                                            <div class="box-content">
-                                                <img src="{{ asset('uploads/club/'.$items->club_image) ?? '' }}"
-                                                    title="Club img" alt="club">
-                                                <h4 class="box-text"> <a href="#">{{ $items->club_name }}</a> </h4>
-                                            </div>
-                                          @endif
-                                        @endforeach
-                                    </div>
-                                </div>
-                            </div>
+                                        </div>
 
 
-                            <div class="col-md-12 col-lg-12 mt-5 pt-4">
-                                <h3 class="user-icon">
-                                    <span><i class="fa fa-users"></i> Committee</span>
-                                </h3>
-                            </div>
+                                        <div class="col-md-7 col-lg-8">
 
-                            <div class="col-md-12 mt-2">
-
-                                <div class="border-club">
-                                    <div class="box-club single">
-
-                                        @foreach ($data1 as $item1)
-                                            <div class="box-content width-5">
-                                                <img src="{{ asset('uploads/Commmittee/'.$item1->Commmittee_image)??''}}"
-                                                    title="Club img" alt="club">
-                                                <h4 class="box-text"> <a href="#">{{ $item1->Commmittee_name }}</a> </h4>
-                                            </div>
-                                        @endforeach
+                                            <p>
+                                                @if (GetLang() == 'en')
+                                                    {!! $items->description ?? '' !!}
+                                                @else
+                                                    {!! $items->description_h ?? '' !!}
+                                                @endif
+                                            </p>
+                                        </div>
+                                @endif
+                            @endforeach
 
 
-                                    </div>
-                                </div>
-                            </div>
-
-
-                            <div class="col-md-12 col-lg-12 mt-5 pt-4">
-                                <h3 class="user-icon">
-                                    <span><i class="fa fa-users"></i> Cells</span>
-                                </h3>
-                            </div>
-
-                            <div class="col-md-12 mt-2">
-
-                                <div class="border-club">
-                                    <div class="box-club single">
-
-                                        @foreach ($data2 as $item2)
-                                            <div class="box-content width-5">
-                                                <img src="{{ asset('uploads/cell/'.$item2->Cell_image) ?? '' }}"
-                                                    title="Club img" alt="club">
-                                                <h4 class="box-text"> <a href="#">{{ $item2->Cell_name }}</a> </h4>
-                                            </div>
-                                        @endforeach
-
-                                    </div>
-                                </div>
-                            </div>
                         </div>
 
                     </div>
 
-                </div>
+
+
+
+
+                    <a href="javascript:void(0)" class="btn2 margin_top margin_bottom">SENIOR MEMBERS</a><br><br>
+
+                    <div class="profilewithinfo">
+
+
+
+                        <div class="row">
+
+                            @foreach ($item as $items)
+                                @if ($items->department == '9')
+                                    <div class="col-6 col-lg-4 col-xxl-3 mb-4">
+
+                                        <div class="profilewraper">
+
+                                            <figure><img src="{{ asset('uploads/organisation/' . $items->image) ?? '' }}"
+                                                    alt="{{ $items->title ?? '' }}" title="{{ $items->title ?? '' }}">
+                                            </figure><br>
+
+                                            <h4>
+                                                @if (GetLang() == 'en')
+                                                    {{ $items->title ?? '' }}
+                                                @else
+                                                    {{ $items->title_h ?? '' }}
+                                                @endif
+                                            </h4>
+                                            @if (GetLang() == 'en')
+                                                {{ $items->designation ?? '' }}
+                                            @else
+                                                {{ $items->designation_h ?? '' }}
+                                            @endif
+
+                                        </div>
+
+                                    </div>
+                                @endif
+                            @endforeach
+
+                        </div>
+
+
+
+                    </div>
+
             </div>
+
         </div>
-    </div>
-</section> --}}
+        @endif
+
+        </div>
+
+        </div>
+
+    </section>
+    @endif
+
+
+
+
+@endsection

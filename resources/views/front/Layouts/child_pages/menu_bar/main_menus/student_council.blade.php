@@ -7,8 +7,6 @@
         $mmenu = @content_menus($type[0]->menu_id);
     @endphp
 
-
-
     {{-- banner and breadcrumbs --}}
 
     @if (isset($get))
@@ -237,7 +235,7 @@
                                                 @foreach (GetchildMenusFront($gets[0]->menu_id, $S->id) as $key2 => $C)
                                                     @if (count(GetsubchildMenusFront($gets[0]->menu_id, $S->id, $C->id)) > 0)
                                                         <li class="hasnested">
-                                                            <a @if ($C->id == $gets[0]->id) class="active" @endif>
+                                                            <a @if ($C->id == $type[0]->id) class="active" @endif>
                                                                 @if (GetLang() == 'en')
                                                                     {{ $C->name ?? '' }}
                                                                 @else
@@ -442,7 +440,7 @@
                                                         </div>
                                                     </div>
 
-                                                    <div class="col-md-2 col-lg-2">
+                                                    <div class="col-md-3 col-lg-3">
                                                         <div class="d-flex flex-column h-100">
                                                             <a href="http://localhost/kashipur-design1/public/gallery/image/1677405680.png"
                                                                 class="image-link">
@@ -458,7 +456,7 @@
                                                     </div>
 
 
-                                                    <div class="col-md-2 col-lg-2">
+                                                    <div class="col-md-3 col-lg-3">
                                                         <div class="d-flex flex-column h-100">
                                                             <a href="http://localhost/kashipur-design1/public/gallery/image/1677559777.png"
                                                                 class="image-link">
@@ -473,7 +471,7 @@
                                                         </div>
                                                     </div>
 
-                                                    <div class="col-md-2 col-lg-2">
+                                                    <div class="col-md-3 col-lg-3">
                                                         <div class="d-flex flex-column h-100">
                                                             <a href="http://localhost/kashipur-design1/public/gallery/image/1677559777.png"
                                                                 class="image-link">
@@ -488,7 +486,7 @@
                                                         </div>
                                                     </div>
 
-                                                    <div class="col-md-2 col-lg-2">
+                                                    <div class="col-md-3 col-lg-3">
                                                         <div class="d-flex flex-column h-100">
                                                             <a href="http://localhost/kashipur-design1/public/gallery/image/1677559777.png"
                                                                 class="image-link">
@@ -503,7 +501,7 @@
                                                         </div>
                                                     </div>
 
-                                                    <div class="col-md-2 col-lg-2">
+                                                    <div class="col-md-3 col-lg-3">
                                                         <div class="d-flex flex-column h-100">
                                                             <a href="http://localhost/kashipur-design1/public/gallery/image/1677559777.png"
                                                                 class="image-link">
@@ -518,7 +516,7 @@
                                                         </div>
                                                     </div>
 
-                                                    <div class="col-md-2 col-lg-2">
+                                                    <div class="col-md-3 col-lg-3">
                                                         <div class="d-flex flex-column h-100">
                                                             <a href="http://localhost/kashipur-design1/public/gallery/image/1677559777.png"
                                                                 class="image-link">
@@ -533,7 +531,7 @@
                                                         </div>
                                                     </div>
 
-                                                    <div class="col-md-2 col-lg-2">
+                                                    <div class="col-md-3 col-lg-3">
                                                         <div class="d-flex flex-column h-100">
                                                             <a href="http://localhost/kashipur-design1/public/gallery/image/1677559777.png"
                                                                 class="image-link">
@@ -657,7 +655,7 @@
                                     <div class="row">
                                         <div class="col-md-4">
                                             <div class="multi-image-popup">
-                                                <a href="https://iim.staggings.in/uploads/header_top/168690759793.jpg" class="btn-gallery image-link">
+                                                <a href="#gallery-1" class="btn-gallery">
                                                     <img
                                                         src="https://iim.staggings.in/uploads/header_top/168690759793.jpg" />
                                                 </a>
@@ -683,7 +681,7 @@
 
                                         <div class="col-md-4">
                                             <div class="multi-image-popup">
-                                                <a href="https://iim.staggings.in/uploads/header_top/168690759793.jpg" class="image-link">
+                                                <a href="#gallery-2" class="btn-gallery">
                                                     <img
                                                         src="https://iim.staggings.in/uploads/header_top/168690671648.jpg" />
                                                 </a>
@@ -785,7 +783,6 @@
                                                                         d="M19,11H13V5a1,1,0,0,0-2,0v6H5a1,1,0,0,0,0,2h6v6a1,1,0,0,0,2,0V13h6a1,1,0,0,0,0-2Z" />
                                                                 </svg>
                                                                 </a>
-
                                                             <ul>
                                                             @foreach (GetsubchildMenusFront($type[0]->menu_id, $S->id, $C->id) as $k => $D)
 
@@ -903,106 +900,52 @@
                     <div class="col master-class">
                         <div class="innerpagecontent">
 
-                            <!-- Heading section Start -->
-                            <h3>
-                                INDUSTRY INTERACTION COMMITTEE
-                            </h3>
-                            <!-- Heading section End -->
 
                             <!-- Content section  start-->
                             <h5>
-                                <span>
-                                    @if (GetLang() == 'en')
-                                        {{ $item[0]->title ?? '' }}
-                                    @else
-                                        {{ $item[0]->title_h ?? '' }}
-                                    @endif
-                                </span>
+                                <span>{{ $item[0]->student_council	??'' }}</span>
                             </h5>
 
+                            <p>{!! $item[0]->about_details ??'' !!}</p>
 
-                            <p>{!! $item[0]->about_details ?? '' !!}</p>
                             <!-- Chairpersons -->
 
-                            <h3>
-                              Chairperson
-                            </h3>
+                                <h5>
+                                    Chairperson
+                                </h5>
 
-
-                            @isset($chairperson[0]->image)
-
-
-
-                            <div class="row mt-4 mb-5">
-                                <div class="col-md-3">
-                                    <div class="top text-center mt-0">
-                                        <div class="profile-img img-fac">
-                                            <img src="{{ asset('uploads/organisation/' . $chairperson[0]->image)}}"
-                                                alt="A VENKATARAMAN" loading="lazy" class="mb-0">
-                                            <div class="d-flex justify-content-center">
-                                                <div class="top-text mb-0 p-relative"> {{ $chairperson[0]->title ?? '' }}
+                                <div class="row mt-4 mb-5">
+                                    <div class="col-md-3">
+                                        <div class="top text-center mt-0">
+                                            <div class="profile-img img-fac">
+                                                <img src="{{ asset('uploads/organisation/' . $chairperson[0]->image)}}"
+                                                    alt="A VENKATARAMAN" loading="lazy" class="mb-0">
+                                                <div class="d-flex justify-content-center">
+                                                    <div class="top-text mb-0 p-relative"> {{ $chairperson[0]->title ?? '' }}
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
-                                <div class="col-md-9">
-                                    <div class="designation">
-                                        <h4>{{ $chairperson[0]->designation ?? '' }} </h6>
-                                            <h6>{{ $chairperson[0]->title ?? '' }} </h6>
-                                            <h6>{{ $chairperson[0]->phone ?? '' }} </h6>
-                                            <h6>{{ $chairperson[0]->email ?? '' }} </h6>
-                                    </div>
-                                </div>
-                            </div>
-                            @endisset
-
-                             <h3> Placement </h3>
-
-                              @isset($chairpersone[0]->image)
-
-
-                            <div class="row mt-4 mb-5">
-                                <div class="col-md-3">
-                                    <div class="top text-center mt-0">
-                                        <div class="profile-img img-fac">
-                                            <img src="{{ asset('uploads/organisation/' . $chairpersone[0]->image)}}"
-                                                alt="A VENKATARAMAN" loading="lazy" class="mb-0">
-                                            <div class="d-flex justify-content-center">
-                                                <div class="top-text mb-0 p-relative"> {{ $chairpersone[0]->title ?? '' }}
-                                                </div>
-                                            </div>
+                                    <div class="col-md-9">
+                                        <div class="designation">
+                                            <h4>{{ $chairperson[0]->designation ?? '' }} </h6>
+                                                <h6>{{ $chairperson[0]->title ?? '' }} </h6>
+                                                <h6>{{ $chairperson[0]->phone ?? '' }} </h6>
+                                                <h6>{{ $chairperson[0]->email ?? '' }} </h6>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-md-9">
-                                    <div class="designation">
-                                        <h4>{{ $chairpersone[0]->designation ?? '' }} </h6>
-                                            <h6>{{ $chairpersone[0]->title ?? '' }} </h6>
-                                            <h6>{{ $chairpersone[0]->phone ?? '' }} </h6>
-                                            <h6>{{ $chairpersone[0]->email ?? '' }} </h6>
-                                    </div>
-                                </div>
-                            </div>
 
 
-                            @endisset
 
                             <!-- Photo Gallery Section Start -->
-                            <h5>
-                                <span> Members</span>
-                            </h5>
-                            <div class="excellence-wrap back-img Activities gallery-member img-gallery mb-3 mt-4">
-                                <div class="container">
-                                    <div class="row">
 
-                                        <div class="col-md-12 p-0">
-                                            <div class="excellence-gallery partnership-img">
-                                                <div class="row masonry-grid">
+                            @if (count($chairpersons) >0)
+                                <h5>
+                                    <span> Members</span>
 
-
-                                                    @if (count($chairpersons) >0)
-
+                                </h5>
                                 <div class="excellence-wrap back-img Activities gallery-member img-gallery mb-3 mt-4">
                                     <div class="container">
                                         <div class="row">
@@ -1014,15 +957,15 @@
                                                             <div class="col-md-3 col-lg-3">
                                                                 <div class="d-flex flex-column h-100">
 
-                                                                    <a href="{{ asset('uploads/organisation/' . $value->image) ?? '' }}"
+                                                                    <a href="{{ asset('uploads/'.$value->student_image) ?? '' }}"
                                                                         class="image-link">
                                                                         <div class="thumbnail p-relative">
-                                                                            <img src="{{ asset('uploads/organisation/' . $value->image) ?? '' }}"
+                                                                            <img src="{{ asset('uploads/'.$value->student_image) ?? '' }}"
                                                                                 alt="gallery-img" class="img-fluid"
                                                                                 loading="lazy">
-                                                                            <div class="top-text">{{ $value->title }}
+                                                                            <div class="top-text">
+                                                                                {{ $value->name }}
                                                                             </div>
-
                                                                         </div>
                                                                     </a>
 
@@ -1036,81 +979,12 @@
                                     </div>
                                 </div>
                             @endif
-
-
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
                             <!-- Photo Gallery section End -->
 
-                              @if ($item[0]->event != '')
-                                <!-- Event section start  -->
-                                <h5>
-                                    <span>Events Conducted</span>
-                                </h5>
-
-                                <p>{!! $item[0]->event ?? '' !!}</p>
-                            @endif
+                            <!-- Event section start  -->
 
 
-                            <div class="excellence-wrap event-text mb-3 mt-4">
-                                <div class="container">
-                                    <div class="row">
 
-                                        @foreach ($data as $datas)
-                                            <div class="col-md-6">
-                                                <div class="text-box">
-                                                    <div class="text-b">
-                                                        <p>
-                                                            {!! $datas->event !!}
-                                                        </p>
-
-                                                    </div>
-                                                    <div class="top-text"> {{ $datas->image_title ?? '' }} </div>
-
-                                                </div>
-                                            </div>
-                                        @endforeach
-
-                                    </div>
-                                </div>
-                            </div>
-
-
-<div class="excellence-gallery partnership-img mt-3">
-    <div class="row masonry-grid">
-
-        @foreach ($data as $datas)
-        <div class="col-md-4">
-
-            <div class="multi-image-popup">
-                <a href="{{ asset('uploads/multiple/club/' . $datas->image) ?? '' }}" class="image-link">
-                    <img
-                        src="{{ asset('uploads/multiple/club/' . $datas->image) ?? '' }}" />
-                </a>
-            </div>
-
-            <!-- Multiple Image Popup -->
-            <div id="gallery-1" class="hidden">
-                <a
-                    href="https://images.unsplash.com/photo-1462774603919-1d8087e62cad?ixlib=rb-0.3.5&q=80&fm=jpg&crop=entropy&s=0ebd884b4d6ac379f42146a2b26fbf2e">Image
-                    1</a>
-            </div>
-
-
-        </div>
-    @endforeach
-
-    </div>
-</div>
-
-                        </div>
-
-                    </div>
                 </div>
             </div>
         </section>
@@ -1256,7 +1130,7 @@
                                                     <div class="row masonry-grid">
                                                         @foreach ($chairpersons as $value)
                                                             <div class="col-md-3 col-lg-3">
-                                                                <div class="d-flex flex-column h-100 grid-4">
+                                                                <div class="d-flex flex-column h-100">
 
                                                                     <a href="{{ asset('uploads/organisation/' . $value->image) ?? '' }}"
                                                                         class="image-link">
@@ -1336,7 +1210,7 @@
                                                 <div class="col-md-4">
 
                                                     <div class="multi-image-popup">
-                                                        <a href="{{ asset('uploads/multiple/club/' . $datas->image) ?? '' }}" class="image-link">
+                                                        <a href="#gallery-1" class="btn-gallery">
                                                             <img
                                                                 src="{{ asset('uploads/multiple/club/' . $datas->image) ?? '' }}" />
                                                         </a>

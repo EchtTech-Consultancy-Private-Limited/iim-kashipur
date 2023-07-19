@@ -2,18 +2,6 @@
 
 @section('content')
 
-    <style>
-        .submit-btn-apply {
-            background: #0a66c2 !important;
-            border: 0;
-            color: #fff !important;
-            padding: 8px 30px !important;
-            margin: 0;
-            font-size: 1rem;
-            margin-left: 10px;
-        }
-    </style>
-
     @php
         $mmenu = @content_menus($type[0]->menu_id);
     @endphp
@@ -255,18 +243,19 @@
                                                                     {{ $C->name_h ?? '' }}
                                                                 @endif
 
-                                                                <svg class="minus internal-menu-minus" viewBox="0 0 24 24">
-                                                                    <g data-name="Layer 2">
-                                                                        <path d="M19 13H5a1 1 0 0 1 0-2h14a1 1 0 0 1 0 2z"
-                                                                            data-name="minus" />
-                                                                    </g>
-                                                                </svg><svg viewBox="0 0 24 24" class="plus internal-menu-plus">
-                                                                    <path
-                                                                        d="M19,11H13V5a1,1,0,0,0-2,0v6H5a1,1,0,0,0,0,2h6v6a1,1,0,0,0,2,0V13h6a1,1,0,0,0,0-2Z" />
-                                                                </svg>
-                                                                </a>
+                                                              <svg class="minus internal-menu-minus" viewBox="0 0 24 24">
+                                                            <g data-name="Layer 2">
+                                                                <path d="M19 13H5a1 1 0 0 1 0-2h14a1 1 0 0 1 0 2z"
+                                                                    data-name="minus" />
+                                                            </g>
+                                                        </svg><svg viewBox="0 0 24 24" class="plus internal-menu-plus">
+                                                            <path
+                                                                d="M19,11H13V5a1,1,0,0,0-2,0v6H5a1,1,0,0,0,0,2h6v6a1,1,0,0,0,2,0V13h6a1,1,0,0,0,0-2Z" />
+                                                        </svg>
+                                                        </a>
                                                             <ul>
-                                                                @foreach (GetsubchildMenusFront($gets[0]->menu_id, $S->id, $C->id) as $k => $D)
+                                                            @foreach (GetsubchildMenusFront($gets[0]->menu_id, $S->id, $C->id) as $k => $D)
+
                                                                     @if ($D->external == 'yes')
                                                                         <li><a href="{{ url($D->url) }}"
                                                                                 onclick="return confirm('Are you sure  external window open?')"
@@ -297,8 +286,9 @@
                                                                                 @endif
                                                                             </a></li>
                                                                     @endif
-                                                                @endforeach
-                                                            </ul>
+
+                                                            @endforeach
+                                                        </ul>
                                                         </li>
 
 
@@ -366,383 +356,25 @@
                                         @endif
                                     </a></li>
                             @endif
-    @endif
+                            @endif
 
-    </ul>
-    @endforeach
+                            </ul>
+                            @endforeach
 
-    </div>
-    </div>
-
-
-
-    <div class="col-md-9">
-        @if (collect($item)->isEmpty())
-            {{-- remember that $contact is your variable --}}
-            <div class="alert alert-success" role="alert">
-                <h4 class="alert-heading">something went wrong </h4>
-                <p>Data Not Found</p>
-
-            </div>
-        @else
-            <div class="innerpagecontent">
-                <h3>
-                    <span>Club, Committee and Cells</span>
-                </h3>
-                <div class="commontxt">
-                    <div class="row">
-
-                        <div class="col-md-12 col-lg-12">
-                            <h3 class="user-icon">
-                                <span><i class="fa fa-users"></i> Clubs</span>
-                            </h3>
-                        </div>
-
-                        <div class="col-md-6 mt-4 pr-lg-0">
-                            <h2 class="heading-light h-club-box">
-                                ACADEMIC CLUBS
-                            </h2>
-                            <div class="border-club-left">
-                                <div class="box-club">
-                                    @foreach ($data as $items)
-                                        @if ($items->type == '0')
-                                            <div class="box-content">
-                                                <img src="{{ asset('uploads/club/' . $items->image) ?? '' }}"
-                                                    title="Club img" alt="club">
-                                                <h4 class="box-text"> <a
-                                                        href="{{ url($items->slug) }}">{{ $items->title }}</a> </h4>
-                                            </div>
-                                        @endif
-                                    @endforeach
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="col-md-6 mt-4 pl-lg-0">
-                            <h2 class="heading-light h-club-box">
-                                NON-ACADEMIC CLUBS
-                            </h2>
-                            <div class="border-club-right">
-                                <div class="box-club">
-
-                                    @foreach ($data as $items)
-                                        @if ($items->type == '1')
-                                            <div class="box-content">
-                                                <img src="{{ asset('uploads/club/' . $items->image) ?? '' }}"
-                                                    title="Club img" alt="club">
-                                                <h4 class="box-text"> <a
-                                                        href="{{ url($items->slug) }}">{{ $items->title }}</a> </h4>
-                                            </div>
-                                        @endif
-                                    @endforeach
-                                </div>
-                            </div>
-                        </div>
-
-
-                        <div class="col-md-12 col-lg-12 mt-5 pt-4">
-                            <h3 class="user-icon">
-                                <span><i class="fa fa-users"></i> Committee</span>
-                            </h3>
-                        </div>
-
-                        <div class="col-md-12 mt-2">
-
-                            <div class="border-club">
-                                <div class="box-club single">
-
-                                    @foreach ($data1 as $item1)
-                                        <div class="box-content width-5">
-                                            <img src="{{ asset('uploads/Commmittee/' . $item1->image) ?? '' }}"
-                                                title="Club img" alt="club">
-                                            <h4 class="box-text"> <a
-                                                    href="{{ url($item1->slug) }}">{{ $item1->title }}</a> </h4>
-                                        </div>
-                                    @endforeach
-
-
-                                </div>
-                            </div>
-                        </div>
-
-
-                        <div class="col-md-12 col-lg-12 mt-5 pt-4">
-                            <h3 class="user-icon">
-                                <span><i class="fa fa-users"></i> Cells</span>
-                            </h3>
-                        </div>
-
-                        <div class="col-md-12 mt-2">
-
-                            <div class="border-club">
-                                <div class="box-club single">
-
-                                    @foreach ($data2 as $item2)
-                                        <div class="box-content width-5">
-                                            <img src="{{ asset('uploads/cell/' . $item2->image) ?? '' }}" title="Club img"
-                                                alt="club">
-                                            <h4 class="box-text"> <a
-                                                    href="{{ url($item2->slug) }}">{{ $item2->title }}</a> </h4>
-                                        </div>
-                                    @endforeach
-
-                                </div>
-                            </div>
                         </div>
                     </div>
 
-                </div>
-
-            </div>
-    </div>
-    @endif
-    </div>
-    </section>
-
-    {{-- ------------------------------------------- Sub menu page content   ---------------------------------------------------  --}}
-@elseif(isset($sub_menu))
-    <section class="withsidebar-wrap ptb-60">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-3">
-
-                    <div class="sidebarwraper">
-
-                        @foreach (GetSubMenusFront($type[0]->menu_id) as $key1 => $S)
-                            <ul>
-                                @if (count(GetchildMenusFront($type[0]->menu_id, $S->id)) > 0)
-                                    <li class="hasnested"><a @if ($S->id == $type[0]->id) class="active" @endif>
-                                            @if (GetLang() == 'en')
-                                                {{ $S->name ?? '' }}
-                                            @else
-                                                {{ $S->name_h ?? '' }}
-                                            @endif
-                                            <svg class="minus" viewBox="0 0 24 24">
-                                                <g data-name="Layer 2">
-                                                    <path d="M19 13H5a1 1 0 0 1 0-2h14a1 1 0 0 1 0 2z"
-                                                        data-name="minus" />
-                                                </g>
-                                            </svg><svg viewBox="0 0 24 24" class="plus">
-                                                <path
-                                                    d="M19,11H13V5a1,1,0,0,0-2,0v6H5a1,1,0,0,0,0,2h6v6a1,1,0,0,0,2,0V13h6a1,1,0,0,0,0-2Z" />
-                                            </svg>
-                                        </a>
-
-                                        {{-- child menu --}}
-                                        <ul>
-                                            @foreach (GetchildMenusFront($type[0]->menu_id, $S->id) as $key2 => $C)
-                                                @if (count(GetsubchildMenusFront($type[0]->menu_id, $S->id, $C->id)) > 0)
-                                                    <li class="hasnested">
-                                                        <a @if ($C->id == $type[0]->id) class="active" @endif>
-                                                            @if (GetLang() == 'en')
-                                                                {{ $C->name ?? '' }}
-                                                            @else
-                                                                {{ $C->name_h ?? '' }}
-                                                            @endif
 
 
-                                                            <svg class="minus internal-menu-minus" viewBox="0 0 24 24">
-                                                                <g data-name="Layer 2">
-                                                                    <path d="M19 13H5a1 1 0 0 1 0-2h14a1 1 0 0 1 0 2z"
-                                                                        data-name="minus" />
-                                                                </g>
-                                                            </svg><svg viewBox="0 0 24 24" class="plus internal-menu-plus">
-                                                                <path
-                                                                    d="M19,11H13V5a1,1,0,0,0-2,0v6H5a1,1,0,0,0,0,2h6v6a1,1,0,0,0,2,0V13h6a1,1,0,0,0,0-2Z" />
-                                                            </svg>
-
-                                                        </a>
-                                                        <ul>
-                                                            @foreach (GetsubchildMenusFront($type[0]->menu_id, $S->id, $C->id) as $k => $D)
-                                                                @if ($D->external == 'yes')
-                                                                    <li><a href="{{ url($D->url) }}"
-                                                                            onclick="return confirm('Are you sure  external window open?')"
-                                                                            target="_blank">
-                                                                            @if (GetLang() == 'en')
-                                                                                {{ $D->name ?? '' }}
-                                                                            @else
-                                                                                {{ $D->name_h ?? '' }}
-                                                                            @endif
-                                                                        </a>
-                                                                    </li>
-                                                                @elseif($D->external == 'no')
-                                                                    <li><a href="{{ url($D->url) }}">
-                                                                            @if (GetLang() == 'en')
-                                                                                {{ $D->name ?? '' }}
-                                                                            @else
-                                                                                {{ $D->name_h ?? '' }}
-                                                                            @endif
-                                                                        </a>
-                                                                    </li>
-                                                                @else
-                                                                    <li><a
-                                                                            href={{ url($mmenu[0]->slug . '/' . $S->slug . '/' . $C->slug . '/' . $D->slug) }}>
-                                                                            @if (GetLang() == 'en')
-                                                                                {{ $D->name ?? '' }}
-                                                                            @else
-                                                                                {{ $D->name_h ?? '' }}
-                                                                            @endif
-                                                                        </a></li>
-                                                                @endif
-                                                            @endforeach
-                                                        </ul>
-                                                    </li>
-
-
-                                    </li>
-                                @else
-                                    @if ($C->external == 'yes')
-                                        <li><a href="{{ url($C->url) }}"
-                                                onclick="return confirm('Are you sure  external window open?')"
-                                                target="_blank">
-                                                @if (GetLang() == 'en')
-                                                    {{ $C->name ?? '' }}
-                                                @else
-                                                    {{ $C->name_h ?? '' }}
-                                                @endif
-                                            </a>
-                                        </li>
-                                    @elseif($C->external == 'no')
-                                        <li><a href="{{ url($C->url) }}">
-                                                @if (GetLang() == 'en')
-                                                    {{ $C->name ?? '' }}
-                                                @else
-                                                    {{ $C->name_h ?? '' }}
-                                                @endif
-                                            </a>
-                                        </li>
-                                    @else
-                                        <li><a href={{ url($mmenu[0]->slug . '/' . $S->slug . '/' . $C->slug) }}>
-                                                @if (GetLang() == 'en')
-                                                    {{ $C->name ?? '' }}
-                                                @else
-                                                    {{ $C->name_h ?? '' }}
-                                                @endif
-                                            </a></li>
-                                    @endif
-                                @endif
-                        @endforeach
-                        </ul>
-
-                        </li>
-                    @else
-                        @if ($S->external == 'yes')
-                            <li><a href="{{ url($S->url) }}"
-                                    onclick="return confirm('Are you sure  external window open?')" target="_blank">
-                                    @if (GetLang() == 'en')
-                                        {{ $S->name ?? '' }}
-                                    @else
-                                        {{ $S->name_h ?? '' }}
-                                    @endif
-                                </a></li>
-                        @elseif($S->external == 'no')
-                            <li><a href="{{ url($S->url) }}">
-                                    @if (GetLang() == 'en')
-                                        {{ $S->name ?? '' }}
-                                    @else
-                                        {{ $S->name_h ?? '' }}
-                                    @endif
-                                </a></li>
-                        @else
-                            <li><a href="{{ url($mmenu[0]->slug . '/' . $S->slug) }}"
-                                    @if ($S->id == $type[0]->id) class="active" @endif>
-                                    @if (GetLang() == 'en')
-                                        {{ $S->name ?? '' }}
-                                    @else
-                                        {{ $S->name_h ?? '' }}
-                                    @endif
-                                </a></li>
-                        @endif
-                        @endif
-                        </ul>
-                        @endforeach
-
-
-
-                    </div>
-
-                </div>
-
-                @if (collect($data)->isEmpty())
-                    {{-- remember that $contact is your variable --}}
-                    <div class="alert alert-success" role="alert">
-                        <h4 class="alert-heading">something went wrong </h4>
-                        <p>Data Not Found</p>
-
-                    </div>
-                @else
                     <div class="col-md-9">
-                        <div class="innerpagecontent">
-                            <h3>
-                                <span>PUBLICATIONS</span>
-                            </h3>
-                            <div class="commontxt">
-                                <div class="row">
+                           @if (collect($item)->isEmpty())
+                        {{-- remember that $contact is your variable --}}
+                        <div class="alert alert-success" role="alert">
+                            <h4 class="alert-heading">something went wrong </h4>
+                            <p>Data Not Found</p>
 
-                                    <div class="col-md-12 col-lg-12">
-                                        <form action="{{ url('/research/journal-publications') }}" method="get">
-                                        <div class="d-flex">
-
-                                            <select class="form-control" style="width: 100px;" name="year">
-                                                <option value="">--Year--</option>
-                                                @for ($i=2011; $i<= date('Y'); $i++)
-                                                <option value="{{ $i }}" {{ (request('year') == $i)?'selected':'' }}> {{ $i }}</option>
-                                                @endfor
-                                            </select>
-
-                                            <button type="submit" class="btn btn-info submit-btn-apply">Apply</button>
-
-                                        </div>
-                                    </form>
-
-
-                                    </div>
-
-                                    <div class="col-md-12">
-
-                                        <table>
-                                            <tbody>
-                                                <tr>
-                                                    <th>S.NO</th>
-                                                    <th>TITLE</th>
-                                                </tr>
-
-                                                 @foreach ($item as $K=>$items)
-                                                <tr>
-                                                    <td>{{ $K+1  ??''}}</td>
-                                                    <td> <a   @if($items->external=='yes')  onclick="return confirm('Are you sure  external window open?')"                                                       target="_blank" href="{{url($items->url)}}" @else href="{{url ('journal/'.dEncrypt($items->id)) }}"                                                       @endif  class="text-black"> {{ $items->title  ??''}} </a> </td>
-                                                </tr>
-
-                                         @endforeach
-
-
-                                            </tbody>
-                                        </table>
-
-                                    </div>
-
-                                </div>
-                            </div>
                         </div>
-                    </div>
-                @endif
-            </div>
-        </div>
-    </section>
-@else
-    <section class="withsidebar-wrap ptb-60">
-        <div class="container">
-            <div class="row">
-
-                @if (collect($item)->isEmpty())
-                    {{-- remember that $contact is your variable --}}
-                    <div class="alert alert-success" role="alert">
-                        <h4 class="alert-heading">something went wrong </h4>
-                        <p>Data Not Found</p>
-
-                    </div>
-                @else
-                    <div class="col-md-11">
+                    @else
                         <div class="innerpagecontent">
                             <h3>
                                 <span>Club, Committee and Cells</span>
@@ -763,15 +395,13 @@
                                         <div class="border-club-left">
                                             <div class="box-club">
                                                 @foreach ($data as $items)
-                                                    @if ($items->type == '0')
-                                                        <div class="box-content">
-                                                            <img src="{{ asset('uploads/club/' . $items->image) ?? '' }}"
-                                                                title="Club img" alt="club">
-                                                            <h4 class="box-text"> <a
-                                                                    href="{{ url($items->slug) }}">{{ $items->tittle ?? '' }}</a>
-                                                            </h4>
-                                                        </div>
-                                                    @endif
+                                             @if ($items->type == '0')
+                                                    <div class="box-content">
+                                                        <img src="{{ asset('uploads/club/'.$items->image) ?? '' }}"
+                                                            title="Club img" alt="club">
+                                                        <h4 class="box-text"> <a href="{{ url($items->slug) }}">{{ $items->title }}</a> </h4>
+                                                    </div>
+                                              @endif
                                                 @endforeach
                                             </div>
                                         </div>
@@ -785,15 +415,13 @@
                                             <div class="box-club">
 
                                                 @foreach ($data as $items)
-                                                    @if ($items->type == '1')
-                                                        <div class="box-content">
-                                                            <img src="{{ asset('uploads/club/' . $items->image) ?? '' }}"
-                                                                title="Club img" alt="club">
-                                                            <h4 class="box-text"> <a
-                                                                    href="{{ url($items->slug) }}">{{ $items->title ?? '' }}</a>
-                                                            </h4>
-                                                        </div>
-                                                    @endif
+                                                @if ($items->type == '1')
+                                                    <div class="box-content">
+                                                        <img src="{{ asset('uploads/club/'.$items->image) ?? '' }}"
+                                                            title="Club img" alt="club">
+                                                        <h4 class="box-text"> <a href="{{ url($items->slug) }}">{{ $items->title }}</a> </h4>
+                                                    </div>
+                                                  @endif
                                                 @endforeach
                                             </div>
                                         </div>
@@ -813,11 +441,9 @@
 
                                                 @foreach ($data1 as $item1)
                                                     <div class="box-content width-5">
-                                                        <img src="{{ asset('uploads/Commmittee/' . $item1->image) ?? '' }}"
+                                                        <img src="{{ asset('uploads/Commmittee/'.$item1->image)??''}}"
                                                             title="Club img" alt="club">
-                                                        <h4 class="box-text"> <a
-                                                                href="{{ url($item1->slug) }}">{{ $item1->title ?? '' }}</a>
-                                                        </h4>
+                                                        <h4 class="box-text"> <a href="{{ url($item1->slug) }}">{{ $item1->title }}</a> </h4>
                                                     </div>
                                                 @endforeach
 
@@ -840,11 +466,9 @@
 
                                                 @foreach ($data2 as $item2)
                                                     <div class="box-content width-5">
-                                                        <img src="{{ asset('uploads/cell/' . $item2->image) ?? '' }}"
+                                                        <img src="{{ asset('uploads/cell/'.$item2->image) ?? '' }}"
                                                             title="Club img" alt="club">
-                                                        <h4 class="box-text"> <a
-                                                                href="{{ url($item2->slug) }}">{{ $item2->title ?? '' }}</a>
-                                                        </h4>
+                                                        <h4 class="box-text"> <a href="{{ url($item2->slug) }}">{{ $item2->title }}</a> </h4>
                                                     </div>
                                                 @endforeach
 
@@ -857,10 +481,424 @@
 
                         </div>
                     </div>
-                @endif
+                    @endif
+                </div>
+        </section>
+
+        {{--------------------------------------------- Sub menu page content   ---------------------------------------------------  --}}
+
+    @elseif(isset($sub_menu))
+        <section class="withsidebar-wrap ptb-60">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-3">
+
+                        <div class="sidebarwraper">
+
+                            @foreach (GetSubMenusFront($type[0]->menu_id) as $key1 => $S)
+                                <ul>
+                                    @if (count(GetchildMenusFront($type[0]->menu_id, $S->id)) > 0)
+                                        <li class="hasnested"><a @if ($S->id == $type[0]->id) class="active" @endif>
+                                                @if (GetLang() == 'en')
+                                                    {{ $S->name ?? '' }}
+                                                @else
+                                                    {{ $S->name_h ?? '' }}
+                                                @endif
+                                                <svg class="minus" viewBox="0 0 24 24">
+                                                    <g data-name="Layer 2">
+                                                        <path d="M19 13H5a1 1 0 0 1 0-2h14a1 1 0 0 1 0 2z"
+                                                            data-name="minus" />
+                                                    </g>
+                                                </svg><svg viewBox="0 0 24 24" class="plus">
+                                                    <path
+                                                        d="M19,11H13V5a1,1,0,0,0-2,0v6H5a1,1,0,0,0,0,2h6v6a1,1,0,0,0,2,0V13h6a1,1,0,0,0,0-2Z" />
+                                                </svg>
+                                            </a>
+
+                                            {{-- child menu --}}
+                                            <ul>
+                                                @foreach (GetchildMenusFront($type[0]->menu_id, $S->id) as $key2 => $C)
+                                                    @if (count(GetsubchildMenusFront($type[0]->menu_id, $S->id, $C->id)) > 0)
+                                                        <li class="hasnested">
+                                                            <a @if ($C->id == $type[0]->id) class="active" @endif>
+                                                                @if (GetLang() == 'en')
+                                                                    {{ $C->name ?? '' }}
+                                                                @else
+                                                                    {{ $C->name_h ?? '' }}
+                                                                @endif
+
+                                                            </a>
+                                                            <ul>
+                                                            @foreach (GetsubchildMenusFront($type[0]->menu_id, $S->id, $C->id) as $k => $D)
+
+                                                                    @if ($D->external == 'yes')
+                                                                        <li><a href="{{ url($D->url) }}"
+                                                                                onclick="return confirm('Are you sure  external window open?')"
+                                                                                target="_blank">
+                                                                                @if (GetLang() == 'en')
+                                                                                    {{ $D->name ?? '' }}
+                                                                                @else
+                                                                                    {{ $D->name_h ?? '' }}
+                                                                                @endif
+                                                                            </a>
+                                                                        </li>
+                                                                    @elseif($D->external == 'no')
+                                                                        <li><a href="{{ url($D->url) }}">
+                                                                                @if (GetLang() == 'en')
+                                                                                    {{ $D->name ?? '' }}
+                                                                                @else
+                                                                                    {{ $D->name_h ?? '' }}
+                                                                                @endif
+                                                                            </a>
+                                                                        </li>
+                                                                    @else
+                                                                        <li><a
+                                                                                href={{ url($mmenu[0]->slug . '/' . $S->slug . '/' . $C->slug . '/' . $D->slug) }}>
+                                                                                @if (GetLang() == 'en')
+                                                                                    {{ $D->name ?? '' }}
+                                                                                @else
+                                                                                    {{ $D->name_h ?? '' }}
+                                                                                @endif
+                                                                            </a></li>
+                                                                    @endif
+
+                                                            @endforeach
+                                                        </ul>
+                                                        </li>
+
+                                                        <svg class="minus internal-menu-minus" viewBox="0 0 24 24">
+                                                            <g data-name="Layer 2">
+                                                                <path d="M19 13H5a1 1 0 0 1 0-2h14a1 1 0 0 1 0 2z"
+                                                                    data-name="minus" />
+                                                            </g>
+                                                        </svg><svg viewBox="0 0 24 24" class="plus internal-menu-plus">
+                                                            <path
+                                                                d="M19,11H13V5a1,1,0,0,0-2,0v6H5a1,1,0,0,0,0,2h6v6a1,1,0,0,0,2,0V13h6a1,1,0,0,0,0-2Z" />
+                                                        </svg>
+                                                        </a>
+                                        </li>
+                                    @else
+                                        @if ($C->external == 'yes')
+                                            <li><a href="{{ url($C->url) }}"
+                                                    onclick="return confirm('Are you sure  external window open?')"
+                                                    target="_blank">
+                                                    @if (GetLang() == 'en')
+                                                        {{ $C->name ?? '' }}
+                                                    @else
+                                                        {{ $C->name_h ?? '' }}
+                                                    @endif
+                                                </a>
+                                            </li>
+                                        @elseif($C->external == 'no')
+                                            <li><a href="{{ url($C->url) }}">
+                                                    @if (GetLang() == 'en')
+                                                        {{ $C->name ?? '' }}
+                                                    @else
+                                                        {{ $C->name_h ?? '' }}
+                                                    @endif
+                                                </a>
+                                            </li>
+                                        @else
+                                            <li><a href={{ url($mmenu[0]->slug . '/' . $S->slug . '/' . $C->slug) }}>
+                                                    @if (GetLang() == 'en')
+                                                        {{ $C->name ?? '' }}
+                                                    @else
+                                                        {{ $C->name_h ?? '' }}
+                                                    @endif
+                                                </a></li>
+                                        @endif
+                                    @endif
+                            @endforeach
+                            </ul>
+
+                            </li>
+                        @else
+                            @if ($S->external == 'yes')
+                                <li><a href="{{ url($S->url) }}"
+                                        onclick="return confirm('Are you sure  external window open?')" target="_blank">
+                                        @if (GetLang() == 'en')
+                                            {{ $S->name ?? '' }}
+                                        @else
+                                            {{ $S->name_h ?? '' }}
+                                        @endif
+                                    </a></li>
+                            @elseif($S->external == 'no')
+                                <li><a href="{{ url($S->url) }}">
+                                        @if (GetLang() == 'en')
+                                            {{ $S->name ?? '' }}
+                                        @else
+                                            {{ $S->name_h ?? '' }}
+                                        @endif
+                                    </a></li>
+                            @else
+                                <li><a href="{{ url($mmenu[0]->slug . '/' . $S->slug) }}"
+                                        @if ($S->id == $type[0]->id) class="active" @endif>
+                                        @if (GetLang() == 'en')
+                                            {{ $S->name ?? '' }}
+                                        @else
+                                            {{ $S->name_h ?? '' }}
+                                        @endif
+                                    </a></li>
+                            @endif
+                            @endif
+                            </ul>
+                            @endforeach
+
+
+
+                        </div>
+
+                    </div>
+
+
+
+
+
+
+
+                    @if (collect($data)->isEmpty())
+                        {{-- remember that $contact is your variable --}}
+                        <div class="alert alert-success" role="alert">
+                            <h4 class="alert-heading">something went wrong </h4>
+                            <p>Data Not Found</p>
+
+                        </div>
+                    @else
+                    <div class="col-md-9">
+                        <div class="innerpagecontent">
+                            <h3>
+                                <span>Club, Committee and Cells</span>
+                            </h3>
+                            <div class="commontxt">
+                                <div class="row">
+
+                                    <div class="col-md-12 col-lg-12">
+                                        <h3 class="user-icon">
+                                            <span><i class="fa fa-users"></i> Clubs</span>
+                                        </h3>
+                                    </div>
+
+                                    <div class="col-md-6 mt-4 pr-lg-0">
+                                        <h2 class="heading-light h-club-box">
+                                            ACADEMIC CLUBS
+                                        </h2>
+                                        <div class="border-club-left">
+                                            <div class="box-club">
+                                                @foreach ($data as $items)
+                                             @if ($items->type == '0')
+                                                    <div class="box-content">
+                                                        <img src="{{ asset('uploads/club/'.$items->image) ?? '' }}"
+                                                            title="Club img" alt="club">
+                                                        <h4 class="box-text"> <a href="{{ url($items->slug) }}">{{ $items->title }}</a> </h4>
+                                                    </div>
+                                              @endif
+                                                @endforeach
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-6 mt-4 pl-lg-0">
+                                        <h2 class="heading-light h-club-box">
+                                            NON-ACADEMIC CLUBS
+                                        </h2>
+                                        <div class="border-club-right">
+                                            <div class="box-club">
+
+                                                @foreach ($data as $items)
+                                                @if ($items->type == '1')
+                                                    <div class="box-content">
+                                                        <img src="{{ asset('uploads/club/'.$items->image) ?? '' }}"
+                                                            title="Club img" alt="club">
+                                                        <h4 class="box-text"> <a href="{{ url($items->slug) }}">{{ $items->title }}</a> </h4>
+                                                    </div>
+                                                  @endif
+                                                @endforeach
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+                                    <div class="col-md-12 col-lg-12 mt-5 pt-4">
+                                        <h3 class="user-icon">
+                                            <span><i class="fa fa-users"></i> Committee</span>
+                                        </h3>
+                                    </div>
+
+                                    <div class="col-md-12 mt-2">
+
+                                        <div class="border-club">
+                                            <div class="box-club single">
+
+                                                @foreach ($data1 as $item1)
+                                                    <div class="box-content width-5">
+                                                        <img src="{{ asset('uploads/club/'.$item1->image)??''}}"
+                                                            title="Club img" alt="club">
+                                                        <h4 class="box-text"> <a href="{{ url($item1->slug) }}">{{ $item1->title ??'' }}</a> </h4>
+                                                    </div>
+                                                @endforeach
+
+
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+                                    <div class="col-md-12 col-lg-12 mt-5 pt-4">
+                                        <h3 class="user-icon">
+                                            <span><i class="fa fa-users"></i> Cells</span>
+                                        </h3>
+                                    </div>
+
+
+
+                                    <div class="col-md-12 mt-2">
+
+                                        <div class="border-club">
+                                            <div class="box-club single">
+
+                                                @foreach ($data2 as $item2)
+                                                    <div class="box-content width-5">
+                                                        <img src="{{ asset('uploads/club/'.$item2->image) ?? '' }}"
+                                                            title="Club img" alt="club">
+                                                        <h4 class="box-text"> <a href="{{ url($item2->slug) }}">{{ $item2->title ??'' }}</a> </h4>
+                                                    </div>
+                                                @endforeach
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    @endif
+                </div>
             </div>
-        </div>
-    </section>
+        </section>
+    @else
+        <section class="withsidebar-wrap ptb-60">
+            <div class="container">
+                <div class="row">
+
+                    @if (collect($item)->isEmpty())
+                        {{-- remember that $contact is your variable --}}
+                        <div class="alert alert-success" role="alert">
+                            <h4 class="alert-heading">something went wrong </h4>
+                            <p>Data Not Found</p>
+
+                        </div>
+                    @else
+                    <div class="col-md-11">
+                        <div class="innerpagecontent">
+                            <h3>
+                                <span>Club, Committee and Cells</span>
+                            </h3>
+                            <div class="commontxt">
+                                <div class="row">
+
+                                    <div class="col-md-12 col-lg-12">
+                                        <h3 class="user-icon">
+                                            <span><i class="fa fa-users"></i> Clubs</span>
+                                        </h3>
+                                    </div>
+
+                                    <div class="col-md-6 mt-4 pr-lg-0">
+                                        <h2 class="heading-light h-club-box">
+                                            ACADEMIC CLUBS
+                                        </h2>
+                                        <div class="border-club-left">
+                                            <div class="box-club">
+                                                @foreach ($data as $items)
+                                             @if ($items->type == '0')
+                                                    <div class="box-content">
+                                                        <img src="{{ asset('uploads/club/'.$items->image) ?? '' }}"
+                                                            title="Club img" alt="club">
+                                                        <h4 class="box-text"> <a href="{{ url($items->slug) }}">{{ $items->tittle ??''}}</a> </h4>
+                                                    </div>
+                                              @endif
+                                                @endforeach
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-6 mt-4 pl-lg-0">
+                                        <h2 class="heading-light h-club-box">
+                                            NON-ACADEMIC CLUBS
+                                        </h2>
+                                        <div class="border-club-right">
+                                            <div class="box-club">
+
+                                                @foreach ($data as $items)
+                                                @if ($items->type == '1')
+                                                    <div class="box-content">
+                                                        <img src="{{ asset('uploads/club/'.$items->image) ?? '' }}"
+                                                            title="Club img" alt="club">
+                                                        <h4 class="box-text"> <a href="{{ url($items->slug) }}">{{ $items->title ??''}}</a> </h4>
+                                                    </div>
+                                                  @endif
+                                                @endforeach
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+                                    <div class="col-md-12 col-lg-12 mt-5 pt-4">
+                                        <h3 class="user-icon">
+                                            <span><i class="fa fa-users"></i> Committee</span>
+                                        </h3>
+                                    </div>
+
+                                    <div class="col-md-12 mt-2">
+
+                                        <div class="border-club">
+                                            <div class="box-club single">
+
+                                                @foreach ($data1 as $item1)
+                                                    <div class="box-content width-5">
+                                                        <img src="{{ asset('uploads/Commmittee/'.$item1->image)??''}}"
+                                                            title="Club img" alt="club">
+                                                        <h4 class="box-text"> <a href="{{ url($item1->slug) }}">{{ $item1->title  ??''}}</a> </h4>
+                                                    </div>
+                                                @endforeach
+
+
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+                                    <div class="col-md-12 col-lg-12 mt-5 pt-4">
+                                        <h3 class="user-icon">
+                                            <span><i class="fa fa-users"></i> Cells</span>
+                                        </h3>
+                                    </div>
+
+                                    <div class="col-md-12 mt-2">
+
+                                        <div class="border-club">
+                                            <div class="box-club single">
+
+                                                @foreach ($data2 as $item2)
+                                                    <div class="box-content width-5">
+                                                        <img src="{{ asset('uploads/cell/'.$item2->image) ?? '' }}"
+                                                            title="Club img" alt="club">
+                                                        <h4 class="box-text"> <a href="{{ url($item2->slug) }}">{{ $item2->title ??'' }}</a> </h4>
+                                                    </div>
+                                                @endforeach
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+
+                        </div>
+                    </div>
+                    @endif
+                </div>
+            </div>
+        </section>
 
 
     @endif
