@@ -3408,9 +3408,10 @@ p {
 }
 
 .carousel .carousel-item img {
-    height: 500px !important;
+    height: 550px !important;
     /* height: 75vh !important; */
 }
+
 
 @media (max-width: 767px) {
     .carousel-caption {
