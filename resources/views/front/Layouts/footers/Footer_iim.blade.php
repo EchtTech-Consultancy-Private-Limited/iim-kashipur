@@ -116,7 +116,7 @@
 
                 <div class="col-md-5">
                     <div class="row">
-                        <div class="col-md-6 p-lg-0">
+                        <div class="col-md-7 p-lg-0">
 
                             <h2 class="footer-top-title">
 
@@ -184,7 +184,7 @@
 
                         </div>
 
-                    <div class="col-md-6 p-lg-0">
+                    <div class="col-md-5 p-lg-0">
                         <h2 class="footer-top-title">LOCATE US </h2>
 
                             <div class="footer-widget">
