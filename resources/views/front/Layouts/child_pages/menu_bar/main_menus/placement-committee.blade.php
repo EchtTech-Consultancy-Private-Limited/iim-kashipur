@@ -237,7 +237,7 @@
                                                 @foreach (GetchildMenusFront($gets[0]->menu_id, $S->id) as $key2 => $C)
                                                     @if (count(GetsubchildMenusFront($gets[0]->menu_id, $S->id, $C->id)) > 0)
                                                         <li class="hasnested">
-                                                            <a @if ($C->id == $gets[0]->id) class="active" @endif>
+                                                            <a @if ($C->id == $type[0]->id) class="active" @endif>
                                                                 @if (GetLang() == 'en')
                                                                     {{ $C->name ?? '' }}
                                                                 @else
@@ -951,17 +951,7 @@
                                         <h4>{{ $chairperson[0]->designation ?? '' }} </h6>
                                             <h6>{{ $chairperson[0]->title ?? '' }} </h6>
                                             <h6>{{ $chairperson[0]->phone ?? '' }} </h6>
-
-
-                                            <?php
-                                            $email_address=$chairperson[0]->email ;
-                                            $str = $email_address;
-                                            $var= str_replace('@','[at]',$str);
-                                            $email= str_replace('.','[dot]',$var);
-                                            ?>
-
-                                          <h6>{{ $email ?? '' }} </h6>
-
+                                            <h6>{{ $chairperson[0]->email ?? '' }} </h6>
                                     </div>
                                 </div>
                             </div>
@@ -990,14 +980,7 @@
                                         <h4>{{ $chairpersone[0]->designation ?? '' }} </h6>
                                             <h6>{{ $chairpersone[0]->title ?? '' }} </h6>
                                             <h6>{{ $chairpersone[0]->phone ?? '' }} </h6>
-                                            <?php
-                                            $email_address=$chairperson[0]->email ;
-                                            $str = $email_address;
-                                            $var= str_replace('@','[at]',$str);
-                                            $email= str_replace('.','[dot]',$var);
-                                            ?>
-
-                                          <h6>{{ $email ?? '' }} </h6>
+                                            <h6>{{ $chairpersone[0]->email ?? '' }} </h6>
                                     </div>
                                 </div>
                             </div>
@@ -1251,14 +1234,7 @@
                                             <h4>{{ $chairperson[0]->designation ?? '' }} </h6>
                                                 <h6>{{ $chairperson[0]->title ?? '' }} </h6>
                                                 <h6>{{ $chairperson[0]->phone ?? '' }} </h6>
-                                                <?php
-                                                $email_address=$chairperson[0]->email ;
-                                                $str = $email_address;
-                                                $var= str_replace('@','[at]',$str);
-                                                $email= str_replace('.','[dot]',$var);
-                                                ?>
-
-                                              <h6>{{ $email ?? '' }} </h6>
+                                                <h6>{{ $chairperson[0]->email ?? '' }} </h6>
                                         </div>
                                     </div>
                                 </div>
@@ -1329,6 +1305,9 @@
                                     <div class="row">
 
                                         @foreach ($data as $datas)
+
+                                         @if($datas->event != '' )
+
                                             <div class="col-md-4">
                                                 <div class="text-box">
                                                     <div class="text-b">
@@ -1341,6 +1320,7 @@
 
                                                 </div>
                                             </div>
+                                         @endif
                                         @endforeach
 
                                     </div>

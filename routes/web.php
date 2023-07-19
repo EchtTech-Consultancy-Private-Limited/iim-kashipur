@@ -461,7 +461,7 @@ Route::post('/add_contact',[InnerpageController::class,'add_contact']);
  //gallery section
 Route::get('/Multi-image',[InnerpageController::class,'photo_multi_Innerpage']);
 //video section
-Route::get('/Multi-video',[InnerpageController::class,'video_multi_Innerpage']);
+Route::get('/multi-video',[InnerpageController::class,'video_multi_Innerpage']);
 //main menu inner page
 Route::get('{slug?}',[InnerpageController::class,'Menu_barInnerpage']);
 //sub menu inner page

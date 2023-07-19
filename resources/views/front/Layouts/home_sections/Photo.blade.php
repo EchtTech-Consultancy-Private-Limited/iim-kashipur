@@ -48,7 +48,7 @@
 
             </div>
 
-        
+
 
             <div class="row">
 
@@ -238,7 +238,7 @@
 
                                 <div class="btn-wrap my-4 d-flex justify-content-center">
 
-                                    <a  href="{{url('/Multi-video')}}"  class="btn btn-white">
+                                    <a  href="{{url('/multi-video')}}"  class="btn btn-white">
 
                                         @lang('common.view_all')
 
@@ -278,7 +278,7 @@
 
                             <div class="item">
 
-                                <a href="{{ url($Ms->url) }}"  onclick="return confirm('Are you sure  external window open?')"  target="_blank" 
+                                <a href="{{ url($Ms->url) }}"  onclick="return confirm('Are you sure  external window open?')"  target="_blank"
 
                                  class="client-slider-img">
 

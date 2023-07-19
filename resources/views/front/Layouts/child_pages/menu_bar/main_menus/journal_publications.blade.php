@@ -248,7 +248,7 @@
                                                 @foreach (GetchildMenusFront($gets[0]->menu_id, $S->id) as $key2 => $C)
                                                     @if (count(GetsubchildMenusFront($gets[0]->menu_id, $S->id, $C->id)) > 0)
                                                         <li class="hasnested">
-                                                            <a @if ($C->id == $gets[0]->id) class="active" @endif>
+                                                            <a @if ($C->id == $type[0]->id) class="active" @endif>
                                                                 @if (GetLang() == 'en')
                                                                     {{ $C->name ?? '' }}
                                                                 @else
@@ -707,13 +707,13 @@
                                                     <th>TITLE</th>
                                                 </tr>
 
-                                                 @foreach ($item as $K=>$items)
+                                                @foreach ($item as $K=>$items)
                                                 <tr>
                                                     <td>{{ $K+1  ??''}}</td>
                                                     <td> <a   @if($items->external=='yes')  onclick="return confirm('Are you sure  external window open?')"                                                       target="_blank" href="{{url($items->url)}}" @else href="{{url ('journal/'.dEncrypt($items->id)) }}"                                                       @endif  class="text-black"> {{ $items->title  ??''}} </a> </td>
                                                 </tr>
 
-                                         @endforeach
+                                                @endforeach
 
 
                                             </tbody>
@@ -721,7 +721,7 @@
 
                                     </div>
 
-                                    {{$item->links('pagination::bootstrap-5')}}
+                                    {{ $item->links('pagination::bootstrap-5') }}
 
                                 </div>
                             </div>
