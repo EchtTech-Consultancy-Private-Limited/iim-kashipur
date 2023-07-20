@@ -3252,6 +3252,7 @@ p {
 
 .addevent-box h6 {
     font-size: 13px;
+    color: #343333;
 }
 
 .innerpagecontent {
@@ -5476,7 +5477,7 @@ button.upload-btn.btn-info {
 }
 
 .profilewraper.withinfo {
-    height: 360px;
+    height: 370px;
 }
 
 .master-class h3 a {
@@ -5532,3 +5533,4 @@ h2.life_kashipur {
     height: 240px !important;
     object-fit: cover;
     }
+

@@ -185,7 +185,31 @@
                                     d="M10 19v-5h4v5c0 .55.45 1 1 1h3c.55 0 1-.45 1-1v-7h1.7c.46 0 .68-.57.33-.87L12.67 3.6c-.38-.34-.96-.34-1.34 0l-8.36 7.53c-.34.3-.13.87.33.87H5v7c0 .55.45 1 1 1h3c.55 0 1-.45 1-1z" />
                             </svg></a></li>
 
-                    <li><span>
+
+
+
+                        @if(URL::previous() ==   url('/faculty/faculty-directory'))
+
+                            <li><span>
+                                Faculty
+                            </span></li>
+                            <li><span>
+                                Faculty Directory
+                            </span></li>
+
+                        @elseif(URL::previous() ==   url('/about-institute/board-of-governors'))
+
+                        <li><span>
+                            About Institute
+                        </span></li>
+                        <li><span>
+                            Board of Governors
+                        </span></li>
+
+
+                          @endif
+
+                        <li><span>
                             @if (GetLang() == 'en')
                                 {{ $item[0]->title ?? '' }}
                             @else
@@ -764,7 +788,10 @@
             <div class="col-md-12">
                 <div class="content-desc">
                     <div class="innerpagecon">
-                        <a href="#" class="btn2">{{ $item[0]->designation ?? '' }}</a>
+                        <div class="d-flex justify-content-between">
+                            <a href="#" class="btn2">{{ $item[0]->designation ?? '' }}</a>
+                            <a href="#" class="btn2"><i class="fa fa-angle-left" aria-hidden="true" style="margin-right: 5px;"></i> Back</a>
+                        </div>
                         @foreach ($item as $items)
                             <div class="row mt-4">
 
@@ -781,6 +808,7 @@
                                         {{-- <p>{{ $items->department  }}</p> --}}
                                         <p>{!! $items->description !!} </p>
 
+                                        {{ url()->previous() }}
                                         <div class="social-icon">
                                         <ul>
                                             <li>
@@ -859,13 +887,13 @@
                         @endforeach
                     </div>
 
-                                 
-                             
 
 
 
-                    <div class="col-xl-9 col-md-9 col-lg-12">                            
-                                    
+
+
+                    <div class="col-xl-9 col-md-9 col-lg-12">
+
 
                     <div class="import-dates">
                         <div class="title"></div>
