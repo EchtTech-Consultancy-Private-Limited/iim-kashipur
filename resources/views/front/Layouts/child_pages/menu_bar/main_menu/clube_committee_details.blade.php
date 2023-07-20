@@ -36,6 +36,7 @@
         </div>
 
 
+
         {{-- breadcrumbs setion --}}
         <div class="breadcrumbs">
             <div class="container">
@@ -1497,7 +1498,7 @@
                                             <div class="col-md-4">
 
                                                 <div class="multi-image-popup">
-                                                    <a href="#gallery-1" class="btn-gallery">
+                                                    <a href="{{ asset('uploads/multiple/club/' . $datas->image) ?? '' }}" class="btn-gallery image-link">
                                                         <img
                                                             src="{{ asset('uploads/multiple/club/' . $datas->image) ?? '' }}" />
                                                     </a>

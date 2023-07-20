@@ -18,20 +18,16 @@
         overflow: auto !important;
     }
 
+
     .form-group {
         margin-bottom: 0.5rem;
     }
 </style>
-
     <div class="main-panel">
-
         <div class="content-wrapper">
-
             @if (Session::has('success'))
                 <div class="alert alert-success col-md-12 text-center">
-
                     <strong>Success!</strong> {{ Session::get('success') }}
-
                 </div>
             @endif
 
