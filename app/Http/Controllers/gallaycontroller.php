@@ -64,9 +64,9 @@ class gallaycontroller extends Controller
 
             [
 
-            'name'  =>      'required|string|max:200',
+            'name'  =>      'required',
 
-            'name_h'  =>  'required|string|max:200',
+            'name_h'  =>  'required',
 
             'imagename'  => 'mimes:png,jpg,ico|max:1024',
 
@@ -242,17 +242,16 @@ class gallaycontroller extends Controller
 
                 [
 
-                    'name'              => 'required|string|max:200',
+                    'name'  =>      'required',
 
-                    'name_h'  =>  'required|string|max:200',
+                    'name_h'  =>  'required',
 
                     'imagename'  => 'mimes:png,jpg,ico|max:1024',
 
                     'bannerimage'=>'max:5120|mimes:png,jpg,svg|dimensions:max_width=1920,max_height=500',
 
-                    'pdf'  =>  "mimes:pdf|max:20480",
+                    'pdf'  =>  "mimes:pdf|max:20480"
 
-                    "sort_order" => 'required',
 
                 ]
 

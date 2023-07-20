@@ -273,7 +273,7 @@
                                     <option value="12"  {{ ($data->department==12) ? 'selected' : '' }} >Placement(The Team) Administrative </option>
                                     <option value="13"  {{ ($data->department==13) ? 'selected' : '' }} >Placement(The Team)  Student Coordinator </option>
                                     <option value="14"  {{ ($data->department==14) ? 'selected' : '' }} >CORPORATE INTERACTIONS</option>
-       
+
                             </select>
 
 
@@ -381,14 +381,14 @@
 
                     </div>
 
-<div class="col-md-6">
+                    <div class="col-md-6">
 
-                        <div class="form-group"> <label for="form_name"> MEDIA COORDINATORS Member </label>
+                        <div class="form-group"> <label for="form_name"> Media Coordinators  Member </label>
 
                             <select name="media_coordinators" class="form-control">
                                 <option value="">Please Select</option>
-                                <option value="1" {{$data->media_coordinators == '1' ? 'selected' : ''}}>Yes</option>
-                                <option value="0" {{$data->media_coordinators == '0' ? 'selected' : ''}}>NO</option>
+                                <option value="1" {{$data->media_coordinators == '1' ? 'selected' : ''}}>yes</option>
+                                <option value="0" {{$data->media_coordinators == '0' ? 'selected' : ''}}>no</option>
 
 
                             </select>
@@ -397,14 +397,14 @@
 
                     </div>
 
-<div class="col-md-6">
+                    <div class="col-md-6">
 
-                        <div class="form-group"> <label for="form_name"> wellness cootdiantors member  </label>
+                        <div class="form-group"> <label for="form_name"> Wellness Cootdiantors Member  </label>
 
                             <select name="wellness_cootdiantors" class="form-control">
                                 <option value="">Please Select</option>
-                                <option value="1" {{$data->wellness_cootdiantors == '1' ? 'selected' : ''}}>Yes</option>
-                                <option value="0" {{$data->wellness_cootdiantors == '0' ? 'selected' : ''}}>NO</option>
+                                <option value="1" {{$data->wellness_cootdiantors == '1' ? 'selected' : ''}}>yes</option>
+                                <option value="0" {{$data->wellness_cootdiantors == '0' ? 'selected' : ''}}>no</option>
 
 
                             </select>

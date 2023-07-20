@@ -75,21 +75,81 @@
                                 </div>
                             </div>
 
-                            <div class="col-md-12">
+                            {{-- <div class="col-md-12">
                                 <label for="activites" class="col-form-label">DESCRIPTION</label>
                                 <div class="">
                                     <textarea class="form-control" id="activites" rows="4" name="activites" placeholder="Please enter Activite">@if($id){{$data->description}} @else {{old('activites')}} @endif</textarea><br>
                                     <label for="activites" id="activites-error" class="error"></label>
                                 </div>
-                            </div>
+                            </div> --}}
 
-                            <div class="col-md-12">
+                            {{-- <div class="col-md-12">
                                 <label for="event" class="col-form-label">Events</label>
                                 <div class="">
                                     <textarea class="form-control" id="event" rows="4" name="event" placeholder="Please enter event">@if($id){{$data->EVENTS}} @else {{old('event')}} @endif</textarea><br>
                                     <label for="event" id="event-error" class="error"></label>
                                 </div>
+                            </div> --}}
+
+
+                            <div class="col-md-12">
+                                <label for="inputText" class="col-sm-12 col-form-label">Banner Image</label>
+                                <div class="col-sm-12">
+                                    <input type="file" class="form-control" name="bannerimage"
+                                        placeholder="Please browse banner image" accept=".jpeg,.jpg,.gif,.png"><br>
+
+
+                                        {{-- <label for="name" id="name-error" class="error">
+                                            @error('name')
+                                                {{ $message }}
+                                            @enderror
+                                        </label> --}}
+
+
+                                </div>
+
+                                <img src="{{ asset('page/banner/' . $data->bannerimage) }}" width="150"
+                                    height="100" />
+
+
                             </div>
+
+                            <div class="col-md-12">
+                                <label for="inputText" class="col-sm-12 col-form-label">Banner title </label>
+                                <div class="col-sm-12">
+                                    <input type="text" class="form-control" name="banner_title" @if($id){{$data->banner_title}} @else {{old('banner_title')}} @endif
+                                        placeholder="Please enter text for title of banner photo, use for seo"
+                                      ><br>
+
+
+                                        {{-- <label for="name" id="name-error" class="error">
+                                            @error('name')
+                                                {{ $message }}
+                                            @enderror
+                                        </label> --}}
+
+
+                                </div>
+                            </div>
+
+
+                            <div class="col-md-12">
+                                <label for="inputText" class="col-sm-12 col-form-label">Banner Alt </label>
+                                <div class="col-sm-12">
+                                    <input type="text" class="form-control" name="banner_alt" @if($id){{$data->banner_alt}} @else {{old('banner_alt')}} @endif
+                                        placeholder="Please enter text for alt of banner photo, use for seo"
+                                        ><br>
+
+                                        {{-- <label for="name" id="name-error" class="error">
+                                            @error('name')
+                                                {{ $message }}
+                                            @enderror
+                                        </label> --}}
+
+                                </div>
+                            </div>
+
+
 
                             <div class="col-md-12">
 

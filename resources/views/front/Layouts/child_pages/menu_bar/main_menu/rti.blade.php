@@ -86,7 +86,7 @@
 
                                     <thead>
                                         <tr>
-                                            <td>Sl. No </td>
+                                            <td>Sr.No </td>
                                             <td>TITLE </td>
                                             <td>ATTACHMENT FILE </td>
 
@@ -104,7 +104,7 @@
                                             <td>{{ $K+1 }}</td>
                                             <td>{{ $datas->title }}</td>
                                             <td><a href="{{url('uploads/rti/'.$datas->pdf)}}" download  class="pdf-links"> <i class="fa fa-file-pdf-o"></i>  <span>{{ $datas->title }}
-</span></a></td>
+                                           </span></a></td>
                                         </tr>
 
                                           @endif
@@ -123,7 +123,7 @@
 
                                 <thead>
                                     <tr>
-                                        <td>Sl. No </td>
+                                        <td>Sr.No </td>
                                         <td>TITLE </td>
                                         <td>ATTACHMENT FILE </td>
 
@@ -159,7 +159,7 @@
 
                             <thead>
                                 <tr>
-                                    <td>Sl. No </td>
+                                    <td>Sr.No </td>
                                     <td>YEAR</td>
                                     <td>QUARTER-1</td>
                                     <td>QUARTER-2</td>

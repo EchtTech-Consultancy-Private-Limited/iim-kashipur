@@ -8,8 +8,6 @@
         $mmenu = @content_menus($type[0]->menu_id);
     @endphp
 
-
-
     {{-- banner and  breadcrumbs   --}}
 
     @if (isset($get))
@@ -744,12 +742,10 @@
                                                                             </div>
                                                                         </a>
 
-                                                                    </div>
-                                                                </div>
-
 
 
                                                             @endforeach
+
                                                         </div>
                                                     </div>
                                                 </div>

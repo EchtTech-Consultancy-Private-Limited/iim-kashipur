@@ -14,7 +14,7 @@ $mmenu = @content_menus($type[0]->menu_id);
 @if (isset($get))    {{-- child menu section  --}}
 {{-- banner setion --}}
 <div class="internalpagebanner">
-    @if (GetOrganisationAllDetails('default_banner_image') != '')
+    {{-- @if (GetOrganisationAllDetails('default_banner_image') != '')
         <img src="{{ asset('uploads/site-logo/' . GetOrganisationAllDetails('default_banner_image')) }}"
             style="height:auto;  min-height:200px; max-height:500px overflow:hidden;"
             alt="{{ $type_child[0]->name ?? '' }}" title="{{ $type_child[0]->name ?? '' }}">
@@ -22,7 +22,23 @@ $mmenu = @content_menus($type[0]->menu_id);
         <img src="{{ asset('assets/images/banners/board-of-governer-banner.jpg') ?? '' }}"
             style="height:auto;  min-height:200px; max-height:350% overflow:hidden;"
             alt="{{ $type_child[0]->name ?? '' }}" title="{{ $type_child[0]->name ?? '' }}">
-    @endif
+    @endif --}}
+
+
+
+        @if ($item[0]->banner_image != '')
+
+            <img src="{{ asset('page/banner/' . $item[0]->banner_image) ?? '' }}"
+                alt="{{ $item[0]->banner_alt ?? '' }}" title="{{ $item[0]->banner_title ?? '' }}">
+            @else
+
+            <img src="{{ asset('uploads/site-logo/' . GetOrganisationAllDetails('default_banner_image')) }}"
+               alt="{{ $type_child[0]->name ?? '' }}" title="{{ $type_child[0]->name ?? '' }}">
+
+        @endif
+
+
+
     <div class="imagecaption">
         <div class="container">
             <h1>
@@ -91,13 +107,15 @@ $mmenu = @content_menus($type[0]->menu_id);
             style="height:auto;  min-height:200px; max-height:500px overflow:hidden;"
             alt="{{ $item[0]->name ?? '' }}" title="{{ $item[0]->name ?? '' }}">
     @endif
+
+
     <div class="imagecaption">
         <div class="container">
             <h1>
                 @if (GetLang() == 'en')
-                    {{ $item[0]->name ?? '' }}
+                    {{ $type[0]->name ?? '' }}
                 @else
-                    {{ $item[0]->name_h ?? '' }}
+                    {{ $type[0]->name_h ?? '' }}
                 @endif
             </h1>
         </div>
@@ -114,7 +132,7 @@ $mmenu = @content_menus($type[0]->menu_id);
                         <path
                             d="M10 19v-5h4v5c0 .55.45 1 1 1h3c.55 0 1-.45 1-1v-7h1.7c.46 0 .68-.57.33-.87L12.67 3.6c-.38-.34-.96-.34-1.34 0l-8.36 7.53c-.34.3-.13.87.33.87H5v7c0 .55.45 1 1 1h3c.55 0 1-.45 1-1z" />
                     </svg></a></li>
-            <li><a href="javascript:void(0);">
+            <li><a href="{{ URL::previous() }}">
                     @if (GetLang() == 'en')
                         {{ @$mmenu[0]->name ?? '' }}
                     @else
@@ -124,9 +142,9 @@ $mmenu = @content_menus($type[0]->menu_id);
             </li>
             <li><span>
                     @if (GetLang() == 'en')
-                        {{ $item[0]->name ?? '' }}
+                        {{ $type[0]->name ?? '' }}
                     @else
-                        {{ $item[0]->name_h ?? '' }}
+                        {{ $type[0]->name_h ?? '' }}
                     @endif
                 </span></li>
         </ul>
