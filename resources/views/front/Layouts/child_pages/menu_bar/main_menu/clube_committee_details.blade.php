@@ -157,7 +157,7 @@
         {{-- main banner --}}
         {{-- banner section --}}
         <div class="internalpagebanner">
-            @if (GetOrganisationAllDetails('default_banner_image') != '')
+            {{-- @if (GetOrganisationAllDetails('default_banner_image') != '')
                 <img src="{{ asset('uploads/site-logo/' . GetOrganisationAllDetails('default_banner_image')) }}"
                     style="height:auto;  min-height:200px; max-height:500px overflow:hidden;"
                     alt="{{ $type_child[0]->name ?? '' }}" title="{{ $type_child[0]->name ?? '' }}">
@@ -165,7 +165,18 @@
                 <img src="{{ asset('assets/images/banners/board-of-governer-banner.jpg') ?? '' }}"
                     style="height:auto;  min-height:200px; max-height:500px overflow:hidden;"
                     alt="{{ $type_child[0]->name ?? '' }}" title="{{ $type_child[0]->name ?? '' }}">
-            @endif
+            @endif --}}
+
+
+
+            @if ($item[0]->bannerimage != '')
+            <img src="{{ asset('page/banner/' . $item[0]->bannerimage) ?? '' }}"
+                alt="{{ $item[0]->banner_alt ?? '' }}" title="{{ $item[0]->banner_title ?? '' }}">
+              @else
+            <img src="{{ asset('uploads/site-logo/' . GetOrganisationAllDetails('default_banner_image')) }}"
+                alt="{{ $item[0]->name ?? '' }}" title="{{ $item[0]->name ?? '' }}">
+             @endif
+
             <div class="imagecaption">
                 <div class="container">
                     <h1>{{ $item[0]->title ?? '' }}</h1>
@@ -208,7 +219,6 @@
 
 
     @if (isset($get))
-
 
         <section class="withsidebar-wrap ptb-60">
 

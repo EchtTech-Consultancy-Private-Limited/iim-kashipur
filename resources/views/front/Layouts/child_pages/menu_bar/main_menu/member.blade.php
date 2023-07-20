@@ -95,14 +95,19 @@
 
         <div class="internalpagebanner">
 
+
             @if (GetOrganisationAllDetails('default_banner_image') != '')
+
                 <img src="{{ asset('uploads/site-logo/' . GetOrganisationAllDetails('default_banner_image')) }}"
                     style="height:auto;  min-height:200px; max-height:500px overflow:hidden;"
                     alt="{{ $type[0]->name ?? '' }}" title="{{ $type[0]->name ?? '' }}">
+
             @else
+
                 <img src="{{ asset('assets/images/banners/board-of-governer-banner.jpg') ?? '' }}"
                     style="height:auto;  min-height:200px; max-height:500px overflow:hidden;"
                     alt="{{ $type[0]->name ?? '' }}" title="{{ $type[0]->name ?? '' }}">
+
             @endif
 
             <div class="imagecaption">

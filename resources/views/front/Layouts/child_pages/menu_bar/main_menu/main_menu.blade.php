@@ -99,10 +99,14 @@
         </div>
         </div>
     @elseif (isset($get))
+
+
+
         {{-- child menu section  --}}
         {{-- banner setion --}}
         <div class="internalpagebanner">
-            @if (GetOrganisationAllDetails('default_banner_image') != '')
+
+            {{-- @if (GetOrganisationAllDetails('default_banner_image') != '')
                 <img src="{{ asset('uploads/site-logo/' . GetOrganisationAllDetails('default_banner_image')) }}"
                     style="height:auto;  min-height:200px; max-height:500px overflow:hidden;"
                     alt="{{ $type_child[0]->name ?? '' }}" title="{{ $type_child[0]->name ?? '' }}">
@@ -110,7 +114,23 @@
                 <img src="{{ asset('assets/images/banners/board-of-governer-banner.jpg') ?? '' }}"
                     style="height:auto;  min-height:200px; max-height:350% overflow:hidden;"
                     alt="{{ $type_child[0]->name ?? '' }}" title="{{ $type_child[0]->name ?? '' }}">
+            @endif --}}
+
+
+            @if ($item[0]->banner_image != '')
+
+              <img src="{{ asset('page/banner/' . $item[0]->banner_image) ?? '' }}"
+                alt="{{ $item[0]->banner_alt ?? '' }}" title="{{ $item[0]->banner_title ?? '' }}">
+
+            @else
+
+            <img src="{{ asset('uploads/site-logo/' . GetOrganisationAllDetails('default_banner_image')) }}"
+               alt="{{ $item[0]->name ?? '' }}" title="{{ $item[0]->name ?? '' }}">
+
             @endif
+
+
+
             <div class="imagecaption">
                 <div class="container">
                     <h1>
@@ -123,7 +143,6 @@
                 </div>
             </div>
         </div>
-
 
         {{-- breadcrumbs setion --}}
         <div class="breadcrumbs">
@@ -173,19 +192,21 @@
         </ul>
         </div>
         </div>
-    @elseif(isset($sub_menu))
-        {{-- sub menu section --}}
+    @elseif(isset($sub_menu)) {{-- sub menu section --}}
+
+
         {{-- banner Section --}}
+
         <div class="internalpagebanner">
+
             @if ($item[0]->banner_image != '')
                 <img src="{{ asset('page/banner/' . $item[0]->banner_image) ?? '' }}"
-                    style="height:auto;  min-height:200px; max-height:500px overflow:hidden;"
                     alt="{{ $item[0]->banner_alt ?? '' }}" title="{{ $item[0]->banner_title ?? '' }}">
             @else
                 <img src="{{ asset('uploads/site-logo/' . GetOrganisationAllDetails('default_banner_image')) }}"
-                    style="height:auto;  min-height:200px; max-height:500px overflow:hidden;"
                     alt="{{ $item[0]->name ?? '' }}" title="{{ $item[0]->name ?? '' }}">
             @endif
+
             <div class="imagecaption">
                 <div class="container">
                     <h1>
@@ -232,8 +253,8 @@
                 </ul>
             </div>
         </div>
-    @else
-        {{-- main banner --}}
+    @else  {{-- main banner --}}
+
         {{-- banner section --}}
         <div class="internalpagebanner">
             @if (GetOrganisationAllDetails('default_banner_image') != '')
