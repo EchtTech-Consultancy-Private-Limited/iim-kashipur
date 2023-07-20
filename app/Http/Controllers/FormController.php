@@ -689,6 +689,19 @@ public function add_cells(Request $request,$id=null){
             $file->move($path, $newname);
             $data->image= $newname;
         }
+
+        $data->banner_title= $request->banner_title;
+        $data->banner_alt= $request->banner_alt;
+        $path=public_path('page/banner');
+        if($request->hasFile('bannerimage')){
+            $file=$request->file('bannerimage');
+            $newname= time().rand(10,99).'.'.$file->getClientOriginalExtension();
+            $file->move($path, $newname);
+            $data->bannerimage= $newname;
+        }
+
+
+
         $data->save();
        return redirect('Accounts/manage-cells')->with('success',$msg);
     }
@@ -758,6 +771,19 @@ public function add_club(Request $request,$id=NULL){
             $file->move($path, $newname);
             $data->image= $newname;
         }
+
+
+        $data->banner_title= $request->banner_title;
+        $data->banner_alt= $request->banner_alt;
+        $path=public_path('page/banner');
+        if($request->hasFile('bannerimage')){
+            $file=$request->file('bannerimage');
+            $newname= time().rand(10,99).'.'.$file->getClientOriginalExtension();
+            $file->move($path, $newname);
+            $data->bannerimage= $newname;
+        }
+
+
         $data->save();
        return redirect('Accounts/manage-clubs')->with('success',$msg);
     }
@@ -809,6 +835,8 @@ public function add_committee(Request $request,$id=NULL)
         $data->image_title= $request->Committee_image_title;
         $data->image_alt= $request->Committee_image_alt;
         $data->slug=SlugCheck('commmittees',($request->Commmittee_name));
+        $data->banner_title= $request->banner_title;
+        $data->banner_alt= $request->banner_alt;
 
         $path=public_path('uploads/club');
         if($request->hasFile('Commmittee_logo')){
@@ -817,6 +845,7 @@ public function add_committee(Request $request,$id=NULL)
             $file->move($path, $newname);
             $data->logo= $newname;
         }
+
         $path=public_path('uploads/club');
         if($request->hasFile('Commmittee_image')){
             $file=$request->file('Commmittee_image');
@@ -824,6 +853,19 @@ public function add_committee(Request $request,$id=NULL)
             $file->move($path, $newname);
             $data->image= $newname;
         }
+
+
+        $data->banner_title= $request->banner_title;
+        $data->banner_alt= $request->banner_alt;
+        $path=public_path('page/banner');
+        if($request->hasFile('bannerimage')){
+            $file=$request->file('bannerimage');
+            $newname= time().rand(10,99).'.'.$file->getClientOriginalExtension();
+            $file->move($path, $newname);
+            $data->bannerimage= $newname;
+        }
+
+
         $data->save();
        return redirect('Accounts/manage-committee')->with('success',$msg);
     }
@@ -837,7 +879,7 @@ public function add_committee(Request $request,$id=NULL)
 
     public function view_committee(){
     $data=commmittee:: orderBy('id')->get();
-   return view('admin.sections.managecommittee',['data'=>$data]);
+   return view('admin.sections.manageCommittee',['data'=>$data]);
 
 }
      public function cells_list()
@@ -1277,6 +1319,19 @@ public function Add_student_council(Request $request,$id=null)
         $data->chairperson=$request->chairperson;
         $data->about_details=$request->about_details;
         $data->status=$request->status;
+
+        $data->banner_title= $request->banner_title;
+        $data->banner_alt= $request->banner_alt;
+        $path=public_path('page/banner');
+        if($request->hasFile('bannerimage')){
+            $file=$request->file('bannerimage');
+            $newname= time().rand(10,99).'.'.$file->getClientOriginalExtension();
+            $file->move($path, $newname);
+            $data->bannerimage= $newname;
+        }
+
+
+
         $data->save();
         return redirect('/Accounts/student-council')->with('success',$msg);
     }
@@ -1485,6 +1540,19 @@ public function add_Wellness_Facilities(Request $request,$id=null)
         $data->status=$request->status;
         $data->about_details=$request->about_details;
         $data->DESCRIPTION=$request->activites;
+
+
+        $data->banner_title= $request->banner_title;
+        $data->banner_alt= $request->banner_alt;
+        $path=public_path('page/banner');
+        if($request->hasFile('bannerimage')){
+            $file=$request->file('bannerimage');
+            $newname= time().rand(10,99).'.'.$file->getClientOriginalExtension();
+            $file->move($path, $newname);
+            $data->bannerimage= $newname;
+        }
+
+
         $data->Events=$request->event;
 
         $data->save();
@@ -1833,8 +1901,11 @@ public function add_RTI(Request $request,$id=NULL)
         $item=quarter_report::whereid($request->id)->first();
         return response()->json(['item'=>$item]);
     }
+
+    public function Wellness_Facilities_index_id(Request $request){
+        $item=wellness_facilitie_image::whereid($request->id)->first();
+        return response()->json(['item'=>$item]);
+    }
 }
-
-
 //end
 
