@@ -3252,6 +3252,7 @@ p {
 
 .addevent-box h6 {
     font-size: 13px;
+    color: #343333;
 }
 
 .innerpagecontent {
@@ -5532,3 +5533,4 @@ h2.life_kashipur {
     height: 240px !important;
     object-fit: cover;
     }
+
