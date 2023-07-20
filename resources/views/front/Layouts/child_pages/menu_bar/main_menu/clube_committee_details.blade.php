@@ -393,11 +393,11 @@
 
                             <div class="row mt-4 mb-5">
                                 <div class="col-md-3">
-                                    <div class="top text-center mt-0">
+                                    <div class="top text-left mt-0">
                                         <div class="profile-img img-fac">
                                             <img src="http://localhost/kashipur-design1/public/uploads/organisation/167903612045.jpg"
                                                 alt="A VENKATARAMAN" loading="lazy" class="mb-0">
-                                            <div class="d-flex justify-content-center">
+                                            <div class="d-flex justify-content-start">
                                                 <div class="top-text mb-0 p-relative"> A Venkata Raman </div>
                                             </div>
                                         </div>
@@ -564,7 +564,7 @@
                                 establishing a professional network across industries.</p>
 
                             <div class="excellence-wrap event-text mb-3 mt-4">
-                                <div class="container">
+                                <div class="container p-0">
                                     <div class="row">
                                         <div class="col-md-6">
                                             <div class="text-box">
@@ -651,11 +651,11 @@
                             </h5>
 
                             <div class="excellence-wrap event-text mb-3 mt-4">
-                                <div class="container">
+                                <div class="container p-0">
                                     <div class="row">
                                         <div class="col-md-4">
                                             <div class="multi-image-popup">
-                                                <a href="#gallery-1" class="btn-gallery">
+                                                <a href="https://iim.staggings.in/uploads/header_top/168690759793.jpg" class="btn-gallery image-link">
                                                     <img
                                                         src="https://iim.staggings.in/uploads/header_top/168690759793.jpg" />
                                                 </a>
@@ -927,11 +927,11 @@
 
                             <div class="row mt-4 mb-5">
                                 <div class="col-md-3">
-                                    <div class="top text-center mt-0">
+                                    <div class="top text-left mt-0">
                                         <div class="profile-img img-fac">
                                             <img src="http://localhost/kashipur-design1/public/uploads/organisation/167903612045.jpg"
                                                 alt="A VENKATARAMAN" loading="lazy" class="mb-0">
-                                            <div class="d-flex justify-content-center">
+                                            <div class="d-flex justify-content-start">
                                                 <div class="top-text mb-0 p-relative"> A Venkata Raman </div>
                                             </div>
                                         </div>
@@ -1098,7 +1098,7 @@
                                 establishing a professional network across industries.</p>
 
                             <div class="excellence-wrap event-text mb-3 mt-4">
-                                <div class="container">
+                                <div class="container p-0">
                                     <div class="row">
                                         <div class="col-md-6">
                                             <div class="text-box">
@@ -1185,11 +1185,11 @@
                             </h5>
 
                             <div class="excellence-wrap event-text mb-3 mt-4">
-                                <div class="container">
+                                <div class="container p-0">
                                     <div class="row">
                                         <div class="col-md-4">
                                             <div class="multi-image-popup">
-                                                <a href="#gallery-1" class="btn-gallery">
+                                                <a href="https://iim.staggings.in/uploads/header_top/168690759793.jpg" class="btn-gallery image-link">
                                                     <img
                                                         src="https://iim.staggings.in/uploads/header_top/168690759793.jpg" />
                                                 </a>
@@ -1365,11 +1365,11 @@
 
                                 <div class="row mt-4 mb-5">
                                     <div class="col-md-3">
-                                        <div class="top text-center mt-0">
+                                        <div class="top text-left mt-0">
                                             <div class="profile-img img-fac">
                                                 <img src="{{ asset('uploads/organisation/' . $chairperson[0]->image)}}"
                                                     alt="A VENKATARAMAN" loading="lazy" class="mb-0">
-                                                <div class="d-flex justify-content-center">
+                                                <div class="d-flex justify-content-left">
                                                     <div class="top-text mb-0 p-relative"> {{ $chairperson[0]->title ?? '' }}
                                                     </div>
                                                 </div>
@@ -1448,7 +1448,7 @@
                             @endif
 
                             <div class="excellence-wrap event-text mb-3 mt-4">
-                                <div class="container">
+                                <div class="container p-0">
                                     <div class="row">
 
                                         @foreach ($data as $datas)
@@ -1477,13 +1477,13 @@
                                 </h5>
 
                                 <div class="excellence-wrap event-text mb-3 mt-4">
-                                    <div class="container">
+                                    <div class="container p-0">
                                         <div class="row">
                                             @foreach ($data as $datas)
                                                 <div class="col-md-4">
 
                                                     <div class="multi-image-popup">
-                                                        <a href="#gallery-1" class="btn-gallery">
+                                                        <a href="{{ asset('uploads/multiple/club/' . $datas->image) ?? '' }}" class="btn-gallery image-link">
                                                             <img
                                                                 src="{{ asset('uploads/multiple/club/' . $datas->image) ?? '' }}" />
                                                         </a>

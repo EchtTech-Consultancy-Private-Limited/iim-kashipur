@@ -716,12 +716,12 @@
 
                                             <div class="col-md-4 col-lg-4">
                                                 <div class="d-flex flex-column h-100">
-                                                    <a href="http://localhost/kashipur-design1/public/gallery/image/1677405700.png" class="image-link">
+                                                   <div>
                                                         <div class="thumbnail p-relative">
                                                             <img src="{{ asset('uploads/organisation/' .$chairperson->image)}}" alt="gallery-img" class="img-fluid" loading="lazy">
                                                             <div class="top-text"></div>
                                                         </div>
-                                                    </a>
+                                                    </div>
                                                 </div>
                                             </div>
 
