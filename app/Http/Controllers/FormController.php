@@ -1016,9 +1016,9 @@ public function delete_cells_image($id){
 
         public function committee_image($id)
         {
-           $data=committee_multiple_image::whereparent_id(dDecrypt($id))->get();
-           $id=dDecrypt($id);
-        return view('admin.sections.managecommitteeimage',['data'=>$data,'id'=>$id]);
+            $data=committee_multiple_image::whereparent_id(dDecrypt($id))->get();
+            $id=dDecrypt($id);
+            return view('admin.sections.manageCommitteeimage',['data'=>$data,'id'=>$id]);
         }
 
 
