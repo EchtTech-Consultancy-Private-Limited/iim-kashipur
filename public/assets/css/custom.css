@@ -76,7 +76,7 @@ a.btn2::after {content: '';position: absolute;top: 0px;border-bottom: 1px solid 
 
 .addevent-content h6 {color: #343333;font-size: 18px;font-weight: 600;}
 .addevent-content p {font-size: 14px;color: #343333;}
-.addevent-box h5{font-size:15px;font-weight: 600;}
+.addevent-box h5{font-size:15px;font-weight: 600;color: #343333;}
 .addevent-box p{font-size: 14px;margin-bottom: 5px;margin-bottom: 0px;line-height: normal;}
 .addevent-box{max-width:250px;margin-top: 40px; position: relative;overflow: hidden;padding: 12px;transition: 1.3s;height:422px;}
 .addevent-box.top{max-width: initial;height: auto;}

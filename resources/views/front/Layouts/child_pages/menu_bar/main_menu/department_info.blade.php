@@ -773,7 +773,7 @@ $mmenu = @content_menus($type[0]->menu_id);
                                  <div class="col-md-3">
 
                                     <div class="addevent-box top text-center mt-0">
-
+                                        <a href="{{ url($items->slug) }}">
                                     <div class="profile-img">
 
                                         <img src="{{asset('uploads/organisation/'.$items->image) ?? ''}}" alt="{{ $items->title }}"  title="{{ $items->title }}">
@@ -785,7 +785,7 @@ $mmenu = @content_menus($type[0]->menu_id);
 
                                   <h6>  @if(GetLang()=='en') {{ $items->designation ?? '' }}  @else {{ $items->designation_h ?? '' }}  @endif </h6>
 
-
+                                        </a>
 
                                     <div class="profile-socail-icon information">
 
@@ -839,13 +839,13 @@ $mmenu = @content_menus($type[0]->menu_id);
                             <div class="col-6 col-lg-4 col-xxl-3 mb-4">
 
                                 <div class="profilewraper bg-hover">
-
+                                    <a href="{{ url($items->slug) }}">
                                     <figure><img src="{{asset('uploads/organisation/'.$items->image) ?? ''}}" alt="{{ $items->title ?? '' }}" title="{{ $items->title ?? '' }}"></figure><br>
 
                                     <h4> @if(GetLang()=='en') {{ $items->title ?? '' }}  @else {{ $items->title_h ?? '' }}  @endif</h4>
-
+                                </a>
                                     @if(GetLang()=='en') {{ $items->designation ?? '' }}  @else {{ $items->designation_h ?? '' }}  @endif
-
+                                   
                                 </div>
 
                             </div>
@@ -876,17 +876,17 @@ $mmenu = @content_menus($type[0]->menu_id);
 
                         <div class="row">
 
-                            <div class="col-md-5 col-lg-4">
+                            <div class="col-md-4 col-lg-4">
 
-                                <div class="profilewraper withinfo bg-hover">
-
+                                <div class="profilewraper withinfo bg-hover" style="width: 100%">
+                                    <a href="{{ url($items->slug) }}">
                                     <figure><img src="{{asset('uploads/organisation/'.$items->image)}}"  alt="{{ $items->title ?? '' }}" title="{{ $items->title ?? '' }}"></figure>
 
                                     <h4> @if(GetLang()=='en') {{ $items->title  ?? ''}}  @else {{ $items->title_h  ?? ''}}  @endif</h4>
 
                                     <p> @if(GetLang()=='en') {{ $items->designation ?? '' }}  @else {{ $items->designation_h ?? '' }}  @endif</p>
 
-
+                                   </a>
                                 </div>
 
                             </div>
@@ -1034,7 +1034,6 @@ $mmenu = @content_menus($type[0]->menu_id);
                                 <div class="profilewraper">
 
                                     <figure><img src="{{asset('uploads/organisation/'.$items->image) ?? ''}}" alt="{{ $items->title ?? '' }}" title="{{ $items->title ?? '' }}"></figure><br>
-
                                     <h4> @if(GetLang()=='en') {{ $items->title ?? '' }}  @else {{ $items->title_h ?? '' }}  @endif</h4>
 
                                     @if(GetLang()=='en') {{ $items->designation ?? '' }}  @else {{ $items->designation_h ?? '' }}  @endif
@@ -1069,7 +1068,7 @@ $mmenu = @content_menus($type[0]->menu_id);
 
                         <div class="row">
 
-                            <div class="col-md-5 col-lg-4">
+                            <div class="col-md-4 col-lg-4">
 
                                 <div class="profilewraper withinfo">
 
