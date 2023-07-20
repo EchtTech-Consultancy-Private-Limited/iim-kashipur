@@ -1028,9 +1028,6 @@ public function screen_reader_access()
     public function sub_barInnerpage($main_slug,$slug ,Request $request)  //content page sub menu
     {
 
-
-        $request->all();
-
     $sub_menu="sub menu";
     $type=SubMenu::whereslug($slug)->get();
    // dd($type);

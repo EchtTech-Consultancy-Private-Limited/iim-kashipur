@@ -60,13 +60,11 @@
                             <div class="col-md-12">
                                 <label for="inputText" class="col-form-label">type*</label>
                                 <div class="">
-								
+
                                     <select class="form-control" name="type" required>
                                         <option value=""> Select Type </option>
                                         <option  value="1" {{$data->type  == '1'  ? 'selected' : ''}}>committees</option>
                                         <option  value="2" {{$data->type == '2'  ? 'selected' : ''}}>placement committee</option>
-                                        <option  value="3" {{$data->type  == '3'  ? 'selected' : ''}}>Internal Complaints Committee</option>
-
                                     </select>
                                     </div>
                             </div>
@@ -183,7 +181,7 @@
                                 <label for="Commmittee_type" class="col-form-label">Commmittee Type</label>
                                 <div class="">
                                     <select class="form-control" name="Commmittee_type">
-									
+
                                         <option value=""> Select Type </option>
                                         <option  value="0" {{ ($data->Commmittee_type==0) ? 'selected' : '' }} > Academic Club </option>
                                         <option  value="1" {{ ($data->Commmittee_type==1) ? 'selected' : '' }} > Non-Academic Club </option>
@@ -216,6 +214,68 @@
                                     <label for="event" id="event-error" class="error"></label>
                                 </div>
                             </div>
+
+
+
+
+                            <div class="col-md-12">
+                                <label for="inputText" class="col-sm-12 col-form-label">Banner Image</label>
+                                <div class="col-sm-12">
+                                    <input type="file" class="form-control" name="bannerimage"
+                                        placeholder="Please browse banner image" accept=".jpeg,.jpg,.gif,.png"><br>
+
+
+                                        {{-- <label for="name" id="name-error" class="error">
+                                            @error('name')
+                                                {{ $message }}
+                                            @enderror
+                                        </label> --}}
+
+
+                                </div>
+
+                                <img src="{{ asset('page/banner/' . $data->bannerimage) }}" width="150"
+                                    height="100" />
+
+
+                            </div>
+
+                            <div class="col-md-12">
+                                <label for="inputText" class="col-sm-12 col-form-label">Banner title </label>
+                                <div class="col-sm-12">
+                                    <input type="text" class="form-control" name="banner_title" @if($id){{$data->banner_title}} @else {{old('banner_title')}} @endif
+                                        placeholder="Please enter text for title of banner photo, use for seo"
+                                      ><br>
+
+
+                                        {{-- <label for="name" id="name-error" class="error">
+                                            @error('name')
+                                                {{ $message }}
+                                            @enderror
+                                        </label> --}}
+
+
+                                </div>
+                            </div>
+
+
+                            <div class="col-md-12">
+                                <label for="inputText" class="col-sm-12 col-form-label">Banner Alt </label>
+                                <div class="col-sm-12">
+                                    <input type="text" class="form-control" name="banner_alt" @if($id){{$data->banner_alt}} @else {{old('banner_alt')}} @endif
+                                        placeholder="Please enter text for alt of banner photo, use for seo"
+                                        ><br>
+
+                                        {{-- <label for="name" id="name-error" class="error">
+                                            @error('name')
+                                                {{ $message }}
+                                            @enderror
+                                        </label> --}}
+
+                                </div>
+                            </div>
+
+
 
                             <div class="col-md-12">
 

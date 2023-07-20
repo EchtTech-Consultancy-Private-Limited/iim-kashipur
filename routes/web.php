@@ -228,7 +228,7 @@ Route::get('delete-cells/{id?}',[FormController::class,'delete_cells'])->name('d
 Route::get('manage-clubs',[FormController::class,'view_club']);
 Route::get('delete-club/{id?}',[FormController::class,'delete_club'])->name('deleteclub');
 Route::get('manage-committee',[FormController::class,'view_committee']);
-Route::get('delete-committee/{id?}',[FormController::class,'delete_committee'])->name('deleteclub');
+Route::get('delete-committee/{id?}',[FormController::class,'delete_committee'])->name('deletecommittee');
 Route::match(['get','post'],'add-edit-club/{id?}',[FormController::class,'add_club'])->name('addclub');
 Route::match(['get','post'],'add-edit-committee/{id?}',[FormController::class,'add_committee'])->name('addcommittee');
 Route::match(['get','post'],'add-edit-cells/{id?}',[FormController::class,'add_cells'])->name('addcells');
@@ -441,8 +441,8 @@ Route::get('journal/{id?}', [InnerpageController::class, 'journal_detail']);
 Route::get('anti-ragging', [InnerpageController::class, 'anti_raggings']);
 //press & media
 Route::get('/press-media',[InnerpageController::class,'press_media']);
+//news-media
 Route::get('/news-media',[InnerpageController::class,'news_media']);
-
 
 Route::get('/press-media',[InnerpageController::class,'press_media']);
 Route::get('/news-media',[InnerpageController::class,'news_media']);
