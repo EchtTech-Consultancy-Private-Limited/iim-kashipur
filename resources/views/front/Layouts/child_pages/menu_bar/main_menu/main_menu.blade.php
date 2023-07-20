@@ -394,7 +394,6 @@
 
                                                         </li>
 
-
                                         </li>
                                     @else
                                         @if ($C->external == 'yes')
