@@ -226,6 +226,7 @@
 
                         </div>
 
+
                     <div class="col-md-5 p-lg-0">
                         <h2 class="footer-top-title">LOCATE US </h2>
 
