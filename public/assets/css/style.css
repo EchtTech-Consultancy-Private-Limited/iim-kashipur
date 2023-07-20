@@ -3408,9 +3408,10 @@ p {
 }
 
 .carousel .carousel-item img {
-    height: 500px !important;
+    height: 550px !important;
     /* height: 75vh !important; */
 }
+
 
 @media (max-width: 767px) {
     .carousel-caption {
@@ -5199,7 +5200,7 @@ img.img-icon {
     padding: 5px 28px;
     font-size: 15px;
     margin-bottom: 30px;
-    width: 180px;
+    width: 210px;
     text-align: center;
     border-radius: 50px;
     line-height: 22px;
@@ -5215,6 +5216,7 @@ img.img-icon {
 .profile-img.img-fac img {
     border-radius: 50%;
     width: 200px;
+    background: #f6f6f6;
 }
 
 .designation {
@@ -5526,3 +5528,8 @@ h2.life_kashipur {
     height: 200px;
 }
 
+
+.internalpagebanner img {
+    height: 240px !important;
+    object-fit: cover;
+    }
