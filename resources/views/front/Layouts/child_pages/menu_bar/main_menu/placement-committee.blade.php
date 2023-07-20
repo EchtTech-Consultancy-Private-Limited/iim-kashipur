@@ -406,11 +406,11 @@
 
                             <div class="row mt-4 mb-5">
                                 <div class="col-md-3">
-                                    <div class="top text-center mt-0">
+                                    <div class="top text-left mt-0">
                                         <div class="profile-img img-fac">
                                             <img src="http://localhost/kashipur-design1/public/uploads/organisation/167903612045.jpg"
                                                 alt="A VENKATARAMAN" loading="lazy" class="mb-0">
-                                            <div class="d-flex justify-content-center">
+                                            <div class="d-flex justify-content-start">
                                                 <div class="top-text mb-0 p-relative"> A Venkata Raman </div>
                                             </div>
                                         </div>
@@ -441,15 +441,14 @@
 
                                                     <div class="col-md-3 col-lg-3">
                                                         <div class="d-flex flex-column h-100">
-                                                            <a href="http://localhost/kashipur-design1/public/gallery/image/1677405700.png"
-                                                                class="image-link">
+                                                           <div>
                                                                 <div class="thumbnail p-relative">
                                                                     <img src="http://localhost/kashipur-design1/public/gallery/image/1677405700.png"
                                                                         alt="gallery-img" class="img-fluid"
                                                                         loading="lazy">
                                                                     <div class="top-text"> Event 1 </div>
                                                                 </div>
-                                                            </a>
+                                                            </div>
                                                         </div>
                                                     </div>
 
@@ -577,7 +576,7 @@
                                 establishing a professional network across industries.</p>
 
                             <div class="excellence-wrap event-text mb-3 mt-4">
-                                <div class="container">
+                                <div class="container p-0">
                                     <div class="row">
                                         <div class="col-md-6">
                                             <div class="text-box">
@@ -664,7 +663,7 @@
                             </h5>
 
                             <div class="excellence-wrap event-text mb-3 mt-4">
-                                <div class="container">
+                                <div class="container p-0">
                                     <div class="row">
                                         <div class="col-md-4">
                                             <div class="multi-image-popup">
@@ -673,22 +672,7 @@
                                                         src="https://iim.staggings.in/uploads/header_top/168690759793.jpg" />
                                                 </a>
                                             </div>
-
-                                            <!-- Multiple Image Popup -->
-                                            <div id="gallery-1" class="hidden">
-                                                <a
-                                                    href="https://images.unsplash.com/photo-1462774603919-1d8087e62cad?ixlib=rb-0.3.5&q=80&fm=jpg&crop=entropy&s=0ebd884b4d6ac379f42146a2b26fbf2e">Image
-                                                    1</a>
-                                                <a
-                                                    href="https://images.unsplash.com/photo-1460499593944-39e14f96a8c6?ixlib=rb-0.3.5&q=80&fm=jpg&crop=entropy&s=d8bc3d45d5eeaaf4f576665707f4fddb">Image
-                                                    2</a>
-                                                <a
-                                                    href="https://images.unsplash.com/photo-1434434319959-1f886517e1fe?ixlib=rb-0.3.5&q=80&fm=jpg&crop=entropy&s=218dfdd2c0735dbd6ca0f718064a748b">Image
-                                                    3</a>
-                                                <a
-                                                    href="https://images.unsplash.com/photo-1431576901776-e539bd916ba2?ixlib=rb-0.3.5&q=80&fm=jpg&crop=entropy&s=a0941b28175909ca62f096eb533b0c97">Image
-                                                    4</a>
-                                            </div>
+                                           
 
                                         </div>
 
@@ -946,11 +930,11 @@
 
                             <div class="row mt-4 mb-5">
                                 <div class="col-md-3">
-                                    <div class="top text-center mt-0">
+                                    <div class="top text-left mt-0">
                                         <div class="profile-img img-fac">
                                             <img src="{{ asset('uploads/organisation/' . $chairperson[0]->image)}}"
                                                 alt="A VENKATARAMAN" loading="lazy" class="mb-0">
-                                            <div class="d-flex justify-content-center">
+                                            <div class="d-flex justify-content-start">
                                                 <div class="top-text mb-0 p-relative"> {{ $chairperson[0]->title ?? '' }}
                                                 </div>
                                             </div>
@@ -985,11 +969,11 @@
 
                             <div class="row mt-4 mb-5">
                                 <div class="col-md-3">
-                                    <div class="top text-center mt-0">
+                                    <div class="top text-left mt-0">
                                         <div class="profile-img img-fac">
                                             <img src="{{ asset('uploads/organisation/' . $chairpersone[0]->image)}}"
                                                 alt="A VENKATARAMAN" loading="lazy" class="mb-0">
-                                            <div class="d-flex justify-content-center">
+                                            <div class="d-flex justify-content-start">
                                                 <div class="top-text mb-0 p-relative"> {{ $chairpersone[0]->title ?? '' }}
                                                 </div>
                                             </div>
@@ -1042,8 +1026,7 @@
                                                             <div class="col-md-3 col-lg-3">
                                                                 <div class="d-flex flex-column h-100">
 
-                                                                    <a href="{{ asset('uploads/organisation/' . $value->image) ?? '' }}"
-                                                                        class="image-link">
+                                                                   <div class="">
                                                                         <div class="thumbnail p-relative">
                                                                             <img src="{{ asset('uploads/organisation/' . $value->image) ?? '' }}"
                                                                                 alt="gallery-img" class="img-fluid"
@@ -1052,7 +1035,7 @@
                                                                             </div>
 
                                                                         </div>
-                                                                    </a>
+                                                                    </div>
 
                                                                 </div>
                                                             </div>
@@ -1086,7 +1069,7 @@
 
 
                             <div class="excellence-wrap event-text mb-3 mt-4">
-                                <div class="container">
+                                <div class="container p-0">
                                     <div class="row">
 
                                         @foreach ($data as $datas)
@@ -1116,9 +1099,9 @@
         <div class="col-md-4">
 
             <div class="multi-image-popup">
-                <a href="{{ asset('uploads/multiple/club/' . $datas->image) ?? '' }}" class="image-link">
+                <a href="https://iim.staggings.in/uploads/header_top/168690759793.jpg" class="image-link">
                     <img
-                        src="{{ asset('uploads/multiple/club/' . $datas->image) ?? '' }}" />
+                        src="https://iim.staggings.in/uploads/header_top/168690759793.jpg" />
                 </a>
             </div>
 
@@ -1246,11 +1229,11 @@
 
                                 <div class="row mt-4 mb-5">
                                     <div class="col-md-3">
-                                        <div class="top text-center mt-0">
+                                        <div class="top text-left mt-0">
                                             <div class="profile-img img-fac">
                                                 <img src="{{ asset('uploads/organisation/' . $chairperson[0]->image)}}"
                                                     alt="A VENKATARAMAN" loading="lazy" class="mb-0">
-                                                <div class="d-flex justify-content-center">
+                                                <div class="d-flex justify-content-start">
                                                     <div class="top-text mb-0 p-relative"> {{ $chairperson[0]->title ?? '' }}
                                                     </div>
                                                 </div>
@@ -1293,8 +1276,7 @@
                                                             <div class="col-md-3 col-lg-3">
                                                                 <div class="d-flex flex-column h-100 grid-4">
 
-                                                                    <a href="{{ asset('uploads/organisation/' . $value->image) ?? '' }}"
-                                                                        class="image-link">
+                                                                   <div>
                                                                         <div class="thumbnail p-relative">
                                                                             <img src="{{ asset('uploads/organisation/' . $value->image) ?? '' }}"
                                                                                 alt="gallery-img" class="img-fluid"
@@ -1303,7 +1285,7 @@
                                                                             </div>
 
                                                                         </div>
-                                                                    </a>
+                                                                    </div>
 
                                                                 </div>
                                                             </div>
@@ -1336,7 +1318,7 @@
                             @endif
 
                             <div class="excellence-wrap event-text mb-3 mt-4">
-                                <div class="container">
+                                <div class="container p-0">
                                     <div class="row">
 
                                         @foreach ($data as $datas)
@@ -1365,26 +1347,18 @@
                                 </h5>
 
                                 <div class="excellence-wrap event-text mb-3 mt-4">
-                                    <div class="container">
+                                    <div class="container p-0">
                                         <div class="row">
                                             @foreach ($data as $datas)
                                                 <div class="col-md-4">
 
                                                     <div class="multi-image-popup">
-                                                        <a href="{{ asset('uploads/multiple/club/' . $datas->image) ?? '' }}" class="image-link">
+                                                        <a href="{{asset('uploads/header_top'."/".$Ms->image)}}" class="image-link">
                                                             <img
-                                                                src="{{ asset('uploads/multiple/club/' . $datas->image) ?? '' }}" />
+                                                                src="{{asset('uploads/header_top'."/".$Ms->image)}}" />
                                                         </a>
                                                     </div>
-
-                                                    <!-- Multiple Image Popup -->
-                                                    <div id="gallery-1" class="hidden">
-                                                        <a
-                                                            href="https://images.unsplash.com/photo-1462774603919-1d8087e62cad?ixlib=rb-0.3.5&q=80&fm=jpg&crop=entropy&s=0ebd884b4d6ac379f42146a2b26fbf2e">Image
-                                                            1</a>
-                                                    </div>
-
-
+                                                   
                                                 </div>
                                             @endforeach
 
