@@ -826,14 +826,18 @@
 
                             @foreach ($item as $items)
                                 @if ($items->department == '9')
-                                    <div class="col-md-4 mb-4">
+                                   
+                            <div class="col-md-4 mb-4">
 
-                                        <div class="profilewraper withinfo addevent-box top mt-2">
+                                <div class="profilewraper withinfo addevent-box top mt-2">
 
-                                            <div class="profile-img">
-                                                <img src="{{ asset('uploads/organisation/' . $items->image) ?? '' }}"
-                                                    alt="{{ $items->title ?? '' }}" title="{{ $items->title ?? '' }}">
-                                            </div>
+                                    <div class="profile-img">
+                                        <img src="{{asset('uploads/organisation/'.$items->image) ?? ''}}" alt="{{ $items->title ?? '' }}" title="{{ $items->title ?? '' }}">
+                                    </div>
+
+                                    <h5> @if(GetLang()=='en') {{ $items->title ?? '' }}  @else {{ $items->title_h ?? '' }}  @endif</h5>
+
+                                  <h6>  @if(GetLang()=='en') {{ $items->designation ?? '' }}  @else {{ $items->designation_h ?? '' }}  @endif </h6>
 
                                             <h5>
                                                 @if (GetLang() == 'en')
