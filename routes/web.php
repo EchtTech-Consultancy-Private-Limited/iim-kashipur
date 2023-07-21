@@ -433,7 +433,7 @@ Route::get('/Vendors-Debarred',[InnerpageController::class,'Vendors_Debarred']);
 
 
 //RTI
-Route::get('/RTI',[InnerpageController::class,'RTI_view']);
+Route::get('/rit',[InnerpageController::class,'RTI_view']);
 
 //journal publication
 Route::get('journal/{id?}', [InnerpageController::class, 'journal_detail']);
@@ -446,7 +446,7 @@ Route::get('/news-media',[InnerpageController::class,'news_media']);
 
 Route::get('/press-media',[InnerpageController::class,'press_media']);
 Route::get('/news-media',[InnerpageController::class,'news_media']);
-Route::get('/Industry-Connect',[InnerpageController::class,'Industry_Connect']);
+Route::get('/industry-connect',[InnerpageController::class,'Industry_Connect']);
 Route::get('event-activity-image/{id?}',[InnerpageController::class,'event_activity_image']);
 //screen_reader_access
 Route::get('/screen_reader_access',[InnerpageController::class,'screen_reader_access']);
