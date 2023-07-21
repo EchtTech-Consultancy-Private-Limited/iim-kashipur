@@ -438,14 +438,7 @@ $mmenu = @content_menus($type[0]->menu_id);
                                         </div>
 
                                     </div>
-
-
-
-
-
-
                                     <div class="col-md-7 col-lg-8">
-
                                         <p>
                                             @if (GetLang() == 'en')
                                                 {!! $items->description ?? '' !!}
@@ -857,7 +850,7 @@ $mmenu = @content_menus($type[0]->menu_id);
                                     <h4> @if(GetLang()=='en') {{ $items->title ?? '' }}  @else {{ $items->title_h ?? '' }}  @endif</h4>
                                 </a>
                                     @if(GetLang()=='en') {{ $items->designation ?? '' }}  @else {{ $items->designation_h ?? '' }}  @endif
-                                   
+
                                 </div>
 
                             </div>

@@ -205,64 +205,57 @@
 
                                 <tr>
                                     <td>{{ $K+1 }}</td>
-                                    <td> {{ date('Y', strtotime($values->year )) -1}} - {{ date('Y', strtotime($values->year ))}} </td>
+                                    <td> {{ date('Y', strtotime($values->year )) -1}} - {{ date('Y', strtotime($values->year ))}}
 
-
+                                    </td>
 
                                     <td>
                                         @if($values->pdf_first != "" )
-                                        <a href="{{url('uploads/rti/'.$values->pdf_first)}}" download class="pdf-links"> <i class="fa fa-file-pdf-o"></i>  <span>{{ $values->pdf_first }} </span></a>
+                                        <a href="{{url('uploads/rti/'.$values->pdf_first)}}" download class="pdf-links"> <i class="fa fa-file-pdf-o"></i>  <span>Quarterly 1 </span></a>
 
                                         <span style="font-size: 12px;margin-left: 5px;color: #ed2044;">
                                             (
                                             <?php
-                                                echo formatSizeUnits($values->pdfsize);
+                                                echo formatSizeUnits($values->pdfsize_first);
                                             ?>)
                                         </span>
                                         @endif
                                     </td>
-
-
-
                                     <td>
 
                                         @if($values->pdf_second != "" )
-                                        <a href="{{url('uploads/rti/'.$values->pdf_second)}}" download class="pdf-links"> <i class="fa fa-file-pdf-o"></i>  <span>{{ $values->pdf_second }}  </span></a>
+                                        <a href="{{url('uploads/rti/'.$values->pdf_second)}}" download class="pdf-links"> <i class="fa fa-file-pdf-o"></i>  <span>Quarterly 2 </span></a>
 
                                         <span style="font-size: 12px;margin-left: 5px;color: #ed2044;">
                                             (
                                             <?php
-                                                echo formatSizeUnits($values->pdfsize);
+                                                echo formatSizeUnits($values->pdfsize_second);
                                             ?>)
                                         </span>
                                         @endif
 
                                     </td>
-
-
 
                                     <td>
                                         @if($values->pdf_third != "" )
-                                        <a href="{{url('uploads/rti/'.$values->pdf_third)}}" download class="pdf-links"> <i class="fa fa-file-pdf-o"></i>   <span>{{ $values->pdf_third }}</span></a>
+                                        <a href="{{url('uploads/rti/'.$values->pdf_third)}}" download class="pdf-links"> <i class="fa fa-file-pdf-o"></i>   <span>Quarterly 3</span></a>
 
                                         <span style="font-size: 12px;margin-left: 5px;color: #ed2044;">
                                             (
                                             <?php
-                                                echo formatSizeUnits($values->pdfsize);
+                                                echo formatSizeUnits($values->pdfsize_third);
                                             ?>)
                                         </span>
                                         @endif
                                     </td>
 
-
-
                                     <td>
                                         @if($values->pdf_fourth != "" )
-                                        <a href="{{url('uploads/rti/'.$values->pdf_fourth)}}" download class="pdf-links"> <i class="fa fa-file-pdf-o"></i><span>{{ $values->pdf_fourth }}</span></a>
+                                        <a href="{{url('uploads/rti/'.$values->pdf_fourth)}}" download class="pdf-links"> <i class="fa fa-file-pdf-o"></i><span>Quarterly 4</span></a>
                                         <span style="font-size: 12px;margin-left: 5px;color: #ed2044;">
                                             (
                                             <?php
-                                                echo formatSizeUnits($values->pdfsize);
+                                                echo formatSizeUnits($values->pdfsize_fourth);
                                             ?>)
                                         </span>
 

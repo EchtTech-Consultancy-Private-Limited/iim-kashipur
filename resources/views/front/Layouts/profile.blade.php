@@ -865,7 +865,6 @@
                                         {{-- <p>{{ $items->department  }}</p> --}}
                                         <p>{!! $items->description !!} </p>
 
-
                                         <div class="social-icon">
                                         <ul>
                                             <li>
@@ -943,11 +942,6 @@
                                 </div>
                         @endforeach
                     </div>
-
-
-
-
-
 
                     <div class="col-xl-9 col-md-9 col-lg-12">
 
