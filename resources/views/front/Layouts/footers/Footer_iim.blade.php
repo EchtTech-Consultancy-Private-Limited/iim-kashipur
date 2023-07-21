@@ -47,11 +47,9 @@
 
                         <div class="col-md-4 width50 p-lg-0">
 
-                            <h2 class="footer-top-title">
-
-
-
-                            </h2>
+                            {{-- <h2 class="footer-top-title">
+                                
+                            </h2> --}}
 
                             <div class="footer-link mt-58">
 
@@ -82,11 +80,11 @@
 
                         <div class="col-md-4 p-lg-0">
 
-                            <h2 class="footer-top-title">
+                            {{-- <h2 class="footer-top-title">
 
 
 
-                            </h2>
+                            </h2> --}}
 
                             <div class="footer-link mt-58">
 
@@ -134,7 +132,7 @@
 
                                 <p class="phone">Phone:{{chunk_split(GetOrganisationAllDetails('contact'))}}</p>
 
-                                <a href="#" class="tel-no">Email:{{GetOrganisationAllDetails('email')}}</a>
+                                <a href="javascript:void();" class="tel-no">Email:{{GetOrganisationAllDetails('email')}}</a>
 
                             </div>
 
@@ -146,14 +144,14 @@
 
                                     @if(GetOrganisationAllDetails('facebook')!='')
                                     <li>
-                                        <a href="{{GetOrganisationAllDetails('facebook')}}" alt="{{GetOrganisationAllDetails('Facebook_Alt')}}"  title="{{GetOrganisationAllDetails('Facebook_title')}}"  onclick="return confirm('Are you sure  external window open?')" target="_blank">
+                                        <a href="{{GetOrganisationAllDetails('facebook')}}"  title="{{GetOrganisationAllDetails('Facebook_title')}}"  onclick="return confirm('Are you sure  external window open?')" target="_blank">
                                             <i class="fa fa-facebook" aria-hidden="true"></i>
                                         </a>
                                     </li>
                                    @endif
                                    @if(GetOrganisationAllDetails('twitter')!='')
                                    <li>
-                                       <a href="{{GetOrganisationAllDetails('twitter')}}" alt="{{GetOrganisationAllDetails('twitter_Alt')}}" title="{{GetOrganisationAllDetails('Twitter_title')}}"  onclick="return confirm('Are you sure  external window open?')" target="_blank" >
+                                       <a href="{{GetOrganisationAllDetails('twitter')}}" title="{{GetOrganisationAllDetails('Twitter_title')}}"  onclick="return confirm('Are you sure  external window open?')" target="_blank" >
                                            <i class="fa fa-twitter" aria-hidden="true"></i>
                                        </a>
                                    </li>
@@ -161,7 +159,7 @@
 
                                @if(GetOrganisationAllDetails('instagram')!='')
                                <li>
-                                   <a href="{{GetOrganisationAllDetails('instagram')}}" alt="{{GetOrganisationAllDetails('Instagram_Alt')}}" title="{{GetOrganisationAllDetails('Instagram_title')}}"  onclick="return confirm('Are you sure  external window open?')" target="_blank" >
+                                   <a href="{{GetOrganisationAllDetails('instagram')}}" title="{{GetOrganisationAllDetails('Instagram_title')}}"  onclick="return confirm('Are you sure  external window open?')" target="_blank" >
                                        <i class="fa fa-instagram" aria-hidden="true"></i>
                                    </a>
                                </li>
@@ -169,7 +167,7 @@
 
                               @if(GetOrganisationAllDetails('linkedin')!='')
                               <li>
-                                  <a href="{{GetOrganisationAllDetails('linkedin')}}" alt="{{GetOrganisationAllDetails('LinkedIn_Alt')}}" title="{{GetOrganisationAllDetails('LinkedIn_title')}}"  onclick="return confirm('Are you sure  external window open?')"  target="_blank">
+                                  <a href="{{GetOrganisationAllDetails('linkedin')}}" title="{{GetOrganisationAllDetails('LinkedIn_title')}}"  onclick="return confirm('Are you sure  external window open?')"  target="_blank">
                                       <i class="fa fa-linkedin" aria-hidden="true"></i>
                                   </a>
                               </li>
@@ -189,7 +187,7 @@
 
                             <div class="footer-widget">
                             @if(GetOrganisationAllDetails('location')!='')
-                            <iframe src="{{GetOrganisationAllDetails('location')}}" width="100%" height="200" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                            <iframe src="{{GetOrganisationAllDetails('location')}}" height="200" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
                             @endif
                             </div>
 

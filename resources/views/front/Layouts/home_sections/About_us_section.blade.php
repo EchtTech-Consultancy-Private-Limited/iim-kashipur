@@ -1,61 +1,3 @@
-<style>
-
-#shiva
-{
-  width: 100px;
-	height: 100px;
-	background: red;
-	-moz-border-radius: 50px;
-	-webkit-border-radius: 50px;
-	border-radius: 50px;
-  float:left;
-  margin:5px;
-}
-.count
-{
-  line-height: 100px;
-  color:white;
-  margin-left:30px;
-  font-size:25px;
-}
-#talkbubble {
-   width: 120px;
-   height: 80px;
-   background: red;
-   position: relative;
-   -moz-border-radius:    10px;
-   -webkit-border-radius: 10px;
-   border-radius:         10px;
-  float:left;
-  margin:20px;
-}
-#talkbubble:before {
-   content:"";
-   position: absolute;
-   right: 100%;
-   top: 26px;
-   width: 0;
-   height: 0;
-   border-top: 13px solid transparent;
-   border-right: 26px solid red;
-   border-bottom: 13px solid transparent;
-}
-
-span.percentage {
-    font-size: 35px;
-}
-
-.linker
-{
-  font-size : 20px;
-  font-color: black;
-}
-
-</style>
-
-
-
-
 
     <section class="about-wrap ptb-80" >
         <div class="container-fluid container-lg-sm">
@@ -79,11 +21,11 @@ span.percentage {
                            <div class="col-md-8">
                            <div data-aos="fade-left" class="about_con">
                                 @if(GetOrganisationAllDetails('about')!='')
-                                <p class="desc-white" id="para">
+                                <div class="desc-white" id="para">
                                 @if(GetLang()=='en') {!! GetOrganisationAllDetails('about') !!} 
                                 @else {!! GetOrganisationAllDetails('about_h') !!}  
                                 @endif
-                                </p>
+                                </div>
                                 @endif
                                 <div class="btn-wrap">
                                     @if(GetOrganisationAllDetails('external')  == 'yes')

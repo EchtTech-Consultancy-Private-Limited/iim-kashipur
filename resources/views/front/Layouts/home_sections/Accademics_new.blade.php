@@ -22,7 +22,7 @@
                             @foreach(GETcontentservices($M->id) as $key=>$Ms)
 
                             <div class="item">
-                                <a  @if($Ms->external=='yes')  onclick="return confirm('Are you sure  external window open?')" target="_blank" href="{{$Ms->url}}" @elseif($Ms->external=='no')  href="{{url($Ms->url)}}" @endif href="{{$Ms->slug}}"         >
+                                <a  @if($Ms->external=='yes')  onclick="return confirm('Are you sure  external window open?')" target="_blank" href="{{$Ms->url}}" @elseif($Ms->external=='no')  href="{{url($Ms->url)}}" @endif>
                                 <div class="academic-card">
                                     <div class="academic-img">
                                         <img  src="{{asset('uploads/header_top'."/".$Ms->image)}}"  title="{{ $Ms->Image_Title }}"  alt="{{ $Ms->Image_Alt }}" class="img-fluid" />
