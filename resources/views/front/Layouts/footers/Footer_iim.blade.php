@@ -45,15 +45,17 @@
                         @endforeach
 
 
+
                       @foreach(Getfooterlink2() as $key=>$M)
 
-                            <div class="col-md-4 width50 p-lg-0">
+                        <div class="col-md-4 width50 p-lg-0">
 
-                                {{-- <h2 class="footer-top-title">
 
-                               </h2> --}}
+                            {{-- <h2 class="footer-top-title">
+                                
+                            </h2> --}}
 
-                                <div class="footer-link mt-58">
+                          <div class="footer-link mt-58">
 
                                     <ul>
 
@@ -85,14 +87,20 @@
 
                             @foreach (Getfooterlink3() as $key => $M)
 
+
                                     <div class="col-md-4 p-lg-0">
 
                                        <div class="footer-link mt-58">
 
+
+                          
+
                                             <ul>
+
 
                                                 @foreach (GETfooterdatalink($M->id) as $key => $Ms)
                                                     <li>
+
 
                                                         <img src="{{ asset('assets/images/arrow.svg') }}"
                                                             alt="arrow" class="img-fluid">
@@ -152,8 +160,6 @@
 
                                 <a href="javascript void(0);" class="tel-no">Email :&nbsp;{{ $email }}</a>
 
-                                {{-- <a href="javascript:void();"
-                                    class="tel-no">Email:{{ GetOrganisationAllDetails('email') }}</a> --}}
 
                             </div>
 
@@ -162,6 +168,7 @@
                             <div class="social-icon">
 
                                 <ul>
+
 
                                     @if (GetOrganisationAllDetails('facebook') != '')
                                         <li>
@@ -209,6 +216,7 @@
 
 
 
+
                                 </ul>
 
                             </div>
@@ -220,11 +228,13 @@
                             <h2 class="footer-top-title">LOCATE US </h2>
 
                             <div class="footer-widget">
+
                                 @if (GetOrganisationAllDetails('location') != '')
                                     <iframe src="{{ GetOrganisationAllDetails('location') }}" height="200" width="100%"
                                         style="border:0;" allowfullscreen="" loading="lazy"
                                         referrerpolicy="no-referrer-when-downgrade"></iframe>
                                 @endif
+
                             </div>
 
                         </div>
