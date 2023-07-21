@@ -656,7 +656,6 @@ $mmenu = @content_menus($type[0]->menu_id);
                                                 </ul>
                                                 </li>
 
-
                                 </li>
                             @else
                                 @if ($C->external == 'yes')
@@ -770,7 +769,7 @@ $mmenu = @content_menus($type[0]->menu_id);
 
                                 <div class="row mt-4">
 
-                                 <div class="col-md-3">
+                                 <div class="col-md-3 mx-auto">
 
                                     <div class="addevent-box top text-center mt-0">
                                         <a href="{{ url($items->slug) }}">
@@ -801,15 +800,10 @@ $mmenu = @content_menus($type[0]->menu_id);
 
                                 </div>
 
-
-
-
-
-
-                            <div class="col-md-7 col-lg-8">
+                            {{-- <div class="col-md-7 col-lg-8">
 
                                 <p>  @if(GetLang()=='en') {!! $items->description  ?? '' !!}  @else {!! $items->description_h  ?? '' !!}  @endif</p>
-                            </div>
+                            </div> --}}
 
                             @endif
 
@@ -876,9 +870,9 @@ $mmenu = @content_menus($type[0]->menu_id);
 
                         <div class="row">
 
-                            <div class="col-md-4 col-lg-4">
+                            <div class="col-md-3 col-lg-3 mx-auto">
 
-                                <div class="profilewraper withinfo bg-hover" style="width: 100%">
+                                <div class="profilewraper withinfo bg-hover">
                                     <a href="{{ url($items->slug) }}">
                                     <figure><img src="{{asset('uploads/organisation/'.$items->image)}}"  alt="{{ $items->title ?? '' }}" title="{{ $items->title ?? '' }}"></figure>
 
@@ -891,11 +885,11 @@ $mmenu = @content_menus($type[0]->menu_id);
 
                             </div>
 
-                            <div class="col-md-7 col-lg-8">
+                            {{-- <div class="col-md-7 col-lg-8">
 
                                <p> @if(GetLang()=='en') {!! $items->description !!}  @else {!! $items->description_h !!}  @endif</p>
 
-                            </div>
+                            </div> --}}
 
                         </div>
 
