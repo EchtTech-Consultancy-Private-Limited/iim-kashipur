@@ -433,7 +433,7 @@ Route::get('/Vendors-Debarred',[InnerpageController::class,'Vendors_Debarred']);
 
 
 //RTI
-Route::get('/rit',[InnerpageController::class,'RTI_view']);
+Route::get('/rti',[InnerpageController::class,'RTI_view']);
 
 //journal publication
 Route::get('journal/{id?}', [InnerpageController::class, 'journal_detail']);
