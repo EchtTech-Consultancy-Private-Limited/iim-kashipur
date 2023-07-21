@@ -3,9 +3,6 @@
     <div class="footer-top ptb-60">
 
         <div class="container">
-
-
-
             <div class="row">
 
                 <div class="col-md-7 p-lg-0">
