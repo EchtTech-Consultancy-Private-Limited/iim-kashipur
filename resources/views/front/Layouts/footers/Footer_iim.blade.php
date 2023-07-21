@@ -10,34 +10,43 @@
 
                 <div class="col-md-7 p-lg-0">
                     <div class="row">
-                        @foreach(Getfooterlink() as $key=>$M)
+                        @foreach (Getfooterlink() as $key => $M)
+                            <div class="col-md-4 width50 p-lg-0">
 
-                        <div class="col-md-4 width50 p-lg-0">
+                                <h2 class="footer-top-title">
 
-                            <h2 class="footer-top-title">
+                                    {{ $M->Section }}
 
-                               {{$M->Section}}
+                                </h2>
 
-                            </h2>
+                                <div class="footer-link">
 
-                            <div class="footer-link">
+                                    <ul>
 
-                                <ul>
+                                        @foreach (GETfooterdatalink($M->id) as $key => $Ms)
+                                            <li>
+                                                <img src="{{ asset('assets/images/arrow.svg') }}" alt="arrow"
+                                                    class="img-fluid">
 
-                                  @foreach(GETfooterdatalink($M->id) as $key=>$Ms)
+                                                <a
+                                                    @if ($Ms->external == 'yes') onclick="return confirm('Are you sure  external window open?')"  target="_blank" href="{{ url($Ms->url) }}" @elseif($Ms->external == 'no')  href="{{ url($Ms->url) }}" @else href="{{ url($Ms->slug) }}" @endif>
+                                                    @if (GetLang() == 'en')
+                                                        {{ $Ms->title }}
+                                                    @else
+                                                        {{ $Ms->title_h }}
+                                                    @endif
+                                                </a>
 
-                                    <li>
-                                        <img src="{{ asset('assets/images/arrow.svg')}}" alt="arrow" class="img-fluid">
+                                            </li>
+                                        @endforeach
 
-                                        <a @if($Ms->external=='yes')  onclick="return confirm('Are you sure  external window open?')"  target="_blank" href="{{url($Ms->url)}}" @elseif($Ms->external=='no')  href="{{url($Ms->url)}}" @else href="{{url($Ms->slug)}}" @endif>@if(GetLang()=='en') {{ $Ms->title }} @else {{ $Ms->title_h }}  @endif</a>
+                                    </ul>
 
-                                    </li>
-
-                                  @endforeach
-
-                                </ul>
+                                </div>
 
                             </div>
+                        @endforeach
+
 
                         </div>
 
@@ -51,34 +60,39 @@
                                 
                             </h2> --}}
 
-                            <div class="footer-link mt-58">
+                          <div class="footer-link mt-58">
 
-                                <ul>
+                                    <ul>
 
-                                  @foreach(GETfooterdatalink($M->id) as $key=>$Ms)
+                                        @foreach (GETfooterdatalink($M->id) as $key => $Ms)
+                                            <li>
 
-                                    <li>
+                                                <img src="{{ asset('assets/images/arrow.svg') }}" alt="arrow"
+                                                    class="img-fluid">
 
-                                        <img src="{{ asset('assets/images/arrow.svg')}}" alt="arrow" class="img-fluid">
+                                                <a
+                                                    @if ($Ms->external == 'yes') onclick="return confirm('Are you sure  external window open?')"  target="_blank" href="{{ url($Ms->url) }}" @elseif($Ms->external == 'no')  href="{{ url($Ms->url) }}" @else href="{{ url($Ms->slug) }}" @endif>
+                                                    @if (GetLang() == 'en')
+                                                        {{ $Ms->title }}
+                                                    @else
+                                                        {{ $Ms->title_h }}
+                                                    @endif
+                                                </a>
 
-                                        <a  @if($Ms->external=='yes')  onclick="return confirm('Are you sure  external window open?')"  target="_blank" href="{{url($Ms->url)}}" @elseif($Ms->external=='no')  href="{{url($Ms->url)}}" @else href="{{url($Ms->slug)}}" @endif      >@if(GetLang()=='en') {{ $Ms->title }} @else {{ $Ms->title_h }}  @endif</a>
+                                            </li>
+                                        @endforeach
 
-                                    </li>
+                                    </ul>
 
-                                  @endforeach
-
-                                </ul>
+                                </div>
 
                             </div>
-
-                        </div>
-
                         @endforeach
 
 
-                        @foreach(Getfooterlink3() as $key=>$M)
+                        @foreach (Getfooterlink3() as $key => $M)
+                            <div class="col-md-4 p-lg-0">
 
-                        <div class="col-md-4 p-lg-0">
 
                             {{-- <h2 class="footer-top-title">
 
@@ -86,28 +100,35 @@
 
                             </h2> --}}
 
-                            <div class="footer-link mt-58">
 
-                                <ul>
 
-                                  @foreach(GETfooterdatalink($M->id) as $key=>$Ms)
+                                <div class="footer-link mt-58">
 
-                                    <li>
+                                    <ul>
 
-                                        <img src="{{ asset('assets/images/arrow.svg')}}" alt="arrow" class="img-fluid">
+                                        @foreach (GETfooterdatalink($M->id) as $key => $Ms)
+                                            <li>
 
-                                        <a  @if($Ms->external=='yes')  onclick="return confirm('Are you sure  external window open?')"  target="_blank" href="{{url($Ms->url)}}" @elseif($Ms->external=='no')  href="{{url($Ms->url)}}" @else href="{{url($Ms->slug)}}" @endif      >@if(GetLang()=='en') {{ $Ms->title }} @else {{ $Ms->title_h }}  @endif</a>
+                                                <img src="{{ asset('assets/images/arrow.svg') }}" alt="arrow"
+                                                    class="img-fluid">
 
-                                    </li>
+                                                <a
+                                                    @if ($Ms->external == 'yes') onclick="return confirm('Are you sure  external window open?')"  target="_blank" href="{{ url($Ms->url) }}" @elseif($Ms->external == 'no')  href="{{ url($Ms->url) }}" @else href="{{ url($Ms->slug) }}" @endif>
+                                                    @if (GetLang() == 'en')
+                                                        {{ $Ms->title }}
+                                                    @else
+                                                        {{ $Ms->title_h }}
+                                                    @endif
+                                                </a>
 
-                                  @endforeach
+                                            </li>
+                                        @endforeach
 
-                                </ul>
+                                    </ul>
+
+                                </div>
 
                             </div>
-
-                        </div>
-
                         @endforeach
                     </div>
                 </div>
@@ -126,13 +147,26 @@
 
                                 <p class="address">
 
-                                  @if(GetLang()=='en'){{GetOrganisationAllDetails('address')}} @else {{GetOrganisationAllDetails('address_h')}}  @endif
+                                    @if (GetLang() == 'en')
+                                        {{ GetOrganisationAllDetails('address') }}
+                                    @else
+                                        {{ GetOrganisationAllDetails('address_h') }}
+                                    @endif
 
                                 </p>
 
-                                <p class="phone">Phone:{{chunk_split(GetOrganisationAllDetails('contact'))}}</p>
+                                <p class="phone">Phone :&nbsp;{{chunk_split(GetOrganisationAllDetails('contact')) }}</p>
 
-                                <a href="javascript:void();" class="tel-no">Email:{{GetOrganisationAllDetails('email')}}</a>
+
+
+                                <?php
+                                $email_address=GetOrganisationAllDetails('email');
+                                $str = $email_address;
+                                $var= str_replace('@','[at]',$str);
+                                $email= str_replace('.','[dot]',$var);
+                               ?>
+
+                                <a href="javascript void(0);" class="tel-no">Email :&nbsp;{{ $email }}</a>
 
                             </div>
 
@@ -141,6 +175,7 @@
                             <div class="social-icon">
 
                                 <ul>
+
 
                                     @if(GetOrganisationAllDetails('facebook')!='')
                                     <li>
@@ -176,26 +211,31 @@
 
 
 
+
+
                                 </ul>
 
                             </div>
 
                         </div>
 
+
                     <div class="col-md-5 p-lg-0">
                         <h2 class="footer-top-title">LOCATE US </h2>
 
                             <div class="footer-widget">
+
                             @if(GetOrganisationAllDetails('location')!='')
                             <iframe src="{{GetOrganisationAllDetails('location')}}" height="200" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
                             @endif
+
                             </div>
 
-                          </div>
+                        </div>
 
                     </div>
-                    </div>
                 </div>
+            </div>
 
 
 
@@ -215,21 +255,26 @@
 
                     <div class="copyright-text">
 
-                    @lang('common.copyright') © {{ now()->format('Y') }} | @if(GetLang()=='en') {!! GetOrganisationAllDetails('name') !!} @else {!! GetOrganisationAllDetails('name_h') !!}  @endif
+                        @lang('common.copyright') © {{ now()->format('Y') }} | @if (GetLang() == 'en')
+                            {!! GetOrganisationAllDetails('name') !!}
+                        @else
+                            {!! GetOrganisationAllDetails('name_h') !!}
+                        @endif
 
                     </div>
 
                 </div>
 
                 <div class="col-md-6">
-                    
-                   
-                            
-                      
+
+
+
+
 
                     <div class="visitor-wrap">
-                    
-                    <h2 class="visitor-title">@lang('common.page_last_updated_on'): {{ now()->format('j F Y') }} &nbsp;&nbsp;&nbsp; @lang('common.visitor_counter'): <span class="visitor-count">{{GetVisits()}}</span></h2>
+
+                        <h2 class="visitor-title">@lang('common.page_last_updated_on'): {{ now()->format('j F Y') }} &nbsp;&nbsp;&nbsp;
+                            @lang('common.visitor_counter'): <span class="visitor-count">{{ GetVisits() }}</span></h2>
 
                     </div>
 
@@ -271,9 +316,3 @@
     }
 
 </script> --}}
-
-
-
-
-
-

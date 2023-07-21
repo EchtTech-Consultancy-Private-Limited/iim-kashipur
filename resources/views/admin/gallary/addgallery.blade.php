@@ -63,17 +63,17 @@
                                         <input type="text" class="form-control" name="name"
                                             placeholder="Please enter content page title" value="{{ old('name') }}"><br>
 
-                                        <label for="name" id="name-error" class="error">
-                                            @error('name')
-                                                {{ $message }}
-                                            @enderror
-                                        </label>
+                                            <label for="name" id="name-error" class="error">
+                                                @error('name')
+                                                    {{ $message }}
+                                                @enderror
+                                            </label>
 
                                     </div>
                                 </div>
 
                                 <div class="col-md-12">
-                                    <label for="name_h" class="col-sm-2 col-form-label">शीर्षक*</label>
+                                    <label for="name_h" class="col-sm-12 col-form-label">शीर्षक*</label>
                                     <div class="col-sm-12">
                                         <input type="text" class="form-control" id="name_h" name="name_h"
                                             placeholder="Please enter content page title in hindi"
@@ -90,7 +90,7 @@
 
 
                                 <div class="col-md-12">
-                                    <label for="content" class="col-sm-2 col-form-label">Page Content</label>
+                                    <label for="content" class="col-sm-12 col-form-label">Page Content</label>
                                     <div class="col-sm-12">
                                         <textarea class="form-control" id="content" rows="4" name="content" placeholder="Please enter content">{{ old('content') }}</textarea><br>
 
@@ -104,7 +104,7 @@
                                 </div>
 
                                 <div class="col-md-12">
-                                    <label for="content_h" class="col-sm-2 col-form-label">विवरण</label>
+                                    <label for="content_h" class="col-sm-12 col-form-label">विवरण</label>
                                     <div class="col-sm-12">
                                         <textarea class="form-control" id="content_h" rows="4" name="content_h"
                                             placeholder="Please enter content in hindi">{{ old('content_h') }}</textarea><br>
@@ -119,7 +119,7 @@
                                 </div>
 
                                 <div class="col-md-12">
-                                    <label for="tittle" class="col-sm-2 col-form-label">Meta Tittle *</label>
+                                    <label for="tittle" class="col-sm-12 col-form-label">Meta Tittle*</label>
                                     <div class="col-sm-12">
                                         <input type="text" class="form-control" name="tittle"
                                             placeholder="Please enter meta tittle, use for seo"
@@ -132,14 +132,12 @@
                                             @enderror
                                         </label>
 
-
-
                                     </div>
                                 </div>
 
 
                                 <div class="col-md-12">
-                                    <label for="keyword" class="col-sm-2 col-form-label">Meta Keywords*</label>
+                                    <label for="keyword" class="col-sm-12 col-form-label">Meta Keywords*</label>
                                     <div class="col-sm-12">
                                         <textarea class="form-control" id="keyword" rows="4" name="keyword"
                                             placeholder="Please enter meta keywords, use for seo">{{ old('keyword') }}</textarea><br>
@@ -155,7 +153,7 @@
                                 </div>
 
                                 <div class="col-md-12">
-                                    <label for="description" class="col-sm-2 col-form-label">Meta Description*</label>
+                                    <label for="description" class="col-sm-12 col-form-label">Meta Description*</label>
                                     <div class="col-sm-12">
                                         <textarea class="form-control" id="description" rows="4" name="description"
                                             placeholder="Please enter meta description, use for seo">{{ old('description') }}</textarea><br>
@@ -173,10 +171,10 @@
 
 
                                 <div class="col-md-12">
-                                    <label for="pdf" class="col-sm-2 col-form-label">PDF File</label>
+                                    <label for="pdf" class="col-sm-12 col-form-label">PDF File</label>
                                     <div class="col-sm-12">
                                         <input type="file" class="form-control" name="pdf"
-                                            placeholder="Please browse PDF file" accept=".jpeg,.jpg,.gif,.png"><br>
+                                            placeholder="Please browse PDF file" accept="application/pdf,application/vnd.ms-excel"><br>
 
                                         <label for="pdf" id="pdf-error" class="error">
                                             @error('pdf')
@@ -189,7 +187,7 @@
 
 
                                 <div class="col-md-12">
-                                    <label for="bannerimage" class="col-sm-2 col-form-label">Banner Image</label>
+                                    <label for="bannerimage" class="col-sm-12 col-form-label">Banner Image</label>
                                     <div class="col-sm-12">
                                         <input type="file" class="form-control" name="bannerimage"
                                             placeholder="Please browse banner image" accept=".jpeg,.jpg,.gif,.png"><br>
@@ -206,7 +204,7 @@
 
 
                                 <div class="col-md-12">
-                                    <label for="banner_title" class="col-sm-2 col-form-label">Banner Title </label>
+                                    <label for="banner_title" class="col-sm-12 col-form-label">Banner Image text </label>
                                     <div class="col-sm-12">
                                         <input type="text" class="form-control" name="banner_title"
                                             placeholder="Please enter text for title of banner photo, use for seo"
@@ -224,7 +222,7 @@
 
 
                                 <div class="col-md-12">
-                                    <label for="inputText" class="col-sm-2 col-form-label">Banner Alt </label>
+                                    <label for="inputText" class="col-sm-12 col-form-label">Banner image Alt </label>
                                     <div class="col-sm-12">
                                         <input type="text" class="form-control" name="banner_alt"
                                             placeholder="Please enter text for alt of banner photo, use for seo"
@@ -242,11 +240,11 @@
 
 
                                 <div class="col-md-12">
-                                    <label for="inputText" class="col-sm-2 col-form-label">Content image</label>
+                                    <label for="inputText" class="col-sm-12 col-form-label">Content image</label>
                                     <div class="col-sm-12">
                                         <input type="file" class="form-control" name="imagename"
                                             accept=".jpeg,.png,.gif,.jpg" placeholder="Please browse content image"
-                                            accept=".jpeg,.jpg,.gif,.png"><br>
+                                            ><br>
 
                                         @error('imagename')
                                             <div class="alert alert-danger">{{ $message }}</div>
@@ -255,7 +253,7 @@
                                 </div>
 
                                 <div class="col-md-12">
-                                    <label for="inputText" class="col-sm-2 col-form-label">Content  Title</label>
+                                    <label for="inputText" class="col-sm-12 col-form-label">Content image text</label>
                                     <div class="col-sm-12">
                                         <input type="text" class="form-control"name="cover_title"
                                             placeholder="Please enter text for title of content photo, use for seo"
@@ -272,7 +270,7 @@
 
 
                                 <div class="col-md-12">
-                                    <label for="inputText" class="col-sm-2 col-form-label">Content  Alt </label>
+                                    <label for="inputText" class="col-sm-12 col-form-label">Content image Alt </label>
                                     <div class="col-sm-12">
                                         <input type="text" class="form-control"name="cover_alt"
                                             placeholder="Please enter text for title of content photo, use for seo"
@@ -286,7 +284,7 @@
                                 </div>
 
                                 <div class="col-md-12">
-                                    <label for="inputText" class="col-sm-2 col-form-label">Sort Order*</label>
+                                    <label for="inputText" class="col-sm-12 col-form-label">Sort Order*</label>
                                     <div class="col-sm-12">
                                         <input type="text" class="form-control" name="sort_order"
                                             placeholder="Please enter sorting position number"
@@ -314,7 +312,7 @@
                                 </div>
 
                                 <div class="col-md-12">
-                                    <label for="status" class="col-sm-2 col-form-label">Status</label>
+                                    <label for="status" class="col-sm-12 col-form-label">Status</label>
                                     <div class="col-sm-12">
                                         <select class="form-control" aria-label="Default select example" id="status" name="status"
                                             value="{{ old('status') }}"><br>

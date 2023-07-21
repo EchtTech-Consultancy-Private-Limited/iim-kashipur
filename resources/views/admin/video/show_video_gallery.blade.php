@@ -2,7 +2,7 @@
 
 
 
-@section('title', 'Photo Gallery ')
+@section('title', ' Manage video Section ')
 
 
 
@@ -142,10 +142,6 @@
                               <th>शीर्षक</th>
 
 
-
-                              <th>Content image</th>
-
-
                               <th data-field="user-status">Status</th>
 
 
@@ -184,9 +180,9 @@
                           <td>{{$value->name_h}}</td>
 
 
-
+{{--
                           <td><img src="{{asset('video/image/'.$value->cover_image)}}" alt="" title="" style="height: 100px;  width: 100px;"></td>
-
+ --}}
 
 
 
