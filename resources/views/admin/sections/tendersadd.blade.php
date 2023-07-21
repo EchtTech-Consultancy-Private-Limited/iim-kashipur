@@ -59,7 +59,7 @@
 
                                                 <tr>
 
-                                                    <th>S.No#</th>
+                                                    <th>Sr.No#</th>
 
                                                     <th>Published Date</th>
 
@@ -68,8 +68,6 @@
                                                     <th>Title</th>
 
                                                     <th>Tender Documents</th>
-
-                                                    <th>Corregendum</th>
 
                                                     <th>Status</th>
 
@@ -90,21 +88,26 @@
 
                                                         <td>{{ $D->submission_date }}</td>
 
-
-
                                                         <td>{{$D->title}}</td>
-
-                                                        <td><img src="{{ asset('uploads/tenders/' . $D->tender_document) }}"
-                                                                alt="" title=""
-                                                                style="height: 100px;  width: 100px;"></td>
-
-
 
                                                         <td>
 
-                                                            {{$D->corregendum}}
+                                                             <a   href="{{url('uploads/pdf'.$D->tender_document)}}" download>
+
+                                                                <img src="{{ asset('admin/images/viewpdf.jpg') }}"  width="170" height="70">
+
+                                                            </a>
+
+                                                            <span style="font-size: 12px;margin-left: 5px;color: #ed2044;">
+                                                                (
+                                                                <?php
+                                                                    echo formatSizeUnits($D->pdfsize);
+                                                                ?>)
+                                                            </span>
 
                                                         </td>
+
+
 
 
                                                         <td>

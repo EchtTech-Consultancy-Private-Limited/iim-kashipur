@@ -37,7 +37,7 @@
                 <th>Published Date</th>
                 <th>Submission Date</th>
                 <th>Title</th>
-                <th>Tender Documents</th>
+                <th>Document Size</th>
                 <th>Corrigendum</th>
                 </tr>
 
@@ -50,8 +50,19 @@
                 <td>{{$value->submission_date}}</td>
                 <td>{{$value->title}}</td>
                 <td>
-				<a href="{{ asset('uploads/tenders/' . $value->tender_document) }}" target="_blank"><i class="fa fa-download"></i> Download</a>
+				<a href="{{ asset('uploads/tenders/' . $value->tender_document) }}" download><i class="fa fa-download"></i> Download</a>
+
+
+                <span style="font-size: 12px;margin-left: 5px;color: #ed2044;">
+                    (
+                    <?php
+                        echo formatSizeUnits($value->pdfsize);
+                    ?>)
+                </span>
+
+
 				</td>
+
                 <td>{{$value->corrigendum}}</td>
 
 

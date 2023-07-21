@@ -232,7 +232,20 @@
 
                                 <div class="col-md-12">
 
-                                    <label for="inputText" class="col-sm-2 col-form-label">PDF File</label>
+                                    <label for="inputText" class="col-sm-12 col-form-label">PDF File
+
+
+                                        <span style="color:green;font-size:12px;"> [{{$data->file_download }}]
+                                        </span>
+                                        <span style="font-size: 12px;margin-left: 5px;color: #ed2044;">
+                                            (
+                                            <?php
+                                                echo formatSizeUnits($data->pdfsize);
+                                            ?>)
+                                        </span>
+
+
+                                    </label>
 
                                     <div class="col-sm-12">
 

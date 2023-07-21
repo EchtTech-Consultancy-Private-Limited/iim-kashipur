@@ -36,6 +36,8 @@ class pagecontroller extends Controller
 
         public function add_content_page_submit(Request $request){
 
+
+
         $request->validate(
         [
         'name'              =>        'required',
@@ -76,27 +78,11 @@ class pagecontroller extends Controller
         $img2->resize(1000,300, function ($constraint) {
         $constraint->aspectRatio();
         })->save($Banner_destinationPath.'/'.$input['bannerimage']);
-
-
         $e->url=("content/".$input['bannerimage']);
-
-
-
         $Banner_image->move($Banner_destinationPath, $input['bannerimage']);
         }
 
 
-
-
-        $pdf_destinationPath="";
-        $pdf=$request->file('pdf');
-        if($pdf==null){
-        $input['pdf'] ="default.jpg";
-        }else{
-        $input['pdf']=time().'.'.$pdf->extension();
-        $pdf_destinationPath = public_path('page/pdf');
-        $pdf->move($pdf_destinationPath, $input['pdf']);
-        }
 
         //enter data in data base
 
@@ -107,7 +93,7 @@ class pagecontroller extends Controller
         $e->content_h=$request->content_h;
         $e->cover_image=$input['imagename']; //image file path
         $e->banner_image=$input['bannerimage'] ; //banner image save
-        $e->file_download=$input['pdf'] ;//pdf save
+        // $e->file_download=$input['pdf'] ;//pdf save
         $e->meta_title=$request->tittle;
         $e->meta_keywords=$request->keyword;
         $e->meta_description=$request->description ;
@@ -117,7 +103,6 @@ class pagecontroller extends Controller
         $e->cover_alt=$request->cover_alt;
         $e->sort_order=$request->sort_order;
         $e->status=$request->status;
-
         $e->delete_range=$request->delete_range;
         $e->slug=\Str::slug($request->name);
 
@@ -127,6 +112,15 @@ class pagecontroller extends Controller
             $e->parent_id= NULL;
         }
 
+        if($request->hasfile('pdf'))
+        {
+        $img = $request->file('pdf');
+        $e->pdfsize=$request->pdf->getSize();
+        $name =$img->getClientOriginalName();
+        $filename = time().$name;
+        $img->move('page/pdf',$filename);
+        $e->file_download=$filename;
+        }
 
         $e->save();
         return redirect("/Accounts/pages-list")->with('success', 'Data Add Succesfull!!');
@@ -230,6 +224,7 @@ class pagecontroller extends Controller
 
                 if($request->hasfile('bannerimage'))
                 {
+                $u->pdfsize=$request->pdf->getSize();
                 $img = $request->file('bannerimage');
                 $name =$img->getClientOriginalName();
                 $filename = time().$name;
@@ -249,6 +244,7 @@ class pagecontroller extends Controller
                 if($request->hasfile('pdf'))
                 {
                 $img = $request->file('pdf');
+                $u->pdfsize=$request->pdf->getSize();
                 $name =$img->getClientOriginalName();
                 $filename = time().$name;
                 $img->move('page/pdf',$filename);
@@ -267,31 +263,31 @@ class pagecontroller extends Controller
                 return redirect("/Accounts/pages-list")->with('success','Record Deleted Successfully');
                 }
 
-// content page send data to ajax
+                // content page send data to ajax
 
-public function indexdropdown()
-{
-$data=content_page::get();
-return response()->json(['data'=>$data]);
-}
+                public function indexdropdown()
+                {
+                $data=content_page::get();
+                return response()->json(['data'=>$data]);
+                }
 
 
 
-// Only Archive  data show
-        public function deletedata()
-        {
-        $data=content_page::onlyTrashed()->get();
-        return view('admin.pages.Trasheddata',["data"=>$data]);
-        }
+            // Only Archive  data show
+                    public function deletedata()
+                    {
+                    $data=content_page::onlyTrashed()->get();
+                    return view('admin.pages.Trasheddata',["data"=>$data]);
+                    }
 
-        public function restored($id)
-        {
-        $data=content_page ::find($id);
-        $data->restore();
-        return view('admin.pages.content_list');
-        }
+                    public function restored($id)
+                    {
+                    $data=content_page ::find($id);
+                    $data->restore();
+                    return view('admin.pages.content_list');
+                    }
 
-        }
+                    }
 
 
 

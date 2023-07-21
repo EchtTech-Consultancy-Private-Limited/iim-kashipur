@@ -1,6 +1,6 @@
 @extends('admin.Layout.master')
 
-@section('title', 'Manage RTI ')
+@section('title', 'Manage RTI')
 
 @section('content')
 
@@ -34,19 +34,17 @@
 
                             <div class="top-menu-button">
 
-                                <p class="card-title">Manage RTI </p>
+                                <p class="card-title">Manage RTI</p>
 
                                 <div>
 
-							<button type="button" class="btn btn-primary"><a href="{{ url('/Accounts/add-edit-RTI') }}">Add New RTI </a></button>
+                                    <button type="button" class="btn btn-primary"><a
+                                            href="{{ url('/Accounts/add-edit-RTI') }}">Add New RTI Report </a></button>
 
-							<button type="submit" class="btn btn-primary"><a href= "{{ url('Accounts/Rti-Section') }}" >Add Section</a></button>
-							<button type="submit" class="btn btn-primary"><a href= "{{ url('Accounts/view-rti') }}" >Add quarterly Section </a></button>
-
-
-
-
-
+                                    <button type="submit" class="btn btn-primary"><a
+                                            href="{{ url('Accounts/Rti-Section') }}">Add Annual and Audit Report</a></button>
+                                    <button type="submit" class="btn btn-primary"><a
+                                            href="{{ url('Accounts/view-rti') }}">Add quarterly Report </a></button>
 
                                 </div>
 
@@ -86,11 +84,12 @@
                                                         <td>{{ $K + 1 }}</td>
 
                                                         <td>
-                                                            <a   href="{{url('uploads/rti'.$D->pdf)}}" download>
+                                                            <a href="{{ url('uploads/rti' . $D->pdf) }}" download>
 
-                                                                <img src="{{ asset('admin/images/viewpdf.jpg') }}"  width="170" height="70">
+                                                                <img src="{{ asset('admin/images/viewpdf.jpg') }}"
+                                                                    width="170" height="70">
 
-                                                                </a>
+                                                            </a>
                                                         </td>
 
 
@@ -98,10 +97,10 @@
                                                         <td>
                                                             @if (@checkRoute('StatusChange'))
                                                                 @if ($D->status == 1)
-                                                                    <a href="{{ url('Accounts/status-change/0/'.dEncrypt($D->id) . '/rtis') }}"
+                                                                    <a href="{{ url('Accounts/status-change/0/' . dEncrypt($D->id) . '/rtis') }}"
                                                                         style="color:green;">Active</a>
                                                                 @else
-                                                                    <a href="{{ url('Accounts/status-change/1/'.dEncrypt($D->id) . '/rtis') }}"
+                                                                    <a href="{{ url('Accounts/status-change/1/' . dEncrypt($D->id) . '/rtis') }}"
                                                                         style="color:red;">Inactive</a>
                                                                 @endif
                                                             @else
@@ -167,11 +166,11 @@
 
                     <!--   <span style="margin-left:500px;"><b>Press Esc to Exit</b></span>
 
-           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
 
-              <span aria-hidden="true">&times;</span>
+                  <span aria-hidden="true">&times;</span>
 
-            </button>-->
+                </button>-->
 
                     <div id="1"></div>
 
