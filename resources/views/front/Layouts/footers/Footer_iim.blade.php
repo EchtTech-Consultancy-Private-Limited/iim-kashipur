@@ -47,16 +47,20 @@
                             </div>
                         @endforeach
 
-                        @foreach (Getfooterlink2() as $key => $M)
-                            <div class="col-md-4 width50 p-lg-0">
 
-                                <h2 class="footer-top-title">
+                        </div>
 
+                      @endforeach
 
+                      @foreach(Getfooterlink2() as $key=>$M)
 
-                                </h2>
+                        <div class="col-md-4 width50 p-lg-0">
 
-                                <div class="footer-link mt-58">
+                            {{-- <h2 class="footer-top-title">
+                                
+                            </h2> --}}
+
+                          <div class="footer-link mt-58">
 
                                     <ul>
 
@@ -89,11 +93,14 @@
                         @foreach (Getfooterlink3() as $key => $M)
                             <div class="col-md-4 p-lg-0">
 
-                                <h2 class="footer-top-title">
+
+                            {{-- <h2 class="footer-top-title">
 
 
 
-                                </h2>
+                            </h2> --}}
+
+
 
                                 <div class="footer-link mt-58">
 
@@ -161,7 +168,6 @@
 
                                 <a href="javascript void(0);" class="tel-no">Email :&nbsp;{{ $email }}</a>
 
-
                             </div>
 
 
@@ -170,52 +176,39 @@
 
                                 <ul>
 
-                                    @if (GetOrganisationAllDetails('facebook') != '')
-                                        <li>
-                                            <a href="{{ GetOrganisationAllDetails('facebook') }}"
-                                                alt="{{ GetOrganisationAllDetails('Facebook_Alt') }}"
-                                                title="{{ GetOrganisationAllDetails('Facebook_title') }}"
-                                                onclick="return confirm('Are you sure  external window open?')"
-                                                target="_blank">
-                                                <i class="fa fa-facebook" aria-hidden="true"></i>
-                                            </a>
-                                        </li>
-                                    @endif
-                                    @if (GetOrganisationAllDetails('twitter') != '')
-                                        <li>
-                                            <a href="{{ GetOrganisationAllDetails('twitter') }}"
-                                                alt="{{ GetOrganisationAllDetails('twitter_Alt') }}"
-                                                title="{{ GetOrganisationAllDetails('Twitter_title') }}"
-                                                onclick="return confirm('Are you sure  external window open?')"
-                                                target="_blank">
-                                                <i class="fa fa-twitter" aria-hidden="true"></i>
-                                            </a>
-                                        </li>
-                                    @endif
 
-                                    @if (GetOrganisationAllDetails('instagram') != '')
-                                        <li>
-                                            <a href="{{ GetOrganisationAllDetails('instagram') }}"
-                                                alt="{{ GetOrganisationAllDetails('Instagram_Alt') }}"
-                                                title="{{ GetOrganisationAllDetails('Instagram_title') }}"
-                                                onclick="return confirm('Are you sure  external window open?')"
-                                                target="_blank">
-                                                <i class="fa fa-instagram" aria-hidden="true"></i>
-                                            </a>
-                                        </li>
-                                    @endif
+                                    @if(GetOrganisationAllDetails('facebook')!='')
+                                    <li>
+                                        <a href="{{GetOrganisationAllDetails('facebook')}}"  title="{{GetOrganisationAllDetails('Facebook_title')}}"  onclick="return confirm('Are you sure  external window open?')" target="_blank">
+                                            <i class="fa fa-facebook" aria-hidden="true"></i>
+                                        </a>
+                                    </li>
+                                   @endif
+                                   @if(GetOrganisationAllDetails('twitter')!='')
+                                   <li>
+                                       <a href="{{GetOrganisationAllDetails('twitter')}}" title="{{GetOrganisationAllDetails('Twitter_title')}}"  onclick="return confirm('Are you sure  external window open?')" target="_blank" >
+                                           <i class="fa fa-twitter" aria-hidden="true"></i>
+                                       </a>
+                                   </li>
+                               @endif
 
-                                    @if (GetOrganisationAllDetails('linkedin') != '')
-                                        <li>
-                                            <a href="{{ GetOrganisationAllDetails('linkedin') }}"
-                                                alt="{{ GetOrganisationAllDetails('LinkedIn_Alt') }}"
-                                                title="{{ GetOrganisationAllDetails('LinkedIn_title') }}"
-                                                onclick="return confirm('Are you sure  external window open?')"
-                                                target="_blank">
-                                                <i class="fa fa-linkedin" aria-hidden="true"></i>
-                                            </a>
-                                        </li>
-                                    @endif
+                               @if(GetOrganisationAllDetails('instagram')!='')
+                               <li>
+                                   <a href="{{GetOrganisationAllDetails('instagram')}}" title="{{GetOrganisationAllDetails('Instagram_title')}}"  onclick="return confirm('Are you sure  external window open?')" target="_blank" >
+                                       <i class="fa fa-instagram" aria-hidden="true"></i>
+                                   </a>
+                               </li>
+                              @endif
+
+                              @if(GetOrganisationAllDetails('linkedin')!='')
+                              <li>
+                                  <a href="{{GetOrganisationAllDetails('linkedin')}}" title="{{GetOrganisationAllDetails('LinkedIn_title')}}"  onclick="return confirm('Are you sure  external window open?')"  target="_blank">
+                                      <i class="fa fa-linkedin" aria-hidden="true"></i>
+                                  </a>
+                              </li>
+                             @endif
+
+
 
 
 
@@ -231,11 +224,11 @@
                         <h2 class="footer-top-title">LOCATE US </h2>
 
                             <div class="footer-widget">
-                                @if (GetOrganisationAllDetails('location') != '')
-                                    <iframe src="{{ GetOrganisationAllDetails('location') }}" width="100%"
-                                        height="200" style="border:0;" allowfullscreen="" loading="lazy"
-                                        referrerpolicy="no-referrer-when-downgrade"></iframe>
-                                @endif
+
+                            @if(GetOrganisationAllDetails('location')!='')
+                            <iframe src="{{GetOrganisationAllDetails('location')}}" height="200" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                            @endif
+
                             </div>
 
                         </div>

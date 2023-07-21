@@ -383,19 +383,18 @@
 
 
         <div class="col-md-12 mb-5">        
-            <div class="row image-section-iimkashipur p-relative mb-3" style="border: 1px solid #e8e8e8;
-            box-shadow: 0px 0px 29px rgba(0, 0, 0, 0.109803">
+            <div class="row image-section-iimkashipur p-relative mb-3">
              
                    <div class="col-md-6">
                     @foreach(GetstundentdetailS($M->id) as $key=>$n)
                     <div class="post-card col-md-12 box-3">
      
-                       <div class="blog-newstyle-2" style="font-size: 20px;">
+                       <div class="blog-newstyle-2">
                           <div class="section-title-box pt-50">
      
                              <h2 class="life_kashipur">
      
-                             <a style="color:#181832;"  @if($n->external=='yes') onclick="return confirm('Are you sure  external window open?')" target="_blank"   href="{{$n->url}}" @elseif($n->external=='no')  href="{{url($n->url)}}" @endif href="{{$n->slug}}">  
+                             <a style="color:#181832;"  @if($n->external=='yes') onclick="return confirm('Are you sure  external window open?')" target="_blank"   href="{{$n->url}}" @elseif($n->external=='no')  href="{{url($n->url)}}" @endif>  
                                  {{-- @if(GetLang()=='en') {{ $n->title }} @else {{ $n->title_h }}  @endif --}}
                                 
                                  Life <br> <span style="color:#c1272d"> @ IIM </span> Kashipur  
@@ -407,7 +406,7 @@
                           </div>
                           <h3 style="font-size: 18px;color: #181832;font-weight: 600;line-height: 30px;}"> @if(GetLang()=='en') {{substr_replace($n->short,'...',150)}} @else  {{substr_replace($n->short_h,'...',200)}}  @endif</h3>
                          
-                          <a  @if($n->external=='yes') onclick="return confirm('Are you sure  external window open?')" target="_blank"   href="{{$n->url}}" @elseif($n->external=='no')  href="{{url($n->url)}}" @endif href="{{$n->slug}}" class="view-btn pt-4" style="font-size: 18px;background:transparent;">View all <i class="material-icons-round">east</i></a>
+                          <a  @if($n->external=='yes') onclick="return confirm('Are you sure  external window open?')" target="_blank"   href="{{$n->url}}" @elseif($n->external=='no')  href="{{url($n->url)}}" @endif class="view-btn pt-4" style="font-size: 18px;background:transparent;">View all <i class="material-icons-round">east</i></a>
                       
                         </div>
      
@@ -427,11 +426,11 @@
                           </h2>
   
                        </div>
-                       <ul class="list text-right" data-aos="fade-right" data-aos-duration="3000">
+                       <ul class="list text-right">
                           @if(count(Getstundentdetail($M->id))>0)
                           @foreach(Getstundentdetail($M->id) as $key=>$n)
                           <li>
-                             <a  @if($n->external=='yes') onclick="return confirm('Are you sure  external window open?')" target="_blank"  href="{{$n->url}}" @elseif($n->external=='no')  href="{{url($n->url)}}" @endif href="{{$n->slug}}">   @if(GetLang()=='en') {{ $n->title }} @else {{ $n->title_h }}  @endif
+                             <a  @if($n->external=='yes') onclick="return confirm('Are you sure  external window open?')" target="_blank"  href="{{$n->url}}" @elseif($n->external=='no')  href="{{url($n->url)}}" @endif>   @if(GetLang()=='en') {{ $n->title }} @else {{ $n->title_h }}  @endif
                              <i class="material-icons-round">east</i>
                              </a>
                           </li>
@@ -452,7 +451,7 @@
  
             <h3 class="social-heading"> Linkedin Feed </h3>
  
-            <iframe src="https://www.linkedin.com/embed/feed/update/urn:li:ugcPost:6966090170878050305" allowfullscreen="" title="Embedded post" width="100%" height="350" frameborder="0"></iframe>
+            <iframe src="https://www.linkedin.com/embed/feed/update/urn:li:ugcPost:6966090170878050305" allowfullscreen="" title="Embedded post" height="350" frameborder="0"></iframe>
             </div>
           </div>
  
@@ -466,7 +465,7 @@
  
             <h3 class="social-heading"> Instagram Feed </h3>
  
-            <iframe src="https://www.linkedin.com/embed/feed/update/urn:li:ugcPost:6966090170878050305" allowfullscreen="" title="Embedded post" width="100%" height="350" frameborder="0"></iframe>
+            <iframe src="https://www.linkedin.com/embed/feed/update/urn:li:ugcPost:6966090170878050305" allowfullscreen="" title="Embedded post" height="350" frameborder="0"></iframe>
             </div>
           </div>
  

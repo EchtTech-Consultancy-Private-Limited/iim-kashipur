@@ -1,26 +1,4 @@
 <!--------------------------- url links in website ------------------------>
-{{-- <style>
-
-    .center{
-        background: #D8D8D8;
-         display: flex;
-         flex-wrap: wrap;
-    }
-    @media(max-width:900px){
-        ul{
-
-         flex-wrap: wrap;
-    }
-    }
-    .centers{
-        list-style: none;
-        width: auto;
-        text-align: center;
-        padding: 1rem 0rem;
-        flex-wrap: wrap;
-    }
-
-</style> --}}
 
 @foreach(GETurl() as $key=>$M)
 
@@ -61,9 +39,8 @@
 
 
                             <li class="nav-item" role="presentation">
-                            <a @if($M->external=='yes')
-                                onclick="return confirm('Are you sure  external window open?')"  target="_blank" href="{{url($M->url)}}" @elseif($M->external=='no')  href="{{url($M->url)}}" @else href="{{url($M->slug)}}" @endif>
-                            <button   class="nav-link"  data-bs-toggle="tab"  type="button" role="tab" aria-controls="fied" aria-selected="false" >  @if(GetLang()=='en') {{ $M->title }} @else {{ $M->title_h }}  @endif <i class="material-icons-round ml-2">east</i></button>
+                            <a @if($M->external=='yes')  onclick="return confirm('Are you sure  external window open?')"  target="_blank" href="{{url($M->url)}}" @elseif($M->external=='no')  href="{{url($M->url)}}" @else href="{{url($M->slug)}}" @endif>
+                          <span class="nav-link">    @if(GetLang()=='en') {{ $M->title }} @else {{ $M->title_h }}  @endif <i class="material-icons-round ml-2">east</i> </span>
                             </a>
                             </li>
 
@@ -156,7 +133,7 @@
                                     @foreach(getphoto_link($M->id) as $key=>$Ms)
 
 
-                                    <div class="col-md-3 col-lg-3 masonry-column p-0" class=" margin-right">
+                                    <div class="col-md-3 col-lg-3 masonry-column p-0 margin-right">
 
                                         <div class="d-flex flex-column h-100">
                                         <a href="{{url($Ms->slug)}}">
@@ -197,7 +174,7 @@
 
 
 
-<!-------------------------------------------------------- video gallery section   ----------------------------------------------------->
+                <!-------------------------------------------------------- video gallery section   ----------------------------------------------------->
 
 
 
@@ -221,7 +198,7 @@
                                             <div class="thumbnail p-relative">
                                             <span class="top-text"> @if(GetLang()=='en') {{ $Ms->title }} @else {{ $Ms->title_h }}  @endif </span>
                                                <span class="btn-p"><i class="fa fa-play-circle" aria-hidden="true" title="Play"></i> </span>
-                                            <img src="{{asset('uploads/header_top'."/".$Ms->image)}}" alt="{{ $Ms->cover_alt}}" title="{{ $Ms->Image_Title }}" alt="{{ $Ms->Image_Alt }}"  style="height: 280px;"  class="img-fluid">
+                                            <img src="{{asset('uploads/header_top'."/".$Ms->image)}}" title="{{ $Ms->Image_Title }}" alt="{{ $Ms->Image_Alt }}"  style="height: 280px;"  class="img-fluid">
 
                                             </div>
                                             </a>
@@ -300,5 +277,5 @@
 
         </div>
 
-    </section>
+</section>
 

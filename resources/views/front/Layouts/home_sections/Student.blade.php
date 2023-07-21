@@ -76,7 +76,7 @@
 
                                 <div class="btn-wrap">
 
-                                    <a  @if($Ms->external=='yes') onclick="return confirm('Are you sure  external window open?')"  href="{{$Ms->url}}" @elseif($Ms->external=='no')  href="{{url($Ms->url)}}"  @endif href="{{$Ms->slug}}" class="red-link">
+                                    <a  @if($Ms->external=='yes') onclick="return confirm('Are you sure  external window open?')"  href="{{$Ms->url}}" @elseif($Ms->external=='no')  href="{{url($Ms->url)}}"  @endif class="red-link">
                                         @lang('common.READ_MORE')  <img src="assets/images/read-more.svg" alt="read-more" class="img-fluid">
                                     </a>
 
@@ -110,7 +110,7 @@
 
                                 <div class="btn-wrap">
 
-                                    <a  @if($Ms->external=='yes') onclick="return confirm('Are you sure  external window open?')"  href="{{$Ms->url}}" @elseif($Ms->external=='no')  href="{{url($Ms->url)}}"  @endif href="{{$Ms->slug}}" class="red-link">
+                                    <a  @if($Ms->external=='yes') onclick="return confirm('Are you sure  external window open?')"  href="{{$Ms->url}}" @elseif($Ms->external=='no')  href="{{url($Ms->url)}}"  @endif class="red-link">
                                         @lang('common.READ_MORE')  <img src="assets/images/read-more.svg" alt="read-more" class="img-fluid">
                                     </a>
 
@@ -145,7 +145,7 @@
                                 </h3>
 
                                 <div class="btn-wrap">
-                                    <a  @if($Ms->external=='yes') onclick="return confirm('Are you sure  external window open?')"  href="{{$Ms->url}}" @elseif($Ms->external=='no')  href="{{url($Ms->url)}}"  @endif href="{{$Ms->slug}}" class="red-link">
+                                    <a  @if($Ms->external=='yes') onclick="return confirm('Are you sure  external window open?')"  href="{{$Ms->url}}" @elseif($Ms->external=='no')  href="{{url($Ms->url)}}"  @endif class="red-link">
                                         @lang('common.READ_MORE')  <img src="assets/images/read-more.svg" alt="read-more" class="img-fluid">
                                     </a>
                                 </div>
@@ -181,6 +181,8 @@
                 </div>
              </div>
         </div>
+             </div>
+             
         @endforeach
     </section>
 

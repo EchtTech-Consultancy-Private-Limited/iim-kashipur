@@ -523,10 +523,12 @@ section.excellence-wrap.pt-5 {
     background: #000000;
 }
 
-.bg-light-grey {
-    background: #000000;
+.bg-light-grey, .myslider, .instagram-bg {
+    background: #000000 !important;
 }
 
 /* .site-footer .footer-top .address-wrap p, .site-footer .footer-bottom .copyright-text, .site-footer .footer-bottom .visitor-title {
     color: yellow !important;
 } */
+
+
