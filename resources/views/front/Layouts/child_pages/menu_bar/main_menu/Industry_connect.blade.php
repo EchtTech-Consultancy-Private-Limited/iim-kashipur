@@ -26,7 +26,6 @@
     </div>
 </div>
 
-
     @if(@isset($item))
 
         {{-- remember that $contact is your variable --}}
