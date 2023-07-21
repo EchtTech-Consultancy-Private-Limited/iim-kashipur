@@ -792,7 +792,7 @@
                             </div>
                         </div>
                         <div class="tab-section">
-                            <ul class="nav nav-tabs d-none d-lg-flex" id="myTab" role="tablist">
+                            <ul class="nav nav-tabs d-lg-flex" id="myTab" role="tablist">
 
                                 @foreach ($data as $key => $datas)
                                     {{-- {{ $key }} --}}
@@ -865,7 +865,7 @@
                                         {{-- <p>{{ $items->department  }}</p> --}}
                                         <p>{!! $items->description !!} </p>
 
-                                        {{ url()->previous() }}
+
                                         <div class="social-icon">
                                         <ul>
                                             <li>
@@ -960,7 +960,7 @@
                         </div>
                     </div>
                     <div class="tab-section">
-                        <ul class="nav nav-tabs d-none d-lg-flex" id="myTab" role="tablist">
+                        <ul class="nav nav-tabs d-lg-flex" id="myTab" role="tablist">
 
                             @foreach ($data as $key => $datas)
                                 {{-- {{ $key }} --}}
