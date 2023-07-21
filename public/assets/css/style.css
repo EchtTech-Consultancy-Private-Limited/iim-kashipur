@@ -1062,6 +1062,13 @@ a {
     border-radius: 5px;
 }
 
+
+
+.internalpagebanner img {
+    height: 240px !important;
+    object-fit: cover;
+    }
+
 .hero-slider .play-icon {
     position: absolute;
 
@@ -2197,7 +2204,7 @@ a {
     }
 
     .bg-hover {
-        min-height: 249px !important;
+        min-height: 350px !important;
     }
 
     .carousel .carousel-item,
@@ -2244,6 +2251,10 @@ a {
         height: 300px !important;
     }
 
+
+    .profile-img img{
+        width: 50% !important;
+    }
 
     .designation h6 {
         font-size: 15px;
@@ -2364,6 +2375,9 @@ a {
     .back-img.video-gallery .row.vid-list-container {
         height: 330px !important;
     }
+
+    
+
 }
 
 .site-header .logo-right a:nth-child(2) img,
@@ -2512,7 +2526,8 @@ a {
         width: 300%;
 
         margin-left: -50%;
-        min-height: auto !important;
+        height: 150px !important;
+        min-height: 150px !important;
     }
 
     .light {
@@ -5473,7 +5488,7 @@ button.upload-btn.btn-info {
 }
 
 .profilewraper.withinfo img {
-    height: 250px;
+    height: 190px;
 }
 
 .profilewraper.withinfo {
@@ -5529,8 +5544,8 @@ h2.life_kashipur {
 }
 
 
-.internalpagebanner img {
-    height: 240px !important;
-    object-fit: cover;
-    }
 
+    .carousel-indicators [data-bs-target]{
+        /* background: linear-gradient(to top, #fd6c15, #db1c23) !important; */
+        background-color: #fd6c15 !important;
+    }
