@@ -39,11 +39,11 @@
             <div class="row">
                 <div class="col-md-12">
                     <div class="innerpagecontent">
-                      
+
                         <div class="commontxt">
                             <div class="row">
 
-                                <div class="col-md-12 col-lg-12">                                   
+                                <div class="col-md-12 col-lg-12">
                                     <table>
 
                                         <thead>
@@ -52,7 +52,7 @@
                                                 <td>DATE </td>
                                                 <td>TITLE </td>
                                                 <td>ATTACHMENT FILE </td>
-                                               
+
                                             </tr>
                                         </thead>
 
@@ -62,7 +62,7 @@
                                                 <td>{{$K+1}}</td>
                                                 <td>{{$data->date}}</td>
                                                 <td>{{$data->title}}</td>
-                                                <td><a   href="{{url('uploads/view/attach/'.$data->attachement_file)}}" download><img src="{{ asset('admin/images/viewpdf.jpg') }}" width="120px"></td>                                              
+                                                <td><a   href="{{url('uploads/view/attach/'.$data->attachement_file)}}" download><img src="{{ asset('admin/images/viewpdf.jpg') }}" width="120px"></td>
                                             </tr>
                                             @endforeach
 

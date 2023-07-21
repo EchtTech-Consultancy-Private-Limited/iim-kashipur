@@ -82,9 +82,22 @@
 
                                                         <td>{{ $D->vendor_name }}</td>
 
-                                                        <td><img src="{{ asset('uploads/vendorsdebarred/' . $D->related_document) }}"
-                                                                alt="" title=""
-                                                                style="height: 100px;  width: 100px;"></td>
+
+                                                        <td>
+                                                            <a href="{{ asset('uploads/vendorsdebarred/' . $D->related_document) }}" download>
+
+                                                                <img src="{{ asset('admin/images/viewpdf.jpg') }}" width="170"
+                                                                    height="70"></a>
+
+                                                                    <span style="font-size: 12px;margin-left: 5px;color: #ed2044;">
+                                                                        (
+                                                                        <?php
+                                                                            echo formatSizeUnits($D->pdfsize);
+                                                                        ?>)
+                                                                    </span>
+
+
+                                                        </td>
 
                                                         <td>
                                                             @if (@checkRoute('StatusChange'))

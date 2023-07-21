@@ -204,7 +204,7 @@ function FindQuickLinksNew($placement='',$sort_order=''){
 
 
 
-  
+
   /////////////////////////////////////////
   function GetSubMenusFront($id){
     $data=\App\Models\SubMenu::where('menu_id',$id)->where('status','1')->get();
@@ -231,9 +231,9 @@ function FindQuickLinksNew($placement='',$sort_order=''){
     return @$data;
   }
   //////////////////////////////////////////
-  
-  
-  
+
+
+
 //inner page sub menu
 
 
@@ -537,9 +537,9 @@ function FindQuickLinksNew($placement='',$sort_order=''){
             $data=\App\Models\quick_linkcategory::where('Placement','section3')->orderBy('id','DESC')->where('status','1')->get();
             return @$data;
             }
-          
+
            //industry connect
-           
+
             //notice board
             function  GETproccesB(){
             $data=\App\Models\quick_linkcategory::where('Placement','section3')->orderBy('id','DESC')->where('status','1')->where('news_type',3)->get();
@@ -772,7 +772,7 @@ function FindQuickLinksNew($placement='',$sort_order=''){
 
             return false;
         }
-        
+
         function get_dept_name($id)
         {
 //            return;
@@ -781,14 +781,14 @@ function FindQuickLinksNew($placement='',$sort_order=''){
                     ->where('faculty_id',$id)
                     ->first();
             //dd($dept_name_list);
-            
+
             if(isset($dept_name_list->faculty_dept_id))
             {
                 $faculty_dept_id = $dept_name_list->faculty_dept_id;
                 $faculty_dept_name_record=App\Models\Department::find($faculty_dept_id);
-                
+
                 //dd($faculty_dept_name_record);
-                
+
                 $faculty_dept_name = $faculty_dept_name_record->dept_name;
                 return $faculty_dept_name;
             }
@@ -796,10 +796,10 @@ function FindQuickLinksNew($placement='',$sort_order=''){
             {
                 return;
             }
-            
-           
+
+
         }
-        
+
         function  Getfooterlink3(){
 
         $data=\App\Models\quick_linkcategory::where('Placement','section10')->orderBy('id','DESC')->where('status','1')->get();
@@ -816,5 +816,35 @@ function FindQuickLinksNew($placement='',$sort_order=''){
         return @$value;
 
         }
+
+    function formatSizeUnits($bytes)
+        {
+            if ($bytes >= 1073741824)
+            {
+                $bytes = number_format($bytes / 1073741824, 2) . 'GB';
+            }
+            elseif ($bytes >= 1048576)
+            {
+                $bytes = number_format($bytes / 1048576, 2) . 'MB';
+            }
+            elseif ($bytes >= 1024)
+            {
+                $bytes = number_format($bytes / 1024, 2) . 'KB';
+            }
+            elseif ($bytes > 1)
+            {
+                $bytes = $bytes . ' bytes';
+            }
+            elseif ($bytes == 1)
+            {
+                $bytes = $bytes . ' byte';
+            }
+            else
+            {
+                $bytes = '0 bytes';
+            }
+
+            return $bytes;
+    }
 
 ?>

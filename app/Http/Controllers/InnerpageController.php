@@ -768,7 +768,7 @@ public function screen_reader_access()
         }elseif(Count($item)>0){
 
           //dd('faculty profile section user main menu');
-           $item=OrganisationStructure::whereslug($slug)->get();
+            $item=OrganisationStructure::whereslug($slug)->get();
             if(count($item) > 0){
             $data=multiple_profile::whereparent_id($item[0]->id)->get();
             return view('front.Layouts.profile',['item'=>$item,'data'=>$data,'main_menu'=>$main_menu]);
@@ -1740,8 +1740,8 @@ public function Child_barInnerpage($main_slug,$Sub_slug,$slug) //content page
 
     }else{
 
+
         $item=OrganisationStructure::whereslug($slug)->get();
-         // dd($item);
         if(count($item) > 0){
         $data=multiple_profile::whereparent_id($item[0]->id)->get();
 

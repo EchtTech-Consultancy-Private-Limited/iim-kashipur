@@ -145,23 +145,23 @@ class gallaycontroller extends Controller
 
 
 
-            $pdf_destinationPath="";
+            // $pdf_destinationPath="";
 
-            $pdf=$request->file('pdf');
+            // $pdf=$request->file('pdf');
 
-            if($pdf==null){
+            // if($pdf==null){
 
-            $input['pdf'] ="default.jpg";
+            // $input['pdf'] ="default.jpg";
 
-            }else{
+            // }else{
 
-            $input['pdf']=time().'.'.$pdf->extension();
+            // $input['pdf']=time().'.'.$pdf->extension();
 
-            $pdf_destinationPath = public_path('gallery/pdf');
+            // $pdf_destinationPath = public_path('gallery/pdf');
 
-            $pdf->move($pdf_destinationPath, $input['pdf']);
+            // $pdf->move($pdf_destinationPath, $input['pdf']);
 
-            }
+            // }
 
 
 
@@ -181,7 +181,7 @@ class gallaycontroller extends Controller
 
               $e->banner_image=$input['bannerimage'] ;
 
-              $e->file_download=$input['pdf'] ;
+            //   $e->file_download=$input['pdf'] ;
 
               $e->meta_title=$request->tittle;
 
@@ -199,13 +199,22 @@ class gallaycontroller extends Controller
 
               $e->sort_order=$request->sort_order;
 
+
               $e->status=$request->status;
 
               $e->photo_url=$request->url;
 
               $e->photo_slug=SlugCheck('photo_galleries',($request->name));
 
-
+              if($request->hasfile('pdf'))
+              {
+              $img = $request->file('pdf');
+              $e->pdfsize=$request->pdf->getSize();
+              $name =$img->getClientOriginalName();
+              $filename = time().$name;
+              $img->move('gallery/pdf',$filename);
+              $e->file_download=$filename;
+              }
 
               $e->save();
 
@@ -342,33 +351,16 @@ class gallaycontroller extends Controller
                 }
 
 
-
-
-
-                //pdf update
-
-                $input['pdf']=$request->pdfnameold;
-
-                if ($request->hasFile('pdf')){
-
-
-
-                $pdf=$request->file('pdf');
-
-                $input['pdf']=time().'.'.$pdf->extension();
-
-                $pdf_destinationPath = public_path('gallery/pdf');
-
-
-
-                $pdf_destinationPath = public_path('gallery/pdf');
-
-                $pdf->move($pdf_destinationPath, $input['pdf']);
-
-
-
-                }
-
+                // //pdf update
+                // $input['pdf']=$request->pdfnameold;
+                // if ($request->hasFile('pdf')){
+                // $u->pdfsize=$request->pdf->getSize();
+                // $pdf=$request->file('pdf');
+                // $input['pdf']=time().'.'.$pdf->extension();
+                // $pdf_destinationPath = public_path('gallery/pdf');
+                // $pdf_destinationPath = public_path('gallery/pdf');
+                // $pdf->move($pdf_destinationPath, $input['pdf']);
+                // }
 
 
                 $u=photo_gallery::find(dDecrypt($id));
@@ -385,7 +377,7 @@ class gallaycontroller extends Controller
 
                 $u->banner_image=$input['bannerimage'];
 
-                $u->file_download=$input['pdf'];
+                // $u->file_download=$input['pdf'];
 
                 $u->meta_title=$request->tittle;
 
@@ -407,7 +399,17 @@ class gallaycontroller extends Controller
 
                 $u->photo_url=$request->url;
 
-                $u->photo_slug=SlugCheck('photo_galleries',($request->name));;
+                $u->photo_slug=SlugCheck('photo_galleries',($request->name));
+
+                if($request->hasfile('pdf'))
+                {
+                $img = $request->file('pdf');
+                $u->pdfsize=$request->pdf->getSize();
+                $name =$img->getClientOriginalName();
+                $filename = time().$name;
+                $img->move('gallery/pdf',$filename);
+                $u->file_download=$filename;
+                }
 
                 $u->save();
 

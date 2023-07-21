@@ -56,7 +56,7 @@
 
                             @csrf
 
-                            <div class="col-md-3">
+                            <div class="col-md-6">
                                 <label for="inputText" class="col-form-label">Date</label>
                                 <div class="">
                                     <input type="date" class="form-control"
@@ -65,7 +65,7 @@
                                     <label for="date" id="date-error" class="error"></label>
                                 </div>
                             </div>
-                            <div class="col-md-3">
+                            <div class="col-md-6">
                                 <label for="inputText" class="col-form-label">Title</label>
                                 <div class="">
                                     <input type="text" class="form-control"
@@ -74,18 +74,39 @@
                                     <label for="title" id="title-error" class="error"></label>
                                 </div>
                             </div>
-                            <div class="col-md-3">
-                                <label for="inputText" class="col-form-label">ATTACHMENT FILE</label>
+                            <div class="col-md-12">
+                                <label for="inputText" class="col-form-label">ATTACHMENT FILE
+
+                                    @if($id)
+                                    <span style="font-size: 12px;margin-left: 5px;color: #ed2044;">
+                                        (
+                                        <?php
+                                            echo formatSizeUnits($data->pdfsize);
+                                        ?>)
+                                    </span>
+                                   @endif
+
+                                </label>
                                 <div class="">
                                     <input type="file" class="form-control"
                                         name="attachement_file"placeholder="Please enter"
-                                        value="{{ old('attachement_file') }}">@if ($id) <img src="{{ asset('uploads/view/attach/'.$data->attachement_file) }}" width="170"
-                                                height="70"> @endif<br>
+                                        value="{{ old('attachement_file') }}">
+
+
+                                        @if($id)
+
+                                          <a href="{{ asset('uploads/view/attach/'.$data->attachement_file) }}" download>
+
+                                            <img src="{{ asset('admin/images/viewpdf.jpg') }}" width="170"
+                                                height="70"></a>
+                                        @endif
+
                                     <label for="attachement_file" id="attachement_file-error" class="error"></label>
+
                                 </div>
                             </div>
 
-                            <div class="col-md-12">
+                            <div class="col-md-6">
 
                                 <label for="event" class="col-form-label">Status</label>
 
@@ -101,7 +122,7 @@
 
                             </div>
 
-                            <div class="col-md-12">
+                            <div class="col-md-12 mt-4">
                                 <div class="col-sm-10">
                                     <button type="submit" class="btn btn-primary" class="form-control">Submit</button>
                                 </div>

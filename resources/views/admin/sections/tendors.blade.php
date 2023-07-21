@@ -56,7 +56,7 @@
 
                             @csrf
 
-                            <div class="col-md-3">
+                            <div class="col-md-6">
                                 <label for="inputText" class="col-form-label">Published Date</label>
                                 <div class="">
                                     <input type="date" class="form-control"
@@ -67,7 +67,7 @@
                                 </div>
                             </div>
 
-                            <div class="col-md-3">
+                            <div class="col-md-6">
                                 <label for="inputText" class="col-form-label">Submission Date</label>
                                 <div class="">
                                     <input type="date" class="form-control" name="submission_date"
@@ -76,7 +76,7 @@
                                 </div>
                             </div>
 
-                            <div class="col-md-3">
+                            <div class="col-md-6">
                                 <label for="inputText" class="col-form-label">Title</label>
                                 <div class="">
                                     <input type="text" class="form-control" name="title"@if (isset($id)) value="{{ $tender->title }}" @else value="{{ old('title') }}" @endif  placeholder="Please enter" value=""><br>
@@ -84,8 +84,8 @@
                                 </div>
                             </div>
 
-                            <div class="col-md-12">
-                                <label for="tender_document" class="col-form-label">Tender Documents</label>
+                            <div class="col-md-6">
+                                <label for="tender_document" class="col-form-label">Tender Documents <span style="color:green;font-size:12px;"> @if($id) [{{$tender->tender_document }}] @endif</span></label>
                                 <div class="">
                                     <input type="file" class="form-control" name="tender_document"@if (isset($id)) value="{{ $tender->tender_document }}" @else value="{{ old('tender_document') }}" @endif  placeholder="Please enter" value=""><br>
                                     <label for="tender_document" id="tender_document-error" class="error"></label>
@@ -116,7 +116,7 @@
 
                             </div>
 
-                            <div class="col-md-12">
+                            <div class="col-md-12 mt-4">
                                 <div class="col-sm-10">
                                     <button type="submit" class="btn btn-primary" class="form-control">Submit</button>
                                 </div>

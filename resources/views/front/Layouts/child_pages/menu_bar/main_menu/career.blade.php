@@ -55,14 +55,18 @@
                         <td> {{ $value->closing_date }} </td>
                         <td><a href="{{ $value->online_link }}" target="_blank">Apply Here</a></td>
                         <td>
-                            <a href="{{ asset('uploads/fo/' . $value->detail_advertisement) }}" target="_blank"><i
+                            <a href="{{ asset('uploads/fo/' . $value->detail_advertisement) }}" download  target="_blank"><i
                                     class="fa fa-download"></i> Download</a>
 
-                            <!--<img src="{{ asset('uploads/fo/' . $value->detail_advertisement) }}"
-                                                                alt="" title=""
-                                                                style="height: 100px;  width: 100px;">-->
+                        <span style="font-size: 12px;margin-left: 5px;color: #ed2044;">
+                            (
+                            <?php
+                                echo formatSizeUnits($value->pdfsize);
+                            ?>)
+                        </span>
                         </td>
                         <td>{{ $value->note }}</td>
+
                         <td>{{ $value->corrigendum }}</td>
                     </tr>
                 @endforeach

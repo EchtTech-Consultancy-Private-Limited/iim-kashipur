@@ -58,13 +58,30 @@
 
 
                             <div class="col-md-12">
-                                <label for="inputText" class="col-form-label">PDF* <span style="color:green;font-size:12px;"> @if($id) [{{$data->pdf }}] @endif</span></label>
+                                <label for="inputText" class="col-form-label">PDF*
+
+                                <span style="color:green;font-size:12px;"> @if($id) [{{$data->pdf }}]
+
+                                    <span style="font-size: 12px;margin-left: 5px;color: #ed2044;">
+                                        (
+                                        <?php
+                                            echo formatSizeUnits($data->pdfsize);
+                                        ?>)
+                                    </span>
+
+                                    @endif
+                                </span>
+
+                                </label>
                                 <div class="">
                                     <input type="file" class="form-control" name="pdf"
                                         ><br>
+
+
                                     <label for="pdf" id="pdf-error" class="error"></label>
                                 </div>
                             </div>
+
 
 
                             <div class="col-md-12">
@@ -83,7 +100,7 @@
 
                             </div>
 
-                            <div class="col-md-12">
+                            <div class="col-md-12 mt-4">
                                 <div class="col-sm-10">
                                     <button type="submit" class="btn btn-primary" class="form-control">Submit</button>
                                 </div>

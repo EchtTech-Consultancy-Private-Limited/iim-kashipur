@@ -52,11 +52,18 @@
                         <td>{{ $value->vendor_name }} </td>
 
                         <td>
-                            <a href="{{ asset('uploads/vendorsdebarred/' . $value->related_document) }}" target="_blank"><i
-                                    class="fa fa-download"></i> Download</a>
-                            <!--<img src="{{ asset('uploads/vendorsdebarred/' . $value->related_document) }}"
-                                                                    alt="" title=""
-                                                                    style="height: 100px;  width: 100px;"> -->
+                            <a href="{{ asset('uploads/vendorsdebarred/' . $value->related_document) }}" download target="_blank" class="pdf-links">
+                                <i class="fa fa-file-pdf-o"></i> </a>
+
+                            <span style="font-size: 12px;margin-left: 5px;color: #ed2044;">
+                                (
+                                <?php
+                                    echo formatSizeUnits($value->pdfsize);
+                                ?>)
+                            </span>
+
+
+
                         </td>
                     </tr>
                 @endforeach

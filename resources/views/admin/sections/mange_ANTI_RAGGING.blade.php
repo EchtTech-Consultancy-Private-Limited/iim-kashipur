@@ -1,6 +1,6 @@
 @extends('admin.Layout.master')
 
-@section('title', 'Manage ANTI-RAGGING POLICY')
+@section('title', 'Manage Anti Ragging Policy')
 
 @section('content')
 
@@ -34,12 +34,12 @@
 
                             <div class="top-menu-button">
 
-                                <p class="card-title">Manage ANTI-RAGGING POLICY       </p>
+                                <p class="card-title">Manage Anti Ragging Policy </p>
 
                                 <div>
 
                                     <button type="button" class="btn btn-primary"><a
-                                            href="{{ url('/Accounts/add-edit-ANTI-RAGGING') }}">Add New ANTI-RAGGING POLICY                                        </a></button>
+                                            href="{{ url('/Accounts/add-edit-ANTI-RAGGING') }}">Add New Anti Ragging Policy                                        </a></button>
 
 
                                 </div>
@@ -82,15 +82,27 @@
 
                                                             <img src="{{ asset('admin/images/viewpdf.jpg') }}"  width="170" height="70">
 
-                                                            </a></td>
+                                                            </a>
+
+
+
+                                                            <span style="font-size: 12px;margin-left: 5px;color: #ed2044;">
+                                                                (
+                                                                <?php
+                                                                    echo formatSizeUnits($D->pdfsize);
+                                                                ?>)
+                                                            </span>
+
+                                                        </td>
+
 
                                                         <td>
                                                             @if (@checkRoute('StatusChange'))
                                                                 @if ($D->status == 1)
-                                                                    <a href="{{ url('Accounts/status-change/0/' . dEncrypt($D->id) . '/news_events') }}"
+                                                                    <a href="{{ url('Accounts/status-change/0/' . dEncrypt($D->id) . '/anti_raggings') }}"
                                                                         style="color:green;">Active</a>
                                                                 @else
-                                                                    <a href="{{ url('Accounts/status-change/1/' . dEncrypt($D->id) . '/news_events') }}"
+                                                                    <a href="{{ url('Accounts/status-change/1/' . dEncrypt($D->id) . '/anti_raggings') }}"
                                                                         style="color:red;">Inactive</a>
                                                                 @endif
                                                             @else
