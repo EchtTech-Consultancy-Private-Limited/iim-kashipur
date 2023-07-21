@@ -751,9 +751,6 @@
                                         </div>
                                     </div>
 
-
-
-
                                     <h5 class="mt-4">
                                         <span>
                                             EVENTS

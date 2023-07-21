@@ -24,17 +24,15 @@
 
                                 <li>
 
-                                <a href="javascript:void();" class="text-assesbility p-relative" title="Accessibility Dropdown">
-                                    <img src="{{ asset('ico-accessibility.png')}}" />
+                                <div class="text-assesbility p-relative" title="Accessibility Dropdown" alt="incease">
+                                    <img src="{{ asset('ico-accessibility.png')}}" title="Accessibility Dropdown" alt="Accessibility Dropdown" />
+                                
                                     <div class="text-assesbility-button">
-                                            <button class="text-increment-btn" class="button active"
-                                                onclick="textnormal()">A</button>
-                                            <button class="text-increment-btn" class="button"
-                                                onclick="textincrease()">A+</button>
-                                            <button class="text-increment-btn" class="button"
-                                                onclick="textincrease2()">A++</button>
+                                            <button class="text-increment-btn button active" onclick="textnormal()">A</button>
+                                            <button class="text-increment-btn button" onclick="textincrease()">A+</button>
+                                            <button class="text-increment-btn button" onclick="textincrease2()">A++</button>
                                     </div>
-</a>
+                                </div>
                                    
                                 </li>
 
@@ -42,14 +40,14 @@
                                     <div class="d-flex">
                                         <button class="theme-btn-light" title="Light"
                                             onclick="swapStyleSheet('{{ asset('/assets/css/style.css') }}')"
-                                            id="mybtn">L</button>
+                                            >L</button>
                                         <button class="theme-btn-dark" title="Dark"
                                             onclick="swapStyleSheet('{{ asset('assets/css/site-change.css') }}')"
-                                            id="mybtn">D</button>
+                                            >D</button>
                                     </div>
                                 </li>
                                 <li>
-                                    <a>
+                                   
                                         <div class="select-wrap">
                                             <select class="form-select" onchange="javascript:setlang(value);">
                                                 <option value="en"
@@ -58,7 +56,7 @@
                                                     @if (GetLang() == 'hi') selected @endif>Hindi</option>
                                             </select>
                                         </div>
-                                    </a>
+                                    
                                 </li>
                             </ul>
                         </div>
@@ -113,7 +111,7 @@
 
 
                                 <li>
-                                    <a href="{{ url('/sitemap') }}" alt="@lang('common.sitemap')" title="@lang('common.sitemap')">
+                                    <a href="{{ url('/sitemap') }}" title="@lang('common.sitemap')">
                                         <i class="fa fa-sitemap" aria-hidden="true"></i>
                                     </a>
                                 </li>
@@ -159,7 +157,7 @@
                                 <img src="{{ asset('uploads/site-logo/' . GetOrganisationAllDetails('logo2')) }}"
                                     alt="{{ GetOrganisationAllDetails('Logo_Alt2') }}"
                                     title="{{ GetOrganisationAllDetails('Logo_Title2') }}" class="img-fluid"
-                                    onclick="return confirm('Are you sure  external window open?')" target="_blank">
+                                    onclick="return confirm('Are you sure  external window open?')">
                             </a>
                         @endif
                         @if (GetOrganisationAllDetails('logo3') != '')
@@ -167,7 +165,7 @@
                                 <img src="{{ asset('uploads/site-logo/' . GetOrganisationAllDetails('logo3')) }}"
                                     alt="{{ GetOrganisationAllDetails('Logo_Alt3') }}"
                                     title="{{ GetOrganisationAllDetails('Logo_Title3') }}" class="img-fluid dic"
-                                    onclick="return confirm('Are you sure  external window open?')" target="_blank">
+                                    onclick="return confirm('Are you sure  external window open?')">
                             </a>
                         @endif
                         @if (GetOrganisationAllDetails('logo4') != '')
@@ -175,7 +173,7 @@
                                 <img src="{{ asset('uploads/site-logo/' . GetOrganisationAllDetails('logo4')) }}"
                                     alt="{{ GetOrganisationAllDetails('Logo_Alt4') }}"
                                     title="{{ GetOrganisationAllDetails('Logo_Title4') }}" class="img-fluid"
-                                    onclick="return confirm('Are you sure  external window open?')" target="_blank">
+                                    onclick="return confirm('Are you sure  external window open?')">
                             </a>
                         @endif
                     </div>
@@ -190,7 +188,7 @@
     <nav class="navbar navbar-expand-lg navbar-dark">
         <div class="container">
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                data-bs-target="#collapsibleNavbar">
+                data-bs-target="#collapsibleNavbar" aria-label="Toggler">
                 <i class="fa fa-bars"></i>
             </button>
             <div class="collapse navbar-collapse" id="collapsibleNavbar">
