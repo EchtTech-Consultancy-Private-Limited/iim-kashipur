@@ -57,7 +57,7 @@
 
 
 
-                <div class="col-md-11">
+                <div class="col-md-10 mx-auto">
 
                     <div class="innerpagecontent">
 
@@ -65,7 +65,7 @@
                     </div>
 
 
-                    <div class="col-xl-11 ">
+                    <div>
 
                         <form action="{{ url('add_contact') }}" method="post">
 
@@ -89,7 +89,7 @@
                                         <div class="col-md-9 pe-5">
 
                                             <input type="text" value="{{ old('name') }}" name="name"
-                                                class="form-control form-control-lg" placeholder="Enter Your Name" />
+                                                class="form-control" placeholder="Enter Your Name" />
 
 
                                             @error('name')
@@ -110,7 +110,7 @@
                                         <div class="col-md-9 pe-5">
 
                                             <input type="email" value="{{ old('email') }}" name="email"
-                                                class="form-control form-control-lg" placeholder="example@example.com" />
+                                                class="form-control" placeholder="example@example.com" />
 
 
                                             @error('email')
@@ -130,8 +130,7 @@
                                         <div class="col-md-9 pe-5">
 
                                             <input type="number" value="{{ old('mobile_no') }}" name="mobile_no"
-                                                class="form-control form-control-lg"
-                                                placeholder="Enter your Mobile Nunber" />
+                                                class="form-control" placeholder="Enter your Mobile Nunber" />
 
                                             @error('mobile_no')
                                                 <div class="alert alert-danger">{{ $message }}</div>
@@ -149,7 +148,7 @@
                                         </div>
                                         <div class="col-md-9 pe-5">
 
-                                            <select class="form-control form-control-lg" name="Type">
+                                            <select class="form-control" name="Type">
                                                 <option value="">Select tittle</option>
                                                 <option value="Suggestion"
                                                     {{ old('Type') == 'Suggestion' ? 'selected' : '' }}> Suggestion
@@ -167,8 +166,6 @@
 
                                         </div>
                                     </div>
-
-
 
                                     <hr class="mx-n3">
 
@@ -191,18 +188,25 @@
                                     </div>
 
 
-                                    <div class="form-group mt-3 mb-3">
-                                        <div class="captcha">
-                                            <span>{!! captcha_img('math') !!}</span>
-                                            <button type="button" class="btn btn-danger" class="refresh-captcha"
-                                                id="refresh-captcha">
-                                                &#x21bb;
-                                            </button>
+                                    <hr class="mx-n3">
+                                    <div class="row align-items-center py-3">
+                                        <div class="col-md-3 ps-5">
+
+                                            <h6 class="mb-0">Captcha Code *</h6>
+
                                         </div>
-                                    </div>
-                                    <div class="form-group mb-4">
-                                        <input id="captcha" type="text" class="form-control"
-                                            placeholder="Enter Captcha" name="captcha">
+                                        <div class="col-md-4 pe-5">
+                                            <input id="captcha" type="text" class="form-control" placeholder="Enter Captcha" name="captcha">
+                                        </div>
+
+                                        <div class="col-md-4 pe-5">
+
+                                            <div class="captcha d-flex">
+                                                <span style="margin-right: 10px;">{!! captcha_img('math') !!}</span>
+                                                <button type="button" class="btn btn-danger px-3 py-1 refresh-captcha" id="refresh-captcha" style="background:#f03340;color:#fff !important"> &#x21bb;
+                                                </button>
+                                            </div>
+                                        </div>
                                     </div>
 
 
@@ -213,8 +217,10 @@
 
                                     <hr class="mx-n3">
 
-                                    <div class="px-5 py-4">
-                                        <button type="submit" class="btn btn-primary btn-lg">Send</button>
+                                    <div class="row align-items-center py-3">
+                                        <div class="col-md-12 text-ceter">
+                                        <button type="submit" class="btn btn-primary btn-sm submit-btn-apply">Send</button>
+                                    </div>
                                     </div>
 
                                 </div>

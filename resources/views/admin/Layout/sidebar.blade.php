@@ -578,24 +578,24 @@
         @if (@checkRoute('View_Admins'))
             <li class="nav-item">
 
-                <a class="nav-link" data-toggle="collapse" href="#auth" aria-expanded="false"
-                    aria-controls="auth">
+                <a class="nav-link" data-toggle="collapse" href="#managment" aria-expanded="false"
+                    aria-controls="tables">
 
                     <i class="icon-head menu-icon"></i>
 
-                    <span class="menu-title"> Management</span>
+                    <span class="menu-title">Contact us and Feedback</span>
 
                     <i class="menu-arrow"></i>
 
                 </a>
 
-                <div class="collapse" id="auth">
+                <div class="collapse" id="managment">
 
                     <ul class="nav flex-column sub-menu">
 
                         <li class="nav-item"> <a class="nav-link" href="{{ url('/Accounts/Countact-us') }}"> Contact us
 
-                            </a></li>
+                              </a></li>
 
                         <li class="nav-item"> <a class="nav-link" href="{{ url('/Accounts/feedback') }}"> Feedback
                             </a>
