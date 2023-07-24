@@ -1936,13 +1936,13 @@ public function add_RTI(Request $request,$id=NULL)
 
     public function countact_us()
     {
-       $data=feedback::whereType('Suggestion')->whereType('Question')->get();
+     $data=feedback::whereform_type('contact_us')->get();
      return view ('admin.sections.manageContactus',['data'=>$data]);
     }
 
     public function feedback()
     {
-      $data=feedback::whereType('feedback')->get();
+      $data=feedback::whereform_type('feedback')->get();
      return view ('admin.sections.manageFeedback',['data'=>$data]);
     }
 

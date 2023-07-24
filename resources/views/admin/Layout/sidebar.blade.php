@@ -583,7 +583,7 @@
 
                     <i class="icon-head menu-icon"></i>
 
-                    <span class="menu-title"> Management</span>
+                    <span class="menu-title">Contact us and Feedback</span>
 
                     <i class="menu-arrow"></i>
 
@@ -595,7 +595,7 @@
 
                         <li class="nav-item"> <a class="nav-link" href="{{ url('/Accounts/Countact-us') }}"> Contact us
 
-                            </a></li>
+                              </a></li>
 
                         <li class="nav-item"> <a class="nav-link" href="{{ url('/Accounts/feedback') }}"> Feedback
                             </a>
