@@ -242,9 +242,9 @@
                         <a href="{{ URL::previous() }}">
                         <span>
                             @if (GetLang() == 'en')
-                                {{ $item[0]->name ?? '' }}
-                            @else
-                                {{ $item[0]->name_h ?? '' }}
+                            {{ ucfirst(strtolower($item[0]->name)) ?? '' }}
+                         @else
+                            {{ ucfirst(strtolower($item[0]->name_h)) ?? '' }}
                             @endif
                         </span>
                     </a>
@@ -394,11 +394,6 @@
 
                                                         </li>
 
-<<<<<<< HEAD
-
-=======
-
->>>>>>> 477e43305c278b240410eba65d1668697c04fc37
                                         </li>
                                     @else
                                         @if ($C->external == 'yes')

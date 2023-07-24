@@ -988,7 +988,8 @@ public function screen_reader_access()
                 $chairperson=OrganisationStructure::whereid($item[0]->chairperson)->get();
                 $chairpersons=OrganisationStructure::whereClub($item[0]->id)->get();
                 $data=club_multiple_image::whereparent_id($item[0]->id)->get();
-                return view('front.Layouts.child_pages.menu_bar.main_menu.clube_committee_details',['chairpersons'=>$chairpersons,'chairperson'=>$chairperson,'item'=>$item,'data'=>$data]);
+                $cccbreadcram="Club";
+                return view('front.Layouts.child_pages.menu_bar.main_menu.clube_committee_details',['cccbreadcram'=>$cccbreadcram,'chairpersons'=>$chairpersons,'chairperson'=>$chairperson,'item'=>$item,'data'=>$data]);
                 }else{
                     return abort(401);
                 }
@@ -999,7 +1000,8 @@ public function screen_reader_access()
                 $chairperson=OrganisationStructure::whereid($item[0]->chairperson)->get();
                 $chairpersons=OrganisationStructure::wherecommittee($item[0]->id)->get();
                 $data=committee_multiple_image::whereparent_id($item[0]->id)->get();
-                return view('front.Layouts.child_pages.menu_bar.main_menu.clube_committee_details',['chairpersons'=>$chairpersons,'chairperson'=>$chairperson,'item'=>$item,'data'=>$data]);
+                $cccbreadcram="Committee";
+                return view('front.Layouts.child_pages.menu_bar.main_menu.clube_committee_details',['cccbreadcram'=>$cccbreadcram,'chairpersons'=>$chairpersons,'chairperson'=>$chairperson,'item'=>$item,'data'=>$data]);
                 }else{
                     return abort(401);
                 }
@@ -1013,7 +1015,8 @@ public function screen_reader_access()
                 $chairpersons=OrganisationStructure::whereCell($item[0]->id)->get();
                // dd($chairpersons);
                 $data=cell_multiple_image::whereparent_id($item[0]->id)->get();
-                return view('front.Layouts.child_pages.menu_bar.main_menu.clube_committee_details',['chairpersons'=>$chairpersons,'chairperson'=>$chairperson,'item'=>$item,'data'=>$data]);
+                $cccbreadcram="Cell";
+                return view('front.Layouts.child_pages.menu_bar.main_menu.clube_committee_details',['cccbreadcram'=>$cccbreadcram,'chairpersons'=>$chairpersons,'chairperson'=>$chairperson,'item'=>$item,'data'=>$data]);
                 }else{
                     return abort(401);
                 }
