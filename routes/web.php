@@ -106,6 +106,11 @@ Route::post('edit-committee-image/{id?}',[FormController::class,'edit_committee_
 Route::middleware(['CustomAuth'])->group(function () {
 
 
+//feedback form & contact us form
+Route::GET('Countact-us',[FormController::class,'countact_us']);
+Route::GET('feedback',[FormController::class,'feedback']);
+
+
 //Auth log  route
 Route::GET('/Audit-data-show',[log::class,'datefillerdata']);
 Route::post('/Audit-data-show',[log::class,'datefillerdata']);

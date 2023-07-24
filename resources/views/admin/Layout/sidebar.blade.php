@@ -1,185 +1,217 @@
+<nav class="sidebar sidebar-offcanvas" id="sidebar">
 
-      <nav class="sidebar sidebar-offcanvas" id="sidebar"   >
+    <ul class="nav" style="position:fixed; overflow:auto; height: 100%">
 
-        <ul class="nav" style="position:fixed; overflow:auto; height: 100%">
+        <li class="nav-item">
 
-          <li class="nav-item"  >
+            <a class="nav-link" href="{{ route('admin.dashboard') }}">
 
-            <a class="nav-link" href="{{route('admin.dashboard')}}">
+                <i class="icon-grid menu-icon"></i>
 
-              <i class="icon-grid menu-icon"></i>
-
-              <span class="menu-title">Dashboard</span>
-
-            </a>
-
-          </li>
-
-
-      @if(@checkRoute('View_Admins'))
-
-          <li class="nav-item" >
-
-            <a class="nav-link" data-toggle="collapse" href="#auth" aria-expanded="false" aria-controls="auth">
-
-              <i class="icon-head menu-icon"></i>
-
-              <span class="menu-title">User Management</span>
-
-              <i class="menu-arrow"></i>
+                <span class="menu-title">Dashboard</span>
 
             </a>
 
-            <div class="collapse" id="auth">
+        </li>
 
-              <ul class="nav flex-column sub-menu">
 
-                <li class="nav-item"> <a class="nav-link" href="{{route('admin.manageadmin')}}">  Manage Users </a></li>
+        @if (@checkRoute('View_Admins'))
+            <li class="nav-item">
 
-                <li class="nav-item"> <a class="nav-link" href="{{route('admin.roles')}}"> Manage Roles </a></li>
+                <a class="nav-link" data-toggle="collapse" href="#auth" aria-expanded="false" aria-controls="auth">
 
-              </ul>
+                    <i class="icon-head menu-icon"></i>
 
-            </div>
+                    <span class="menu-title">User Management</span>
 
-          </li>
+                    <i class="menu-arrow"></i>
 
-         @endif
+                </a>
 
-         @if(\Auth::guard('admin')->user()->id==1 || @checkRoute('View_OrganisationDetails') || @checkRoute('website_index') || @checkRoute('FileToURL'))
-          <li class="nav-item">
+                <div class="collapse" id="auth">
 
-            <a class="nav-link" data-toggle="collapse" href="#master" aria-expanded="false" aria-controls="master">
+                    <ul class="nav flex-column sub-menu">
 
-              <i class="icon-contract menu-icon"></i>
+                        <li class="nav-item"> <a class="nav-link" href="{{ route('admin.manageadmin') }}"> Manage Users
+                            </a></li>
 
-              <span class="menu-title">Manage Masters</span>
+                        <li class="nav-item"> <a class="nav-link" href="{{ route('admin.roles') }}"> Manage Roles </a>
+                        </li>
 
-              <i class="menu-arrow"></i>
+                    </ul>
 
-            </a>
+                </div>
 
-            <div class="collapse" id="master">
+            </li>
+        @endif
 
-              <ul class="nav flex-column sub-menu">
+        @if (
+            \Auth::guard('admin')->user()->id == 1 ||
+                @checkRoute('View_OrganisationDetails') ||
+                @checkRoute('website_index') ||
+                @checkRoute('FileToURL'))
+            <li class="nav-item">
 
-              @if(@checkRoute('View_OrganisationDetails'))
-                 <li class="nav-item"><a class="nav-link" href="{{route('admin.organisation')}}">Organisation Details</a></li>
-              @endif
-              @if(@checkRoute('website_index'))
-                 <li class="nav-item"><a class="nav-link"   href="{{url('/Accounts/website-index')}}">Organisation Counter </a></li>
-              @endif
+                <a class="nav-link" data-toggle="collapse" href="#master" aria-expanded="false" aria-controls="master">
 
-              @if(@checkRoute('View_OrganisationDetails'))
-                 <li class="nav-item"> <a class="nav-link" href="{{route('admin.filetourl')}}">Client Logo</a></li>
-              @endif
+                    <i class="icon-contract menu-icon"></i>
 
-              @if(@checkRoute('View_OrganisationStructure'))
-              <li class="nav-item"><a class="nav-link" href="{{route('admin.people')}}">Organisation Members</a></li>
-              @endif
+                    <span class="menu-title">Manage Masters</span>
 
-              @if(@checkRoute('View_Banners'))
-              <li class="nav-item"><a class="nav-link" href="{{route('admin.banners')}}">Organisation Banner</a></li>
-              @endif
+                    <i class="menu-arrow"></i>
 
-              @if(@checkRoute('Industry'))
-              <li class="nav-item"><a class="nav-link" href="{{route('admin.industry')}}">Manage Industry Connect</a></li>
-              @endif
+                </a>
 
+                <div class="collapse" id="master">
 
-            @if(@checkRoute('View_Banners'))
-            <li class="nav-item"><a class="nav-link" href="{{url('Accounts/News-Event')}}">Manage News & Events</a></li>
-            @endif
+                    <ul class="nav flex-column sub-menu">
 
+                        @if (@checkRoute('View_OrganisationDetails'))
+                            <li class="nav-item"><a class="nav-link"
+                                    href="{{ route('admin.organisation') }}">Organisation Details</a></li>
+                        @endif
+                        @if (@checkRoute('website_index'))
+                            <li class="nav-item"><a class="nav-link"
+                                    href="{{ url('/Accounts/website-index') }}">Organisation Counter </a></li>
+                        @endif
 
-            @if(@checkRoute('View_Banners'))
-            <li class="nav-item"><a class="nav-link" href="{{url('Accounts/press-media')}}">Manage Press & Media</a></li>
-            @endif
+                        @if (@checkRoute('View_OrganisationDetails'))
+                            <li class="nav-item"> <a class="nav-link" href="{{ route('admin.filetourl') }}">Client
+                                    Logo</a></li>
+                        @endif
 
-            @if(@checkRoute('ANTI-RAGGING'))
-            <li class="nav-item"><a class="nav-link" href="{{url('Accounts/ANTI-RAGGING')}}">Manage Anti-Ragging  </a></li>
-            @endif
+                        @if (@checkRoute('View_OrganisationStructure'))
+                            <li class="nav-item"><a class="nav-link" href="{{ route('admin.people') }}">Organisation
+                                    Members</a></li>
+                        @endif
 
+                        {{-- <li class="nav-item"><a class="nav-link" href="{{ url('/Accounts/view-students-profile') }}"><i
+                            class="icon-grid-2 menu-icon"></i>Manage Student Profile</i></li></a> --}}
 
-            @if(@checkRoute('tenders'))
-            <li class="nav-item"><a class="nav-link" href="{{route('admin.viewtenders')}}">Manage Tenders</a></li>
-            @endif
+                        @if (@checkRoute('Manage Student Profile'))
+                            <li class="nav-item"><a class="nav-link" href="{{ url('/Accounts/view-students-profile') }}">
+                                Manage Student Profile</a></li>
+                        @endif
 
-            @if(@checkRoute('careershow'))
-            <li class="nav-item"><a class="nav-link" href="{{route('admin.careershow')}}">Manage Career</a></li>
-            @endif
 
-            @if(@checkRoute('RTI'))
-            <li class="nav-item"><a class="nav-link" href="{{url('Accounts/RTI')}}">Manage RTI</a></li>
-            @endif
 
-              </ul>
+                        @if (@checkRoute('View_Banners'))
+                            <li class="nav-item"><a class="nav-link" href="{{ route('admin.banners') }}">Organisation
+                                    Banner</a></li>
+                        @endif
 
-            </div>
+                        @if (@checkRoute('Industry'))
+                            <li class="nav-item"><a class="nav-link" href="{{ route('admin.industry') }}">Manage
+                                    Industry Connect</a></li>
+                        @endif
 
-          </li>
 
-      @endif
+                        @if (@checkRoute('View_Banners'))
+                            <li class="nav-item"><a class="nav-link" href="{{ url('Accounts/News-Event') }}">Manage News
+                                    & Events</a></li>
+                        @endif
 
 
-  @if(\Auth::guard('admin')->user()->id==1)
+                        @if (@checkRoute('View_Banners'))
+                            <li class="nav-item"><a class="nav-link" href="{{ url('Accounts/press-media') }}">Manage
+                                    Press & Media</a></li>
+                        @endif
 
-          <li class="nav-item">
+                        @if (@checkRoute('ANTI-RAGGING'))
+                            <li class="nav-item"><a class="nav-link" href="{{ url('Accounts/ANTI-RAGGING') }}">Manage
+                                    Anti-Ragging </a></li>
+                        @endif
 
-            <a class="nav-link" data-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
 
-              <i class="icon-layout menu-icon"></i>
+                        @if (@checkRoute('tenders'))
+                            <li class="nav-item"><a class="nav-link" href="{{ route('admin.viewtenders') }}">Manage
+                                    Tenders</a></li>
+                        @endif
 
-              <span class="menu-title">Layout Management</span>
+                        @if (@checkRoute('careershow'))
+                            <li class="nav-item"><a class="nav-link" href="{{ route('admin.careershow') }}">Manage
+                                    Career</a></li>
+                        @endif
 
-              <i class="menu-arrow"></i>
+                        @if (@checkRoute('RTI'))
+                            <li class="nav-item"><a class="nav-link" href="{{ url('Accounts/RTI') }}">Manage RTI</a>
+                            </li>
+                        @endif
 
-            </a>
+                    </ul>
 
-            <div class="collapse" id="ui-basic">
+                </div>
 
-              <ul class="nav flex-column sub-menu">
+            </li>
 
+        @endif
 
 
-                <li class="nav-item"> <a class="nav-link" href="{{route('admin.sitesetting')}}">Site Setting</a></li>
+        @if (\Auth::guard('admin')->user()->id == 1)
+            <li class="nav-item">
 
+                <a class="nav-link" data-toggle="collapse" href="#ui-basic" aria-expanded="false"
+                    aria-controls="ui-basic">
 
-                <li class="nav-item"> <a class="nav-link" href="{{route('admin.topbar')}}">Manage Headers</a></li>
+                    <i class="icon-layout menu-icon"></i>
 
+                    <span class="menu-title">Layout Management</span>
 
-                <li class="nav-item"> <a class="nav-link" href="{{route('admin.footer')}}">Manage Footer</a></li>
+                    <i class="menu-arrow"></i>
 
+                </a>
 
-                <li class="nav-item"> <a class="nav-link" href="{{route('admin.homeslider')}}">Manage Section1 {Home} </a></li>
+                <div class="collapse" id="ui-basic">
 
+                    <ul class="nav flex-column sub-menu">
 
 
-                <li class="nav-item"> <a class="nav-link" href="{{route('admin.homeabout')}}">Manage Section2 {Home} </a></li>
 
+                        <li class="nav-item"> <a class="nav-link" href="{{ route('admin.sitesetting') }}">Site
+                                Setting</a></li>
 
 
-                <li class="nav-item"> <a class="nav-link" href="{{route('admin.usps')}}">Manage Section3 {Home} </a></li>
+                        <li class="nav-item"> <a class="nav-link" href="{{ route('admin.topbar') }}">Manage Headers</a>
+                        </li>
 
 
+                        <li class="nav-item"> <a class="nav-link" href="{{ route('admin.footer') }}">Manage Footer</a>
+                        </li>
 
-                 <li class="nav-item"> <a class="nav-link" href="{{route('admin.upcoming')}}">Manage Section4 {Home} </a></li>
 
+                        <li class="nav-item"> <a class="nav-link" href="{{ route('admin.homeslider') }}">Manage
+                                Section1 {Home} </a></li>
 
 
-                 <li class="nav-item"> <a class="nav-link" href="{{route('admin.homegallery')}}">Manage Section5 {Home} </a></li>
 
+                        <li class="nav-item"> <a class="nav-link" href="{{ route('admin.homeabout') }}">Manage
+                                Section2 {Home} </a></li>
 
 
-              </ul>
 
-            </div>
+                        <li class="nav-item"> <a class="nav-link" href="{{ route('admin.usps') }}">Manage Section3
+                                {Home} </a></li>
 
-          </li>
 
-@endif
 
-         <!--     <li class="nav-item">
+                        <li class="nav-item"> <a class="nav-link" href="{{ route('admin.upcoming') }}">Manage
+                                Section4 {Home} </a></li>
+
+
+
+                        <li class="nav-item"> <a class="nav-link" href="{{ route('admin.homegallery') }}">Manage
+                                Section5 {Home} </a></li>
+
+
+
+                    </ul>
+
+                </div>
+
+            </li>
+        @endif
+
+        <!--     <li class="nav-item">
 
             <a class="nav-link" data-toggle="collapse" href="#sitesetting" aria-expanded="false" aria-controls="sitesetting">
 
@@ -206,247 +238,276 @@
           </li>-->
 
 
-          @if(@checkRoute('View_Menus') || @checkRoute('View_OrganisationStructure') || @checkRoute('View_Banners') || @checkRoute('View_Announcements') || @checkRoute('View_USPs') || @checkRoute('CForm'))
-          <li class="nav-item">
+        @if (
+            @checkRoute('View_Menus') ||
+                @checkRoute('View_OrganisationStructure') ||
+                @checkRoute('View_Banners') ||
+                @checkRoute('View_Announcements') ||
+                @checkRoute('View_USPs') ||
+                @checkRoute('CForm'))
+            <li class="nav-item">
 
-            <a class="nav-link" data-toggle="collapse" href="#sections" aria-expanded="false" aria-controls="sections">
+                <a class="nav-link" data-toggle="collapse" href="#sections" aria-expanded="false"
+                    aria-controls="sections">
 
-               <i class="icon-bar-graph menu-icon"></i>
+                    <i class="icon-bar-graph menu-icon"></i>
 
-              <span class="menu-title">Manage Sections</span>
+                    <span class="menu-title">Manage Sections</span>
 
-              <i class="menu-arrow"></i>
+                    <i class="menu-arrow"></i>
 
-            </a>
+                </a>
 
-            <div class="collapse" id="sections">
+                <div class="collapse" id="sections">
 
-              <ul class="nav flex-column sub-menu">
-              @if(@checkRoute('View_Menus'))
-                 <li class="nav-item"> <a class="nav-link" href="{{route('admin.menusetting')}}">Manage Menus </a></li>
-                 @endif
-
-
-                 @if(@checkRoute('manage-club'))
-                 <li class="nav-item"><a class="nav-link" href="{{url('Accounts/manage-clubs')}}">Manage Club</a></li>
-                 @endif
-
-                 @if(@checkRoute('manage-committee'))
-                 <li class="nav-item"><a class="nav-link" href="{{url('Accounts/manage-committee')}}">Manage Committee </a></li>
-                 @endif
-
-
-                 @if(@checkRoute('manage-cells'))
-                 <li class="nav-item"><a class="nav-link" href="{{url('Accounts/manage-cells')}}">Manage Cell</a></li>
-                 @endif
+                    <ul class="nav flex-column sub-menu">
+                        @if (@checkRoute('View_Menus'))
+                            <li class="nav-item"> <a class="nav-link" href="{{ route('admin.menusetting') }}">Manage
+                                    Menus </a></li>
+                        @endif
 
 
-                 @if(@checkRoute('Org-journey-index'))
-                 <li class="nav-item"><a class="nav-link"   href="{{url('/Accounts/Org-journey-index')}}">Manage Our Journey</a></li>
-                 @endif
+                        @if (@checkRoute('manage-club'))
+                            <li class="nav-item"><a class="nav-link"
+                                    href="{{ url('Accounts/manage-clubs') }}">Manage Club</a></li>
+                        @endif
+
+                        @if (@checkRoute('manage-committee'))
+                            <li class="nav-item"><a class="nav-link"
+                                    href="{{ url('Accounts/manage-committee') }}">Manage Committee </a></li>
+                        @endif
 
 
-                 @if(@checkRoute('tenders'))
-                 <li class="nav-item"><a class="nav-link" href="{{route('admin.vendordebarred')}}">Manage Vendors Debarred</a></li>
-                 @endif
-
-                  @if(@checkRoute('Events & Activites'))
-                <li class="nav-item"><a class="nav-link" href="{{route('admin.title')}}">Manage Events & Activites</a></li>
-                @endif
-
-                 @if(@checkRoute('student-council'))
-                 <li class="nav-item"><a class="nav-link" href="{{url('Accounts/student-council')}}">Manage Student Council</a></li>
-                 @endif
-
-                 @if(@checkRoute('journal-publications'))
-                 <li class="nav-item"><a class="nav-link" href="{{url('Accounts/journal-publications')}}">Manage Journal Publications </a></li>
-                 @endif
+                        @if (@checkRoute('manage-cells'))
+                            <li class="nav-item"><a class="nav-link"
+                                    href="{{ url('Accounts/manage-cells') }}">Manage Cell</a></li>
+                        @endif
 
 
-                @if(@checkRoute('Wellness-Facilities'))
-                <li class="nav-item"><a class="nav-link" href="{{url('Accounts/Wellness-Facilities')}}">Manage Wellness Facilities </a></li>
-                @endif
+                        @if (@checkRoute('Org-journey-index'))
+                            <li class="nav-item"><a class="nav-link"
+                                    href="{{ url('/Accounts/Org-journey-index') }}">Manage Our Journey</a></li>
+                        @endif
+
+
+                        @if (@checkRoute('tenders'))
+                            <li class="nav-item"><a class="nav-link"
+                                    href="{{ route('admin.vendordebarred') }}">Manage Vendors Debarred</a></li>
+                        @endif
+
+                        @if (@checkRoute('Events & Activites'))
+                            <li class="nav-item"><a class="nav-link" href="{{ route('admin.title') }}">Manage Events
+                                    & Activites</a></li>
+                        @endif
+
+                        @if (@checkRoute('student-council'))
+                            <li class="nav-item"><a class="nav-link"
+                                    href="{{ url('Accounts/student-council') }}">Manage Student Council</a></li>
+                        @endif
+
+                        @if (@checkRoute('journal-publications'))
+                            <li class="nav-item"><a class="nav-link"
+                                    href="{{ url('Accounts/journal-publications') }}">Manage Journal Publications </a>
+                            </li>
+                        @endif
+
+
+                        @if (@checkRoute('Wellness-Facilities'))
+                            <li class="nav-item"><a class="nav-link"
+                                    href="{{ url('Accounts/Wellness-Facilities') }}">Manage Wellness Facilities </a>
+                            </li>
+                        @endif
 
 
 
 
-              {{-- @if(@checkRoute('View_Banners'))
+                        {{-- @if (@checkRoute('View_Banners'))
                 <li class="nav-item"><a class="nav-link" href="{{route('admin.banners')}}">Banner/Sliders</a></li>
                 @endif --}}
 
-                {{-- @if(@checkRoute('View_Announcements'))
+                        {{-- @if (@checkRoute('View_Announcements'))
                 <li class="nav-item"><a class="nav-link" href="{{route('admin.announcements')}}">Manage Announcements</a></li>
                 @endif --}}
-                {{-- @if(@checkRoute('View_USPs'))
+                        {{-- @if (@checkRoute('View_USPs'))
                <li class="nav-item"><a class="nav-link" href="{{route('admin.usp')}}">Manage USPs</a></li>
                @endif --}}
-               {{-- @if(@checkRoute('CForm'))
+                        {{-- @if (@checkRoute('CForm'))
                <li class="nav-item"><a class="nav-link" href="{{url('/Accounts/dynamic-form')}}">Dynamic Forms</a></li>
                @endif --}}
 
 
-              </ul>
+                    </ul>
 
-            </div>
+                </div>
 
-          </li>
+            </li>
 
-          @endif
-
-
+        @endif
 
 
-          @if(@checkRoute('add_content_page') || @checkRoute('content_pages_list') || @checkRoute('deletedata'))
-          <li class="nav-item">
 
-            <a class="nav-link" data-toggle="collapse" href="#cmspages" aria-expanded="false" aria-controls="tables">
 
-              <i class="icon-grid-2 menu-icon"></i>
+        @if (@checkRoute('add_content_page') || @checkRoute('content_pages_list') || @checkRoute('deletedata'))
+            <li class="nav-item">
 
-              <span class="menu-title">Manage Content Pages</span>
+                <a class="nav-link" data-toggle="collapse" href="#cmspages" aria-expanded="false"
+                    aria-controls="tables">
 
-              <i class="menu-arrow"></i>
+                    <i class="icon-grid-2 menu-icon"></i>
 
-            </a>
+                    <span class="menu-title">Manage Content Pages</span>
 
-            <div class="collapse" id="cmspages">
+                    <i class="menu-arrow"></i>
 
-              {{-- <ul class="nav flex-column sub-menu">
-              @if(@checkRoute('add_content_page'))
+                </a>
+
+                <div class="collapse" id="cmspages">
+
+                    {{-- <ul class="nav flex-column sub-menu">
+              @if (@checkRoute('add_content_page'))
                 <li class="nav-item"> <a class="nav-link" href="{{ url("/Accounts/add-page") }}">Add new page</a></li>
               @endif
               </ul> --}}
-              <ul class="nav flex-column sub-menu">
-              @if(@checkRoute('content_pages_list'))
-              <li class="nav-item"> <a class="nav-link" href="{{ url("/Accounts/pages-list")}}">Pages List</a></li>
-              @endif
+                    <ul class="nav flex-column sub-menu">
+                        @if (@checkRoute('content_pages_list'))
+                            <li class="nav-item"> <a class="nav-link" href="{{ url('/Accounts/pages-list') }}">Pages
+                                    List</a></li>
+                        @endif
 
 
-              </ul>
+                    </ul>
 
-              {{-- <ul class="nav flex-column sub-menu">
-              @if(@checkRoute('deletedata'))
+                    {{-- <ul class="nav flex-column sub-menu">
+              @if (@checkRoute('deletedata'))
                  <li class="nav-item"> <a class="nav-link" href="{{url('/Accounts/deletedata')}}">Archive List</a></li>
               @endif
               </ul> --}}
 
 
 
-            </div>
+                </div>
 
-          </li>
-          @endif
+            </li>
+        @endif
 
-          @if(@checkRoute('add_gallery_data_page') || @checkRoute('show_gallery_data_list'))
-          <li class="nav-item">
+        @if (@checkRoute('add_gallery_data_page') || @checkRoute('show_gallery_data_list'))
+            <li class="nav-item">
 
-            <a class="nav-link" data-toggle="collapse" href="#cmspagess" aria-expanded="false" aria-controls="tables">
+                <a class="nav-link" data-toggle="collapse" href="#cmspagess" aria-expanded="false"
+                    aria-controls="tables">
 
-              <i class="icon-grid-2 menu-icon"></i>
+                    <i class="icon-grid-2 menu-icon"></i>
 
-              <span class="menu-title">Manage Image Gallery</span>
+                    <span class="menu-title">Manage Image Gallery</span>
 
-              <i class="menu-arrow"></i>
+                    <i class="menu-arrow"></i>
 
-            </a>
+                </a>
 
-            <div class="collapse" id="cmspagess">
+                <div class="collapse" id="cmspagess">
 
-              {{-- <ul class="nav flex-column sub-menu">
-              @if(@checkRoute('add_gallery_data_page'))
+                    {{-- <ul class="nav flex-column sub-menu">
+              @if (@checkRoute('add_gallery_data_page'))
                 <li class="nav-item"> <a class="nav-link" href="{{ url('/Accounts/add_gallery') }}">Add Gallery</a></li>
               @endif
               </ul> --}}
-              <ul class="nav flex-column sub-menu">
-              @if(@checkRoute('show_gallery_data_list'))
-              <li class="nav-item"> <a class="nav-link" href="{{url('/Accounts/show_gallery')}}"> Show Gallary </a></li>
-              @endif
-              </ul>
+                    <ul class="nav flex-column sub-menu">
+                        @if (@checkRoute('show_gallery_data_list'))
+                            <li class="nav-item"> <a class="nav-link" href="{{ url('/Accounts/show_gallery') }}">
+                                    Show Gallary </a></li>
+                        @endif
+                    </ul>
 
 
 
-            </div>
+                </div>
 
-          </li>
+            </li>
 
-          @endif
+        @endif
 
 
-          @if(@checkRoute('add_videoget') || @checkRoute('show_videogallery'))
+        @if (@checkRoute('add_videoget') || @checkRoute('show_videogallery'))
 
-          <li class="nav-item">
+            <li class="nav-item">
 
-          <a class="nav-link" data-toggle="collapse" href="#tables" aria-expanded="false" aria-controls="tables">
+                <a class="nav-link" data-toggle="collapse" href="#tables" aria-expanded="false"
+                    aria-controls="tables">
 
-           <i class="icon-grid-2 menu-icon"></i>
+                    <i class="icon-grid-2 menu-icon"></i>
 
-            <span class="menu-title">Manage Video Gallery</span>
+                    <span class="menu-title">Manage Video Gallery</span>
 
-           <i class="menu-arrow"></i>
+                    <i class="menu-arrow"></i>
 
-          </a>
+                </a>
 
-         <div class="collapse" id="tables">
+                <div class="collapse" id="tables">
 
-           {{-- <ul class="nav flex-column sub-menu">
-           @if(@checkRoute('add_videoget'))
+                    {{-- <ul class="nav flex-column sub-menu">
+           @if (@checkRoute('add_videoget'))
           <li class="nav-item"> <a class="nav-link" href="{{ url('/Accounts/add_videoget') }}">Add video Gallery</a></li>
           @endif
           </ul> --}}
 
-          <ul class="nav flex-column sub-menu">
-          @if(@checkRoute('show_videogallery'))
-          <li class="nav-item"> <a class="nav-link" href="{{ url('/Accounts/show_videogallery') }}">Show Video Gallery</a></li>
-          @endif
-         </ul>
+                    <ul class="nav flex-column sub-menu">
+                        @if (@checkRoute('show_videogallery'))
+                            <li class="nav-item"> <a class="nav-link"
+                                    href="{{ url('/Accounts/show_videogallery') }}">Show Video Gallery</a></li>
+                        @endif
+                    </ul>
 
-       </div>
+                </div>
 
-        </li>
+            </li>
 
         @endif
 
-        @if(@checkRoute('add_link') || @checkRoute('show_link') || @checkRoute('View_QuickLinks'))
+        @if (@checkRoute('add_link') || @checkRoute('show_link') || @checkRoute('View_QuickLinks'))
 
-               <li class="nav-item">
+            <li class="nav-item">
 
-               <a class="nav-link" data-toggle="collapse" href="#cmspagesss" aria-expanded="false" aria-controls="tables">
+                <a class="nav-link" data-toggle="collapse" href="#cmspagesss" aria-expanded="false"
+                    aria-controls="tables">
 
-               <i class="icon-grid-2 menu-icon"></i>
+                    <i class="icon-grid-2 menu-icon"></i>
 
 
-               <span class="menu-title">Manage Link Sections</span>
+                    <span class="menu-title">Manage Link Sections</span>
 
-               <i class="menu-arrow"></i>
+                    <i class="menu-arrow"></i>
 
-                 </a>
+                </a>
 
                 <div class="collapse" id="cmspagesss">
 
-                <ul class="nav flex-column sub-menu">
-                @if(@checkRoute('add_link'))
-               <li class="nav-item"> <a class="nav-link" href="{{ url('/Accounts/add_link') }}">Add Link Sections</a></li>
-               @endif
-                 </ul>
-               <ul class="nav flex-column sub-menu">
-               @if(@checkRoute('show_link'))
-                <li class="nav-item"> <a class="nav-link" href="{{ url('/Accounts/show_link') }}"> List Link Sections</a></li>
-                @endif
-                 </ul>
+                    <ul class="nav flex-column sub-menu">
+                        @if (@checkRoute('add_link'))
+                            <li class="nav-item"> <a class="nav-link" href="{{ url('/Accounts/add_link') }}">Add
+                                    Link Sections</a></li>
+                        @endif
+                    </ul>
+                    <ul class="nav flex-column sub-menu">
+                        @if (@checkRoute('show_link'))
+                            <li class="nav-item"> <a class="nav-link" href="{{ url('/Accounts/show_link') }}"> List
+                                    Link Sections</a></li>
+                        @endif
+                    </ul>
 
-                 <ul class="nav flex-column sub-menu">
-                 @if(@checkRoute('View_QuickLinks'))
-                 <li class="nav-item"><a class="nav-link" href="{{route('admin.quicklink')}}">Manage Quick Links</a></li>
-                 @endif
-                 </ul>
+                    <ul class="nav flex-column sub-menu">
+                        @if (@checkRoute('View_QuickLinks'))
+                            <li class="nav-item"><a class="nav-link" href="{{ route('admin.quicklink') }}">Manage
+                                    Quick Links</a></li>
+                        @endif
+                    </ul>
 
-                 </div>
+                </div>
 
-                </li>
+            </li>
 
-                @endif
+        @endif
 
-  {{-- <li class="nav-item">
+        {{-- <li class="nav-item">
 
   <a class="nav-link" data-toggle="collapse" href="#cmspagessss" aria-expanded="false" aria-controls="tables">
 
@@ -461,12 +522,12 @@
   <div class="collapse" id="cmspagessss">
 
   <ul class="nav flex-column sub-menu">
-  @if(@checkRoute('add_blog_content_page'))
+  @if (@checkRoute('add_blog_content_page'))
   <li class="nav-item"> <a class="nav-link" href="/Accounts/add_blog">Add Blog</a></li>
   @endif
   </ul>
   <ul class="nav flex-column sub-menu">
-  @if(@checkRoute('show_blog_page_list'))
+  @if (@checkRoute('show_blog_page_list'))
   <li class="nav-item"> <a class="nav-link" href="/Accounts/show_blog"> Show Blog </a></li>
   @endif
   </ul>
@@ -480,40 +541,77 @@
 
 
 
- @if(@checkRoute('datefillerdata'))
-  <li class="nav-item">
+        @if (@checkRoute('datefillerdata'))
+            <li class="nav-item">
 
-  <a class="nav-link" data-toggle="collapse" href="#cmspagesssss" aria-expanded="false" aria-controls="tables">
+                <a class="nav-link" data-toggle="collapse" href="#cmspagesssss" aria-expanded="false"
+                    aria-controls="tables">
 
-  <i class="icon-grid-2 menu-icon"></i>
+                    <i class="icon-grid-2 menu-icon"></i>
 
-  <span class="menu-title"> Audit log section </span>
+                    <span class="menu-title"> Audit log section </span>
 
-  <i class="menu-arrow"></i>
+                    <i class="menu-arrow"></i>
 
-  </a>
+                </a>
 
-  <div class="collapse" id="cmspagesssss">
+                <div class="collapse" id="cmspagesssss">
 
-  <ul class="nav flex-column sub-menu">
-  @if(@checkRoute('datefillerdata'))
-  <li class="nav-item"> <a class="nav-link" href="{{url('/Accounts/Audit-data-show')}}">Show Audit log</a></li>
-  @endif
-  </ul>
-
-
-
-  </div>
-
-  </li>
-
-  @endif
-
-<li class="nav-item"><a class="nav-link" href="{{ url('/Accounts/view-students-profile') }}"><i class="icon-grid-2 menu-icon"></i>Add Student Profile</i></li></a></li>
+                    <ul class="nav flex-column sub-menu">
+                        @if (@checkRoute('datefillerdata'))
+                            <li class="nav-item"> <a class="nav-link"
+                                    href="{{ url('/Accounts/Audit-data-show') }}">Show Audit log</a></li>
+                        @endif
+                    </ul>
 
 
-        </ul>
 
-      </nav>
+                </div>
 
-      <!-- partial -->
+            </li>
+
+        @endif
+
+
+
+
+        @if (@checkRoute('View_Admins'))
+            <li class="nav-item">
+
+                <a class="nav-link" data-toggle="collapse" href="#auth" aria-expanded="false"
+                    aria-controls="auth">
+
+                    <i class="icon-head menu-icon"></i>
+
+                    <span class="menu-title"> Management</span>
+
+                    <i class="menu-arrow"></i>
+
+                </a>
+
+                <div class="collapse" id="auth">
+
+                    <ul class="nav flex-column sub-menu">
+
+                        <li class="nav-item"> <a class="nav-link" href="{{ url('/Accounts/Countact-us') }}"> Contact us
+
+                            </a></li>
+
+                        <li class="nav-item"> <a class="nav-link" href="{{ url('/Accounts/feedback') }}"> Feedback
+                            </a>
+                        </li>
+
+                    </ul>
+
+                </div>
+
+            </li>
+        @endif
+
+
+
+
+    </ul>
+</nav>
+
+<!-- partial -->

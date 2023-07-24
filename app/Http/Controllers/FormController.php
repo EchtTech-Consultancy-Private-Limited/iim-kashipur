@@ -16,6 +16,7 @@ use App\Models\Department;
 use App\Models\cell;
 use App\Models\commmittee;
 use App\Models\club;
+use App\Models\feedback;
 use App\Models\committee_multiple_image;
 use App\Models\club_multiple_image;
 use App\Models\cell_multiple_image;
@@ -1931,6 +1932,18 @@ public function add_RTI(Request $request,$id=NULL)
     public function rit_QUARTER(Request $request){
         $item=rit_report_section::whereid($request->id)->first();
         return response()->json(['item'=>$item]);
+    }
+
+    public function countact_us()
+    {
+       $data=feedback::get();
+     return view ('admin.sections.manageContactus',['data'=>$data]);
+    }
+
+    public function feedback()
+    {
+      $data=feedback::whereType('feedback')->get();
+     return view ('admin.sections.manageFeedback',['data'=>$data]);
     }
 
 }
