@@ -205,8 +205,8 @@ public function add_feedback(Request $request)
             'email' => ['required','string','email','max:50','unique:users','regex:/^([a-z0-9\+_\-]+)(\.[a-z0-9\+_\-]+)*@([a-z0-9\-]+\.)+[a-z]{2,6}$/ix'],
             'mobile_no'=>'required|numeric|min:10|numeric|digits:10',
             'Type'=>'required',
-            'feedback'=>'required'
-
+            'feedback'=>'required',
+            'captcha' => 'required|captcha'
        ]
    );
     $data= new feedback;
@@ -235,6 +235,7 @@ public function add_contact(Request $request)
         'mobile_no'=>'required|numeric|min:10|numeric|digits:10',
         'Type'=>'required',
         'feedback'=>'required',
+        'captcha' => 'required|captcha'
        ]
    );
     $data= new feedback;
@@ -245,7 +246,7 @@ public function add_contact(Request $request)
     $data->mobile_no=$request->mobile_no;
     $data->feedback=$request->feedback;
     $data->save();
-    return back()->with(['success'=>'Contact Add Successfully!']);
+    return back()->with(['success'=>'Contact Us Add Successfully!']);
 }
 
 //screen_reader_access
