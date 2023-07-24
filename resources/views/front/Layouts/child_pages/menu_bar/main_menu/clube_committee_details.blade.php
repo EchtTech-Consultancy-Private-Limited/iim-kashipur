@@ -577,7 +577,7 @@
                 establishing a professional network across industries.</p>
 
             <div class="excellence-wrap event-text mb-3 mt-4">
-                <div class="container">
+                <div class="container p-0">
                     <div class="row">
                         <div class="col-md-6">
                             <div class="text-box">
@@ -664,9 +664,9 @@
             </h5>
 
             <div class="excellence-wrap event-text mb-3 mt-4">
-                <div class="container">
+                <div class="container p-0">
                     <div class="row">
-                        <div class="col-md-4">
+                        <div class="col-md-3">
                             <div class="multi-image-popup">
                                 <a href="#gallery-1" class="btn-gallery">
                                     <img src="https://iim.staggings.in/uploads/header_top/168690759793.jpg" />
@@ -1099,7 +1099,7 @@
                             establishing a professional network across industries.</p>
 
                         <div class="excellence-wrap event-text mb-3 mt-4">
-                            <div class="container">
+                            <div class="container p-0">
                                 <div class="row">
                                     <div class="col-md-6">
                                         <div class="text-box">
@@ -1186,9 +1186,9 @@
                         </h5>
 
                         <div class="excellence-wrap event-text mb-3 mt-4">
-                            <div class="container">
+                            <div class="container p-0">
                                 <div class="row">
-                                    <div class="col-md-4">
+                                    <div class="col-md-3">
                                         <div class="multi-image-popup">
                                             <a href="#gallery-1" class="btn-gallery">
                                                 <img src="https://iim.staggings.in/uploads/header_top/168690759793.jpg" />
@@ -1458,7 +1458,7 @@
                         @endif
 
                         <div class="excellence-wrap event-text mb-3 mt-4">
-                            <div class="container">
+                            <div class="container p-0">
                                 <div class="row">
 
                                     @foreach ($data as $datas)
@@ -1490,12 +1490,12 @@
                             </h5>
 
                             <div class="excellence-wrap event-text mb-3 mt-4">
-                                <div class="container">
+                                <div class="container p-0">
                                     <div class="row">
                                         @foreach ($data as $datas)
 
 
-                                            <div class="col-md-4">
+                                            <div class="col-md-3">
 
                                                 <div class="multi-image-popup">
                                                     <a href="{{ asset('uploads/multiple/club/' . $datas->image) ?? '' }}" class="btn-gallery image-link">

@@ -375,6 +375,7 @@
 
 body {
     font-family: "Poppins", sans-serif !important;
+    -moz-user-select:all !important;
 }
 
 ul {
@@ -2620,7 +2621,7 @@ a {
 .breadcrumbs {
     background: #f6f6f6;
 
-    padding: 20px 0;
+    padding: 12px 0;
 }
 
 .breadcrumbs ul {
