@@ -50,7 +50,7 @@
 
 
                 <div class="col-md-12">
-                    <div class="innerpagecontent">
+                    <div class="innerpagecontent sitemap">
                         <h3>@lang('common.sitemap')</h3>
                         <br>
 
@@ -72,7 +72,7 @@
 
                                 @foreach (GetSubMenusFront($M->id) as $key1 => $S)
                                     @if (count(GetchildMenusFront($M->id, $S->id)) > 0)
-                                        <a href="javascript:void(0);">
+                                        <a href="javascript:void(0);" class="site-text">
                                             @if (GetLang() == 'en')
                                                 {{ $S->name }}
                                             @else
@@ -159,7 +159,7 @@
 
                                 </h2>
                                 <div class="footer-link">
-                                    <ul>
+                                   
                                         @foreach (GETfooterdatalink($M->id) as $key => $Ms)
                                             <li>
                                                 {{-- <img src="{{ asset('assets/images/arrow.svg')}}" alt="arrow" class="img-fluid"> --}}
@@ -172,7 +172,7 @@
                                                 </a>
                                             </li>
                                         @endforeach
-                                    </ul>
+                                   
                                 </div>
                             </div>
                         @endforeach
@@ -185,7 +185,6 @@
 
                                 </h2>
                                 <div class="footer-link mt-2">
-                                    <ul>
                                         @foreach (GETfooterdatalink($M->id) as $key => $Ms)
                                             <li>
                                                 {{-- <img src="{{ asset('assets/images/arrow.svg')}}" alt="arrow" class="img-fluid"> --}}
@@ -198,7 +197,6 @@
                                                 </a>
                                             </li>
                                         @endforeach
-                                    </ul>
                                 </div>
                             </div>
                         @endforeach
@@ -211,7 +209,6 @@
 
                                 </h2>
                                 <div class="footer-link mt-2">
-                                    <ul>
                                         @foreach (GETfooterdatalink($M->id) as $key => $Ms)
                                             <li>
                                                 {{-- <img src="{{ asset('assets/images/arrow.svg')}}" alt="arrow" class="img-fluid"> --}}
@@ -224,7 +221,6 @@
                                                 </a>
                                             </li>
                                         @endforeach
-                                    </ul>
                                 </div>
                             </div>
                         @endforeach
