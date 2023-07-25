@@ -2405,7 +2405,7 @@ a {
 
 .site-footer .footer-top .address-wrap p {
     margin: 0;
-    font-size: 13px !important;
+    font-size: 13px;
     text-align: left;
 }
 
@@ -5508,7 +5508,7 @@ h2.life_kashipur {
 }
 
 .pt-50 {
-    padding-top: 60px;
+    padding-top: 45px;
 }
 
 .submit-btn-apply {
@@ -5615,4 +5615,37 @@ span.percentage {
 {
   font-size : 20px;
   color: black;
+}
+
+.header-top-left ul li:not(:last-child):after {
+    border-right: 1px solid #000000;
+    line-height: 1;
+    margin: 0 8px;
+    content: "";
+    display: block;
+    width: 1px;
+    height: 15px;
+}
+
+.header-top-left ul li {
+    line-height: 1;
+    display: flex;
+    align-items: center;
+
+}
+
+.header-top-left ul li a{
+    color: #000;
+}
+
+.header-top-left ul {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.social-icon a img {
+    width: 36px;
+    height: 36px;
+    margin-top: -6px;
 }

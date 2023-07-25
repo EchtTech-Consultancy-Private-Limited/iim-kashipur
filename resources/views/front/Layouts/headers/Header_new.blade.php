@@ -93,19 +93,21 @@
 
                                 <li>
 
-                                    <div class="text-assesbility p-relative" title="Accessibility Dropdown"
-                                        alt="incease">
-                                        <img src="{{ asset('ico-accessibility.png') }}" title="Accessibility Dropdown"
-                                            alt="Accessibility Dropdown" />
 
-                                        <div class="text-assesbility-button">
-                                            <button class="text-increment-btn button active"
-                                                onclick="textnormal()">A</button>
-                                            <button class="text-increment-btn button"
-                                                onclick="textincrease()">A+</button>
-                                            <button class="text-increment-btn button"
-                                                onclick="textincrease2()">A++</button>
-                                        </div>
+                                <div class="text-assesbility p-relative" title="Accessibility Dropdown" alt="incease">
+                                    <img src="{{ asset('ico-accessibility.png')}}" title="Accessibility Dropdown" alt="Accessibility Dropdown" />
+                                
+                                    <div class="text-assesbility-button">
+                                            {{-- <button class="text-increment-btn button" onclick="textnormal()">A</button>
+                                            <button class="text-increment-btn button active" onclick="textincrease()">A+</button>
+                                            <button class="text-increment-btn button" onclick="textincrease2()">A+</button> --}}
+                                           
+                                            <button class="text-increment-btn button" onclick="decreaseFontSize()" title="Decrease Font SIze">A-</button>
+                                            <button class="text-increment-btn button active" onclick="normaltext()" title="">A</button>
+                                            <button class="text-increment-btn button" onclick="increaseFontSize()" title="">A+</button>
+
+
+                                    </div>
                                     </div>
 
                                 </li>
