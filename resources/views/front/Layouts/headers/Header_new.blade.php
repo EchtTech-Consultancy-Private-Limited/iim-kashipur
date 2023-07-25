@@ -36,44 +36,30 @@
                                         <ul>
                                             @foreach (GETheadertopcontent($M->id) as $key => $Ms)
                                                 <li>
-                                                    {{-- <a class="text-black"
 
-                                                        @if ($Ms->external == 'yes') onclick="return confirm('Are you sure  external window open?')"  target="_blank" href="{{ url($Ms->url) }}" @elseif($Ms->external == 'no')  href="{{ url($Ms->url) }}" @else href="{{ url($Ms->slug) }}" @endif>
-
-
-                                                        @if (GetLang() == 'en')
-                                                           {{ $Ms->title }}
-                                                        @else
-                                                            {{ $Ms->title_h }}
-                                                        @endif
-                                                    </a> --}}
-
-
-                                                    @if($Ms->external == 'yes')
-                                                        <a onclick="return confirm('Are you sure  external window open?')" target="_blank" href="{{ url($Ms->url) }}" >
+                                                    @if($Ms->external == 'yes' && $Ms->url !='')
+                                                        <a onclick="return confirm('Are you sure  external window open?')" target="_blank" href="{{ url($Ms->url) ??'' }}" >
                                                             @if (GetLang() == 'en')
-                                                            {{ $Ms->title }}
+                                                                {{ $Ms->title ??'' }}
                                                             @else
-                                                                {{ $Ms->title_h }}
+                                                                {{ $Ms->title_h ??'' }}
                                                             @endif
                                                         </a>
 
-                                                    @elseif($Ms->external == 'no')
-
-                                                       <a href="{{ url($Ms->url) }}" >
+                                                    @elseif($Ms->external == 'no' && $Ms->url !='')
+                                                       <a href="{{ url($Ms->url) ??'' }}">
                                                             @if (GetLang() == 'en')
-                                                            {{ $Ms->title }}
+                                                                 {{ $Ms->title ??'' }}
                                                             @else
-                                                                {{ $Ms->title_h }}
+                                                                {{ $Ms->title_h ??'' }}
                                                             @endif
                                                         </a>
-
                                                     @else
-                                                       <a href="{{ url($Ms->slug) }}" >
+                                                       <a href="{{ url($Ms->slug) ??'' }}" >
                                                          @if (GetLang() == 'en')
-                                                        {{ $Ms->title }}
+                                                        {{ $Ms->title ??'' }}
                                                          @else
-                                                         {{ $Ms->title_h }}
+                                                         {{ $Ms->title_h ??''}}
                                                         @endif
                                                        </a>
                                                     @endif
