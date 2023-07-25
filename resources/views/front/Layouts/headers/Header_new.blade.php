@@ -33,8 +33,8 @@
                                             <button class="text-increment-btn button" onclick="textincrease2()">A+</button> --}}
                                            
                                             <button class="text-increment-btn button" onclick="decreaseFontSize()" title="Decrease Font SIze">A-</button>
-                                            <button class="text-increment-btn button active" onclick="normaltext()" title="">A</button>
-                                            <button class="text-increment-btn button" onclick="increaseFontSize()" title="">A+</button>
+                                            <button class="text-increment-btn button active" onclick="normaltext()" title="Normal Font Size">A</button>
+                                            <button class="text-increment-btn button" onclick="increaseFontSize()" title="Increase Font Size">A+</button>
 
                                     </div>
                                 </div>
@@ -444,7 +444,7 @@
 <div class="sticky-i d-none">
 <div class="sticky-icon">
    <a href="https://www.facebook.com/IndianInstituteOfManagementKashipur" target="_blank" class="Facebook" title="Facebook"><i class="fa fa-facebook-f"> </i> Facebook </a>
-   <a href="https://twitter.com/IIMKsp" class="Twitter" target="_blank"><i class="fa fa-twitter" title="Twitter"> </i> Twitter </a>     
+   <a href="https://twitter.com/IIMKsp" class="Twitter" target="_blank" title="Twitter"><i class="fa fa-twitter" title="Twitter"> </i> Twitter </a>     
    <a href="https://www.instagram.com/iimkashipur/" class="Instagram" target="_blank" title="Instagram"><i class="fa fa-instagram"></i> Instagram </a>
    <a href="https://www.linkedin.com/school/iimkashipur/" class="Youtube" target="_blank" title="Linkedin"><i class="fa fa-linkedin"> </i> Linkedin </a>
 </div>
