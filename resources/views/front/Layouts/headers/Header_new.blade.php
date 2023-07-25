@@ -38,11 +38,14 @@
                                                 <li>
                                                     <a class="text-black"
                                                         @if ($Ms->external == 'yes') onclick="return confirm('Are you sure  external window open?')"  target="_blank" href="{{ url($Ms->url) }}" @elseif($Ms->external == 'no')  href="{{ url($Ms->url) }}" @else href="{{ url($Ms->slug) }}" @endif>
-                                                        @if (GetLang() == 'en')
-                                                            {{ $Ms->title }}
+
+                                                        {{ $Ms->title }}
+
+                                                        {{-- @if (GetLang() == 'en')
+
                                                         @else
                                                             {{ $Ms->title_h }}
-                                                        @endif
+                                                        @endif --}}
                                                     </a>
                                                 </li>
                                             @endforeach
