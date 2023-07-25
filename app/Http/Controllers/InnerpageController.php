@@ -679,9 +679,11 @@ public function screen_reader_access()
 }*/
  public function Menu_barInnerpage($slug) //content page & who in who data
     {
+
         $main_menu="main-menu";
         $item=OrganisationStructure::whereslug($slug)->get();
         if(MainMenu::whereslug($slug)->get('id')->count()){
+
             $type=MainMenu::whereslug($slug)->get();
             if($type[0]->url == '/content-page'){
                // dd('hii');
@@ -691,6 +693,7 @@ public function screen_reader_access()
 
             }elseif($type[0]->url == '/who-is-who')
             {
+
 
                 if(isset($type[0]) && $type[0]->tpl_id == 1) //board of gerverner
                 {
@@ -920,9 +923,10 @@ public function screen_reader_access()
                     }elseif(QuickLink::whereslug($slug)->first('section_name')->section_name == 'video-gallery')
                     {
 
-                        // dd($slug);
+                           // dd(QuickLink::whereslug($slug)->first('section_name')->section_name == 'video-gallery');
 
                         $video_slug=QuickLink::whereslug($slug)->get();
+
                         $data=video_gallery::whereid($video_slug[0]->link_option)->get();
 
                           if(Count($data)>0){
@@ -939,7 +943,27 @@ public function screen_reader_access()
                           }
 
                     }
+                    elseif(QuickLink::whereslug($slug)->first('section_name')->section_name == 'header-top')
+                    {
+                        $video_slug=QuickLink::whereslug($slug)->get();
+
+                        $item=video_gallery::whereid($video_slug[0]->link_option)->get();
+
+                          if(Count($item)>0){
+                           $values=video_gallery_tittle::wheregallery_id($item[0]->id)->get();
+
+                              if(Count($item)>0){
+                                return view('front.Layouts.child_pages.menu_bar.main_menu.video_master',['video_slug'=>$video_slug,'item'=>$item,'values'=>$values]);
+                              }else{
+                                  return abort(401);
+                              }
+                          }else{
+                              return abort(401);
+                          }
+
+                    }
                     else{
+
                         return abort(402);
                     }
 
@@ -967,7 +991,7 @@ public function screen_reader_access()
         }elseif(video_gallery::wherevideo_slug($slug)->get()->count())
         {
             $data=video_gallery::wherevideo_slug($slug)->get("id");
-               //dd($data);
+
             if(Count($data)>0){
              $item=video_gallery_tittle::wheregallery_id($data[0]->id)->get();
 
