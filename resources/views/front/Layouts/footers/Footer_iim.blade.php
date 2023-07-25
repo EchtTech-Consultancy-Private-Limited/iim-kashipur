@@ -285,7 +285,7 @@
     </div>
 
 </div>
-{{--
+
 <script>
     // disable right click
     document.addEventListener('contextmenu', event => event.preventDefault());
@@ -313,4 +313,4 @@
         }
     }
 
-</script> --}}
+</script>
