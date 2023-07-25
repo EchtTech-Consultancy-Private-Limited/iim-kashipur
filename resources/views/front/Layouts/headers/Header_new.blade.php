@@ -28,9 +28,18 @@
                                     <img src="{{ asset('ico-accessibility.png')}}" title="Accessibility Dropdown" alt="Accessibility Dropdown" />
                                 
                                     <div class="text-assesbility-button">
-                                            <button class="text-increment-btn button active" onclick="textnormal()">A</button>
-                                            <button class="text-increment-btn button" onclick="textincrease()">A+</button>
-                                            <button class="text-increment-btn button" onclick="textincrease2()">A++</button>
+                                            {{-- <button class="text-increment-btn button" onclick="textnormal()">A</button>
+                                            <button class="text-increment-btn button active" onclick="textincrease()">A+</button>
+                                            <button class="text-increment-btn button" onclick="textincrease2()">A+</button> --}}
+                                           
+                                            <button class="text-increment-btn button" onclick="decreaseFontSize()" title="Decrease Font SIze">A-</button>
+                                            <button class="text-increment-btn button active" onclick="normaltext()" title="">A</button>
+                                            <button class="text-increment-btn button" onclick="increaseFontSize()" title="">A+</button>
+
+
+                                            {{-- <button class="text-increment-btn button" id="btn-decrease">A-</button>
+                                            <button class="text-increment-btn button active" id="btn-orig">A</button>
+                                            <button class="text-increment-btn button" id="btn-increase">A+</button> --}}
                                     </div>
                                 </div>
                                    
