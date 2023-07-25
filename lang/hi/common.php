@@ -47,6 +47,14 @@ return [
      'sitemap'=>'साइट मैप',
      'SCREEN_READER_ACCESS' =>'स्क्रीन रीडर एक्सेस',
      'contact-us'=>'संपर्क करें',
-     'feedback'=>'प्रतिक्रिया'
+     'feedback'=>'प्रतिक्रिया',
+     'News-Events'=>'समाचार एवं घटनाक्रम',
+    'Industry-Connect'=>'इंडस्ट्री कनेक्ट',
+    'Notice-Board'=>'सूचना पट्ट',
+    'Life'=>'ज़िंदगी',
+    'IIM-Kashipur'=>'आईआईएम काशीपुर',
+    'Linkedin-Feed'=>'लिंक्डइन फ़ीड',
+    'Instagram-Feed'=>'इंस्टाग्राम फ़ीड',
+    'Facebook-Feed'=>'फेसबुक फ़ीड'
 
 ];
