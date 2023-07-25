@@ -4229,7 +4229,7 @@ section.excellence-wrap.pt-5 {
     text-decoration: none;
     /* text-transform:uppercase; */
     padding: 7px 10px;
-    font-size: 20px;
+    font-size: 20px !important;
     font-family: "Oswald", sans-serif;
     transition: all 0.8s;
 }
@@ -5648,4 +5648,14 @@ span.percentage {
     width: 36px;
     height: 36px;
     margin-top: -6px;
+}
+
+a.site-text {
+    margin-left: 15px;
+    color: #84061f;
+    font-weight: 500;
+}
+
+.sitemap li {
+    margin-left: 30px;
 }
