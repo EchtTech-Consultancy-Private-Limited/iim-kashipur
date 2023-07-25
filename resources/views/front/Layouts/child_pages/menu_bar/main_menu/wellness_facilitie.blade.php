@@ -1,5 +1,3 @@
-
-
 @extends('front.Layouts.master')
 
 @section('content')
@@ -7,8 +5,6 @@
     @php
         $mmenu = @content_menus($type[0]->menu_id);
     @endphp
-
-
 
     {{-- banner and  breadcrumbs   --}}
 
@@ -744,12 +740,10 @@
                                                                             </div>
                                                                         </a>
 
-                                                                    </div>
-                                                                </div>
-
 
 
                                                             @endforeach
+
                                                         </div>
                                                     </div>
                                                 </div>

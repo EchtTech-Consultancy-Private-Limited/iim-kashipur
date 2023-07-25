@@ -50,16 +50,15 @@
                                 <form class="forms-sample row col-md-12" method="POST"
                                     action="{{ url('Accounts/add-edit-career/'.$id) }}" enctype="multipart/form-data">
                                 @else
-                                
+
                                     <form class="forms-sample row" method="POST" id="regForm"
                                         action="{{ url('Accounts/add-edit-career') }}" enctype="multipart/form-data">
-                                }
-                                }
+
                             @endif
 
                             @csrf
 
-                            <div class="col-md-4">
+                            <div class="col-md-6">
                                 <label for="inputText" class="col-form-label">NAME OF THE POST</label>
                                 <div class="col-md-12">
                                     <input type="text" class="form-control"
@@ -69,7 +68,7 @@
                                 </div>
                             </div>
 
-                            <div class="col-md-4">
+                            <div class="col-md-6">
                                 <label for="inputText" class="col-form-label">OPENING DATE</label>
                                 <div class="">
                                     <input type="date" class="form-control" name="opening_date"
@@ -78,7 +77,7 @@
                                 </div>
                             </div>
 
-                            <div class="col-md-4">
+                            <div class="col-md-6">
                                 <label for="inputText" class="col-form-label">CLOSING DATE</label>
                                 <div class="">
                                     <input type="date" class="form-control" name="closing_date"
@@ -97,7 +96,7 @@
                             </div>
 
                             <div class="col-md-12">
-                                <label for="Commmittee_type" class="col-form-label">DETAIL ADVERTISEMENT</label>
+                                <label for="Commmittee_type" class="col-form-label">DETAIL ADVERTISEMENT<span style="color:green;font-size:12px;"> @if($id) [{{$career->detail_advertisement }}] @endif</span></label>
                                 <div class="">
                                     <input type="file" class="form-control" name="detail_advertisement"
                                     @if ($id) value="{{ $career->detail_advertisement }}" @else value="{{ old('detail_advertisement') }}" @endif  placeholder="Please enter"><br>
@@ -124,7 +123,7 @@
                             </div>
 
                           <div class="col-md-12">
-  <label for="event" class="col-form-label">Status</label>
+                                    <label for="event" class="col-form-label">Status</label>
 
                                     <select class="form-control" aria-label="Default select example" name="status">
 

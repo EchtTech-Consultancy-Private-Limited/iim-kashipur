@@ -1,6 +1,6 @@
 @extends('admin.Layout.master')
 
-@section('title', 'Manage RIT Section ')
+@section('title', 'Manage Quarter RIT')
 
 @section('content')
 
@@ -51,7 +51,7 @@
                     <div class="card">
 
                         <div class="card-body">
-                            <h4 class="card-title">Manage RTI Section</h4>
+                            <h4 class="card-title">Manage Quarter RIT</h4>
 
 
 
@@ -61,7 +61,7 @@
                                 <div class="col-md-12">
 
                                     <button type="button" class="btn btn-primary float-right" data-toggle="modal"
-                                        data-target="#exampleModal" data-whatever="@mdo">Add New Rti Pdf</button>
+                                        data-target="#exampleModal" data-whatever="@mdo">Add New Quarter RIT</button>
 
                                 </div>
 

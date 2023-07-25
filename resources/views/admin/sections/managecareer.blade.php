@@ -69,9 +69,6 @@
 
                                                     <th>ONLINE LINK</th>
 
-                                                    <th>DETAIL ADVERTISEMENT</th>
-                                                    <th>NOTE</th>
-                                                    <th>CORRIGENDUM</th>
 
                                                     <th>Status</th>
 
@@ -87,46 +84,22 @@
 
                                                         <td>{{ $K + 1 }}</td>
 
-
                                                         <td>{{ $D->name_of_the_post }}</td>
 
-                                                        <td>{{ $D->opening_date}}</td>
+                                                        <td>{{ $D->opening_date }}</td>
 
+                                                        <td>{{ $D->closing_date }}</td>
 
-
-                                                        <td>{{ $D->closing_date}}</td>
-
-                                                        
-
-
-
-                                                            <td>
-
-                                                                {{$D->online_link}}
-
-                                                                </td>
-                                                                <td><img src="{{ asset('uploads/fo/' . $D->detail_advertisement) }}"
-                                                            alt="" title=""
-                                                            style="height: 100px;  width: 100px;"></td>
-                                                                <td>
-
-                                                                {{$D->note}}
-
-                                                                </td>
-                                                                <td>
-
-                                                                {{$D->corrigendum}}
-
-                                                                </td>
-
+                                                        <td>
+                                                            {{ $D->note }} </td>
 
                                                         <td>
                                                             @if (@checkRoute('StatusChange'))
                                                                 @if ($D->status == 1)
-                                                                    <a href="{{ url('Accounts/status-change/0/'.dEncrypt($D->id).'/career') }}"
+                                                                    <a href="{{ url('Accounts/status-change/0/' . dEncrypt($D->id) . '/career') }}"
                                                                         style="color:green;">Active</a>
                                                                 @else
-                                                                    <a href="{{ url('Accounts/status-change/1/'.dEncrypt($D->id).'/career') }}"
+                                                                    <a href="{{ url('Accounts/status-change/1/' . dEncrypt($D->id) . '/career') }}"
                                                                         style="color:red;">Inactive</a>
                                                                 @endif
                                                             @else
@@ -192,11 +165,11 @@
 
                     <!--   <span style="margin-left:500px;"><b>Press Esc to Exit</b></span>
 
-           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
 
-              <span aria-hidden="true">&times;</span>
+                  <span aria-hidden="true">&times;</span>
 
-            </button>-->
+                </button>-->
 
                     <div id="1"></div>
 

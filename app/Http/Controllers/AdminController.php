@@ -646,7 +646,7 @@ function Add_childMenu(Request $request,$id=null){
     }
 
     function Add_OrganisationDetails(Request $request,$id=null){
-        
+
         if($id){
             $title="Edit Organisation Details";
             $msg="Organisation Details Edited Successfully!";
@@ -741,7 +741,7 @@ function Add_childMenu(Request $request,$id=null){
             $data->head_google_tags= htmlentities($request->HeadGoogleTag);
             $data->body_google_tags= htmlentities($request->BodyGoogleTag);
 
-            
+
             if($request->external == 'yes' || $request->external == 'no'){
                 $data->external=$request->external;
                 $data->url=$request->url;
@@ -1205,7 +1205,6 @@ function biography_add(Request $request,$id=null){
 
         $data->heading=$request->heading;
         $data->heading_h=$request->heading_h;
-
         $data->Image_Title=$request->Image_Title;
         $data->description=$request->description;
         $data->description_h=$request->description_h;
@@ -1411,6 +1410,6 @@ function News_Event_index(){
         $data=press_media::find(dDecrypt($id))->delete();
         return redirect()->back()->with('success','Record Deleted Successfully');
         }
-        
+
 
 }

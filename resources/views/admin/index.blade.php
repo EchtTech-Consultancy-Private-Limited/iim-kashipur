@@ -22,7 +22,7 @@
     <style>
         .auth .brand-logo img {
             width: 100%;
-        
+
         }
 
         .content-wrapper{
@@ -85,7 +85,7 @@
                                     <div class="form-group position-relative">
                                         <input type="password" class="form-control form-control-lg"
                                             id="exampleInputPassword1" placeholder="Password" name="password" onpaste="return false;" ondrop="return false;">
-                                 
+
                                             <i class="fa fa-eye eye-icon-p" aria-hidden="true" id="togglePassword" ></i>
                                         </div>
                                     <div class="form-group mt-3 mb-3">

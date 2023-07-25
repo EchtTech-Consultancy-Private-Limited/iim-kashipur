@@ -1,6 +1,6 @@
 @extends('admin.Layout.master')
 
-@section('title', 'Update video gallery page')
+@section('title', 'Update Video Category')
 
 @section('content')
 
@@ -41,7 +41,7 @@
 
                         <div class="card-body">
 
-                            <h4 class="card-title">{{ 'update gallery  Page' }}</h4>
+                            <h4 class="card-title">{{ 'Update Video Category' }}</h4>
 
                             <p class="card-description">
 
@@ -73,7 +73,7 @@
 
 
 
-                            <form class="forms-sample row col-md-12" method="POST"
+                            <form class="forms-sample row col-md-12" method="POST" id="regForm"
                                 action="{{ url('/Accounts/update_videopost/' . dEncrypt($value->id)) }}"
                                 enctype="multipart/form-data">
 
@@ -83,12 +83,20 @@
 
                                 <div class="col-md-12">
 
-                                    <label for="inputText" class="col-sm-2 col-form-label">Page Title*</label>
+                                    <label for="inputText" class="col-sm-12 col-form-label">Page Title*</label>
 
                                     <div class="col-sm-12">
 
                                         <input type="text" class="form-control" name="name"
                                             placeholder="Please enter content page title" value="{{ $value->name }}">
+
+
+                                            <label for="name" id="name-error" class="error">
+                                                @error('name')
+                                                    {{ $message }}
+                                                @enderror
+                                            </label>
+
 
                                     </div>
 
@@ -99,7 +107,7 @@
 
                                 <div class="col-md-12">
 
-                                    <label for="inputText" class="col-sm-2 col-form-label">शीर्षक*</label>
+                                    <label for="inputText" class="col-sm-12 col-form-label">शीर्षक*</label>
 
                                     <div class="col-sm-12">
 
@@ -107,6 +115,13 @@
                                             placeholder="Please enter content page title in hindi"
                                             value="{{ $value->name_h }}">
 
+
+                                            <label for="name_h" id="name_h-error" class="error">
+                                                @error('name_h')
+                                                    {{ $message }}
+                                                @enderror
+                                            </label>
+
                                     </div>
 
                                 </div>
@@ -114,7 +129,7 @@
 
                                 <div class="col-md-12">
 
-                                    <label for="inputText" class="col-sm-2 col-form-label">Page Content</label>
+                                    <label for="inputText" class="col-sm-12 col-form-label">Page Content</label>
 
                                     <div class="col-sm-12">
 
@@ -127,7 +142,7 @@
 
                                 <div class="col-md-12">
 
-                                    <label for="inputText" class="col-sm-2 col-form-label">विवरण</label>
+                                    <label for="inputText" class="col-sm-12 col-form-label">विवरण</label>
 
                                     <div class="col-sm-12">
 
@@ -141,7 +156,7 @@
 
                                 <div class="col-md-12">
 
-                                    <label for="inputText" class="col-sm-2 col-form-label">Meta Tittle</label>
+                                    <label for="inputText" class="col-sm-12 col-form-label">Meta Title *</label>
 
                                     <div class="col-sm-12">
 
@@ -156,7 +171,7 @@
 
                                 <div class="col-md-12">
 
-                                    <label for="inputText" class="col-sm-2 col-form-label">Meta Keywords</label>
+                                    <label for="inputText" class="col-sm-12 col-form-label">Meta Keywords*</label>
 
                                     <div class="col-sm-12">
 
@@ -164,6 +179,13 @@
                                             placeholder="Please enter meta keywords, use for seo"
                                             value="{{ $value->meta_keywords }}">
 
+
+
+                                            <label for="keyword" id="keyword-error" class="error">
+                                                @error('keyword')
+                                                    {{ $message }}
+                                                @enderror
+                                            </label>
                                     </div>
 
                                 </div>
@@ -171,13 +193,19 @@
 
                                 <div class="col-md-12">
 
-                                    <label for="inputText" class="col-sm-2 col-form-label">Meta Description</label>
+                                    <label for="inputText" class="col-sm-12 col-form-label">Meta Description*</label>
 
                                     <div class="col-sm-12">
 
                                         <textarea class="form-control" id="keyword" rows="4" name="description"
                                             placeholder="Please enter meta description, use for seo">{{ $value->meta_description }}</textarea><br>
 
+
+                                            <label for="description" id="description-error" class="error">
+                                                @error('description')
+                                                    {{ $message }}
+                                                @enderror
+                                            </label>
                                     </div>
 
                                 </div>
@@ -186,12 +214,12 @@
 
                                 <div class="col-md-12">
 
-                                    <label for="inputText" class="col-sm-2 col-form-label">Banner Photo</label>
+                                    <label for="inputText" class="col-sm-12 col-form-label">Banner Image</label>
 
                                     <div class="col-sm-12">
 
                                         <input type="file" class="form-control" name="bannerimage"
-                                            placeholder="Please browse banner image"><br>
+                                            placeholder="Please browse banner image" accept=".jpeg,.jpg,.gif,.png"><br>
 
                                         @if (isset($value->banner_image))
                                             <img src="{{ asset('video/banner/' . $value->banner_image) }}" width="150"
@@ -210,7 +238,7 @@
 
                                 <div class="col-md-12">
 
-                                    <label for="inputText" class="col-sm-2 col-form-label">Photo title text</label>
+                                    <label for="inputText" class="col-sm-12 col-form-label">Banner Image Text</label>
 
                                     <div class="col-sm-12">
 
@@ -224,7 +252,7 @@
 
                                 <div class="col-md-12">
 
-                                    <label for="inputText" class="col-sm-2 col-form-label">Photo alt text</label>
+                                    <label for="inputText" class="col-sm-12 col-form-label">Banner Image Alt </label>
 
                                     <div class="col-sm-12">
 
@@ -240,12 +268,12 @@
 
                                 <div class="col-md-12">
 
-                                    <label for="inputText" class="col-sm-2 col-form-label">Content Photo</label>
+                                    <label for="inputText" class="col-sm-12 col-form-label">Content Image</label>
 
                                     <div class="col-sm-12">
 
                                         <input type="file" class="form-control" name="imagename"
-                                            placeholder="Please browse content image"><br>
+                                            placeholder="Please browse content image" accept=".jpeg,.jpg,.gif,.png"><br>
 
                                         @if (isset($value->cover_image))
                                             <img src="{{ asset('video/image/' . $value->cover_image) }}" width="150"
@@ -264,7 +292,7 @@
 
                                 <div class="col-md-12">
 
-                                    <label for="inputText" class="col-sm-2 col-form-label">Photo title text</label>
+                                    <label for="inputText" class="col-sm-12 col-form-label">Content Image Text</label>
 
                                     <div class="col-sm-12">
 
@@ -278,7 +306,7 @@
 
                                 <div class="col-md-12">
 
-                                    <label for="inputText" class="col-sm-2 col-form-label">Photo alt text</label>
+                                    <label for="inputText" class="col-sm-12 col-form-label">Content Image Alt</label>
 
                                     <div class="col-sm-12">
 
@@ -294,12 +322,24 @@
 
                                 <div class="col-md-12">
 
-                                    <label for="inputText" class="col-sm-2 col-form-label">PDF File</label>
+                                    <label for="inputText" class="col-sm-12 col-form-label">PDF File
+
+
+                                        <span style="color:green;font-size:12px;"> [{{$value->file_download }}]
+                                        </span>
+                                        <span style="font-size: 12px;margin-left: 5px;color: #ed2044;">
+                                            (
+                                            <?php
+                                                echo formatSizeUnits($value->pdfsize);
+                                            ?>)
+                                        </span>
+
+                                    </label>
 
                                     <div class="col-sm-12">
 
                                         <input type="file" class="form-control" name="pdf"
-                                            placeholder="Please browse PDF file"><br>
+                                            placeholder="Please browse PDF file" accept="application/pdf,application/vnd.ms-excel"><br>
 
                                         <input type="hidden" class="form-control" name="pdfnameold"
                                             value="{{ $value->file_download }}"><br>
@@ -319,7 +359,7 @@
 
                                 <div class="col-md-12">
 
-                                    <label for="inputText" class="col-sm-2 col-form-label">Sort Order</label>
+                                    <label for="inputText" class="col-sm-12 col-form-label">Sort Order*</label>
 
                                     <div class="col-sm-12">
 
@@ -327,6 +367,11 @@
                                             placeholder="Please enter sorting position number"
                                             value="{{ $value->sort_order }}">
 
+                                            <label for="sort_order" id="sort_order-error" class="error">
+                                                @error('sort_order')
+                                                    {{ $message }}
+                                                @enderror
+                                            </label>
                                     </div>
 
                                 </div>
@@ -334,7 +379,7 @@
 
                                 <div class="col-md-12">
 
-                                    <label for="inputText" class="col-sm-2 col-form-label">Status</label>
+                                    <label for="inputText" class="col-sm-12 col-form-label">Status</label>
 
                                     <div class="col-sm-12">
 

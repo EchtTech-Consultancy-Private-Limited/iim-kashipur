@@ -185,13 +185,96 @@
                                     d="M10 19v-5h4v5c0 .55.45 1 1 1h3c.55 0 1-.45 1-1v-7h1.7c.46 0 .68-.57.33-.87L12.67 3.6c-.38-.34-.96-.34-1.34 0l-8.36 7.53c-.34.3-.13.87.33.87H5v7c0 .55.45 1 1 1h3c.55 0 1-.45 1-1z" />
                             </svg></a></li>
 
+                    @if(URL::previous() == url('/faculty/faculty-directory'))
+
+                        <li><a href="{{ url('/') }}"><span> Faculty </span></a></li>
+                        <li><a href="{{ URL::previous() }}"><span>Faculty Directory</span></a></li>
+
+                    @elseif(URL::previous() == url('/about-institute/board-of-governors'))
+
+                        <li><a href="{{ url('/') }}"><span>About Institute</span></a></li>
+                        <li><a href="{{ URL::previous() }}"><span>Board of Governors</span></a></li>
+
+                    @elseif(URL::previous() == url('/faculty/visiting-faculty'))
+
+                        <li><a href="{{ url('/') }}"><span>Faculty</span></a></li>
+                        <li><a href="{{ URL::previous() }}"><span>Visiting Faculty</span></a></li>
+
+
+                    @elseif(URL::previous() == url('/faculty/academic-areas/communications'))
+
+                        <li><a href="{{ url('/') }}"><span>Faculty</span></a></li>
+                        <li><a href="{{ URL::previous() }}"><span>Academic Areas</span></a></li>
+                        <li><a href="{{ URL::previous() }}"><span>Communications</span></a></li>
+
+                    @elseif(URL::previous() == url('/faculty/academic-areas/economics'))
+
+
+                        <li><a href="{{ url('/') }}"><span>Faculty</span></a></li>
+                        <li><a href="{{ URL::previous() }}"><span>Academic Areas</span></a></li>
+                        <li><a href="{{ URL::previous() }}"><span>Economics</span></a></li>
+
+                    @elseif(URL::previous() == url('/faculty/academic-areas/finance-and-accounting'))
+
+
+                        <li><a href="{{ url('/') }}"><span>Faculty</span></a></li>
+                        <li><a href="{{ URL::previous() }}"><span>Academic Areas</span></a></li>
+                        <li><a href="{{ URL::previous() }}"><span>Fnance and Fccounting</span></a></li>
+
+                    @elseif(URL::previous() == url('/faculty/academic-areas/information-technology-systems'))
+
+
+                        <li><a href="{{ url('/') }}"><span>Faculty</span></a></li>
+                        <li><a href="{{ URL::previous() }}"><span>Academic Areas</span></a></li>
+                        <li><a href="{{ URL::previous() }}"><span>Information Technology Systems</span></a></li>
+
+                    @elseif(URL::previous() == url('faculty/academic-areas/marketing'))
+
+
+                        <li><a href="{{ url('/') }}"><span>Faculty</span></a></li>
+                        <li><a href="{{ URL::previous() }}"><span>Academic Areas</span></a></li>
+                        <li><a href="{{ URL::previous() }}"><span>Marketing</span></a></li>
+
+                    @elseif(URL::previous() == url('/faculty/academic-areas/operations-management-decision-sciences'))
+
+
+                        <li><a href="{{ url('/') }}"><span>Faculty</span></a></li>
+                        <li><a href="{{ URL::previous() }}"><span>Academic Areas</span></a></li>
+                        <li><a href="{{ URL::previous() }}"><span>Operations Management Decision Sciences</span></a></li>
+
+                    @elseif(URL::previous() == url('/organisational-behaviour-human-resource-management'))
+
+
+                        <li><a href="{{ url('/') }}"><span>Faculty</span></a></li>
+                        <li><a href="{{ URL::previous() }}"><span>Academic Areas</span></a></li>
+                        <li><a href="{{ URL::previous() }}"><span>Organisational Behaviour Human Resource Management</span></a></li>
+
+                    @elseif(URL::previous() == url('/organisational-behaviour-human-resource-management'))
+
+
+                        <li><a href="{{ url('/') }}"><span>Faculty</span></a></li>
+                        <li><a href="{{ URL::previous() }}"><span>Academic Areas</span></a></li>
+                        <li><a href="{{ URL::previous() }}"><span>Organisational Behaviour Human Resource Management</span></a></li>
+
+                    @elseif(URL::previous() == url('/faculty/academic-areas/strategy'))
+
+
+                        <li><a href="{{ url('/') }}"><span>Faculty</span></a></li>
+                        <li><a href="{{ URL::previous() }}"><span>Academic Areas</span></a></li>
+                        <li><a href="{{ URL::previous() }}"><span>Strategy</span></a></li>
+
+
+                    @endif
+
+
+
                     <li><span>
-                            @if (GetLang() == 'en')
-                                {{ $item[0]->title ?? '' }}
-                            @else
-                                {{ $item[0]->title_h ?? '' }}
-                            @endif
-                        </span></li>
+                        @if (GetLang() == 'en')
+                            {{ $item[0]->title ?? '' }}
+                        @else
+                            {{ $item[0]->title_h ?? '' }}
+                        @endif
+                    </span></li>
                 </ul>
             </div>
         </div>
@@ -431,7 +514,7 @@
                         </div>
                     </div>
                     <div class="tab-section">
-                        <ul class="nav nav-tabs d-none d-lg-flex" id="myTab" role="tablist">
+                        <ul class="nav nav-tabs d-lg-flex" id="myTab" role="tablist">
 
                             @foreach ($data as $key => $datas)
                                 {{-- {{ $key }} --}}
@@ -709,7 +792,7 @@
                             </div>
                         </div>
                         <div class="tab-section">
-                            <ul class="nav nav-tabs d-none d-lg-flex" id="myTab" role="tablist">
+                            <ul class="nav nav-tabs d-lg-flex" id="myTab" role="tablist">
 
                                 @foreach ($data as $key => $datas)
                                     {{-- {{ $key }} --}}
@@ -764,7 +847,8 @@
             <div class="col-md-12">
                 <div class="content-desc">
                     <div class="innerpagecon">
-                        <a href="#" class="btn2">{{ $item[0]->designation ?? '' }}</a>
+                            <a href="#" class="btn2">{{ $item[0]->designation ?? '' }}</a>
+                            {{-- <a href="#" class="btn2"><i class="fa fa-angle-left" aria-hidden="true" style="margin-right: 5px;"></i> Back</a> --}}
                         @foreach ($item as $items)
                             <div class="row mt-4">
 
@@ -859,13 +943,7 @@
                         @endforeach
                     </div>
 
-                                 
-                             
-
-
-
-                    <div class="col-xl-9 col-md-9 col-lg-12">                            
-                                    
+                    <div class="col-xl-9 col-md-9 col-lg-12">
 
                     <div class="import-dates">
                         <div class="title"></div>
@@ -875,7 +953,7 @@
                         </div>
                     </div>
                     <div class="tab-section">
-                        <ul class="nav nav-tabs d-none d-lg-flex" id="myTab" role="tablist">
+                        <ul class="nav nav-tabs d-lg-flex" id="myTab" role="tablist">
 
                             @foreach ($data as $key => $datas)
                                 {{-- {{ $key }} --}}

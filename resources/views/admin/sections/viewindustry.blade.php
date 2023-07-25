@@ -1,6 +1,6 @@
 @extends('admin.Layout.master')
 
-@section('title', 'Manage Club ')
+@section('title', 'Manage Industry Connect')
 
 @section('content')
 
@@ -34,12 +34,13 @@
 
                             <div class="top-menu-button">
 
-                                <p class="card-title">Manage Industry </p>
+                                <p class="card-title">Manage Industry Connect  </p>
 
                                 <div>
 
                                     <button type="button" class="btn btn-primary"><a
-                                            href="{{ url('/Accounts/add-industry') }}">Add New Industry </a></button>
+                                            href="{{ url('/Accounts/add-industry') }}">Add New Industry Connect
+                                        </a></button>
 
 
                                 </div>
@@ -84,7 +85,13 @@
                                                         <td>{{ $D->date }}</td>
 
                                                         <td>{{ $D->title }}</td>
-                                                        <td><img src="{{asset('uploads/view/attach/'.$D->attachement_file) }}" width="50px"></td>
+                                                        <td>
+                                                            <a href="{{ asset('uploads/view/attach/'.$D->attachement_file) }}" download>
+
+                                                                <img src="{{ asset('admin/images/viewpdf.jpg') }}" width="170"
+                                                                    height="70"></a>
+
+                                                        </td>
 
 
                                                         <td>

@@ -63,8 +63,6 @@
 
                                                     <th>Club name</th>
 
-                                                    <th>Club Type</th>
-
                                                     <th>Club Logo</th>
 
                                                     <th>Clab Image</th>
@@ -85,11 +83,7 @@
 
                                                         <td>{{ $K + 1 }}</td>
 
-
-                                                        <td>{{ $D->club_name }}</td>
-
-                                                        <td>{{ $D->club_type }}</td>
-
+                                                        <td>{{ $D->title }}</td>
 
 
                                                         <td><img src="{{ asset('uploads/club/' . $D->club_logo) }}"

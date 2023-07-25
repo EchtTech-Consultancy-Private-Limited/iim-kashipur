@@ -7,7 +7,6 @@
     @endphp
 
 
-
     {{-- banner and  breadcrumbs   --}}
 
 
@@ -43,43 +42,52 @@
         <div class="breadcrumbs">
             <div class="container">
                 <ul>
-                    <li><a href="javascript:void(0);"><svg viewBox="0 0 24 24">
+                    <li><a href="{{ url('/') }}"><svg viewBox="0 0 24 24">
                                 <path fill="none" d="M0 0h24v24H0V0z" />
                                 <path
                                     d="M10 19v-5h4v5c0 .55.45 1 1 1h3c.55 0 1-.45 1-1v-7h1.7c.46 0 .68-.57.33-.87L12.67 3.6c-.38-.34-.96-.34-1.34 0l-8.36 7.53c-.34.3-.13.87.33.87H5v7c0 .55.45 1 1 1h3c.55 0 1-.45 1-1z" />
                             </svg></a></li>
-                    <li><a href="javascript:void(0);">
+                    <li><a href="{{  URL::previous()  }}">
                             @if (GetLang() == 'en')
-                                {{ $menu[0]->name ?? '' }}
+                                {{ $mmenu[0]->name ?? '' }}
                             @else
-                                {{ $$menu[0]->name_h ?? '' }}
+                                {{ $mmenu[0]->name_h ?? '' }}
                             @endif
                         </a>
                     </li>
-                    <li><span>
+                    <li>
+                        <a href="{{  URL::previous()  }}">
+                        <span>
                             @if (GetLang() == 'en')
                                 {{ $sub[0]->name ?? '' }}
                             @else
                                 {{ $sub[0]->name_h ?? '' }}
                             @endif
                         </span>
+                    </a>
                     </li>
-                    <li><span>
+                    <li>
+                        <a href="{{  URL::previous() }}">
+                        <span>
                             @if (GetLang() == 'en')
                                 {{ $child[0]->name ?? '' }}
                             @else
                                 {{ $child[0]->name_h ?? '' }}
                             @endif
                         </span>
+                       </a>
                     </li>
 
-                    <li><span>
+                    <li>
+
+                        <span>
                             @if (GetLang() == 'en')
                                 {{ $type[0]->name ?? '' }}
                             @else
                                 {{ $type[0]->name_h ?? '' }}
                             @endif
                         </span>
+
                     </li>
 
                 </ul>
@@ -91,9 +99,13 @@
         </div>
         </div>
     @elseif (isset($get))
+
+
+
         {{-- child menu section  --}}
         {{-- banner setion --}}
         <div class="internalpagebanner">
+
             @if (GetOrganisationAllDetails('default_banner_image') != '')
                 <img src="{{ asset('uploads/site-logo/' . GetOrganisationAllDetails('default_banner_image')) }}"
                     style="height:auto;  min-height:200px; max-height:500px overflow:hidden;"
@@ -103,6 +115,22 @@
                     style="height:auto;  min-height:200px; max-height:350% overflow:hidden;"
                     alt="{{ $type_child[0]->name ?? '' }}" title="{{ $type_child[0]->name ?? '' }}">
             @endif
+
+{{--
+            @if ($item[0]->banner_image != '')
+
+              <img src="{{ asset('page/banner/' . $item[0]->banner_image) ?? '' }}"
+                alt="{{ $item[0]->banner_alt ?? '' }}" title="{{ $item[0]->banner_title ?? '' }}">
+
+            @else
+
+            <img src="{{ asset('uploads/site-logo/' . GetOrganisationAllDetails('default_banner_image')) }}"
+               alt="{{ $item[0]->name ?? '' }}" title="{{ $item[0]->name ?? '' }}">
+
+            @endif --}}
+
+
+
             <div class="imagecaption">
                 <div class="container">
                     <h1>
@@ -116,17 +144,16 @@
             </div>
         </div>
 
-
         {{-- breadcrumbs setion --}}
         <div class="breadcrumbs">
             <div class="container">
                 <ul>
-                    <li><a href="javascript:void(0);"><svg viewBox="0 0 24 24">
+                    <li><a href="{{ url('/') }}"><svg viewBox="0 0 24 24">
                                 <path fill="none" d="M0 0h24v24H0V0z" />
                                 <path
                                     d="M10 19v-5h4v5c0 .55.45 1 1 1h3c.55 0 1-.45 1-1v-7h1.7c.46 0 .68-.57.33-.87L12.67 3.6c-.38-.34-.96-.34-1.34 0l-8.36 7.53c-.34.3-.13.87.33.87H5v7c0 .55.45 1 1 1h3c.55 0 1-.45 1-1z" />
                             </svg></a></li>
-                    <li><a href="javascript:void(0);">
+                    <li><a href="{{  URL::previous()  }}">
                             @if (GetLang() == 'en')
                                 {{ $get[0]->name ?? '' }}
                             @else
@@ -134,21 +161,27 @@
                             @endif
                         </a>
                     </li>
-                    <li><span>
+                    <li>
+                        <a href="{{  URL::previous()  }}">
+                        <span>
                             @if (GetLang() == 'en')
                                 {{ $gets[0]->name ?? '' }}
                             @else
                                 {{ $gets[0]->name_h ?? '' }}
                             @endif
                         </span>
+                      </a>
                     </li>
-                    <li><span>
+                    <li>
+
+                        <span>
                             @if (GetLang() == 'en')
                                 {{ $type_child[0]->name ?? '' }}
                             @else
                                 {{ $type_child[0]->name_h ?? '' }}
                             @endif
                         </span>
+
                     </li>
 
                 </ul>
@@ -159,19 +192,21 @@
         </ul>
         </div>
         </div>
-    @elseif(isset($sub_menu))
-        {{-- sub menu section --}}
+    @elseif(isset($sub_menu)) {{-- sub menu section --}}
+
+
         {{-- banner Section --}}
+
         <div class="internalpagebanner">
+
             @if ($item[0]->banner_image != '')
                 <img src="{{ asset('page/banner/' . $item[0]->banner_image) ?? '' }}"
-                    style="height:auto;  min-height:200px; max-height:500px overflow:hidden;"
                     alt="{{ $item[0]->banner_alt ?? '' }}" title="{{ $item[0]->banner_title ?? '' }}">
             @else
                 <img src="{{ asset('uploads/site-logo/' . GetOrganisationAllDetails('default_banner_image')) }}"
-                    style="height:auto;  min-height:200px; max-height:500px overflow:hidden;"
                     alt="{{ $item[0]->name ?? '' }}" title="{{ $item[0]->name ?? '' }}">
             @endif
+
             <div class="imagecaption">
                 <div class="container">
                     <h1>
@@ -195,7 +230,7 @@
                                 <path
                                     d="M10 19v-5h4v5c0 .55.45 1 1 1h3c.55 0 1-.45 1-1v-7h1.7c.46 0 .68-.57.33-.87L12.67 3.6c-.38-.34-.96-.34-1.34 0l-8.36 7.53c-.34.3-.13.87.33.87H5v7c0 .55.45 1 1 1h3c.55 0 1-.45 1-1z" />
                             </svg></a></li>
-                    <li><a href="javascript:void(0);">
+                    <li><a href="{{  URL::previous()  }}">
                             @if (GetLang() == 'en')
                                 {{ @$mmenu[0]->name ?? '' }}
                             @else
@@ -203,18 +238,23 @@
                             @endif
                         </a>
                     </li>
-                    <li><span>
+                    <li>
+                        <a href="{{ URL::previous() }}">
+                        <span>
                             @if (GetLang() == 'en')
-                                {{ $item[0]->name ?? '' }}
-                            @else
-                                {{ $item[0]->name_h ?? '' }}
+                            {{ ucfirst(strtolower($item[0]->name)) ?? '' }}
+                         @else
+                            {{ ucfirst(strtolower($item[0]->name_h)) ?? '' }}
                             @endif
-                        </span></li>
+                        </span>
+                    </a>
+
+                    </li>
                 </ul>
             </div>
         </div>
-    @else
-        {{-- main banner --}}
+    @else  {{-- main banner --}}
+
         {{-- banner section --}}
         <div class="internalpagebanner">
             @if (GetOrganisationAllDetails('default_banner_image') != '')
@@ -243,7 +283,8 @@
                                     d="M10 19v-5h4v5c0 .55.45 1 1 1h3c.55 0 1-.45 1-1v-7h1.7c.46 0 .68-.57.33-.87L12.67 3.6c-.38-.34-.96-.34-1.34 0l-8.36 7.53c-.34.3-.13.87.33.87H5v7c0 .55.45 1 1 1h3c.55 0 1-.45 1-1z" />
                             </svg></a></li>
 
-                    <li><span>
+                    <li><a href="{{  URL::previous()  }}">
+                        <span>
                             @if (GetLang() == 'en')
                                 {{ $type[0]->name ?? '' }}
                             @else
@@ -353,7 +394,6 @@
 
                                                         </li>
 
-                                                      
                                         </li>
                                     @else
                                         @if ($C->external == 'yes')
@@ -506,6 +546,7 @@
                         @foreach (GetSubMenusFront($gets[0]->menu_id) as $key1 => $S)
                             <ul>
 
+
                                 @if (count(GetchildMenusFront($gets[0]->menu_id, $S->id)) > 0)
                                     <li class="hasnested"><a @if ($S->id == $gets[0]->id) class="active" @endif>
                                             @if (GetLang() == 'en')
@@ -528,6 +569,7 @@
                                         {{-- child menu --}}
                                         <ul>
                                             @foreach (GetchildMenusFront($gets[0]->menu_id, $S->id) as $key2 => $C)
+
                                                 @if (count(GetsubchildMenusFront($gets[0]->menu_id, $S->id, $C->id)) > 0)
                                                     <li class="hasnested">
                                                         <a @if ($C->id == $gets[0]->id) class="active" @endif>
@@ -791,7 +833,8 @@
                         @foreach (GetSubMenusFront($type[0]->menu_id) as $key1 => $S)
                             <ul>
                                 @if (count(GetchildMenusFront($type[0]->menu_id, $S->id)) > 0)
-                                    <li class="hasnested"><a @if ($S->id == $type[0]->id) class="active" @endif>
+                                    <li class="hasnested">
+                                        <a @if ($S->id == $type[0]->id) class="active" @endif>
                                             @if (GetLang() == 'en')
                                                 {{ $S->name ?? '' }}
                                             @else
@@ -812,7 +855,7 @@
                                         <ul>
                                             @foreach (GetchildMenusFront($type[0]->menu_id, $S->id) as $key2 => $C)
                                                 @if (count(GetsubchildMenusFront($type[0]->menu_id, $S->id, $C->id)) > 0)
-                                                    <li class="hasnested">
+                                                    <li class="hasnested {{ ($C->id == $type[0]->id)?'opened':'' }}">
                                                         <a @if ($C->id == $type[0]->id) class="active" @endif>
                                                             @if (GetLang() == 'en')
                                                                 {{ $C->name ?? '' }}

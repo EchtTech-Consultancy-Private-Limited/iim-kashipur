@@ -51,11 +51,11 @@
                                     <form class="forms-sample row col-md-12" method="POST" id="regForm"
                                         action="{{ url('Accounts/add-edit-vendor') }}" enctype="multipart/form-data">
                             @endif
-                            
+
 
                             @csrf
 
-                            <div class="col-md-4">
+                            <div class="col-md-6">
                                 <label for="inputText" class="col-form-label">Vendor Name</label>
                                 <div class="">
                                     <input type="text" class="form-control"
@@ -65,17 +65,36 @@
                                 </div>
                             </div>
 
-                            <div class="col-md-4">
+                            <div class="col-md-6">
                                 <label for="inputText" class="col-form-label">Related Document</label>
                                 <div class="">
                                     <input type="file" class="form-control" name="related_document"
                                         placeholder="Please enter Related Document"
-                                        @if (isset($id)) value="{{ $vendorsdebarred->related_document }}" @else value="{{ old('related_document') }}" @endif><br>
+                                        @if (isset($id)) value="{{ $vendorsdebarred->related_document }}" @else value="{{ old('related_document') }}" @endif>
+
+
+                                        @if($id)
+                                        <a href="{{ asset('uploads/vendorsdebarred/'.$vendorsdebarred->related_document) }}" download>
+
+                                            <img src="{{ asset('admin/images/viewpdf.jpg') }}" width="170"
+                                                height="70"></a>
+
+                                        <span style="font-size: 12px;margin-left: 5px;color: #ed2044;">
+                                            (
+                                            <?php
+                                                echo formatSizeUnits($vendorsdebarred->pdfsize);
+                                            ?>)
+                                        </span>
+
+
+                                        @endif
+
+
                                     <label for="related_document" id="related_document-error" class="error"></label>
                                 </div>
                             </div>
 
-                           <div class="col-md-4">
+                           <div class="col-md-6 ">
                                 <label for="event" class="col-form-label">Status</label>
 
                                     <select class="form-control" aria-label="Default select example" name="status">
@@ -88,12 +107,12 @@
 
                                     </select>
                                </div>
-                           
 
-                            <div class="col-md-12">
-                               
+
+                            <div class="col-md-12 mt-4">
+
                                     <button type="submit" class="btn btn-primary" class="form-control">Submit</button>
-                                
+
                             </div>
                             </form>
                         </div>

@@ -16,6 +16,7 @@ use App\Models\Department;
 use App\Models\cell;
 use App\Models\commmittee;
 use App\Models\club;
+use App\Models\feedback;
 use App\Models\committee_multiple_image;
 use App\Models\club_multiple_image;
 use App\Models\cell_multiple_image;
@@ -73,7 +74,10 @@ class FormController extends Controller
             $tender->published_date=$request->published_date;
             $tender->submission_date=$request->submission_date;
             $tender->title=$request->title;
+
+
             if($request->hasFile('tender_document')){
+                $tender->pdfsize=$request->tender_document->getSize();
                 $file=$request->file('tender_document');
                 $newname=time().rand(10,99).'.'.$file->getClientOriginalExtension();
                 $path=public_path('uploads/tenders');
@@ -122,7 +126,9 @@ class FormController extends Controller
             ]);
 
             $vendorsdebarred->vendor_name=$request->vendor_name;
+
             if($request->hasFile('related_document')){
+                $vendorsdebarred->pdfsize=$request->related_document->getSize();
                 $file=$request->file('related_document');
                 $newname=time().rand(10,99).'.'.$file->getClientOriginalExtension();
                 $path=public_path('uploads/vendorsdebarred');
@@ -174,7 +180,9 @@ class FormController extends Controller
             ]);
 
             $career->name_of_the_post=$request->name_of_the_post;
+
             if($request->hasFile('detail_advertisement')){
+                $career->pdfsize=$request->detail_advertisement->getSize();
                 $file=$request->file('detail_advertisement');
                 $newname=time().rand(10,99).'.'.$file->getClientOriginalExtension();
                 $path=public_path('uploads/fo');
@@ -294,6 +302,8 @@ function Add_OrganisationStructure(Request $request,$id=null){
             $data->Cell= $request->Cell;
             $data->more_designation_h = $request->more_designation_h;
             $data->media_coordinators= $request->media_coordinators;
+
+
             $path=public_path('uploads/organisation');
             if($request->hasFile('image')){
                 $file=$request->file('image');
@@ -689,6 +699,19 @@ public function add_cells(Request $request,$id=null){
             $file->move($path, $newname);
             $data->image= $newname;
         }
+
+        $data->banner_title= $request->banner_title;
+        $data->banner_alt= $request->banner_alt;
+        $path=public_path('page/banner');
+        if($request->hasFile('bannerimage')){
+            $file=$request->file('bannerimage');
+            $newname= time().rand(10,99).'.'.$file->getClientOriginalExtension();
+            $file->move($path, $newname);
+            $data->bannerimage= $newname;
+        }
+
+
+
         $data->save();
        return redirect('Accounts/manage-cells')->with('success',$msg);
     }
@@ -758,6 +781,19 @@ public function add_club(Request $request,$id=NULL){
             $file->move($path, $newname);
             $data->image= $newname;
         }
+
+
+        $data->banner_title= $request->banner_title;
+        $data->banner_alt= $request->banner_alt;
+        $path=public_path('page/banner');
+        if($request->hasFile('bannerimage')){
+            $file=$request->file('bannerimage');
+            $newname= time().rand(10,99).'.'.$file->getClientOriginalExtension();
+            $file->move($path, $newname);
+            $data->bannerimage= $newname;
+        }
+
+
         $data->save();
        return redirect('Accounts/manage-clubs')->with('success',$msg);
     }
@@ -809,6 +845,8 @@ public function add_committee(Request $request,$id=NULL)
         $data->image_title= $request->Committee_image_title;
         $data->image_alt= $request->Committee_image_alt;
         $data->slug=SlugCheck('commmittees',($request->Commmittee_name));
+        $data->banner_title= $request->banner_title;
+        $data->banner_alt= $request->banner_alt;
 
         $path=public_path('uploads/club');
         if($request->hasFile('Commmittee_logo')){
@@ -817,6 +855,7 @@ public function add_committee(Request $request,$id=NULL)
             $file->move($path, $newname);
             $data->logo= $newname;
         }
+
         $path=public_path('uploads/club');
         if($request->hasFile('Commmittee_image')){
             $file=$request->file('Commmittee_image');
@@ -824,6 +863,19 @@ public function add_committee(Request $request,$id=NULL)
             $file->move($path, $newname);
             $data->image= $newname;
         }
+
+
+        $data->banner_title= $request->banner_title;
+        $data->banner_alt= $request->banner_alt;
+        $path=public_path('page/banner');
+        if($request->hasFile('bannerimage')){
+            $file=$request->file('bannerimage');
+            $newname= time().rand(10,99).'.'.$file->getClientOriginalExtension();
+            $file->move($path, $newname);
+            $data->bannerimage= $newname;
+        }
+
+
         $data->save();
        return redirect('Accounts/manage-committee')->with('success',$msg);
     }
@@ -837,7 +889,7 @@ public function add_committee(Request $request,$id=NULL)
 
     public function view_committee(){
     $data=commmittee:: orderBy('id')->get();
-   return view('admin.sections.managecommittee',['data'=>$data]);
+   return view('admin.sections.manageCommittee',['data'=>$data]);
 
 }
      public function cells_list()
@@ -974,9 +1026,9 @@ public function delete_cells_image($id){
 
         public function committee_image($id)
         {
-           $data=committee_multiple_image::whereparent_id(dDecrypt($id))->get();
-           $id=dDecrypt($id);
-        return view('admin.sections.managecommitteeimage',['data'=>$data,'id'=>$id]);
+            $data=committee_multiple_image::whereparent_id(dDecrypt($id))->get();
+            $id=dDecrypt($id);
+            return view('admin.sections.manageCommitteeimage',['data'=>$data,'id'=>$id]);
         }
 
 
@@ -1220,12 +1272,14 @@ public function delete_cells_image($id){
 
           $data->date= $request->date;
           $data->title= $request->title;
+
           if($request->hasFile('attachement_file')){
+              $data->pdfsize=$request->attachement_file->getSize();
               $file=$request->file('attachement_file');
               $newname= time().rand(10,99).'.'.$file->getClientOriginalExtension();
               $path=public_path('uploads/view/attach');
               $file->move($path, $newname);
-              $data->attachement_file    = $newname;
+              $data->attachement_file  = $newname;
           }
           $data->save();
 
@@ -1277,6 +1331,19 @@ public function Add_student_council(Request $request,$id=null)
         $data->chairperson=$request->chairperson;
         $data->about_details=$request->about_details;
         $data->status=$request->status;
+
+        $data->banner_title= $request->banner_title;
+        $data->banner_alt= $request->banner_alt;
+        $path=public_path('page/banner');
+        if($request->hasFile('bannerimage')){
+            $file=$request->file('bannerimage');
+            $newname= time().rand(10,99).'.'.$file->getClientOriginalExtension();
+            $file->move($path, $newname);
+            $data->bannerimage= $newname;
+        }
+
+
+
         $data->save();
         return redirect('/Accounts/student-council')->with('success',$msg);
     }
@@ -1418,13 +1485,13 @@ public function add_ANTI_RAGGING(Request $request,$id=null)
 {
 
     if($id){
-        $title="Edit ANTI_RAGGING Section";
-        $msg="journal ANTI_RAGGING Edited Successfully!";
+        $title="Edit Anti Ragging Section";
+        $msg="Anti Ragging Edited Successfully!";
         $data=anti_raggings::find(dDecrypt($id));
     }
     else{
-        $title="Add ANTI_RAGGING Section";
-        $msg="journal ANTI_RAGGING Added Successfully!";
+        $title="Add Anti Ragging Section";
+        $msg="Anti Ragging Added Successfully!";
         $data=new anti_raggings;
 
         //child journal_publication_child
@@ -1436,8 +1503,10 @@ public function add_ANTI_RAGGING(Request $request,$id=null)
         ]);
 
         $data->status=$request->status;
+
         $path=public_path('uploads/pdf');
         if($request->hasFile('pdf')){
+            $data->pdfsize=$request->pdf->getSize();
             $file=$request->file('pdf');
             $newname= time().rand(10,99).'.'.$file->getClientOriginalExtension();
             $file->move($path, $newname);
@@ -1453,7 +1522,7 @@ public function add_ANTI_RAGGING(Request $request,$id=null)
     public function delete_ANTI_RAGGING($id){
     $data=anti_raggings::find(dDecrypt($id));
     $data->delete();
-     return redirect()->back()->with('success','journal publications deleted Successfully');
+     return redirect()->back()->with('success','Anti Ragging deleted Successfully');
   }
 
 
@@ -1485,6 +1554,19 @@ public function add_Wellness_Facilities(Request $request,$id=null)
         $data->status=$request->status;
         $data->about_details=$request->about_details;
         $data->DESCRIPTION=$request->activites;
+
+
+        $data->banner_title= $request->banner_title;
+        $data->banner_alt= $request->banner_alt;
+        $path=public_path('page/banner');
+        if($request->hasFile('bannerimage')){
+            $file=$request->file('bannerimage');
+            $newname= time().rand(10,99).'.'.$file->getClientOriginalExtension();
+            $file->move($path, $newname);
+            $data->bannerimage= $newname;
+        }
+
+
         $data->Events=$request->event;
 
         $data->save();
@@ -1616,9 +1698,9 @@ public function add_RTI(Request $request,$id=NULL)
         $data->CPIO=$request->CPIO;
         $data->Authority=$request->Authority;
         $data->status=$request->status;
-
         $path=public_path('uploads/rti');
         if($request->hasFile('pdf')){
+            $data->pdfsize=$request->pdf->getSize();
             $file=$request->file('pdf');
             $newname= time().rand(10,99).'.'.$file->getClientOriginalExtension();
             $file->move($path, $newname);
@@ -1660,6 +1742,7 @@ public function add_RTI(Request $request,$id=NULL)
 
         $path=public_path('uploads/rti/');
         if($request->hasFile('filename')){
+            $data->pdfsize=$request->filename->getSize();
             $file=$request->file('filename');
             $newname= time().rand(10,99).'.'.$file->getClientOriginalExtension();
             $file->move($path, $newname);
@@ -1691,6 +1774,7 @@ public function add_RTI(Request $request,$id=NULL)
 
         $path=public_path('uploads/rti/');
         if($request->hasFile('filename')){
+            $data->pdfsize=$request->filename->getSize();
             $file=$request->file('filename');
             $newname= time().rand(10,99).'.'.$file->getClientOriginalExtension();
             $file->move($path, $newname);
@@ -1703,10 +1787,8 @@ public function add_RTI(Request $request,$id=NULL)
 
     public function delete_rti_section($id)
     {
-
         rit_report_section::find(dDecrypt($id))->delete();
         return redirect()->back()->with('success','committee deleted Successfully');
-
     }
 
     public function pdf_section(Request $request){
@@ -1737,6 +1819,7 @@ public function add_RTI(Request $request,$id=NULL)
 
         $path=public_path('uploads/rti/');
         if($request->hasFile('QUARTER_pdf1')){
+            $data->pdfsize_first=$request->QUARTER_pdf1->getSize();
             $file=$request->file('QUARTER_pdf1');
             $newname= time().rand(10,99).'.'.$file->getClientOriginalExtension();
             $file->move($path, $newname);
@@ -1745,6 +1828,7 @@ public function add_RTI(Request $request,$id=NULL)
 
         $path=public_path('uploads/rti/');
         if($request->hasFile('QUARTER_pdf2')){
+            $data->pdfsize_second=$request->QUARTER_pdf2->getSize();
             $file=$request->file('QUARTER_pdf2');
             $newname= time().rand(10,99).'.'.$file->getClientOriginalExtension();
             $file->move($path, $newname);
@@ -1753,6 +1837,7 @@ public function add_RTI(Request $request,$id=NULL)
 
         $path=public_path('uploads/rti/');
         if($request->hasFile('QUARTER_pdf3')){
+            $data->pdfsize_third=$request->QUARTER_pdf3->getSize();
             $file=$request->file('QUARTER_pdf3');
             $newname= time().rand(10,99).'.'.$file->getClientOriginalExtension();
             $file->move($path, $newname);
@@ -1761,6 +1846,7 @@ public function add_RTI(Request $request,$id=NULL)
 
         $path=public_path('uploads/rti/');
         if($request->hasFile('QUARTER_pdf4')){
+            $data->pdfsize_fourth=$request->QUARTER_pdf4->getSize();
             $file=$request->file('QUARTER_pdf4');
             $newname= time().rand(10,99).'.'.$file->getClientOriginalExtension();
             $file->move($path, $newname);
@@ -1788,6 +1874,7 @@ public function add_RTI(Request $request,$id=NULL)
 
         $path=public_path('uploads/rti/');
         if($request->hasFile('QUARTER_pdf1')){
+            $data->pdfsize_first=$request->QUARTER_pdf1->getSize();
             $file=$request->file('QUARTER_pdf1');
             $newname= time().rand(10,99).'.'.$file->getClientOriginalExtension();
             $file->move($path, $newname);
@@ -1796,6 +1883,7 @@ public function add_RTI(Request $request,$id=NULL)
 
         $path=public_path('uploads/rti/');
         if($request->hasFile('QUARTER_pdf2')){
+            $data->pdfsize_second=$request->QUARTER_pdf2->getSize();
             $file=$request->file('QUARTER_pdf2');
             $newname= time().rand(10,99).'.'.$file->getClientOriginalExtension();
             $file->move($path, $newname);
@@ -1804,6 +1892,7 @@ public function add_RTI(Request $request,$id=NULL)
 
         $path=public_path('uploads/rti/');
         if($request->hasFile('QUARTER_pdf3')){
+            $data->pdfsize_third=$request->QUARTER_pdf3->getSize();
             $file=$request->file('QUARTER_pdf3');
             $newname= time().rand(10,99).'.'.$file->getClientOriginalExtension();
             $file->move($path, $newname);
@@ -1812,6 +1901,7 @@ public function add_RTI(Request $request,$id=NULL)
 
         $path=public_path('uploads/rti/');
         if($request->hasFile('QUARTER_pdf4')){
+            $data->pdfsize_fourth=$request->QUARTER_pdf4->getSize();
             $file=$request->file('QUARTER_pdf4');
             $newname= time().rand(10,99).'.'.$file->getClientOriginalExtension();
             $file->move($path, $newname);
@@ -1833,8 +1923,29 @@ public function add_RTI(Request $request,$id=NULL)
         $item=quarter_report::whereid($request->id)->first();
         return response()->json(['item'=>$item]);
     }
+
+    public function Wellness_Facilities_index_id(Request $request){
+        $item=wellness_facilitie_image::whereid($request->id)->first();
+        return response()->json(['item'=>$item]);
+    }
+
+    public function rit_QUARTER(Request $request){
+        $item=rit_report_section::whereid($request->id)->first();
+        return response()->json(['item'=>$item]);
+    }
+
+    public function countact_us()
+    {
+     $data=feedback::whereform_type('contact_us')->get();
+     return view ('admin.sections.manageContactus',['data'=>$data]);
+    }
+
+    public function feedback()
+    {
+      $data=feedback::whereform_type('feedback')->get();
+     return view ('admin.sections.manageFeedback',['data'=>$data]);
+    }
+
 }
-
-
 //end
 

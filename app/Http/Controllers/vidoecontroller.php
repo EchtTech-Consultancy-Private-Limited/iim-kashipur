@@ -65,17 +65,13 @@ class vidoecontroller extends Controller
 
 
 
-       /* $request->validate(
+        $request->validate(
 
             [
 
-               'name'              =>      'required|string|max:200',
+               'name'              =>      'required',
 
-               'name_h'             =>      'required|string|max:200',
-
-               'content'              =>      'required|string|min:100',
-
-               'contnet_h'             =>      'required|string|max:200',
+               'name_h'             =>      'required',
 
                'imagename'          =>      'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
 
@@ -89,7 +85,7 @@ class vidoecontroller extends Controller
 
 
 
-        );  */
+        );
 
 
 
@@ -165,23 +161,23 @@ class vidoecontroller extends Controller
 
 
 
-        $pdf_destinationPath="";
+        // $pdf_destinationPath="";
 
-        $pdf=$request->file('pdf');
+        // $pdf=$request->file('pdf');
 
-        if($pdf==null){
+        // if($pdf==null){
 
-            $input['pdf'] ="default.jpg";
+        //     $input['pdf'] ="default.jpg";
 
-        }else{
+        // }else{
 
-            $input['pdf']=time().'.'.$pdf->extension();
+        //     $input['pdf']=time().'.'.$pdf->extension();
 
-            $pdf_destinationPath = public_path('video/pdf');
+        //     $pdf_destinationPath = public_path('video/pdf');
 
-            $pdf->move($pdf_destinationPath, $input['pdf']);
+        //     $pdf->move($pdf_destinationPath, $input['pdf']);
 
-        }
+        // }
 
 
 
@@ -211,7 +207,7 @@ class vidoecontroller extends Controller
 
         $e->banner_image=$input['bannerimage'] ;
 
-        $e->file_download=$input['pdf'] ;
+        // $e->file_download=$input['pdf'] ;
 
         $e->meta_title=$request->tittle;
 
@@ -227,6 +223,8 @@ class vidoecontroller extends Controller
 
         $e->cover_alt=$request->cover_alt;
 
+        $e->pdfsize=$request->pdf->getSize();
+
         $e->sort_order=$request->sort_order;
 
         $e->status=$request->status;
@@ -234,6 +232,16 @@ class vidoecontroller extends Controller
         $e->video_slug=SlugCheck('video_galleries',($request->name));
 
         $e->video_url=$request->url;
+
+        if($request->hasfile('pdf'))
+        {
+        $img = $request->file('pdf');
+        $e->pdfsize=$request->pdf->getSize();
+        $name =$img->getClientOriginalName();
+        $filename = time().$name;
+        $img->move('video/pdf',$filename);
+        $e->file_download=$filename;
+        }
 
         $e->save();
 
@@ -271,28 +279,19 @@ class vidoecontroller extends Controller
 
              [
 
-                'name'              =>      'required|string|max:200',
+                'name'              =>      'required',
 
-                'name_h'             =>      'required|string|max:200',
+                'name_h'             =>      'required',
 
                 'imagename'          =>      'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
 
                 'bannerimage'       =>       'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
 
-              //  'pdf'                =>       "mimes:pdf|max:10000"
+               'pdf'                =>       "mimes:pdf|max:10000"
 
              ]
 
          );
-
-
-
-
-
-
-
-
-
 
 
               //new banner image upload
@@ -373,33 +372,19 @@ class vidoecontroller extends Controller
 
                       }
 
+                    //pdf update
+                    // $input['pdf']=$request->pdfnameold;
+                    // if ($request->hasFile('pdf')){
+                    //     $u->pdfsize=$request->pdf->getSize();
+                    //     $pdf=$request->file('pdf');
+                    //     $input['pdf']=time().'.'.$pdf->extension();
+                    //     $pdf_destinationPath = public_path('video/pdf');
+                    //     $pdf_destinationPath = public_path('video/pdf');
+                    //     $pdf->move($pdf_destinationPath, $input['pdf']);
+                    // }
 
 
 
-
-                     //pdf update
-
-                       $input['pdf']=$request->pdfnameold;
-
-                        if ($request->hasFile('pdf')){
-
-
-
-                       $pdf=$request->file('pdf');
-
-                        $input['pdf']=time().'.'.$pdf->extension();
-
-                        $pdf_destinationPath = public_path('video/pdf');
-
-
-
-                          $pdf_destinationPath = public_path('video/pdf');
-
-                         $pdf->move($pdf_destinationPath, $input['pdf']);
-
-
-
-                        }
 
 
 
@@ -417,7 +402,7 @@ class vidoecontroller extends Controller
 
      $u->banner_image=$input['bannerimage'];
 
-     $u->file_download=$input['pdf'];
+    //  $u->file_download=$input['pdf'];
 
      $u->meta_title=$request->tittle;
 
@@ -440,6 +425,16 @@ class vidoecontroller extends Controller
      $u->video_slug=SlugCheck('video_galleries',($request->name));
 
      $u->video_url=$request->url;
+
+     if($request->hasfile('pdf'))
+     {
+     $img = $request->file('pdf');
+     $u->pdfsize=$request->pdf->getSize();
+     $name =$img->getClientOriginalName();
+     $filename = time().$name;
+     $img->move('video/pdf',$filename);
+     $u->file_download=$filename;
+     }
 
      $u->save();
 

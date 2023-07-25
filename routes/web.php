@@ -106,6 +106,11 @@ Route::post('edit-committee-image/{id?}',[FormController::class,'edit_committee_
 Route::middleware(['CustomAuth'])->group(function () {
 
 
+//feedback form & contact us form
+Route::GET('Countact-us',[FormController::class,'countact_us']);
+Route::GET('feedback',[FormController::class,'feedback']);
+
+
 //Auth log  route
 Route::GET('/Audit-data-show',[log::class,'datefillerdata']);
 Route::post('/Audit-data-show',[log::class,'datefillerdata']);
@@ -228,7 +233,7 @@ Route::get('delete-cells/{id?}',[FormController::class,'delete_cells'])->name('d
 Route::get('manage-clubs',[FormController::class,'view_club']);
 Route::get('delete-club/{id?}',[FormController::class,'delete_club'])->name('deleteclub');
 Route::get('manage-committee',[FormController::class,'view_committee']);
-Route::get('delete-committee/{id?}',[FormController::class,'delete_committee'])->name('deleteclub');
+Route::get('delete-committee/{id?}',[FormController::class,'delete_committee'])->name('deletecommittee');
 Route::match(['get','post'],'add-edit-club/{id?}',[FormController::class,'add_club'])->name('addclub');
 Route::match(['get','post'],'add-edit-committee/{id?}',[FormController::class,'add_committee'])->name('addcommittee');
 Route::match(['get','post'],'add-edit-cells/{id?}',[FormController::class,'add_cells'])->name('addcells');
@@ -433,7 +438,7 @@ Route::get('/Vendors-Debarred',[InnerpageController::class,'Vendors_Debarred']);
 
 
 //RTI
-Route::get('/RTI',[InnerpageController::class,'RTI_view']);
+Route::get('/rti',[InnerpageController::class,'RTI_view']);
 
 //journal publication
 Route::get('journal/{id?}', [InnerpageController::class, 'journal_detail']);
@@ -441,12 +446,12 @@ Route::get('journal/{id?}', [InnerpageController::class, 'journal_detail']);
 Route::get('anti-ragging', [InnerpageController::class, 'anti_raggings']);
 //press & media
 Route::get('/press-media',[InnerpageController::class,'press_media']);
+//news-media
 Route::get('/news-media',[InnerpageController::class,'news_media']);
-
 
 Route::get('/press-media',[InnerpageController::class,'press_media']);
 Route::get('/news-media',[InnerpageController::class,'news_media']);
-Route::get('/Industry-Connect',[InnerpageController::class,'Industry_Connect']);
+Route::get('/industry-connect',[InnerpageController::class,'Industry_Connect']);
 Route::get('event-activity-image/{id?}',[InnerpageController::class,'event_activity_image']);
 //screen_reader_access
 Route::get('/screen_reader_access',[InnerpageController::class,'screen_reader_access']);
@@ -459,9 +464,9 @@ Route::post('/add_feedback',[InnerpageController::class,'add_feedback']);
 Route::get('/contact-us',[InnerpageController::class,'contact_page']);
 Route::post('/add_contact',[InnerpageController::class,'add_contact']);
  //gallery section
-Route::get('/Multi-image',[InnerpageController::class,'photo_multi_Innerpage']);
+Route::get('/multi-image',[InnerpageController::class,'photo_multi_Innerpage']);
 //video section
-Route::get('/Multi-video',[InnerpageController::class,'video_multi_Innerpage']);
+Route::get('/multi-video',[InnerpageController::class,'video_multi_Innerpage']);
 //main menu inner page
 Route::get('{slug?}',[InnerpageController::class,'Menu_barInnerpage']);
 //sub menu inner page
