@@ -945,8 +945,6 @@ public function screen_reader_access()
                     }
                     elseif(QuickLink::whereslug($slug)->first('section_name')->section_name == 'header-top')
                     {
-
-
                         $video_slug=QuickLink::whereslug($slug)->get();
 
                         $item=video_gallery::whereid($video_slug[0]->link_option)->get();
