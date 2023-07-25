@@ -912,29 +912,30 @@
                                                     </a>&nbsp;
                                                 @endif
 
-                                                {{-- @if ($item[0]->orcid != '')
-                                <a href="{{ url($item[0]->orcid) }}" alt="{{ $item[0]->orcid_title }}" title="{{ $item[0]->orcid_title }}"  onclick="return confirm('Are you sure  external window open?')" target="_blank" >
-                                    <i class="fa fa-orcid fa-2x"  class="w3-xxlarge" aria-hidden="true"></i>
-                                </a>&nbsp;
-                               @endif
 
-                                @if ($item[0]->webofscience != '')
-                                <a href="{{ url($item[0]->webofscience) }}" alt="{{ $item[0]->webofscience_title }}" title="{{ $item[0]->webofscience_title }}"  onclick="return confirm('Are you sure  external window open?')" target="_blank" >
-                                    <i class="fa fa-twitter fa-2x" class="w3-xxlarge" aria-hidden="true"></i>
-                                </a>&nbsp;
-                               @endif
+                                                @if ($item[0]->orcid != '')
+                                                <a href="{{ url($item[0]->orcid) }}" alt="{{ $item[0]->orcid_title }}" title="{{ $item[0]->orcid_title }}"  onclick="return confirm('Are you sure  external window open?')" target="_blank" >
+                                                    <img src="{{ asset('icon/orcid.png') }}">
+                                                </a>&nbsp;
+                                                @endif
 
-                                @if ($item[0]->scopus != '')
-                                <a href="{{ url($item[0]->scopus) }}" alt="{{ $item[0]->scopus_title }}" title="{{ $item[0]->scopus_title }}"  onclick="return confirm('Are you sure  external window open?')" target="_blank" >
-                                    <i class="fa fa-twitter fa-2x" class="w3-xxlarge" aria-hidden="true"></i>
-                                </a>&nbsp;
-                               @endif
+                                                @if ($item[0]->webofscience != '')
+                                                <a href="{{ url($item[0]->webofscience) }}" alt="{{ $item[0]->webofscience_title }}" title="{{ $item[0]->webofscience_title }}"  onclick="return confirm('Are you sure  external window open?')" target="_blank" >
+                                                    <img src="{{ asset('icon/publon.png') }}">
+                                                </a>&nbsp;
+                                                @endif
 
-                                @if ($item[0]->scholar != '')
-                                <a href="{{ url($item[0]->scholar) }}" alt="{{ $item[0]->scholar_title }}" title="{{ $item[0]->scholar_title }}"  onclick="return confirm('Are you sure  external window open?')" target="_blank" >
-                                    <i class="fa fa-twitter fa-2x" class="w3-xxlarge" aria-hidden="true"></i>
-                                </a>&nbsp;
-                               @endif --}}
+                                                @if ($item[0]->scopus != '')
+                                                <a href="{{ url($item[0]->scopus) }}" alt="{{ $item[0]->scopus_title }}" title="{{ $item[0]->scopus_title }}"  onclick="return confirm('Are you sure  external window open?')" target="_blank" >
+                                                    <img src="{{ asset('icon/scopus.png') }}">
+                                                </a>&nbsp;
+                                            @endif
+
+                                                @if ($item[0]->scholar != '')
+                                                <a href="{{ url($item[0]->scholar) }}" alt="{{ $item[0]->scholar_title }}" title="{{ $item[0]->scholar_title }}"  onclick="return confirm('Are you sure  external window open?')" target="_blank" >
+                                                    <img src="{{ asset('icon/google_scholers.png') }}">
+                                                </a>&nbsp;
+                                            @endif
 
                                             </li>
                                         </ul>
