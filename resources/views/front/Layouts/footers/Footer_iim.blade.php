@@ -159,7 +159,9 @@
                                 ?>
 
 
+
                                 <a href="javascript void(0);" class="tel-no">Email : &nbsp;{{ $email }}</a>
+
 
 
                             </div>
@@ -292,11 +294,11 @@
 
 function increaseFontSize() {
   const elements = document.querySelectorAll('p, h1, h2, h3, h4, h5, h6, a, span, li, button, .copyright-text');
- 
+
   elements.forEach((element) => {
     // Get the current font size and convert it to a number
     let currentFontSize = parseFloat(window.getComputedStyle(element).fontSize);
-   
+
     // Check if the current font size is less than the maximum size (25px)
     if (currentFontSize < 20) {
       // Increase the font size by 1px
@@ -310,7 +312,7 @@ function increaseFontSize() {
 
 function normaltext() {
   const elements = document.querySelectorAll('p, h1, h2, h3, h4, h5, h6, a, span, li, button, .copyright-text');
- 
+
   elements.forEach((element) => {
        // Check if the current font size is less than the maximum size (25px)
     element.style.fontSize ='';
@@ -320,11 +322,11 @@ function normaltext() {
 
 function decreaseFontSize() {
   const elements = document.querySelectorAll('p, h1, h2, h3, h4, h5, h6, a, span, li, button, .copyright-text');
- 
+
   elements.forEach((element) => {
     // Get the current font size and convert it to a number
     let currentFontSize = parseFloat(window.getComputedStyle(element).fontSize);
-   
+
     // Check if the current font size is less than the maximum size (25px)
     if (currentFontSize > 12) {
       // Increase the font size by 1px
