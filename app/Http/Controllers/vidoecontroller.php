@@ -223,8 +223,6 @@ class vidoecontroller extends Controller
 
         $e->cover_alt=$request->cover_alt;
 
-        $e->pdfsize=$request->pdf->getSize();
-
         $e->sort_order=$request->sort_order;
 
         $e->status=$request->status;
@@ -401,8 +399,6 @@ class vidoecontroller extends Controller
      $u->cover_image=$input['imagename']; //image file path
 
      $u->banner_image=$input['bannerimage'];
-
-    //  $u->file_download=$input['pdf'];
 
      $u->meta_title=$request->tittle;
 
