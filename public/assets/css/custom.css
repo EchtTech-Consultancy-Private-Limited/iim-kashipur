@@ -41,7 +41,7 @@ box-shadow: 0 2px 14px #0000002b;}
 .header-btn a {transition: 1.5s;background: #fff;color: #F0393D;border-radius: 30px;border: 0px;padding: 8px 20px;font-size: 14px;}
 .header-btn a:hover{background:#F03340;color:#fff;}
 .navbar-nav li a{color: #fff;text-transform:inherit;text-decoration: none;padding: 9px 27px 7px;display: inline-block;font-weight:normal;
-font-size:14px;margin-right: 12px;}
+font-size:14px !important;margin-right: 12px;}
 .navbar ul>li li a{margin-right: 0px; padding:5px 15px;font-size: 14px;color: #fff;display: flex; align-items: center;}
 .navbar-nav li.active a{background:#E9ECEF;}
 .navbar-nav li a:hover{/*background:#1B4E91;*/}
