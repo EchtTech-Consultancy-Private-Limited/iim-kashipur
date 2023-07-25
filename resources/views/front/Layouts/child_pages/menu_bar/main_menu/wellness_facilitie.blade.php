@@ -783,7 +783,6 @@
                                            @foreach ($item as $items)
 
                                            @if($items->image != '')
-
                                             <div class="col-md-4 col-lg-4">
                                                 <div class="d-flex flex-column h-100">
                                                     <a href="{{ asset('uploads/wellness/'.$items->image) ?? '' }}" class="image-link">

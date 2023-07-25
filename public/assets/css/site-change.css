@@ -531,4 +531,13 @@ section.excellence-wrap.pt-5 {
     color: yellow !important;
 } */
 
-
+.text-assesbility-button button.text-increment-btn {
+    background: yellow !important;
+    margin-bottom: 1px;
+    padding: 7px 5px !important;
+    color: #000 !important;
+    font-size: 12px !important;
+    width: 30px;
+    font-weight: 600;
+    text-align: center;
+}

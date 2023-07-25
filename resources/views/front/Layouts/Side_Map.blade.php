@@ -51,20 +51,24 @@
 
                 <div class="col-md-12">
                     <div class="innerpagecontent">
-                        <h3><span>@lang('common.sitemap')</span></h3>
+                        <h3>@lang('common.sitemap')</h3>
                         <br>
 
-                        <br>   <h5><span>Menu</span></h5>
+                        <br>   <h2><span>Menu</span></h2>
 
                         @foreach (content_menus() as $key => $M)
                             @if (count(GetSubMenusFront($M->id)) > 0)
-                                <a href="javascript:void(0);">
-                                    @if (GetLang() == 'en')
+                              <a href="javascript:void(0);">
+                                 <h5 class="mt-4"> 
+                                    <span>
+                                        @if (GetLang() == 'en')
                                         {{ $M->name }}
-                                    @else
-                                        {{ $M->name_h }}
-                                    @endif
-                                </a>
+                                        @else
+                                            {{ $M->name_h }}
+                                        @endif    
+                                    </span>
+                                 </h5>
+                              </a>
 
                                 @foreach (GetSubMenusFront($M->id) as $key1 => $S)
                                     @if (count(GetchildMenusFront($M->id, $S->id)) > 0)
@@ -79,7 +83,8 @@
 
                                         @foreach (GetchildMenusFront($M->id, $S->id) as $key2 => $C)
                                             @if ($S->external == 'yes')
-                                                <li><a href="{{ url($C->url) }}"
+                                                <li>
+                                                    <a href="{{ url($C->url) }}"
                                                         onclick="return confirm('Are you sure  external window open?')"
                                                         target="_blank">
                                                         @if (GetLang() == 'en')
@@ -87,7 +92,8 @@
                                                         @else
                                                             {{ $C->name_h }}
                                                         @endif
-                                                    </a></li>
+                                                    </a>
+                                                </li>
                                             @else
                                                 <li><a href="{{ url($M->slug . '/' . $S->slug . '/' . $C->slug) }}">
                                                         @if (GetLang() == 'en')
