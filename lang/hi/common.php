@@ -55,6 +55,10 @@ return [
     'IIM-Kashipur'=>'आईआईएम काशीपुर',
     'Linkedin-Feed'=>'लिंक्डइन फ़ीड',
     'Instagram-Feed'=>'इंस्टाग्राम फ़ीड',
-    'Facebook-Feed'=>'फेसबुक फ़ीड'
+    'Facebook-Feed'=>'फेसबुक फ़ीड',
+    'INFO'=>'जानकारी',
+    'CONTACT'=>'संपर्क',
+    'LOCATE-US'=>'हमारा पता लगाएं'
+
 
 ];

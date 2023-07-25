@@ -54,6 +54,9 @@ return [
     'IIM-Kashipur'=>'IIM Kashipur',
     'Linkedin-Feed'=>'Linkedin Feed',
     'Instagram-Feed'=>'Instagram Feed',
-    'Facebook-Feed'=>'Facebook Feed'
+    'Facebook-Feed'=>'Facebook Feed',
+    'INFO'=>'INFO',
+    'CONTACT'=>'CONTACT',
+    'LOCATE-US'=>'LOCATE US'
 
 ];
