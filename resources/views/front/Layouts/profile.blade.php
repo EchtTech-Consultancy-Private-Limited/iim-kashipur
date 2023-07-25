@@ -475,7 +475,7 @@
                                                     </a>&nbsp;
                                                 @endif
 
-                                                {{-- @if ($item[0]->orcid != '')
+                                              @if ($item[0]->orcid != '')
                             <a href="{{ url($item[0]->orcid) }}" alt="{{ $item[0]->orcid_title }}" title="{{ $item[0]->orcid_title }}"  onclick="return confirm('Are you sure  external window open?')" target="_blank" >
                                 <i class="fa fa-orcid fa-2x"  class="w3-xxlarge" aria-hidden="true"></i>
                             </a>&nbsp;
@@ -497,7 +497,7 @@
                             <a href="{{ url($item[0]->scholar) }}" alt="{{ $item[0]->scholar_title }}" title="{{ $item[0]->scholar_title }}"  onclick="return confirm('Are you sure  external window open?')" target="_blank" >
                                 <i class="fa fa-twitter fa-2x" class="w3-xxlarge" aria-hidden="true"></i>
                             </a>&nbsp;
-                           @endif --}}
+                           @endif 
 
                                             </li>
                                         </ul>
