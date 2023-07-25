@@ -15,8 +15,6 @@ img.hover-shadow.cursor {
 }
 
   </style>
-
-
 <link rel="stylesheet" href="{{asset('assets/csss/style.css')}}">
 <div class="internalpagebanner">
         @if(GetOrganisationAllDetails('default_banner_image')!='')
