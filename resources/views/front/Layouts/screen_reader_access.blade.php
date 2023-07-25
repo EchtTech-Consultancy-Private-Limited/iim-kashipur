@@ -61,7 +61,7 @@
                             <p>  Information related to the various screen readers</p><br><br>
 
 
-         <table class="dataTable center table">
+         <table class="">
 
             <thead>
 
