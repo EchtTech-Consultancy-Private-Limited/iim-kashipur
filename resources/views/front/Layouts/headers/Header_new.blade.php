@@ -36,10 +36,6 @@
                                             <button class="text-increment-btn button active" onclick="normaltext()" title="">A</button>
                                             <button class="text-increment-btn button" onclick="increaseFontSize()" title="">A+</button>
 
-
-                                            {{-- <button class="text-increment-btn button" id="btn-decrease">A-</button>
-                                            <button class="text-increment-btn button active" id="btn-orig">A</button>
-                                            <button class="text-increment-btn button" id="btn-increase">A+</button> --}}
                                     </div>
                                 </div>
                                    
