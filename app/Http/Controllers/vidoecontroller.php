@@ -225,6 +225,8 @@ class vidoecontroller extends Controller
 
         $e->sort_order=$request->sort_order;
 
+        $e->type=$request->type;
+
         $e->status=$request->status;
 
         $e->video_slug=SlugCheck('video_galleries',($request->name));
@@ -411,6 +413,8 @@ class vidoecontroller extends Controller
      $u->banner_alt=$request->banner_alt;
 
      $u->cover_title=$request->cover_title;
+
+     $u->type=$request->type;
 
      $u->cover_alt=$request->cover_alt;
 
