@@ -4,71 +4,77 @@
             <div class="col-md-12">
                 <div class="header-top-content">
                     <div class="header-top-left">
-                        
+
                     </div>
                     <div class="header-top-right">
                         <div class="skipwrap">
                             <ul>
                                 <!-- <li><a href="{{ url('/') }}">@lang('common.home')</a></li> -->
-                                <li><a href="{{ url('/') }}" title="@lang('common.home')"><i class="fa fa-home"></i></a></li>
+                                <li><a href="{{ url('/') }}" title="@lang('common.home')"><i
+                                            class="fa fa-home"></i></a></li>
 
 
                                 <!-- <li><a href="#skipCont">@lang('common.skip_to_main_content')</a></li> -->
-                                <li><a href="#skipCont" title="@lang('common.skip_to_main_content')"><i class="fa fa-arrow-down"></i></a></li>
+                                <li><a href="#skipCont" title="@lang('common.skip_to_main_content')"><i class="fa fa-arrow-down"></i></a>
+                                </li>
 
 
 
                                 <!-- <li><a href="{{ url('/screen_reader_access') }}">@lang('common.screen_reader_access')</a></li> -->
-                                <li><a href="{{ url('/screen_reader_access') }}" title="@lang('common.screen_reader_access')"><i class="fa fa-volume-up"></i></a></li>
-                            
+                                <li><a href="{{ url('/screen_reader_access') }}" title="@lang('common.screen_reader_access')"><i
+                                            class="fa fa-volume-up"></i></a></li>
+
 
                                 <li>
 
-                                <div class="text-assesbility p-relative" title="Accessibility Dropdown" alt="incease">
-                                    <img src="{{ asset('ico-accessibility.png')}}" title="Accessibility Dropdown" alt="Accessibility Dropdown" />
-                                
-                                    <div class="text-assesbility-button">
+                                    <div class="text-assesbility p-relative" title="Accessibility Dropdown"
+                                        alt="incease">
+                                        <img src="{{ asset('ico-accessibility.png') }}" title="Accessibility Dropdown"
+                                            alt="Accessibility Dropdown" />
+
+                                        <div class="text-assesbility-button">
                                             {{-- <button class="text-increment-btn button" onclick="textnormal()">A</button>
                                             <button class="text-increment-btn button active" onclick="textincrease()">A+</button>
                                             <button class="text-increment-btn button" onclick="textincrease2()">A+</button> --}}
-                                           
-                                            <button class="text-increment-btn button" onclick="decreaseFontSize()" title="Decrease Font SIze">A-</button>
-                                            <button class="text-increment-btn button active" onclick="normaltext()" title="Normal Font Size">A</button>
-                                            <button class="text-increment-btn button" onclick="increaseFontSize()" title="Increase Font Size">A+</button>
 
+                                            <button class="text-increment-btn button" onclick="decreaseFontSize()"
+                                                title="Decrease Font SIze">A-</button>
+                                            <button class="text-increment-btn button active" onclick="normaltext()"
+                                                title="Normal Font Size">A</button>
+                                            <button class="text-increment-btn button" onclick="increaseFontSize()"
+                                                title="Increase Font Size">A+</button>
+
+                                        </div>
                                     </div>
-                                </div>
-                                   
+
                                 </li>
 
                                 <li>
                                     <div class="d-flex">
                                         <button class="theme-btn-light" title="Light"
-                                            onclick="swapStyleSheet('{{ asset('/assets/css/style.css') }}')"
-                                            >L</button>
+                                            onclick="swapStyleSheet('{{ asset('/assets/css/style.css') }}')">L</button>
                                         <button class="theme-btn-dark" title="Dark"
-                                            onclick="swapStyleSheet('{{ asset('assets/css/site-change.css') }}')"
-                                            >D</button>
+                                            onclick="swapStyleSheet('{{ asset('assets/css/site-change.css') }}')">D</button>
                                     </div>
                                 </li>
                                 <li>
-                                   
-                                        <div class="select-wrap">
-                                            <select class="form-select" onchange="javascript:setlang(value);">
-                                                <option value="en"
-                                                    @if (GetLang() == 'en') selected @endif>English</option>
-                                                <option value="hi"
-                                                    @if (GetLang() == 'hi') selected @endif>Hindi</option>
-                                            </select>
-                                        </div>
-                                    
+
+                                    <div class="select-wrap">
+                                        <select class="form-select" onchange="javascript:setlang(value);">
+                                            <option value="en" @if (GetLang() == 'en') selected @endif>
+                                                English</option>
+                                            <option value="hi" @if (GetLang() == 'hi') selected @endif>
+                                                Hindi</option>
+                                        </select>
+                                    </div>
+
                                 </li>
                             </ul>
                         </div>
                         <div class="social-icon">
                             <ul>
                                 <!-- @if (GetOrganisationAllDetails('facebook') != '')
-                                    <li>
+<li>
                                         <a href="{{ GetOrganisationAllDetails('facebook') }}"
                                             alt="{{ GetOrganisationAllDetails('Facebook_Alt') }}"
                                             title="{{ GetOrganisationAllDetails('Facebook_title') }}"
@@ -77,9 +83,9 @@
                                             <i class="fa fa-facebook" aria-hidden="true"></i>
                                         </a>
                                     </li>
-                                @endif
+@endif
                                 @if (GetOrganisationAllDetails('twitter') != '')
-                                    <li>
+<li>
                                         <a href="{{ GetOrganisationAllDetails('twitter') }}"
                                             alt="{{ GetOrganisationAllDetails('twitter_Alt') }}"
                                             title="{{ GetOrganisationAllDetails('Twitter_title') }}"
@@ -88,10 +94,10 @@
                                             <i class="fa fa-twitter" aria-hidden="true"></i>
                                         </a>
                                     </li>
-                                @endif
+@endif
 
                                 @if (GetOrganisationAllDetails('instagram') != '')
-                                    <li>
+<li>
                                         <a href="{{ GetOrganisationAllDetails('instagram') }}"
                                             alt="{{ GetOrganisationAllDetails('Instagram_Alt') }}"
                                             title="{{ GetOrganisationAllDetails('Instagram_title') }}"
@@ -100,10 +106,10 @@
                                             <i class="fa fa-instagram" aria-hidden="true"></i>
                                         </a>
                                     </li>
-                                @endif
+@endif
 
                                 @if (GetOrganisationAllDetails('linkedin') != '')
-                                    <li>
+<li>
                                         <a href="{{ GetOrganisationAllDetails('linkedin') }}"
                                             alt="{{ GetOrganisationAllDetails('LinkedIn_Alt') }}"
                                             title="{{ GetOrganisationAllDetails('LinkedIn_title') }}"
@@ -112,7 +118,7 @@
                                             <i class="fa fa-linkedin" aria-hidden="true"></i>
                                         </a>
                                     </li>
-                                @endif -->
+@endif -->
 
 
                                 <li>
@@ -144,7 +150,7 @@
     <div class="logo-wrap">
         <div class="container">
             <div class="row align-items-center">
-                <div class="col-md-6">
+                <div class="col-md-5">
                     @if (GetOrganisationAllDetails('logo') != '')
                         <div class="logo-left">
                             <a href="{{ url(GetOrganisationAllDetails('url_logo')) }}">
@@ -155,8 +161,35 @@
                         </div>
                     @endif
                 </div>
-                <div class="col-md-6">
+                <div class="col-md-7">
                     <div class="logo-right">
+
+                        <div class="header-top-left top-text-highlighted">
+
+                            <ul>
+                               
+                                    <span class="text-hili-top">
+                                        Admission Offer :
+                                    </span>
+                                
+                                <li>
+                                    <a href="javascript:void();">
+                                        <b class="text-special">MBA</b>
+                                    </a>
+                                </li>
+
+                                <li>
+                                    <a href="javascript:void();">
+                                       
+                                        <b class="text-special"> MBA (ANALYTICS) </b>
+                                    </a>
+
+                                </li>
+                                                            
+                            </ul>
+
+                        </div>
+
                         @if (GetOrganisationAllDetails('logo2') != '')
                             <a href="{{ url(GetOrganisationAllDetails('url_logo2')) }}" target="_blank">
                                 <img src="{{ asset('uploads/site-logo/' . GetOrganisationAllDetails('logo2')) }}"
@@ -380,7 +413,8 @@
                                             </p>
 
                                             <div class="btn-wrap about-body">
-                                                <a  @if($M->external=='yes')  onclick="return confirm('Are you sure  external window open?')"  target="_blank" href="{{url($M->url)}}" @else    href="{{url($M->url)}}" @endif    class="btn btn-orange">@lang('common.read_more')</a>
+                                                <a @if ($M->external == 'yes') onclick="return confirm('Are you sure  external window open?')"  target="_blank" href="{{ url($M->url) }}" @else    href="{{ url($M->url) }}" @endif
+                                                    class="btn btn-orange">@lang('common.read_more')</a>
                                             </div>
 
                                         </div>
@@ -440,14 +474,18 @@
 @endif
 
 
-<!--Start Sticky Icon--> 
+<!--Start Sticky Icon-->
 <div class="sticky-i d-none">
-<div class="sticky-icon">
-   <a href="https://www.facebook.com/IndianInstituteOfManagementKashipur" target="_blank" class="Facebook" title="Facebook"><i class="fa fa-facebook-f"> </i> Facebook </a>
-   <a href="https://twitter.com/IIMKsp" class="Twitter" target="_blank" title="Twitter"><i class="fa fa-twitter" title="Twitter"> </i> Twitter </a>     
-   <a href="https://www.instagram.com/iimkashipur/" class="Instagram" target="_blank" title="Instagram"><i class="fa fa-instagram"></i> Instagram </a>
-   <a href="https://www.linkedin.com/school/iimkashipur/" class="Youtube" target="_blank" title="Linkedin"><i class="fa fa-linkedin"> </i> Linkedin </a>
-</div>
+    <div class="sticky-icon">
+        <a href="https://www.facebook.com/IndianInstituteOfManagementKashipur" target="_blank" class="Facebook"
+            title="Facebook"><i class="fa fa-facebook-f"> </i> Facebook </a>
+        <a href="https://twitter.com/IIMKsp" class="Twitter" target="_blank" title="Twitter"><i
+                class="fa fa-twitter" title="Twitter"> </i> Twitter </a>
+        <a href="https://www.instagram.com/iimkashipur/" class="Instagram" target="_blank" title="Instagram"><i
+                class="fa fa-instagram"></i> Instagram </a>
+        <a href="https://www.linkedin.com/school/iimkashipur/" class="Youtube" target="_blank" title="Linkedin"><i
+                class="fa fa-linkedin"> </i> Linkedin </a>
+    </div>
 
 </div>
 <!--End Sticky Icon-->

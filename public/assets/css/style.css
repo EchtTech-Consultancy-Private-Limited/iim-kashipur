@@ -798,9 +798,17 @@ a {
 }
 
 .site-header .logo-wrap {
-    padding: 10px 0px;
+    padding: 15px 0px;
 
     /* padding: 0px !important; */
+}
+
+b.text-special {
+    color: red;
+}
+
+span.text-hili-top {
+    padding-right: 7px;
 }
 
 .site-header .logo-right {
@@ -3863,7 +3871,7 @@ a.view-btn {
 }
 
 .blog-newstyle-2 {
-    padding: 0px 40px;
+    padding: 0px 28px;
 }
 
 .academic-img {
@@ -5502,7 +5510,7 @@ button.upload-btn.btn-info {
 }
 
 h2.life_kashipur {
-    font-size: 55px;
+    font-size: 44px;
     font-weight: 700;
     padding-bottom: 20px;
 }
@@ -5636,6 +5644,7 @@ span.percentage {
 
 .header-top-left ul li a{
     color: #000;
+    font-size: 13px;
 }
 
 .header-top-left ul {
