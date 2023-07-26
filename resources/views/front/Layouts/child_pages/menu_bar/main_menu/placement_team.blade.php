@@ -731,7 +731,6 @@
                         <h4 class="alert-heading">something went wrong </h4>
 
                         <p>Data Not Found</p>
-
                     </div>
                 @else
                     <div class="col-md-9">

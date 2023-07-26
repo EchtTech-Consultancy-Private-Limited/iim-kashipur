@@ -5675,8 +5675,6 @@ a.site-text {
     visibility: visible;
 }
 
-
-
 .dropdown .dropdown-menu:focus, ul.dropdown-menu.show, .dropdown-toggle.focus-open-add.show + .dropdown-menu.add-class-focus, .dropdown-toggle.internal-add.show + .dropdown-menu.internal-add-show {   
     transform: translateY(0px);
     opacity: 1;
