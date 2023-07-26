@@ -5677,7 +5677,9 @@ a.site-text {
 
 
 
+
 .dropdown .dropdown-menu:focus, ul.dropdown-menu.show, .dropdown-toggle.focus-open-add.show + .dropdown-menu.add-class-focus, .dropdown-toggle.internal-add.show + .dropdown-menu.internal-add-show {
+
     transform: translateY(0px);
     opacity: 1;
     visibility: visible;
@@ -5688,3 +5690,4 @@ img.hover-shadow.cursor {
     border: 1px solid #ed204445;
     padding: 5px;
 }
+

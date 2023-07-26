@@ -158,7 +158,10 @@
                                     $email = str_replace('.', '[dot]', $var);
                                 ?>
 
-                                <a href="javascriptvoid(0);" class="tel-no">Email :&nbsp;{{ $email }}</a>
+
+
+                                <a href="javascript void(0);" class="tel-no">Email : &nbsp;{{ $email }}</a>
+
 
                             </div>
 
