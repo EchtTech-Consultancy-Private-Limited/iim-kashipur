@@ -374,7 +374,6 @@
                                         @endif
                                     @endif
                                 @endforeach
-
                             </ul>
                         </li>
                     @else
