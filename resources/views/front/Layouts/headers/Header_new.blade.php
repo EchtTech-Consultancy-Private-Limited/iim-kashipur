@@ -376,7 +376,6 @@
                                 @endforeach
 
                             </ul>
-
                         </li>
                     @else
                         @if ($M->external == 'yes' && $M->url != '')
