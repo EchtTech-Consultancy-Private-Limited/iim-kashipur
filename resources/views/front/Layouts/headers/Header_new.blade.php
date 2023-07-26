@@ -221,8 +221,6 @@
     </div>
 
     <!--------------------------------------- menu bar    ----------------------------------->
-
-
     <nav class="navbar navbar-expand-lg navbar-dark">
         <div class="container">
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
