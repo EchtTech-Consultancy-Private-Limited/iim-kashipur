@@ -26,7 +26,7 @@
                                                     class="img-fluid">
 
                                                 <a
-                                                    @if ($Ms->external == 'yes') onclick="return confirm('Are you sure  external window open?')"  target="_blank" href="{{ url($Ms->url) }}" @elseif($Ms->external == 'no')  href="{{ url($Ms->url) }}" @else href="{{ url($Ms->slug) }}" @endif>
+                                                    @if ($Ms->external == 'yes' && $Ms->url != '') @if (GetLang() == 'en') onclick="return confirm('Would you like to leave this site?')"  @else onclick="return confirm('क्या आप यह साइट छोड़ना चाहेंगे?')" @endif target="_blank" href="{{ url($Ms->url) }}" @elseif($Ms->external == 'no' && $Ms->url != '')  href="{{ url($Ms->url) }}" @else href="{{ url($Ms->slug) }}" @endif>
                                                     @if (GetLang() == 'en')
                                                         {{ $Ms->title }}
                                                     @else
@@ -52,7 +52,7 @@
 
 
                             {{-- <h2 class="footer-top-title">
-                                
+
                             </h2> --}}
 
                           <div class="footer-link mt-58">
@@ -66,7 +66,7 @@
                                                     class="img-fluid">
 
                                                 <a
-                                                    @if ($Ms->external == 'yes') onclick="return confirm('Are you sure  external window open?')"  target="_blank" href="{{ url($Ms->url) }}" @elseif($Ms->external == 'no')  href="{{ url($Ms->url) }}" @else href="{{ url($Ms->slug) }}" @endif>
+                                                    @if ($Ms->external == 'yes' && $Ms->url != '') @if (GetLang() == 'en') onclick="return confirm('Would you like to leave this site?')"  @else onclick="return confirm('क्या आप यह साइट छोड़ना चाहेंगे?')" @endif target="_blank" href="{{ url($Ms->url) }}" @elseif($Ms->external == 'no' && $Ms->url != '')  href="{{ url($Ms->url) }}" @else href="{{ url($Ms->slug) }}" @endif>
                                                     @if (GetLang() == 'en')
                                                         {{ $Ms->title }}
                                                     @else
@@ -93,7 +93,7 @@
                                        <div class="footer-link mt-58">
 
 
-                          
+
 
                                             <ul>
 
@@ -106,7 +106,7 @@
                                                             alt="arrow" class="img-fluid">
 
                                                         <a
-                                                            @if ($Ms->external == 'yes') onclick="return confirm('Are you sure  external window open?')"  target="_blank" href="{{ url($Ms->url) }}" @elseif($Ms->external == 'no')  href="{{ url($Ms->url) }}" @else href="{{ url($Ms->slug) }}" @endif>
+                                                            @if ($Ms->external == 'yes' && $Ms->url != '') @if (GetLang() == 'en') onclick="return confirm('Would you like to leave this site?')"  @else onclick="return confirm('क्या आप यह साइट छोड़ना चाहेंगे?')" @endif  target="_blank" href="{{ url($Ms->url) }}" @elseif($Ms->external == 'no' && $Ms->url != '')  href="{{ url($Ms->url) }}" @else href="{{ url($Ms->slug) }}" @endif>
                                                             @if (GetLang() == 'en')
                                                                 {{ $Ms->title }}
                                                             @else
@@ -132,7 +132,7 @@
 
                             <h2 class="footer-top-title">
 
-                                CONTACT
+                                 @lang('common.CONTACT')
 
                             </h2>
 
@@ -158,7 +158,10 @@
                                 $email = str_replace('.', '[dot]', $var);
                                 ?>
 
+
+
                                 <a href="javascript void(0);" class="tel-no">Email : &nbsp;{{ $email }}</a>
+
 
 
                             </div>
@@ -174,7 +177,7 @@
                                         <li>
                                             <a href="{{ GetOrganisationAllDetails('facebook') }}"
                                                 title="{{ GetOrganisationAllDetails('Facebook_title') }}"
-                                                onclick="return confirm('Are you sure  external window open?')"
+                                                @if (GetLang() == 'en') onclick="return confirm('Would you like to leave this site?')"  @else onclick="return confirm('क्या आप यह साइट छोड़ना चाहेंगे?')" @endif
                                                 target="_blank">
                                                 <i class="fa fa-facebook" aria-hidden="true"></i>
                                             </a>
@@ -184,7 +187,7 @@
                                         <li>
                                             <a href="{{ GetOrganisationAllDetails('twitter') }}"
                                                 title="{{ GetOrganisationAllDetails('Twitter_title') }}"
-                                                onclick="return confirm('Are you sure  external window open?')"
+                                                @if (GetLang() == 'en') onclick="return confirm('Would you like to leave this site?')"  @else onclick="return confirm('क्या आप यह साइट छोड़ना चाहेंगे?')" @endif
                                                 target="_blank">
                                                 <i class="fa fa-twitter" aria-hidden="true"></i>
                                             </a>
@@ -195,7 +198,7 @@
                                         <li>
                                             <a href="{{ GetOrganisationAllDetails('instagram') }}"
                                                 title="{{ GetOrganisationAllDetails('Instagram_title') }}"
-                                                onclick="return confirm('Are you sure  external window open?')"
+                                                @if (GetLang() == 'en') onclick="return confirm('Would you like to leave this site?')"  @else onclick="return confirm('क्या आप यह साइट छोड़ना चाहेंगे?')" @endif
                                                 target="_blank">
                                                 <i class="fa fa-instagram" aria-hidden="true"></i>
                                             </a>
@@ -206,7 +209,7 @@
                                         <li>
                                             <a href="{{ GetOrganisationAllDetails('linkedin') }}"
                                                 title="{{ GetOrganisationAllDetails('LinkedIn_title') }}"
-                                                onclick="return confirm('Are you sure  external window open?')"
+                                                @if (GetLang() == 'en') onclick="return confirm('Would you like to leave this site?')"  @else onclick="return confirm('क्या आप यह साइट छोड़ना चाहेंगे?')" @endif
                                                 target="_blank">
                                                 <i class="fa fa-linkedin" aria-hidden="true"></i>
                                             </a>
@@ -225,7 +228,7 @@
 
 
                         <div class="col-md-5">
-                            <h2 class="footer-top-title">LOCATE US </h2>
+                            <h2 class="footer-top-title"> @lang('common.LOCATE-US') </h2>
 
                             <div class="footer-widget">
 
@@ -269,10 +272,6 @@
 
                 <div class="col-md-6">
 
-
-
-
-
                     <div class="visitor-wrap">
 
                         <h2 class="visitor-title">@lang('common.page_last_updated_on'): {{ now()->format('j F Y') }} &nbsp;&nbsp;&nbsp;
@@ -295,11 +294,11 @@
 
 function increaseFontSize() {
   const elements = document.querySelectorAll('p, h1, h2, h3, h4, h5, h6, a, span, li, button, .copyright-text');
- 
+
   elements.forEach((element) => {
     // Get the current font size and convert it to a number
     let currentFontSize = parseFloat(window.getComputedStyle(element).fontSize);
-   
+
     // Check if the current font size is less than the maximum size (25px)
     if (currentFontSize < 20) {
       // Increase the font size by 1px
@@ -313,7 +312,7 @@ function increaseFontSize() {
 
 function normaltext() {
   const elements = document.querySelectorAll('p, h1, h2, h3, h4, h5, h6, a, span, li, button, .copyright-text');
- 
+
   elements.forEach((element) => {
        // Check if the current font size is less than the maximum size (25px)
     element.style.fontSize ='';
@@ -323,11 +322,11 @@ function normaltext() {
 
 function decreaseFontSize() {
   const elements = document.querySelectorAll('p, h1, h2, h3, h4, h5, h6, a, span, li, button, .copyright-text');
- 
+
   elements.forEach((element) => {
     // Get the current font size and convert it to a number
     let currentFontSize = parseFloat(window.getComputedStyle(element).fontSize);
-   
+
     // Check if the current font size is less than the maximum size (25px)
     if (currentFontSize > 12) {
       // Increase the font size by 1px

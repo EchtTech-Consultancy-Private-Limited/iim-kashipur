@@ -490,7 +490,7 @@
 
 
                     <div class="col-md-6">
-                        <div class="form-group"> <label for="form_name"> Title[LinkedIn] *</label> <input id="form_name" type="text" name="LinkedIn_title" @if($id) value="{{$data->Facebook_title}}" @else value="{{old('LinkedIn_title')}}"  @endif class="form-control" placeholder="Please enter LinkedIn title *"  > </div>
+                        <div class="form-group"> <label for="form_name"> Title[LinkedIn] *</label> <input id="form_name" type="text" name="LinkedIn_title" @if($id) value="{{$data->LinkedIn_title}}" @else value="{{old('LinkedIn_title')}}"  @endif class="form-control" placeholder="Please enter LinkedIn title *"  > </div>
                     </div>
 
 
