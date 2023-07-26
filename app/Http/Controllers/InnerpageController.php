@@ -1788,10 +1788,8 @@ public function Child_barInnerpage($main_slug,$Sub_slug,$slug) //content page
 
     public function video_multi_Innerpage()
     {
-
-       $item=video_gallery::get();
+       $item=video_gallery::wheretype(0)->wherestatus('1')->get();
        if(Count($item)>0){
-           //dd($item);
            return view('front.Layouts.inner-page.gallerys.video-category',['item'=>$item]);
        }else{
            return abort(401);
@@ -1802,8 +1800,7 @@ public function Child_barInnerpage($main_slug,$Sub_slug,$slug) //content page
 
     public function photo_multi_Innerpage()
     {
-
-       $item=photo_gallery::get();
+       $item=photo_gallery::wheretype(0)->wherestatus('1')->get();
        if(Count($item)>0){
               return view('front.Layouts.inner-page.gallerys.photo-miltpage_category',['item'=>$item]);
        }else{
@@ -2092,7 +2089,7 @@ public function Child_barInnerpage($main_slug,$Sub_slug,$slug) //content page
          //dd($data);
          if(Count($data)>0){
         $item=photo_gallery::whereid($data[0]->link_option)->get();
-        //dd($item);
+            //dd($item);
         if(Count($item)>0){
         return view('front.Layouts.inner-page.gallerys.photo-miltpage_category',['item'=>$item]);
         }else{
