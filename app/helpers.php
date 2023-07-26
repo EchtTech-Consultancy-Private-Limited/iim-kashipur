@@ -498,10 +498,25 @@ function FindQuickLinksNew($placement='',$sort_order=''){
 
     function GETheadertopcontent($id){
       $value=\App\Models\QuickLink::where('link_category',$id)->where('status','1')->orderBy('sort_order', 'ASC')->get();
-  //    $value=DB::table('content_pages')->where('link_category',$id)->join('quick_links', 'quick_links.link_option', '=', 'content_pages.id')->get();  //two table data show karna ka leya
-
     return @$value ;
     }
+
+
+ //client logo middle section
+
+    function  GETClientlogoTop(){
+       $data=\App\Models\quick_linkcategory::where('Placement','section12')->orderBy('id','DESC')->where('status','1')->get();
+     return @$data;
+    }
+
+
+    function GETClientlogomiddleTop($id){
+        $value=\App\Models\QuickLink::where('link_category',$id)->where('status','1')->orderBy('sort_order', 'ASC')->get();
+      return @$value ;
+    }
+
+
+
 
   // Academics section1
 

@@ -8,8 +8,17 @@ function setlang(value){
   	url: baseurl + "/set-language",
   	data:{data:value},
   	success: function(result){
-		//alert(result);
-   	location.reload();
+	    // alert(result.data);
+        if(result.data == 'en')
+         {
+           alert('This will lead you to हिन्दी language. Are you sure to switch to this language?')
+         }
+        else
+         {
+            alert('यह आपको English भाषा में ले जाएगा। क्या आप वाकई इस भाषा में स्विच करना चाहते हैं?')
+         }
+
+   	 location.reload();
   }
 });
 }

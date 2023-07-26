@@ -67,6 +67,7 @@
                                 <li>
 
 
+
                                     <div class="text-assesbility p-relative" title="Accessibility Dropdown"
                                         alt="incease">
                                         <img src="{{ asset('ico-accessibility.png') }}" title="Accessibility Dropdown"
@@ -77,6 +78,7 @@
                                             {{-- <button class="text-increment-btn button" onclick="textnormal()">A</button>
                                             <button class="text-increment-btn button active" onclick="textincrease()">A+</button>
                                             <button class="text-increment-btn button" onclick="textincrease2()">A+</button> --}}
+
 
 
                                             <button class="text-increment-btn button" onclick="decreaseFontSize()"
@@ -105,7 +107,7 @@
 
                                     <div class="select-wrap">
                                         <select class="form-select" onchange="javascript:setlang(value);">
-                                            <option value="en" @if (GetLang() == 'en') selected @endif>
+                                            <option value="en"    @if (GetLang() == 'en') selected @endif>
                                                 English</option>
                                             <option value="hi" @if (GetLang() == 'hi') selected @endif>
                                                 Hindi</option>
@@ -209,6 +211,7 @@
                         </div>
                     @endif
                 </div>
+
                 <div class="col-md-7">
                     <div class="logo-right">
 
@@ -234,9 +237,13 @@
 
                                 </li>
                                                             
+
                             </ul>
 
                         </div>
+
+
+                    @endforeach
 
                         @if (GetOrganisationAllDetails('logo2') != '')
                             <a href="{{ url(GetOrganisationAllDetails('url_logo2')) }}" target="_blank">
@@ -536,7 +543,7 @@
 
 <div class="sticky-icon">
    <a href="https://www.facebook.com/IndianInstituteOfManagementKashipur" target="_blank" class="Facebook" title="Facebook"><i class="fa fa-facebook-f"> </i> Facebook </a>
-   <a href="https://twitter.com/IIMKsp" class="Twitter" target="_blank" title="Twitter"><i class="fa fa-twitter" title="Twitter"> </i> Twitter </a>     
+   <a href="https://twitter.com/IIMKsp" class="Twitter" target="_blank" title="Twitter"><i class="fa fa-twitter" title="Twitter"> </i> Twitter </a>
    <a href="https://www.instagram.com/iimkashipur/" class="Instagram" target="_blank" title="Instagram"><i class="fa fa-instagram"></i> Instagram </a>
    <a href="https://www.linkedin.com/school/iimkashipur/" class="Youtube" target="_blank" title="Linkedin"><i class="fa fa-linkedin"> </i> Linkedin </a>
 </div>
@@ -559,9 +566,14 @@
             $(this).addClass('show');
         });
 
-        // $("ul.dropdown-menu.add-class-focus li.dropdown-item a").focus(function(){
-        //     $(".dropdown-toggle.internal-add.show").removeClass('show');           
-        // });
+
+        $("body").click(function(){
+            $(".dropdown-toggle.internal-add.show").removeClass('show');
+            $(".dropdown-toggle.focus-open-add.show").removeClass('show');
+        });
+
+
+
     });
 </script>
 
