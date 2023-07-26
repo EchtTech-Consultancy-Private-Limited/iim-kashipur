@@ -13,7 +13,7 @@
                         <div class="img-wrap" data-aos="fade-right" data-aos-duration="2000">
 
                         <video controls autoplay muted id="video">
-                            <source src="{{asset('assets/images/banners/about_video.webm')}}" type="video/mp4">
+                            <source src="{{asset('assets/images/banners/about_video.mp4')}}" type="video/mp4">
                             </video>
                         </div>
 
