@@ -386,8 +386,6 @@
                 </ul>
 
                 <div class="carousel-inner">
-
-
                     @foreach (Getsliderimage() as $key => $M)
                         <div class="carousel-item @if ($key == 0) active @endif">
 

@@ -710,8 +710,6 @@
                                                         {{ $items->title_h }}
                                                     @endif
                                                 </h5>
-
-
                                                 {{-- <div class="profile-socail-icon information">
                                                     <a href="javascript:void(0);" class="socail-icon"><i
                                                             class="fab fa fa-facebook-f"></i></a>

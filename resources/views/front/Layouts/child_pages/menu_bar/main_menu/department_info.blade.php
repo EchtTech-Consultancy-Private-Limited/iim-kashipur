@@ -972,9 +972,7 @@ $mmenu = @content_menus($type[0]->menu_id);
 
                                   <h6>  @if(GetLang()=='en') {{ $items->designation ?? '' }}  @else {{ $items->designation_h ?? '' }}  @endif </h6>
 
-
-
-                                    {{-- <div class="profile-socail-icon information">
+                                   {{-- <div class="profile-socail-icon information">
 
                                         <a href="javascript:void(0)" class="socail-icon"><i class="fab fa fa-facebook-f"></i></a>
 
