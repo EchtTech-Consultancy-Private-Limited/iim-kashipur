@@ -179,6 +179,9 @@
 
                                             <option value="section11">section(Header Top)</option>
 
+                                            <option value="section12">section(Client Logo Meddle Section)</option>
+
+
                                         </select>
 
 

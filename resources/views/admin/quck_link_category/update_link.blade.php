@@ -144,6 +144,9 @@
                                             <option value="section11"{{ $data->placement == 'section11' ? 'selected' : '' }}>
                                                 section(Header Top)</option>
 
+                                            <option value="section12" {{ $data->placement == 'section12' ? 'selected' : '' }}>section(Client Logo Meddle Section)</option>
+
+
                                         </select>
 
                                     </div>
