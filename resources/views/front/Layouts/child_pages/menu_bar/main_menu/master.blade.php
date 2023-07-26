@@ -441,15 +441,36 @@ $mmenu = @content_menus($type[0]->menu_id);
 
                             <div class="col-md-4 col-lg-4">
                                 <div class="d-flex flex-column h-100">
-                                    <a href="{{ asset('gallery/multipimage/' . $values->large_image) }}"
-                                        class="image-link">
+                                    <?php //dd($values->url); ?>
+                                    @if($values->external =='yes' &&  $values->url != null)
+                                        <a onclick="return confirm('Are you sure  external window open?')"
+                                        target="_blank"
+                                        href="{{url($values->url) }}">
+
+
                                         <div class="thumbnail p-relative">
-                                            <img  src="{{ asset('gallery/multipimage/' . $values->large_image) }}"                                  }}"
+                                            <img  src="{{ asset('gallery/multipimage/'.$values->large_image) }}"
                                                 alt="gallery-img" class="img-fluid"
                                                 loading="lazy">
                                             <div class="top-text"> {{ $values->image_title }} </div>
                                         </div>
+
+
                                     </a>
+                                    @else
+                                        <a href="{{ asset('gallery/multipimage/'.$values->large_image) }}"class="image-link">
+
+                                            <div class="thumbnail p-relative">
+                                                <img  src="{{ asset('gallery/multipimage/'.$values->large_image) }}"
+                                                    alt="gallery-img" class="img-fluid"
+                                                    loading="lazy">
+                                                <div class="top-text"> {{ $values->image_title }} </div>
+                                            </div>
+
+                                        </a>
+                                    @endif
+
+
                                 </div>
                             </div>
 

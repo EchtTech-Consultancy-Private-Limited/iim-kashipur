@@ -534,6 +534,22 @@
 
 
 
+                                                <div class="col-md-12"  >
+
+                                                    <div class="form-group"> <label for="form_name">
+
+
+                                                      <input type="radio" value="no" name="external"  checked   style="margin-left:50px;" id="checkboxs"> &nbsp;Internal URL </label>
+
+                                                       <input type="radio" value="yes" name="external"   style="margin-left:50px;" id="checkbox"> &nbsp;External URL  </label>
+
+                                                        <input  type="text" name="url1"  placeholder="please enter external url" class="form-control"  >
+
+                                                    </div>
+
+                                                </div>
+
+
                                                 <div class="form-group col-md-6">
 
                                                     <label for="status">status</label>
@@ -748,6 +764,22 @@
 
 
 
+                                                            <div class="col-md-12"  >
+
+                                                                <div class="form-group"> <label for="form_name">
+
+
+                                                                  <input type="radio" value="no" name="external"  checked   style="margin-left:50px;" id="checkboxs"> &nbsp;Internal URL </label>
+
+                                                                   <input type="radio" value="yes" name="external"   style="margin-left:50px;" id="checkbox"> &nbsp;External URL  </label>
+
+                                                                    <input  type="text" name="url1" id="url1" placeholder="please enter external url" class="form-control"  >
+
+                                                                </div>
+
+                                                            </div>
+
+
                                                             <div class="form-group col-md-6">
 
                                                                 <label for="form-email">sort order</label>
@@ -909,6 +941,9 @@
                         $("#imagestatus").val(data.item.status);
                         $("#gallery_id").val(data.item.gallery_id);
                         $("#imageoldid").val(data.item.large_image);
+                        $("#url1").val(data.item.url1);
+
+
 
                     }
 
