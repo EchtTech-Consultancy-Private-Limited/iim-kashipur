@@ -54,7 +54,7 @@
                         <h3>@lang('common.sitemap')</h3>
                         <br>
 
-                        <br>   <h2><span>Menu</span></h2>
+                        <br> <h2><span>Menu</span></h2>
 
                         @foreach (content_menus() as $key => $M)
                             @if (count(GetSubMenusFront($M->id)) > 0)
@@ -72,16 +72,19 @@
 
                                 @foreach (GetSubMenusFront($M->id) as $key1 => $S)
                                     @if (count(GetchildMenusFront($M->id, $S->id)) > 0)
-                                        <a href="javascript:void(0);" class="site-text">
-                                            @if (GetLang() == 'en')
-                                                {{ $S->name }}
-                                            @else
-                                                {{ $S->name_h }}
-                                            @endif
-                                        </a>
+                                        <li>
+                                            <a href="javascript:void(0);">
+                                                @if (GetLang() == 'en')
+                                                    {{ $S->name }}
+                                                @else
+                                                    {{ $S->name_h }}
+                                                @endif
+                                            </a>
+                                        </li>
 
 
                                         @foreach (GetchildMenusFront($M->id, $S->id) as $key2 => $C)
+                                        <ul class="site-text-internal">
                                             @if ($S->external == 'yes')
                                                 <li>
                                                     <a href="{{ url($C->url) }}"
@@ -95,7 +98,8 @@
                                                     </a>
                                                 </li>
                                             @else
-                                                <li><a href="{{ url($M->slug . '/' . $S->slug . '/' . $C->slug) }}">
+                                                <li>
+                                                    <a href="{{ url($M->slug . '/' . $S->slug . '/' . $C->slug) }}">
                                                         @if (GetLang() == 'en')
                                                             {{ $C->name }}
                                                         @else
@@ -103,10 +107,13 @@
                                                         @endif
                                                     </a></li>
                                             @endif
+                                        </ul>
                                         @endforeach
                                     @else
+                                    
                                         @if ($S->external == 'yes')
-                                            <li><a href="{{ url($S->url) }}"
+                                            <li>
+                                                <a href="{{ url($S->url) }}"
                                                     onclick="return confirm('Are you sure  external window open?')"
                                                     target="_blank">
                                                     @if (GetLang() == 'en')
@@ -114,7 +121,8 @@
                                                     @else
                                                         {{ $S->name_h }}
                                                     @endif
-                                                </a></li>
+                                                </a>
+                                            </li>
                                         @else
                                             <li><a href="{{ url($M->slug . '/' . $S->slug) }}">
                                                     @if (GetLang() == 'en')
@@ -124,30 +132,35 @@
                                                     @endif
                                                 </a></li>
                                         @endif
+
+                                   
                                     @endif
                                 @endforeach
                             @else
                                 @if ($M->external == 'yes')
-                                    <li><a href="{{ url($M->url) }}"
+                                    <li>
+                                        <a href="{{ url($M->url) }}"
                                             onclick="return confirm('Are you sure  external window open?')" target="_blank">
                                             @if (GetLang() == 'en')
                                                 {{ $M->name }}
                                             @else
                                                 {{ $M->name_h }}
                                             @endif
-                                        </a></li>
+                                        </a>
+                                    </li>
                                 @else
-                                    <li><a href="{{ url($M->slug) }}">
+                                    <li>
+                                        <a href="{{ url($M->slug) }}">
                                             @if (GetLang() == 'en')
                                                 {{ $M->name }}
                                             @else
                                                 {{ $M->name_h }}
                                             @endif
-                                        </a></li>
+                                        </a>
+                                    </li>
                                 @endif
                             @endif
                         @endforeach
-
 
 
            <br>   <h5><span>Footer</span></h5>

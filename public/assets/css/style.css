@@ -798,9 +798,17 @@ a {
 }
 
 .site-header .logo-wrap {
-    padding: 10px 0px;
+    padding: 15px 0px;
 
     /* padding: 0px !important; */
+}
+
+b.text-special {
+    color: red;
+}
+
+span.text-hili-top {
+    padding-right: 7px;
 }
 
 .site-header .logo-right {
@@ -5660,3 +5668,18 @@ a.site-text {
 .sitemap li {
     margin-left: 30px;
 }
+
+.navbar ul>li:focus> ul, .dropdown-item.dropdown .dropdown-menu.show {
+    transform: translateY(0px);
+    opacity: 1;
+    visibility: visible;
+}
+
+
+
+.dropdown .dropdown-menu:focus, ul.dropdown-menu.show, .dropdown-toggle.focus-open-add.show + .dropdown-menu.add-class-focus, .dropdown-toggle.internal-add.show + .dropdown-menu.internal-add-show {   
+    transform: translateY(0px);
+    opacity: 1;
+    visibility: visible;
+}
+

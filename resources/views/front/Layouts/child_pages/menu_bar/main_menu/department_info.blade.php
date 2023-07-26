@@ -423,18 +423,7 @@ $mmenu = @content_menus($type[0]->menu_id);
 
 
 
-                                            <div class="profile-socail-icon information">
-
-                                                <a href="javascript:void(0)" class="socail-icon"><i
-                                                        class="fab fa fa-facebook-f"></i></a>
-
-                                                <a href="javascript:void(0)" class="socail-icon"><i
-                                                        class="fab fa fa-twitter"></i></a>
-
-
-
-                                            </div>
-
+                                           
                                         </div>
 
                                     </div>
@@ -797,7 +786,7 @@ $mmenu = @content_menus($type[0]->menu_id);
 
                                         </a>
 
-                                    <div class="profile-socail-icon information">
+                                    {{-- <div class="profile-socail-icon information">
 
                                         <a href="javascript:void(0)" class="socail-icon"><i class="fab fa fa-facebook-f"></i></a>
 
@@ -805,7 +794,7 @@ $mmenu = @content_menus($type[0]->menu_id);
 
 
 
-                                    </div>
+                                    </div> --}}
 
                                     </div>
 
@@ -983,9 +972,7 @@ $mmenu = @content_menus($type[0]->menu_id);
 
                                   <h6>  @if(GetLang()=='en') {{ $items->designation ?? '' }}  @else {{ $items->designation_h ?? '' }}  @endif </h6>
 
-
-
-                                    <div class="profile-socail-icon information">
+                                   {{-- <div class="profile-socail-icon information">
 
                                         <a href="javascript:void(0)" class="socail-icon"><i class="fab fa fa-facebook-f"></i></a>
 
@@ -993,7 +980,7 @@ $mmenu = @content_menus($type[0]->menu_id);
 
 
 
-                                    </div>
+                                    </div> --}}
 
                                     </div>
 
