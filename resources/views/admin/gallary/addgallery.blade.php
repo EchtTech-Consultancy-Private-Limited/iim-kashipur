@@ -56,6 +56,21 @@
                                 action="{{ url('/Accounts/addaction_gallery') }}" enctype="multipart/form-data">
                                 @csrf
 
+
+
+                                <div class="col-md-12">
+                                    <label for="type" class="col-sm-12 col-form-label">Page Content Type* </label>
+                                    <div class="col-sm-12">
+                                        <select class="form-control" aria-label="Default select example" name="type"
+                                        value="{{ old('type') }}"><br>
+                                        <option selected>Please select status</option>
+                                        <option value="1">Inner page section</option>
+                                        <option value="0">Home Section</option>
+                                    </select><br>
+
+                                    </div>
+                                </div>
+
                                 <div class="col-md-12">
                                     <label for="name" class="col-sm-2 col-form-label">Page Title*</label>
                                     <div class="col-sm-12">

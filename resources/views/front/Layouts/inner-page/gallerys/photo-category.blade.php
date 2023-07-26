@@ -15,10 +15,7 @@ img.hover-shadow.cursor {
 }
 
   </style>
-
 <link rel="stylesheet" href="{{asset('assets/csss/style.css')}}">
-
-
 <div class="internalpagebanner">
         @if(GetOrganisationAllDetails('default_banner_image')!='')
             <img src="{{asset('uploads/site-logo/'.GetOrganisationAllDetails('default_banner_image'))}}" style="height:auto;  min-height:200px; max-height:500px overflow:hidden;"  alt="{{ $type_child[0]->name ?? '' }}" title="{{ $type_child[0]->name ?? '' }}">

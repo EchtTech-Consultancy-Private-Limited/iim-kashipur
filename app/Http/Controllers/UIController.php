@@ -16,9 +16,11 @@ use Helper;
 class UIController extends Controller
 {
     function SetLang(Request $request){
+
+       // dd($request->all());
         session()->put('Lang', $request->data);
         App::setLocale($request->data);
-        return true;
+        return response()->json(['data'=>$request->data,True]);
     }
 
      function CreateForm(Request $request){

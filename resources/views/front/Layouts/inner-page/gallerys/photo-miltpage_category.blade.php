@@ -38,40 +38,21 @@
                     @foreach($item as  $value)
 
                     <div class="col-md-4 mb-4">
-
                         <div class="event-card" data-aos="fade-up" data-aos-duration="3000">
-
                             <div class="event-body">
-
                                 <div class="event-image p-relative">
-
-
-
                                 <a href="{{url($value->photo_slug)}}"  title="{{ $value->image_title }}"  class="lightbox-processed">
 
                                 <span class="top-text">  @if(GetLang()=='en') {{ $value->name }} @else {{ $value->name_h }}  @endif</span>
 
                                     <img typeof="foaf:Image"  src="{{ asset('gallery/image/'.$value->cover_image) }}" title="{{ $value->image_title }}"   style="height:250px;width:100%" class="img-fluid" alt="">
-
                                 </a>
-
                                 </div>
-
-
-
                             </div>
-
                         </div>
-
                     </div>
                    @endforeach
                 </div>
             </div>
         </section>
-
 @endsection
-
-
-
-
-
