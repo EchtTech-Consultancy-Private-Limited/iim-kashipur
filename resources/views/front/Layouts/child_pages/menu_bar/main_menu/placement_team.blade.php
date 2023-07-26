@@ -411,7 +411,7 @@
                                         {{ $type[0]->name_h ?? '' }}
                                     @endif
                                 </h4>
-                                <a href="javascript:void(0)" class="btn2"> THE TEAM </a>
+                                {{-- <a href="javascript:void(0)" class="btn2"> THE TEAM </a> --}}
 
 
 
@@ -450,7 +450,7 @@
 
 
 
-                                                    <div class="profile-socail-icon information">
+                                                    {{-- <div class="profile-socail-icon information">
 
                                                         <a href="javascript:void(0)" class="socail-icon"><i
                                                                 class="fab fa fa-facebook-f"></i></a>
@@ -460,7 +460,7 @@
 
 
 
-                                                    </div>
+                                                    </div> --}}
 
                                                 </div>
 
@@ -731,20 +731,19 @@
                         <h4 class="alert-heading">something went wrong </h4>
 
                         <p>Data Not Found</p>
-
                     </div>
                 @else
                     <div class="col-md-9">
 
                         <div class="innerpagecontent">
 
-                            <h4 class="hp-4">
+                            {{-- <h4 class="hp-4">
                                 @if (GetLang() == 'en')
                                     {{ $type[0]->name ?? '' }}
                                 @else
                                     {{ $type[0]->name_h ?? '' }}
                                 @endif
-                            </h4>
+                            </h4> --}}
                             <a href="javascript:void(0)" class="btn2">
                                 @if (GetLang() == 'en')
                                     {{ $type[0]->name ?? '' }}
@@ -782,20 +781,6 @@
                                                         {{ $items->designation_h ?? '' }}
                                                     @endif
                                                 </h6>
-
-
-
-                                                <div class="profile-socail-icon information">
-
-                                                    <a href="javascript:void(0)" class="socail-icon"><i
-                                                            class="fab fa fa-facebook-f"></i></a>
-
-                                                    <a href="javascript:void(0)" class="socail-icon"><i
-                                                            class="fab fa fa-twitter"></i></a>
-
-
-
-                                                </div>
 
                                             </div>
 
@@ -835,25 +820,28 @@
                                 @if ($items->department == '12')
                                     <div class="col-6 col-lg-4 col-xxl-3 mb-4">
 
-                                        <div class="profilewraper">
 
-                                            <figure><img src="{{ asset('uploads/organisation/' . $items->image) ?? '' }}"
-                                                    alt="{{ $items->title ?? '' }}" title="{{ $items->title ?? '' }}">
-                                            </figure><br>
+                                        <div class="addevent-box top text-left mt-0">
 
-                                            <h4>
+                                            <div class="profile-img">
+                                                <img src="{{ asset('uploads/organisation/' . $items->image) ?? '' }}"
+                                                alt="{{ $items->title ?? '' }}" title="{{ $items->title ?? '' }}">
+                                            </div>
+
+                                            <h5>
                                                 @if (GetLang() == 'en')
-                                                    {{ $items->title ?? '' }}
-                                                @else
-                                                    {{ $items->title_h ?? '' }}
-                                                @endif
-                                            </h4>
-
-                                            @if (GetLang() == 'en')
+                                                {{ $items->title ?? '' }}
+                                            @else
+                                                {{ $items->title_h ?? '' }}
+                                            @endif
+                                            </h5>
+                                            <h6>
+                                                @if (GetLang() == 'en')
                                                 {{ $items->designation ?? '' }}
                                             @else
                                                 {{ $items->designation_h ?? '' }}
                                             @endif
+                                            </h6>
 
                                         </div>
 
@@ -878,25 +866,27 @@
             @if ($items->department == '13')
                 <div class="col-6 col-lg-4 col-xxl-3 mb-4">
 
-                    <div class="profilewraper">
+                    <div class="addevent-box top text-left mt-0">
 
-                        <figure><img src="{{ asset('uploads/organisation/' . $items->image) ?? '' }}"
+                        <div class="profile-img">
+                            <img src="{{ asset('uploads/organisation/' . $items->image) ?? '' }}"
                                 alt="{{ $items->title ?? '' }}" title="{{ $items->title ?? '' }}">
-                        </figure><br>
+                        </div>
 
-                        <h4>
+                        <h5>
                             @if (GetLang() == 'en')
                                 {{ $items->title ?? '' }}
                             @else
                                 {{ $items->title_h ?? '' }}
                             @endif
-                        </h4>
-
-                        @if (GetLang() == 'en')
+                        </h5>
+                        <h6>
+                            @if (GetLang() == 'en')
                             {{ $items->designation ?? '' }}
                         @else
                             {{ $items->designation_h ?? '' }}
                         @endif
+                        </h6>
 
                     </div>
 
@@ -1015,7 +1005,7 @@
 
 
 
-                                                <div class="profile-socail-icon information">
+                                                {{-- <div class="profile-socail-icon information">
 
                                                     <a href="javascript:void(0)" class="socail-icon"><i
                                                             class="fab fa fa-facebook-f"></i></a>
@@ -1025,7 +1015,7 @@
 
 
 
-                                                </div>
+                                                </div> --}}
 
                                             </div>
 
