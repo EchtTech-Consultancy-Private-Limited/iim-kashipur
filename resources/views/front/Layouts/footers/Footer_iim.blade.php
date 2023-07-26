@@ -152,24 +152,19 @@
                                 </p>
 
                                 <?php
-                                $email_address = GetOrganisationAllDetails('email');
-                                $str = $email_address;
-                                $var = str_replace('@', '[at]', $str);
-                                $email = str_replace('.', '[dot]', $var);
+                                    $email_address = GetOrganisationAllDetails('email');
+                                    $str = $email_address;
+                                    $var = str_replace('@', '[at]', $str);
+                                    $email = str_replace('.', '[dot]', $var);
                                 ?>
 
                                 <a href="javascriptvoid(0);" class="tel-no">Email :&nbsp;{{ $email }}</a>
 
-
                             </div>
-
-
 
                             <div class="social-icon">
 
                                 <ul>
-
-
                                     @if (GetOrganisationAllDetails('facebook') != '')
                                         <li>
                                             <a href="{{ GetOrganisationAllDetails('facebook') }}"
@@ -212,10 +207,6 @@
                                             </a>
                                         </li>
                                     @endif
-
-
-
-
 
                                 </ul>
 
