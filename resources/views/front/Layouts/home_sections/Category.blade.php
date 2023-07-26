@@ -451,7 +451,7 @@
  
             <h3 class="social-heading"> Linkedin Feed </h3>
  
-            <iframe src="https://www.linkedin.com/embed/feed/update/urn:li:ugcPost:6966090170878050305" allowfullscreen="" title="Embedded post" height="350" frameborder="0"></iframe>
+            <iframe src="https://www.linkedin.com/embed/feed/update/urn:li:ugcPost:6966090170878050305" allowfullscreen="" title="Embedded post" width="100%" height="350" frameborder="0"></iframe>
             </div>
           </div>
  
@@ -465,7 +465,7 @@
  
             <h3 class="social-heading"> Instagram Feed </h3>
  
-            <iframe src="https://www.linkedin.com/embed/feed/update/urn:li:ugcPost:6966090170878050305" allowfullscreen="" title="Embedded post" height="350" frameborder="0"></iframe>
+            <iframe src="https://www.linkedin.com/embed/feed/update/urn:li:ugcPost:6966090170878050305" allowfullscreen="" title="Embedded post" width="100%" height="350" frameborder="0"></iframe>
             </div>
           </div>
  
