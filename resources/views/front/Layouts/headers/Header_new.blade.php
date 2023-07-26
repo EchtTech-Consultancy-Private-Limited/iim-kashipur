@@ -233,19 +233,19 @@
                     @foreach (content_menus() as $key => $M)
                         @if (count(GetSubMenusFront($M->id)) > 0)
                             <li class="nav-item dropdown">
-                                <a href="javascript:void(0);" class="dropdown-toggle" data-bs-toggle="dropdown">
+                                <a href="javascript:void(0);" class="dropdown-toggle focus-open-add" data-bs-toggle="dropdown">
                                     @if (GetLang() == 'en')
                                         {{ $M->name }}
                                     @else
                                         {{ $M->name_h }}
                                     @endif
                                 </a>
-                                <ul class="dropdown-menu">
+                                <ul class="dropdown-menu add-class-focus">
 
                                     @foreach (GetSubMenusFront($M->id) as $key1 => $S)
                                         @if (count(GetchildMenusFront($M->id, $S->id)) > 0)
                                             <li class="dropdown-item dropdown">
-                                                <a href="javascript:void(0);" class="dropdown-toggle"
+                                                <a href="javascript:void(0);" class="dropdown-toggle internal-add"
                                                     data-bs-toggle="dropdown">
                                                     @if (GetLang() == 'en')
                                                         {{ $S->name }}
@@ -253,11 +253,12 @@
                                                         {{ $S->name_h }}
                                                     @endif
                                                 </a>
-                                                <ul class="dropdown-menu">
+                                                <ul class="dropdown-menu internal-add-show">
 
                                                     @foreach (GetchildMenusFront($M->id, $S->id) as $key2 => $C)
                                                         @if ($C->external == 'yes')
-                                                            <li class="dropdown-item"><a href="{{ url($C->url) }}"
+                                                            <li class="dropdown-item">
+                                                                <a href="{{ url($C->url) }}"
                                                                     onclick="return confirm('Are you sure  external window open?')"
                                                                     target="_blank">
                                                                     @if (GetLang() == 'en')
@@ -265,31 +266,37 @@
                                                                     @else
                                                                         {{ $C->name_h }}
                                                                     @endif
-                                                                </a></li>
+                                                                </a>
+                                                            </li>
                                                         @elseif($C->external == 'no')
-                                                            <li class="dropdown-item"><a href="{{ url($C->url) }}">
+                                                            <li class="dropdown-item">
+                                                                <a href="{{ url($C->url) }}">
                                                                     @if (GetLang() == 'en')
                                                                         {{ $C->name }}
                                                                     @else
                                                                         {{ $C->name_h }}
                                                                     @endif
-                                                                </a></li>
+                                                                </a>
+                                                            </li>
                                                         @else
-                                                            <li class="dropdown-item"><a
+                                                            <li class="dropdown-item">
+                                                                <a
                                                                     href="{{ url($M->slug . '/' . $S->slug . '/' . $C->slug) }}">
                                                                     @if (GetLang() == 'en')
                                                                         {{ $C->name }}
                                                                     @else
                                                                         {{ $C->name_h }}
                                                                     @endif
-                                                                </a></li>
+                                                                </a>
+                                                            </li>
                                                         @endif
                                                     @endforeach
                                                 </ul>
                                             </li>
                                         @else
                                             @if ($S->external == 'yes')
-                                                <li class="dropdown-item"><a href="{{ url($S->url) }}"
+                                                <li class="dropdown-item">
+                                                    <a href="{{ url($S->url) }}"
                                                         onclick="return confirm('Are you sure  external window open?')"
                                                         target="_blank">
                                                         @if (GetLang() == 'en')
@@ -300,7 +307,8 @@
                                                     </a>
                                                 </li>
                                             @elseif($S->external == 'no')
-                                                <li class="dropdown-item"><a href="{{ url($S->url) }}">
+                                                <li class="dropdown-item">
+                                                    <a href="{{ url($S->url) }}">
                                                         @if (GetLang() == 'en')
                                                             {{ $S->name }}
                                                         @else
@@ -488,6 +496,24 @@
 </div>
 <!--End Sticky Icon-->
 
+
+<script>
+    $(document).ready(function(){
+        $(".focus-open-add").focus(function(){
+            $(".dropdown-toggle.focus-open-add.show").removeClass('show');
+            $(this).addClass('show');
+        });
+
+        $(".internal-add").focus(function(){
+            $(".dropdown-toggle.internal-add.show").removeClass('show');
+            $(this).addClass('show');
+        });
+
+        // $("ul.dropdown-menu.add-class-focus li.dropdown-item a").focus(function(){
+        //     $(".dropdown-toggle.internal-add.show").removeClass('show');           
+        // });
+    });
+</script>
 
 
 <div class="wrapper" id="skipCont"></div>
