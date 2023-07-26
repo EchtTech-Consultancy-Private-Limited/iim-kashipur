@@ -84,20 +84,20 @@
 
 
 
-                            <div class="col-md-12"  >
+                        <div class="col-md-12"  >
 
-                  <div class="form-group"> <label for="form_name">
+                        <div class="form-group"> <label for="form_name">
 
 
-                 <input type="radio" value="no" name="external"  checked @if($id) {{ ($data->external=="no")? "checked" : "" }} @endif  style="margin-                      left:50px;" id="checkboxs"> &nbsp;Internal URL </label>
+                        <input type="radio" value="no" name="external"  checked @if($id) {{ ($data->external=="no")? "checked" : "" }} @endif  style="margin-                      left:50px;" id="checkboxs"> &nbsp;Internal URL </label>
 
-                 <input type="radio" value="yes" name="external"  @if($id) {{ ($data->external=="yes")? "checked" : "" }}  @endif style="margin-left:50px;"                        id="checkbox"> &nbsp;External URL  </label>
+                        <input type="radio" value="yes" name="external"  @if($id) {{ ($data->external=="yes")? "checked" : "" }}  @endif style="margin-left:50px;"                        id="checkbox"> &nbsp;External URL  </label>
 
-                 <input  type="text" name="url1" @if($id) value="{{$data->url}}"  @else value="{{old('url1')}}" @endif  placeholder="please enter external                        url" class="form-control"  >
+                        <input  type="text" name="url1" @if($id) value="{{$data->url}}"  @else value="{{old('url1')}}" @endif  placeholder="please enter external                        url" class="form-control"  >
 
-                  </div>
+                        </div>
 
-              </div>
+                        </div>
 
 
                             <div class="col-md-12">

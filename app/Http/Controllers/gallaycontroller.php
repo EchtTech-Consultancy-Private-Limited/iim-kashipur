@@ -514,6 +514,10 @@ class gallaycontroller extends Controller
 
                       $file->image_alt=$request->image_alt;
 
+                      $file->external=$request->external;
+
+                      $file->url=$request->url1;
+
                       $file->sort_order=$request->order;
 
                       $file->slug=\Str::slug($request->image_title);
@@ -575,6 +579,10 @@ class gallaycontroller extends Controller
                       $file->image_title=$request->image_text;
 
                       $file->image_alt=$request->image_alt;
+
+                      $file->external=$request->external;
+
+                      $file->url=$request->url1;
 
                       $file->sort_order=$request->order;
 
