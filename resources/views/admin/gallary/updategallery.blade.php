@@ -941,7 +941,7 @@
                         $("#imagestatus").val(data.item.status);
                         $("#gallery_id").val(data.item.gallery_id);
                         $("#imageoldid").val(data.item.large_image);
-                        $("#url1").val(data.item.url1);
+                        $("#url1").val(data.item.url);
 
 
 
