@@ -46,8 +46,17 @@ return [
     'sitemap'=>'Site Map',
     'SCREEN_READER_ACCESS'=>'Screen Reader Access',
     'contact-us'=>'Contact us',
-    'feedback'=>'Feedback'
-
-
+    'feedback'=>'Feedback',
+    'News-Events'=>'News & Events',
+    'Industry-Connect'=>'Industry Connect',
+    'Notice-Board'=>'Notice Board',
+    'Life'=>'Life',
+    'IIM-Kashipur'=>'IIM Kashipur',
+    'Linkedin-Feed'=>'Linkedin Feed',
+    'Instagram-Feed'=>'Instagram Feed',
+    'Facebook-Feed'=>'Facebook Feed',
+    'INFO'=>'INFO',
+    'CONTACT'=>'CONTACT',
+    'LOCATE-US'=>'LOCATE US'
 
 ];

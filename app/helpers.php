@@ -488,6 +488,34 @@ function FindQuickLinksNew($placement='',$sort_order=''){
       }
 
 
+  //header top section
+
+  function  GETheaderTop(){
+    $data=\App\Models\quick_linkcategory::where('Placement','section11')->orderBy('id','DESC')->where('status','1')->get();
+    return @$data;
+    }
+
+
+    function GETheadertopcontent($id){
+      $value=\App\Models\QuickLink::where('link_category',$id)->where('status','1')->orderBy('sort_order', 'ASC')->get();
+    return @$value ;
+    }
+
+
+ //client logo middle section
+
+    function  GETClientlogoTop(){
+       $data=\App\Models\quick_linkcategory::where('Placement','section12')->orderBy('id','DESC')->where('status','1')->get();
+     return @$data;
+    }
+
+
+    function GETClientlogomiddleTop($id){
+        $value=\App\Models\QuickLink::where('link_category',$id)->where('status','1')->orderBy('sort_order', 'ASC')->get();
+      return @$value ;
+    }
+
+
 
 
   // Academics section1
@@ -637,30 +665,27 @@ function FindQuickLinksNew($placement='',$sort_order=''){
 
 
 
- //video gallery section
+        //video gallery section
 
 
- function  GEtvideo(){
-  $data=\App\Models\quick_linkcategory::where('Placement','section6')->orderBy('id','DESC')->where('status','1')->get();
-  return @$data;
-  }
+        function  GEtvideo(){
+        $data=\App\Models\quick_linkcategory::where('Placement','section6')->orderBy('id','DESC')->where('status','1')->get();
+        return @$data;
+        }
 
 
-  function getVideo_link($id){
-  $value=DB::table('video_galleries')->where('link_category',$id)->join('quick_links', 'quick_links.link_option', '=', 'video_galleries.id')->take(4)->get();  //two table data show karna ka leya
-  return @$value ;
-  }
+        function getVideo_link($id){
+        $value=DB::table('video_galleries')->where('link_category',$id)->join('quick_links', 'quick_links.link_option', '=', 'video_galleries.id')->take(4)->get();  //two table data show karna ka leya
+        return @$value ;
+        }
 
 
+        //website logo   default name Logo dana hoga
 
-
-
-//website logo   default name Logo dana hoga
-
-          function  Getsmallphoto(){
-          $data=\App\Models\FileToUrl::take(10)->get();
-          return @$data;
-          }
+                function  Getsmallphoto(){
+                $data=\App\Models\FileToUrl::take(10)->get();
+                return @$data;
+                }
 
 
 
@@ -702,9 +727,7 @@ function FindQuickLinksNew($placement='',$sort_order=''){
 
         }
 
-
-
-         function GetTemplatesList(){
+        function GetTemplatesList(){
         return Array('0'=>'Default','1'=>'Board of Governors','2'=>'Directer Profile','3'=>'Faculties Directory','4'=>'visiting faculity','5'=>'International Relations Team','6'=>'Partnerships Collaborations','7'=>'Testimonials','8'=>'Master Page','9'=>'Club,Cell & Committee','10'=>'Our Journey','11'=>'placement(The Team)');
         }
 

@@ -39,7 +39,7 @@
 
 
                             <li class="nav-item" role="presentation">
-                            <a @if($M->external=='yes')  onclick="return confirm('Are you sure  external window open?')"  target="_blank" href="{{url($M->url)}}" @elseif($M->external=='no')  href="{{url($M->url)}}" @else href="{{url($M->slug)}}" @endif>
+                            <a @if($M->external=='yes')  @if (GetLang() == 'en') onclick="return confirm('Would you like to leave this site?')"  @else onclick="return confirm('क्या आप यह साइट छोड़ना चाहेंगे?')" @endif  target="_blank" href="{{url($M->url)}}" @elseif($M->external=='no')  href="{{url($M->url)}}" @else href="{{url($M->slug)}}" @endif>
                           <span class="nav-link">    @if(GetLang()=='en') {{ $M->title }} @else {{ $M->title_h }}  @endif <i class="material-icons-round ml-2">east</i> </span>
                             </a>
                             </li>
@@ -158,7 +158,7 @@
 
                                 <div class="btn-wrap my-4 d-flex justify-content-center pt-3">
 
-                                    <a href="{{url('multi-image')}}" class="btn btn-white">
+                                    <a href="{{url('/photo-gallery')}}" class="btn btn-white">
 
                                     @lang('common.view_all')
 
@@ -215,7 +215,7 @@
 
                                 <div class="btn-wrap my-4 d-flex justify-content-center">
 
-                                    <a  href="{{url('/multi-video')}}"  class="btn btn-white">
+                                    <a  href="{{url('/video-gallery')}}"  class="btn btn-white">
 
                                         @lang('common.view_all')
 
@@ -255,7 +255,7 @@
 
                             <div class="item">
 
-                                <a href="{{ url($Ms->url) }}"  onclick="return confirm('Are you sure  external window open?')"  target="_blank"
+                                <a href="{{ url($Ms->url) }}" @if (GetLang() == 'en') onclick="return confirm('Would you like to leave this site?')"  @else onclick="return confirm('क्या आप यह साइट छोड़ना चाहेंगे?')" @endif target="_blank"
 
                                  class="client-slider-img">
 

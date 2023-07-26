@@ -4,7 +4,41 @@
             <div class="col-md-12">
                 <div class="header-top-content">
                     <div class="header-top-left">
+                        @foreach (GETheaderTop() as $key => $M)
+                        <ul>
+                            @foreach (GETheadertopcontent($M->id) as $key => $Ms)
+                                <li>
+                                    @if ($Ms->external == 'yes' && $Ms->url != '')
+                                        <a @if (GetLang() == 'en') onclick="return confirm('Would you like to leave this site?')"  @else onclick="return confirm('क्या आप यह साइट छोड़ना चाहेंगे?')" @endif
+                                            target="_blank" href="{{ url($Ms->url) ?? '' }}">
+                                            @if (GetLang() == 'en')
+                                                {{ $Ms->title ?? '' }}
+                                            @else
+                                                {{ $Ms->title_h ?? '' }}
+                                            @endif
+                                        </a>
+                                    @elseif($Ms->external == 'no' && $Ms->url != '')
+                                        <a href="{{ url($Ms->url) ?? '' }}">
+                                            @if (GetLang() == 'en')
+                                                {{ $Ms->title ?? '' }}
+                                            @else
+                                                {{ $Ms->title_h ?? '' }}
+                                            @endif
+                                        </a>
+                                    @else
+                                        <a href="{{ url($Ms->slug) ?? '' }}">
+                                            @if (GetLang() == 'en')
+                                                {{ $Ms->title ?? '' }}
+                                            @else
+                                                {{ $Ms->title_h ?? '' }}
+                                            @endif
+                                        </a>
+                                    @endif
 
+                                </li>
+                            @endforeach
+                        </ul>
+                    @endforeach
                     </div>
                     <div class="header-top-right">
                         <div class="skipwrap">
@@ -73,53 +107,6 @@
                         </div>
                         <div class="social-icon">
                             <ul>
-                                <!-- @if (GetOrganisationAllDetails('facebook') != '')
-<li>
-                                        <a href="{{ GetOrganisationAllDetails('facebook') }}"
-                                            alt="{{ GetOrganisationAllDetails('Facebook_Alt') }}"
-                                            title="{{ GetOrganisationAllDetails('Facebook_title') }}"
-                                            onclick="return confirm('Are you sure  external window open?')"
-                                            target="_blank">
-                                            <i class="fa fa-facebook" aria-hidden="true"></i>
-                                        </a>
-                                    </li>
-@endif
-                                @if (GetOrganisationAllDetails('twitter') != '')
-<li>
-                                        <a href="{{ GetOrganisationAllDetails('twitter') }}"
-                                            alt="{{ GetOrganisationAllDetails('twitter_Alt') }}"
-                                            title="{{ GetOrganisationAllDetails('Twitter_title') }}"
-                                            onclick="return confirm('Are you sure  external window open?')"
-                                            target="_blank">
-                                            <i class="fa fa-twitter" aria-hidden="true"></i>
-                                        </a>
-                                    </li>
-@endif
-
-                                @if (GetOrganisationAllDetails('instagram') != '')
-<li>
-                                        <a href="{{ GetOrganisationAllDetails('instagram') }}"
-                                            alt="{{ GetOrganisationAllDetails('Instagram_Alt') }}"
-                                            title="{{ GetOrganisationAllDetails('Instagram_title') }}"
-                                            onclick="return confirm('Are you sure  external window open?')"
-                                            target="_blank">
-                                            <i class="fa fa-instagram" aria-hidden="true"></i>
-                                        </a>
-                                    </li>
-@endif
-
-                                @if (GetOrganisationAllDetails('linkedin') != '')
-<li>
-                                        <a href="{{ GetOrganisationAllDetails('linkedin') }}"
-                                            alt="{{ GetOrganisationAllDetails('LinkedIn_Alt') }}"
-                                            title="{{ GetOrganisationAllDetails('LinkedIn_title') }}"
-                                            onclick="return confirm('Are you sure  external window open?')"
-                                            target="_blank">
-                                            <i class="fa fa-linkedin" aria-hidden="true"></i>
-                                        </a>
-                                    </li>
-@endif -->
-
 
                                 <li>
                                     <a href="{{ url('/sitemap') }}" title="@lang('common.sitemap')">
@@ -163,32 +150,33 @@
                 </div>
                 <div class="col-md-7">
                     <div class="logo-right">
+                            @foreach(GETClientlogoTop() as $key=>$M)
+                            <div class="header-top-left top-text-highlighted">
+                                <ul>
+                                        <span class="text-hili-top">
+                                            @if (GetLang() == 'en')
+                                            {{ $M->Section }} :
+                                           @else
+                                            {{ $M->Section_h }}
+                                           @endif
+                                        </span>
+                                    @foreach (GETClientlogomiddleTop($M->id) as $key => $Ms)
+                                        <li>
+                                            <a  @if ($Ms->external == 'yes' && $Ms->url != '') @if (GetLang() == 'en') onclick="return confirm('Would you like to leave this site?')"  @else onclick="return confirm('क्या आप यह साइट छोड़ना चाहेंगे?')" @endif target="_blank" href="{{ url($Ms->url) }}" @elseif($Ms->external == 'no' && $Ms->url != '')  href="{{ url($Ms->url) }}" @else href="{{ url($Ms->slug) }}" @endif>
 
-                        <div class="header-top-left top-text-highlighted">
-
-                            <ul>
-                               
-                                    <span class="text-hili-top">
-                                        Admission Offer :
-                                    </span>
-                                
-                                <li>
-                                    <a href="javascript:void();">
-                                        <b class="text-special">MBA</b>
-                                    </a>
-                                </li>
-
-                                <li>
-                                    <a href="javascript:void();">
-                                       
-                                        <b class="text-special"> MBA (ANALYTICS) </b>
-                                    </a>
-
-                                </li>
-                                                            
-                            </ul>
-
-                        </div>
+                                                <b class="text-special">
+                                                    @if (GetLang() == 'en')
+                                                        {{ $Ms->title }}
+                                                    @else
+                                                        {{ $Ms->title_h }}
+                                                    @endif
+                                                </b>
+                                            </a>
+                                        </li>
+                                    @endforeach
+                                </ul>
+                            </div>
+                        @endforeach
 
                         @if (GetOrganisationAllDetails('logo2') != '')
                             <a href="{{ url(GetOrganisationAllDetails('url_logo2')) }}" target="_blank">
@@ -334,7 +322,8 @@
                             </li>
                         @else
                             @if ($M->external == 'yes')
-                                <li class="nav-item"><a href="{{ url($M->url) }}"
+                                <li class="nav-item">
+                                    <a href="{{ url($M->url) }}"
                                         onclick="return confirm('Are you sure  external window open?')"
                                         target="_blank">
                                         @if (GetLang() == 'en')
@@ -342,23 +331,28 @@
                                         @else
                                             {{ $M->name_h }}
                                         @endif
-                                    </a></li>
+                                    </a>
+                                </li>
                             @elseif($M->external == 'no')
-                                <li class="nav-item"><a href="{{ url($M->url) }}">
+                                <li class="nav-item">
+                                    <a href="{{ url($M->url) }}">
                                         @if (GetLang() == 'en')
                                             {{ $M->name }}
                                         @else
                                             {{ $M->name_h }}
                                         @endif
-                                    </a></li>
+                                    </a>
+                                </li>
                             @else
-                                <li class="nav-item"><a href="{{ url($M->slug) }}">
+                                <li class="nav-item">
+                                    <a href="{{ url($M->slug) }}">
                                         @if (GetLang() == 'en')
                                             {{ $M->name }}
                                         @else
                                             {{ $M->name_h }}
                                         @endif
-                                    </a></li>
+                                    </a>
+                                </li>
                             @endif
                         @endif
                     @endforeach
@@ -441,14 +435,13 @@
                                                                                 {{ $M->short_h }}
                                                                                 @endif   </p>
                                                                                 @endif --> --}}
-
                                     </div>
                                 @endif
                                 <div class="banner-image-70">
                                     @if ("$M->image" != '')
                                         <!-- ../public/banner/banner-1.jpg-->
                                         <img src="{{ asset('/banner/' . $M->image) }}"
-                                            class="d-block w-100 @if ($key == 0) img-responsive @endif "
+                                            class="d-block w-100 @if ($key == 0) img-responsive @endif"
                                             alt="{{ $M->banner_Alt }}" title="{{ $M->banner_title }}">
                                     @endif
                                 </div>
@@ -507,9 +500,12 @@
             $(this).addClass('show');
         });
 
-        // $("ul.dropdown-menu.add-class-focus li.dropdown-item a").focus(function(){
-        //     $(".dropdown-toggle.internal-add.show").removeClass('show');           
-        // });
+        $("body").click(function(){
+            $(".dropdown-toggle.internal-add.show").removeClass('show');
+            $(".dropdown-toggle.focus-open-add.show").removeClass('show');
+        });
+
+
     });
 </script>
 

@@ -22,15 +22,15 @@
                            <div data-aos="fade-left" class="about_con">
                                 @if(GetOrganisationAllDetails('about')!='')
                                 <div class="desc-white" id="para">
-                                @if(GetLang()=='en') {!! GetOrganisationAllDetails('about') !!} 
-                                @else {!! GetOrganisationAllDetails('about_h') !!}  
+                                @if(GetLang()=='en') {!! GetOrganisationAllDetails('about') !!}
+                                @else {!! GetOrganisationAllDetails('about_h') !!}
                                 @endif
                                 </div>
                                 @endif
                                 <div class="btn-wrap">
                                     @if(GetOrganisationAllDetails('external')  == 'yes')
-                                    <a onclick="return confirm('Are you sure  external window open?')" target="_blank" href="{{ GetOrganisationAllDetails('url')??''}}" class="btn btn-orange">@lang('common.read_more')</a> 
-                                    @else  
+                                    <a @if (GetLang() == 'en') onclick="return confirm('Would you like to leave this site?')"  @else onclick="return confirm('क्या आप यह साइट छोड़ना चाहेंगे?')" @endif target="_blank" href="{{ GetOrganisationAllDetails('url')??''}}" class="btn btn-orange">@lang('common.read_more')</a>
+                                    @else
                                     <a href="{{ GetOrganisationAllDetails('url')??''}}" class="btn btn-orange">@lang('common.read_more')</a>
                                     @endif
                                 </div>
