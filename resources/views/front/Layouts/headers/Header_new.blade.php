@@ -67,12 +67,12 @@
 
                                 <div class="text-assesbility p-relative" title="Accessibility Dropdown" alt="incease">
                                     <img src="{{ asset('ico-accessibility.png')}}" title="Accessibility Dropdown" alt="Accessibility Dropdown" />
-                                
+
                                     <div class="text-assesbility-button">
                                             {{-- <button class="text-increment-btn button" onclick="textnormal()">A</button>
                                             <button class="text-increment-btn button active" onclick="textincrease()">A+</button>
                                             <button class="text-increment-btn button" onclick="textincrease2()">A+</button> --}}
-                                           
+
                                             <button class="text-increment-btn button" onclick="decreaseFontSize()" title="Decrease Font SIze">A-</button>
                                             <button class="text-increment-btn button active" onclick="normaltext()" title="Normal Font Size">A</button>
                                             <button class="text-increment-btn button" onclick="increaseFontSize()" title="Increase Font Size">A+</button>
@@ -95,7 +95,7 @@
 
                                     <div class="select-wrap">
                                         <select class="form-select" onchange="javascript:setlang(value);">
-                                            <option value="en" @if (GetLang() == 'en') selected @endif>
+                                            <option value="en"    @if (GetLang() == 'en') selected @endif>
                                                 English</option>
                                             <option value="hi" @if (GetLang() == 'hi') selected @endif>
                                                 Hindi</option>
@@ -184,7 +184,7 @@
     <div class="logo-wrap">
         <div class="container">
             <div class="row align-items-center">
-                <div class="col-md-6">
+                <div class="col-md-5">
                     @if (GetOrganisationAllDetails('logo') != '')
                         <div class="logo-left">
                             <a href="{{ url(GetOrganisationAllDetails('url_logo')) }}">
@@ -195,8 +195,50 @@
                         </div>
                     @endif
                 </div>
-                <div class="col-md-6">
+
+                <div class="col-md-7">
                     <div class="logo-right">
+                        @foreach(GETClientlogoTop() as $key=>$M)
+                        <div class="header-top-left top-text-highlighted">
+
+                            <ul>
+
+                                    <span class="text-hili-top">
+                                        @if (GetLang() == 'en')
+                                        {{ $M->Section }} :
+                                       @else
+                                        {{ $M->Section_h }}
+                                       @endif
+                                    </span>
+
+
+                                @foreach (GETClientlogomiddleTop($M->id) as $key => $Ms)
+
+
+                                <li>
+                                    <a  @if ($Ms->external == 'yes' && $Ms->url != '') @if (GetLang() == 'en') onclick="return confirm('Would you like to leave this site?')"  @else onclick="return confirm('क्या आप यह साइट छोड़ना चाहेंगे?')" @endif target="_blank" href="{{ url($Ms->url) }}" @elseif($Ms->external == 'no' && $Ms->url != '')  href="{{ url($Ms->url) }}" @else href="{{ url($Ms->slug) }}" @endif>
+
+                                        <b class="text-special">
+                                            @if (GetLang() == 'en')
+                                                {{ $Ms->title }}
+                                            @else
+                                                {{ $Ms->title_h }}
+                                            @endif
+                                        </b>
+
+                                    </a>
+                                </li>
+
+
+                                @endforeach
+
+                            </ul>
+
+                        </div>
+
+                    @endforeach
+
+
                         @if (GetOrganisationAllDetails('logo2') != '')
                             <a href="{{ url(GetOrganisationAllDetails('url_logo2')) }}" target="_blank">
                                 <img src="{{ asset('uploads/site-logo/' . GetOrganisationAllDetails('logo2')) }}"
@@ -242,19 +284,19 @@
                     @foreach (content_menus() as $key => $M)
                         @if (count(GetSubMenusFront($M->id)) > 0)
                             <li class="nav-item dropdown">
-                                <a href="javascript:void(0);" class="dropdown-toggle" data-bs-toggle="dropdown">
+                                <a href="javascript:void(0);" class="dropdown-toggle focus-open-add" data-bs-toggle="dropdown">
                                     @if (GetLang() == 'en')
                                         {{ $M->name }}
                                     @else
                                         {{ $M->name_h }}
                                     @endif
                                 </a>
-                                <ul class="dropdown-menu">
+                                <ul class="dropdown-menu add-class-focus">
 
                                     @foreach (GetSubMenusFront($M->id) as $key1 => $S)
                                         @if (count(GetchildMenusFront($M->id, $S->id)) > 0)
                                             <li class="dropdown-item dropdown">
-                                                <a href="javascript:void(0);" class="dropdown-toggle"
+                                                <a href="javascript:void(0);" class="dropdown-toggle internal-add"
                                                     data-bs-toggle="dropdown">
                                                     @if (GetLang() == 'en')
                                                         {{ $S->name }}
@@ -262,7 +304,7 @@
                                                         {{ $S->name_h }}
                                                     @endif
                                                 </a>
-                                                <ul class="dropdown-menu">
+                                                <ul class="dropdown-menu internal-add-show">
 
                                                     @foreach (GetchildMenusFront($M->id, $S->id) as $key2 => $C)
                                                         @if ($C->external == 'yes' && $C->url != '')
@@ -486,7 +528,7 @@
 
 <div class="sticky-icon">
    <a href="https://www.facebook.com/IndianInstituteOfManagementKashipur" target="_blank" class="Facebook" title="Facebook"><i class="fa fa-facebook-f"> </i> Facebook </a>
-   <a href="https://twitter.com/IIMKsp" class="Twitter" target="_blank" title="Twitter"><i class="fa fa-twitter" title="Twitter"> </i> Twitter </a>     
+   <a href="https://twitter.com/IIMKsp" class="Twitter" target="_blank" title="Twitter"><i class="fa fa-twitter" title="Twitter"> </i> Twitter </a>
    <a href="https://www.instagram.com/iimkashipur/" class="Instagram" target="_blank" title="Instagram"><i class="fa fa-instagram"></i> Instagram </a>
    <a href="https://www.linkedin.com/school/iimkashipur/" class="Youtube" target="_blank" title="Linkedin"><i class="fa fa-linkedin"> </i> Linkedin </a>
 </div>
@@ -495,6 +537,27 @@
 </div>
 <!--End Sticky Icon-->
 
+
+<script>
+    $(document).ready(function(){
+        $(".focus-open-add").focus(function(){
+            $(".dropdown-toggle.focus-open-add.show").removeClass('show');
+            $(this).addClass('show');
+        });
+
+        $(".internal-add").focus(function(){
+            $(".dropdown-toggle.internal-add.show").removeClass('show');
+            $(this).addClass('show');
+        });
+
+        $("body").click(function(){
+            $(".dropdown-toggle.internal-add.show").removeClass('show');
+            $(".dropdown-toggle.focus-open-add.show").removeClass('show');
+        });
+
+
+    });
+</script>
 
 
 <div class="wrapper" id="skipCont"></div>
