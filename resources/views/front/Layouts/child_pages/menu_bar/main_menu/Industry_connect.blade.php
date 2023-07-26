@@ -62,26 +62,17 @@
                                                 <td>{{$data->date}}</td>
                                                 <td>{{$data->title}}</td>
 
-
+                                                @if($data->attachement_file != '')
                                                 <td>
-
-
                                                     <a href="{{url('uploads/view/attach/'.$data->attachement_file)}}" download class="pdf-links"> <i class="fa fa-file-pdf-o"></i><span>PDF</span></a>
-
                                                     <span style="font-size: 12px;margin-left: 5px;color: #ed2044;">
                                                         (
                                                         <?php
                                                             echo formatSizeUnits($data->pdfsize);
                                                         ?>)
                                                     </span>
-
-
                                                 </td>
-
-
-
-
-
+                                                @endif
 
                                                 </tr>
                                             @endforeach

@@ -653,7 +653,7 @@
                                             </a>
                                         </li>
                                     @else
-                                        <li><a href={{ url($mmenu[0]->slug . '/' . $S->slug . '/' . $C->slug) }}>
+                                        <li><a href={{ url($get[0]->slug . '/' . $S->slug . '/' . $C->slug) }}>
                                                 @if (GetLang() == 'en')
                                                     {{ $C->name ?? '' }}
                                                 @else
