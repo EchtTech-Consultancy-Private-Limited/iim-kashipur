@@ -980,8 +980,7 @@
                                                             <div class="col-md-3 col-lg-3">
                                                                 <div class="d-flex flex-column h-100">
 
-                                                                    <a href="{{ asset('uploads/'.$value->student_image) ?? '' }}"
-                                                                        class="image-link">
+                                                                    <div class="">
                                                                         <div class="thumbnail p-relative">
                                                                             <img src="{{ asset('uploads/'.$value->student_image) ?? '' }}"
                                                                                 alt="gallery-img" class="img-fluid"
@@ -990,7 +989,7 @@
                                                                                 {{ $value->name }}
                                                                             </div>
                                                                         </div>
-                                                                    </a>
+                                                                    </div>
 
                                                                 </div>
                                                             </div>
