@@ -1388,6 +1388,14 @@
 
                         <!-- Chairpersons -->
 
+
+
+
+
+                        @if(count($chairperson) > 0 )
+
+
+
                         <h5>
                             Chairperson
                         </h5>
@@ -1426,6 +1434,7 @@
                             </div>
                         </div>
 
+                        @endif
 
                         <!-- Photo Gallery Section Start -->
 
