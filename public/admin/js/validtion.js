@@ -70,9 +70,9 @@ $(document).ready(function() {
             logo2: {
                 required: true,
             },
-            department:{
-                required: true,
-            },
+            // department:{
+            //     required: true,
+            // },
             Logo_Title2: {
                 required: true,
             },
@@ -273,9 +273,9 @@ $(document).ready(function() {
             Image_Alt:{
                 required: "Image Alt is required",
             },
-            department:{
-                required: "This field is required",
-            },
+            // department:{
+            //     required: "This field is required",
+            // },
             video_text:{
                 required: "This field is required",
             },

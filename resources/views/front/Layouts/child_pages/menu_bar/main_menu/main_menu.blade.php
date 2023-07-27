@@ -2,10 +2,26 @@
 
 @section('content')
 
+
+  @isset($type)
     @php
         $mmenu = @content_menus($type[0]->menu_id);
     @endphp
+  @endisset
 
+   @isset($get)
+    @php
+    $mmenu = @content_menus($get[0]->id );
+   @endphp
+
+   @endisset
+
+
+   @isset($subchildmenu)
+    @php
+    $mmenu = @content_menus($menu[0]->id);
+    @endphp
+   @endisset
 
     {{-- banner and  breadcrumbs   --}}
 
