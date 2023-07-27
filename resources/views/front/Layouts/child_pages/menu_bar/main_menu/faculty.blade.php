@@ -185,7 +185,8 @@
                                     d="M10 19v-5h4v5c0 .55.45 1 1 1h3c.55 0 1-.45 1-1v-7h1.7c.46 0 .68-.57.33-.87L12.67 3.6c-.38-.34-.96-.34-1.34 0l-8.36 7.53c-.34.3-.13.87.33.87H5v7c0 .55.45 1 1 1h3c.55 0 1-.45 1-1z" />
                             </svg></a></li>
 
-                    <li><span>
+                    <li>
+                        <span>
                             @if (GetLang() == 'en')
                                 {{ $type[0]->name ?? '' }}
                             @else
@@ -458,6 +459,7 @@
 
         <div class="row">
 
+
             <div class="col-md-3">
 
                 <div class="sidebarwraper">
@@ -637,18 +639,63 @@
 
             @else
 
-
-
-
-
             <div class="col-md-9">
 
-                <div class="innerpagecontent">
+            <div class="innerpagecontent">
 
+                <div class="row mb-4">
+                    <div class="col-md-6">
+                        <form role="form" method="get" action="{{ url('/faculty/faculty-directory') }}" id="frmtypes">
 
+                            @csrf
 
+                             <select name="dp" class="form-control" onchange="javascript:$('#frmtypes').submit();">
+
+                                <option value="">Filter Deparment </option>
+
+                                @foreach($departments as $k=>$v)
+
+                                   <option value="{{$v->id}}"  {{ ( $v->id == request('dp') ) ? 'selected' : '' }} >{{$v->dept_name}}</option>
+
+                                @endforeach
+
+                             </select>
+
+                        </form>
+                    </div>
+                    <div class="col-md-6">
+                        <form action="{{ url('/faculty/faculty-directory') }}" method="get">
+                            <div class="d-flex">
+
+                              <input type="text" placeholder="search name or deparment!!!!"  value="{{ request('search') ??''}} " name="search">
+
+                                <button type="submit" class="btn btn-info submit-btn-apply">Apply</button>
+
+                            </div>
+                        </form>
+                    </div>
+                </div>
 
               <a href="javascript:void(0)" class="btn2 margin_bottom"> @if(GetLang()=='en') {{ $type[0]->name ?? '' }}  @else {{ $type[0]->name_h ?? '' }}  @endif</a><br>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
                     <div class="profilewithinfo mb-0">
 
@@ -694,8 +741,6 @@
 
                     </div>
 
-
-
                     {{$item->links('pagination::bootstrap-5')}}
 
 
@@ -739,7 +784,6 @@
                 <div class="col-md-12">
 
                     <div class="innerpagecontent">
-
 
                         <a href="javascript:void(0)" class="btn2 margin_bottom">
                             @if (GetLang() == 'en')
