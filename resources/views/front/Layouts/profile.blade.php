@@ -284,7 +284,6 @@
 
     @if (isset($sub_menu))
 
-
     <section class="content-section ptb-60">
 
         <div class="container ">
@@ -497,7 +496,7 @@
                             <a href="{{ url($item[0]->scholar) }}" alt="{{ $item[0]->scholar_title }}" title="{{ $item[0]->scholar_title }}"  onclick="return confirm('Are you sure  external window open?')" target="_blank" >
                                 <i class="fa fa-twitter fa-2x" class="w3-xxlarge" aria-hidden="true"></i>
                             </a>&nbsp;
-                           @endif 
+                           @endif
 
                                             </li>
                                         </ul>
@@ -753,29 +752,29 @@
                                                         </a>&nbsp;
                                                     @endif
 
-                                                    {{-- @if ($item[0]->orcid != '')
-                                <a href="{{ url($item[0]->orcid) }}" alt="{{ $item[0]->orcid_title }}" title="{{ $item[0]->orcid_title }}"  onclick="return confirm('Are you sure  external window open?')" target="_blank" >
-                                    <i class="fa fa-orcid fa-2x"  class="w3-xxlarge" aria-hidden="true"></i>
-                                </a>&nbsp;
-                               @endif
+                                                    @if ($item[0]->orcid != '')
+                                                    <a href="{{ url($item[0]->orcid) }}" alt="{{ $item[0]->orcid_title }}" title="{{ $item[0]->orcid_title }}"  onclick="return confirm('Are you sure  external window open?')" target="_blank" >
+                                                        <i class="fa fa-orcid fa-2x"  class="w3-xxlarge" aria-hidden="true"></i>
+                                                    </a>&nbsp;
+                                                    @endif
 
-                                @if ($item[0]->webofscience != '')
-                                <a href="{{ url($item[0]->webofscience) }}" alt="{{ $item[0]->webofscience_title }}" title="{{ $item[0]->webofscience_title }}"  onclick="return confirm('Are you sure  external window open?')" target="_blank" >
-                                    <i class="fa fa-twitter fa-2x" class="w3-xxlarge" aria-hidden="true"></i>
-                                </a>&nbsp;
-                               @endif
+                                                    @if ($item[0]->webofscience != '')
+                                                    <a href="{{ url($item[0]->webofscience) }}" alt="{{ $item[0]->webofscience_title }}" title="{{ $item[0]->webofscience_title }}"  onclick="return confirm('Are you sure  external window open?')" target="_blank" >
+                                                        <i class="fa fa-twitter fa-2x" class="w3-xxlarge" aria-hidden="true"></i>
+                                                    </a>&nbsp;
+                                                    @endif
 
-                                @if ($item[0]->scopus != '')
-                                <a href="{{ url($item[0]->scopus) }}" alt="{{ $item[0]->scopus_title }}" title="{{ $item[0]->scopus_title }}"  onclick="return confirm('Are you sure  external window open?')" target="_blank" >
-                                    <i class="fa fa-twitter fa-2x" class="w3-xxlarge" aria-hidden="true"></i>
-                                </a>&nbsp;
-                               @endif
+                                                    @if ($item[0]->scopus != '')
+                                                    <a href="{{ url($item[0]->scopus) }}" alt="{{ $item[0]->scopus_title }}" title="{{ $item[0]->scopus_title }}"  onclick="return confirm('Are you sure  external window open?')" target="_blank" >
+                                                        <i class="fa fa-twitter fa-2x" class="w3-xxlarge" aria-hidden="true"></i>
+                                                    </a>&nbsp;
+                                                    @endif
 
-                                @if ($item[0]->scholar != '')
-                                <a href="{{ url($item[0]->scholar) }}" alt="{{ $item[0]->scholar_title }}" title="{{ $item[0]->scholar_title }}"  onclick="return confirm('Are you sure  external window open?')" target="_blank" >
-                                    <i class="fa fa-twitter fa-2x" class="w3-xxlarge" aria-hidden="true"></i>
-                                </a>&nbsp;
-                               @endif --}}
+                                                    @if ($item[0]->scholar != '')
+                                                    <a href="{{ url($item[0]->scholar) }}" alt="{{ $item[0]->scholar_title }}" title="{{ $item[0]->scholar_title }}"  onclick="return confirm('Are you sure  external window open?')" target="_blank" >
+                                                        <i class="fa fa-twitter fa-2x" class="w3-xxlarge" aria-hidden="true"></i>
+                                                    </a>&nbsp;
+                                                    @endif
 
                                                 </li>
                                             </ul>
@@ -862,8 +861,21 @@
 
                                         <h6>{{ $items->title }}</h6>
 
-                                        {{-- <p>{{ $items->department  }}</p> --}}
-                                        <p>{!! $items->description !!} </p>
+                                        <h6>{{ $items->department  ??'' }}</h6>
+
+                                        {{ $items->phone  ??'' }}
+
+                                        <?php
+                                        $email_address =$items->email ;
+                                        $str = $email_address;
+                                        $var = str_replace('@', '[at]', $str);
+                                        $email = str_replace('.', '[dot]', $var);
+                                    ?>
+
+
+
+                                      {{ $email  ??''}}
+
 
                                         <div class="social-icon">
                                         <ul>

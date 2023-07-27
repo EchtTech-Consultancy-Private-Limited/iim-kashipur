@@ -100,13 +100,13 @@
 
                     <div class="col-md-6">
 
-                        <div class="form-group"> <label for="form_name"> Heading *</label> <input id="form_name" type="text" name="heading" @if($id) value="{{$data->heading}}" @else value="{{old('heading')}}" @endif class="form-control" placeholder="Please enter heading*" required="required" > </div>
+                        <div class="form-group"> <label for="form_name"> Heading *</label> <input id="form_name" type="text" name="heading" @if($id) value="{{$data->heading}}" @else value="{{old('heading')}}" @endif class="form-control" placeholder="Please enter heading*" > </div>
 
                     </div>
 
                     <div class="col-md-6">
 
-                        <div class="form-group"> <label for="form_name"> Heading[hindi] *</label> <input id="form_name" type="text" name="heading_h" @if($id) value="{{$data->heading_h}}" @else value="{{old('heading_h')}}" @endif class="form-control" placeholder="Please enter heading hindi *" required="required" > </div>
+                        <div class="form-group"> <label for="form_name"> Heading[hindi] *</label> <input id="form_name" type="text" name="heading_h" @if($id) value="{{$data->heading_h}}" @else value="{{old('heading_h')}}" @endif class="form-control" placeholder="Please enter heading hindi *" > </div>
 
                     </div>
 
