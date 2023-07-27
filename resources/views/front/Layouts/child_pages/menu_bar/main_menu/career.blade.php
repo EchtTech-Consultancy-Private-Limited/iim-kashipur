@@ -53,7 +53,13 @@
                         <td>{{ $value->name_of_the_post }} </td>
                         <td> {{ $value->opening_date }} </td>
                         <td> {{ $value->closing_date }} </td>
-                        <td><a href="{{ $value->online_link }}" target="_blank">Apply Here</a></td>
+
+
+                        <td>
+                            @if($value->online_link != '')
+                            <a href="{{ $value->online_link }}" target="_blank">Apply Here</a>
+                            @endif
+                        </td>
                         <td>
                             <a href="{{ asset('uploads/fo/' . $value->detail_advertisement) }}" download  target="_blank"><i
                                     class="fa fa-download"></i> Download</a>
