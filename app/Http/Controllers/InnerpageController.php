@@ -681,6 +681,7 @@ public function screen_reader_access()
  public function Menu_barInnerpage($slug) //content page & who in who data
     {
 
+
         $main_menu="main-menu";
         $item=OrganisationStructure::whereslug($slug)->get();
         if(MainMenu::whereslug($slug)->get('id')->count()){
@@ -692,7 +693,8 @@ public function screen_reader_access()
 
                 return view('front.Layouts.child_pages.menu_bar.main_menu.main_menu',['item'=>$item,'type'=>$type,'main_menu'=>$main_menu]);
 
-            }elseif($type[0]->url == '/who-is-who')
+            }
+            elseif($type[0]->url == '/who-is-who')
             {
 
 
@@ -921,7 +923,31 @@ public function screen_reader_access()
                             return abort(401);
                         }
 
-                    }elseif(QuickLink::whereslug($slug)->first('section_name')->section_name == 'video-gallery')
+                    }elseif(QuickLink::whereslug($slug)->first('section_name')->section_name == 'info3')
+                    {
+
+                       // dd($slug);
+
+                                $data=QuickLink::whereslug($slug)->get('link_option');
+                                //dd($data);
+                                if(Count($data)>0){
+                                $item=content_page::whereid($data[0]->link_option)->get();
+
+                                $data=content_page::whereparent_id($item[0]->id)->get();
+
+                                if(Count($item)>0){
+
+                                return view('front.Layouts.child_pages.middle_section.home_section',['item'=>$item,'data'=>$data]);
+
+                                }else{
+                                    return abort(401);
+                                }
+
+                            }else{
+                                return abort(401);
+                            }
+                    }
+                    elseif(QuickLink::whereslug($slug)->first('section_name')->section_name == 'video-gallery')
                     {
 
                            // dd(QuickLink::whereslug($slug)->first('section_name')->section_name == 'video-gallery');
@@ -1000,6 +1026,7 @@ public function screen_reader_access()
                 return abort(401);
             }
         }else{
+
 
            if(club::whereslug($slug)->get()->count()){    //club single
 
