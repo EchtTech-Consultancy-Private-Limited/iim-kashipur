@@ -861,9 +861,9 @@
 
                                         <h6>{{ $items->title }}</h6>
 
-                                        <h6>{{ $items->department  ??'' }}</h6>
+                                        <h6> {{ $items->designation   ??'' }} </h6>
 
-                                        {{ $items->phone  ??'' }}
+                                       <h6>{{ $items->phone  ??'' }}</h6>
 
                                         <?php
                                         $email_address =$items->email ;
