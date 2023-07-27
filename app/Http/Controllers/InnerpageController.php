@@ -20,6 +20,7 @@ use PHPUnit\Framework\Constraint\Count;
 use App\Models\club;
 use App\Models\cell;
 use App\Models\commmittee;
+use App\Models\department;
 use App\Models\org_journies;
 use App\Models\club_multiple_image;
 use App\Models\committee_multiple_image;
@@ -1134,13 +1135,33 @@ public function screen_reader_access()
             }
             elseif(isset($type[0]) && $type[0]->tpl_id == 3)
             {
-                $item=OrganisationStructure::where('department',6)->paginate(9);
 
+
+                $departments=department::get();
+
+                if($request->dp){
+
+                    $item=OrganisationStructure::where('department',6)
+                            ->where('faculty_id',$request->dp)
+                            ->paginate(9);
+
+                }elseif($request->search){
+
+                    $item=OrganisationStructure::where('department',6)
+                            ->where('title',"like","%$request->search%")
+                            ->orwhere('designation',"like","%$request->search%")
+                            ->orwhere('email',"like","%$request->search%")
+                            ->paginate(9);
+                }else{
+
+
+                    $item=OrganisationStructure::where('department',6)->paginate(9);
+                }
+                //dd($item);
                 if(count($item)>0){
-
                 $type=SubMenu::whereslug($slug)->get();
 
-                return view('front.Layouts.child_pages.menu_bar.main_menu.faculty',['item'=>$item,'type'=>$type,'sub_menu'=>$sub_menu]);
+                return view('front.Layouts.child_pages.menu_bar.main_menu.faculty',['item'=>$item,'type'=>$type,'sub_menu'=>$sub_menu,'departments'=>$departments]);
 
                 }else{
                     return abort(401);
@@ -1149,7 +1170,6 @@ public function screen_reader_access()
             }
             elseif(isset($type[0]) && $type[0]->tpl_id == 4)
             {
-
                 $item=OrganisationStructure::where('department',7)->paginate(9);
 
                 if(count($item)>0){
