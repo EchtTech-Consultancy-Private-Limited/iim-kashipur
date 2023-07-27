@@ -20,7 +20,7 @@ use PHPUnit\Framework\Constraint\Count;
 use App\Models\club;
 use App\Models\cell;
 use App\Models\commmittee;
-use App\Models\department;
+use App\Models\Department;
 use App\Models\org_journies;
 use App\Models\club_multiple_image;
 use App\Models\committee_multiple_image;
@@ -1137,7 +1137,8 @@ public function screen_reader_access()
             {
 
 
-                $departments=department::get();
+                $departments=Department::get();
+
                 if($request->dp){
                     $item=OrganisationStructure::where('department',6)
                             ->where('faculty_id',$request->dp)
