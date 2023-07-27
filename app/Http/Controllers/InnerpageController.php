@@ -31,11 +31,9 @@ use App\Models\subchildmenu;
 use App\Models\Tender;
 use App\Models\Vendorsdebarred;
 use App\Models\Career;
-
 use App\Models\Events;
 use App\Models\event_image;
 use App\Models\Industry;
-
 use App\Models\student_council;
 use App\Models\journal_publication;
 use App\Models\journal_publication_child;
@@ -89,10 +87,6 @@ public function RTI_view()
        return view('front.Layouts.child_pages.menu_bar.main_menu.jounral',['item'=>$item,'data'=>$data]);
 
     }
-
-
-
-
 
 
 public function  career(){
@@ -1568,8 +1562,6 @@ public function screen_reader_access()
 public function Child_barInnerpage($main_slug,$Sub_slug,$slug) //content page
 {
 
-
-
     $data=child_menu::whereslug($slug)->get();
 
     if(Count($data)>0){
@@ -1646,8 +1638,10 @@ public function Child_barInnerpage($main_slug,$Sub_slug,$slug) //content page
             }
         }elseif($data[0]->url == '/who-is-who')
         {
+
             if(isset($data[0]) && $data[0]->tpl_id == 1) //default degian
             {
+
 
                     //return "Board of directer";
                     $item=OrganisationStructure::get();
@@ -1754,7 +1748,7 @@ public function Child_barInnerpage($main_slug,$Sub_slug,$slug) //content page
 
                 }else{
                     $item=OrganisationStructure::whereid($data[0]->link_option)->get();
-                    // dd($item);
+                     //dd($item);
                     if(count($item)>0){
 
                         $type_sub=child_menu::whereslug($slug)->get();
@@ -1768,12 +1762,7 @@ public function Child_barInnerpage($main_slug,$Sub_slug,$slug) //content page
                     }
                 }
             }
-
-
-
             else{
-
-
                 return abort(401);
 
             }

@@ -96,7 +96,7 @@
 
 
                             <div class="col-md-6">
-                                <div class="form-group"> <label for="pdf">Pdf*</label><span
+                                <div class="form-group"> <label for="kdf">Pdf*</label><span
                                         style="color:green;font-size:12px;">
                                         @if ($id)
                                             [{{ $data->pdf }}]
