@@ -905,11 +905,11 @@ public function screen_reader_access()
                     elseif(QuickLink::whereslug($slug)->first('section_name')->section_name == 'photo-gallery')
                     {
 
+
                         $photo_slug=QuickLink::whereslug($slug)->get();
                         $data=photo_gallery::whereid($photo_slug[0]->link_option)->get();
                         if(Count($data) >0){
                         $item=photo_gallery_image::wheregallery_id($data[0]->id)->get();
-
 
                             if(Count($item)>0){
                             return view('front.Layouts.inner-page.gallerys.photo-category',['item'=>$item,'data'=>$data]);
@@ -926,9 +926,7 @@ public function screen_reader_access()
                            // dd(QuickLink::whereslug($slug)->first('section_name')->section_name == 'video-gallery');
 
                         $video_slug=QuickLink::whereslug($slug)->get();
-
                         $data=video_gallery::whereid($video_slug[0]->link_option)->get();
-
                           if(Count($data)>0){
                            $item=video_gallery_tittle::wheregallery_id($data[0]->id)->get();
 
@@ -942,7 +940,7 @@ public function screen_reader_access()
                               return abort(401);
                           }
 
-                    }
+                     }
                     elseif(QuickLink::whereslug($slug)->first('section_name')->section_name == 'header-top')
                     {
                         $video_slug=QuickLink::whereslug($slug)->get();
@@ -974,7 +972,7 @@ public function screen_reader_access()
         {
            // dd("hii");
             $data=photo_gallery::wherephoto_slug($slug)->get();
-            //dd($data);
+           // dd($data);
             if(Count($data) >0){
             $item=photo_gallery_image::wheregallery_id($data[0]->id)->get();
            //dd($item);
@@ -986,12 +984,9 @@ public function screen_reader_access()
             }else{
                 return abort(401);
             }
-
-
         }elseif(video_gallery::wherevideo_slug($slug)->get()->count())
         {
-            $data=video_gallery::wherevideo_slug($slug)->get("id");
-
+            $data=video_gallery::wherevideo_slug($slug)->get();
             if(Count($data)>0){
              $item=video_gallery_tittle::wheregallery_id($data[0]->id)->get();
 

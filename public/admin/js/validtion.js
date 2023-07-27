@@ -118,9 +118,9 @@ $(document).ready(function() {
             description_h: {
                 required: true,
             },
-            file:{
-                required: true,
-            },
+            // file:{
+            //     required: true,
+            // },
             default_banner_image: {
                 required: true,
             },
@@ -435,9 +435,9 @@ $(document).ready(function() {
                 required: "Phone number is required",
                 minlength: "Phone number must be of 10 digits"
             },
-            file:{
-                required: "This field is required",
-            },
+            // file:{
+            //     required: "This field is required",
+            // },
             title:{
                 required: "This field is required",
             },
