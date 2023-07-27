@@ -1051,6 +1051,7 @@ public function screen_reader_access()
     public function sub_barInnerpage($main_slug,$slug ,Request $request)  //content page sub menu
     {
 
+
     $sub_menu="sub menu";
     $type=SubMenu::whereslug($slug)->get();
    // dd($type);
@@ -1133,7 +1134,6 @@ public function screen_reader_access()
             }
             elseif(isset($type[0]) && $type[0]->tpl_id == 3)
             {
-
                 $item=OrganisationStructure::where('department',6)->paginate(9);
 
                 if(count($item)>0){
@@ -1149,6 +1149,7 @@ public function screen_reader_access()
             }
             elseif(isset($type[0]) && $type[0]->tpl_id == 4)
             {
+
                 $item=OrganisationStructure::where('department',7)->paginate(9);
 
                 if(count($item)>0){
