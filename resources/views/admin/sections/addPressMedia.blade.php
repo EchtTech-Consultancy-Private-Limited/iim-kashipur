@@ -96,18 +96,14 @@
 
 
                             <div class="col-md-6">
-
-                                <div class="form-group"> <label for="image">Pdf*</label><span
+                                <div class="form-group"> <label for="pdf">Pdf*</label><span
                                         style="color:green;font-size:12px;">
                                         @if ($id)
                                             [{{ $data->pdf }}]
                                         @endif
                                     </span>
-
-                                    <input id="image" type="file" name="file" accept=".jpeg,.png,.gif,.jpg"
-                                        class="form-control">
+                                    <input  type="file" name="file" accept=".jpeg,.png,.gif,.jpg"  class="form-control">
                                 </div>
-
                             </div>
 
                             <div class="col-md-6">
@@ -131,7 +127,7 @@
                             <div class="col-md-6">
                                 <label for="inputText" >Chairperson*</label>
                                 <div class="">
-                                    <select class="form-control" name="chairperson" required>
+                                    <select class="form-control" name="chairperson" >
                                         <option value=""> Select Type </option>
                                         @foreach ($profile as $profiles )
                                         <option  value="{{$profiles->id }}" {{$profiles->id == $data->chairperson  ? 'selected' : ''}}>{{$profiles->title}}</option>
