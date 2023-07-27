@@ -1138,9 +1138,7 @@ public function screen_reader_access()
 
 
                 $departments=department::get();
-
                 if($request->dp){
-
                     $item=OrganisationStructure::where('department',6)
                             ->where('faculty_id',$request->dp)
                             ->paginate(9);
@@ -1153,7 +1151,6 @@ public function screen_reader_access()
                             ->orwhere('email',"like","%$request->search%")
                             ->paginate(9);
                 }else{
-
 
                     $item=OrganisationStructure::where('department',6)->paginate(9);
                 }
