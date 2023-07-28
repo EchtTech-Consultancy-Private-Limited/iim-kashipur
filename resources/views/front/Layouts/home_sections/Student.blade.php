@@ -76,7 +76,7 @@
 
                                 <div class="btn-wrap">
 
-                                    <a  @if($Ms->external=='yes') @if (GetLang() == 'en') onclick="return confirm('Would you like to leave this site?')"  @else onclick="return confirm('क्या आप यह साइट छोड़ना चाहेंगे?')" @endif href="{{$Ms->url}}" @elseif($Ms->external=='no')  href="{{url($Ms->url)}}"  @endif class="red-link">
+                                    <a  @if($Ms->external=='yes') @if (GetLang() == 'en') onclick="return confirm('This link will take you to an external web site.')"  @else onclick="return confirm('यह लिंक आपको एक बाहरी वेब साइट पर ले जाएगा।')" @endif href="{{$Ms->url}}" @elseif($Ms->external=='no')  href="{{url($Ms->url)}}"  @endif class="red-link">
                                         @lang('common.READ_MORE')  <img src="assets/images/read-more.svg" alt="read-more" class="img-fluid">
                                     </a>
 
@@ -110,7 +110,7 @@
 
                                 <div class="btn-wrap">
 
-                                    <a  @if($Ms->external=='yes') @if (GetLang() == 'en') onclick="return confirm('Would you like to leave this site?')"  @else onclick="return confirm('क्या आप यह साइट छोड़ना चाहेंगे?')" @endif  href="{{$Ms->url}}" @elseif($Ms->external=='no')  href="{{url($Ms->url)}}"  @endif class="red-link">
+                                    <a  @if($Ms->external=='yes')@if (GetLang() == 'en') onclick="return confirm('This link will take you to an external web site.')"  @else onclick="return confirm('यह लिंक आपको एक बाहरी वेब साइट पर ले जाएगा।')" @endif  href="{{$Ms->url}}" @elseif($Ms->external=='no')  href="{{url($Ms->url)}}"  @endif class="red-link">
                                         @lang('common.READ_MORE')  <img src="assets/images/read-more.svg" alt="read-more" class="img-fluid">
                                     </a>
 
@@ -145,7 +145,7 @@
                                 </h3>
 
                                 <div class="btn-wrap">
-                                    <a  @if($Ms->external=='yes') @if (GetLang() == 'en') onclick="return confirm('Would you like to leave this site?')"  @else onclick="return confirm('क्या आप यह साइट छोड़ना चाहेंगे?')" @endif  href="{{$Ms->url}}" @elseif($Ms->external=='no')  href="{{url($Ms->url)}}"  @endif class="red-link">
+                                    <a  @if($Ms->external=='yes') @if (GetLang() == 'en') onclick="return confirm('This link will take you to an external web site.')"  @else onclick="return confirm('यह लिंक आपको एक बाहरी वेब साइट पर ले जाएगा।')" @endif href="{{$Ms->url}}" @elseif($Ms->external=='no')  href="{{url($Ms->url)}}"  @endif class="red-link">
                                         @lang('common.READ_MORE')  <img src="assets/images/read-more.svg" alt="read-more" class="img-fluid">
                                     </a>
                                 </div>
