@@ -5687,7 +5687,7 @@ img.hover-shadow.cursor {
     padding: 5px;
 }
 
-.social-icon i {
+.social-icon i, .social-icon img {
     margin-top: 10px !important;
     margin-bottom: 15px !important;
 }
