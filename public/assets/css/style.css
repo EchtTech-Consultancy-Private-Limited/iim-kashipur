@@ -5694,7 +5694,7 @@ img.hover-shadow.cursor {
 
 }
 
-.social-icon i {
+.social-icon i, .social-icon img {
     margin-top: 10px !important;
     margin-bottom: 15px !important;
 }
