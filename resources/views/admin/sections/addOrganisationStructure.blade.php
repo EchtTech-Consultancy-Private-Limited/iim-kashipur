@@ -288,7 +288,7 @@
                     </div>
 
                     <div class="col-md-12">
-                         <label for="department"> Faculty Department *</label>
+                         <label for=""> Faculty Department *</label>
                         <select class="form-control" name="faculty_dept_id">
                                 <option value>Select Department...</option>
                                 @foreach($departments as $departmentlist)
