@@ -1380,7 +1380,7 @@ public function screen_reader_access()
             $item=student_council::wherestatus('1')->get();
             //dd($item);
             $chairperson=OrganisationStructure::whereid($item[0]->chairperson)->get();
-            $chairpersons=StudentProfile::where('student_council','=','1')->get();
+            $chairpersons=OrganisationStructure::where('student_council','=','1')->get();
            // dd($chairpersons);
             $type=SubMenu::whereslug($slug)->get();
             if(count($type)>0){

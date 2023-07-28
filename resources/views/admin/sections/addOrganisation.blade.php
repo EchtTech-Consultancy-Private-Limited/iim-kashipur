@@ -127,11 +127,6 @@
                             @enderror
                             </label>
 
-
-
-
-
-
                         </div>
                     </div>
 
@@ -153,9 +148,6 @@
                                  {{ $message }}
                                 @enderror
                             </label>
-
-
-
 
                         </div>
                     </div>

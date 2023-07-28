@@ -22,7 +22,7 @@
                <div class="alert alert-danger col-md-12 text-center">
                   <strong>Oops!</strong> {{ Session::get('error') }}
                </div>
-               @endif 
+               @endif
                @if(Session::has('success'))
                 <div class="alert alert-success" style="padding: 15px;" role="alert">
                     {{session::get('success')}}
@@ -137,11 +137,11 @@
                      </div>
                      <label for="inputText" class="col-sm-2 col-form-label">Work Experience</label>
                      <div class="col-sm-10">
-                        
+
                         <textarea class="form-control" id="work_experience" name="work_experience" rows="4"  placeholder="Work Experience">{{ old('work_experience') }}</textarea>
                      </div>
                   </div>
-                  
+
                   <div class="col-md-12">
                      <label for="inputText" class="col-sm-2 col-form-label">Papers and Publications</label>
                      <div class="col-sm-10">
@@ -149,7 +149,7 @@
                      </div>
                   </div>
 
-                  
+
                   <div class="col-md-12">
                      <label for="inputText" class="col-sm-2 col-form-label">Research Interests</label>
                      <div class="col-sm-10">
@@ -168,24 +168,13 @@
                         @endif
                      </div><br>
                   </div>
-                  
-                  <div class="col-md-6">
-
-                    <div class="form-group"> <label for="form_name">Student Council Member </label>
-
-                        <select name="Student_Council" class="form-control">
-                            <option value="">Please Select</option>
-                            <option value="1" {{$student->Student_Council == '1' ? 'selected' : ''}}>Yes</option>
-                            <option value="0" {{$student->Student_Council == '0' ? 'selected' : ''}}>NO</option>
 
 
-                        </select>
 
-                    </div>
 
-                </div>
+
                   <input type="submit" class="btn btn-primary" value="Update Student Profile">
-                 
+
                </form>
             </div>
          </div>
@@ -194,9 +183,9 @@
 </div>
 <script type="text/javascript">
    CKEDITOR.replace('content');
-   
+
    CKEDITOR.replace('content_h');
-   
+
 </script>
 <!-- content-wrapper ends -->
 @endsection
