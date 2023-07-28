@@ -1,5 +1,21 @@
 @extends('front.Layouts.master')
 
+
+<style>
+.social-icon i{
+    margin-top: 10px;
+    margin-bottom: 15px;
+}
+
+@media (max-width: 767.8px){
+ul.nav.nav-tabs {
+    display: block;
+    gap: 20px;
+    overflow-x: clip !important;
+    flex-wrap: wrap !important;
+}}
+    </style>
+
 @section('content')
 
     @php
@@ -324,7 +340,7 @@
                                                 @foreach (GetchildMenusFront($gets[0]->menu_id, $S->id) as $key2 => $C)
                                                     @if ($C->external == 'yes')
                                                         <li><a href="{{ url($C->url) }}"
-                                                                onclick="return confirm('Are you sure  external window open?')"
+                                                                @if (GetLang() == 'en') onclick="return confirm('This link will take you to an external web site.')"  @else onclick="return confirm('यह लिंक आपको एक बाहरी वेब साइट पर ले जाएगा।')" @endif
                                                                 target="_blank">
                                                                 @if (GetLang() == 'en')
                                                                     {{ $C->name ?? '' }}
@@ -361,7 +377,7 @@
                                     @else
                                         @if ($S->external == 'yes')
                                             <li><a href="{{ url($S->url) }}"
-                                                    onclick="return confirm('Are you sure  external window open?')"
+                                                    @if (GetLang() == 'en') onclick="return confirm('This link will take you to an external web site.')"  @else onclick="return confirm('यह लिंक आपको एक बाहरी वेब साइट पर ले जाएगा।')" @endif
                                                     target="_blank">
                                                     @if (GetLang() == 'en')
                                                         {{ $S->name ?? '' }}
@@ -434,7 +450,7 @@
                                                     <a href="{{ url($item[0]->twitter) }}"
                                                         alt="{{ $item[0]->Twitter_title }}"
                                                         title="{{ $item[0]->Twitter_title }}"
-                                                        onclick="return confirm('Are you sure  external window open?')"
+                                                        @if (GetLang() == 'en') onclick="return confirm('This link will take you to an external web site.')"  @else onclick="return confirm('यह लिंक आपको एक बाहरी वेब साइट पर ले जाएगा।')" @endif
                                                         target="_blank">
                                                         <i class="fa fa-twitter fa-2x" class="w3-xxlarge"
                                                             aria-hidden="true"></i>
@@ -445,7 +461,7 @@
                                                     <a href="{{ url($item[0]->instagram) }}"
                                                         alt="{{ $item[0]->Instagram_title }}"
                                                         title="{{ $item[0]->Instagram_title }}"
-                                                        onclick="return confirm('Are you sure  external window open?')"
+                                                        @if (GetLang() == 'en') onclick="return confirm('This link will take you to an external web site.')"  @else onclick="return confirm('यह लिंक आपको एक बाहरी वेब साइट पर ले जाएगा।')" @endif
                                                         target="_blank">
                                                         <i class="fa fa-instagram fa-2x" class="w3-xxlarge"
                                                             aria-hidden="true"></i>
@@ -456,7 +472,7 @@
                                                     <a href="{{ url($item[0]->Facebook) }}"
                                                         alt="{{ $item[0]->Facebook_title }}"
                                                         title="{{ $item[0]->Facebook_title }}"
-                                                        onclick="return confirm('Are you sure  external window open?')"
+                                                        @if (GetLang() == 'en') onclick="return confirm('This link will take you to an external web site.')"  @else onclick="return confirm('यह लिंक आपको एक बाहरी वेब साइट पर ले जाएगा।')" @endif
                                                         target="_blank">
                                                         <i class="fa fa-facebook fa-2x" class="w3-xxlarge"
                                                             aria-hidden="true"></i>
@@ -467,7 +483,7 @@
                                                     <a href="{{ url($item[0]->linkedin) }}"
                                                         alt="{{ $item[0]->linkedIn_title }}"
                                                         title="{{ $item[0]->linkedIn_title }}"
-                                                        onclick="return confirm('Are you sure  external window open?')"
+                                                        @if (GetLang() == 'en') onclick="return confirm('This link will take you to an external web site.')"  @else onclick="return confirm('यह लिंक आपको एक बाहरी वेब साइट पर ले जाएगा।')" @endif
                                                         target="_blank">
                                                         <i class="fa fa-linkedin fa-2x" class="w3-xxlarge"
                                                             aria-hidden="true"></i>
@@ -475,25 +491,25 @@
                                                 @endif
 
                                               @if ($item[0]->orcid != '')
-                            <a href="{{ url($item[0]->orcid) }}" alt="{{ $item[0]->orcid_title }}" title="{{ $item[0]->orcid_title }}"  onclick="return confirm('Are you sure  external window open?')" target="_blank" >
+                            <a href="{{ url($item[0]->orcid) }}" alt="{{ $item[0]->orcid_title }}" title="{{ $item[0]->orcid_title }}"  @if (GetLang() == 'en') onclick="return confirm('This link will take you to an external web site.')"  @else onclick="return confirm('यह लिंक आपको एक बाहरी वेब साइट पर ले जाएगा।')" @endif target="_blank" >
                                 <i class="fa fa-orcid fa-2x"  class="w3-xxlarge" aria-hidden="true"></i>
                             </a>&nbsp;
                            @endif
 
                             @if ($item[0]->webofscience != '')
-                            <a href="{{ url($item[0]->webofscience) }}" alt="{{ $item[0]->webofscience_title }}" title="{{ $item[0]->webofscience_title }}"  onclick="return confirm('Are you sure  external window open?')" target="_blank" >
+                            <a href="{{ url($item[0]->webofscience) }}" alt="{{ $item[0]->webofscience_title }}" title="{{ $item[0]->webofscience_title }}"  @if (GetLang() == 'en') onclick="return confirm('This link will take you to an external web site.')"  @else onclick="return confirm('यह लिंक आपको एक बाहरी वेब साइट पर ले जाएगा।')" @endif target="_blank" >
                                 <i class="fa fa-twitter fa-2x" class="w3-xxlarge" aria-hidden="true"></i>
                             </a>&nbsp;
                            @endif
 
                             @if ($item[0]->scopus != '')
-                            <a href="{{ url($item[0]->scopus) }}" alt="{{ $item[0]->scopus_title }}" title="{{ $item[0]->scopus_title }}"  onclick="return confirm('Are you sure  external window open?')" target="_blank" >
+                            <a href="{{ url($item[0]->scopus) }}" alt="{{ $item[0]->scopus_title }}" title="{{ $item[0]->scopus_title }}"  @if (GetLang() == 'en') onclick="return confirm('This link will take you to an external web site.')"  @else onclick="return confirm('यह लिंक आपको एक बाहरी वेब साइट पर ले जाएगा।')" @endif target="_blank" >
                                 <i class="fa fa-twitter fa-2x" class="w3-xxlarge" aria-hidden="true"></i>
                             </a>&nbsp;
                            @endif
 
                             @if ($item[0]->scholar != '')
-                            <a href="{{ url($item[0]->scholar) }}" alt="{{ $item[0]->scholar_title }}" title="{{ $item[0]->scholar_title }}"  onclick="return confirm('Are you sure  external window open?')" target="_blank" >
+                            <a href="{{ url($item[0]->scholar) }}" alt="{{ $item[0]->scholar_title }}" title="{{ $item[0]->scholar_title }}"  @if (GetLang() == 'en') onclick="return confirm('This link will take you to an external web site.')"  @else onclick="return confirm('यह लिंक आपको एक बाहरी वेब साइट पर ले जाएगा।')" @endif target="_blank" >
                                 <i class="fa fa-twitter fa-2x" class="w3-xxlarge" aria-hidden="true"></i>
                             </a>&nbsp;
                            @endif
@@ -513,7 +529,7 @@
                         </div>
                     </div>
                     <div class="tab-section">
-                        <ul class="nav nav-tabs d-lg-flex" id="myTab" role="tablist">
+                        <ul class="nav nav-tabs d-flex" id="myTab" role="tablist">
 
                             @foreach ($data as $key => $datas)
                                 {{-- {{ $key }} --}}
@@ -535,7 +551,7 @@
                                     id="profile-tab-pane{{ $key }}" role="tabpanel"
                                     aria-labelledby="profile-tab" tabindex="0">
 
-                                    <div id="collapseTwo" class="accordion-collapse collapse d-lg-block"
+                                    <div id="collapseTwo" class="accordion-collapse collapse d-block"
                                         aria-labelledby="headingTwo" data-bs-parent="#myTabContent">
                                         <div class="accordion-body">
                                             <h6>{{ $datas->heading }}</h6>
@@ -601,7 +617,7 @@
                                                     @foreach (GetchildMenusFront($gets[0]->menu_id, $S->id) as $key2 => $C)
                                                         @if ($C->external == 'yes')
                                                             <li><a href="{{ url($C->url) }}"
-                                                                    onclick="return confirm('Are you sure  external window open?')"
+                                                                    @if (GetLang() == 'en') onclick="return confirm('This link will take you to an external web site.')"  @else onclick="return confirm('यह लिंक आपको एक बाहरी वेब साइट पर ले जाएगा।')" @endif
                                                                     target="_blank">
                                                                     @if (GetLang() == 'en')
                                                                         {{ $C->name ?? '' }}
@@ -638,7 +654,7 @@
                                         @else
                                             @if ($S->external == 'yes')
                                                 <li><a href="{{ url($S->url) }}"
-                                                        onclick="return confirm('Are you sure  external window open?')"
+                                                        @if (GetLang() == 'en') onclick="return confirm('This link will take you to an external web site.')"  @else onclick="return confirm('यह लिंक आपको एक बाहरी वेब साइट पर ले जाएगा।')" @endif
                                                         target="_blank">
                                                         @if (GetLang() == 'en')
                                                             {{ $S->name ?? '' }}
@@ -712,7 +728,7 @@
                                                         <a href="{{ url($item[0]->twitter) }}"
                                                             alt="{{ $item[0]->Twitter_title }}"
                                                             title="{{ $item[0]->Twitter_title }}"
-                                                            onclick="return confirm('Are you sure  external window open?')"
+                                                            @if (GetLang() == 'en') onclick="return confirm('This link will take you to an external web site.')"  @else onclick="return confirm('यह लिंक आपको एक बाहरी वेब साइट पर ले जाएगा।')" @endif
                                                             target="_blank">
                                                             <i class="fa fa-twitter fa-2x" class="w3-xxlarge"
                                                                 aria-hidden="true"></i>
@@ -723,7 +739,7 @@
                                                         <a href="{{ url($item[0]->instagram) }}"
                                                             alt="{{ $item[0]->Instagram_title }}"
                                                             title="{{ $item[0]->Instagram_title }}"
-                                                            onclick="return confirm('Are you sure  external window open?')"
+                                                            @if (GetLang() == 'en') onclick="return confirm('This link will take you to an external web site.')"  @else onclick="return confirm('यह लिंक आपको एक बाहरी वेब साइट पर ले जाएगा।')" @endif
                                                             target="_blank">
                                                             <i class="fa fa-instagram fa-2x" class="w3-xxlarge"
                                                                 aria-hidden="true"></i>
@@ -734,7 +750,7 @@
                                                         <a href="{{ url($item[0]->Facebook) }}"
                                                             alt="{{ $item[0]->Facebook_title }}"
                                                             title="{{ $item[0]->Facebook_title }}"
-                                                            onclick="return confirm('Are you sure  external window open?')"
+                                                            @if (GetLang() == 'en') onclick="return confirm('This link will take you to an external web site.')"  @else onclick="return confirm('यह लिंक आपको एक बाहरी वेब साइट पर ले जाएगा।')" @endif
                                                             target="_blank">
                                                             <i class="fa fa-facebook fa-2x" class="w3-xxlarge"
                                                                 aria-hidden="true"></i>
@@ -745,7 +761,7 @@
                                                         <a href="{{ url($item[0]->linkedin) }}"
                                                             alt="{{ $item[0]->linkedIn_title }}"
                                                             title="{{ $item[0]->linkedIn_title }}"
-                                                            onclick="return confirm('Are you sure  external window open?')"
+                                                            @if (GetLang() == 'en') onclick="return confirm('This link will take you to an external web site.')"  @else onclick="return confirm('यह लिंक आपको एक बाहरी वेब साइट पर ले जाएगा।')" @endif
                                                             target="_blank">
                                                             <i class="fa fa-linkedin fa-2x" class="w3-xxlarge"
                                                                 aria-hidden="true"></i>
@@ -753,25 +769,25 @@
                                                     @endif
 
                                                     @if ($item[0]->orcid != '')
-                                                    <a href="{{ url($item[0]->orcid) }}" alt="{{ $item[0]->orcid_title }}" title="{{ $item[0]->orcid_title }}"  onclick="return confirm('Are you sure  external window open?')" target="_blank" >
+                                                    <a href="{{ url($item[0]->orcid) }}" alt="{{ $item[0]->orcid_title }}" title="{{ $item[0]->orcid_title }}"  @if (GetLang() == 'en') onclick="return confirm('This link will take you to an external web site.')"  @else onclick="return confirm('यह लिंक आपको एक बाहरी वेब साइट पर ले जाएगा।')" @endif target="_blank" >
                                                         <i class="fa fa-orcid fa-2x"  class="w3-xxlarge" aria-hidden="true"></i>
                                                     </a>&nbsp;
                                                     @endif
 
                                                     @if ($item[0]->webofscience != '')
-                                                    <a href="{{ url($item[0]->webofscience) }}" alt="{{ $item[0]->webofscience_title }}" title="{{ $item[0]->webofscience_title }}"  onclick="return confirm('Are you sure  external window open?')" target="_blank" >
+                                                    <a href="{{ url($item[0]->webofscience) }}" alt="{{ $item[0]->webofscience_title }}" title="{{ $item[0]->webofscience_title }}"  @if (GetLang() == 'en') onclick="return confirm('This link will take you to an external web site.')"  @else onclick="return confirm('यह लिंक आपको एक बाहरी वेब साइट पर ले जाएगा।')" @endif target="_blank" >
                                                         <i class="fa fa-twitter fa-2x" class="w3-xxlarge" aria-hidden="true"></i>
                                                     </a>&nbsp;
                                                     @endif
 
                                                     @if ($item[0]->scopus != '')
-                                                    <a href="{{ url($item[0]->scopus) }}" alt="{{ $item[0]->scopus_title }}" title="{{ $item[0]->scopus_title }}"  onclick="return confirm('Are you sure  external window open?')" target="_blank" >
+                                                    <a href="{{ url($item[0]->scopus) }}" alt="{{ $item[0]->scopus_title }}" title="{{ $item[0]->scopus_title }}"  @if (GetLang() == 'en') onclick="return confirm('This link will take you to an external web site.')"  @else onclick="return confirm('यह लिंक आपको एक बाहरी वेब साइट पर ले जाएगा।')" @endif target="_blank" >
                                                         <i class="fa fa-twitter fa-2x" class="w3-xxlarge" aria-hidden="true"></i>
                                                     </a>&nbsp;
                                                     @endif
 
                                                     @if ($item[0]->scholar != '')
-                                                    <a href="{{ url($item[0]->scholar) }}" alt="{{ $item[0]->scholar_title }}" title="{{ $item[0]->scholar_title }}"  onclick="return confirm('Are you sure  external window open?')" target="_blank" >
+                                                    <a href="{{ url($item[0]->scholar) }}" alt="{{ $item[0]->scholar_title }}" title="{{ $item[0]->scholar_title }}"  @if (GetLang() == 'en') onclick="return confirm('This link will take you to an external web site.')"  @else onclick="return confirm('यह लिंक आपको एक बाहरी वेब साइट पर ले जाएगा।')" @endif target="_blank" >
                                                         <i class="fa fa-twitter fa-2x" class="w3-xxlarge" aria-hidden="true"></i>
                                                     </a>&nbsp;
                                                     @endif
@@ -791,7 +807,7 @@
                             </div>
                         </div>
                         <div class="tab-section">
-                            <ul class="nav nav-tabs d-lg-flex" id="myTab" role="tablist">
+                            <ul class="nav nav-tabs d-flex" id="myTab" role="tablist">
 
                                 @foreach ($data as $key => $datas)
                                     {{-- {{ $key }} --}}
@@ -813,7 +829,7 @@
                                         id="profile-tab-pane{{ $key }}" role="tabpanel"
                                         aria-labelledby="profile-tab" tabindex="0">
 
-                                        <div id="collapseTwo" class="accordion-collapse collapse d-lg-block"
+                                        <div id="collapseTwo" class="accordion-collapse collapse d-block"
                                             aria-labelledby="headingTwo" data-bs-parent="#myTabContent">
                                             <div class="accordion-body">
                                                 <h6>{{ $datas->heading }}</h6>
@@ -851,7 +867,7 @@
                         @foreach ($item as $items)
                             <div class="row mt-4">
 
-                                <div class="col-lg-3 col-xl-3 col-md-3">
+                                <div class="col-lg-4 col-xl-4 col-md-4">
 
                                     <div class=" top text-center mt-0">
                                         <div class="profile-img">
@@ -884,7 +900,7 @@
                                                     <a href="{{ url($item[0]->twitter) }}"
                                                         alt="{{ $item[0]->Twitter_title }}"
                                                         title="{{ $item[0]->Twitter_title }}"
-                                                        onclick="return confirm('Are you sure  external window open?')"
+                                                        @if (GetLang() == 'en') onclick="return confirm('This link will take you to an external web site.')"  @else onclick="return confirm('यह लिंक आपको एक बाहरी वेब साइट पर ले जाएगा।')" @endif
                                                         target="_blank">
                                                         <i class="fa fa-twitter fa-2x" class="w3-xxlarge"
                                                             aria-hidden="true"></i>
@@ -895,7 +911,7 @@
                                                     <a href="{{ url($item[0]->instagram) }}"
                                                         alt="{{ $item[0]->Instagram_title }}"
                                                         title="{{ $item[0]->Instagram_title }}"
-                                                        onclick="return confirm('Are you sure  external window open?')"
+                                                        @if (GetLang() == 'en') onclick="return confirm('This link will take you to an external web site.')"  @else onclick="return confirm('यह लिंक आपको एक बाहरी वेब साइट पर ले जाएगा।')" @endif
                                                         target="_blank">
                                                         <i class="fa fa-instagram fa-2x" class="w3-xxlarge"
                                                             aria-hidden="true"></i>
@@ -906,7 +922,7 @@
                                                     <a href="{{ url($item[0]->Facebook) }}"
                                                         alt="{{ $item[0]->Facebook_title }}"
                                                         title="{{ $item[0]->Facebook_title }}"
-                                                        onclick="return confirm('Are you sure  external window open?')"
+                                                        @if (GetLang() == 'en') onclick="return confirm('This link will take you to an external web site.')"  @else onclick="return confirm('यह लिंक आपको एक बाहरी वेब साइट पर ले जाएगा।')" @endif
                                                         target="_blank">
                                                         <i class="fa fa-facebook fa-2x" class="w3-xxlarge"
                                                             aria-hidden="true"></i>
@@ -917,7 +933,7 @@
                                                     <a href="{{ url($item[0]->linkedin) }}"
                                                         alt="{{ $item[0]->linkedIn_title }}"
                                                         title="{{ $item[0]->linkedIn_title }}"
-                                                        onclick="return confirm('Are you sure  external window open?')"
+                                                        @if (GetLang() == 'en') onclick="return confirm('This link will take you to an external web site.')"  @else onclick="return confirm('यह लिंक आपको एक बाहरी वेब साइट पर ले जाएगा।')" @endif
                                                         target="_blank">
                                                         <i class="fa fa-linkedin fa-2x" class="w3-xxlarge"
                                                             aria-hidden="true"></i>
@@ -926,25 +942,25 @@
 
 
                                                 @if ($item[0]->orcid != '')
-                                                <a href="{{ url($item[0]->orcid) }}" alt="{{ $item[0]->orcid_title }}" title="{{ $item[0]->orcid_title }}"  onclick="return confirm('Are you sure  external window open?')" target="_blank" >
+                                                <a href="{{ url($item[0]->orcid) }}" alt="{{ $item[0]->orcid_title }}" title="{{ $item[0]->orcid_title }}"  @if (GetLang() == 'en') onclick="return confirm('This link will take you to an external web site.')"  @else onclick="return confirm('यह लिंक आपको एक बाहरी वेब साइट पर ले जाएगा।')" @endif target="_blank" >
                                                     <img src="{{ asset('icon/orcid.png') }}">
                                                 </a>&nbsp;
                                                 @endif
 
                                                 @if ($item[0]->webofscience != '')
-                                                <a href="{{ url($item[0]->webofscience) }}" alt="{{ $item[0]->webofscience_title }}" title="{{ $item[0]->webofscience_title }}"  onclick="return confirm('Are you sure  external window open?')" target="_blank" >
+                                                <a href="{{ url($item[0]->webofscience) }}" alt="{{ $item[0]->webofscience_title }}" title="{{ $item[0]->webofscience_title }}"  @if (GetLang() == 'en') onclick="return confirm('This link will take you to an external web site.')"  @else onclick="return confirm('यह लिंक आपको एक बाहरी वेब साइट पर ले जाएगा।')" @endif target="_blank" >
                                                     <img src="{{ asset('icon/publon.png') }}">
                                                 </a>&nbsp;
                                                 @endif
 
                                                 @if ($item[0]->scopus != '')
-                                                <a href="{{ url($item[0]->scopus) }}" alt="{{ $item[0]->scopus_title }}" title="{{ $item[0]->scopus_title }}"  onclick="return confirm('Are you sure  external window open?')" target="_blank" >
+                                                <a href="{{ url($item[0]->scopus) }}" alt="{{ $item[0]->scopus_title }}" title="{{ $item[0]->scopus_title }}"  @if (GetLang() == 'en') onclick="return confirm('This link will take you to an external web site.')"  @else onclick="return confirm('यह लिंक आपको एक बाहरी वेब साइट पर ले जाएगा।')" @endif target="_blank" >
                                                     <img src="{{ asset('icon/scopus.png') }}">
                                                 </a>&nbsp;
                                             @endif
 
                                                 @if ($item[0]->scholar != '')
-                                                <a href="{{ url($item[0]->scholar) }}" alt="{{ $item[0]->scholar_title }}" title="{{ $item[0]->scholar_title }}"  onclick="return confirm('Are you sure  external window open?')" target="_blank" >
+                                                <a href="{{ url($item[0]->scholar) }}" alt="{{ $item[0]->scholar_title }}" title="{{ $item[0]->scholar_title }}"  @if (GetLang() == 'en') onclick="return confirm('This link will take you to an external web site.')"  @else onclick="return confirm('यह लिंक आपको एक बाहरी वेब साइट पर ले जाएगा।')" @endif target="_blank" >
                                                     <img src="{{ asset('icon/google_scholers.png') }}">
                                                 </a>&nbsp;
                                             @endif
@@ -956,7 +972,7 @@
                         @endforeach
                     </div>
 
-                    <div class="col-xl-9 col-md-9 col-lg-12">
+                    <div class="col-xl-8 col-md-8 col-lg-12">
 
                     <div class="import-dates">
                         <div class="title"></div>
@@ -966,7 +982,7 @@
                         </div>
                     </div>
                     <div class="tab-section">
-                        <ul class="nav nav-tabs d-lg-flex" id="myTab" role="tablist">
+                        <ul class="nav nav-tabs d-flex" id="myTab" role="tablist">
 
                             @foreach ($data as $key => $datas)
                                 {{-- {{ $key }} --}}
@@ -988,7 +1004,7 @@
                                     id="profile-tab-pane{{ $key }}" role="tabpanel"
                                     aria-labelledby="profile-tab" tabindex="0">
 
-                                    <div id="collapseTwo" class="accordion-collapse collapse d-lg-block"
+                                    <div id="collapseTwo" class="accordion-collapse collapse d-block"
                                         aria-labelledby="headingTwo" data-bs-parent="#myTabContent">
                                         <div class="accordion-body">
                                             <h6>{{ $datas->heading }}</h6>

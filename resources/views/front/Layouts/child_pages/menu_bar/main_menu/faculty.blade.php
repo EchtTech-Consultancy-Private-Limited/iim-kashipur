@@ -412,7 +412,15 @@
 
                                     <div class="profilewraper withinfo addevent-box">
 
-                                        <figure><img src="{{asset('uploads/organisation/'.$items->image)}}"  alt="{{ $items->title ?? '' }}" title="{{ $items->title ?? '' }}"></figure>
+                                        <figure>
+
+                                            @if ($items->image != '')
+                                            <img src="{{asset('uploads/organisation/'.$items->image)}}"  alt="{{ $items->title ?? '' }}" title="{{ $items->title ?? '' }}">
+                                            @else
+                                            <img src="{{ asset('admin/images/faces/default.jpg') }}">
+                                            @endif
+
+                                        </figure>
 
                                         <h4> @if(GetLang()=='en') {{ $items->title  ?? ''}}  @else {{ $items->title_h  ?? ''}}  @endif</h4>
 
