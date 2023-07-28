@@ -201,6 +201,8 @@ ul.nav.nav-tabs {
                                     d="M10 19v-5h4v5c0 .55.45 1 1 1h3c.55 0 1-.45 1-1v-7h1.7c.46 0 .68-.57.33-.87L12.67 3.6c-.38-.34-.96-.34-1.34 0l-8.36 7.53c-.34.3-.13.87.33.87H5v7c0 .55.45 1 1 1h3c.55 0 1-.45 1-1z" />
                             </svg></a></li>
 
+
+
                     @if(URL::previous() == url('/faculty/faculty-directory'))
 
                         <li><a href="{{ url('/') }}"><span> Faculty </span></a></li>
@@ -426,7 +428,7 @@ ul.nav.nav-tabs {
 
                                 <div class="col-lg-3 col-xl-3 col-md-3">
 
-                                    <div class=" top text-center mt-0">
+                                    <div class=" top text-center mt-0 image-box-border">
                                         <div class="profile-img">
                                             <img src="{{ asset('uploads/organisation/' . $items->image) }}"
                                                 alt="{{ $items->title }}">
@@ -702,9 +704,9 @@ ul.nav.nav-tabs {
                             @foreach ($item as $items)
                                 <div class="row mt-4">
 
-                                    <div class="col-lg-3 col-xl-3 col-md-3">
+                                    <div class="col-lg-4 col-xl-4 col-md-4">
 
-                                        <div class=" top text-center mt-0">
+                                        <div class=" top text-center mt-0 image-box-border">
                                             <div class="profile-img">
                                                 <img src="{{ asset('uploads/organisation/' . $items->image) }}"
                                                     alt="{{ $items->title }}">
@@ -716,7 +718,7 @@ ul.nav.nav-tabs {
 
 
 
-                                    <div class="col-xl-9 col-md-9 col-lg-12">
+                                    <div class="col-xl-8 col-md-8 col-lg-8">
                                         {{-- <p>{{ $items->department  }}</p> --}}
                                         <p>{!! $items->description !!} </p>
 
@@ -869,7 +871,7 @@ ul.nav.nav-tabs {
 
                                 <div class="col-lg-4 col-xl-4 col-md-4">
 
-                                    <div class=" top text-center mt-0">
+                                    <div class=" top text-center mt-0 image-box-border">
                                         <div class="profile-img">
                                             <img src="{{ asset('uploads/organisation/' . $items->image) }}"
                                                 alt="{{ $items->title }}">
@@ -972,7 +974,7 @@ ul.nav.nav-tabs {
                         @endforeach
                     </div>
 
-                    <div class="col-xl-8 col-md-8 col-lg-12">
+                    <div class="col-xl-8 col-md-8 col-lg-8">
 
                     <div class="import-dates">
                         <div class="title"></div>
