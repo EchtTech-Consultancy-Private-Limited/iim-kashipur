@@ -670,7 +670,7 @@
                                         <form action="{{ url('/research/journal-publications') }}" method="get">
                                         <div class="d-flex">
 
-                                            <select class="form-control" style="width: 100px;" name="year">
+                                            <select class="form-control m-0" style="width: 100px;" name="year" style="padding:10px 15px 9px ">
                                                 <option value="">--Year--</option>
                                                 @for ($i=2011; $i<= date('Y'); $i++)
                                                 <option value="{{ $i }}" {{ (request('year') == $i)?'selected':'' }}> {{ $i }}</option>
@@ -693,10 +693,10 @@
                                                     <th>S.NO</th>
                                                     <th>TITLE</th>
                                                 </tr>
-
+                                                <?php $l=1; $srN=(request('page'))?10+request('page')-1:$l ?>
                                                  @foreach ($item as $K=>$items)
                                                 <tr>
-                                                    <td>{{ $K+1  ??''}}</td>
+                                                    <td>{{ $srN++; }}</td>
                                                     <td> <a   @if($items->external=='yes')  onclick="return confirm('Are you sure  external window open?')"                                                       target="_blank" href="{{url($items->url)}}" @else href="{{url ('journal/'.dEncrypt($items->id)) }}"                                                       @endif  class="text-black"> {{ $items->title  ??''}} </a> </td>
                                                 </tr>
 

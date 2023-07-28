@@ -976,24 +976,26 @@
                                             <div class="col-md-12 p-0">
                                                 <div class="excellence-gallery partnership-img">
                                                     <div class="row masonry-grid">
-                                                        @foreach ($chairpersons as $value)
+                                                        @foreach ($chairpersons as  $chairperson)
                                                             <div class="col-md-3 col-lg-3">
                                                                 <div class="d-flex flex-column h-100">
 
-                                                                    <div class="">
+                                                                    <a href="{{ asset('uploads/organisation/' .$chairperson->image) ?? '' }}"
+                                                                        class="image-link">
                                                                         <div class="thumbnail p-relative">
-                                                                            <img src="{{ asset('uploads/'.$value->student_image) ?? '' }}"
+                                                                            <img src="{{ asset('uploads/organisation/' .$chairperson->image) ?? '' }}"
                                                                                 alt="gallery-img" class="img-fluid"
                                                                                 loading="lazy">
                                                                             <div class="top-text">
-                                                                                {{ $value->name }}
+                                                                                {{ $chairperson->title  ??''}}
                                                                             </div>
                                                                         </div>
-                                                                    </div>
+                                                                    </a>
 
                                                                 </div>
                                                             </div>
                                                         @endforeach
+
                                                     </div>
                                                 </div>
                                             </div>

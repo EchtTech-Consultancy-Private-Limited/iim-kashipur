@@ -162,7 +162,7 @@
                                         </span>
                                     @foreach (GETClientlogomiddleTop($M->id) as $key => $Ms)
                                         <li>
-                                            <a  @if ($Ms->external == 'yes' && $Ms->url != '') @if (GetLang() == 'en') onclick="return confirm('Would you like to leave this site?')"  @else onclick="return confirm('क्या आप यह साइट छोड़ना चाहेंगे?')" @endif target="_blank" href="{{ url($Ms->url) }}" @elseif($Ms->external == 'no' && $Ms->url != '')  href="{{ url($Ms->url) }}" @else href="{{ url($Ms->slug) }}" @endif>
+                                            <a  @if ($Ms->external == 'yes' && $Ms->url != '') @if (GetLang() == 'en') onclick="return confirm('This link will take you to an external web site.')"  @else onclick="return confirm('यह लिंक आपको एक बाहरी वेब साइट पर ले जाएगा।')" @endif target="_blank" href="{{ url($Ms->url) }}" @elseif($Ms->external == 'no' && $Ms->url != '')  href="{{ url($Ms->url) }}" @else href="{{ url($Ms->slug) }}" @endif>
 
                                                 <b class="text-special">
                                                     @if (GetLang() == 'en')

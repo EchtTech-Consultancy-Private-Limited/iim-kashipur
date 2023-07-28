@@ -649,7 +649,7 @@
 
                             @csrf
 
-                             <select name="dp" class="form-control" onchange="javascript:$('#frmtypes').submit();">
+                             <select name="dp" class="form-control" onchange="javascript:$('#frmtypes').submit();" style="padding:10px 15px 9px ">
 
                                 <option value="">Filter Deparment </option>
 
@@ -667,9 +667,9 @@
                         <form action="{{ url('/faculty/faculty-directory') }}" method="get">
                             <div class="d-flex">
 
-                              <input type="text" placeholder="search name or deparment!!!!"  value="{{ request('search') ??''}} " name="search">
+                              <input type="text" class="form-control" placeholder="search name or deparment!!!!"  value="{{ request('search') ??''}} " name="search">
 
-                                <button type="submit" class="btn btn-info submit-btn-apply">Apply</button>
+                                <button type="submit" class="btn-info submit-btn-apply">Apply</button>
 
                             </div>
                         </form>
@@ -677,24 +677,6 @@
                 </div>
 
               <a href="javascript:void(0)" class="btn2 margin_bottom"> @if(GetLang()=='en') {{ $type[0]->name ?? '' }}  @else {{ $type[0]->name_h ?? '' }}  @endif</a><br>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
                     <div class="profilewithinfo mb-0">
@@ -711,7 +693,15 @@
 
                                 <div class="profilewraper withinfo addevent-box">
 
-                                    <figure><img src="{{asset('uploads/organisation/'.$items->image)}}"  alt="{{ $items->title ?? '' }}" title="{{ $items->title ?? '' }}"></figure>
+                                    <figure>
+
+                                        @if ($items->image != '')
+                                        <img src="{{asset('uploads/organisation/'.$items->image)}}"  alt="{{ $items->title ?? '' }}" title="{{ $items->title ?? '' }}">
+                                        @else
+                                        <img src="{{ asset('admin/images/faces/default.jpg') }}">
+                                        @endif
+
+                                    </figure>
 
                                     <h4> @if(GetLang()=='en') {{ $items->title  ?? ''}}  @else {{ $items->title_h  ?? ''}}  @endif</h4>
 
