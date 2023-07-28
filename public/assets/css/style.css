@@ -5686,3 +5686,22 @@ img.hover-shadow.cursor {
     border: 1px solid #ed204445;
     padding: 5px;
 }
+
+.social-icon i {
+    margin-top: 10px !important;
+    margin-bottom: 15px !important;
+}
+
+.social-icon ul li {
+    text-align: center !important;
+}
+
+.image-box-border {
+    border: 1px solid #dee2e6 !important;
+}
+
+.image-box-border .profile-img img {
+    height: 250px !important;
+    width: 250px !important;
+    padding-top: 15px !important;
+}
