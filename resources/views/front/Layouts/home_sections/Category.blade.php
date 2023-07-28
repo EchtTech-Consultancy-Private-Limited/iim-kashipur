@@ -394,7 +394,7 @@
 
                              <h2 class="life_kashipur">
 
-                             <a style="color:#181832;"  @if($n->external=='yes') @if (GetLang() == 'en') onclick="return confirm('Would you like to leave this site?')"  @else onclick="return confirm('क्या आप यह साइट छोड़ना चाहेंगे?')" @endif target="_blank"   href="{{$n->url}}" @elseif($n->external=='no')  href="{{url($n->url)}}" @endif>
+                             <a style="color:#181832;"  @if($n->external=='yes') @if (GetLang() == 'en') onclick="return confirm('This link will take you to an external web site.')"  @else onclick="return confirm('यह लिंक आपको एक बाहरी वेब साइट पर ले जाएगा।')" @endif target="_blank"   href="{{$n->url}}" @elseif($n->external=='no')  href="{{url($n->url)}}" @endif>
                                  {{-- @if(GetLang()=='en') {{ $n->title }} @else {{ $n->title_h }}  @endif --}}
 
                                  @lang('common.Life') <br> <span style="color:#c1272d"> @ </span> @lang('common.IIM-Kashipur')
@@ -408,7 +408,7 @@
                           </div>
                           <h3 style="font-size: 18px;color: #181832;font-weight: 600;line-height: 30px;}"> @if(GetLang()=='en') {{substr_replace($n->short,'...',150)}} @else  {{substr_replace($n->short_h,'...',200)}}  @endif</h3>
 
-                          <a  @if($n->external=='yes')@if (GetLang() == 'en') onclick="return confirm('Would you like to leave this site?')"  @else onclick="return confirm('क्या आप यह साइट छोड़ना चाहेंगे?')" @endif target="_blank"   href="{{$n->url}}" @elseif($n->external=='no')  href="{{url($n->url)}}" @endif class="view-btn pt-4" style="font-size: 18px;background:transparent;"> @lang('common.view_all') <i class="material-icons-round">east</i></a>
+                          <a  @if($n->external=='yes') @if (GetLang() == 'en') onclick="return confirm('This link will take you to an external web site.')"  @else onclick="return confirm('यह लिंक आपको एक बाहरी वेब साइट पर ले जाएगा।')" @endif target="_blank"   href="{{$n->url}}" @elseif($n->external=='no')  href="{{url($n->url)}}" @endif class="view-btn pt-4" style="font-size: 18px;background:transparent;"> @lang('common.view_all') <i class="material-icons-round">east</i></a>
 
                         </div>
 
@@ -432,7 +432,7 @@
                           @if(count(Getstundentdetail($M->id))>0)
                           @foreach(Getstundentdetail($M->id) as $key=>$n)
                           <li>
-                             <a  @if($n->external=='yes')@if (GetLang() == 'en') onclick="return confirm('Would you like to leave this site?')"  @else onclick="return confirm('क्या आप यह साइट छोड़ना चाहेंगे?')" @endif target="_blank"  href="{{$n->url}}" @elseif($n->external=='no')  href="{{url($n->url)}}" @endif>   @if(GetLang()=='en') {{ $n->title }} @else {{ $n->title_h }}  @endif
+                             <a  @if($n->external=='yes')  @if (GetLang() == 'en') onclick="return confirm('This link will take you to an external web site.')"  @else onclick="return confirm('यह लिंक आपको एक बाहरी वेब साइट पर ले जाएगा।')" @endif target="_blank"  href="{{$n->url}}" @elseif($n->external=='no')  href="{{url($n->url)}}" @endif>   @if(GetLang()=='en') {{ $n->title }} @else {{ $n->title_h }}  @endif
                              <i class="material-icons-round">east</i>
                              </a>
                           </li>
@@ -451,9 +451,9 @@
            <div class="col-md-4 col-lg-4 mb-4">
             <div class="linkedin-set">
 
- 
+
             <h3 class="social-heading"> Linkedin Feed </h3>
- 
+
             <iframe src="https://www.linkedin.com/embed/feed/update/urn:li:ugcPost:6966090170878050305" allowfullscreen="" title="Embedded post" width="100%" height="350" frameborder="0"></iframe>
 
             </div>
@@ -467,9 +467,9 @@
          <div class="col-md-4 col-lg-4 mb-4">
             <div class="linkedin-set instagram-bg">
 
- 
+
             <h3 class="social-heading"> Instagram Feed </h3>
- 
+
             <iframe src="https://www.linkedin.com/embed/feed/update/urn:li:ugcPost:6966090170878050305" allowfullscreen="" title="Embedded post" width="100%" height="350" frameborder="0"></iframe>
 
             </div>

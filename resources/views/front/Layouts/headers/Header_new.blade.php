@@ -9,7 +9,7 @@
                             @foreach (GETheadertopcontent($M->id) as $key => $Ms)
                                 <li>
                                     @if ($Ms->external == 'yes' && $Ms->url != '')
-                                        <a @if (GetLang() == 'en') onclick="return confirm('Would you like to leave this site?')"  @else onclick="return confirm('क्या आप यह साइट छोड़ना चाहेंगे?')" @endif
+                                        <a @if (GetLang() == 'en') onclick="return confirm('This link will take you to an external web site.')"  @else onclick="return confirm('यह लिंक आपको एक बाहरी वेब साइट पर ले जाएगा।')" @endif
                                             target="_blank" href="{{ url($Ms->url) ?? '' }}">
                                             @if (GetLang() == 'en')
                                                 {{ $Ms->title ?? '' }}
@@ -183,7 +183,7 @@
                                 <img src="{{ asset('uploads/site-logo/' . GetOrganisationAllDetails('logo2')) }}"
                                     alt="{{ GetOrganisationAllDetails('Logo_Alt2') }}"
                                     title="{{ GetOrganisationAllDetails('Logo_Title2') }}" class="img-fluid"
-                                    onclick="return confirm('Are you sure  external window open?')">
+                                    @if (GetLang() == 'en') onclick="return confirm('This link will take you to an external web site.')"  @else onclick="return confirm('यह लिंक आपको एक बाहरी वेब साइट पर ले जाएगा।')" @endif>
                             </a>
                         @endif
                         @if (GetOrganisationAllDetails('logo3') != '')
@@ -191,7 +191,7 @@
                                 <img src="{{ asset('uploads/site-logo/' . GetOrganisationAllDetails('logo3')) }}"
                                     alt="{{ GetOrganisationAllDetails('Logo_Alt3') }}"
                                     title="{{ GetOrganisationAllDetails('Logo_Title3') }}" class="img-fluid dic"
-                                    onclick="return confirm('Are you sure  external window open?')">
+                                    @if (GetLang() == 'en') onclick="return confirm('This link will take you to an external web site.')"  @else onclick="return confirm('यह लिंक आपको एक बाहरी वेब साइट पर ले जाएगा।')" @endif>
                             </a>
                         @endif
                         @if (GetOrganisationAllDetails('logo4') != '')
@@ -199,7 +199,7 @@
                                 <img src="{{ asset('uploads/site-logo/' . GetOrganisationAllDetails('logo4')) }}"
                                     alt="{{ GetOrganisationAllDetails('Logo_Alt4') }}"
                                     title="{{ GetOrganisationAllDetails('Logo_Title4') }}" class="img-fluid"
-                                    onclick="return confirm('Are you sure  external window open?')">
+                                    @if (GetLang() == 'en') onclick="return confirm('This link will take you to an external web site.')"  @else onclick="return confirm('यह लिंक आपको एक बाहरी वेब साइट पर ले जाएगा।')" @endif>
                             </a>
                         @endif
                     </div>
@@ -247,7 +247,7 @@
                                                         @if ($C->external == 'yes')
                                                             <li class="dropdown-item">
                                                                 <a href="{{ url($C->url) }}"
-                                                                    onclick="return confirm('Are you sure  external window open?')"
+                                                                    @if (GetLang() == 'en') onclick="return confirm('This link will take you to an external web site.')"  @else onclick="return confirm('यह लिंक आपको एक बाहरी वेब साइट पर ले जाएगा।')" @endif
                                                                     target="_blank">
                                                                     @if (GetLang() == 'en')
                                                                         {{ $C->name }}
@@ -285,7 +285,7 @@
                                             @if ($S->external == 'yes')
                                                 <li class="dropdown-item">
                                                     <a href="{{ url($S->url) }}"
-                                                        onclick="return confirm('Are you sure  external window open?')"
+                                                        @if (GetLang() == 'en') onclick="return confirm('This link will take you to an external web site.')"  @else onclick="return confirm('यह लिंक आपको एक बाहरी वेब साइट पर ले जाएगा।')" @endif
                                                         target="_blank">
                                                         @if (GetLang() == 'en')
                                                             {{ $S->name }}
@@ -324,7 +324,7 @@
                             @if ($M->external == 'yes')
                                 <li class="nav-item">
                                     <a href="{{ url($M->url) }}"
-                                        onclick="return confirm('Are you sure  external window open?')"
+                                        @if (GetLang() == 'en') onclick="return confirm('This link will take you to an external web site.')"  @else onclick="return confirm('यह लिंक आपको एक बाहरी वेब साइट पर ले जाएगा।')" @endif
                                         target="_blank">
                                         @if (GetLang() == 'en')
                                             {{ $M->name }}
@@ -411,7 +411,7 @@
                                             </p>
 
                                             <div class="btn-wrap about-body">
-                                                <a @if ($M->external == 'yes') onclick="return confirm('Are you sure  external window open?')"  target="_blank" href="{{ url($M->url) }}" @else    href="{{ url($M->url) }}" @endif
+                                                <a @if ($M->external == 'yes') @if (GetLang() == 'en') onclick="return confirm('This link will take you to an external web site.')"  @else onclick="return confirm('यह लिंक आपको एक बाहरी वेब साइट पर ले जाएगा।')" @endif  target="_blank" href="{{ url($M->url) }}" @else    href="{{ url($M->url) }}" @endif
                                                     class="btn btn-orange">@lang('common.read_more')</a>
                                             </div>
 
@@ -474,14 +474,25 @@
 <!--Start Sticky Icon-->
 <div class="sticky-i d-none">
     <div class="sticky-icon">
-        <a href="https://www.facebook.com/IndianInstituteOfManagementKashipur" target="_blank" class="Facebook"
+        @if (GetOrganisationAllDetails('facebook') != '')
+            <a href="{{ GetOrganisationAllDetails('facebook') }}" @if (GetLang() == 'en') onclick="return confirm('This link will take you to an external web site.')"  @else onclick="return confirm('यह लिंक आपको एक बाहरी वेब साइट पर ले जाएगा।')" @endif target="_blank" class="Facebook"
             title="Facebook"><i class="fa fa-facebook-f"> </i> Facebook </a>
-        <a href="https://twitter.com/IIMKsp" class="Twitter" target="_blank" title="Twitter"><i
-                class="fa fa-twitter" title="Twitter"> </i> Twitter </a>
-        <a href="https://www.instagram.com/iimkashipur/" class="Instagram" target="_blank" title="Instagram"><i
-                class="fa fa-instagram"></i> Instagram </a>
-        <a href="https://www.linkedin.com/school/iimkashipur/" class="Youtube" target="_blank" title="Linkedin"><i
-                class="fa fa-linkedin"> </i> Linkedin </a>
+        @endif
+
+        @if (GetOrganisationAllDetails('twitter') != '')
+            <a href="{{ GetOrganisationAllDetails('twitter') }}" class="Twitter" @if (GetLang() == 'en') onclick="return confirm('This link will take you to an external web site.')"  @else onclick="return confirm('यह लिंक आपको एक बाहरी वेब साइट पर ले जाएगा।')" @endif target="_blank" title="Twitter"><i
+            class="fa fa-twitter" title="Twitter"> </i> Twitter </a>
+        @endif
+
+        @if (GetOrganisationAllDetails('instagram') != '')
+            <a href="{{ GetOrganisationAllDetails('instagram') }}" @if (GetLang() == 'en') onclick="return confirm('This link will take you to an external web site.')"  @else onclick="return confirm('यह लिंक आपको एक बाहरी वेब साइट पर ले जाएगा।')" @endif class="Instagram" target="_blank" title="Instagram"><i
+            class="fa fa-instagram"></i> Instagram </a>
+        @endif
+
+        @if (GetOrganisationAllDetails('linkedin') != '')
+            <a href="{{ GetOrganisationAllDetails('linkedin') }}" class="Youtube" @if (GetLang() == 'en') onclick="return confirm('This link will take you to an external web site.')"  @else onclick="return confirm('यह लिंक आपको एक बाहरी वेब साइट पर ले जाएगा।')" @endif target="_blank" title="Linkedin"><i
+            class="fa fa-linkedin"> </i> Linkedin </a>
+         @endif
     </div>
 
 </div>

@@ -39,7 +39,7 @@
 
 
                             <li class="nav-item" role="presentation">
-                            <a @if($M->external=='yes')  @if (GetLang() == 'en') onclick="return confirm('Would you like to leave this site?')"  @else onclick="return confirm('क्या आप यह साइट छोड़ना चाहेंगे?')" @endif  target="_blank" href="{{url($M->url)}}" @elseif($M->external=='no')  href="{{url($M->url)}}" @else href="{{url($M->slug)}}" @endif>
+                            <a @if($M->external=='yes') @if (GetLang() == 'en') onclick="return confirm('This link will take you to an external web site.')"  @else onclick="return confirm('यह लिंक आपको एक बाहरी वेब साइट पर ले जाएगा।')" @endif  target="_blank" href="{{url($M->url)}}" @elseif($M->external=='no')  href="{{url($M->url)}}" @else href="{{url($M->slug)}}" @endif>
                           <span class="nav-link">    @if(GetLang()=='en') {{ $M->title }} @else {{ $M->title_h }}  @endif <i class="material-icons-round ml-2">east</i> </span>
                             </a>
                             </li>
@@ -255,7 +255,7 @@
 
                             <div class="item">
 
-                                <a href="{{ url($Ms->url) }}" @if (GetLang() == 'en') onclick="return confirm('Would you like to leave this site?')"  @else onclick="return confirm('क्या आप यह साइट छोड़ना चाहेंगे?')" @endif target="_blank"
+                                <a href="{{ url($Ms->url) }}" @if (GetLang() == 'en') onclick="return confirm('This link will take you to an external web site.')"  @else onclick="return confirm('यह लिंक आपको एक बाहरी वेब साइट पर ले जाएगा।')" @endif target="_blank"
 
                                  class="client-slider-img">
 

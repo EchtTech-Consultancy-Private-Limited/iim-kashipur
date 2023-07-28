@@ -26,7 +26,7 @@
                                                     class="img-fluid">
 
                                                 <a
-                                                    @if ($Ms->external == 'yes' && $Ms->url != '') @if (GetLang() == 'en') onclick="return confirm('Would you like to leave this site?')"  @else onclick="return confirm('क्या आप यह साइट छोड़ना चाहेंगे?')" @endif target="_blank" href="{{ url($Ms->url) }}" @elseif($Ms->external == 'no' && $Ms->url != '')  href="{{ url($Ms->url) }}" @else href="{{ url($Ms->slug) }}" @endif>
+                                                    @if ($Ms->external == 'yes' && $Ms->url != '') @if (GetLang() == 'en') onclick="return confirm('This link will take you to an external web site.')"  @else onclick="return confirm('यह लिंक आपको एक बाहरी वेब साइट पर ले जाएगा।')" @endif target="_blank" href="{{ url($Ms->url) }}" @elseif($Ms->external == 'no' && $Ms->url != '')  href="{{ url($Ms->url) }}" @else href="{{ url($Ms->slug) }}" @endif>
                                                     @if (GetLang() == 'en')
                                                         {{ $Ms->title }}
                                                     @else
@@ -66,7 +66,7 @@
                                                     class="img-fluid">
 
                                                 <a
-                                                    @if ($Ms->external == 'yes' && $Ms->url != '') @if (GetLang() == 'en') onclick="return confirm('Would you like to leave this site?')"  @else onclick="return confirm('क्या आप यह साइट छोड़ना चाहेंगे?')" @endif target="_blank" href="{{ url($Ms->url) }}" @elseif($Ms->external == 'no' && $Ms->url != '')  href="{{ url($Ms->url) }}" @else href="{{ url($Ms->slug) }}" @endif>
+                                                    @if ($Ms->external == 'yes' && $Ms->url != '') @if (GetLang() == 'en') onclick="return confirm('This link will take you to an external web site.')"  @else onclick="return confirm('यह लिंक आपको एक बाहरी वेब साइट पर ले जाएगा।')" @endif target="_blank" href="{{ url($Ms->url) }}" @elseif($Ms->external == 'no' && $Ms->url != '')  href="{{ url($Ms->url) }}" @else href="{{ url($Ms->slug) }}" @endif>
                                                     @if (GetLang() == 'en')
                                                         {{ $Ms->title }}
                                                     @else
@@ -106,7 +106,7 @@
                                                             alt="arrow" class="img-fluid">
 
                                                         <a
-                                                            @if ($Ms->external == 'yes' && $Ms->url != '') @if (GetLang() == 'en') onclick="return confirm('Would you like to leave this site?')"  @else onclick="return confirm('क्या आप यह साइट छोड़ना चाहेंगे?')" @endif  target="_blank" href="{{ url($Ms->url) }}" @elseif($Ms->external == 'no' && $Ms->url != '')  href="{{ url($Ms->url) }}" @else href="{{ url($Ms->slug) }}" @endif>
+                                                            @if ($Ms->external == 'yes' && $Ms->url != '') @if (GetLang() == 'en') onclick="return confirm('This link will take you to an external web site.')"  @else onclick="return confirm('यह लिंक आपको एक बाहरी वेब साइट पर ले जाएगा।')" @endif  target="_blank" href="{{ url($Ms->url) }}" @elseif($Ms->external == 'no' && $Ms->url != '')  href="{{ url($Ms->url) }}" @else href="{{ url($Ms->slug) }}" @endif>
                                                             @if (GetLang() == 'en')
                                                                 {{ $Ms->title }}
                                                             @else
@@ -172,7 +172,7 @@
                                         <li>
                                             <a href="{{ GetOrganisationAllDetails('facebook') }}"
                                                 title="{{ GetOrganisationAllDetails('Facebook_title') }}"
-                                                @if (GetLang() == 'en') onclick="return confirm('Would you like to leave this site?')"  @else onclick="return confirm('क्या आप यह साइट छोड़ना चाहेंगे?')" @endif
+                                                @if (GetLang() == 'en') onclick="return confirm('This link will take you to an external web site.')"  @else onclick="return confirm('यह लिंक आपको एक बाहरी वेब साइट पर ले जाएगा।')" @endif
                                                 target="_blank">
                                                 <i class="fa fa-facebook" aria-hidden="true"></i>
                                             </a>
@@ -182,7 +182,7 @@
                                         <li>
                                             <a href="{{ GetOrganisationAllDetails('twitter') }}"
                                                 title="{{ GetOrganisationAllDetails('Twitter_title') }}"
-                                                @if (GetLang() == 'en') onclick="return confirm('Would you like to leave this site?')"  @else onclick="return confirm('क्या आप यह साइट छोड़ना चाहेंगे?')" @endif
+                                                @if (GetLang() == 'en') onclick="return confirm('This link will take you to an external web site.')"  @else onclick="return confirm('यह लिंक आपको एक बाहरी वेब साइट पर ले जाएगा।')" @endif
                                                 target="_blank">
                                                 <i class="fa fa-twitter" aria-hidden="true"></i>
                                             </a>
@@ -193,7 +193,7 @@
                                         <li>
                                             <a href="{{ GetOrganisationAllDetails('instagram') }}"
                                                 title="{{ GetOrganisationAllDetails('Instagram_title') }}"
-                                                @if (GetLang() == 'en') onclick="return confirm('Would you like to leave this site?')"  @else onclick="return confirm('क्या आप यह साइट छोड़ना चाहेंगे?')" @endif
+                                                @if (GetLang() == 'en') onclick="return confirm('This link will take you to an external web site.')"  @else onclick="return confirm('यह लिंक आपको एक बाहरी वेब साइट पर ले जाएगा।')" @endif
                                                 target="_blank">
                                                 <i class="fa fa-instagram" aria-hidden="true"></i>
                                             </a>
@@ -204,7 +204,7 @@
                                         <li>
                                             <a href="{{ GetOrganisationAllDetails('linkedin') }}"
                                                 title="{{ GetOrganisationAllDetails('LinkedIn_title') }}"
-                                                @if (GetLang() == 'en') onclick="return confirm('Would you like to leave this site?')"  @else onclick="return confirm('क्या आप यह साइट छोड़ना चाहेंगे?')" @endif
+                                                @if (GetLang() == 'en') onclick="return confirm('This link will take you to an external web site.')"  @else onclick="return confirm('यह लिंक आपको एक बाहरी वेब साइट पर ले जाएगा।')" @endif
                                                 target="_blank">
                                                 <i class="fa fa-linkedin" aria-hidden="true"></i>
                                             </a>

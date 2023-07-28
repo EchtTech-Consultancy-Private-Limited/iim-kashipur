@@ -22,7 +22,7 @@
                             @foreach(GETcontentservices($M->id) as $key=>$Ms)
 
                             <div class="item">
-                                <a  @if($Ms->external=='yes') @if (GetLang() == 'en') onclick="return confirm('Would you like to leave this site?')"  @else onclick="return confirm('क्या आप यह साइट छोड़ना चाहेंगे?')" @endif target="_blank" href="{{$Ms->url}}" @elseif($Ms->external=='no')  href="{{url($Ms->url)}}" @endif>
+                                <a  @if($Ms->external=='yes') @if (GetLang() == 'en') onclick="return confirm('This link will take you to an external web site.')"  @else onclick="return confirm('यह लिंक आपको एक बाहरी वेब साइट पर ले जाएगा।')" @endif target="_blank" href="{{$Ms->url}}" @elseif($Ms->external=='no')  href="{{url($Ms->url)}}" @endif>
                                 <div class="academic-card">
                                     <div class="academic-img">
                                         <img  src="{{asset('uploads/header_top'."/".$Ms->image)}}"  title="{{ $Ms->Image_Title }}"  alt="{{ $Ms->Image_Alt }}" class="img-fluid" />
