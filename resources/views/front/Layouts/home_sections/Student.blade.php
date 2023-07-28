@@ -60,7 +60,7 @@
                 <div class="col-md-4">
                     <div class="event-card" data-aos="fade-up" data-aos-duration="3000">
                         <h2 class="heading-black text-start">
-                         News & Events
+                         @lang('common.News-Events')
                         </h2>
                         <div class="event-body">
                             <div class="event-image">
@@ -76,7 +76,7 @@
 
                                 <div class="btn-wrap">
 
-                                    <a  @if($Ms->external=='yes') onclick="return confirm('Are you sure  external window open?')"  href="{{$Ms->url}}" @elseif($Ms->external=='no')  href="{{url($Ms->url)}}"  @endif class="red-link">
+                                    <a  @if($Ms->external=='yes') @if (GetLang() == 'en') onclick="return confirm('This link will take you to an external web site.')"  @else onclick="return confirm('यह लिंक आपको एक बाहरी वेब साइट पर ले जाएगा।')" @endif href="{{$Ms->url}}" @elseif($Ms->external=='no')  href="{{url($Ms->url)}}"  @endif class="red-link">
                                         @lang('common.READ_MORE')  <img src="assets/images/read-more.svg" alt="read-more" class="img-fluid">
                                     </a>
 
@@ -95,7 +95,7 @@
                 @if($key==0)
                 <div class="col-md-4">
                     <div class="event-card aos-init aos-animate" data-aos="fade-up" data-aos-duration="3000">
-                        <h2 class="heading-black text-start"> Industry Connect</h2>
+                        <h2 class="heading-black text-start"> @lang('common.Industry-Connect')</h2>
                         <div class="event-body">
                             <div class="event-image">
                                 <img src="{{ asset('uploads/header_top/'.$Ms->image) }}" title="{{ $Ms->title }}"  alt="{{ $Ms->title }}" class="img-flud" loading="lazy">
@@ -110,7 +110,7 @@
 
                                 <div class="btn-wrap">
 
-                                    <a  @if($Ms->external=='yes') onclick="return confirm('Are you sure  external window open?')"  href="{{$Ms->url}}" @elseif($Ms->external=='no')  href="{{url($Ms->url)}}"  @endif class="red-link">
+                                    <a  @if($Ms->external=='yes')@if (GetLang() == 'en') onclick="return confirm('This link will take you to an external web site.')"  @else onclick="return confirm('यह लिंक आपको एक बाहरी वेब साइट पर ले जाएगा।')" @endif  href="{{$Ms->url}}" @elseif($Ms->external=='no')  href="{{url($Ms->url)}}"  @endif class="red-link">
                                         @lang('common.READ_MORE')  <img src="assets/images/read-more.svg" alt="read-more" class="img-fluid">
                                     </a>
 
@@ -126,7 +126,7 @@
 
                 <div class="col-md-4">
                     <div class="event-card aos-init aos-animate" data-aos="fade-up" data-aos-duration="3000">
-                        <h2 class="heading-black text-start">Notice Board</h2>
+                        <h2 class="heading-black text-start">@lang('common.Notice-Board')</h2>
                      <div class="myslider">
 
 
@@ -145,7 +145,7 @@
                                 </h3>
 
                                 <div class="btn-wrap">
-                                    <a  @if($Ms->external=='yes') onclick="return confirm('Are you sure  external window open?')"  href="{{$Ms->url}}" @elseif($Ms->external=='no')  href="{{url($Ms->url)}}"  @endif class="red-link">
+                                    <a  @if($Ms->external=='yes') @if (GetLang() == 'en') onclick="return confirm('This link will take you to an external web site.')"  @else onclick="return confirm('यह लिंक आपको एक बाहरी वेब साइट पर ले जाएगा।')" @endif href="{{$Ms->url}}" @elseif($Ms->external=='no')  href="{{url($Ms->url)}}"  @endif class="red-link">
                                         @lang('common.READ_MORE')  <img src="assets/images/read-more.svg" alt="read-more" class="img-fluid">
                                     </a>
                                 </div>
@@ -182,7 +182,7 @@
              </div>
         </div>
              </div>
-             
+
         @endforeach
     </section>
 

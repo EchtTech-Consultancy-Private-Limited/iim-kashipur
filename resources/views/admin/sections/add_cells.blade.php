@@ -139,14 +139,14 @@
                                     @if ($id) value="{{ $data->chairperson }}" @else value="{{ old('chairperson') }}" @endif  placeholder="Please enter Chairperson" value=""><br>
                                     <label for="chairperson" id="chairperson-error" class="error"></label> --}}
 
-                                    <select class="form-control" name="chairperson" required id="chairperson">
+                                    <select class="form-control" name="chairperson"  id="chairperson">
                                         <option value=""> Select Type </option>
                                         @foreach ($profile as $profiles )
                                         <option  value="{{$profiles->id }}" {{$profiles->id == $data->chairperson  ? 'selected' : ''}}>{{$profiles->title}}</option>
                                         @endforeach
                                     </select>
                                 </div>
-                                <label for="chairperson" id="chairperson-error" class="error"></label>
+                                {{-- <label for="chairperson" id="chairperson-error" class="error"></label> --}}
                             </div>
 
 

@@ -2386,7 +2386,7 @@ span.text-hili-top {
         height: 330px !important;
     }
 
-    
+
 
 }
 
@@ -4216,7 +4216,7 @@ section.excellence-wrap.pt-5 {
         background-repeat: no-repeat;
         padding: 50px 40px;
     }
-}   
+}
 
 /* Sticky SOcial Icon Css */
 
@@ -4666,7 +4666,7 @@ section.excellence-wrap.pt-5 {
     background-color: rgb(0, 0, 0); /* Fallback color */
     background-color: rgba(0, 0, 0, 0.5); /* Black w/ opacity */
   }
-  
+
   /* Modal Content */
   .modal-content {
     position: relative;
@@ -4681,27 +4681,27 @@ section.excellence-wrap.pt-5 {
     -webkit-animation-duration: 0.4s;
     animation-name: animatetop;
     animation-duration: 0.4s;
-  
+
     font-family: "Open Sans", sans-serif;
     background: #fff;
     -webkit-box-shadow: 0px 0px 19px 3px rgba(0, 0, 0, 0.08);
     -moz-box-shadow: 0px 0px 19px 3px rgba(0, 0, 0, 0.08);
     box-shadow: 0px 0px 19px 3px rgba(0, 0, 0, 0.08);
-  
+
     display: flex;
     align-items: center;
     justify-content: space-between;
   }
-  
+
   .modal-content-left,
   .modal-content-right {
     flex: 0 1 auto;
   }
-  
+
   .modal-content-left {
     flex: 2;
   }
-  
+
   .modal-content-left img {
     width: 40rem;
     max-width: 95%;
@@ -4710,13 +4710,13 @@ section.excellence-wrap.pt-5 {
     display: block;
     border-radius: 2px;
   }
-  
+
   .modal-content-right {
     flex: 2;
     max-width: 100%;
     padding: 1rem 2rem;
   }
-  
+
   /* Add Animation */
   @-webkit-keyframes animatetop {
     from {
@@ -4728,7 +4728,7 @@ section.excellence-wrap.pt-5 {
       opacity: 1;
     }
   }
-  
+
   @keyframes animatetop {
     from {
       top: -300px;
@@ -4739,7 +4739,7 @@ section.excellence-wrap.pt-5 {
       opacity: 1;
     }
   }
-  
+
   /* The Close Button */
   .close,
   .close-imp {
@@ -4750,7 +4750,7 @@ section.excellence-wrap.pt-5 {
     border-radius: 2px;
     transition: 0.4s ease-out;
   }
-  
+
   .close:hover,
   .close:focus,
   .close-imp:hover,
@@ -4759,7 +4759,7 @@ section.excellence-wrap.pt-5 {
     text-decoration: none;
     cursor: pointer;
   }
-  
+
   .modal-header {
     display: flex;
     justify-content: space-between;
@@ -4768,28 +4768,28 @@ section.excellence-wrap.pt-5 {
     margin: 0;
     padding: 0;
   }
-  
+
   .modal-header p {
     margin: 0;
     padding: 0;
   }
-  
+
   .modal-header,
   .modal-body,
   .modal-footer {
     padding: 0.5rem 3rem;
   }
-  
+
   .modal-header {
     padding-top: 2rem;
   }
-  
+
   .modal-footer {
     padding-bottom: 2rem;
   }
-  
+
   /* The Button */
-  
+
   .btn {
     display: block;
     background: #222;
@@ -4800,13 +4800,13 @@ section.excellence-wrap.pt-5 {
     /* margin: 3rem auto; */
     transition: all 0.4s ease-in;
   }
-  
+
   .btn:hover {
     cursor: pointer;
     color: #222;
     background: #fff;
   }
-  
+
   span.close.gov {
     position: absolute;
     right: 0px;
@@ -4903,7 +4903,7 @@ a.prev {
   .box-club {
     scrollbar-width: thin !important;
     scrollbar-color: #6969dd #e0e0e0 !important;
-   
+
   }
 
   /* width */
@@ -4914,7 +4914,7 @@ a.prev {
 
   /* Handle */
   .box-club::-webkit-scrollbar-thumb, .box-club::-webkit-scrollbar-thumb:hover {
-  background-image: url("http://localhost/kashipur-design1/public/uploads/scroll-icon.png"), 
+  background-image: url("http://localhost/kashipur-design1/public/uploads/scroll-icon.png"),
   linear-gradient(100deg, transparent, transparent) !important;
   background-position: center bottom, center -40px;
   background-repeat: no-repeat, no-repeat;
@@ -4963,7 +4963,7 @@ h2.heading-light.h-club-box {
     max-width: 1200px;
     margin: 0 auto;
   }
-  
+
   /* The actual timeline (the vertical ruler) */
   .timeline::after {
     content: '';
@@ -4975,7 +4975,7 @@ h2.heading-light.h-club-box {
     left: 50%;
     margin-left: -3px;
   }
-  
+
   /* Container around content */
   .container1 {
     padding: 10px 30px 10px 0;
@@ -4987,7 +4987,7 @@ h2.heading-light.h-club-box {
   .container1.right {
     padding: 10px 0px 10px 30px;
 }
-  
+
   /* The circles on the timeline */
   .container1::after {
     content: '';
@@ -5001,17 +5001,17 @@ h2.heading-light.h-club-box {
     border-radius: 50%;
     z-index: 1;
   }
-  
+
   /* Place the container to the left */
   .left {
     left: 0;
   }
-  
+
   /* Place the container to the right */
   .right {
     left: 50%;
   }
-  
+
   /* Add arrows to the left container (pointing right) */
   .left::before {
     content: " ";
@@ -5025,7 +5025,7 @@ h2.heading-light.h-club-box {
     border-width: 10px 0 10px 10px;
     border-color: transparent transparent transparent #ffb441;
   }
-  
+
   /* Add arrows to the right container (pointing left) */
   .right::before {
     content: " ";
@@ -5039,12 +5039,12 @@ h2.heading-light.h-club-box {
     border-width: 10px 10px 10px 0;
     border-color: transparent #ffb441 transparent transparent;
   }
-  
+
   /* Fix the circle for containers on the right side */
   .right::after {
     left: -13px;
   }
-  
+
   /* The actual content */
   .content {
     padding: 20px;
@@ -5081,21 +5081,21 @@ h2.heading-light.h-club-box {
 .text-cont {
     padding-right: 20px;
 }
-  
+
   /* Media queries - Responsive timeline on screens less than 600px wide */
   @media screen and (max-width: 600px) {
     /* Place the timelime to the left */
     .timeline::after {
     left: 20px;
     }
-    
+
     /* Full-width containers */
     .container1, .container1.right {
     width: 100%;
     padding-left: 48px;
     padding-right: 0px;
     }
-    
+
     /* Make sure that all arrows are pointing leftwards */
     .container1::before {
         left: 38px;
@@ -5103,13 +5103,13 @@ h2.heading-light.h-club-box {
         border-width: 10px 10px 10px 0;
         border-color: transparent #ffb441 transparent transparent;
     }
-  
+
     /* Make sure all circles are at the same spot */
     .left::after, .right::after {
     left: 7px;
     top: 16px;
     }
-    
+
     /* Make all right containers behave like the left ones */
     .right {
     left: 0%;
@@ -5132,7 +5132,7 @@ h2.heading-light.h-club-box {
 }
 
 .event-content.notice-body h3.title {
-    padding:0px 0 5px;    
+    padding:0px 0 5px;
 }
 
 .event-content.notice-body {
@@ -5166,7 +5166,7 @@ img.img-icon {
 .marquee {
     overflow: hidden;
     box-sizing: border-box;
-    position: relative;   
+    position: relative;
     align-items: center;
     justify-content: center;
     /* border: 2px solid #000; */
@@ -5178,7 +5178,7 @@ img.img-icon {
     /* white-space: nowrap; */
     margin: auto;
   }
-  
+
   .marquee--inner {
     display: block;
     width: 100%;
@@ -5186,21 +5186,21 @@ img.img-icon {
     animation: marquee 10s linear infinite;
     padding: 10px;
     behavior: scroll;
-    
+
   }
-  
+
   .marquee--inner:hover{
       animation-play-state: paused;
-      
+
   }
-  
+
   /* span {
     float: left;
     width: 50%;
     overflow: hidden;
   } */
-  
-  
+
+
   @keyframes marquee {
     to {
         transform: translateY(-50%);
@@ -5325,7 +5325,7 @@ img.img-icon {
     display: none;
     visibility: hidden;
   }
-  
+
   .btn-gallery img {
     max-width: 300px;
     height: auto;
@@ -5372,12 +5372,12 @@ table#example {
 
 div#example_length, div#example_filter {
     margin-bottom: 10px;
-}   
+}
 
 thead + tbody tr:first-child {
     color: black !important;
     font-weight: 100 !important;
-    background-color: transparent !important; 
+    background-color: transparent !important;
 }
 
 .sidebarwraper ul li.hasnested.opened li.opened .plus.internal-menu-plus {
@@ -5675,7 +5675,13 @@ a.site-text {
     visibility: visible;
 }
 
-.dropdown .dropdown-menu:focus, ul.dropdown-menu.show, .dropdown-toggle.focus-open-add.show + .dropdown-menu.add-class-focus, .dropdown-toggle.internal-add.show + .dropdown-menu.internal-add-show {   
+
+
+
+
+.dropdown .dropdown-menu:focus, ul.dropdown-menu.show, .dropdown-toggle.focus-open-add.show + .dropdown-menu.add-class-focus, .dropdown-toggle.internal-add.show + .dropdown-menu.internal-add-show {
+
+
     transform: translateY(0px);
     opacity: 1;
     visibility: visible;
@@ -5685,6 +5691,7 @@ img.hover-shadow.cursor {
     height: 135px !important;
     border: 1px solid #ed204445;
     padding: 5px;
+
 }
 
 .social-icon i {
@@ -5704,3 +5711,4 @@ img.hover-shadow.cursor {
     width: 250px !important;
     padding-top: 15px !important;
 }
+

@@ -70,6 +70,20 @@
 
                                 @csrf
 
+
+                                <div class="col-md-12">
+                                    <label for="type" class="col-sm-12 col-form-label">Page Content Type* </label>
+                                    <div class="col-sm-12">
+                                        <select class="form-control" aria-label="Default select example" name="type"
+                                        value="{{ old('type') }}"><br>
+                                        <option selected>Please select status</option>
+                                        <option value="1" {{ $value->type == 1 ? 'selected' : '' }}>Inner page section</option>
+                                        <option value="0" {{ $value->type == 0 ? 'selected' : '' }}>Home Section</option>
+                                    </select><br>
+
+                                    </div>
+                                </div>
+
                                 <div class="col-md-12">
 
                                     <label for="inputText" class="col-sm-12 col-form-label">Page Title*</label>
@@ -520,6 +534,22 @@
 
 
 
+                                                <div class="col-md-12"  >
+
+                                                    <div class="form-group"> <label for="form_name">
+
+
+                                                      <input type="radio" value="no" name="external"  checked   style="margin-left:50px;" id="checkboxs"> &nbsp;Internal URL </label>
+
+                                                       <input type="radio" value="yes" name="external"   style="margin-left:50px;" id="checkbox"> &nbsp;External URL  </label>
+
+                                                        <input  type="text" name="url1"  placeholder="please enter external url" class="form-control"  >
+
+                                                    </div>
+
+                                                </div>
+
+
                                                 <div class="form-group col-md-6">
 
                                                     <label for="status">status</label>
@@ -734,6 +764,22 @@
 
 
 
+                                                            <div class="col-md-12"  >
+
+                                                                <div class="form-group"> <label for="form_name">
+
+
+                                                                  <input type="radio" value="no" name="external"  checked   style="margin-left:50px;" id="checkboxs"> &nbsp;Internal URL </label>
+
+                                                                   <input type="radio" value="yes" name="external"   style="margin-left:50px;" id="checkbox"> &nbsp;External URL  </label>
+
+                                                                    <input  type="text" name="url1" id="url1" placeholder="please enter external url" class="form-control"  >
+
+                                                                </div>
+
+                                                            </div>
+
+
                                                             <div class="form-group col-md-6">
 
                                                                 <label for="form-email">sort order</label>
@@ -895,6 +941,9 @@
                         $("#imagestatus").val(data.item.status);
                         $("#gallery_id").val(data.item.gallery_id);
                         $("#imageoldid").val(data.item.large_image);
+                        $("#url1").val(data.item.url);
+
+
 
                     }
 

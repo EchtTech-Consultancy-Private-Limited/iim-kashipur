@@ -302,7 +302,7 @@ function Add_OrganisationStructure(Request $request,$id=null){
             $data->Cell= $request->Cell;
             $data->more_designation_h = $request->more_designation_h;
             $data->media_coordinators= $request->media_coordinators;
-
+            $data->student_council=$request->Student_Council;
 
             $path=public_path('uploads/organisation');
             if($request->hasFile('image')){

@@ -8,8 +8,6 @@
 
         <div class="content-wrapper">
 
-
-
           <div class="row">
 
            <div class="col-md-12 grid-margin stretch-card">
@@ -290,7 +288,7 @@
                     </div>
 
                     <div class="col-md-12">
-                         <label for="department"> Faculty Department *</label>
+                         <label for=""> Faculty Department *</label>
                         <select class="form-control" name="faculty_dept_id">
                                 <option value>Select Department...</option>
                                 @foreach($departments as $departmentlist)
@@ -398,13 +396,26 @@
                     </div>
 
                     <div class="col-md-6">
-
                         <div class="form-group"> <label for="form_name"> Wellness Cootdiantors Member  </label>
 
                             <select name="wellness_cootdiantors" class="form-control">
                                 <option value="">Please Select</option>
                                 <option value="1" {{$data->wellness_cootdiantors == '1' ? 'selected' : ''}}>yes</option>
                                 <option value="0" {{$data->wellness_cootdiantors == '0' ? 'selected' : ''}}>no</option>
+
+                            </select>
+                        </div>
+                    </div>
+
+
+                    <div class="col-md-6">
+
+                        <div class="form-group"> <label for="form_name">Student Council Member </label>
+
+                            <select name="Student_Council" class="form-control">
+                                <option value="">Please Select</option>
+                                <option value="1" {{$data->Student_Council == '1' ? 'selected' : ''}}>Yes</option>
+                                <option value="0" {{$data->Student_Council == '0' ? 'selected' : ''}}>NO</option>
 
 
                             </select>

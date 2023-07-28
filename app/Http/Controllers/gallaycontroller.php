@@ -189,6 +189,8 @@ class gallaycontroller extends Controller
 
               $e->meta_description=$request->description ;
 
+              $e->type=$request->type;
+
               $e->banner_title=$request->banner_title;
 
               $e->banner_alt=$request->banner_alt;
@@ -198,7 +200,6 @@ class gallaycontroller extends Controller
               $e->cover_alt=$request->cover_alt;
 
               $e->sort_order=$request->sort_order;
-
 
               $e->status=$request->status;
 
@@ -381,6 +382,8 @@ class gallaycontroller extends Controller
 
                 $u->meta_title=$request->tittle;
 
+                $u->type=$request->type;
+
                 $u->meta_keywords=$request->keyword;
 
                 $u->meta_description=$request->description ;
@@ -511,6 +514,10 @@ class gallaycontroller extends Controller
 
                       $file->image_alt=$request->image_alt;
 
+                      $file->external=$request->external;
+
+                      $file->url=$request->url1;
+
                       $file->sort_order=$request->order;
 
                       $file->slug=\Str::slug($request->image_title);
@@ -572,6 +579,10 @@ class gallaycontroller extends Controller
                       $file->image_title=$request->image_text;
 
                       $file->image_alt=$request->image_alt;
+
+                      $file->external=$request->external;
+
+                      $file->url=$request->url1;
 
                       $file->sort_order=$request->order;
 

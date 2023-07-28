@@ -3,9 +3,8 @@
 @section('content')
 
     @php
-        $mmenu = @content_menus($type[0]->menu_id);
+        $mmenu = @content_menus($get[0]->id);
     @endphp
-
 
 
     {{-- banner and  breadcrumbs   --}}
@@ -235,7 +234,7 @@
                                                             </a>
                                                         </li>
                                                     @else
-                                                        <li><a 
+                                                        <li><a
                                                                 href={{ url($mmenu[0]->slug . '/' . $S->slug . '/' . $C->slug) }}>
                                                                 @if (GetLang() == 'en')
                                                                     {{ $C->name ?? '' }}
@@ -315,7 +314,7 @@
 
                             @foreach ($item as $students)
 
-                          
+
 
                             <div class="col-md-4 col-lg-4 " title="{{ $students->name }}">
 
@@ -329,7 +328,7 @@
 
                                     <h4> {{ $students->name }}  {{ $students->last_name }}  </h4>
                                     <p>{{ $students->area_specialization }}</p>
-                                   
+
                                 </div>
 
 
@@ -340,7 +339,7 @@
 
 
 
-                            
+
 
                             @endforeach
 
@@ -356,7 +355,7 @@
 
 
 
-                   
+
 
 
                 </div>

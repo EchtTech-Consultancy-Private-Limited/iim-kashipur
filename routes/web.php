@@ -463,10 +463,11 @@ Route::post('/add_feedback',[InnerpageController::class,'add_feedback']);
 //countact us
 Route::get('/contact-us',[InnerpageController::class,'contact_page']);
 Route::post('/add_contact',[InnerpageController::class,'add_contact']);
+
  //gallery section
-Route::get('/multi-image',[InnerpageController::class,'photo_multi_Innerpage']);
+Route::get('/photo-gallery',[InnerpageController::class,'photo_multi_Innerpage']);
 //video section
-Route::get('/multi-video',[InnerpageController::class,'video_multi_Innerpage']);
+Route::get('/video-gallery',[InnerpageController::class,'video_multi_Innerpage']);
 //main menu inner page
 Route::get('{slug?}',[InnerpageController::class,'Menu_barInnerpage']);
 //sub menu inner page

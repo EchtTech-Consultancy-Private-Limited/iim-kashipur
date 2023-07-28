@@ -863,7 +863,7 @@
       });
 
       var data3=$("#url").val();
-    
+
       if(data3=='Events-Activites')
       {
 
@@ -889,7 +889,6 @@
    }
 });
 </script>
-
 
 
 

@@ -382,55 +382,57 @@
 
 
 
-        <div class="col-md-12 mb-5">        
+        <div class="col-md-12 mb-5">
             <div class="row image-section-iimkashipur p-relative mb-3">
-             
+
                    <div class="col-md-6">
                     @foreach(GetstundentdetailS($M->id) as $key=>$n)
                     <div class="post-card col-md-12 box-3">
-     
+
                        <div class="blog-newstyle-2">
                           <div class="section-title-box pt-50">
-     
+
                              <h2 class="life_kashipur">
-     
-                             <a style="color:#181832;"  @if($n->external=='yes') onclick="return confirm('Are you sure  external window open?')" target="_blank"   href="{{$n->url}}" @elseif($n->external=='no')  href="{{url($n->url)}}" @endif>  
+
+                             <a style="color:#181832;"  @if($n->external=='yes') @if (GetLang() == 'en') onclick="return confirm('This link will take you to an external web site.')"  @else onclick="return confirm('यह लिंक आपको एक बाहरी वेब साइट पर ले जाएगा।')" @endif target="_blank"   href="{{$n->url}}" @elseif($n->external=='no')  href="{{url($n->url)}}" @endif>
                                  {{-- @if(GetLang()=='en') {{ $n->title }} @else {{ $n->title_h }}  @endif --}}
-                                
-                                 Life <br> <span style="color:#c1272d"> @ IIM </span> Kashipur  
+
+                                 @lang('common.Life') <br> <span style="color:#c1272d"> @ </span> @lang('common.IIM-Kashipur')
+
+
 
                                 </a>
-     
+
                            </h2>
-     
+
                           </div>
                           <h3 style="font-size: 18px;color: #181832;font-weight: 600;line-height: 30px;}"> @if(GetLang()=='en') {{substr_replace($n->short,'...',150)}} @else  {{substr_replace($n->short_h,'...',200)}}  @endif</h3>
-                         
-                          <a  @if($n->external=='yes') onclick="return confirm('Are you sure  external window open?')" target="_blank"   href="{{$n->url}}" @elseif($n->external=='no')  href="{{url($n->url)}}" @endif class="view-btn pt-4" style="font-size: 18px;background:transparent;">View all <i class="material-icons-round">east</i></a>
-                      
+
+                          <a  @if($n->external=='yes') @if (GetLang() == 'en') onclick="return confirm('This link will take you to an external web site.')"  @else onclick="return confirm('यह लिंक आपको एक बाहरी वेब साइट पर ले जाएगा।')" @endif target="_blank"   href="{{$n->url}}" @elseif($n->external=='no')  href="{{url($n->url)}}" @endif class="view-btn pt-4" style="font-size: 18px;background:transparent;"> @lang('common.view_all') <i class="material-icons-round">east</i></a>
+
                         </div>
-     
+
                     </div>
                     @endforeach
                 </div>
-                   <div class="col-md-6 p-0"> 
-                    <img src="{{ asset('uploads/LifeatIIMKSP template.PNG') }}" alt="IIM Kashipur" title="IIM Kashipur" />        
+                   <div class="col-md-6 p-0">
+                    <img src="{{ asset('uploads/LifeatIIMKSP template.PNG') }}" alt="IIM Kashipur" title="IIM Kashipur" />
                    </div>
-               
-           
+
+
                  <div class="post-card Student_Corner box-1">
                     <div class="col-d">
                        <div class="mb-2 width-max">
                           <h2 class="heading-white text-right">
                              @if(GetLang()=='en') {{ $M->Section }} @else {{ $M->Section_h }}  @endif
                           </h2>
-  
+
                        </div>
                        <ul class="list text-right">
                           @if(count(Getstundentdetail($M->id))>0)
                           @foreach(Getstundentdetail($M->id) as $key=>$n)
                           <li>
-                             <a  @if($n->external=='yes') onclick="return confirm('Are you sure  external window open?')" target="_blank"  href="{{$n->url}}" @elseif($n->external=='no')  href="{{url($n->url)}}" @endif>   @if(GetLang()=='en') {{ $n->title }} @else {{ $n->title_h }}  @endif
+                             <a  @if($n->external=='yes')  @if (GetLang() == 'en') onclick="return confirm('This link will take you to an external web site.')"  @else onclick="return confirm('यह लिंक आपको एक बाहरी वेब साइट पर ले जाएगा।')" @endif target="_blank"  href="{{$n->url}}" @elseif($n->external=='no')  href="{{url($n->url)}}" @endif>   @if(GetLang()=='en') {{ $n->title }} @else {{ $n->title_h }}  @endif
                              <i class="material-icons-round">east</i>
                              </a>
                           </li>
@@ -439,7 +441,7 @@
                        </ul>
                     </div>
                  </div>
-                </div>            
+                </div>
         </div>
 
 
@@ -448,13 +450,15 @@
 
            <div class="col-md-4 col-lg-4 mb-4">
             <div class="linkedin-set">
- 
+
+
             <h3 class="social-heading"> Linkedin Feed </h3>
- 
+
             <iframe src="https://www.linkedin.com/embed/feed/update/urn:li:ugcPost:6966090170878050305" allowfullscreen="" title="Embedded post" width="100%" height="350" frameborder="0"></iframe>
+
             </div>
           </div>
- 
+
            <!-- Linkedin Api  End -->
 
 
@@ -462,32 +466,34 @@
 
          <div class="col-md-4 col-lg-4 mb-4">
             <div class="linkedin-set instagram-bg">
- 
+
+
             <h3 class="social-heading"> Instagram Feed </h3>
- 
+
             <iframe src="https://www.linkedin.com/embed/feed/update/urn:li:ugcPost:6966090170878050305" allowfullscreen="" title="Embedded post" width="100%" height="350" frameborder="0"></iframe>
+
             </div>
           </div>
- 
+
            <!-- Linkedin Api  End -->
 
 
          <!------------------------------------------- facebook Start --------------------------------------------- -->
          <div class="col-md-4 col-lg-4 mb-4">
            <div class="fb-set">
-             <h3 class="social-heading"> Facebook Feed </h3>
+             <h3 class="social-heading">  @lang('common.Facebook-Feed') </h3>
              <div class="fb-page" style="width: 100%;" data-href="https://www.facebook.com/IndianInstituteOfManagementKashipur" data-tabs="timeline" data-width="" data-height="358" data-small-header="false" data-adapt-container-width="true" data-hide-cover="true" data-show-facepile="true"><blockquote cite="https://www.facebook.com/IndianInstituteOfManagementKashipur" class="fb-xfbml-parse-ignore"><a href="https://www.facebook.com/IndianInstituteOfManagementKashipur">IIM Kashipur</a></blockquote></div>
             </div>
          </div>
 
          <!------------------------------------------- facebook End--------------------------------------------- -->
-       
-       
-       
 
 
-{{--        
-       
+
+
+
+{{--
+
          <div class="col-md-8 col-lg-8">
             <div class="post-wrap row p-0">
                <div class="post-card col-md-6 box-1">

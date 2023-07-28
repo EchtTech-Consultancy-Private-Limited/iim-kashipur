@@ -3,185 +3,21 @@
 @section('content')
 
 
-@php
-$mmenu = @content_menus($type[0]->menu_id);
-@endphp
-
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
-  <!-- Magnific Popup css -->
-
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/magnific-popup.css" />
-
-
-
-    {{-- banner and  breadcrumbs   --}}
-
-    @if (isset($get))
-        {{-- child menu section  --}}
-        {{-- banner setion --}}
-        <div class="internalpagebanner">
-            @if (GetOrganisationAllDetails('default_banner_image') != '')
-                <img src="{{ asset('uploads/site-logo/' . GetOrganisationAllDetails('default_banner_image')) }}"
-                    style="height:auto;  min-height:200px; max-height:500px overflow:hidden;"
-                    alt="{{ $type_child[0]->name ?? '' }}" title="{{ $type_child[0]->name ?? '' }}">
-            @else
-                <img src="{{ asset('assets/images/banners/board-of-governer-banner.jpg') ?? '' }}"
-                    style="height:auto;  min-height:200px; max-height:350% overflow:hidden;"
-                    alt="{{ $type_child[0]->name ?? '' }}" title="{{ $type_child[0]->name ?? '' }}">
-            @endif
-            <div class="imagecaption">
-                <div class="container">
-                    <h1>
-                        @if (GetLang() == 'en')
-                            {{ $type_child[0]->name ?? '' }}
-                        @else
-                            {{ $type_child[0]->name_h ?? '' }}
-                        @endif
-                    </h1>
-                </div>
-            </div>
-        </div>
-
-
-        {{-- breadcrumbs setion --}}
-        <div class="breadcrumbs">
-            <div class="container">
-                <ul>
-                    <li><a href="{{ url('/') }}"><svg viewBox="0 0 24 24">
-                                <path fill="none" d="M0 0h24v24H0V0z" />
-                                <path
-                                    d="M10 19v-5h4v5c0 .55.45 1 1 1h3c.55 0 1-.45 1-1v-7h1.7c.46 0 .68-.57.33-.87L12.67 3.6c-.38-.34-.96-.34-1.34 0l-8.36 7.53c-.34.3-.13.87.33.87H5v7c0 .55.45 1 1 1h3c.55 0 1-.45 1-1z" />
-                            </svg></a></li>
-                    <li><a href="{{  URL::previous()  }}">
-                            @if (GetLang() == 'en')
-                                {{ $get[0]->name ?? '' }}
-                            @else
-                                {{ $get[0]->name_h ?? '' }}
-                            @endif
-                        </a>
-                    </li>
-                    <li><a href="{{  URL::previous()  }}">
-                        <span>
-                            @if (GetLang() == 'en')
-                                {{ $gets[0]->name ?? '' }}
-                            @else
-                                {{ $gets[0]->name_h ?? '' }}
-                            @endif
-                        </span>
-                    </a>
-                    </li>
-                    <li>
-                        <span>
-                            @if (GetLang() == 'en')
-                                {{ $type_child[0]->name ?? '' }}
-                            @else
-                                {{ $type_child[0]->name_h ?? '' }}
-                            @endif
-                        </span>
-
-                    </li>
-
-                </ul>
-            </div>
-        </div>
-
-
-        </ul>
-        </div>
-        </div>
-    @elseif(isset($sub_menu))
-        {{-- sub menu section --}}
-
-
-        @php
-
-            $mmenu = @content_menus($type[0]->menu_id);
-
-        @endphp
-
-        <div class="internalpagebanner">
-
-            @if (GetOrganisationAllDetails('default_banner_image') != '')
-                <img src="{{ asset('uploads/site-logo/' . GetOrganisationAllDetails('default_banner_image')) }}"
-                    style="height:auto;  min-height:200px; max-height:500px overflow:hidden;"
-                    alt="{{ $type[0]->name ?? '' }}" title="{{ $type[0]->name ?? '' }}">
-            @else
-                <img src="{{ asset('assets/images/banners/board-of-governer-banner.jpg') ?? '' }}"
-                    style="height:auto;  min-height:200px; max-height:500px overflow:hidden;"
-                    alt="{{ $type[0]->name ?? '' }}" title="{{ $type[0]->name ?? '' }}">
-            @endif
-
-            <div class="imagecaption">
-
-                <div class="container">
-
-                    <h1>
-                        @if (GetLang() == 'en')
-                            {{ $type[0]->name ?? '' }}
-                        @else
-                            {{ $type[0]->name_h ?? '' }}
-                        @endif
-                    </h1>
-
-                </div>
-
-            </div>
-
-        </div>
-
-        <div class="breadcrumbs">
-
-            <div class="container">
-
-                <ul>
-
-                    <li><a href="{{ url('/') }}"><svg viewBox="0 0 24 24">
-                                <path fill="none" d="M0 0h24v24H0V0z" />
-                                <path
-                                    d="M10 19v-5h4v5c0 .55.45 1 1 1h3c.55 0 1-.45 1-1v-7h1.7c.46 0 .68-.57.33-.87L12.67 3.6c-.38-.34-.96-.34-1.34 0l-8.36 7.53c-.34.3-.13.87.33.87H5v7c0 .55.45 1 1 1h3c.55 0 1-.45 1-1z" />
-                            </svg></a></li>
-
-                    <li><a href="{{  URL::previous()  }}">
-                            @if (GetLang() == 'en')
-                                {{ @$mmenu[0]->name ?? '' }}
-                            @else
-                                {{ @$mmenu[0]->name_h ?? '' }}
-                            @endif
-                        </a>
-                    </li>
-
-                    <li>
-                        <span>
-                            @if (GetLang() == 'en')
-                                {{ $type[0]->name ?? '' }}
-                            @else
-                                {{ $type[0]->name_h ?? '' }}
-                            @endif
-                        </span>
-
-                    </li>
-
-                </ul>
-
-            </div>
-
-        </div>
-    @else
         {{-- main banner --}}
         {{-- banner section --}}
         <div class="internalpagebanner">
             @if (GetOrganisationAllDetails('default_banner_image') != '')
                 <img src="{{ asset('uploads/site-logo/' . GetOrganisationAllDetails('default_banner_image')) }}"
                     style="height:auto;  min-height:200px; max-height:500px overflow:hidden;"
-                    alt="{{ $type_child[0]->name ?? '' }}" title="{{ $type_child[0]->name ?? '' }}">
+                    alt="{{ $video_slug[0]->name ?? '' }}" title="{{ $video_slug[0]->name ?? '' }}">
             @else
                 <img src="{{ asset('assets/images/banners/board-of-governer-banner.jpg') ?? '' }}"
                     style="height:auto;  min-height:200px; max-height:500px overflow:hidden;"
-                    alt="{{ $type_child[0]->name ?? '' }}" title="{{ $type_child[0]->name ?? '' }}">
+                    alt="{{ $video_slug[0]->name ?? '' }}" title="{{ $video_slug[0]->name ?? '' }}">
             @endif
             <div class="imagecaption">
                 <div class="container">
-                    <h1>{{ $type_child[0]->name ?? '' }}</h1>
+                    <h1>{{ $video_slug[0]->title ?? '' }}</h1>
                 </div>
             </div>
         </div>
@@ -199,9 +35,9 @@ $mmenu = @content_menus($type[0]->menu_id);
                     <li>
                         <span>
                             @if (GetLang() == 'en')
-                                {{ $type[0]->name ?? '' }}
+                                {{ $video_slug[0]->title ?? '' }}
                             @else
-                                {{ $type[0]->name_h ?? '' }}
+                                {{ $video_slug[0]->title_h ?? '' }}
                             @endif
                         </span>
 
@@ -209,7 +45,7 @@ $mmenu = @content_menus($type[0]->menu_id);
                 </ul>
             </div>
         </div>
-    @endif
+
 
 {{-- ------------------------------------------Layout ---------------------------------------------------------------- --}}
 
@@ -219,175 +55,6 @@ $mmenu = @content_menus($type[0]->menu_id);
     <div class="container">
 
         <div class="row">
-
-            <div class="col-md-3">
-
-                <div class="sidebarwraper">
-
-
-
-                    @if (isset($get))
-                      @foreach (GetSubMenusFront($gets[0]->menu_id) as $key1 => $S)
-                    <ul>
-
-                        @if (count(GetchildMenusFront($gets[0]->menu_id, $S->id)) > 0)
-                            <li class="hasnested"><a @if ($S->id == $gets[0]->id) class="active" @endif>
-                                    @if (GetLang() == 'en')
-                                        {{ $S->name ?? '' }}
-                                    @else
-                                        {{ $S->name_h ?? '' }}
-                                    @endif
-                                    <svg class="minus" viewBox="0 0 24 24">
-                                        <g data-name="Layer 2">
-                                            <path d="M19 13H5a1 1 0 0 1 0-2h14a1 1 0 0 1 0 2z" data-name="minus" />
-                                        </g>
-                                    </svg><svg viewBox="0 0 24 24" class="plus">
-                                        <path
-                                            d="M19,11H13V5a1,1,0,0,0-2,0v6H5a1,1,0,0,0,0,2h6v6a1,1,0,0,0,2,0V13h6a1,1,0,0,0,0-2Z" />
-                                    </svg>
-                                </a>
-
-                                <ul>
-
-                                    @foreach (GetchildMenusFront($gets[0]->menu_id, $S->id) as $key2 => $C)
-                                        @if ($C->external == 'yes')
-                                            <li><a href="{{ url($C->url) }}"
-                                                    onclick="return confirm('Are you sure  external window open?')"
-                                                    target="_blank">
-                                                    @if (GetLang() == 'en')
-                                                        {{ $C->name ?? '' }}
-                                                    @else
-                                                        {{ $C->name_h ?? '' }}
-                                                    @endif
-                                                </a>
-                                            </li>
-                                        @elseif($C->external == 'no')
-                                            <li><a href="{{ url($C->url) }}">
-                                                    @if (GetLang() == 'en')
-                                                        {{ $C->name ?? '' }}
-                                                    @else
-                                                        {{ $C->name_h ?? '' }}
-                                                    @endif
-                                                </a>
-                                            </li>
-                                        @else
-                                            <li><a href={{ url($mmenu[0]->slug . '/' . $S->slug . '/' . $C->slug) }}>
-                                                    @if (GetLang() == 'en')
-                                                        {{ $C->name ?? '' }}
-                                                    @else
-                                                        {{ $C->name_h ?? '' }}
-                                                    @endif
-                                                </a>
-                                            </li>
-                                        @endif
-                                    @endforeach
-
-                                </ul>
-
-                            </li>
-                        @else
-                            @if ($S->external == 'yes')
-                                <li><a href="{{ url($S->url) }}"
-                                        onclick="return confirm('Are you sure  external window open?')"
-                                        target="_blank">
-                                        @if (GetLang() == 'en')
-                                            {{ $S->name ?? '' }}
-                                        @else
-                                            {{ $S->name_h ?? '' }}
-                                        @endif
-                                    </a></li>
-                            @elseif($S->external == 'no')
-                                <li><a href="{{ url($S->url) }}">
-                                        @if (GetLang() == 'en')
-                                            {{ $S->name ?? '' }}
-                                        @else
-                                            {{ $S->name_h ?? '' }}
-                                        @endif
-                                    </a></li>
-                            @else
-                                <li><a href="{{ url($mmenu[0]->slug . '/' . $S->slug) }}"
-                                        @if ($S->id == $get[0]->id) class="active" @endif>
-                                        @if (GetLang() == 'en')
-                                            {{ $S->name ?? '' }}
-                                        @else
-                                            {{ $S->name_h ?? '' }}
-                                        @endif
-                                    </a></li>
-                            @endif
-                        @endif
-
-                    </ul>
-                @endforeach
-
-@elseif(isset($sub_menu))
-
-
-
-
-                @foreach(GetSubMenusFront($type[0]->menu_id) as $key1=>$S)
-
-                <ul>
-
-                    @if(count(GetchildMenusFront($type[0]->menu_id,$S->id))>0)
-
-                    <li class="hasnested"><a @if($S->id==$type[0]->id) class="active" @endif> @if(GetLang()=='en') {{ $S->name ?? '' }} @else {{ $S->name_h ?? '' }} @endif<svg class="minus" viewBox="0 0 24 24"><g data-name="Layer 2"><path d="M19 13H5a1 1 0 0 1 0-2h14a1 1 0 0 1 0 2z" data-name="minus"/></g></svg><svg viewBox="0 0 24 24" class="plus"><path d="M19,11H13V5a1,1,0,0,0-2,0v6H5a1,1,0,0,0,0,2h6v6a1,1,0,0,0,2,0V13h6a1,1,0,0,0,0-2Z"/></svg></a>
-
-                        <ul>
-
-                            @foreach(GetchildMenusFront($type[0]->menu_id,$S->id) as $key2=>$C)
-
-                                @if($C->external=='yes')
-                                    <li><a href="{{url($C->url)}}" onclick="return confirm('Are you sure  external window open?')" target="_blank" > @if(GetLang()=='en') {{ $C->name ?? ''}} @else {{ $C->name_h ?? ''}} @endif</a></li>
-
-                                 @elseif($C->external=='no')
-
-                                 <li><a href="{{url($C->url)}}"  > @if(GetLang()=='en') {{ $C->name ?? ''}} @else {{ $C->name_h ?? ''}} @endif</a></li>
-
-
-                                 @else
-                                    <li><a href={{url($mmenu[0]->slug."/".$S->slug."/".$C->slug)}}>  @if(GetLang()=='en') {{ $C->name ?? ''}} @else {{ $C->name_h ?? ''}} @endif</a></li>
-                                 @endif
-
-                             @endforeach
-
-                        </ul>
-
-                    </li>
-
-                    @else
-
-                            @if($S->external=='yes')
-                                <li><a href="{{ url($S->url) }}" onclick="return confirm('Are you sure  external window open?')" target="_blank">  @if(GetLang()=='en') {{ $S->name ?? ''}} @else {{ $S->name_h ?? ''}} @endif </a></li>
-
-                            @elseif($S->external=='no')
-
-                                <li><a href="{{ url($S->url) }}" >  @if(GetLang()=='en') {{ $S->name ?? ''}} @else {{ $S->name_h ?? ''}} @endif </a></li>
-
-                            @else
-
-                            <li><a href="{{ url($mmenu[0]->slug."/".$S->slug) }}" @if($S->id==$type[0]->id) class="active" @endif>  @if(GetLang()=='en') {{ $S->name ?? ''}} @else {{ $S->name_h ?? ''}} @endif  </a></li>
-
-                            @endif
-
-
-                    @endif
-
-
-
-
-
-                </ul>
-
-
-
-               @endforeach
-
-               @endif
-
-                </div>
-
-            </div>
-
 
 
 
@@ -441,36 +108,15 @@ $mmenu = @content_menus($type[0]->menu_id);
 
                             <div class="col-md-4 col-lg-4">
                                 <div class="d-flex flex-column h-100">
-                                    <?php //dd($values->url); ?>
-                                    @if($values->external =='yes' &&  $values->url != null)
-                                        <a onclick="return confirm('Are you sure  external window open?')"
-                                        target="_blank"
-                                        href="{{url($values->url) }}">
-
-
+                                    <a href="{{ asset('gallery/multipimage/' . $values->large_image) }}"
+                                        class="image-link">
                                         <div class="thumbnail p-relative">
-                                            <img  src="{{ asset('gallery/multipimage/'.$values->large_image) }}"
+                                            <img  src="{{ asset('gallery/multipimage/' . $values->large_image) }}"                                  }}"
                                                 alt="gallery-img" class="img-fluid"
                                                 loading="lazy">
                                             <div class="top-text"> {{ $values->image_title }} </div>
                                         </div>
-
-
                                     </a>
-                                    @else
-                                        <a href="{{ asset('gallery/multipimage/'.$values->large_image) }}"class="image-link">
-
-                                            <div class="thumbnail p-relative">
-                                                <img  src="{{ asset('gallery/multipimage/'.$values->large_image) }}"
-                                                    alt="gallery-img" class="img-fluid"
-                                                    loading="lazy">
-                                                <div class="top-text"> {{ $values->image_title }} </div>
-                                            </div>
-
-                                        </a>
-                                    @endif
-
-
                                 </div>
                             </div>
 
@@ -493,43 +139,34 @@ $mmenu = @content_menus($type[0]->menu_id);
    @isset($values)
 
 
-       <!-- Video Gallery Section Start -->
 
-       <div class="excellence-wrap back-img Activities video-gallery mt-3 mb-3">
+       <div class="excellence-wrap back-img Activities img-gallery mt-3 mb-3">
         <div class="container">
             <div class="row">
 
+                <div class="col-md-12 p-0">
+                    <div class="excellence-gallery partnership-img">
+                        <div class="row masonry-grid">
+                            @foreach ($values as $M)
+                            <div class="col-md-3 col-lg-3">
 
-                <div class="col-md-6">
-                    <div class="vid-container">
-                        <iframe id="vid_frame" src="https://www.youtube.com/embed/q1onzvBSdJM" frameborder="0" width="100%" height="300"></iframe>
-                    </div>
-                </div>
+                                <div class="d-flex flex-column h-100">
+                                           <iframe src="{{ url($M->video_url) }}" title="{{ $M->video_title }}" alt="{{ $M->video_title }}" frameborder="0" width="100%" height="180"></iframe>
 
-                <div class="col-md-6">
-                    <div class="row vid-list-container">
-
-
-                                @foreach ($values as $M)
-
-                                <div class="col-md-6 p-relative">
-                                    <a href="javascript:void();" onClick="document.getElementById('vid_frame').src='{{ url($M->video_url) }}'">
-                                        <span class="vid-thumb"><img src="{{ asset('video/multiple-image/' . $M->video_image) }}" title="{{ $M->video_title }}" alt="{{ $M->video_title }}" /></span>
-                                        <span class="top-text">  {{ $M->video_title }} </span>
-                                        <span class="btn-p"><i class="fa fa-play-circle" aria-hidden="true" title="Play"></i>
-                                        </span>
+                                            <div class="top-text">  {{ $M->video_title }} </div>
                                     </a>
                                 </div>
+                            </div>
 
-                                @endforeach
-
-
+                            @endforeach
+                        </div>
                     </div>
                 </div>
+
 
             </div>
         </div>
-       </div>
+    </div>
 
     <!-- Video Gallery section End -->
 

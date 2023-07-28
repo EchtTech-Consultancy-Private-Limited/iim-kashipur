@@ -72,7 +72,6 @@ class StudentProfileController extends Controller
         $student->educational_background=$request->educational_background;
         $student->work_experience=$request->work_experience;
         $student->research_interests=$request->research_interests;
-        $student->student_council=$request->Student_Council;
         if($request->hasfile('student_image'))
            {
             //dd("yes");
@@ -133,7 +132,6 @@ class StudentProfileController extends Controller
         $student->educational_background=$request->educational_background;
         $student->work_experience=$request->work_experience;
         $student->research_interests=$request->research_interests;
-        $student->Student_Council=$request->Student_Council;
         if($request->hasfile('student_image'))
            {
             //dd("yes");
