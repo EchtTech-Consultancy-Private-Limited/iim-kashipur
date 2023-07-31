@@ -59,7 +59,9 @@
 
                                                 <tr>
 
-                                                    <th>S.No#</th>
+                                                    <th>Sr.No#</th>
+
+                                                    <th>Name</th>
 
                                                     <th>Image</th>
 
@@ -76,6 +78,9 @@
                                                     <tr>
 
                                                         <td>{{ $K + 1 }}</td>
+
+                                                        <td>{{ $D->title }}</td>
+
 
                                                      <td>
                                                         <a   href="{{url('uploads/pdf'.$D->pdf)}}" download>

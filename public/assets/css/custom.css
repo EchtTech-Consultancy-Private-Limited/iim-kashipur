@@ -150,7 +150,7 @@ box-shadow: 0 0 10px #ddd;}
 /***Start @media query****/
 
 @media(min-width: 992px){
-.dropdown .dropdown-menu{margin: 0;background:#fff;min-width:215px;border-radius:0px;
+.dropdown .dropdown-menu{margin: 0;background:#fff;min-width:190px;border-radius:0px;
 transform: translateY(50px);opacity: 0;visibility: hidden;
 transition: .5s; display:block;border:0px;box-shadow: 0 8px 20px #0000001c;}
 .navbar ul>li:hover> ul{transform: translateY(0px);opacity: 1;visibility: visible;}

@@ -247,7 +247,7 @@
 
             <div class="row align-items-center">
 
-                <div class="col-md-6">
+                <div class="col-md-6 order-s-2">
 
                     <div class="copyright-text">
 

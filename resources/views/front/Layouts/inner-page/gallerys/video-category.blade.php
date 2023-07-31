@@ -44,7 +44,7 @@
 
                             <div class="event-image p-relative">
 
-                                <a  class="popup-border popup-videos" href="{{ url($M->video_slug) }}"  title=" {{ $M->image_title }}"  class="lightbox-processed">
+                                <a  class="popup-border popup-videos" href="{{ url('Video-gallery'.'/'.$M->video_slug) }}"  title=" {{ $M->image_title }}"  class="lightbox-processed">
 
                                 <span class="top-text">   @if(GetLang()=='en') {{ $M->name }} @else {{ $M->name_h }}  @endif  </span>
 

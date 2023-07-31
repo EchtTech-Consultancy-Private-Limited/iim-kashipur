@@ -11,11 +11,11 @@ function setlang(value){
 	    // alert(result.data);
         if(result.data == 'en')
          {
-           alert('This will lead you to हिन्दी language. Are you sure to switch to this language?')
+            alert('यह आपको English भाषा में ले जाएगा.?')
          }
         else
          {
-            alert('यह आपको English भाषा में ले जाएगा। क्या आप वाकई इस भाषा में स्विच करना चाहते हैं?')
+            alert('This will lead you to हिन्दी language.?')
          }
 
    	 location.reload();

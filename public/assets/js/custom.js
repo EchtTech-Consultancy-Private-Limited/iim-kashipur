@@ -89,7 +89,8 @@ $('#clientSlider').owlCarousel({
     margin: 25,
 
     nav:true,
-
+    autoplay:true,
+    autoplay: 1000,
     dots: false,
 
     responsive:{
