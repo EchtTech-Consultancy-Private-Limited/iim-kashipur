@@ -1503,6 +1503,7 @@ public function add_ANTI_RAGGING(Request $request,$id=null)
         ]);
 
         $data->status=$request->status;
+        $data->title=$request->title;
 
         $path=public_path('uploads/pdf');
         if($request->hasFile('pdf')){
