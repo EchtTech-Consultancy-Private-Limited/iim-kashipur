@@ -403,7 +403,7 @@ ul.nav.nav-tabs {
             <div class="col-md-9">
                 <div class="content-desc">
                     <div class="innerpagecon">
-                        <a href="#" class="btn2">{{ $item[0]->designation ?? '' }}</a>
+                        <a href="#" class="btn2">{{ $item[0]->title ?? '' }}</a>
                         @foreach ($item as $items)
                             <div class="row mt-4">
 
@@ -420,7 +420,7 @@ ul.nav.nav-tabs {
 
                                         </div>
 
-                                        <h6>{{ $items->title }}</h6>
+                                        <h6>{{ $items->designation }}</h6>
                                     </div>
                                 </div>
 
@@ -428,7 +428,7 @@ ul.nav.nav-tabs {
 
                                 <div class="col-xl-9 col-md-9 col-lg-12">
                                     {{-- <p>{{ $items->department  }}</p> --}}
-                                    <p>{!! $items->description !!} </p>
+                                    {{-- <p>{!! $items->description !!} </p> --}}
 
 
                                     <div class="social-icon">
@@ -686,7 +686,7 @@ ul.nav.nav-tabs {
                 <div class="col-md-9">
                     <div class="content-desc">
                         <div class="innerpagecon">
-                            <a href="#" class="btn2">{{ $item[0]->designation ?? '' }}</a>
+                            <a href="#" class="btn2">{{ $item[0]->title ?? '' }}</a>
                             @foreach ($item as $items)
                                 <div class="row mt-4">
 
@@ -702,7 +702,7 @@ ul.nav.nav-tabs {
                                                 @endif
                                             </div>
 
-                                            <h6>{{ $items->title }}</h6>
+                                            <h6>{{ $items->designation }}</h6>
                                         </div>
                                     </div>
 
@@ -710,7 +710,7 @@ ul.nav.nav-tabs {
 
                                     <div class="col-xl-8 col-md-8 col-lg-8">
                                         {{-- <p>{{ $items->department  }}</p> --}}
-                                        <p>{!! $items->description !!} </p>
+                                        {{-- <p>{!! $items->description !!} </p> --}}
 
 
                                         <div class="social-icon">
@@ -854,7 +854,7 @@ ul.nav.nav-tabs {
             <div class="col-md-12">
                 <div class="content-desc">
                     <div class="innerpagecon">
-                            <a href="#" class="btn2">{{ $item[0]->designation ?? '' }}</a>
+                            <a href="#" class="btn2">{{ $item[0]->title ?? '' }}</a>
                             {{-- <a href="#" class="btn2"><i class="fa fa-angle-left" aria-hidden="true" style="margin-right: 5px;"></i> Back</a> --}}
                         @foreach ($item as $items)
                             <div class="row mt-4">
@@ -872,7 +872,7 @@ ul.nav.nav-tabs {
 
                                         </div>
 
-                                        <h6>{{ $items->title }}</h6>
+                                        {{-- <h6>{{ $items->designation }}</h6> --}}
 
                                         <h6> {{ $items->designation   ??'' }} </h6>
 

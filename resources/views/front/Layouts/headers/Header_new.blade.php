@@ -59,15 +59,30 @@
 
                             <ul>
                                 <!-- <li><a href="{{ url('/') }}">@lang('common.home')</a></li> -->
-                                <li><a href="{{ url('/') }}" title="@lang('common.home')"><i
-                                            class="fa fa-home"></i></a></li>
+                                <li><a href="{{ url('/') }}" title="@lang('common.home')"><i class="fa fa-home"></i></a></li>
 
 
                                 <!-- <li><a href="#skipCont">@lang('common.skip_to_main_content')</a></li> -->
                                 <li><a href="#skipCont" title="@lang('common.skip_to_main_content')"><i class="fa fa-arrow-down"></i></a>
                                 </li>
 
+                                <li>
+                                    <a href="javascript:void();" title="Search here..." class="search-show-popup"><i class="fa fa-search"></i></a>
 
+                                   <!-- search form start-->
+
+                                   <div class="serch-box-show d-none">
+                                    <form action="#" method="get">
+                                        <div class="d-flex"> 
+                                            <input type="text" class="form-control" placeholder="search name or deparment!!!!" value=" " name="search" autocomplete="off">            
+                                            <button type="submit" class="btn-info submit-btn-apply"> <i class="fa fa-search"> </i> </button>
+            
+                                        </div>
+                                    </form>
+                                   </div>
+
+
+                                </li>
 
                                 <!-- <li><a href="{{ url('/screen_reader_access') }}">@lang('common.screen_reader_access')</a></li> -->
                                 <li><a href="{{ url('/screen_reader_access') }}" title="@lang('common.screen_reader_access')"><i
@@ -529,9 +544,13 @@
         $("body").click(function(){
             $(".dropdown-toggle.internal-add.show").removeClass('show');
             $(".dropdown-toggle.focus-open-add.show").removeClass('show');
+            // $(".serch-box-show").addClass('d-none');
         });
 
-
+        $(".search-show-popup").click(function(){
+            $(".serch-box-show").toggleClass('d-none')
+        });
+        
     });
 </script>
 

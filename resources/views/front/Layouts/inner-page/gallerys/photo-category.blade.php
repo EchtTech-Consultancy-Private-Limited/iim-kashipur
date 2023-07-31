@@ -7,8 +7,8 @@ img.hover-shadow.cursor {
     height: 135px !important;
 }
 
-.col-md-2.p-relative:not(:first-child) {
-    padding-left: 3px;
+.col-md-2.p-relative {
+    padding-left: 15px;
 }
 .col-md-2.p-relative:not(:last-child) {
     padding-right: 3px;
