@@ -893,6 +893,9 @@ function Add_childMenu(Request $request,$id=null){
 
     function Login(Request $request)
     {
+
+        $request['password']=decode5t($request->password); #SKP
+
         $title='Admin login  ';
         if(\Auth::guard('admin')->check()){
             return redirect()->route('admin.dashboard');
@@ -903,6 +906,7 @@ function Add_childMenu(Request $request,$id=null){
             'password' => 'required',
             'captcha' => 'required|captcha'
             ]);
+          //  dd($request->password);
             if(\Auth::guard('admin')->attempt(['email'=>$request->email,'password'=>$request->password,'status'=>1])){
                 $data=Admin::find(\Auth::guard('admin')->user()->id);
                 $data->update(['login_time'=>date('d-m-Y H:i:s'),'ip'=>$request->ip()]);
