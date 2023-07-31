@@ -41,7 +41,7 @@
                         <div class="event-card" data-aos="fade-up" data-aos-duration="3000">
                             <div class="event-body">
                                 <div class="event-image p-relative">
-                                <a href="{{url($value->photo_slug)}}"  title="{{ $value->image_title }}"  class="lightbox-processed">
+                                <a href="{{url('photo-gallery'.'/'.$value->photo_slug)}}"  title="{{ $value->image_title }}"  class="lightbox-processed">
 
                                 <span class="top-text">  @if(GetLang()=='en') {{ $value->name }} @else {{ $value->name_h }}  @endif</span>
 

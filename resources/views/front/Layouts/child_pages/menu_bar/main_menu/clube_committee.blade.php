@@ -653,11 +653,6 @@
                     </div>
 
 
-
-
-
-
-
                     @if (collect($data)->isEmpty())
                         {{-- remember that $contact is your variable --}}
                         <div class="alert alert-success" role="alert">
@@ -691,7 +686,7 @@
                                                     <div class="box-content">
                                                         <img src="{{ asset('uploads/club/'.$items->image) ?? '' }}"
                                                             title="Club img" alt="club">
-                                                        <h4 class="box-text"> <a href="{{ url($items->slug) }}">{{ $items->title }}</a> </h4>
+                                                        <h4 class="box-text"> <a href="{{ url(@$mmenu[0]->slug.'/'.$type[0]->slug.'/'.'Club'.'/'.$items->slug) }}">{{ $items->title }}</a> </h4>
                                                     </div>
                                               @endif
                                                 @endforeach
@@ -711,7 +706,7 @@
                                                     <div class="box-content">
                                                         <img src="{{ asset('uploads/club/'.$items->image) ?? '' }}"
                                                             title="Club img" alt="club">
-                                                        <h4 class="box-text"> <a href="{{ url($items->slug) }}">{{ $items->title }}</a> </h4>
+                                                        <h4 class="box-text"> <a href="{{ url(@$mmenu[0]->slug.'/'.$type[0]->slug.'/'.'Club'.'/'.$items->slug) }}">{{ $items->title }}</a> </h4>
                                                     </div>
                                                   @endif
                                                 @endforeach
@@ -735,7 +730,7 @@
                                                     <div class="box-content width-5">
                                                         <img src="{{ asset('uploads/club/'.$item1->image)??''}}"
                                                             title="Club img" alt="club">
-                                                        <h4 class="box-text"> <a href="{{ url($item1->slug) }}">{{ $item1->title ??'' }}</a> </h4>
+                                                        <h4 class="box-text"> <a href="{{ url(@$mmenu[0]->slug.'/'.$type[0]->slug.'/'.'Committee'.'/'.$item1->slug) }}">{{ $item1->title ??'' }}</a> </h4>
                                                     </div>
                                                 @endforeach
 
@@ -762,7 +757,7 @@
                                                     <div class="box-content width-5">
                                                         <img src="{{ asset('uploads/club/'.$item2->image) ?? '' }}"
                                                             title="Club img" alt="club">
-                                                        <h4 class="box-text"> <a href="{{ url($item2->slug) }}">{{ $item2->title ??'' }}</a> </h4>
+                                                        <h4 class="box-text"> <a href="{{ url(@$mmenu[0]->slug.'/'.$type[0]->slug.'/'.'Cell'.'/'.$item2->slug) }}">{{ $item2->title ??'' }}</a> </h4>
                                                     </div>
                                                 @endforeach
 

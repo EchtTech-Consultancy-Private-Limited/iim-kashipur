@@ -54,6 +54,21 @@ class InnerpageController extends Controller
 //
 //
 //
+
+public function search(Request $request)
+{
+
+    $search=$request->search;
+    $data=OrganisationStructure::
+
+            where("title","like","%$search%")->
+                orwhere("email","like","%$search%")
+        ->get();
+    return $data;
+
+}
+
+
 //Monu - 12-07-2023
 public function RTI_view()
     {
@@ -143,6 +158,7 @@ public function press_media()
 public function sub_childInnerpage($main_slug,$slug,$subchild,$superchild)  //content page superchild menu
 {
 
+
     $subchildmenu=subchildmenu::whereslug($superchild)->get();
     if(Count($subchildmenu)>0)
     {
@@ -162,6 +178,58 @@ public function sub_childInnerpage($main_slug,$slug,$subchild,$superchild)  //co
                     return abort(401);
                 }
             }
+    }elseif(OrganisationStructure::whereslug($superchild)->count())
+    {
+        $item=OrganisationStructure::whereslug($superchild)->get();
+        //dd($item);
+        if(count($item) > 0){
+        $data=multiple_profile::whereparent_id($item[0]->id)->get();
+
+            return view('front.Layouts.profile',['item'=>$item,'data'=>$data]);
+        }else{
+            return abort(401);
+        }
+
+    }elseif(club::whereslug($superchild)->count()){    //club single
+
+            $item=club::whereslug($superchild)->get();
+            if(count($item) >0){
+            $chairperson=OrganisationStructure::whereid($item[0]->chairperson)->get();
+            $chairpersons=OrganisationStructure::whereClub($item[0]->id)->get();
+            $data=club_multiple_image::whereparent_id($item[0]->id)->get();
+            $cccbreadcram="Club";
+            return view('front.Layouts.child_pages.menu_bar.main_menu.clube_committee_details',['cccbreadcram'=>$cccbreadcram,'chairpersons'=>$chairpersons,'chairperson'=>$chairperson,'item'=>$item,'data'=>$data]);
+            }else{
+                return abort(401);
+            }
+        }
+    elseif(commmittee::whereslug($superchild)->count()){    //commitee single
+            $item=commmittee::whereslug($superchild)->get();
+            if(count($item) >0){
+            $chairperson=OrganisationStructure::whereid($item[0]->chairperson)->get();
+            $chairpersons=OrganisationStructure::wherecommittee($item[0]->id)->get();
+            $data=committee_multiple_image::whereparent_id($item[0]->id)->get();
+            $cccbreadcram="Committee";
+            return view('front.Layouts.child_pages.menu_bar.main_menu.clube_committee_details',['cccbreadcram'=>$cccbreadcram,'chairpersons'=>$chairpersons,'chairperson'=>$chairperson,'item'=>$item,'data'=>$data]);
+            }else{
+                return abort(401);
+            }
+    }elseif(cell::whereslug($superchild)->count()){    //cell single
+
+            $item=cell::whereslug($superchild)->get();
+           // dd($item);
+            if(count($item) >0){
+            $chairperson=OrganisationStructure::whereid($item[0]->chairperson)->get();
+            $chairpersons=OrganisationStructure::whereCell($item[0]->id)->get();
+           // dd($chairpersons);
+            $data=cell_multiple_image::whereparent_id($item[0]->id)->get();
+            $cccbreadcram="Cell";
+            return view('front.Layouts.child_pages.menu_bar.main_menu.clube_committee_details',['cccbreadcram'=>$cccbreadcram,'chairpersons'=>$chairpersons,'chairperson'=>$chairperson,'item'=>$item,'data'=>$data]);
+            }else{
+                return abort(401);
+            }
+    }else{
+        return abort(401);
     }
 
 }
@@ -674,8 +742,6 @@ public function screen_reader_access()
 }*/
  public function Menu_barInnerpage($slug) //content page & who in who data
     {
-
-
         $main_menu="main-menu";
         $item=OrganisationStructure::whereslug($slug)->get();
         if(MainMenu::whereslug($slug)->get('id')->count()){
@@ -902,7 +968,6 @@ public function screen_reader_access()
                     elseif(QuickLink::whereslug($slug)->first('section_name')->section_name == 'photo-gallery')
                     {
 
-
                         $photo_slug=QuickLink::whereslug($slug)->get();
                         $data=photo_gallery::whereid($photo_slug[0]->link_option)->get();
                         if(Count($data) >0){
@@ -991,7 +1056,7 @@ public function screen_reader_access()
         //gallery ka ander ka url
         elseif(photo_gallery::wherephoto_slug($slug)->get()->count())
         {
-           // dd("hii");
+            dd("hii");
             $data=photo_gallery::wherephoto_slug($slug)->get();
            // dd($data);
             if(Count($data) >0){
@@ -1189,6 +1254,7 @@ public function screen_reader_access()
             }
             elseif(isset($type[0]) && $type[0]->tpl_id == 4)
             {
+
                 $item=OrganisationStructure::where('department',7)->paginate(9);
 
                 if(count($item)>0){
@@ -1461,6 +1527,38 @@ public function screen_reader_access()
                 }
         }
     }
+    elseif(photo_gallery::wherephoto_slug($slug)->get()->count())
+    {
+
+        $data=photo_gallery::wherephoto_slug($slug)->get();
+       // dd($data);
+        if(Count($data) >0){
+        $item=photo_gallery_image::wheregallery_id($data[0]->id)->get();
+       //dd($item);
+            if(Count($item)>0){
+            return view('front.Layouts.inner-page.gallerys.photo-category',['item'=>$item,'data'=>$data]);
+                }else{
+                return abort(401);
+            }
+        }else{
+            return abort(401);
+        }
+    }elseif(video_gallery::wherevideo_slug($slug)->get()->count())
+    {
+        $data=video_gallery::wherevideo_slug($slug)->get();
+        if(Count($data)>0){
+         $item=video_gallery_tittle::wheregallery_id($data[0]->id)->get();
+
+        if(Count($item)>0){
+        return view('front.Layouts.inner-page.gallerys.video-miltimage',['item'=>$item,'data'=>$data]);
+        }else{
+            return abort(401);
+        }
+        }else{
+            return abort(401);
+        }
+    }
+
     else
     {
         return abort(401);
@@ -1559,11 +1657,11 @@ public function screen_reader_access()
 
 //Child menu controller
 
-public function Child_barInnerpage($main_slug,$Sub_slug,$slug) //content page
+public function Child_barInnerpage($main_slug,$Sub_slug,$slug)
 {
 
-    $data=child_menu::whereslug($slug)->get();
 
+    $data=child_menu::whereslug($slug)->get();
     if(Count($data)>0){
 
         if($slug=="student-profiles")
@@ -1583,7 +1681,6 @@ public function Child_barInnerpage($main_slug,$Sub_slug,$slug) //content page
 
         if($data[0]->url == '/content-page')
         {
-
 
             $item=content_page::whereid($data[0]->link_option)->get();
 
@@ -1797,8 +1894,6 @@ public function Child_barInnerpage($main_slug,$Sub_slug,$slug) //content page
         }
 
     }else{
-
-
         $item=OrganisationStructure::whereslug($slug)->get();
         if(count($item) > 0){
         $data=multiple_profile::whereparent_id($item[0]->id)->get();
@@ -1810,6 +1905,7 @@ public function Child_barInnerpage($main_slug,$Sub_slug,$slug) //content page
         }else{
             return abort(401);
         }
+
     }
 }
 
