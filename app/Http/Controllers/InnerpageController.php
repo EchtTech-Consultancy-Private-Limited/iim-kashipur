@@ -213,8 +213,6 @@ class InnerpageController extends Controller
 
  //}
 
-
-
 //Monu - 12-07-2023
 public function RTI_view()
     {
@@ -1598,7 +1596,6 @@ public function screen_reader_access()
 
         elseif($type[0]->url == '/photo-gallery')
         {
-
                $item=photo_gallery::whereid($type[0]->link_option)->get();
                 if(Count($item)>0){
                   //  dd($item);
@@ -1619,6 +1616,37 @@ public function screen_reader_access()
                 $type_child=child_menu::whereslug($slug)->get();
                 return view('front.Layouts.child_pages.menu_bar.main_menu.master',['values'=>$values,'item'=>$item,'type_sub'=>$type_sub,'type_child'=>$type_child,'gets'=>$gets,'get'=>$get]);
                 }
+        }
+    }
+    elseif(photo_gallery::wherephoto_slug($slug)->get()->count())
+    {
+       // dd("hii");
+        $data=photo_gallery::wherephoto_slug($slug)->get();
+       // dd($data);
+        if(Count($data) >0){
+        $item=photo_gallery_image::wheregallery_id($data[0]->id)->get();
+       //dd($item);
+            if(Count($item)>0){
+            return view('front.Layouts.inner-page.gallerys.photo-category',['item'=>$item,'data'=>$data]);
+                }else{
+                return abort(401);
+            }
+        }else{
+            return abort(401);
+        }
+    }elseif(video_gallery::wherevideo_slug($slug)->get()->count())
+    {
+        $data=video_gallery::wherevideo_slug($slug)->get();
+        if(Count($data)>0){
+         $item=video_gallery_tittle::wheregallery_id($data[0]->id)->get();
+
+        if(Count($item)>0){
+        return view('front.Layouts.inner-page.gallerys.video-miltimage',['item'=>$item,'data'=>$data]);
+        }else{
+            return abort(401);
+        }
+        }else{
+            return abort(401);
         }
     }
     else
