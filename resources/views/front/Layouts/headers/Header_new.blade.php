@@ -43,7 +43,7 @@
                     <div class="header-top-right">
                         <div class="skipwrap">
 
-                            {{-- <form action="{{ url('search') }}" method="post">
+                            <form action="{{ url('search') }}" method="post">
                                 <div class="d-flex">
                                     @csrf
 
@@ -52,7 +52,9 @@
                                     <button type="submit" class="btn-info submit-btn-apply">Apply</button>
 
                                 </div>
-                            </form> --}}
+                            </form>
+
+
 
                             <ul>
                                 <!-- <li><a href="{{ url('/') }}">@lang('common.home')</a></li> -->
