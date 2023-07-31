@@ -5745,3 +5745,8 @@ img.hover-shadow.cursor {
     right: 5px;
     z-index: 9;
 }
+
+.s-box-page{
+    position: static;
+    width: 100%;
+}
