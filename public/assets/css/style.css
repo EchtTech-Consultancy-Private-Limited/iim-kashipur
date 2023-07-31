@@ -764,6 +764,7 @@ a {
 
 .header-top-right .social-icon ul li a .fa {
     font-size: 16px;
+    margin: 0px !important  ;
 }
 
 .header-top-right .social-icon ul li a .fa-facebook {
@@ -3927,7 +3928,7 @@ ul.navbar-nav li.nav-item {
     border-left: 1px solid #ffffff;
 }
 .navbar-nav li .dropdown-item a {
-    padding: 5px 15px 3px !important;
+    padding: 5px 12px 3px !important;
 }
 #video {
     object-fit: cover;
@@ -5709,3 +5710,17 @@ img.hover-shadow.cursor {
     padding-top: 15px !important;
 }
 
+.serch-box-show .submit-btn-apply {
+    margin-left: -5px;
+    border-radius: 0px 6px 6px 0px;
+    padding: 8px 18px !important;
+    font-size: 18px;
+}
+
+.serch-box-show {
+    position: absolute;
+    top: 30px;
+    width: 250px;
+    right: 5px;
+    z-index: 9;
+}
