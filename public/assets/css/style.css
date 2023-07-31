@@ -2387,6 +2387,27 @@ span.text-hili-top {
         height: 330px !important;
     }
 
+    .header-top-left ul li a {
+        font-size: 12px !important;
+    }
+
+    .header-top-left.top-text-highlighted {
+        width: 100%;
+        margin-bottom: 10px;
+    }
+
+    .header-top-left.top-text-highlighted ul {
+        justify-content: center !important;
+    }
+
+    .order-s-2{
+        order: 2;
+    }
+
+    .site-footer .footer-bottom .visitor-wrap{
+        justify-content: start !important;
+        margin-bottom: 7px;
+    }
 
 
 }
