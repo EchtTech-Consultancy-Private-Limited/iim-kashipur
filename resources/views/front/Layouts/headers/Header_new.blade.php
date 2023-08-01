@@ -73,10 +73,10 @@
                                     <form action="{{ url('search') }}" method="post">
                                         @csrf
                                         <div class="d-flex">
-                                            <input type="search" class="form-control" placeholder="Search here..." value="{{ request('search') ??''}}"  name="search" autocomplete="off">
+                                            
                                     <form action="#" method="get">
                                         <div class="d-flex"> 
-                                            <input type="search" class="form-control" placeholder="Search here..." value=" " name="search">            
+                                            <input type="search" class="form-control" placeholder="Search here..." value="{{ request('search') ??''}}"  name="search" autocomplete="off">     
                                             <button type="submit" class="btn-info submit-btn-apply"> <i class="fa fa-search"> </i> </button>
 
                                         </div>
