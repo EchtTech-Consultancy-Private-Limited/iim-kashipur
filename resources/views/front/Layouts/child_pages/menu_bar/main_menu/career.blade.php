@@ -35,17 +35,17 @@
 
 
     {{-- remember that $contact is your variable --}}
-    <section class="withsidebar-wrap ptb-60">
+    <section class="withsidebar-wrap innerpagecontent ptb-60">
         <div class="container">
-            <table class="table table-striped">
+            <table>
                 <tr>
-                    <th>NAME OF THE POST</th>
-                    <th> OPENING DATE</th>
-                    <th>CLOSING DATE</th>
-                    <th>ONLINE LINK</th>
-                    <th>DETAIL ADVERTISEMENT</th>
-                    <th>NOTE</th>
-                    <th>CORRIGENDUM</th>
+                    <th class="text-nowrap">NAME OF THE POST</th>
+                    <th class="text-nowrap"> OPENING DATE</th>
+                    <th class="text-nowrap">CLOSING DATE</th>
+                    <th class="text-nowrap">ONLINE LINK</th>
+                    <th class="text-nowrap">DETAIL ADVERTISEMENT</th>
+                    <th class="text-nowrap">NOTE</th>
+                    <th class="text-nowrap">CORRIGENDUM</th>
                 </tr>
 
                 @foreach ($item as $value)
@@ -78,6 +78,10 @@
                 @endforeach
 
             </table>
+
+
+           
+
         </div>
     </section>
 @endsection
