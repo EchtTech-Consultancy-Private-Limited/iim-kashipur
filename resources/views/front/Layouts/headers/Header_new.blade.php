@@ -59,7 +59,7 @@
                                    <div class="serch-box-show d-none">
                                     <form action="#" method="get">
                                         <div class="d-flex"> 
-                                            <input type="text" class="form-control" placeholder="search name or deparment!!!!" value=" " name="search" autocomplete="off">            
+                                            <input type="search" class="form-control" placeholder="Search here..." value=" " name="search">            
                                             <button type="submit" class="btn-info submit-btn-apply"> <i class="fa fa-search"> </i> </button>
             
                                         </div>
@@ -529,11 +529,14 @@
         $("body").click(function(){
             $(".dropdown-toggle.internal-add.show").removeClass('show');
             $(".dropdown-toggle.focus-open-add.show").removeClass('show');
-            // $(".serch-box-show").addClass('d-none');
         });
 
         $(".search-show-popup").click(function(){
             $(".serch-box-show").toggleClass('d-none')
+        });
+
+        $(".site-header").click(function(){
+            $(".serch-box-show").addClass('d-none');
         });
         
     });
