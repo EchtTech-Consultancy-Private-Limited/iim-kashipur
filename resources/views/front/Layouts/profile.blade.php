@@ -25,10 +25,8 @@ ul.nav.nav-tabs {
 
     {{-- banner and  breadcrumbs   --}}
 
-    @if (isset($sub_menu))
+    @if (isset($get))
 
-        {{-- child menu section  --}}
-        {{-- banner setion --}}
         <div class="internalpagebanner">
             @if (GetOrganisationAllDetails('default_banner_image') != '')
                 <img src="{{ asset('uploads/site-logo/' . GetOrganisationAllDetails('default_banner_image')) }}"
@@ -39,6 +37,8 @@ ul.nav.nav-tabs {
                     style="height:auto;  min-height:200px; max-height:350% overflow:hidden;"
                     alt="{{ $type_child[0]->name ?? '' }}" title="{{ $type_child[0]->name ?? '' }}">
             @endif
+
+
             <div class="imagecaption">
                 <div class="container">
                     <h1>
@@ -202,24 +202,7 @@ ul.nav.nav-tabs {
                             </svg></a></li>
 
 
-
-                    @if(URL::previous() == url('/faculty/faculty-directory'))
-
-                        <li><a href="{{ url('/') }}"><span> Faculty </span></a></li>
-                        <li><a href="{{ URL::previous() }}"><span>Faculty Directory</span></a></li>
-
-                    @elseif(URL::previous() == url('/about-institute/board-of-governors'))
-
-                        <li><a href="{{ url('/') }}"><span>About Institute</span></a></li>
-                        <li><a href="{{ URL::previous() }}"><span>Board of Governors</span></a></li>
-
-                    @elseif(URL::previous() == url('/faculty/visiting-faculty'))
-
-                        <li><a href="{{ url('/') }}"><span>Faculty</span></a></li>
-                        <li><a href="{{ URL::previous() }}"><span>Visiting Faculty</span></a></li>
-
-
-                    @elseif(URL::previous() == url('/faculty/academic-areas/communications'))
+                    @if(URL::previous() == url('/faculty/academic-areas/communications'))
 
                         <li><a href="{{ url('/') }}"><span>Faculty</span></a></li>
                         <li><a href="{{ URL::previous() }}"><span>Academic Areas</span></a></li>
@@ -283,8 +266,6 @@ ul.nav.nav-tabs {
 
 
                     @endif
-
-
 
                     <li><span>
                         @if (GetLang() == 'en')
@@ -422,7 +403,7 @@ ul.nav.nav-tabs {
             <div class="col-md-9">
                 <div class="content-desc">
                     <div class="innerpagecon">
-                        <a href="#" class="btn2">{{ $item[0]->designation ?? '' }}</a>
+                        <a href="#" class="btn2">{{ $item[0]->title ?? '' }}</a>
                         @foreach ($item as $items)
                             <div class="row mt-4">
 
@@ -430,11 +411,16 @@ ul.nav.nav-tabs {
 
                                     <div class=" top text-center mt-0 image-box-border">
                                         <div class="profile-img">
-                                            <img src="{{ asset('uploads/organisation/' . $items->image) }}"
-                                                alt="{{ $items->title }}">
+
+                                            @if ($items->image != '')
+                                            <img src="{{asset('uploads/organisation/'.$items->image)}}"  alt="{{ $items->title ?? '' }}" title="{{ $items->title ?? '' }}">
+                                            @else
+                                            <img src="{{ asset('admin/images/faces/default.jpg') }}">
+                                            @endif
+
                                         </div>
 
-                                        <h6>{{ $items->title }}</h6>
+                                        <h6>{{ $items->designation }}</h6>
                                     </div>
                                 </div>
 
@@ -442,7 +428,7 @@ ul.nav.nav-tabs {
 
                                 <div class="col-xl-9 col-md-9 col-lg-12">
                                     {{-- <p>{{ $items->department  }}</p> --}}
-                                    <p>{!! $items->description !!} </p>
+                                    {{-- <p>{!! $items->description !!} </p> --}}
 
 
                                     <div class="social-icon">
@@ -700,7 +686,7 @@ ul.nav.nav-tabs {
                 <div class="col-md-9">
                     <div class="content-desc">
                         <div class="innerpagecon">
-                            <a href="#" class="btn2">{{ $item[0]->designation ?? '' }}</a>
+                            <a href="#" class="btn2">{{ $item[0]->title ?? '' }}</a>
                             @foreach ($item as $items)
                                 <div class="row mt-4">
 
@@ -708,11 +694,15 @@ ul.nav.nav-tabs {
 
                                         <div class=" top text-center mt-0 image-box-border">
                                             <div class="profile-img">
-                                                <img src="{{ asset('uploads/organisation/' . $items->image) }}"
-                                                    alt="{{ $items->title }}">
+
+                                                @if ($items->image != '')
+                                                <img src="{{asset('uploads/organisation/'.$items->image)}}"  alt="{{ $items->title ?? '' }}" title="{{ $items->title ?? '' }}">
+                                                @else
+                                                <img src="{{ asset('admin/images/faces/default.jpg') }}">
+                                                @endif
                                             </div>
 
-                                            <h6>{{ $items->title }}</h6>
+                                            <h6>{{ $items->designation }}</h6>
                                         </div>
                                     </div>
 
@@ -720,7 +710,7 @@ ul.nav.nav-tabs {
 
                                     <div class="col-xl-8 col-md-8 col-lg-8">
                                         {{-- <p>{{ $items->department  }}</p> --}}
-                                        <p>{!! $items->description !!} </p>
+                                        {{-- <p>{!! $items->description !!} </p> --}}
 
 
                                         <div class="social-icon">
@@ -864,7 +854,7 @@ ul.nav.nav-tabs {
             <div class="col-md-12">
                 <div class="content-desc">
                     <div class="innerpagecon">
-                            <a href="#" class="btn2">{{ $item[0]->designation ?? '' }}</a>
+                            <a href="#" class="btn2">{{ $item[0]->title ?? '' }}</a>
                             {{-- <a href="#" class="btn2"><i class="fa fa-angle-left" aria-hidden="true" style="margin-right: 5px;"></i> Back</a> --}}
                         @foreach ($item as $items)
                             <div class="row mt-4">
@@ -873,11 +863,16 @@ ul.nav.nav-tabs {
 
                                     <div class=" top text-center mt-0 image-box-border">
                                         <div class="profile-img">
-                                            <img src="{{ asset('uploads/organisation/' . $items->image) }}"
-                                                alt="{{ $items->title }}">
+
+                                            @if ($items->image != '')
+                                            <img src="{{asset('uploads/organisation/'.$items->image)}}"  alt="{{ $items->title ?? '' }}" title="{{ $items->title ?? '' }}">
+                                            @else
+                                            <img src="{{ asset('admin/images/faces/default.jpg') }}">
+                                            @endif
+
                                         </div>
 
-                                        <h6>{{ $items->title }}</h6>
+                                        {{-- <h6>{{ $items->designation }}</h6> --}}
 
                                         <h6> {{ $items->designation   ??'' }} </h6>
 

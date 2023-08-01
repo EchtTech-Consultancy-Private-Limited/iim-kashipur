@@ -75,7 +75,7 @@
                                 </div>
                             @endif
                             <h6 class="font-weight-light">Sign in to continue.</h6>
-                            <form method="Post" action="{{ route('admin.login') }}">
+                            <form method="Post" action="{{ route('admin.login') }}"  id="loginForm">
                                 @csrf
                                 <form class="pt-3">
                                     <div class="form-group">
@@ -84,7 +84,7 @@
                                     </div>
                                     <div class="form-group position-relative">
                                         <input type="password" class="form-control form-control-lg"
-                                            id="exampleInputPassword1" placeholder="Password" name="password" onpaste="return false;" ondrop="return false;">
+                                            id="exampleInputPassword1" placeholder="Password" name="password" onpaste="return false;">
 
                                             <i class="fa fa-eye eye-icon-p" aria-hidden="true" id="togglePassword" ></i>
                                         </div>
@@ -102,7 +102,7 @@
                                             placeholder="Enter Captcha" name="captcha">
                                     </div>
                                     <div class="mt-3">
-                                        <button type="submit" class="btn btn-block btn-facebook "
+                                        <button type="submit" onclick="return encrypt();" class="btn btn-block btn-facebook "
                                             style="background: #eb6a2a;">
                                             <b> Login</b>
                                         </button>
@@ -151,6 +151,35 @@
 </body>
 
 <script type="text/javascript">
+
+function encrypt()
+{
+
+
+
+  $str=$("#exampleInputPassword1").val();
+
+  for($i=0; $i<5;$i++)
+  {
+    $str=reverseString(btoa($str));
+  }
+  $("#exampleInputPassword1").val($str);
+
+
+
+  $("#loginForm").submit();
+
+}
+
+
+function reverseString(str) {
+    var splitString = str.split("");
+    var reverseArray = splitString.reverse();
+    var joinArray = reverseArray.join("");
+    return joinArray;
+}
+
+
     $('#refresh-captcha').click(function() {
         $.ajax({
             type: 'GET',
@@ -174,6 +203,11 @@
 
         this.classlist.toggle('fa-eye-slash');
     });
+
+
+
+
+
 </script>
 
 </html>

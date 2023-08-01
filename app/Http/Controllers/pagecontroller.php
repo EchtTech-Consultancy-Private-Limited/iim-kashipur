@@ -224,7 +224,6 @@ class pagecontroller extends Controller
 
                 if($request->hasfile('bannerimage'))
                 {
-                $u->pdfsize=$request->pdf->getSize();
                 $img = $request->file('bannerimage');
                 $name =$img->getClientOriginalName();
                 $filename = time().$name;

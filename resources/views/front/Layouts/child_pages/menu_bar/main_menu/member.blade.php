@@ -627,6 +627,7 @@
                                     <div class="row mt-4">
                                         <div class="col-md-3">
                                             <div class="addevent-box top text-center mt-0">
+                                              <a href="{{ url(@$mmenu[0]->slug.'/'.$type[0]->slug.'/'.$items->slug) }}">
                                                 <div class="profile-img">
                                                     <img src="{{ asset('uploads/organisation/' . $items->image) }}"
                                                         alt="{{ $items->title }}" title="{{ $items->title }}">
@@ -638,7 +639,7 @@
                                                         {{ $items->title_h }}
                                                     @endif
                                                 </h5>
-
+                                             </a>
 
                                                 {{-- <div class="profile-socail-icon information">
                                                     <a href="javascript:void(0);" class="socail-icon"><i

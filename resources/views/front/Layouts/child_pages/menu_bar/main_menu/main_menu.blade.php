@@ -752,7 +752,11 @@
 
                             <div class="col-md-4 col-lg-4 mb-2">
 
+
+
                                 <a href="{{ url($membersLists->slug) }}">
+
+                                    <a  href="{{ url(@$mmenu[0]->slug.'/'.$gets[0]->slug.'/'.$type_sub[0]->slug.'/'.$membersLists->slug) }}" >
 
                                     <div class="profilewraper withinfo addevent-box">
 

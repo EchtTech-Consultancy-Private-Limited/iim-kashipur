@@ -428,6 +428,11 @@ Route::get('reset-password/{token}', [ForgotPasswordController::class, 'showRese
 Route::post('reset-password', [ForgotPasswordController::class, 'submitResetPasswordForm'])->name('reset.password.post');
 
 
+
+//website search
+
+Route::post('search',[InnerpageController::class,'search']);
+
 //Monu Routes
 // Career
 Route::get('/career',[InnerpageController::class,'career']);

@@ -56,6 +56,13 @@
 
                             @csrf
 
+                            <div class="col-md-12">
+                                <label for="inputText" class="col-form-label">PDF*</label>
+                                <div class="">
+                                    <input type="text" placeholder="Please Enter your Pdf Name" @if ($id) value="{{ $data->title }}" @else value="{{ old('title') }}" @endif class="form-control" name="title"><br>
+                                </div>
+                            </div>
+
 
                             <div class="col-md-12">
                                 <label for="inputText" class="col-form-label">PDF*
@@ -81,7 +88,6 @@
                                     <label for="pdf" id="pdf-error" class="error"></label>
                                 </div>
                             </div>
-
 
 
                             <div class="col-md-12">

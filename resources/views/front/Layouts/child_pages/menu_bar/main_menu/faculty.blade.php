@@ -697,7 +697,7 @@
 
                             <div class="col-md-5 col-lg-4 ">
 
-                                <a href="{{ $type[0]->slug ?? '' }}/{{ $items->slug ??'' }}" >
+                                <a  href="{{ url(@$mmenu[0]->slug.'/'.$type[0]->slug.'/'.$items->slug) }}" >
 
                                 <div class="profilewraper withinfo addevent-box">
 

@@ -54,6 +54,165 @@ class InnerpageController extends Controller
 //
 //
 //
+
+
+// public function search(){
+
+
+//     $search=$request->search;
+//     if(anti_raggings::where("title","like","%$search%")->get()->count()){
+
+//       $anti_raggings=anti_raggings::where("title","like","%$search%")->get();
+
+//     }elseif(BannerSlider::where("title","like","%$search%")->orwhere("short","like","%$search%")->orwhere("heading1","like","%$search%")->get()->count()){
+
+//       $BannerSlider=BannerSlider::where("title","like","%$search%")->orwhere("short","like","%$search%")->orwhere("heading1","like","%$search%")->get();
+
+//     }elseif( Career::where("name_of_the_post","like","%$search%")->orwhere("detail_advertisement","like","%$search%") ->orwhere("corrigendum","like","%$search%")->orwhere("note","like","%$search%")->get()->count()){
+
+
+
+//     }elseif( $data=cell_multiple_image::where("event","like","%$search%")->get()->count()){
+
+
+
+//     }elseif(cell::where("title","like","%$search%") ->orwhere("about_details","like","%$search%")->orwhere("activites","like","%$search%")->orwhere("event","like","%$search%")->get()->count()){
+
+//     }elseif($data=club::where("title","like","%$search%")->orwhere("about_details","like","%$search%")->orwhere("event","like","%$search%")->get()->count()){
+
+
+
+//     }elseif(club::where("title","like","%$search%")->orwhere("about_details","like","%$search%")->orwhere("event","like","%$search%")->get()->count()){
+
+
+//     }elseif(commmittee::where("title","like","%$search%")->orwhere("about_details","like","%$search%")->orwhere("activites","like","%$search%")->orwhere("event","like","%$search%")->get()->count()){
+
+
+//     }elseif(committee_multiple_image::where("committee_title","like","%$search%")->orwhere("event","like","%$search%")->get()->count()){
+
+
+
+//     }elseif(content_page::where("name","like","%$search%")->orwhere("content","like","%$search%")->get()->count()){
+
+
+
+//     }elseif(Events::where("title","like","%$search%")->get()){
+
+
+//     }elseif(Industry::where("title","like","%$search%")->get()->count()){
+
+
+
+//     }elseif(journal_publication::where("title","like","%$search%")->get())
+//     {
+
+//     }elseif(journal_publication_child::where("about_details","like","%$search%")->get()->count()){
+
+
+
+//     }elseif(multiple_profile::where("Title","like","%$search%")->orwhere("heading","like","%$search%")->orwhere("description","like","%$search%")->get()->count())
+//     {
+
+
+//     }elseif(OrganisationStructure::where("title","like","%$search%") ->orwhere("email","like","%$search%")->orwhere("designation","like","%$search%")->orwhere("phone","like","%$search%") ->orwhere("description","like","%$search%")->get()->count()){
+
+
+
+//     }elseif(news_event::where("title","like","%$search%")->get()->count()){
+
+
+//     }elseif(org::where("name","like","%$search%")
+//                  ->orwhere("contact","like","%$search%")
+//                  ->orwhere("email","like","%$search%")
+//                  ->orwhere("about","like","%$search%")
+//                  ->orwhere("address","like","%$search%")
+//                   ->get()->count()){
+
+//     }elseif(org_journies::where("title","like","%$search%")
+//                      ->orwhere("heading","like","%$search%")
+//                      ->get()->count()){
+
+//     }elseif(press_media::where("heading","like","%$search%")
+//                  ->orwhere("media_publication","like","%$search%")
+//                  ->orwhere("title","like","%$search%")
+//                  ->orwhere("address","like","%$search%")
+//                 ->orwhere("email","like","%$search%")
+//                 ->get()->count()){
+
+
+//     }elseif(project_logo::where("name","like","%$search%")
+//                       ->orwhere("number","like","%$search%")
+//                       ->get()->count()){
+
+//     }elseif(project_logo::where("name","like","%$search%")
+//                  ->orwhere("number","like","%$search%")
+//                  ->get()->count()){
+
+//     }elseif(quick_linkcategory::where("Section","like","%$search%")
+//                    ->orwhere("short_note","like","%$search%")
+//                    ->get()->count()){
+
+//     }elseif(QuickLink::where("title","like","%$search%")
+//                        ->orwhere("short","like","%$search%")
+//                        ->get()->count()){
+
+//     }elseif(){
+
+//     }elseif(){
+
+//     }elseif(){
+
+//     }
+
+
+
+
+
+    //     $data=rti::where("title","like","%$search%")
+    //                ->orwhere("CPIO","like","%$search%")
+    //                ->orwhere("Authority","like","%$search%")
+    //                ->get();   //rti
+
+    //     $data=student_council::where("about_details","like","%$search%")
+    //              ->orwhere("student_council","like","%$search%")
+    //              ->get();   //student_council
+
+    //     $data=StudentProfile::where("name","like","%$search%")
+    //                 ->orwhere("area_specialization","like","%$search%")
+    //                 ->orwhere("email","like","%$search%")
+    //                 ->orwhere("about","like","%$search%")
+    //                 ->orwhere("educational_background","like","%$search%")
+    //                 ->orwhere("work_experience","like","%$search%")
+    //                 ->orwhere("research_interests","like","%$search%")
+    //                 ->orwhere("contact","like","%$search%")
+    //                 ->orwhere("papers_publications","like","%$search%")
+    //                 ->orwhere("last_name","like","%$search%")
+    //                 ->get();   //quick_linkcategory
+
+    //     $data=tender::where("title","like","%$search%")
+    //             ->orwhere("corrigendum","like","%$search%")
+    //             ->get();   //tender
+
+    //     $data=Vendorsdebarred::where("vendor_name","like","%$search%")
+    //                     ->get();   //Vendorsdebarred
+
+    //     $data=video_gallery::where("name","like","%$search%")
+    //                 ->orwhere("content","like","%$search%")
+    //                   ->get();   //video_gallerie
+
+    //     $data=wellness_facilitie::where("about_details","like","%$search%")
+    //                    ->orwhere("description","like","%$search%")
+    //                    ->orwhere("EVENTS","like","%$search%")
+    //                    ->orwhere("title","like","%$search%")
+    //                    ->orwhere("description","like","%$search%")
+    //                    ->get();   //video_gallerie
+
+    //  return $data;
+
+
+
+ //}
+
 //Monu - 12-07-2023
 public function RTI_view()
     {
@@ -142,7 +301,6 @@ public function press_media()
 }
 public function sub_childInnerpage($main_slug,$slug,$subchild,$superchild)  //content page superchild menu
 {
-
     $subchildmenu=subchildmenu::whereslug($superchild)->get();
     if(Count($subchildmenu)>0)
     {
@@ -1438,7 +1596,6 @@ public function screen_reader_access()
 
         elseif($type[0]->url == '/photo-gallery')
         {
-
                $item=photo_gallery::whereid($type[0]->link_option)->get();
                 if(Count($item)>0){
                   //  dd($item);
@@ -1459,6 +1616,37 @@ public function screen_reader_access()
                 $type_child=child_menu::whereslug($slug)->get();
                 return view('front.Layouts.child_pages.menu_bar.main_menu.master',['values'=>$values,'item'=>$item,'type_sub'=>$type_sub,'type_child'=>$type_child,'gets'=>$gets,'get'=>$get]);
                 }
+        }
+    }
+    elseif(photo_gallery::wherephoto_slug($slug)->get()->count())
+    {
+       // dd("hii");
+        $data=photo_gallery::wherephoto_slug($slug)->get();
+       // dd($data);
+        if(Count($data) >0){
+        $item=photo_gallery_image::wheregallery_id($data[0]->id)->get();
+       //dd($item);
+            if(Count($item)>0){
+            return view('front.Layouts.inner-page.gallerys.photo-category',['item'=>$item,'data'=>$data]);
+                }else{
+                return abort(401);
+            }
+        }else{
+            return abort(401);
+        }
+    }elseif(video_gallery::wherevideo_slug($slug)->get()->count())
+    {
+        $data=video_gallery::wherevideo_slug($slug)->get();
+        if(Count($data)>0){
+         $item=video_gallery_tittle::wheregallery_id($data[0]->id)->get();
+
+        if(Count($item)>0){
+        return view('front.Layouts.inner-page.gallerys.video-miltimage',['item'=>$item,'data'=>$data]);
+        }else{
+            return abort(401);
+        }
+        }else{
+            return abort(401);
         }
     }
     else
@@ -1563,7 +1751,6 @@ public function Child_barInnerpage($main_slug,$Sub_slug,$slug) //content page
 {
 
     $data=child_menu::whereslug($slug)->get();
-
     if(Count($data)>0){
 
         if($slug=="student-profiles")
@@ -1579,11 +1766,8 @@ public function Child_barInnerpage($main_slug,$Sub_slug,$slug) //content page
             return abort(401);
             }
         }
-
-
         if($data[0]->url == '/content-page')
         {
-
 
             $item=content_page::whereid($data[0]->link_option)->get();
 
@@ -1768,6 +1952,7 @@ public function Child_barInnerpage($main_slug,$Sub_slug,$slug) //content page
             }
         }elseif($data[0]->url == '/photo-gallery')
         {
+
                $item=photo_gallery::whereid($data[0]->link_option)->get();
                 if(Count($item)>0){
                 $value=photo_gallery_image::wheregallery_id($item[0]->id)->get();
@@ -1778,6 +1963,7 @@ public function Child_barInnerpage($main_slug,$Sub_slug,$slug) //content page
                 $type_child=child_menu::whereslug($slug)->get();
                 return view('front.Layouts.child_pages.menu_bar.main_menu.master',['value'=>$value,'item'=>$item,'type_sub'=>$type_sub,'type_child'=>$type_child,'gets'=>$gets,'get'=>$get]);
                 }
+
         }elseif($data[0]->url == '/video-gallery')
         {
                 $item=video_gallery::whereid($data[0]->link_option)->get();
