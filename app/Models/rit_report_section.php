@@ -8,4 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class rit_report_section extends Model
 {
     use HasFactory;
+
+
+
 }

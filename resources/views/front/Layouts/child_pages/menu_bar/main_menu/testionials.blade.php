@@ -2,12 +2,9 @@
 
 @section('content')
 
-
     @php
         $mmenu = @content_menus($type[0]->menu_id);
     @endphp
-
-
 
     {{-- banner and  breadcrumbs   --}}
 
@@ -399,17 +396,11 @@
                 @else
 
 
-
-
-
                 <div class="col-md-9">
 
                     <div class="innerpagecontent">
 
-
-
-
-                  <a href="javascript:void(0)" class="btn2 margin_bottom"> @if(GetLang()=='en') {{ $type[0]->name ?? '' }}  @else {{ $type[0]->name_h ?? '' }}  @endif</a><br>
+                  <a href="javascript:void(0)" class="btn2 margin_bottom"> @if(GetLang()=='en')   {{ $type_child[0]->name ?? '' }} @else  {{ $type_child[0]->name_h ?? '' }}  @endif</a><br>
 
                         <div class="profilewithinfo mb-0">
 

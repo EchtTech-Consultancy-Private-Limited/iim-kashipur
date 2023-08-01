@@ -43,6 +43,12 @@ use App\Models\wellness_facilitie_image;
 use App\Models\rti;
 use App\Models\rit_report_section;
 use App\Models\quarter_report;
+use App\Models\BannerSlider;
+use App\Models\org;
+use App\Models\project_logo;
+
+use App\Models\quick_linkcategory;
+use App\Models\search;
 
 class InnerpageController extends Controller
 {
@@ -56,70 +62,173 @@ class InnerpageController extends Controller
 //
 
 
-// public function search(){
+
+
+public function search(Request $request){
+
+    $search=$request->search;
+    $anti_raggings=anti_raggings::where("title","like","%$search%")->get();
+    $BannerSlider=  BannerSlider::where("title","like","%$search%")->orwhere("type","like","%$search%")->orwhere("short","like","%$search%")->orwhere("heading1","like","%$search%")->get();
+    $Career= Career::where("name_of_the_post","like","%$search%")->orwhere("detail_advertisement","like","%$search%") ->orwhere("corrigendum","like","%$search%")->orwhere("note","like","%$search%")->get();
+
+    $cell_multiple_image=cell_multiple_image::where("event","like","%$search%")->get();
+    $cell=cell::where("title","like","%$search%") ->orwhere("about_details","like","%$search%")->orwhere("activites","like","%$search%")->orwhere("event","like","%$search%")->get();
+    $club=club::where("title","like","%$search%")->orwhere("about_details","like","%$search%")->orwhere("event","like","%$search%")->get();
+    $commmittee= commmittee::where("title","like","%$search%")->orwhere("about_details","like","%$search%")->orwhere("activites","like","%$search%")->orwhere("event","like","%$search%")->get();
+    $committee_multiple_image=committee_multiple_image::where("committee_title","like","%$search%")->orwhere("event","like","%$search%")->get();
+    $content_page=content_page::where("name","like","%$search%")->orwhere("content","like","%$search%")->get() ;
+    $Events= Events::where("title","like","%$search%")->get();
+    $Industry=Industry::where("title","like","%$search%")->get();
+    $journal_publication=journal_publication::where("title","like","%$search%")->get();
+    $journal_publication_child=journal_publication_child::where("about_details","like","%$search%")->get();
+    $multiple_profile= multiple_profile::where("Title","like","%$search%")->orwhere("heading","like","%$search%")->orwhere("description","like","%$search%")->get();
+    $OrganisationStructure=OrganisationStructure::where("title","like","%$search%") ->orwhere("email","like","%$search%")->orwhere("designation","like","%$search%")->orwhere("phone","like","%$search%") ->orwhere("description","like","%$search%")->get();
+    $news_event= news_event::where("title","like","%$search%")->get();
+    $org=org::where("name","like","%$search%")
+                 ->orwhere("contact","like","%$search%")
+                 ->orwhere("email","like","%$search%")
+                 ->orwhere("about","like","%$search%")
+                 ->orwhere("address","like","%$search%")
+                  ->get();
+    $org_journies=org_journies::where("title","like","%$search%")
+        ->orwhere("heading","like","%$search%")
+        ->get();
+      $press_media= press_media::where("heading","like","%$search%")
+                 ->orwhere("media_publication","like","%$search%")
+                 ->orwhere("title","like","%$search%")
+                 ->orwhere("address","like","%$search%")
+                ->orwhere("email","like","%$search%")
+                ->get();
+
+    $project_logo = project_logo::where("name","like","%$search%")
+            ->orwhere("number","like","%$search%")
+             ->get();
+    $quick_linkcategory= quick_linkcategory::where("Section","like","%$search%")
+                    ->orwhere("short_note","like","%$search%")
+                ->get();
+    $QuickLink=QuickLink::where("title","like","%$search%")
+        ->orwhere("short","like","%$search%")
+        ->get();
+    $rit=rti::where("title","like","%$search%")->orwhere("CPIO","like","%$search%")->orwhere("Authority","like","%$search%")->get();
+    $student_council=student_council::where("about_details","like","%$search%")->orwhere("student_council","like","%$search%")->get();
+    $StudentProfile = StudentProfile::where("name","like","%$search%")
+                ->orwhere("area_specialization","like","%$search%")
+                ->orwhere("email","like","%$search%")
+                ->orwhere("about","like","%$search%")
+                ->orwhere("educational_background","like","%$search%")
+                ->orwhere("work_experience","like","%$search%")
+                ->orwhere("research_interests","like","%$search%")
+                ->orwhere("contact","like","%$search%")
+                ->orwhere("papers_publications","like","%$search%")
+                ->orwhere("last_name","like","%$search%")
+                ->get();
+    $tender= tender::where("title","like","%$search%")
+               ->orwhere("corrigendum","like","%$search%")
+               ->get();
+    $Vendorsdebarred= Vendorsdebarred::where("vendor_name","like","%$search%")
+                          ->get();
+    $video_gallery=video_gallery::where("name","like","%$search%")
+                    ->orwhere("content","like","%$search%")
+                    ->get();
+     $wellness_facilitie=  wellness_facilitie::where("about_details","like","%$search%")
+                           ->orwhere("description","like","%$search%")
+                           ->orwhere("EVENTS","like","%$search%")
+                           ->orwhere("title","like","%$search%")
+                           ->orwhere("description","like","%$search%")
+                           ->get();
+
+    return view('front.Layouts.search_details',compact('anti_raggings','BannerSlider','Career','cell_multiple_image','cell','club','commmittee','committee_multiple_image','content_page','Events','Industry','journal_publication_child','multiple_profile','OrganisationStructure','news_event','org','org_journies','press_media','project_logo','wellness_facilitie','video_gallery','Vendorsdebarred','tender','StudentProfile','student_council','rit','QuickLink','quick_linkcategory'));
+
+}
+
+
+
+
+
+
+
+
+
+
+
+// public function search(Request $request){
 
 
 //     $search=$request->search;
-//     if(anti_raggings::where("title","like","%$search%")->get()->count()){
-
-//       $anti_raggings=anti_raggings::where("title","like","%$search%")->get();
-
+//     if(anti_raggings::where("title","like","%$search%")->get(){
+//           $anti_raggings=anti_raggings::where("title","like","%$search%")->get();
 //     }elseif(BannerSlider::where("title","like","%$search%")->orwhere("short","like","%$search%")->orwhere("heading1","like","%$search%")->get()->count()){
 
-//       $BannerSlider=BannerSlider::where("title","like","%$search%")->orwhere("short","like","%$search%")->orwhere("heading1","like","%$search%")->get();
+//         $BannerSlider=BannerSlider::where("title","like","%$search%")->orwhere("short","like","%$search%")->orwhere("heading1","like","%$search%")->get();
 
-//     }elseif( Career::where("name_of_the_post","like","%$search%")->orwhere("detail_advertisement","like","%$search%") ->orwhere("corrigendum","like","%$search%")->orwhere("note","like","%$search%")->get()->count()){
+//     }elseif(Career::where("name_of_the_post","like","%$search%")->orwhere("detail_advertisement","like","%$search%") ->orwhere("corrigendum","like","%$search%")->orwhere("note","like","%$search%")->get()->count()){
 
+//          $Career=Career::where("name_of_the_post","like","%$search%")->orwhere("detail_advertisement","like","%$search%") ->orwhere("corrigendum","like","%$search%")->orwhere("note","like","%$search%")->get();
 
+//     }elseif(cell_multiple_image::where("event","like","%$search%")->get()->count()){
 
-//     }elseif( $data=cell_multiple_image::where("event","like","%$search%")->get()->count()){
-
-
+//         $cell_multiple_image=cell_multiple_image::where("event","like","%$search%")->get();
 
 //     }elseif(cell::where("title","like","%$search%") ->orwhere("about_details","like","%$search%")->orwhere("activites","like","%$search%")->orwhere("event","like","%$search%")->get()->count()){
 
-//     }elseif($data=club::where("title","like","%$search%")->orwhere("about_details","like","%$search%")->orwhere("event","like","%$search%")->get()->count()){
 
+//          $cell=cell::where("title","like","%$search%") ->orwhere("about_details","like","%$search%")->orwhere("activites","like","%$search%")->orwhere("event","like","%$search%")->get();
 
+//        dd($cell);
 
 //     }elseif(club::where("title","like","%$search%")->orwhere("about_details","like","%$search%")->orwhere("event","like","%$search%")->get()->count()){
 
+//        $club=club::where("title","like","%$search%")->orwhere("about_details","like","%$search%")->orwhere("event","like","%$search%")->get();
+
+//      dd($club);
 
 //     }elseif(commmittee::where("title","like","%$search%")->orwhere("about_details","like","%$search%")->orwhere("activites","like","%$search%")->orwhere("event","like","%$search%")->get()->count()){
 
 
+//         $commmittee= commmittee::where("title","like","%$search%")->orwhere("about_details","like","%$search%")->orwhere("activites","like","%$search%")->orwhere("event","like","%$search%")->get();
+
+//        dd($committee);
+
 //     }elseif(committee_multiple_image::where("committee_title","like","%$search%")->orwhere("event","like","%$search%")->get()->count()){
 
-
+//         $committee_multiple_image=committee_multiple_image::where("committee_title","like","%$search%")->orwhere("event","like","%$search%")->get();
 
 //     }elseif(content_page::where("name","like","%$search%")->orwhere("content","like","%$search%")->get()->count()){
 
+//         $content_page= content_page::where("name","like","%$search%")->orwhere("content","like","%$search%")->get();
 
+//         dd($content_page);
 
-//     }elseif(Events::where("title","like","%$search%")->get()){
+//     }elseif(Events::where("title","like","%$search%")->get()->count()){
 
+//         $Events=Events::where("title","like","%$search%")->get();
 
 //     }elseif(Industry::where("title","like","%$search%")->get()->count()){
 
+//        $Industry =Industry::where("title","like","%$search%")->get();
 
-
-//     }elseif(journal_publication::where("title","like","%$search%")->get())
+//     }elseif(journal_publication::where("title","like","%$search%")->get()->count())
 //     {
+
+
+//          $journal_publication= journal_publication::where("title","like","%$search%")->get();
 
 //     }elseif(journal_publication_child::where("about_details","like","%$search%")->get()->count()){
 
-
+//           $journal_publication_child=journal_publication_child::where("about_details","like","%$search%")->get();
 
 //     }elseif(multiple_profile::where("Title","like","%$search%")->orwhere("heading","like","%$search%")->orwhere("description","like","%$search%")->get()->count())
 //     {
 
+//           $multiple_profile= multiple_profile::where("Title","like","%$search%")->orwhere("heading","like","%$search%")->orwhere("description","like","%$search%")->get();
 
 //     }elseif(OrganisationStructure::where("title","like","%$search%") ->orwhere("email","like","%$search%")->orwhere("designation","like","%$search%")->orwhere("phone","like","%$search%") ->orwhere("description","like","%$search%")->get()->count()){
 
-
+//         $OrganisationStructure=OrganisationStructure::where("title","like","%$search%") ->orwhere("email","like","%$search%")->orwhere("designation","like","%$search%")->orwhere("phone","like","%$search%") ->orwhere("description","like","%$search%")->get();
 
 //     }elseif(news_event::where("title","like","%$search%")->get()->count()){
 
+//           $news_event=news_event::where("title","like","%$search%")->get();
 
 //     }elseif(org::where("name","like","%$search%")
 //                  ->orwhere("contact","like","%$search%")
@@ -128,9 +237,25 @@ class InnerpageController extends Controller
 //                  ->orwhere("address","like","%$search%")
 //                   ->get()->count()){
 
+//           $org= org::where("name","like","%$search%")
+//                         ->orwhere("contact","like","%$search%")
+//                         ->orwhere("email","like","%$search%")
+//                         ->orwhere("about","like","%$search%")
+//                         ->orwhere("address","like","%$search%")
+//                         ->get();
+
+
+
 //     }elseif(org_journies::where("title","like","%$search%")
 //                      ->orwhere("heading","like","%$search%")
 //                      ->get()->count()){
+
+
+//                     $org_journies=org_journies::where("title","like","%$search%")
+//                         ->orwhere("heading","like","%$search%")
+//                         ->get();
+
+
 
 //     }elseif(press_media::where("heading","like","%$search%")
 //                  ->orwhere("media_publication","like","%$search%")
@@ -139,81 +264,136 @@ class InnerpageController extends Controller
 //                 ->orwhere("email","like","%$search%")
 //                 ->get()->count()){
 
+//             $press_media=press_media::where("heading","like","%$search%")
+//                 ->orwhere("media_publication","like","%$search%")
+//                 ->orwhere("title","like","%$search%")
+//                 ->orwhere("address","like","%$search%")
+//                 ->orwhere("email","like","%$search%")
+//                 ->get();
 
 //     }elseif(project_logo::where("name","like","%$search%")
 //                       ->orwhere("number","like","%$search%")
 //                       ->get()->count()){
 
+//            $project_logo = project_logo::where("name","like","%$search%")
+//             ->orwhere("number","like","%$search%")
+//             ->get();
+
+
 //     }elseif(project_logo::where("name","like","%$search%")
 //                  ->orwhere("number","like","%$search%")
 //                  ->get()->count()){
+
+//               $project_logo=project_logo::where("name","like","%$search%")
+//                     ->orwhere("number","like","%$search%")
+//                     ->get();
+
 
 //     }elseif(quick_linkcategory::where("Section","like","%$search%")
 //                    ->orwhere("short_note","like","%$search%")
 //                    ->get()->count()){
 
+
+//               $quick_linkcategory= quick_linkcategory::where("Section","like","%$search%")
+//                              ->orwhere("short_note","like","%$search%")
+//                             ->get();
+
+
 //     }elseif(QuickLink::where("title","like","%$search%")
 //                        ->orwhere("short","like","%$search%")
 //                        ->get()->count()){
 
-//     }elseif(){
+//                  $QuickLink=QuickLink::where("title","like","%$search%")
+//                         ->orwhere("short","like","%$search%")
+//                         ->get();
 
-//     }elseif(){
 
-//     }elseif(){
+//     }elseif(rti::where("title","like","%$search%")->orwhere("CPIO","like","%$search%")->orwhere("Authority","like","%$search%")->get()->count()){
 
+
+//          $rit=rti::where("title","like","%$search%")->orwhere("CPIO","like","%$search%")->orwhere("Authority","like","%$search%")->get();
+
+//     }elseif(student_council::where("about_details","like","%$search%")->orwhere("student_council","like","%$search%")->get()->count()){
+
+//           $student_council=student_council::where("about_details","like","%$search%")->orwhere("student_council","like","%$search%")->get();
+
+
+//     }elseif(StudentProfile::where("name","like","%$search%")
+//                         ->orwhere("area_specialization","like","%$search%")
+//                         ->orwhere("email","like","%$search%")
+//                         ->orwhere("about","like","%$search%")
+//                         ->orwhere("educational_background","like","%$search%")
+//                         ->orwhere("work_experience","like","%$search%")
+//                         ->orwhere("research_interests","like","%$search%")
+//                         ->orwhere("contact","like","%$search%")
+//                         ->orwhere("papers_publications","like","%$search%")
+//                         ->orwhere("last_name","like","%$search%")
+//                         ->get()->count()){
+
+
+//               $StudentProfile = StudentProfile::where("name","like","%$search%")
+//                             ->orwhere("area_specialization","like","%$search%")
+//                             ->orwhere("email","like","%$search%")
+//                             ->orwhere("about","like","%$search%")
+//                             ->orwhere("educational_background","like","%$search%")
+//                             ->orwhere("work_experience","like","%$search%")
+//                             ->orwhere("research_interests","like","%$search%")
+//                             ->orwhere("contact","like","%$search%")
+//                             ->orwhere("papers_publications","like","%$search%")
+//                             ->orwhere("last_name","like","%$search%")
+//                             ->get();
+
+
+
+//     }elseif(tender::where("title","like","%$search%")
+//     ->orwhere("corrigendum","like","%$search%")
+//     ->get()->count()){
+
+//       $tender= tender::where("title","like","%$search%")
+//                ->orwhere("corrigendum","like","%$search%")
+//                ->get();
+
+
+//     }elseif(Vendorsdebarred::where("vendor_name","like","%$search%")
+//     ->get()){
+
+//         $Vendorsdebarred= Vendorsdebarred::where("vendor_name","like","%$search%")
+//                           ->get();
+
+//     }elseif(video_gallery::where("name","like","%$search%")
+//     ->orwhere("content","like","%$search%")
+//       ->get()->count()){
+
+//               $video_gallery=video_gallery::where("name","like","%$search%")
+//                              ->orwhere("content","like","%$search%")
+//                               ->get();
+
+
+
+//     }elseif(wellness_facilitie::where("about_details","like","%$search%")
+//     ->orwhere("description","like","%$search%")
+//     ->orwhere("EVENTS","like","%$search%")
+//     ->orwhere("title","like","%$search%")
+//     ->orwhere("description","like","%$search%")
+//     ->get()->count()){
+
+//        $wellness_facilitie=  wellness_facilitie::where("about_details","like","%$search%")
+//                            ->orwhere("description","like","%$search%")
+//                            ->orwhere("EVENTS","like","%$search%")
+//                            ->orwhere("title","like","%$search%")
+//                            ->orwhere("description","like","%$search%")
+//                            ->get();
+//     }else{
+//         return "record not found";
 //     }
 
-
-
-
-
-    //     $data=rti::where("title","like","%$search%")
-    //                ->orwhere("CPIO","like","%$search%")
-    //                ->orwhere("Authority","like","%$search%")
-    //                ->get();   //rti
-
-    //     $data=student_council::where("about_details","like","%$search%")
-    //              ->orwhere("student_council","like","%$search%")
-    //              ->get();   //student_council
-
-    //     $data=StudentProfile::where("name","like","%$search%")
-    //                 ->orwhere("area_specialization","like","%$search%")
-    //                 ->orwhere("email","like","%$search%")
-    //                 ->orwhere("about","like","%$search%")
-    //                 ->orwhere("educational_background","like","%$search%")
-    //                 ->orwhere("work_experience","like","%$search%")
-    //                 ->orwhere("research_interests","like","%$search%")
-    //                 ->orwhere("contact","like","%$search%")
-    //                 ->orwhere("papers_publications","like","%$search%")
-    //                 ->orwhere("last_name","like","%$search%")
-    //                 ->get();   //quick_linkcategory
-
-    //     $data=tender::where("title","like","%$search%")
-    //             ->orwhere("corrigendum","like","%$search%")
-    //             ->get();   //tender
-
-    //     $data=Vendorsdebarred::where("vendor_name","like","%$search%")
-    //                     ->get();   //Vendorsdebarred
-
-    //     $data=video_gallery::where("name","like","%$search%")
-    //                 ->orwhere("content","like","%$search%")
-    //                   ->get();   //video_gallerie
-
-    //     $data=wellness_facilitie::where("about_details","like","%$search%")
-    //                    ->orwhere("description","like","%$search%")
-    //                    ->orwhere("EVENTS","like","%$search%")
-    //                    ->orwhere("title","like","%$search%")
-    //                    ->orwhere("description","like","%$search%")
-    //                    ->get();   //video_gallerie
-
-    //  return $data;
-
-
-
- //}
+//  }
 
 //Monu - 12-07-2023
+
+
+
+
 public function RTI_view()
     {
         $item=rti::wherestatus('1')->get();
@@ -301,7 +481,9 @@ public function press_media()
 }
 public function sub_childInnerpage($main_slug,$slug,$subchild,$superchild)  //content page superchild menu
 {
+
     $subchildmenu=subchildmenu::whereslug($superchild)->get();
+
     if(Count($subchildmenu)>0)
     {
         if(Count($subchildmenu)>0)
@@ -320,7 +502,48 @@ public function sub_childInnerpage($main_slug,$slug,$subchild,$superchild)  //co
                     return abort(401);
                 }
             }
-    }
+    }elseif(club::whereslug($superchild)->get()->count()){    //club single
+
+         $item=club::whereslug($superchild)->get();
+         if(count($item) >0){
+         $chairperson=OrganisationStructure::whereid($item[0]->chairperson)->get();
+         $chairpersons=OrganisationStructure::whereClub($item[0]->id)->get();
+         $data=club_multiple_image::whereparent_id($item[0]->id)->get();
+         $cccbreadcram="Club";
+         return view('front.Layouts.child_pages.menu_bar.main_menu.clube_committee_details',['cccbreadcram'=>$cccbreadcram,'chairpersons'=>$chairpersons,'chairperson'=>$chairperson,'item'=>$item,'data'=>$data]);
+         }else{
+             return abort(401);
+         }
+     }
+     elseif(commmittee::whereslug($superchild)->get()->count()){    //commitee single
+         $item=commmittee::whereslug($superchild)->get();
+         if(count($item) >0){
+         $chairperson=OrganisationStructure::whereid($item[0]->chairperson)->get();
+         $chairpersons=OrganisationStructure::wherecommittee($item[0]->id)->get();
+         $data=committee_multiple_image::whereparent_id($item[0]->id)->get();
+         $cccbreadcram="Committee";
+         return view('front.Layouts.child_pages.menu_bar.main_menu.clube_committee_details',['cccbreadcram'=>$cccbreadcram,'chairpersons'=>$chairpersons,'chairperson'=>$chairperson,'item'=>$item,'data'=>$data]);
+         }else{
+             return abort(401);
+         }
+     }
+     elseif(cell::whereslug($superchild)->get()->count()){    //cell single
+
+         $item=cell::whereslug($superchild)->get();
+        // dd($item);
+         if(count($item) >0){
+         $chairperson=OrganisationStructure::whereid($item[0]->chairperson)->get();
+         $chairpersons=OrganisationStructure::whereCell($item[0]->id)->get();
+        // dd($chairpersons);
+         $data=cell_multiple_image::whereparent_id($item[0]->id)->get();
+         $cccbreadcram="Cell";
+         return view('front.Layouts.child_pages.menu_bar.main_menu.clube_committee_details',['cccbreadcram'=>$cccbreadcram,'chairpersons'=>$chairpersons,'chairperson'=>$chairperson,'item'=>$item,'data'=>$data]);
+         }else{
+             return abort(401);
+         }
+     }else{
+        return abort(401);
+     }
 
 }
 
@@ -833,14 +1056,12 @@ public function screen_reader_access()
  public function Menu_barInnerpage($slug) //content page & who in who data
     {
 
-
         $main_menu="main-menu";
         $item=OrganisationStructure::whereslug($slug)->get();
         if(MainMenu::whereslug($slug)->get('id')->count()){
 
             $type=MainMenu::whereslug($slug)->get();
             if($type[0]->url == '/content-page'){
-               // dd('hii');
                 $item=content_page::whereid($type[0]->link_option)->get();
 
                 return view('front.Layouts.child_pages.menu_bar.main_menu.main_menu',['item'=>$item,'type'=>$type,'main_menu'=>$main_menu]);
@@ -1078,10 +1299,10 @@ public function screen_reader_access()
                     }elseif(QuickLink::whereslug($slug)->first('section_name')->section_name == 'info3')
                     {
 
-                       // dd($slug);
+
 
                                 $data=QuickLink::whereslug($slug)->get('link_option');
-                                //dd($data);
+
                                 if(Count($data)>0){
                                 $item=content_page::whereid($data[0]->link_option)->get();
 
@@ -1230,7 +1451,6 @@ public function screen_reader_access()
 //sub menu
     public function sub_barInnerpage($main_slug,$slug ,Request $request)  //content page sub menu
     {
-
 
     $sub_menu="sub menu";
     $type=SubMenu::whereslug($slug)->get();
@@ -1750,7 +1970,9 @@ public function screen_reader_access()
 public function Child_barInnerpage($main_slug,$Sub_slug,$slug) //content page
 {
 
+
     $data=child_menu::whereslug($slug)->get();
+
     if(Count($data)>0){
 
         if($slug=="student-profiles")
@@ -1953,10 +2175,12 @@ public function Child_barInnerpage($main_slug,$Sub_slug,$slug) //content page
         }elseif($data[0]->url == '/photo-gallery')
         {
 
+            //dd($data[0]->url);
+
                $item=photo_gallery::whereid($data[0]->link_option)->get();
                 if(Count($item)>0){
                 $value=photo_gallery_image::wheregallery_id($item[0]->id)->get();
-                //dd($value);
+                 // dd($value);
                 $type_sub=child_menu::whereslug($slug)->get();
                 $gets=SubMenu::whereid($type_sub[0]->sub_id)->get();
                 $get=MainMenu::whereid($type_sub[0]->menu_id)->get();

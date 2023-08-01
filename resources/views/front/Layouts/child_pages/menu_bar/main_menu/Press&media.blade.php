@@ -67,7 +67,7 @@
                                 <td>{{ $items->heading ??''}}</td>
                                 <td>{{ $items->media_publication	??''}}</td>
                                 <td>
-                                <a @if($items->external=='1')  onclick="return confirm('Are you sure  external window open?')"  target="_blank" href="{{url($items->publishing_link) ??''}}"  @else href="{{url($items->publishing_link) ??''}}" @endif  > Read More </a>  </td>
+                                <a @if($items->external=='1')  @if (GetLang() == 'en') onclick="return confirm('This link will take you to an external web site.')"  @else onclick="return confirm('यह लिंक आपको एक बाहरी वेब साइट पर ले जाएगा।')" @endif target="_blank" href="{{url($items->publishing_link) ??''}}"  @else href="{{url($items->publishing_link) ??''}}" @endif  > Read More </a>  </td>
                             </tr>
                             @endforeach
 
