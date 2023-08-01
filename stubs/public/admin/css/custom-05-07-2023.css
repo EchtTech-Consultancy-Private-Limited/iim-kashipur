@@ -1,0 +1,7 @@
+.top-menu-button{display:flex; justify-content: space-between;margin-bottom: 5px;}
+a, a:hover{	color: white;text-decoration: none;}
+.short-description{	font-size: 12px;	color: #eb6a2a;}
+.mw {  max-width: inherit !important;}
+.thumb{width: 58%/*! height: 52%; */}
+
+

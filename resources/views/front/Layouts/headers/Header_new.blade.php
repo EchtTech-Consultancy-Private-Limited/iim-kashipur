@@ -44,16 +44,6 @@
                     <div class="header-top-right">
                         <div class="skipwrap">
 
-                            {{-- <form action="{{ url('search') }}" method="post">
-                                <div class="d-flex">
-                                    @csrf
-
-                                  <input type="text" class="form-control" placeholder="search "  value="{{ request('search') ??''}} " name="search">
-
-                                    <button type="submit" class="btn-info submit-btn-apply">Apply</button>
-
-                                </div>
-                            </form> --}}
 
                             <ul>
                                 <!-- <li><a href="{{ url('/') }}">@lang('common.home')</a></li> -->
@@ -73,10 +63,10 @@
                                     <form action="{{ url('search') }}" method="post">
                                         @csrf
                                         <div class="d-flex">
-                                            <input type="search" class="form-control" placeholder="Search here..." value="{{ request('search') ??''}}"  name="search" autocomplete="off">
+                                            
                                     <form action="#" method="get">
                                         <div class="d-flex"> 
-                                            <input type="search" class="form-control" placeholder="Search here..." value=" " name="search">            
+                                            <input type="search" class="form-control" placeholder="Search here..." value="{{ request('search') ??''}}"  name="search" autocomplete="off">     
                                             <button type="submit" class="btn-info submit-btn-apply"> <i class="fa fa-search"> </i> </button>
 
                                         </div>

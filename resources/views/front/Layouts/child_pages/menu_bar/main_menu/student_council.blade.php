@@ -920,7 +920,7 @@
                                {{ $item[0]->student_council	??'' }}
                             </h3>
 
-                            <p>{!! $item[0]->about_details ??'' !!}</p>
+                            {!! $item[0]->about_details ??'' !!}
 
                             <!-- Chairpersons -->
 
@@ -980,17 +980,27 @@
                                                             <div class="col-md-3 col-lg-3">
                                                                 <div class="d-flex flex-column h-100">
 
-                                                                    <a href="{{ asset('uploads/organisation/' .$chairperson->image) ?? '' }}"
-                                                                        class="image-link">
+                                                                    <div>
                                                                         <div class="thumbnail p-relative">
                                                                             <img src="{{ asset('uploads/organisation/' .$chairperson->image) ?? '' }}"
                                                                                 alt="gallery-img" class="img-fluid"
                                                                                 loading="lazy">
                                                                             <div class="top-text">
-                                                                                {{ $chairperson->title  ??''}}
+                                                                                {{ $chairperson->title  ??''}} <br>
+
+                                                                              <span style="font-size: 12px;color:#000">
+                                                                                @if (GetLang() == 'en')
+                                                                                {{ $chairperson->designation ?? '' }}
+                                                                                  @else
+                                                                                {{ $chairperson->designation_h ?? '' }}
+                                                                                @endif
+                                                                              </span>
                                                                             </div>
+
+
+
                                                                         </div>
-                                                                    </a>
+                                                                    </div>
 
                                                                 </div>
                                                             </div>

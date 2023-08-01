@@ -65,8 +65,6 @@
 
                     <div class="innerpagecontent">
 
-                        <div class="wrapper" id="skipCont"></div>
-
                         <h3><span>@lang('common.feedback') </span></h3>
                     </div>
 
@@ -86,13 +84,13 @@
                                     <div class="row align-items-center pt-4 pb-3">
                                         <div class="col-md-3 ps-5">
 
-                                            <h6 class="mb-0">Full name *</h6>
+                                            <h6 class="mb-0">Name <span class="text-danger">*</span> </h6>
 
                                         </div>
                                         <div class="col-md-9 pe-5">
 
-                                            <input type="text" value="{{ old('name') }}" name="name"
-                                                class="form-control" placeholder="Enter Your Name" />
+                                            <input type="text"  value="{{ old('name') }}"  name="name"
+                                                class="form-control special_no" placeholder="Enter Your Name" />
 
 
                                             @error('name')
@@ -107,7 +105,7 @@
                                     <div class="row align-items-center py-3">
                                         <div class="col-md-3 ps-5">
 
-                                            <h6 class="mb-0">Email address *</h6>
+                                            <h6 class="mb-0">Email address <span class="text-danger">*</span> </h6>
 
                                         </div>
                                         <div class="col-md-9 pe-5">
@@ -120,10 +118,6 @@
                                                 <div class="alert alert-danger">{{ $message }}</div>
                                             @enderror
 
-
-
-
-
                                         </div>
                                     </div>
                                     <hr>
@@ -131,13 +125,13 @@
                                     <div class="row align-items-center py-3">
                                         <div class="col-md-3 ps-5">
 
-                                            <h6 class="mb-0">Type *</h6>
+                                            <h6 class="mb-0">Type <span class="text-danger">*</span> </h6>
 
                                         </div>
                                         <div class="col-md-9 pe-5">
 
                                             <select class="form-control" name="Type">
-                                                <option value="">Select tittle</option>
+                                                <option value="">Select Type</option>
                                                 <option value="Suggestion"
                                                     {{ old('Type') == 'Suggestion' ? 'selected' : '' }}> Suggestion
                                                 </option>
@@ -147,9 +141,7 @@
                                                     Feedback</option>
                                             </select>
 
-                                            @error('Type')
-                                                <div class="alert alert-danger">{{ $message }}</div>
-                                            @enderror
+
 
 
                                         </div>
@@ -159,21 +151,18 @@
                                     <div class="row align-items-center py-3">
                                         <div class="col-md-3 ps-5">
 
-                                            <h6 class="mb-0">Mobile Number *</h6>
+                                            <h6 class="mb-0">Mobile Number <span class="text-danger">*</span> </h6>
 
                                         </div>
                                         <div class="col-md-9 pe-5">
 
-                                            <input type="number" value="{{ old('mobile_no') }}" name="mobile_no"
-                                                class="form-control" placeholder="Enter your Mobile Nunber" />
+                                            <input type="text" value="{{ old('mobile_no') }}" name="mobile_no" id="mobile_no"
+                                                class="form-control" placeholder="Enter your Mobile Number" maxlength="10"  />
 
 
-
-
-
-                                            @error('mobile_no')
+                                                @error('Type')
                                                 <div class="alert alert-danger">{{ $message }}</div>
-                                            @enderror
+                                                @enderror
 
 
 
@@ -185,12 +174,12 @@
                                     <div class="row align-items-center py-3">
                                         <div class="col-md-3 ps-5">
 
-                                            <h6 class="mb-0">Feedback *</h6>
+                                            <h6 class="mb-0">Feedback <span class="text-danger">*</span> </h6>
 
                                         </div>
                                         <div class="col-md-9 pe-5">
 
-                                            <textarea class="form-control" rows="3" name="feedback" placeholder="">{{ old('feedback') }}</textarea>
+                                            <textarea class="form-control" rows="3" name="feedback" placeholder="Feedback">{{ old('feedback') }}</textarea>
 
 
                                             @error('feedback')
@@ -203,25 +192,28 @@
                                     <div class="row align-items-center py-3">
                                         <div class="col-md-3 ps-5">
 
-                                            <h6 class="mb-0">Captcha Code *</h6>
+                                            <h6 class="mb-0">Captcha Code <span class="text-danger">*</span> </h6>
 
                                         </div>
                                         <div class="col-md-4 pe-5">
-                                            <input id="captcha" type="text" class="form-control" placeholder="Enter Captcha" name="captcha">
+                                            <input id="captcha" type="text" class="form-control"
+                                                placeholder="Enter Captcha" name="captcha">
                                         </div>
 
                                         <div class="col-md-4 pe-5">
 
                                             <div class="captcha d-flex">
                                                 <span style="margin-right: 10px;">{!! captcha_img('math') !!}</span>
-                                                <button type="button" class="btn btn-danger px-3 py-1 refresh-captcha text-white" id="refresh-captcha"  style="background:#f03340;color:#fff !important">
+                                                <button type="button"
+                                                    class="btn btn-danger px-3 py-1 refresh-captcha text-white"
+                                                    id="refresh-captcha" style="background:#f03340;color:#fff !important">
                                                     &#x21bb;
                                                 </button>
                                             </div>
                                         </div>
                                     </div>
                                     @error('captcha')
-                                    <div class="alert alert-danger">{{ $message }}</div>
+                                        <div class="alert alert-danger">{{ $message }}</div>
                                     @enderror
 
 
@@ -229,8 +221,9 @@
 
                                     <div class="row align-items-center py-3">
                                         <div class="col-md-12 text-ceter">
-                                        <button type="submit" class="btn btn-primary btn-sm submit-btn-apply">Send</button>
-                                    </div>
+                                            <button type="submit"
+                                                class="btn btn-primary btn-sm submit-btn-apply">Send</button>
+                                        </div>
                                     </div>
 
                                 </div>
@@ -258,4 +251,32 @@
             });
         });
     </script>
+
+<script>
+    // disable alphate
+    $('#mobile_no').keypress(function (e) {
+        var regex = new RegExp("^[0-9_]");
+        var str = String.fromCharCode(!e.charCode ? e.which : e.charCode);
+        if (regex.test(str)) {
+            return true;
+        }
+        e.preventDefault();
+        return false;
+    });
+    </script>
+
+<script>
+    // disable special character
+    $('.special_no').keypress(function (e) {
+
+        var regex = new RegExp("^[a-zA-Z_]");
+        var str = String.fromCharCode(!e.charCode ? e.which : e.charCode);
+        if (regex.test(str)) {
+            return true;
+        }
+        e.preventDefault();
+        return false;
+    });
+</script>
+
 @endsection

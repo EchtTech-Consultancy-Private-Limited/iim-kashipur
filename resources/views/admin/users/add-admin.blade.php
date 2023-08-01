@@ -48,8 +48,6 @@
                     </div>
 
 
-
-
                     <div class="col-md-6">
                         <div class="form-group"> <label for="Roll_number">Email *</label> <input id="Roll_number" type="email" value="{{$data->email}}" name="email" class="form-control" placeholder="Please enter mail id *">
 

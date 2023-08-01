@@ -9,4 +9,9 @@ class Career extends Model
 {
     use HasFactory;
     protected $table=('career');
+
+
+    public function content_page() {
+        return $this->belongsTo('App\content_page');
+    }
 }

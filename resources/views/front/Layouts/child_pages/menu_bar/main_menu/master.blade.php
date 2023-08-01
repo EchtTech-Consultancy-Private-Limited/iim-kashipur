@@ -407,13 +407,13 @@ $mmenu = @content_menus($type[0]->menu_id);
 
         <!-- Content section  start-->
 
-        <p>   @if (GetLang() == 'en')
+            @if (GetLang() == 'en')
                 {!! $item[0]->content ?? '' !!}
             @else
                 {!! $item[0]->content_h ?? '' !!}
             @endif
 
-        </p>
+
 
 
 
