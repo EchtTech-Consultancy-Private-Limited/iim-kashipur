@@ -2240,6 +2240,8 @@ span.text-hili-top {
         width: 50%;
     }
 
+
+
     .back-img.img-gallery.gallery-member .thumbnail.p-relative img {
         height: 160px !important;
     }
@@ -2995,6 +2997,12 @@ p.small.text-muted {
         margin: 0 auto;
 
         margin-bottom: 20px;
+        height: auto !important;
+        text-align: center;
+    }
+
+    .profilewraper{
+        min-height: auto !important;
     }
 
     .border-club-left, .border-club-right{
@@ -3045,13 +3053,16 @@ p.small.text-muted {
 @media screen and (max-width: 767px) {
     .profilewraper h4 {
         font-size: 13px;
+        text-align: center;
     }
+
 }
 
 .profilewraper p {
     font-size: 13px;
 
     color: #343333;
+    text-align: center;
 
     margin-bottom: 3px;
 }
@@ -3941,7 +3952,7 @@ a.view-btn {
     z-index: 9999;
     display: none;
 }
-.text-assesbility:hover .text-assesbility-button {
+.text-assesbility:hover .text-assesbility-button, .text-assesbility:focus .text-assesbility-button {
     display: block;
 }
 .header-top-right .skipwrap ul li a i {

@@ -89,26 +89,24 @@
                                 <!-- <li><a href="{{ url('/screen_reader_access') }}">@lang('common.screen_reader_access')</a></li> -->
                                 <li><a href="{{ url('/screen_reader_access') }}" title="@lang('common.screen_reader_access')"><i
                                             class="fa fa-volume-up"></i></a></li>
-
-
                                 <li>
 
                                     <div class="text-assesbility p-relative" title="Accessibility Dropdown"
-                                        alt="incease">
+                                        alt="incease" tabindex="0">
                                         <img src="{{ asset('ico-accessibility.png') }}" title="Accessibility Dropdown"
                                             alt="Accessibility Dropdown" />
 
-                                        <div class="text-assesbility-button">
+                                        <div class="text-assesbility-button" tabindex="0">
                                             {{-- <button class="text-increment-btn button" onclick="textnormal()">A</button>
                                             <button class="text-increment-btn button active" onclick="textincrease()">A+</button>
                                             <button class="text-increment-btn button" onclick="textincrease2()">A+</button> --}}
 
                                             <button class="text-increment-btn button" onclick="decreaseFontSize()"
-                                                title="Decrease Font SIze">A-</button>
+                                                title="Decrease Font SIze" tabindex="0">A-</button>
                                             <button class="text-increment-btn button active" onclick="normaltext()"
-                                                title="Normal Font Size">A</button>
+                                                title="Normal Font Size" tabindex="0">A</button>
                                             <button class="text-increment-btn button" onclick="increaseFontSize()"
-                                                title="Increase Font Size">A+</button>
+                                                title="Increase Font Size" tabindex="0">A+</button>
 
                                         </div>
                                     </div>
@@ -125,8 +123,8 @@
                                 </li>
                                 <li>
 
-                                    <div class="select-wrap">
-                                        <select class="form-select" onchange="javascript:setlang(value);">
+                                    <div class="select-wrap" tabindex="0">
+                                        <select class="form-select" onchange="javascript:setlang(value);" tabindex="0">
                                             <option value="en" @if (GetLang() == 'en') selected @endif>
                                                 English</option>
                                             <option value="hi" @if (GetLang() == 'hi') selected @endif>
