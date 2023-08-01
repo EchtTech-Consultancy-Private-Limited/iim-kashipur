@@ -3570,8 +3570,10 @@ h2.heading-light {
 }
 
 .row.vid-list-container {
-    height: 350px;
+    height: 332px;
     overflow-y: auto;
+    border: 1px solid #f6f6f6;
+    padding-top: 5px;
 }
 
 ::-webkit-scrollbar {
