@@ -328,6 +328,19 @@ function decreaseFontSize() {
   });
 }
 
+    $(document).ready(function(){
+        $(".dropdown-toggle.focus-open-add").click(function(){
+            $(".dropdown-menu.add-class-focus.show").removeClass('show');
+        });
+
+        // $(".internal-add").focus(function(){
+        //     $(".dropdown-toggle.internal-add.show").removeClass('show');
+        //     $(this).addClass('show');
+        // });     
+        
+    });
+
+
 
 </script>
 

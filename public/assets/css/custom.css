@@ -78,7 +78,7 @@ a.btn2::after {content: '';position: absolute;top: 0px;border-bottom: 1px solid 
 .addevent-content p {font-size: 14px;color: #343333;}
 .addevent-box h5{font-size:15px;font-weight: 600;color: #343333;}
 .addevent-box p{font-size: 14px;margin-bottom: 5px;margin-bottom: 0px;line-height: normal;}
-.addevent-box{max-width:250px;margin-top: 40px; position: relative;overflow: hidden;padding: 12px;transition: 1.3s;height:422px;}
+.addevent-box{max-width:250px;margin-top: 20px; position: relative;overflow: hidden;padding: 12px;transition: 1.3s;height:422px;}
 .addevent-box.top{max-width: initial;height: auto;}
 .profile-img img{margin-bottom: 12px;border-radius:3px;width: 100%;}
 .information{position: relative !important;bottom: 0px !important;margin-top:10px;}
@@ -150,7 +150,7 @@ box-shadow: 0 0 10px #ddd;}
 /***Start @media query****/
 
 @media(min-width: 992px){
-.dropdown .dropdown-menu{margin: 0;background:#fff;min-width:190px;border-radius:0px;
+.dropdown .dropdown-menu{margin: 0;background:#fff;min-width:250px;border-radius:0px;
 transform: translateY(50px);opacity: 0;visibility: hidden;
 transition: .5s; display:block;border:0px;box-shadow: 0 8px 20px #0000001c;}
 .navbar ul>li:hover> ul{transform: translateY(0px);opacity: 1;visibility: visible;}
@@ -167,6 +167,7 @@ transition: .5s; display:block;border:0px;box-shadow: 0 8px 20px #0000001c;}
 @media(max-width:1368.8px){
 .addevent-box p {font-size:13px;}
 .footer-widget ul li a{font-size: 14px;}
+.dropdown .dropdown-menu{min-width:190px;}
 
 }
 

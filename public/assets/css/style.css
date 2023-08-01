@@ -2214,6 +2214,10 @@ span.text-hili-top {
         margin-left: 0px;
     }
 
+    .sticky-icon{
+        display: none !important;
+    }
+
     .bg-hover {
         min-height: 350px !important;
     }
@@ -2235,6 +2239,8 @@ span.text-hili-top {
     .excellence-gallery.partnership-img .row.masonry-grid .col-md-2.col-lg-2 {
         width: 50%;
     }
+
+
 
     .back-img.img-gallery.gallery-member .thumbnail.p-relative img {
         height: 160px !important;
@@ -2295,6 +2301,9 @@ span.text-hili-top {
         max-height: 50px;
     }
 
+    .site-header .logo-right{
+        display: block !important;
+    }
 
     .post-card.Student_Corner.box-1{
         position: static !important;
@@ -2323,7 +2332,6 @@ span.text-hili-top {
     .post-card.Student_Corner.box-1{
         height: 200px !important;
     }
-
 
     .mb-5 {
         margin-bottom: 2rem !important;
@@ -2388,7 +2396,7 @@ span.text-hili-top {
     }
 
     .header-top-left ul li a {
-        font-size: 12px !important;
+        font-size: 10px !important;
     }
 
     .header-top-left.top-text-highlighted {
@@ -2989,6 +2997,12 @@ p.small.text-muted {
         margin: 0 auto;
 
         margin-bottom: 20px;
+        height: auto !important;
+        text-align: center;
+    }
+
+    .profilewraper{
+        min-height: auto !important;
     }
 
     .border-club-left, .border-club-right{
@@ -3039,13 +3053,16 @@ p.small.text-muted {
 @media screen and (max-width: 767px) {
     .profilewraper h4 {
         font-size: 13px;
+        text-align: center;
     }
+
 }
 
 .profilewraper p {
     font-size: 13px;
 
     color: #343333;
+    text-align: center;
 
     margin-bottom: 3px;
 }
@@ -3553,8 +3570,10 @@ h2.heading-light {
 }
 
 .row.vid-list-container {
-    height: 350px;
+    height: 332px;
     overflow-y: auto;
+    border: 1px solid #f6f6f6;
+    padding-top: 5px;
 }
 
 ::-webkit-scrollbar {
@@ -3935,7 +3954,7 @@ a.view-btn {
     z-index: 9999;
     display: none;
 }
-.text-assesbility:hover .text-assesbility-button {
+.text-assesbility:hover .text-assesbility-button, .text-assesbility:focus .text-assesbility-button {
     display: block;
 }
 .header-top-right .skipwrap ul li a i {
@@ -5744,4 +5763,9 @@ img.hover-shadow.cursor {
     width: 250px;
     right: 5px;
     z-index: 9;
+}
+
+.s-box-page{
+    position: static;
+    width: 100%;
 }

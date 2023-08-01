@@ -72,7 +72,7 @@
                                 <div class="box-rti-pdf">
                                   <a   href="{{url('uploads/rti/'.$items->pdf)}}" download   class="pdf-links"> <i class="fa fa-file-pdf-o"></i><span>{{$items->title}}</span></a>
 
-                                  <span style="font-size: 12px;margin-left: 5px;color: #ed2044;">
+                                  <span style="font-size: 10px;margin-left: 0px;color: #ed2044;">
                                     (
                                     <?php
                                         echo formatSizeUnits($items->pdfsize);
@@ -115,7 +115,7 @@
                                             <a href="{{url('uploads/rti/'.$datas->pdf)}}" download  class="pdf-links"> <i class="fa fa-file-pdf-o"></i>  <span>{{ $datas->title }}
                                            </span>
                                            </a>
-                                           <span style="font-size: 12px;margin-left: 5px;color: #ed2044;">
+                                           <span style="font-size: 10px;margin-left: 0px;color: #ed2044;">
                                             (
                                             <?php
                                                 echo formatSizeUnits($datas->pdfsize);
@@ -160,7 +160,7 @@
                                     <td>
                                         <a href="{{url('uploads/rti/'.$datas->pdf)}}" download  class="pdf-links"> <i class="fa fa-file-pdf-o"></i>  <span>{{ $datas->title }} </span></a>
 
-                                        <span style="font-size: 12px;margin-left: 5px;color: #ed2044;">
+                                        <span style="font-size: 10px;margin-left: 0px;color: #ed2044;">
                                             (
                                             <?php
                                                 echo formatSizeUnits($datas->pdfsize);
@@ -213,7 +213,7 @@
                                         @if($values->pdf_first != "" )
                                         <a href="{{url('uploads/rti/'.$values->pdf_first)}}" download class="pdf-links"> <i class="fa fa-file-pdf-o"></i>  <span>Quarterly 1 </span></a>
 
-                                        <span style="font-size: 12px;margin-left: 5px;color: #ed2044;">
+                                        <span style="font-size: 10px;margin-left: 0px;color: #ed2044;">
                                             (
                                             <?php
                                                 echo formatSizeUnits($values->pdfsize_first);
@@ -226,7 +226,7 @@
                                         @if($values->pdf_second != "" )
                                         <a href="{{url('uploads/rti/'.$values->pdf_second)}}" download class="pdf-links"> <i class="fa fa-file-pdf-o"></i>  <span>Quarterly 2 </span></a>
 
-                                        <span style="font-size: 12px;margin-left: 5px;color: #ed2044;">
+                                        <span style="font-size: 10px;margin-left: 0px;color: #ed2044;">
                                             (
                                             <?php
                                                 echo formatSizeUnits($values->pdfsize_second);
@@ -240,7 +240,7 @@
                                         @if($values->pdf_third != "" )
                                         <a href="{{url('uploads/rti/'.$values->pdf_third)}}" download class="pdf-links"> <i class="fa fa-file-pdf-o"></i>   <span>Quarterly 3</span></a>
 
-                                        <span style="font-size: 12px;margin-left: 5px;color: #ed2044;">
+                                        <span style="font-size: 10px;margin-left: 0px;color: #ed2044;">
                                             (
                                             <?php
                                                 echo formatSizeUnits($values->pdfsize_third);
