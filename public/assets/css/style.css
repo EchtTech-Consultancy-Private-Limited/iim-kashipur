@@ -2214,6 +2214,10 @@ span.text-hili-top {
         margin-left: 0px;
     }
 
+    .sticky-icon{
+        display: none !important;
+    }
+
     .bg-hover {
         min-height: 350px !important;
     }
@@ -2295,6 +2299,9 @@ span.text-hili-top {
         max-height: 50px;
     }
 
+    .site-header .logo-right{
+        display: block !important;
+    }
 
     .post-card.Student_Corner.box-1{
         position: static !important;
@@ -2323,7 +2330,6 @@ span.text-hili-top {
     .post-card.Student_Corner.box-1{
         height: 200px !important;
     }
-
 
     .mb-5 {
         margin-bottom: 2rem !important;
@@ -2388,7 +2394,7 @@ span.text-hili-top {
     }
 
     .header-top-left ul li a {
-        font-size: 12px !important;
+        font-size: 10px !important;
     }
 
     .header-top-left.top-text-highlighted {

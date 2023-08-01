@@ -29,16 +29,16 @@
 
 
 
-<section class="withsidebar-wrap ptb-60">
+<section class="withsidebar-wrap innerpagecontent ptb-60">
     <div class="container">
-        <table class="table table-striped">
+        <table>
             <tr>
-                <th>Sr.No</th>
-                <th>Published Date</th>
-                <th>Submission Date</th>
-                <th>Title</th>
-                <th>Document Size</th>
-                <th>Corrigendum</th>
+                <th class="text-nowrap">Sr.No</th>
+                <th class="text-nowrap">Published Date</th>
+                <th class="text-nowrap">Submission Date</th>
+                <th class="text-nowrap" style="width: 25%">Title</th>
+                <th class="text-nowrap">Document Size</th>
+                <th class="text-nowrap">Corrigendum</th>
                 </tr>
 
 
@@ -53,7 +53,7 @@
 				<a href="{{ asset('uploads/tenders/' . $value->tender_document) }}" download><i class="fa fa-download"></i> Download</a>
 
 
-                <span style="font-size: 12px;margin-left: 5px;color: #ed2044;">
+                <span style="font-size: 10px;margin-left: 5px;color: #ed2044;">
                     (
                     <?php
                         echo formatSizeUnits($value->pdfsize);

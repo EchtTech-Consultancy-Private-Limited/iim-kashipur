@@ -37,9 +37,9 @@
 
 
     {{-- remember that $contact is your variable --}}
-    <section class="withsidebar-wrap ptb-60">
+    <section class="withsidebar-wrap innerpagecontent ptb-60">
         <div class="container">
-            <table class="table table-striped">
+            <table>
                 <tr>
                     <th>S.No</th>
                     <th>Vendor Name</th>
