@@ -795,7 +795,7 @@
                                         ?>
         
 
-                                   <span>  {{ $email }} </span>
+                                   <span>  {{ $email }} </span> <br>
                                    <span> {{$item[0]->contact}} </span>
 
                                         <div class="social-icon">
