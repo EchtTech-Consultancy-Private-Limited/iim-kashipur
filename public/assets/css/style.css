@@ -3056,6 +3056,11 @@ p.small.text-muted {
         text-align: center;
     }
 
+    .carousel-control-prev i, .carousel-control-next i {
+        font-size: 14px;
+        color: #FF6000;
+    }
+
 }
 
 .profilewraper p {
