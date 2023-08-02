@@ -419,9 +419,7 @@
                                                     {{ $M->heading1_h }}
                                                 @endif
                                             </h2>
-
                                             <p class="text-nb">
-
                                                 @if (GetLang() == 'en')
                                                     {{ $M->short }}
                                                 @else
@@ -469,7 +467,6 @@
                         </div>
                     @endforeach
                 </div>
-
 
                 <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions"
                     data-bs-slide="prev" title="Previous">
