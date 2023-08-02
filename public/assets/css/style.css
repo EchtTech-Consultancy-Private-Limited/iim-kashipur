@@ -3483,8 +3483,6 @@ p {
     height: 550px !important;
     /* height: 75vh !important; */
 }
-
-
 @media (max-width: 767px) {
     .carousel-caption {
         width: 100% !important;
