@@ -684,7 +684,7 @@
                     </div>
                 </div
 
-              <a href="javascript:void(0)" class="btn2 margin_bottom"> @if(GetLang()=='en') {{ $type[0]->name ?? '' }}  @else {{ $type[0]->name_h ?? '' }}  @endif</a><br>
+              <a href="javascript:void(0)" class="btn2 margin_bottom"> @if(GetLang()=='en') {{ $type[0]->name ?? '' }}  @else {{ $type[0]->name_h ?? '' }}  @endif </a> <br>
 
 
                     <div class="profilewithinfo mb-0">

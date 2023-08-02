@@ -2210,6 +2210,14 @@ span.text-hili-top {
         margin-bottom: 30px;
     }
 
+    .academic-body {
+        min-height: 205px;
+    }
+
+    .academic-img img{
+        margin-bottom: 0px !important;
+    }
+
     .count{
         margin-left: 0px;
     }
