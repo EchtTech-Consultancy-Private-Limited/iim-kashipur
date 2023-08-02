@@ -114,7 +114,7 @@
                                     </div>
                                     {{-- <a href="{{route('admin.forgotpsw')}}" class="auth-link text-black">Forgot password?</a> --}}
 
-                                    <a href="{{ route('forget.password.get') }}" class="auth-link text-black">Forgot
+                                    <a href="" class="auth-link text-black">Forgot
                                         password?</a>
 
 
@@ -209,5 +209,20 @@ function reverseString(str) {
 
 
 </script>
+
+
+{{-- <script>
+    $(document).ready(function() {
+        //alert('hii');
+        function disableBack() {
+            window.history.forward();
+        }
+        window.onload = disableBack();
+        window.onpageshow = function(e) {
+            if (e.persisted)
+                disableBack();
+        }
+    });
+</script> --}}
 
 </html>
