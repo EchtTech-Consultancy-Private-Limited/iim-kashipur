@@ -403,7 +403,7 @@
                     @foreach (Getsliderimage() as $key => $M)
                         <div class="carousel-item @if ($key == 0) active @endif">
 
-                            <div class="d-lg-flex">
+                            <div class="d-flex">
 
                                 @if ($M->heading1 != '' && $M->short != '')
                                     <div class="carousel-caption ">

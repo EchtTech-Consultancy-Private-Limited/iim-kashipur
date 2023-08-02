@@ -3057,7 +3057,7 @@ p.small.text-muted {
     }
 
     .carousel-control-prev i, .carousel-control-next i {
-        font-size: 14px;
+        font-size: 14px !important;
         color: #FF6000;
     }
 
@@ -3489,30 +3489,45 @@ p {
     .carousel-caption {
         width: 100% !important;
         padding-left: 0;
-        padding-top: 3% !important;
-        border-bottom: 1px solid #8b8b8b;
+        padding-top: 0% !important;
+        border-bottom: 0px solid #8b8b8b;
         min-height: auto;
-        padding: 10px 26px 30px;
+        padding:10px 0px 30px 25px;
     }
     .text-banner p.b-white {
-        font-size: 18px !important;
+        font-size: 11px !important;
+        margin-bottom: 3px !important;
+    }
+
+    .row.vid-list-container .col-md-6.p-relative{
+width: 50%;
     }
 
     .text-banner h2 {
-        font-size: 26px;
+        font-size: 12px;
         text-align: left;
     }
 
     .text-banner p.text-nb {
-        font-size: 15px;
-        line-height: 20px;
-        margin-top: 10px;
-        margin-bottom: 15px;
+        font-size: 11px;
+        line-height: 14px;
+        margin-top: 3px;
+        margin-bottom: 10px;
+        text-align: left;
     }
 
     .carousel .carousel-item img {
-        height: auto !important;
+        height: 120px !important;
     }
+
+    .carousel-caption .text-banner .about-body .btn-orange{
+        font-size: 9px;
+        font-weight: 600;
+        padding: 3px 6px;
+        border: 1px solid #f15572;
+        transition: 0.4s ease-out;
+    }
+
 }
 
 .carousel-control-prev i:hover,
