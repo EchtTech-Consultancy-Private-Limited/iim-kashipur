@@ -41,9 +41,9 @@
 
                             <ul>
                                 @foreach(getproject_logo() as $key=>$logo)
-                                        <li>
+                                        <li tabindex="0">
 
-                                             <span class="counter-no count " >
+                                             <span class="counter-no countx" >
                                             {{$logo->number}}
                                             </span>
 

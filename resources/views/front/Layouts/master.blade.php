@@ -17,6 +17,8 @@
 
     <link href="{{asset('assets/css/bootstrap.min.css')}}" rel="stylesheet">
 
+    
+
     <link href="{{asset('assets/css/owl.carousel.min.css')}}" rel="stylesheet">
 
     <link href="{{asset('assets/css/swiper-bundle.min.css')}}" rel="stylesheet">
@@ -30,7 +32,7 @@
     <link rel="shortcut icon" type="image/png" href="{{asset('uploads/site-logo/'.GetOrganisationAllDetails('fevicon'))}}">
 
     <link href="{{asset('assets/css/custom.css')}}" rel="stylesheet">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/magnific-popup.min.css" rel="stylesheet">
+    <link href="{{asset('assets/css/magnific-popup.min.css')}}" rel="stylesheet">
 
 
 
@@ -38,9 +40,8 @@
 
   <link rel="stylesheet" href="{{ asset('assets/css/styles.css') }}">
 
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/magnific-popup.min.css">
 
-
+  {{-- <link href="{{asset('assets/css/font-awesome.min.css')}}" rel="stylesheet"> --}}
 
    {{-- banner page css  --}}
 
@@ -232,7 +233,7 @@
     ?>
 
 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+    {{-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script> --}}
  <script src="{{asset('assets/js/cdnjs.cloudflare.com_ajax_libs_magnific-popup.js_1.1.0_jquery.magnific-popup.min.js')}}"></script>
 <script type="text/javascript">
     $(window).on('load', function () {

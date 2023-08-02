@@ -323,16 +323,27 @@ function decreaseFontSize() {
   });
 }
 
-    $(document).ready(function(){
-        $(".dropdown-toggle.focus-open-add").click(function(){
-            $(".dropdown-menu.add-class-focus.show").removeClass('show');
-        });
 
-        // $(".internal-add").focus(function(){
-        //     $(".dropdown-toggle.internal-add.show").removeClass('show');
-        //     $(this).addClass('show');
-        // });     
-        
+    $(document).ready(function(){
+        // $(".dropdown-toggle.focus-open-add").click(function(){
+        //     $(".dropdown-toggle.focus-open-add.show").removeClass('show');
+        //     $(".dropdown-menu.add-class-focus.show").removeClass('show');
+        // });
+
+        $("p, h1, h2, h3, h4, h5, h6,span,button, .copyright-text").attr('tabindex' , '0');
+
+        $(".text-assesbility ").focus(function(){
+            $(".text-assesbility-button").addClass('d-block');
+        });    
+
+        $(".theme-btn-light").focus(function(){
+            $(".text-assesbility-button").removeClass('d-block');
+        });     
+
+        // $(".banner").focus(function(){
+        //     $(".text-assesbility-button").removeClass('d-block');
+        // });       
+              
     });
 
 

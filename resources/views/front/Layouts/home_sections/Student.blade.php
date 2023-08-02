@@ -59,14 +59,14 @@
                  @if($key==0)
                 <div class="col-md-4">
                     <div class="event-card" data-aos="fade-up" data-aos-duration="3000">
-                        <h2 class="heading-black text-start">
+                        <h2 class="heading-black text-start" tabindex="0">
                          @lang('common.News-Events')
                         </h2>
-                        <div class="event-body">
+                        <div class="event-body" >
                             <div class="event-image">
                                 <img src="{{ asset('uploads/header_top/'.$Ms->image) }}" title="{{ $Ms->title }}"  alt="{{ $Ms->title }}" class="img-fluid">
                             </div>
-                            <div class="event-content">
+                            <div class="event-content" tabindex="0">
                                 <!-- <div class="d-flex">
                                     <p class="date"><i class="fa fa-calendar" alt="calendar"></i> {{ $Ms->created_at }}</p>
                                 </div> -->
@@ -95,7 +95,7 @@
                 @if($key==0)
                 <div class="col-md-4">
                     <div class="event-card aos-init aos-animate" data-aos="fade-up" data-aos-duration="3000">
-                        <h2 class="heading-black text-start"> @lang('common.Industry-Connect')</h2>
+                        <h2 class="heading-black text-start" tabindex="0"> @lang('common.Industry-Connect')</h2>
                         <div class="event-body">
                             <div class="event-image">
                                 <img src="{{ asset('uploads/header_top/'.$Ms->image) }}" title="{{ $Ms->title }}"  alt="{{ $Ms->title }}" class="img-flud" loading="lazy">
@@ -104,7 +104,7 @@
                                 <!-- <div class="d-flex">
                                     <p class="date"><i class="fa fa-calendar" alt="calendar"></i> 2023-03-02 18:44:28</p>
                                 </div> -->
-                                 <h3 class="title">
+                                 <h3 class="title" tabindex="0">
                                        @if(GetLang()=='en') {{  $Ms->short}} @else {{  $Ms->short_h }}  @endif
                                 </h3>
 
@@ -126,7 +126,7 @@
 
                 <div class="col-md-4">
                     <div class="event-card aos-init aos-animate" data-aos="fade-up" data-aos-duration="3000">
-                        <h2 class="heading-black text-start">@lang('common.Notice-Board')</h2>
+                        <h2 class="heading-black text-start" tabindex="0">@lang('common.Notice-Board')</h2>
                      <div class="myslider">
 
 
@@ -139,9 +139,8 @@
                                <img src="{{ asset('uploads/header_top/'.$Ms->image) }}" title="{{ $Ms->title }}"  alt="{{ $Ms->title }}" class="img-fluid">
                             </div> --}}
                             <div class="event-content notice-body">
-                                <h3 class="title">
+                                <h3 class="title" tabindex="0">
                                   @if(GetLang()=='en') {{  $Ms->short}} @else {{  $Ms->short_h }}  @endif
-
                                 </h3>
 
                                 <div class="btn-wrap">
