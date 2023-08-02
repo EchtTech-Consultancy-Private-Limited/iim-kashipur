@@ -51,22 +51,59 @@ Route::get('/refresh-captcha', [FormController::class, 'refreshCaptcha']);
 Route::get('/set-language',[UIController::class,'SetLang']);
 Route::get('/my-cms-mgmt',[UIController::class,'DBActions']);
 
+
+
 //admin routes
 Route::name('admin.')->namespace('Admin')->prefix('Accounts')->group(function(){
 Route::match(['get','post'],'/',[AdminController::class,'Login'])->name('login');
 Route::middleware(['Admin'])->group(function () {
-Route::get('dashboard',[AdminController::class,'Dashboard'])->name('dashboard');
+
 Route::get('log-out',[AdminController::class,'Logout'])->name('logout');
 Route::match(['get','post'],'change-password',[AdminController::class,'Change_Password'])->name('password-change');
 
 
+//Route::middleware(['preventBackHistory'])->group(function () {
+
+
+    Route::middleware(['preventBackHistory'])->group(function () {
+        Route::get('dashboard', [AdminController::class,'Dashboard'])->name('dashboard');
+
+
+
+    //Route::get('dashboard',[AdminController::class,'Dashboard'])->middleware('Admin')->name('dashboard');
+
+
+
+    Route::middleware(['CustomAuth'])->group(function () {
+
+
+
+//user Management
+Route::get('manage-admin',[AdminController::class,'View_Admins'])->name('manageadmin');
+Route::match(['get','post'],'add-edit-admin/{id?}',[AdminController::class,'Add_Admins'])->name('addadmin');
+Route::get('delete-admin/{id}',[AdminController::class,'Delete_Admin']);
+Route::match(['get','post'],'add-roles',[FormController::class,'Add_Roles'])->name('addRoles');
+Route::get('manage-roles',[AdminController::class,'View_Roles'])->name('roles');
+Route::get('delete-Role/{id}',[FormController::class,'Delete_Role']);
+Route::match(['get','post'],'assign-role/{id}',[FormController::class,'Assign_Roles']);
+
+
+//organisation details
+Route::get('manage-organisation-detail',[AdminController::class,'View_OrganisationDetails'])->name('organisation');
+
+
+
+//only view
+Route::get('view-video/{id?}',[vidoecontroller::class,'vvgallery'])->name('Viewvideogallery');
+Route::get('view-gallery/{id?}',[gallaycontroller::class,'vpgallery'])->name('Viewphotogallery');
+Route::get('view-content/{id?}',[pagecontroller::class,'vcgallery'])->name('Viewcontentgallery');
 
 
 
 
-Route::middleware(['CustomAuth'])->group(function () {
 
-    Route::group(['middleware' => 'prevent-back-history'],function(){
+
+
 
 //By Vishal routes for add student profile
 
@@ -103,7 +140,7 @@ Route::GET('Countact-us',[FormController::class,'countact_us']);
 Route::GET('feedback',[FormController::class,'feedback']);
 
 Route::get('project_index/{id?}',[AdminController::class,'project_index']);
-Route::get('website-index',[AdminController::class,'website_index'])->name('website_index');
+Route::get('website-index',[AdminController::class,'website_index'])->name('websiteIndex');
 Route::match(['get','post'],'add_edit_project_logo/{id?}',[AdminController::class,'add_edit_project_logo']);
 //my code
 
@@ -330,20 +367,13 @@ Route::get("/delete_rit/{id?}",[FormController::class,'delete_rit_QUARTER']);
 Route::get("/rti-pdfsection",[FormController::class,'rit_QUARTER']);
 Route::get("/rti-QUARTER-data",[FormController::class,'rti_QUARTER_data']);
 
-//old route
-Route::match(['get','post'],'add-roles',[FormController::class,'Add_Roles'])->name('addRoles');
-Route::get('manage-admin',[AdminController::class,'View_Admins'])->name('manageadmin');
-Route::get('manage-organisation-detail',[AdminController::class,'View_OrganisationDetails'])->name('organisation');
-Route::get('manage-roles',[AdminController::class,'View_Roles'])->name('roles');
-Route::get('delete-Role/{id}',[FormController::class,'Delete_Role']);
+
 Route::get('manage-options-master',[AdminController::class,'View_OptionMaster'])->name('optionsmaster');
 Route::get('manage-main-menu',[AdminController::class,'View_Menus'])->name('menusetting');
-Route::match(['get','post'],'add-edit-admin/{id?}',[AdminController::class,'Add_Admins'])->name('addadmin');
 Route::match(['get','post'],'add-edit-menu/{id?}',[AdminController::class,'Add_Menu']);
 Route::match(['get','post'],'add-edit-sub-menu/{id?}',[AdminController::class,'Add_SubMenu']);
 Route::get('/submenushow',[AdminController::class,'submenushow']);
 Route::match(['get','post'],'add-edit-child-menu/{id?}',[AdminController::class,'Add_childMenu']);
-Route::get('delete-admin/{id}',[AdminController::class,'Delete_Admin']);
 Route::get('manage-site-setting',[AdminController::class,'View_SiteSetting'])->name('sitesetting');
 Route::match(['get','post'],'Add-Edit-site-setting/{id?}',[AdminController::class,'Add_SiteSetting']);
 Route::get('delete-people/{id}',[FormController::class,'Delete_OrganisationStructure']);
@@ -421,9 +451,11 @@ Route::get('/childmenushow',[AdminController::class,'childmenushow']);
 });
 });
 });
+
+
 Route::match(['get','post'],'forgot-password',[AdminController::class,'ForgotPSW'])->name('forgotpsw');
 Route::post('/from',[frontpagecontroller::class,'front_form']);
-});
+
 
 Route::get('/student-profile-more-info/{id}',[StudentProfileController::class,'front_profile_show_more']);
 //forget password
@@ -433,7 +465,7 @@ Route::post('forget-password', [ForgotPasswordController::class, 'submitForgetPa
 Route::get('reset-password/{token}', [ForgotPasswordController::class, 'showResetPasswordForm'])->name('reset.password.get');
 Route::post('reset-password', [ForgotPasswordController::class, 'submitResetPasswordForm'])->name('reset.password.post');
 
-
+});
 
 //website search
 
