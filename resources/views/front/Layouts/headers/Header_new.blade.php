@@ -86,7 +86,7 @@
                                         <img src="{{ asset('ico-accessibility.png') }}" title="Accessibility Dropdown"
                                             alt="Accessibility Dropdown" />
 
-                                        <div class="text-assesbility-button" tabindex="0">
+                                        <div class="text-assesbility-button">
                                             {{-- <button class="text-increment-btn button" onclick="textnormal()">A</button>
                                             <button class="text-increment-btn button active" onclick="textincrease()">A+</button>
                                             <button class="text-increment-btn button" onclick="textincrease2()">A+</button> --}}
@@ -389,7 +389,7 @@
 
     @if (request()->path() == '/')
 
-        <section class="banner">
+        <section class="banner" tabindex="0">
             <div id="carouselExampleCaptions" class="carousel slide container-lg-sm" data-bs-ride="carousel">
                 <ul class="carousel-indicators">
                     @foreach (Getsliderimage() as $key => $M)
@@ -529,6 +529,11 @@
         });
 
         $("body").click(function(){
+            $(".dropdown-toggle.internal-add.show").removeClass('show');
+            $(".dropdown-toggle.focus-open-add.show").removeClass('show');
+        });
+
+        $(".banner").focus(function(){
             $(".dropdown-toggle.internal-add.show").removeClass('show');
             $(".dropdown-toggle.focus-open-add.show").removeClass('show');
         });

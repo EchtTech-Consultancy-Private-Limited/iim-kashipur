@@ -1456,7 +1456,7 @@
 
                                                                 <a href="{{ asset('uploads/organisation/' . $value->image) ?? '' }}"
                                                                     class="image-link">
-                                                                    <div class="thumbnail p-relative">
+                                                                    <div class="thumbnail p-relative text-center">
                                                                         <img src="{{ asset('uploads/organisation/' . $value->image) ?? '' }}"
                                                                             alt="gallery-img" class="img-fluid"
                                                                             loading="lazy">
@@ -1530,27 +1530,40 @@
                             <div class="excellence-wrap event-text mb-3 mt-4">
                                 <div class="container p-0">
                                     <div class="row">
-                                        @foreach ($data as $datas)
-                                            <div class="col-md-3">
 
+                                        
+                                       
+
+                                        <!-- Multiple Image Popup -->
+                                        <div id="gallery-1" class="hidden">
+
+
+                                            @foreach ($data as $k=>$datas)
+
+                                            <a href="{{ asset('uploads/multiple/club/' . $datas->image) ?? '' }}"></a>
+                                                                               
+                                            @endforeach
+                                        </div>
+                                        
+                                        
+
+
+                                        @foreach ($data as $k=>$datas)
+                                        @if($k == '1')
+                                            <div class="col-md-3">
+                                                
                                                 <div class="multi-image-popup">
-                                                    <a href="{{ asset('uploads/multiple/club/' . $datas->image) ?? '' }}"
-                                                        class="btn-gallery image-link">
-                                                        <img
-                                                            src="{{ asset('uploads/multiple/club/' . $datas->image) ?? '' }}" />
+                                                    <a href="#gallery-1" class="btn-gallery">
+                                                        <img src="{{ asset('uploads/multiple/club/' . $datas->image) ?? '' }}" />
                                                     </a>
                                                 </div>
 
-                                                <!-- Multiple Image Popup -->
-                                                <div id="gallery-1" class="hidden">
-                                                    <a
-                                                        href="https://images.unsplash.com/photo-1462774603919-1d8087e62cad?ixlib=rb-0.3.5&q=80&fm=jpg&crop=entropy&s=0ebd884b4d6ac379f42146a2b26fbf2e">Image
-                                                        1</a>
-                                                </div>
-
+                                               
 
                                             </div>
+                                            @endif
                                         @endforeach
+
 
                                     </div>
                                 </div>
@@ -1612,8 +1625,24 @@
             });
 
 
+$('a.btn-gallery').on('click', function(event) {
+    event.preventDefault();
+    
+    var gallery = $(this).attr('href');
 
-        });
+    $(gallery).magnificPopup({
+  delegate: 'a',
+        type:'image',
+        gallery: {
+            enabled: true
+        }
+    }).magnificPopup('open');
+});
+
+});
+
+
+
     </script>
 
 @endsection

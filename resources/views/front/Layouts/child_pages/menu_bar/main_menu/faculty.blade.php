@@ -675,14 +675,14 @@
                         <form action="{{ url('/faculty/faculty-directory') }}" method="get">
                             <div class="d-flex">
 
-                              <input type="text" class="form-control" placeholder="search name or deparment!!!!"  value="{{ request('search') ??''}} " name="search">
+                              <input type="text" class="form-control" placeholder="search name or deparment!!!!" value="{{ request('search') ??''}} " name="search">
 
                                 <button type="submit" class="btn-info submit-btn-apply">Apply</button>
 
                             </div>
                         </form>
                     </div>
-                </div>
+                </div
 
               <a href="javascript:void(0)" class="btn2 margin_bottom"> @if(GetLang()=='en') {{ $type[0]->name ?? '' }}  @else {{ $type[0]->name_h ?? '' }}  @endif</a><br>
 

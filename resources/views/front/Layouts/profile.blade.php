@@ -869,14 +869,13 @@ ul.nav.nav-tabs {
                                             @else
                                             <img src="{{ asset('admin/images/faces/default.jpg') }}">
                                             @endif
-
                                         </div>
 
                                         {{-- <h6>{{ $items->designation }}</h6> --}}
 
                                         <h6> {{ $items->designation   ??'' }} </h6>
 
-                                       <h6>{{ $items->phone  ??'' }}</h6>
+                                       <span>{{ $items->phone  ??'' }}</span>
 
                                         <?php
                                         $email_address =$items->email ;
@@ -887,7 +886,7 @@ ul.nav.nav-tabs {
 
 
 
-                                      {{ $email  ??''}}
+                                     <span>  {{ $email  ??''}} </span>
 
 
                                         <div class="social-icon">
@@ -996,7 +995,7 @@ ul.nav.nav-tabs {
 
                         @foreach ($data as $key => $datas)
                             {{-- {{ $key }} --}}
-                            <div class="tab-content accordion" id="myTabContent">
+                            <div class="tab-content accordion master-class" id="myTabContent">
                                 <div @if ($key == '0') class="tab-pane fade accordion-item active show"  @else  class="tab-pane fade accordion-item" @endif
                                     id="profile-tab-pane{{ $key }}" role="tabpanel"
                                     aria-labelledby="profile-tab" tabindex="0">
