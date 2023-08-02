@@ -92,12 +92,7 @@
 
                                        <div class="footer-link mt-58">
 
-
-
-
                                             <ul>
-
-
                                                 @foreach (GETfooterdatalink($M->id) as $key => $Ms)
                                                     <li>
 

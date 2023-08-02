@@ -60,6 +60,14 @@ Route::get('log-out',[AdminController::class,'Logout'])->name('logout');
 Route::match(['get','post'],'change-password',[AdminController::class,'Change_Password'])->name('password-change');
 
 
+
+
+
+
+Route::middleware(['CustomAuth'])->group(function () {
+
+    Route::group(['middleware' => 'prevent-back-history'],function(){
+
 //By Vishal routes for add student profile
 
 Route::get('/view-students-profile',[StudentProfileController::class,'view_profile']);
@@ -87,6 +95,13 @@ Route::get('/delete-student-profile/{id}',[StudentProfileController::class,'dele
 //Route::post('/update-student-profile/{id}',[StudentProfileController::class,'update_student_profile']);
 //Route::get('/delete-student-profile/{id}',[StudentProfileController::class,'delete_student_profile']);
 
+
+
+
+//feedback form & contact us form
+Route::GET('Countact-us',[FormController::class,'countact_us']);
+Route::GET('feedback',[FormController::class,'feedback']);
+
 Route::get('project_index/{id?}',[AdminController::class,'project_index']);
 Route::get('website-index',[AdminController::class,'website_index'])->name('website_index');
 Route::match(['get','post'],'add_edit_project_logo/{id?}',[AdminController::class,'add_edit_project_logo']);
@@ -100,16 +115,6 @@ Route::post('edit-club-image/{id?}',[FormController::class,'edit_club_image']);
 Route::get('committee-id-image',[FormController::class,'committee_id_image']);
 Route::post('edit-committee-image/{id?}',[FormController::class,'edit_committee_image']);
 //manage clube commite cells
-
-
-
-Route::middleware(['CustomAuth'])->group(function () {
-
-
-//feedback form & contact us form
-Route::GET('Countact-us',[FormController::class,'countact_us']);
-Route::GET('feedback',[FormController::class,'feedback']);
-
 
 //Auth log  route
 Route::GET('/Audit-data-show',[log::class,'datefillerdata']);
@@ -415,6 +420,7 @@ Route::get('/childmenushow',[AdminController::class,'childmenushow']);
 
 });
 });
+});
 Route::match(['get','post'],'forgot-password',[AdminController::class,'ForgotPSW'])->name('forgotpsw');
 Route::post('/from',[frontpagecontroller::class,'front_form']);
 });
@@ -465,9 +471,6 @@ Route::get('/sitemap',[InnerpageController::class,'sitemap']);
 //feedback form
 Route::get('/feedback',[InnerpageController::class,'feedback_page']);
 Route::post('/add_feedback',[InnerpageController::class,'add_feedback']);
-//countact us
-Route::get('/contact-us',[InnerpageController::class,'contact_page']);
-Route::post('/add_contact',[InnerpageController::class,'add_contact']);
 
  //gallery section
 Route::get('/photo-gallery',[InnerpageController::class,'photo_multi_Innerpage']);
@@ -487,7 +490,9 @@ Route::get('/Add_Department',[InnerpageController::class,'Add_Department']);
 Route::get('/Errors_route',[InnerpageController::class,'Errors_route']);
 //Archive list
 Route::GET('/Tander-data-show',[InnerpageController::class,'Tander_data']);
-
+//countact us
+Route::get('/contact-us',[InnerpageController::class,'contact_page']);
+Route::post('/add_contact',[InnerpageController::class,'add_contact']);
 
 
 

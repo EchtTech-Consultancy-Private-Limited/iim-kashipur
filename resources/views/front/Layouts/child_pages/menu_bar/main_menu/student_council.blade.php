@@ -920,7 +920,7 @@
                                {{ $item[0]->student_council	??'' }}
                             </h3>
 
-                            <p>{!! $item[0]->about_details ??'' !!}</p>
+                            {!! $item[0]->about_details ??'' !!}
 
                             <!-- Chairpersons -->
 
@@ -986,8 +986,19 @@
                                                                                 alt="gallery-img" class="img-fluid"
                                                                                 loading="lazy">
                                                                             <div class="top-text">
-                                                                                {{ $chairperson->title  ??''}}
+                                                                                {{ $chairperson->title  ??''}} <br>
+
+                                                                              <span style="font-size: 12px;color:#000">
+                                                                                @if (GetLang() == 'en')
+                                                                                {{ $chairperson->designation ?? '' }}
+                                                                                  @else
+                                                                                {{ $chairperson->designation_h ?? '' }}
+                                                                                @endif
+                                                                              </span>
                                                                             </div>
+
+
+
                                                                         </div>
                                                                     </div>
 
