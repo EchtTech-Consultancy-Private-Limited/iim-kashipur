@@ -414,20 +414,6 @@ $mmenu=@content_menus($type[0]->menu_id);
                                                 @endif
                                             </h6>
 
-
-
-                                            <div class="profile-socail-icon information">
-
-                                                <a href="javascript:void(0)" class="socail-icon"><i
-                                                        class="fab fa fa-facebook-f"></i></a>
-
-                                                <a href="javascript:void(0)" class="socail-icon"><i
-                                                        class="fab fa fa-twitter"></i></a>
-
-
-
-                                            </div>
-
                                         </div>
 
                                     </div>
@@ -742,16 +728,6 @@ $mmenu=@content_menus($type[0]->menu_id);
 
 
 
-                                    <div class="profile-socail-icon information">
-
-                                        <a href="javascript:void(0)" class="socail-icon"><i class="fab fa fa-facebook-f"></i></a>
-
-                                        <a href="javascript:void(0)" class="socail-icon"><i class="fab fa fa-twitter"></i></a>
-
-
-
-                                    </div>
-
                                     </div>
 
                                 </div>
@@ -922,18 +898,6 @@ $mmenu=@content_menus($type[0]->menu_id);
                                             </h6>
 
 
-
-                                            <div class="profile-socail-icon information">
-
-                                                <a href="javascript:void(0)" class="socail-icon"><i
-                                                        class="fab fa fa-facebook-f"></i></a>
-
-                                                <a href="javascript:void(0)" class="socail-icon"><i
-                                                        class="fab fa fa-twitter"></i></a>
-
-
-
-                                            </div>
 
                                         </div>
 
