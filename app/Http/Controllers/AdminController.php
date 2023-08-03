@@ -324,13 +324,27 @@ public function childmenushow(Request $request){
     }
 
     function Delete_USP($id){
-        USP::find(dDecrypt($id))->delete();
+
+        $exit = USP::where('id',dDecrypt($id))->first();
+        if(!empty($exit)){
+            USP::find(dDecrypt($id))->delete();
+        }else{
+            return back()->with('error','You are trying to perform unethical process. Your requst is failed.');
+        }
         return redirect()->back()->with('success','Record Deleted Successfully');
     }
 
     function Delete_QuickLink($id){
-        QuickLink::find(dDecrypt($id))->delete();
+
+        $exit = QuickLink::where('id',dDecrypt($id))->first();
+        if(!empty($exit)){
+            QuickLink::find(dDecrypt($id))->delete();
+        }else{
+            return back()->with('error','You are trying to perform unethical process. Your requst is failed.');
+        }
         return redirect()->back()->with('success','Record Deleted Successfully');
+
+
     }
 
 
@@ -639,9 +653,16 @@ function Add_childMenu(Request $request,$id=null){
         return view('admin.sections.addBannerSlider',compact('data','data2','title','id'));
     }
 
-         function Delete_Banners($id){
-         $data=BannerSlider::find(dDecrypt($id))->delete();
+    function Delete_Banners($id){
+
+          $exit = BannerSlider::where('id',dDecrypt($id))->first();
+          if(!empty($exit)){
+               BannerSlider::find(dDecrypt($id))->delete();
+          }else{
+              return back()->with('error','You are trying to perform unethical process. Your requst is failed.');
+          }
           return redirect()->back()->with('success','Record Deleted Successfully');
+
     }
 
 
@@ -934,7 +955,7 @@ function Add_childMenu(Request $request,$id=null){
             }
             }
             else{
-                return redirect()->route('admin.login')->with('error','Second login person');
+                return redirect()->route('admin.login')->with('error','Another Person is Logged In. So We Are Sorry That You Cant Login!');
             }
         }
         return view('admin.index')->with(compact('title'));

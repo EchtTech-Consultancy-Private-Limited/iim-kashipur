@@ -123,15 +123,15 @@
                                                                     style="color:black;"></i></button>
 
 
-                                                                    @if (\Auth::guard('admin')->user()->id == 1  )
+
 
                                                             <a class="btn btn-primary"
-                                                                href="{{ url('Accounts/delete-rit-pdf/' . dEncrypt($item->id)) }}"
+                                                                href="{{ url('Accounts/delete_rit/' . dEncrypt($item->id)) }}"
                                                                 onclick="return confirm('Are you sure to edit this record?')"><i
                                                                     class="ti-trash btn-icon-append"
                                                                     style="color:black;"></i></a>
 
-                                                               @endif
+
                                                         </td>
 
                                                     </tr>
@@ -563,5 +563,4 @@
     }
 </script>
 
-onclick="load();"
     @endsection

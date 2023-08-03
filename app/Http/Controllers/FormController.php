@@ -1841,8 +1841,11 @@ public function add_RTI(Request $request,$id=NULL)
     public function delete_rti_section($id)
     {
         rit_report_section::find(dDecrypt($id))->delete();
-        return redirect()->back()->with('success','committee deleted Successfully');
+        return redirect()->back()->with('success','Rti deleted Successfully');
     }
+
+
+
 
     public function pdf_section(Request $request){
         $item=rit_report_section::whereid($request->id)->first();
@@ -1979,7 +1982,7 @@ public function add_RTI(Request $request,$id=NULL)
     public function delete_rit_QUARTER($id)
     {
         quarter_report::find(dDecrypt($id))->delete();
-        return redirect()->back()->with('success','committee deleted Successfully');
+        return redirect()->back()->with('success','Quarterly Rti deleted Successfully');
     }
 
     public function rti_QUARTER_data(Request $request){
