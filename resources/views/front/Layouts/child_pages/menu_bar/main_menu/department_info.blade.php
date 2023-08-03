@@ -768,8 +768,7 @@
                                         <div class="col-md-3 mx-auto">
 
                                             <div class="addevent-box top text-center mt-0">
-                                                <a href="{{ url(@$mmenu[0]->slug.'/'.$type[0]->slug.'/'.$items->slug) }}"
-                                                    >
+                                                <a href="javascript:void(0)">
                                                     <div class="profile-img">
 
                                                         <img src="{{ asset('uploads/organisation/' . $items->image) ?? '' }}"
@@ -837,7 +836,7 @@
                                     <div class="col-6 col-lg-4 col-xxl-3 mb-4">
 
                                         <div class="profilewraper bg-hover">
-                                            <a href="{{ url(@$mmenu[0]->slug.'/'.$type[0]->slug.'/'.$items->slug) }}">
+                                            <a href="javascript:void(0)">
                                                 <figure><img
                                                         src="{{ asset('uploads/organisation/' . $items->image) ?? '' }}"
                                                         alt="{{ $items->title ?? '' }}"
@@ -886,7 +885,7 @@
                                     <div class="col-md-3 col-lg-3 mx-auto">
 
                                         <div class="profilewraper withinfo bg-hover">
-                                            <a href="{{ url(@$mmenu[0]->slug.'/'.$type[0]->slug.'/'.$items->slug) }}">
+                                            <a href="javascript:void(0)">
                                                 <figure><img src="{{ asset('uploads/organisation/' . $items->image) }}"
                                                         alt="{{ $items->title ?? '' }}"
                                                         title="{{ $items->title ?? '' }}"></figure>

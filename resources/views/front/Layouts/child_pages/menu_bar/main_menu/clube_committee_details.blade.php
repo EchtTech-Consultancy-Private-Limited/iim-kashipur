@@ -1536,12 +1536,8 @@
 
                                         <!-- Multiple Image Popup -->
                                         <div id="gallery-1" class="hidden">
-
-
                                             @foreach ($data as $k=>$datas)
-
                                             <a href="{{ asset('uploads/multiple/club/' . $datas->image) ?? '' }}"></a>
-                                                                               
                                             @endforeach
                                         </div>
                                         
@@ -1552,8 +1548,12 @@
                                         @if($k == '1')
                                             <div class="col-md-3">
                                                 
-                                                <div class="multi-image-popup">
-                                                    <a href="#gallery-1" class="btn-gallery">
+                                                <div class="multi-image-popup p-relative">
+                                                    <a href="#gallery-1" class="btn-gallery multi-card">
+                                                        <div class="card1"></div>
+                                                        <div class="card3"></div>
+                                                        <div class="card4"></div>
+                                                        <div class="card5"></div>
                                                         <img src="{{ asset('uploads/multiple/club/' . $datas->image) ?? '' }}" />
                                                     </a>
                                                 </div>

@@ -886,7 +886,7 @@ ul.nav.nav-tabs {
 
 
 
-                                     <span>  {{ $email  ??''}} </span>
+                                     <br><span>  {{ $email  ??''}} </span>
 
 
                                         <div class="social-icon">

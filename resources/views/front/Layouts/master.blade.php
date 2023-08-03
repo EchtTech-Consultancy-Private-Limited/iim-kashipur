@@ -27,10 +27,16 @@
     <link href="{{asset('assets/css/aos.css')}}" rel="stylesheet">
 
 
-    <link rel="stylesheet" type="text/css" href="{{ asset('style.css') }}"  id="pageStyle">
+   
 
     <link rel="shortcut icon" type="image/png" href="{{asset('uploads/site-logo/'.GetOrganisationAllDetails('fevicon'))}}">
+  <!-- custom css file link  -->
+  <link href="{{asset('assets/css/style.css')}}" rel="stylesheet">
+  {{-- banner page css  --}}
 
+  
+
+  <link rel="stylesheet" href="{{asset('assets/bannercss/style.css')}}" type="text/css">
     <link href="{{asset('assets/css/custom.css')}}" rel="stylesheet">
     <link href="{{asset('assets/css/magnific-popup.min.css')}}" rel="stylesheet">
 
@@ -38,11 +44,8 @@
     <script src="{{asset('assets/js/jquery-3.6.0.min.js')}}"></script>
     <script src="{{asset('assets/js/cdnjs.cloudflare.com_ajax_libs_slick-carousel_1.6.0_slick.min.js')}}"></script>
     <link rel="shortcut icon" href="@if(GetOrganisationAllDetails('fevicon')){{asset('uploads/site-logo/'.GetOrganisationAllDetails('fevicon'))}} @else {{asset('assets/images/'.GetOrganisationAllDetails('fevicon'))}} @endif" type="image/vnd.microsoft.icon" />
-    <!-- custom css file link  -->
-    <link href="{{asset('assets/css/style.css')}}" rel="stylesheet">
-    {{-- banner page css  --}}
-    <link rel="stylesheet" href="{{asset('assets/bannercss/style.css')}}" type="text/css">
-
+  
+    <link rel="stylesheet" type="text/css" href="{{ asset('style.css') }}"  id="pageStyle">
 
 @if(isset($item[0]))
 
