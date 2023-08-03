@@ -381,13 +381,13 @@
                                 </div>
 
 
-                                <div class="col-md-12">
+                                {{-- <div class="col-md-12">
 
                                     <label for="inputText" class="col-sm-12 col-form-label">Status</label>
 
                                     <div class="col-sm-12">
 
-                                        <select class="form-control" aria-label="Default select example" name="status">
+                                        <select class="form-control" aria-label="Default select example" name="status" readonly>
 
                                             <option selected>Please select status</option>
 
@@ -401,7 +401,9 @@
 
                                     </div>
 
-                                </div>
+                                </div> --}}
+
+                                <input  type="hidden" name="status" value="{{ $value->status }}">
 
 
 
@@ -565,7 +567,7 @@
 
 
 
-                                                <div class="form-group col-md-6">
+                                                {{-- <div class="form-group col-md-6">
 
                                                     <label for="form-email">status</label>
 
@@ -580,7 +582,10 @@
 
                                                     </select>
 
-                                                </div>
+                                                </div> --}}
+
+                                                <input  type="hidden" name="status" value="0">
+
 
                                                 <div class="form-group col-md-6">
 
@@ -591,8 +596,8 @@
 
                                                 </div>
 
-                                                <button type="submit" class="btn btn-primary"
-                                                    class="form-control">Save</button>
+                                                <button type="submit"  class="btn btn-primary"
+                                                onclick="load();"  class="form-control">Save</button>
 
                                             </form>
 
@@ -812,7 +817,7 @@
                                                 class="form-first-name form-control" id="gallery_id" readonly>
 
 
-                                            <div class="form-group col-md-6">
+                                            {{-- <div class="form-group col-md-6">
 
                                                 <label for="form-email">status</label>
 
@@ -827,12 +832,14 @@
 
                                                 </select>
 
-                                            </div>
+                                            </div> --}}
+
+                                            <input  type="hidden" name="status" id="videostatus1">
 
                                     </div>
 
                                     <div class="modal-footer">
-                                        <button type="submit" class="btn btn-primary" class="form-control">Save</button>
+                                        <button type="submit" class="btn btn-primary" onclick="load();" class="form-control">Save</button>
 
                                     </div>
 

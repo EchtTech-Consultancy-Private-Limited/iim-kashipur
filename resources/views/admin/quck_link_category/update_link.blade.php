@@ -98,7 +98,7 @@
 
 
 
-                            <form class="forms-sample row col-md-12" method="POST"
+                            <form class="forms-sample row col-md-12" method="POST"    id="regForm"
                                 action="{{ url('/Accounts/update_linkpost/' . dEncrypt($data->id)) }}">
 
                                 @csrf
@@ -306,7 +306,7 @@
 
 
 
-                                    <button type="submit" class="btn btn-primary mr-2">Submit</button>
+                                    <button type="submit" class="btn btn-primary mr-2" onclick="load();">Submit</button>
 
 
 

@@ -93,13 +93,13 @@ class UIController extends Controller
 
     function Add_F2U(Request $request,$id=null){
         if($id){
-             $title="Edit File2URL";
+             $title="Edit Client logo";
              $msg="Manage File2URL Edited Successfully!";
              $data=FileToUrl::find(dDecrypt($id));
 
          }
          else{
-              $title="Add File2URL";
+              $title="Add Client logo";
               $msg="Organisation Structure Added Successfully!";
               $data=new FileToUrl;
          }
@@ -110,13 +110,14 @@ class UIController extends Controller
                 $request->validate([
                     'type'=>'required',
                     'title'=>'required',
+                    'file'=>'required|mimes:jpg,jpeg,gif,png',
                 ]);
                 }
                 else{
                   $request->validate([
                     'type'=>'required',
                     'title'=>'required',
-                    'file'=>'required',
+                    'file'=>'required|mimes:jpg,jpeg,gif,png',
                 ]);
                 }
 

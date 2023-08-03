@@ -326,7 +326,7 @@
                                     </div>
                                 </div>
 
-                                <div class="col-md-12">
+                                {{-- <div class="col-md-12">
                                     <label for="status" class="col-sm-12 col-form-label">Status</label>
                                     <div class="col-sm-12">
                                         <select class="form-control" aria-label="Default select example" id="status" name="status"
@@ -343,10 +343,10 @@
                                         </label>
 
                                     </div>
-                                </div>
+                                </div> --}}
 
 
-
+                                <input type="hidden" name="status" value="0">
 
                                 <div class="col-md-12">
                                     <div class="col-sm-10">
@@ -359,7 +359,7 @@
 
                                 <div class="col-md-12">
                                     <div class="col-sm-12">
-                                        <button type="submit" class="btn btn-primary" class="form-control">Save</button>
+                                        <button type="submit" class="btn btn-primary" onclick="load();" class="form-control">Save</button>
                                     </div>
                                 </div>
 

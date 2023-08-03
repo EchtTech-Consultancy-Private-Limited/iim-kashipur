@@ -20,6 +20,6 @@ class Admin
             return $next($request);
         }
              return redirect()->route('admin.login')->with('error','Permission Denied!!! Login First');
-       
+
     }
 }
