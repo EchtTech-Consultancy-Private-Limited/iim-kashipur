@@ -886,6 +886,7 @@
 
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 
                     <div class="col-xl-9 col-md-9 col-lg-12">
@@ -895,6 +896,13 @@
                                     
 >>>>>>> 788f0f62d9a462f700684887ce31724a192659ff
 
+=======
+
+                    <div class="col-xl-8 col-md-8 col-lg-8">                            
+                                    
+
+
+>>>>>>> b05c9bda7165e7877202422b04ccd5cc688f3a3c
                     <div class="import-dates">
                         <div class="title"></div>
                         <div class="import-main">
@@ -944,6 +952,7 @@
                                                         </div>
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 
                                                     </div><hr>
 =======
@@ -951,6 +960,12 @@
                                                     </div>
                                                     <hr> --}}
 >>>>>>> 788f0f62d9a462f700684887ce31724a192659ff
+=======
+
+                                                                                     
+                                                    </div>
+                                                    <hr> --}}
+>>>>>>> b05c9bda7165e7877202422b04ccd5cc688f3a3c
                                                     <div class="row">
                                                         <div class="col-sm-12">
                                                             <P class="h6 txt_formate"  >About Us:  </P> <P> {{$datas->about}}</P>
