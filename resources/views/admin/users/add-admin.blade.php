@@ -77,7 +77,7 @@
 
                     <div class="clearfix"></div>
                    <div class="col-md-12">
-                    <button type="submit" class="btn btn-primary mr-2">Submit</button>
+                    <button type="submit" class="btn btn-primary mr-2" onclick="load();">Submit</button>
                    </div>
                   </form>
                 </div>

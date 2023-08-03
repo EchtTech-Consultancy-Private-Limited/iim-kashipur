@@ -3,7 +3,7 @@
 @section('content')
       <div class="main-panel">
         <div class="content-wrapper">
-          
+
           <div class="row">
            <div class="col-md-12 grid-margin stretch-card">
               <div class="card">
@@ -23,17 +23,17 @@
               <div class="alert alert-danger col-md-12 text-center">
                   <strong>Oops!</strong> {{ Session::get('error') }}
                 </div>
-                 @endif 
+                 @endif
                   </p>
-                  <form class="forms-sample" method="POST" action="{{route('admin.addRoles')}}" >
+                  <form class="forms-sample" method="POST" action="{{route('admin.addRoles')}}" id="regForm">
                     @csrf
                     <div class="form-group">
-                      
+
                       <input type="text" class="form-control" name="name" placeholder="role name">
                     </div>
-                   
-                    <button type="submit" class="btn btn-primary mr-2">Submit</button>
-                   
+
+                    <button type="submit" class="btn btn-primary mr-2" onclick="load();" >Submit</button>
+
                   </form>
                 </div>
               </div>
