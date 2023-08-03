@@ -573,10 +573,6 @@ function Add_OrganisationStructure(Request $request,$id=null){
 
 
         // dd($routes);
-
-
-
-
         foreach ($routes as $value)
          {
 

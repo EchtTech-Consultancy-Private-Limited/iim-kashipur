@@ -1036,7 +1036,14 @@ function Add_childMenu(Request $request,$id=null){
     }
 
     function Delete_Admin($id){
-        Admin::find(dDecrypt($id))->delete();
+
+      //  dd($id);
+        $exit = Admin::where('id',$id)->first();
+        if(!empty($exit)){
+            Admin::find(dDecrypt($id))->delete();
+        }else{
+            return redirect('Accounts/manage-admin')->with('error','You are trying to perform unethical process. Your requst is failed.');
+        }
         return redirect()->back()->with('success','Admin Entry Deleted Successfully!');
     }
 
