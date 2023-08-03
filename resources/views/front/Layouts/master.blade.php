@@ -214,6 +214,7 @@
     echo html_entity_decode(GetOrganisationAllDetails('body_google_tags'));
 
     ?>
+
  <script src="{{asset('assets/js/cdnjs.cloudflare.com_ajax_libs_magnific-popup.js_1.1.0_jquery.magnific-popup.min.js')}}"></script>
 <script type="text/javascript">
     $(window).on('load', function () {

@@ -540,6 +540,23 @@ class gallaycontroller extends Controller
 
                    //  dd($id);
 
+                   $request->validate(
+
+                    [
+
+                    'filename'  => 'mimes:png,jpg,ico|max:1024',
+
+                    'image_text'   =>  'required|string|max:200',
+
+                    'image_alt'  =>  'required|string|max:200',
+
+
+
+                    ]
+
+
+                    );
+
 
                       $add=$input['filename']=$request->multioldimage;
 
@@ -624,6 +641,12 @@ class gallaycontroller extends Controller
                       }
 
 
+public function vpgallery($id)
+{
+    $value=photo_gallery::find(dDecrypt($id));
+    $data=photo_gallery_image::wheregallery_id(dDecrypt($id))->get();
+    return view('admin.gallary.view_gallery',['data'=>$data],['value'=>$value]);
+}
 
 
   }

@@ -58,7 +58,11 @@ class StudentProfileController extends Controller
 
     public function add_student_profile(Request $request)
     {
-        //dd($request->all());
+
+        $request->validate([
+
+            'student_image'=>'required|mimes:jpg,jpeg,gif,png'
+        ]);
 
         $student=new StudentProfile;
         $student->batch=$request->batch;
@@ -103,14 +107,14 @@ class StudentProfileController extends Controller
     public function front_profile_show_more($id)
     {
         //$student=StudentProfile::find($id);
-         $item=StudentProfile::where('id',$id)->get();
+         $item=StudentProfile::where('id',dDecrypt($id))->get();
         //return $student;
         return view('front.Layouts.child_pages.student-profile.backup',compact('item'));
     }
 
     public function edit_student_profile($id)
     {
-        $student=StudentProfile::find($id);
+        $student=StudentProfile::find(dDecrypt($id));
         $studentlist=StudentType::all();
 
 
@@ -118,9 +122,12 @@ class StudentProfileController extends Controller
     }
     public function update_student_profile(Request $request,$id)
     {
-        //dd($request->all());
+        $request->validate([
 
-        $student=StudentProfile::find($id);
+            'student_image'=>'mimes:jpg,jpeg,gif,png'
+        ]);
+
+        $student=StudentProfile::find(dDecrypt($id));
         $student->batch=$request->batch;
         $student->name=$request->name;
         $student->last_name=$request->last_name;
@@ -150,21 +157,21 @@ class StudentProfileController extends Controller
 
     public function delete_student_profile($id)
     {
-        $student=StudentProfile::find($id);
+        $student=StudentProfile::find(dDecrypt($id));
         $student->delete();
         return redirect()->back()->with('success','Student Profile Deleted Successfully');
     }
 
     public function edit_student_profile_type($id)
     {
-        $student=StudentType::find($id);
+        $student=StudentType::find(dDecrypt($id));
         return view("admin.student-profile.edit-student-type",compact('student'));
     }
     public function update_student_profile_type(Request $request,$id)
     {
         //dd($request->all());
 
-        $student=StudentType::find($id);
+        $student=StudentType::find(dDecrypt($id));
         $student->student_type=$request->student_type;
         $student->save();
         return redirect()->back()->with('success','Student Profile Updated Successfully');
@@ -172,7 +179,7 @@ class StudentProfileController extends Controller
 
       public function delete_student_profile_type($id)
     {
-        $student=StudentType::find($id);
+        $student=StudentType::find(dDecrypt($id));
         $student->delete();
         return redirect()->back()->with('success','Student Profile Type Deleted Successfully');
     }

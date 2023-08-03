@@ -122,7 +122,7 @@
                             </p>
 
                             @if ($id)
-                                <form class="forms-sample row col-md-12" method="POST"
+                                <form class="forms-sample row col-md-12" method="POST" id="regForm"
                                     action="{{ url('Accounts/add-journey-edit-org/' . $id) }}"
                                     enctype="multipart/form-data">
                                 @else
@@ -264,7 +264,7 @@
 
                             <div class="col-md-12">
 
-                                <button type="submit" class="btn btn-primary mr-2">Submit</button>
+                                <button type="submit" class="btn btn-primary mr-2"  onclick="load();"  >Submit</button>
 
                             </div>
 

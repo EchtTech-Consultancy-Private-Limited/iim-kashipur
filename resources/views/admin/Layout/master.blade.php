@@ -48,7 +48,10 @@
 
   <link rel="shortcut icon" href="{{asset('uploads/site-logo/'.GetOrganisationDetails('fevicon'))}}" />
 
-  <script src="//cdn.ckeditor.com/4.17.2/full/ckeditor.js"></script>
+
+   <script src="//cdn.ckeditor.com/4.17.2/full/ckeditor.js"></script>
+
+
   <meta name="csrf_token" content="{{ csrf_token() }}" />
 
 
@@ -339,9 +342,15 @@ button.btn {
 </style>
 
 
-
-
-
+<script>
+    function load(){
+      $('.btn').prop('disabled', true);
+     setTimeout(function() {
+           $('.btn').prop('disabled', false);
+     }, 10000);
+        $("#regForm").submit();
+    }
+</script>
 
 
 
