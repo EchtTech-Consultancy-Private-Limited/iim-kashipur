@@ -110,14 +110,14 @@ class UIController extends Controller
                 $request->validate([
                     'type'=>'required',
                     'title'=>'required',
-                    'file'=>'required|mimes:jpg,jpeg,gif,png',
+                    'file'=>'mimes:jpg,jpeg,gif,png',
                 ]);
                 }
                 else{
                   $request->validate([
                     'type'=>'required',
                     'title'=>'required',
-                    'file'=>'required|mimes:jpg,jpeg,gif,png',
+                    'file'=>'mimes:jpg,jpeg,gif,png',
                 ]);
                 }
 

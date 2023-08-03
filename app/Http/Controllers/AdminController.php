@@ -932,7 +932,7 @@ function Add_childMenu(Request $request,$id=null){
             }
             }
             else{
-                return redirect()->route('admin.login')->with('error','Second login person');
+                return redirect()->route('admin.login')->with('error','A user is already signed in with these credentials.');
             }
         }
         return view('admin.index')->with(compact('title'));

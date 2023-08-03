@@ -43,7 +43,7 @@
 
                   <div>
 
-                      <button type="button" class="btn btn-primary" ><a target="_blank" href="{{ url('/Accounts/add-students-profile') }}" > Add Student Profile</a></button>
+                      <button type="button" class="btn btn-primary" ><a  href="{{ url('/Accounts/add-students-profile') }}" > Add Student Profile</a></button>
 
 
                     </div>

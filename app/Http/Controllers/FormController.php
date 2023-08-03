@@ -1782,11 +1782,10 @@ public function add_RTI(Request $request,$id=NULL)
     {
 
 
-
         $request->validate(
             [
 
-             "filename"            =>          "mimes:pdf|max:10000"
+            "filename"   =>   "mimes:pdf|max:10000"
 
             ]
            );
@@ -1819,7 +1818,7 @@ public function add_RTI(Request $request,$id=NULL)
             [
 
 
-                "filename"            =>          "mimes:pdf|max:10000"
+             "filename"   =>   "mimes:pdf|max:10000"
 
             ]
            );

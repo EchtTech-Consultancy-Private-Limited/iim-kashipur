@@ -780,9 +780,9 @@
                         @foreach ($item as $items)
                             <div class="row mt-4">
 
-                                <div class="col-lg-3 col-xl-3 col-md-3">
+                                <div class="col-lg-4 col-xl-4 col-md-4">
 
-                                    <div class=" top text-center mt-0">
+                                    <div class=" top text-center image-box-border mt-0">
                                         <div class="profile-img">
                                             <img src="{{ asset('uploads/' . $items->student_image) }}"
                                                 alt="{{ $items->title }}">
@@ -790,8 +790,19 @@
 
                                         <h6>{{ $items->area_specialization }} </h6>
 
-                                        {{-- <p>{{ $items->department  }}</p> --}}
-                                        <!-- <p>{!! $items->about !!} </p> -->
+
+                                      
+        
+                                        <?php
+                                            $email_address = $item[0]->email;
+                                            $str = $email_address;
+                                            $var = str_replace('@', '[at]', $str);
+                                            $email = str_replace('.', '[dot]', $var);
+                                        ?>
+        
+
+                                   <span>  {{ $email }} </span> <br>
+                                   <span> {{$item[0]->contact}} </span>
 
                                         <div class="social-icon">
                                         <ul>
@@ -874,10 +885,15 @@
 
 
 
+<<<<<<< HEAD
 
 
                     <div class="col-xl-9 col-md-9 col-lg-12">
 
+=======
+                    <div class="col-xl-8 col-md-8 col-lg-8">                            
+                                    
+>>>>>>> 788f0f62d9a462f700684887ce31724a192659ff
 
                     <div class="import-dates">
                         <div class="title"></div>
@@ -917,7 +933,7 @@
 
                                                <!--  <p>{!! $datas->about !!}</p> -->
                                                 <div class="container">
-                                                    <div class="row">
+                                                    {{-- <div class="row">
                                                         <div class="col-sm-6">
                                                             <P class="h6 txt_formate"  >Email:  </P> <P> {{$datas->email}}</P>
 
@@ -927,8 +943,14 @@
 
                                                         </div>
 
+<<<<<<< HEAD
 
                                                     </div><hr>
+=======
+                                                        
+                                                    </div>
+                                                    <hr> --}}
+>>>>>>> 788f0f62d9a462f700684887ce31724a192659ff
                                                     <div class="row">
                                                         <div class="col-sm-12">
                                                             <P class="h6 txt_formate"  >About Us:  </P> <P> {{$datas->about}}</P>

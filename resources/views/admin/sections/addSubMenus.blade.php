@@ -903,4 +903,44 @@
     });
 </script>
 
+<!--------------------------------------- Event & Activity -------------------------------------->
+
+<script >
+    $("#url").change(function(e){
+
+ $.ajaxSetup({
+  headers: {
+  'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+    }
+      });
+
+      var data3=$("#url").val();
+
+      if(data3=='Events-Activites')
+      {
+
+      $.ajax({
+        url: "{{url('Accounts/event-activity')}}",
+        type: "get",
+        success: function(data){
+
+         console.log(data);
+         var resdata = data.data;
+
+         console.log(resdata);
+
+       var formoption = "<option value='0'>Please select</option>";
+       for(i=0; i<resdata.length; i++)
+       {
+       formoption += "<option value='"+resdata[i].id+"'>"+resdata[i].title+"</option>";
+        }
+        $('#countries').html(formoption);
+
+        }
+     });
+   }
+});
+</script>
+
+
     @endsection

@@ -213,7 +213,8 @@
                                 <ul>
 
                                     @if (count(GetchildMenusFront($gets[0]->menu_id, $S->id)) > 0)
-                                        <li class="hasnested"><a @if ($S->id == $gets[0]->id) class="active" @endif>
+                                        <li class="hasnested">
+                                            <a @if ($S->id == $gets[0]->id) class="active" @endif href="javscript:void();">
                                                 @if (GetLang() == 'en')
                                                     {{ $S->name ?? '' }}
                                                 @else
@@ -236,7 +237,7 @@
                                                 @foreach (GetchildMenusFront($gets[0]->menu_id, $S->id) as $key2 => $C)
                                                     @if (count(GetsubchildMenusFront($gets[0]->menu_id, $S->id, $C->id)) > 0)
                                                         <li class="hasnested">
-                                                            <a @if ($C->id == $gets[0]->id) class="active" @endif>
+                                                            <a @if ($C->id == $gets[0]->id) class="active" @endif href="javscript:void();">
                                                                 @if (GetLang() == 'en')
                                                                     {{ $C->name ?? '' }}
                                                                 @else
@@ -578,7 +579,8 @@
                         @foreach (GetSubMenusFront($type[0]->menu_id) as $key1 => $S)
                             <ul>
                                 @if (count(GetchildMenusFront($type[0]->menu_id, $S->id)) > 0)
-                                    <li class="hasnested"><a @if ($S->id == $type[0]->id) class="active" @endif>
+                                    <li class="hasnested">
+                                        <a @if ($S->id == $type[0]->id) class="active" @endif href="javscript:void();">
                                             @if (GetLang() == 'en')
                                                 {{ $S->name ?? '' }}
                                             @else
@@ -600,7 +602,7 @@
                                             @foreach (GetchildMenusFront($type[0]->menu_id, $S->id) as $key2 => $C)
                                                 @if (count(GetsubchildMenusFront($type[0]->menu_id, $S->id, $C->id)) > 0)
                                                     <li class="hasnested">
-                                                        <a @if ($C->id == $type[0]->id) class="active" @endif>
+                                                        <a @if ($C->id == $type[0]->id) class="active" @endif href="javscript:void();">
                                                             @if (GetLang() == 'en')
                                                                 {{ $C->name ?? '' }}
                                                             @else

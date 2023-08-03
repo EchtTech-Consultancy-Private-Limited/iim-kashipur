@@ -124,7 +124,7 @@ class StudentProfileController extends Controller
     {
         $request->validate([
 
-            'student_image'=>'mimes:jpg,jpeg,gif,png'
+        'student_image'=>'mimes:jpg,jpeg,gif,png'
         ]);
 
         $student=StudentProfile::find(dDecrypt($id));
