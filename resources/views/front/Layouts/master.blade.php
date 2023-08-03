@@ -13,11 +13,12 @@
         <title>@if(GetLang()=='en'){{GetOrganisationAllDetails('name')}} @else {{GetOrganisationAllDetails('name_h')}} @endif</title>
     @endif
 
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-
+    <link href="{{asset('assets/css/font-awesome.css')}}" rel="stylesheet"> 
+    <link href="{{asset('assets/css/font-awesome.min.css')}}" rel="stylesheet"> 
+    
     <link href="{{asset('assets/css/bootstrap.min.css')}}" rel="stylesheet">
 
-    
+
 
     <link href="{{asset('assets/css/owl.carousel.min.css')}}" rel="stylesheet">
 
@@ -25,7 +26,6 @@
 
     <link href="{{asset('assets/css/aos.css')}}" rel="stylesheet">
 
-    <link href="{{asset('assets/css/style.css')}}" rel="stylesheet">
 
     <link rel="stylesheet" type="text/css" href="{{ asset('style.css') }}"  id="pageStyle">
 
@@ -34,26 +34,14 @@
     <link href="{{asset('assets/css/custom.css')}}" rel="stylesheet">
     <link href="{{asset('assets/css/magnific-popup.min.css')}}" rel="stylesheet">
 
-
-
-  <!-- custom css file link  -->
-
-  <link rel="stylesheet" href="{{ asset('assets/css/styles.css') }}">
-
-
-  {{-- <link href="{{asset('assets/css/font-awesome.min.css')}}" rel="stylesheet"> --}}
-
-   {{-- banner page css  --}}
-
-  <link rel="stylesheet" href="{{asset('assets/bannercss/style.css')}}" type="text/css">
-
-  <script src="{{asset('assets/js/cdnjs.cloudflare.com_ajax_libs_jquery_3.1.1_jquery.min.js')}}"></script><!-- comment -->
-   <script src="{{asset('assets/js/cdnjs.cloudflare.com_ajax_libs_slick-carousel_1.6.0_slick.min.js')}}"></script>
-
-
-
+  
+    <script src="{{asset('assets/js/jquery-3.6.0.min.js')}}"></script>
+    <script src="{{asset('assets/js/cdnjs.cloudflare.com_ajax_libs_slick-carousel_1.6.0_slick.min.js')}}"></script>
     <link rel="shortcut icon" href="@if(GetOrganisationAllDetails('fevicon')){{asset('uploads/site-logo/'.GetOrganisationAllDetails('fevicon'))}} @else {{asset('assets/images/'.GetOrganisationAllDetails('fevicon'))}} @endif" type="image/vnd.microsoft.icon" />
-
+    <!-- custom css file link  -->
+    <link href="{{asset('assets/css/style.css')}}" rel="stylesheet">
+    {{-- banner page css  --}}
+    <link rel="stylesheet" href="{{asset('assets/bannercss/style.css')}}" type="text/css">
 
 
 @if(isset($item[0]))
@@ -184,14 +172,6 @@
 
             @endif
 
-
-
-
-
-
-
-    <script src="{{asset('assets/js/jquery-3.6.0.min.js')}}"></script>
-
     <script src="{{asset('assets/js/bootstrap.bundle.min.js')}}"></script>
 
     <script src="{{asset('assets/js/owl.carousel.min.js')}}"></script>
@@ -231,9 +211,6 @@
     echo html_entity_decode(GetOrganisationAllDetails('body_google_tags'));
 
     ?>
-
-
-    {{-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script> --}}
  <script src="{{asset('assets/js/cdnjs.cloudflare.com_ajax_libs_magnific-popup.js_1.1.0_jquery.magnific-popup.min.js')}}"></script>
 <script type="text/javascript">
     $(window).on('load', function () {
@@ -290,10 +267,6 @@ window.onload = function() {
 
 
 </script>
-
-
-
-
 
 <script>
     $('.count').each(function () {
