@@ -34,7 +34,7 @@ class SessionTimeout {
 
             $userId = Auth::guard('admin')->user()->id;
 
-            $sqlUpdate = DB::table('admins')->where('id', $userId)->update(array('login_time'=>date('d-m-Y H:i:s'),'ip'=>$request->ip(),'login_check'=>'1'));
+            $sqlUpdate = DB::table('admins')->where('id', $userId)->update(array('login_time'=>date('d-m-Y H:i:s'),'ip'=>$request->ip(),'login_check'=>'0'));
             auth()->logout();
             // return message('You had not activity in '.$timeout/60 .' minutes ago.', 'warning', 'login')->withInput(compact('email'))->withCookie($cookie);
         }
