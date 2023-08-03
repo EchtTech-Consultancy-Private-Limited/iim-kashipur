@@ -270,6 +270,7 @@ function Add_OrganisationStructure(Request $request,$id=null){
                 'type'=>'required',
                 'phone'=>'required',
                 'email'=>'required',
+                'image'=>'image|mimes:jpeg,png,jpg,gif,svg|max:2048'
             ]);
             $data->type=$request->type;
             $data->title=ucwords($request->title);

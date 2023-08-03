@@ -538,6 +538,14 @@ public function sub_childInnerpage($main_slug,$slug,$subchild,$superchild)  //co
          }else{
              return abort(401);
          }
+     }elseif(OrganisationStructure::whereslug($superchild)->get()->count()){
+        $item=OrganisationStructure::whereslug($superchild)->get();
+        if(count($item) > 0){
+        $data=multiple_profile::whereparent_id($item[0]->id)->get();
+            return view('front.Layouts.profile',['item'=>$item,'data'=>$data]);
+        }else{
+            return abort(401);
+        }
      }else{
         return abort(401);
      }
@@ -1451,7 +1459,6 @@ public function screen_reader_access()
 
     $sub_menu="sub menu";
     $type=SubMenu::whereslug($slug)->get();
-   // dd($type);
     if(Count($type)>0)
     {
         if($type[0]->url == '/content-page')
@@ -1866,6 +1873,17 @@ public function screen_reader_access()
             return abort(401);
         }
     }
+    elseif('student-profile-more-info' == $main_slug)
+    {
+        //dd($main_slug);
+           $item=StudentProfile::where('id',dDecrypt($slug))->get();
+        if(Count($item)>0){
+
+            return view('front.Layouts.child_pages.student-profile.backup',compact('item'));
+        }else{
+            return abort(401);
+        }
+    }
     else
     {
         return abort(401);
@@ -1966,7 +1984,6 @@ public function screen_reader_access()
 
 public function Child_barInnerpage($main_slug,$Sub_slug,$slug) //content page
 {
-
 
     $data=child_menu::whereslug($slug)->get();
 

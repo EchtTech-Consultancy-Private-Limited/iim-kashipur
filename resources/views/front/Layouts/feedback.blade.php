@@ -93,11 +93,12 @@
                                                 class="form-control special_no" placeholder="Enter Your Name" />
 
 
-                                            @error('name')
+                                                @error('name')
                                                 <div class="alert alert-danger">{{ $message }}</div>
-                                            @enderror
-
+                                                @enderror
                                         </div>
+
+
                                     </div>
 
                                     <hr class="mx-n3">
@@ -114,11 +115,12 @@
                                                 class="form-control" placeholder="example@example.com" />
 
 
-                                            @error('email')
+                                                @error('email')
                                                 <div class="alert alert-danger">{{ $message }}</div>
-                                            @enderror
+                                               @enderror
 
                                         </div>
+
                                     </div>
                                     <hr>
 
@@ -142,9 +144,12 @@
                                             </select>
 
 
-
-
+                                            @error('Type')
+                                            <div class="alert alert-danger">{{ $message }}</div>
+                                            @enderror
                                         </div>
+
+
                                     </div>
                                     <hr>
 
@@ -160,13 +165,12 @@
                                                 class="form-control" placeholder="Enter your Mobile Number" maxlength="10"  />
 
 
-                                                @error('Type')
+
+                                                @error('mobile_no')
                                                 <div class="alert alert-danger">{{ $message }}</div>
                                                 @enderror
-
-
-
                                         </div>
+
                                     </div>
 
                                     <hr class="mx-n3">
@@ -210,11 +214,13 @@
                                                     &#x21bb;
                                                 </button>
                                             </div>
+                                            @error('captcha')
+                                            <div class="alert alert-danger">{{ $message }}</div>
+                                          @enderror
                                         </div>
+
+
                                     </div>
-                                    @error('captcha')
-                                        <div class="alert alert-danger">{{ $message }}</div>
-                                    @enderror
 
 
                                     <hr class="mx-n3">
