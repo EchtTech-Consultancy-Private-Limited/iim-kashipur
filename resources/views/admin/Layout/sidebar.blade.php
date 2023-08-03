@@ -15,7 +15,8 @@
         </li>
 
 
-        @if (@checkRoute('View_Admins'))
+        @if (\Auth::guard('admin')->user()->id == 1 ||  @checkRoute('manageadmin') || @checkRoute('roles') )
+
             <li class="nav-item">
 
                 <a class="nav-link" data-toggle="collapse" href="#auth" aria-expanded="false" aria-controls="auth">
@@ -45,11 +46,13 @@
             </li>
         @endif
 
+
+
         @if (
             \Auth::guard('admin')->user()->id == 1 ||
-                @checkRoute('View_OrganisationDetails') ||
-                @checkRoute('website_index') ||
-                @checkRoute('FileToURL'))
+                @checkRoute('View_OrganisationDetails')
+                || @checkRoute('websiteIndex')
+             )
             <li class="nav-item">
 
                 <a class="nav-link" data-toggle="collapse" href="#master" aria-expanded="false" aria-controls="master">
@@ -70,23 +73,21 @@
                             <li class="nav-item"><a class="nav-link"
                                     href="{{ route('admin.organisation') }}">Organisation Details</a></li>
                         @endif
-                        @if (@checkRoute('website_index'))
+
+                        @if (@checkRoute('websiteIndex'))
                             <li class="nav-item"><a class="nav-link"
                                     href="{{ url('/Accounts/website-index') }}">Organisation Counter </a></li>
                         @endif
 
-                        @if (@checkRoute('View_OrganisationDetails'))
+                        @if (@checkRoute('filetourl'))
                             <li class="nav-item"> <a class="nav-link" href="{{ route('admin.filetourl') }}">Client
                                     Logo</a></li>
                         @endif
 
-                        @if (@checkRoute('View_OrganisationStructure'))
+                        @if (@checkRoute('people'))
                             <li class="nav-item"><a class="nav-link" href="{{ route('admin.people') }}">Organisation
                                     Members</a></li>
                         @endif
-
-                        {{-- <li class="nav-item"><a class="nav-link" href="{{ url('/Accounts/view-students-profile') }}"><i
-                            class="icon-grid-2 menu-icon"></i>Manage Student Profile</i></li></a> --}}
 
                         @if (@checkRoute('Manage Student Profile'))
                             <li class="nav-item"><a class="nav-link" href="{{ url('/Accounts/view-students-profile') }}">
@@ -444,13 +445,17 @@
 
                 <div class="collapse" id="tables">
 
-                    {{-- <ul class="nav flex-column sub-menu">
-           @if (@checkRoute('add_videoget'))
-          <li class="nav-item"> <a class="nav-link" href="{{ url('/Accounts/add_videoget') }}">Add video Gallery</a></li>
-          @endif
-          </ul> --}}
-
                     <ul class="nav flex-column sub-menu">
+
+
+                        @if (@checkRoute('add_videoget') )
+
+                          <li class="nav-item"> <a class="nav-link"
+                            href="{{ url('/Accounts/add_videoget') }}">Add Video Gallery</a></li>
+
+                       @endif
+
+
                         @if (@checkRoute('show_videogallery'))
                             <li class="nav-item"> <a class="nav-link"
                                     href="{{ url('/Accounts/show_videogallery') }}">Show Video Gallery</a></li>

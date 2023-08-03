@@ -24,6 +24,7 @@ use App\Models\URLList;
 use App\Models\multiple_profile;
 use App\Models\quick_linkcategory;
 use App\Models\OrganisationStructure;
+use App\Models\login_check;
 use DB;
 use Auth;
 use Hash;
@@ -39,6 +40,10 @@ use App\Models\press_media;
 use App\Models\subchildmenu;
 class AdminController extends Controller
 {
+    public function __constructr(){
+        $this->middleware('Admin');
+    }
+
     function StatusChange($status,$id,$db){
         DB::table($db)->where('id',dDecrypt($id))->update(['status'=>$status]);
         return redirect()->back()->with('success','Status Changed Successfully');
@@ -580,6 +585,7 @@ function Add_childMenu(Request $request,$id=null){
                     'title'=>'required',
                     'type'=>'required',
                     'image'=>'max:5120|mimes:png,jpg,svg|dimensions:max_width=1920,min_width=1920,max_height=500,min_height=500',
+
                 ]);
                 }
                 else{
@@ -907,13 +913,26 @@ function Add_childMenu(Request $request,$id=null){
             'captcha' => 'required|captcha'
             ]);
           //  dd($request->password);
+
+
+
+          if(Admin::where('email',$request->email)->first()->login_check == '0'){
+
+         // if(DB::table('login_checks')->where('user_id',\Auth::guard('admin')->user()->id))
             if(\Auth::guard('admin')->attempt(['email'=>$request->email,'password'=>$request->password,'status'=>1])){
+
+
                 $data=Admin::find(\Auth::guard('admin')->user()->id);
-                $data->update(['login_time'=>date('d-m-Y H:i:s'),'ip'=>$request->ip()]);
+                $data->update(['login_time'=>date('d-m-Y H:i:s'),'ip'=>$request->ip(),'login_check'=>'1']);
+
                 return redirect()->route('admin.dashboard')->with('success','Hello '.$data->name.'. Welcome to admin panel !');
             }
             else{
                 return redirect()->route('admin.login')->with('error','Invalid Credentials');
+            }
+            }
+            else{
+                return redirect()->route('admin.login')->with('error','Second login person');
             }
         }
         return view('admin.index')->with(compact('title'));
@@ -945,7 +964,9 @@ function Add_childMenu(Request $request,$id=null){
     function Logout(Request $request){
         $data=Admin::find(\Auth::guard('admin')->user()->id);
         $login_t=$data->login_time;
-        $data->update(['last_login_time'=>$login_t,'logout_time'=>date('d-m-Y H:i:s'),'ip'=>$request->ip()]);
+        $data->update(['last_login_time'=>$login_t,'logout_time'=>date('d-m-Y H:i:s'),'ip'=>$request->ip(),'login_check'=>'0']);
+
+
         \Auth::guard('admin')->logout();
         return redirect()->route('admin.login')->with('success','Logged Out successfully !');
     }
@@ -1105,12 +1126,12 @@ public function project_index($id)
     function add_edit_project_logo(Request $request,$id=null){
 
     if($id){
-        $title="Edit project Index";
+        $title="Edit Project Counter";
         $data= project_logo::find(dDecrypt($id));
         $msg="project logo Edited Successfully";
     }
     else{
-        $title="Add project Index";
+        $title="Add Project Counter";
         $data=new  project_logo;
         $msg="project logo Added Successfully";
     }
@@ -1120,14 +1141,16 @@ public function project_index($id)
 
             'number'=>'required',
             'name'=>'required',
+            // 'image'=>'required|mimes:jpg,jpeg,gif,png',
             'name_h'=>'required',
         ]);
         }
         else{
              $request->validate([
-                'number'=>'required',
-                'name'=>'required',
-                'name_h'=>'required',
+            'number'=>'required',
+            'name'=>'required',
+            // 'image'=>'required|mimes:jpg,jpeg,gif,png',
+            'name_h'=>'required',
         ]);
         }
         $data->number=$request->number;
@@ -1266,6 +1289,8 @@ function add_journey_edit_org(Request $request,$id=null){
                 'number'=>'required',
                 'title'=>'required',
                 'title_h'=>'required',
+                'file'          =>       'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+
         ]);
         }
         $data->year=$request->number;
@@ -1318,12 +1343,16 @@ function News_Event_index(){
             $request->validate([
                 'title'=>'required',
                 'title_h'=>'required',
+                'file'  => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+
             ]);
             }
             else{
                  $request->validate([
                     'title'=>'required',
                     'title_h'=>'required',
+                    'file'  =>  'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+
             ]);
             }
             $data->title=$request->title;
@@ -1379,12 +1408,14 @@ function News_Event_index(){
                 $request->validate([
                     'heading'=>'required',
                     'heading_h'=>'required',
+                    "file"   =>   "mimes:pdf|max:10000"
                 ]);
                 }
                 else{
                      $request->validate([
                         'heading'=>'required',
                         'heading_h'=>'required',
+                         "file"            =>          "mimes:pdf|max:10000"
                 ]);
                 }
                 $data->heading=$request->heading;

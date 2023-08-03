@@ -233,6 +233,7 @@
 
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+
  <script src="{{asset('assets/js/cdnjs.cloudflare.com_ajax_libs_magnific-popup.js_1.1.0_jquery.magnific-popup.min.js')}}"></script>
 <script type="text/javascript">
     $(window).on('load', function () {

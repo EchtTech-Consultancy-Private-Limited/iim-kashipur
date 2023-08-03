@@ -55,12 +55,12 @@
 
                     @if($id)
 
-                    <form class="forms-sample row col-md-12" method="POST" action="{{url('Accounts/add-edit-file2url/'.$id)}}" enctype="multipart/form-data">
+                    <form class="forms-sample row col-md-12" method="POST" id="regForm" action="{{url('Accounts/add-edit-file2url/'.$id)}}" enctype="multipart/form-data">
 
                   @else
 
 
-                  <form class="forms-sample row col-md-12" method="POST"  id="regForm" action="{{url('Accounts/add-edit-file2url')}}" enctype="multipart/form-data">
+                  <form class="forms-sample row col-md-12" method="POST"  id="regForm"  action="{{url('Accounts/add-edit-file2url')}}" enctype="multipart/form-data">
 
 
                   @endif
@@ -76,7 +76,6 @@
                           <select name="type" class="form-control">
 
                               <option value="">Please Select</option>
-                              <option value="PDF" {{ ( 'PDF' == $data->type) ? 'selected' : '' }}>PDF File</option>
                               <option value="Image" {{ ( 'Image' == $data->type) ? 'selected' : '' }}>Image File</option>
 
                           </select>
@@ -161,7 +160,7 @@
 
                    <div class="col-md-12">
 
-                    <button type="submit" class="btn btn-primary mr-2">Submit</button>
+                    <button type="submit" class="btn btn-primary mr-2" onclick="load();">Submit</button>
 
                    </div>
 

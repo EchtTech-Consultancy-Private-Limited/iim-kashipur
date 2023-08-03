@@ -286,7 +286,16 @@ class pagecontroller extends Controller
                     return view('admin.pages.content_list');
                     }
 
-                    }
+
+
+                    public function vcgallery($id){
+                        $data=content_page ::find(dDecrypt($id));
+                        return view("admin.pages.view_content_page",['data'=>$data]);
+                        }
+
+
+
+                }
 
 
 

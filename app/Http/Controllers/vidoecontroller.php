@@ -643,7 +643,11 @@ public function video_id(Request $request)
 
 
 
-
+public function vvgallery(Request $request, $id){
+$value=video_gallery::find(dDecrypt($id));
+$data=video_gallery_tittle::wheregallery_id(dDecrypt($id))->get();
+return view('admin.video.view_video_gallery',['data'=>$data ,'value'=>$value]);
+}
 
 
 

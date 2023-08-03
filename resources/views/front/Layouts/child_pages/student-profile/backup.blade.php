@@ -336,10 +336,16 @@
 
                                     <div class=" top text-center mt-0">
                                         <div class="profile-img">
-                                            <img src="{{ asset('uploads/organisation/' . $items->image) }}"
-                                                alt="{{ $items->title }}">
-                                        </div>
 
+                                            @if ($items->image != '')
+                                            <img src="{{ asset('uploads/organisation/'.$items->image) }}"
+                                            alt="{{ $items->title }}">
+
+                                            @else
+                                            <img src="{{ asset('admin/images/faces/default.jpg') }}">
+                                            @endif
+
+                                        </div>
                                         <h6>{{ $items->title }}</h6>
                                     </div>
                                 </div>
@@ -865,13 +871,13 @@
                         @endforeach
                     </div>
 
-                                 
-                             
 
 
 
-                    <div class="col-xl-9 col-md-9 col-lg-12">                            
-                                    
+
+
+                    <div class="col-xl-9 col-md-9 col-lg-12">
+
 
                     <div class="import-dates">
                         <div class="title"></div>
@@ -921,7 +927,7 @@
 
                                                         </div>
 
-                                                        
+
                                                     </div><hr>
                                                     <div class="row">
                                                         <div class="col-sm-12">
@@ -953,9 +959,9 @@
                                                         </div>
                                                     </div>
 
-                                                    
-                                                   
-                                                    
+
+
+
                                                 </div>
 
                                             </div>

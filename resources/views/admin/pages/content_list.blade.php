@@ -132,19 +132,11 @@
 
                           @foreach($data as $k=> $value)
 
-
-
                            <tr>
-
-
 
                           <td>{{$k+1}}</td>
 
-
-
                           <td>{{$value->name}}</td>
-
-
 
                           <td>{{$value->name_h}}</td>
 
@@ -154,6 +146,7 @@
                             @else
                                 @if($value->status==1) <span" style="color:green;">Active</span> @else <span style="color:red;">Inactive</span> @endif
                             @endif
+
                            </td>
 
                           <td>
@@ -166,8 +159,9 @@
 
                             <a href="{{ url('/Accounts/update-page/'.dEncrypt($value->id))}}" onclick="return confirm('Are you sure to edit this record?')"><i class="ti-pencil btn-icon-append" style="color:black;"></i></a> &nbsp;
 
-                            <a href="{{ url('/Accounts/delete-page/'.dEncrypt($value->id))}}" onclick="return confirm('Are you sure to delete this record?')"><i class="ti-trash btn-icon-append" style="color:black;"></i></a> &nbsp;
+                            <a href="{{ url('/Accounts/view-content/'.dEncrypt($value->id))}}" onclick="return confirm('Are you sure to view this record?')"><i class="ti-eye btn-icon-append" style="color:black;"></i></a> &nbsp;
 
+                            <a href="{{ url('/Accounts/delete-page/'.dEncrypt($value->id))}}" onclick="return confirm('Are you sure to delete this record?')"><i class="ti-trash btn-icon-append" style="color:black;"></i></a> &nbsp;
 
 
                           </td>
