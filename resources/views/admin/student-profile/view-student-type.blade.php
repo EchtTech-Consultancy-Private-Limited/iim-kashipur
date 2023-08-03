@@ -43,7 +43,7 @@
 
                   <div>
 
-                      <button type="button" class="btn btn-primary" ><a target="_blank" href="{{ url('/Accounts/add-students-type') }}" > Add Student Profile Type</a></button>
+                      <button type="button" class="btn btn-primary" ><a  href="{{ url('/Accounts/add-students-type') }}" > Add Student Profile Type</a></button>
 
 
                     </div>

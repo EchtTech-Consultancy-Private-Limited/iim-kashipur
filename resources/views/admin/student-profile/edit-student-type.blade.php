@@ -22,7 +22,7 @@
                <div class="alert alert-danger col-md-12 text-center">
                   <strong>Oops!</strong> {{ Session::get('error') }}
                </div>
-               @endif 
+               @endif
                @if(Session::has('success'))
                 <div class="alert alert-success" style="padding: 15px;" role="alert">
                     {{session::get('success')}}
@@ -33,7 +33,7 @@
                 </div>
                 @endif
                </p>
-               <form class="forms-sample row col-md-12" method="POST" action="{{url('/Accounts/update-student-profile-type/'.$student->id)}}"  enctype="multipart/form-data">
+               <form class="forms-sample row col-md-12" method="POST" id="regForm" action="{{url('/Accounts/update-student-profile-type/'.$student->id)}}"  enctype="multipart/form-data">
                   @csrf
 
 
@@ -47,8 +47,8 @@
                      </div>
                   </div>
 
-              <input type="submit" value="Update Student Profile Type">
-                 
+              <input type="submit" onclick="load();" value="Update Student Profile Type">
+
                </form>
             </div>
          </div>
@@ -57,9 +57,9 @@
 </div>
 <script type="text/javascript">
    CKEDITOR.replace('content');
-   
+
    CKEDITOR.replace('content_h');
-   
+
 </script>
 <!-- content-wrapper ends -->
 @endsection
