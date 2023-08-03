@@ -320,7 +320,7 @@
 
                             <div class="col-md-3 col-lg-3 mobile-width-auto" title="{{ $students->name }}">
 
-                                <a href="{{ url('/student-profile-more-info/'.$students->id) }}" target="_blank">
+                                <a href="{{ url('/student-profile-more-info/'.dEncrypt($students->id))}}">
 
                                 <div class="profilewraper withinfo addevent-box">
 

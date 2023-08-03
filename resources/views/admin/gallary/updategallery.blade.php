@@ -367,7 +367,7 @@
                                 </div>
 
 
-                                <div class="col-md-12">
+                                {{-- <div class="col-md-12">
 
                                     <label for="inputText" class="col-sm-2 col-form-label">Status</label>
 
@@ -387,9 +387,10 @@
 
                                     </div>
 
-                                </div>
+                                </div> --}}
 
 
+                                <input type="hidden" name="status" value="{{  $value->status }}">
 
                                 <div class="col-md-12">
 
@@ -421,7 +422,7 @@
 
                                     <div class="col-sm-12">
 
-                                        <button type="submit" class="btn btn-primary" class="form-control">Save</button>
+                                        <button type="submit" class="btn btn-primary" onclick="load();" class="form-control">Save</button>
 
                                     </div>
 
@@ -550,7 +551,7 @@
                                                 </div>
 
 
-                                                <div class="form-group col-md-6">
+                                                {{-- <div class="form-group col-md-6">
 
                                                     <label for="status">status</label>
 
@@ -574,7 +575,9 @@
 
 
 
-                                                </div>
+                                                </div> --}}
+
+                                                <input type="hidden" name="0">
 
                                                 <div class="form-group col-md-6">
 
@@ -585,7 +588,7 @@
 
                                                 </div>
 
-                                                <button type="submit" class="btn btn-primary" id="savebtn"
+                                                <button type="submit" class="btn btn-primary" onclick="load();" id="savebtn"
                                                     class="form-control">Save</button>
 
                                             </form>
@@ -656,7 +659,7 @@
 
                                                             <a class="btn btn-primary"
                                                                 href="{{ url('/Accounts/delete_image/' . dEncrypt($value->id)) }}"
-                                                                onclick="return confirm('Are you sure to edit this record?')"><i
+                                                                onclick="return confirm('Are you sure to delete this record?')"><i
                                                                     class="ti-trash btn-icon-append"
                                                                     style="color:black;"></i></a>
                                                         </td> &nbsp;
@@ -800,7 +803,7 @@
 
 
 
-                                                            <div class="form-group col-md-6">
+                                                            {{-- <div class="form-group col-md-6">
 
                                                                 <label for="form-email">status</label>
 
@@ -816,7 +819,10 @@
 
                                                                 </select>
 
-                                                            </div>
+                                                            </div> --}}
+
+
+                                                            <input type="hidden" name="status"  class="imagestatus">
 
                                                     </div>
 
@@ -828,7 +834,7 @@
                                                     <div class="modal-footer">
 
                                                         <button type="submit" class="btn btn-primary"
-                                                            class="form-control" id="savebtn">Save</button>
+                                                            class="form-control" onclick="load();" id="savebtn">Save</button>
 
 
                                                     </div>
@@ -938,7 +944,7 @@
                         $("#imagesort").val(data.item.sort_order);
                         $('#image').html('<img src="{{ asset('gallery/multipimage') }}/' + data.item
                             .large_image + '" width="100" height="100" />')
-                        $("#imagestatus").val(data.item.status);
+                        $(".imagestatus").val(data.item.status);
                         $("#gallery_id").val(data.item.gallery_id);
                         $("#imageoldid").val(data.item.large_image);
                         $("#url1").val(data.item.url);
@@ -951,4 +957,15 @@
 
             });
         </script>
+
+
+<script>
+    function load(){
+      $('.btn').prop('disabled', true);
+     setTimeout(function() {
+           $('.btn').prop('disabled', false);
+     }, 10000);
+        $("#form").submit();
+    }
+ </script>
     @endsection

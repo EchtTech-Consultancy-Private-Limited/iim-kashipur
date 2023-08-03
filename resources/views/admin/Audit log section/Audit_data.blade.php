@@ -84,7 +84,8 @@
                         <thead>
                                 <tr>
                                    <th scope="col">ID#</th>
-                                   <th scope="col">Date & Time</th>
+                                   <th scope="col">Date </th>
+                                   <th scope="col">Time </th>
                                    <th scope="col">User Name</th>
                                    <th scope="col">Ip Address</th>
                                    <th scope="col">Event Action</th>
@@ -98,12 +99,13 @@
                             <tr>
                                 <td>{{$value->id}}</td>
                                 <td>{{date('d-m-Y',strtotime($value->created_at))}}</td>
+                                <td> {{ $value->created_at->format('H:i:s')}}  </td>
                                 <td>{{$value->user_name}}</td>
                                 <td>{{$value->IP_address}}</td>
                                 <td>{{$value->action_event}}</td>
                             </tr>
-                           @endforeach  
-                             </tbody> 
+                           @endforeach
+                             </tbody>
 
 <tbody id="tablefilter">
 

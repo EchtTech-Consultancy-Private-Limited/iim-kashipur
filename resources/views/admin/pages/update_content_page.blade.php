@@ -435,7 +435,7 @@
 
 
 
-                                <div class="col-md-12">
+                                {{-- <div class="col-md-12">
 
                                     <label for="inputText" class="col-sm-2 col-form-label">Status</label>
 
@@ -454,8 +454,9 @@
 
                                     </div>
 
-                                </div>
+                                </div> --}}
 
+                                <input type="hidden" name="status" value="{{ $data->status }}">
 
 
                                 <input type="hidden" class="form-control" name="id" value="{{ $data->id }}">
@@ -480,7 +481,7 @@
 
                                     <div class="col-sm-12">
 
-                                        <button type="submit" class="btn btn-primary" class="form-control">Save</button>
+                                        <button type="submit" class="btn btn-primary" onclick="load();" class="form-control">Save</button>
 
                                     </div>
 

@@ -54,11 +54,11 @@
 
                 @if($id)
 
-                  <form class="forms-sample row col-md-12" method="POST" action="{{url('Accounts/add-edit-profile/'.$id)}}" enctype="multipart/form-data">
+                  <form class="forms-sample row col-md-12" method="POST"  id="regForm" action="{{url('Accounts/add-edit-profile/'.$id)}}" enctype="multipart/form-data">
 
                 @else
 
-                  <form class="forms-sample row col-md-12" method="POST" action="{{url('Accounts/add-edit-profile')}}?pid={{basename(url()->previous())}}" enctype="multipart/form-data">
+                  <form class="forms-sample row col-md-12" method="POST"  id="regForm" action="{{url('Accounts/add-edit-profile')}}?pid={{basename(url()->previous())}}" enctype="multipart/form-data">
 
                 @endif
 
@@ -157,7 +157,7 @@
                     <div class="clearfix"></div>&nbsp; &nbsp;
                    <div class="col-md-12">
 
-                    <button type="submit" class="btn btn-primary mr-2">Submit</button>
+                    <button type="submit" class="btn btn-primary mr-2" onclick="load();">Submit</button>
 
                    </div>
 

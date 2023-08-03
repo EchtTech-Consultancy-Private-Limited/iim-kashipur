@@ -3083,7 +3083,7 @@ p.small.text-muted {
 @media screen and (max-width: 767px) {
     .profilewraper p {
         font-size: 12px;
-        
+
     text-align: center;
 
     }
@@ -3998,7 +3998,7 @@ ul.navbar-nav li.nav-item {
 }
 .navbar-nav li .dropdown-item a {
     padding: 5px 12px 3px !important;
- 
+
 }
 #video {
     object-fit: cover;
@@ -4531,7 +4531,7 @@ section.excellence-wrap.pt-5 {
     .navbar-nav li .dropdown-item a {
         white-space: normal;
     }
-  
+
 
     .sticky-icon a i {
         height: 30px;
@@ -5844,3 +5844,4 @@ img.hover-shadow.cursor {
         height: 38px;
     }
 }
+

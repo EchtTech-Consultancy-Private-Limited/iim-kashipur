@@ -44,9 +44,8 @@ use App\Models\rti;
 use App\Models\rit_report_section;
 use App\Models\quarter_report;
 use App\Models\BannerSlider;
-use App\Models\org;
+use App\Models\Org;
 use App\Models\project_logo;
-
 use App\Models\quick_linkcategory;
 use App\Models\search;
 
@@ -60,8 +59,6 @@ class InnerpageController extends Controller
 //
 //
 //
-
-
 
 
 public function search(Request $request){
@@ -84,7 +81,7 @@ public function search(Request $request){
     $multiple_profile= multiple_profile::where("Title","like","%$search%")->orwhere("heading","like","%$search%")->orwhere("description","like","%$search%")->get();
     $OrganisationStructure=OrganisationStructure::where("title","like","%$search%") ->orwhere("email","like","%$search%")->orwhere("designation","like","%$search%")->orwhere("phone","like","%$search%") ->orwhere("description","like","%$search%")->get();
     $news_event= news_event::where("title","like","%$search%")->get();
-    $org=org::where("name","like","%$search%")
+    $org=Org::where("name","like","%$search%")
                  ->orwhere("contact","like","%$search%")
                  ->orwhere("email","like","%$search%")
                  ->orwhere("about","like","%$search%")
@@ -103,7 +100,7 @@ public function search(Request $request){
     $project_logo = project_logo::where("name","like","%$search%")
             ->orwhere("number","like","%$search%")
              ->get();
-    $quick_linkcategory= quick_linkcategory::where("Section","like","%$search%")
+    $quick_linkcategory=quick_linkcategory::where("Section","like","%$search%")
                     ->orwhere("short_note","like","%$search%")
                 ->get();
     $QuickLink=QuickLink::where("title","like","%$search%")

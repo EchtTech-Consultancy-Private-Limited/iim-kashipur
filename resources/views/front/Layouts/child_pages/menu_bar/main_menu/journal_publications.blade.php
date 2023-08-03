@@ -661,7 +661,16 @@
                     <div class="col-md-9">
                         <div class="innerpagecontent">
                             <h3>
-                                <span>PUBLICATIONS</span>
+
+
+                                @if (GetLang() == 'en')
+                                {{ $type[0]->name ?? '' }}
+                            @else
+                                {{ $type[0]->name_h ?? '' }}
+                            @endif
+
+
+
                             </h3>
                             <div class="commontxt">
                                 <div class="row">
