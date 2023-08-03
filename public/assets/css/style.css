@@ -1399,8 +1399,7 @@ span.text-hili-top {
             45deg,
             rgba(250, 166, 30, 0.75),
             rgba(237, 23, 69, 0.75)
-        ),
-        url("../images/about-content-bg.png");
+        );
 
     background-position: center;
 
@@ -5199,14 +5198,13 @@ h2.heading-light.h-club-box {
     .content h2{
         font-size: 24px;
     }
-
     .content {
         padding: 15px;
     }
   }
 
   .myslider {
-    background: linear-gradient( 90deg, rgba(250, 166, 30, 0.75), rgba(237, 23, 69, 0.75) ), url(../images/about-content-bg.png);
+    background: linear-gradient( 90deg, rgba(250, 166, 30, 0.75), rgba(237, 23, 69, 0.75) );
     height: 397px;
     padding: 20px 0;
     border-radius: 6px;

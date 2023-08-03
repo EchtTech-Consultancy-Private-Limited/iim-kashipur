@@ -5,10 +5,7 @@ Author       : Golu Prajapati
 Status       : Find a small win each day.
 Date         : 26/02/2023.
 */
-
 @font-face {font-family:FontAwesome;src:url(../fonts/FontAwesome.otf);}
-@font-face {font-family:Roboto-Regular;src:url(../fonts/Roboto-Regular.ttf);}
-@font-face {font-family:Poppins-Regular;src:url(../fonts/Poppins-Regular.ttf);}
 body{font-family: 'Poppins-Regular', sans-serif;color:#343333;line-height:1.7;font-size: 14px;}
 
 h1, h2, h3, h4, h5, h6, p, ul, ol, li {position: relative;}

@@ -443,17 +443,7 @@
 
 
 
-                                    <div class="profile-socail-icon information">
-
-                                        <a href="javascript:void(0)" class="socail-icon"><i
-                                                class="fab fa fa-facebook-f"></i></a>
-
-                                        <a href="javascript:void(0)" class="socail-icon"><i
-                                                class="fab fa fa-twitter"></i></a>
-
-
-
-                                    </div>
+                                   
 
                                 </div>
 
@@ -770,29 +760,9 @@
                                                         {{ $items->designation_h ?? '' }}
                                                     @endif
                                                 </h6>
-
-
-
-                                                <div class="profile-socail-icon information">
-
-                                                    <a href="javascript:void(0)" class="socail-icon"><i
-                                                            class="fab fa fa-facebook-f"></i></a>
-
-                                                    <a href="javascript:void(0)" class="socail-icon"><i
-                                                            class="fab fa fa-twitter"></i></a>
-
-
-
-                                                </div>
-
                                             </div>
 
                                         </div>
-
-
-
-
-
 
                                         <div class="col-md-7 col-lg-8">
 
@@ -839,21 +809,7 @@
 
                                   <h6>  @if(GetLang()=='en') {{ $items->designation ?? '' }}  @else {{ $items->designation_h ?? '' }}  @endif </h6>
 
-                                            <h5>
-                                                @if (GetLang() == 'en')
-                                                    {{ $items->title ?? '' }}
-                                                @else
-                                                    {{ $items->title_h ?? '' }}
-                                                @endif
-                                            </h5>
-
-                                            <h6>
-                                                @if (GetLang() == 'en')
-                                                    {{ $items->designation ?? '' }}
-                                                @else
-                                                    {{ $items->designation_h ?? '' }}
-                                                @endif
-                                            </h6>
+                                           
 
                                         </div>
 
@@ -971,17 +927,7 @@
 
 
 
-                                                <div class="profile-socail-icon information">
-
-                                                    <a href="javascript:void(0)" class="socail-icon"><i
-                                                            class="fab fa fa-facebook-f"></i></a>
-
-                                                    <a href="javascript:void(0)" class="socail-icon"><i
-                                                            class="fab fa fa-twitter"></i></a>
-
-
-
-                                                </div>
+                                              
 
                                             </div>
 
