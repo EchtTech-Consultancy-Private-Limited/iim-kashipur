@@ -5823,6 +5823,7 @@ img.hover-shadow.cursor {
     border-top-right-radius: 0;
 }
 
+
 .mobile-width-auto{
     padding-right: 0px;
 }
@@ -5856,27 +5857,27 @@ left: 0%;
 right: auto;
 }
 .multi-card .card1{
-   
+
     transform: rotate(0deg);
     z-index: -1;
 }
 .multi-card .card2{
-   
+
     transform: rotate(8deg);
     z-index: -2;
 }
 .multi-card .card3{
-   
+
     transform: rotate(4deg);
     z-index: -3;
 }
 .multi-card .card4{
-   
+
     transform: rotate(2deg);
     z-index: -4;
 }
 .multi-card .card5{
-   
+
     transform: rotate(-1deg);
     z-index: -5;
 }

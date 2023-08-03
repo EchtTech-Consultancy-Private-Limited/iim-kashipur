@@ -702,10 +702,15 @@
                                                     <th>S.NO</th>
                                                     <th>TITLE</th>
                                                 </tr>
-                                                <?php $l=1; $srN=(request('page'))?10+request('page')-1:$l ?>
+                                                <?php
+                                                $number = 1;
+                                                $numElementsPerPage = 10; // How many elements per page
+                                                $pageNumber = (request('page')) ? (int)request('page') : 1;
+                                                $currentNumber = ($pageNumber - 1) * $numElementsPerPage + $number;
+                                                ?>
                                                  @foreach ($item as $K=>$items)
                                                 <tr>
-                                                    <td>{{ $srN++; }}</td>
+                                                    <td>{{ $currentNumber++; }}</td>
                                                     <td> <a @if($items->external=='yes')  onclick="return confirm('Are you sure  external window open?')" target="_blank" href="{{url($items->url)}}" @else href="{{url ('journal/'.dEncrypt($items->id)) }}" @endif  class="text-black"> {{ $items->title  ??''}} </a> </td>
                                                 </tr>
 

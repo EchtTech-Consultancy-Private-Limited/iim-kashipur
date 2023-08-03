@@ -114,8 +114,7 @@
                                     </div>
                                     {{-- <a href="{{route('admin.forgotpsw')}}" class="auth-link text-black">Forgot password?</a> --}}
 
-                                    <a href="" class="auth-link text-black">Forgot
-                                        password?</a>
+                                    <a href="{{ route('forget.password.get') }}" class="auth-link text-black">Forgot password?</a>
 
 
                                 </div>

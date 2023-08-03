@@ -20,6 +20,7 @@ class ForgotPasswordController extends Controller
        */
       public function showForgetPasswordForm()
       {
+
          return view('admin.forgotpsw');
       }
 

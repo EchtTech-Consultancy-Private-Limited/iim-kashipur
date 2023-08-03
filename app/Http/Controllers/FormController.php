@@ -270,6 +270,7 @@ function Add_OrganisationStructure(Request $request,$id=null){
                 'type'=>'required',
                 'phone'=>'required',
                 'email'=>'required',
+                'image'=>'image|mimes:jpeg,png,jpg,gif,svg|max:2048'
             ]);
             $data->type=$request->type;
             $data->title=ucwords($request->title);
@@ -1782,11 +1783,10 @@ public function add_RTI(Request $request,$id=NULL)
     {
 
 
-
         $request->validate(
             [
 
-             "filename"            =>          "mimes:pdf|max:10000"
+            "filename"   =>   "mimes:pdf|max:10000"
 
             ]
            );
@@ -1819,7 +1819,7 @@ public function add_RTI(Request $request,$id=NULL)
             [
 
 
-                "filename"            =>          "mimes:pdf|max:10000"
+             "filename"   =>   "mimes:pdf|max:10000"
 
             ]
            );

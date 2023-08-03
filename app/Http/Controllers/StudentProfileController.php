@@ -106,8 +106,7 @@ class StudentProfileController extends Controller
 
     public function front_profile_show_more($id)
     {
-        //$student=StudentProfile::find($id);
-         $item=StudentProfile::where('id',dDecrypt($id))->get();
+         $item=StudentProfile::where('id',$id)->get();
         //return $student;
         return view('front.Layouts.child_pages.student-profile.backup',compact('item'));
     }
@@ -124,7 +123,7 @@ class StudentProfileController extends Controller
     {
         $request->validate([
 
-            'student_image'=>'mimes:jpg,jpeg,gif,png'
+        'student_image'=>'mimes:jpg,jpeg,gif,png'
         ]);
 
         $student=StudentProfile::find(dDecrypt($id));

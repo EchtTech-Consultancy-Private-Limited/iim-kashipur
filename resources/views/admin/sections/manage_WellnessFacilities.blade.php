@@ -84,7 +84,7 @@
                                                         <td>{{ $D->title }}</td>
 
 
-                                                        <td>{{ $D->about_details }}</td>
+                                                        <td>{!! $D->about_details !!}</td>
 
                                                         <td>
 

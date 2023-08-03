@@ -923,7 +923,9 @@ function Add_childMenu(Request $request,$id=null){
 
 
                 $data=Admin::find(\Auth::guard('admin')->user()->id);
-                $data->update(['login_time'=>date('d-m-Y H:i:s'),'ip'=>$request->ip(),'login_check'=>'1']);
+                $userId = Auth::guard('admin')->user()->id;
+
+                $sqlUpdate = DB::table('admins')->where('id', $userId)->update(array('login_time'=>date('d-m-Y H:i:s'),'ip'=>$request->ip(),'login_check'=>'1'));
 
                 return redirect()->route('admin.dashboard')->with('success','Hello '.$data->name.'. Welcome to admin panel !');
             }
@@ -937,6 +939,7 @@ function Add_childMenu(Request $request,$id=null){
         }
         return view('admin.index')->with(compact('title'));
     }
+
 
     function Dashboard(){
         $data=audit_log::simplePaginate(10);
@@ -962,9 +965,16 @@ function Add_childMenu(Request $request,$id=null){
     }
 
     function Logout(Request $request){
+        //$data=Admin::find(\Auth::guard('admin')->user()->id);
+        //$login_t=$data->login_time;
+
         $data=Admin::find(\Auth::guard('admin')->user()->id);
-        $login_t=$data->login_time;
-        $data->update(['last_login_time'=>$login_t,'logout_time'=>date('d-m-Y H:i:s'),'ip'=>$request->ip(),'login_check'=>'0']);
+        $userId = Auth::guard('admin')->user()->id;
+
+                $sqlUpdate = DB::table('admins')->where('id', $userId)->update(array('logout_time'=>date('d-m-Y H:i:s'),'ip'=>$request->ip(),'login_check'=>'0'));
+
+
+        //$data->update(['last_login_time'=>$login_t,'logout_time'=>date('d-m-Y H:i:s'),'ip'=>$request->ip(),'login_check'=>'0']);
 
 
         \Auth::guard('admin')->logout();
@@ -1415,7 +1425,7 @@ function News_Event_index(){
                      $request->validate([
                         'heading'=>'required',
                         'heading_h'=>'required',
-                         "file"            =>          "mimes:pdf|max:10000"
+                         "file"            => "mimes:pdf|max:10000"
                 ]);
                 }
                 $data->heading=$request->heading;

@@ -437,7 +437,7 @@ $mmenu = @content_menus($type[0]->menu_id);
                                 <div class="d-flex flex-column h-100">
                                     <?php //dd($values->url); ?>
                                     @if($values->external =='yes' &&  $values->url != null)
-                                        <a onclick="return confirm('Are you sure  external window open?')"
+                                        <a @if (GetLang() == 'en') onclick="return confirm('This link will take you to an external web site.')"  @else onclick="return confirm('यह लिंक आपको एक बाहरी वेब साइट पर ले जाएगा।')" @endif
                                         target="_blank"
                                         href="{{url($values->url) }}">
 

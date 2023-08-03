@@ -68,5 +68,6 @@ class Kernel extends HttpKernel
         'Admin' => \App\Http\Middleware\Admin::class,
         'CustomAuth' => \App\Http\Middleware\CustomAuth::class,
         'preventBackHistory' => \App\Http\Middleware\PreventBackHistory::class,
+        'SessionTimeout' => \App\Http\Middleware\SessionTimeout::class,
     ];
 }
