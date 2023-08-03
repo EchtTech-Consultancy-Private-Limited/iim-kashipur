@@ -1399,8 +1399,7 @@ span.text-hili-top {
             45deg,
             rgba(250, 166, 30, 0.75),
             rgba(237, 23, 69, 0.75)
-        ),
-        url("../images/about-content-bg.png");
+        );
 
     background-position: center;
 
@@ -2247,6 +2246,8 @@ span.text-hili-top {
     .excellence-gallery.partnership-img .row.masonry-grid .col-md-2.col-lg-2 {
         width: 50%;
     }
+
+
 
 
 
@@ -5197,14 +5198,13 @@ h2.heading-light.h-club-box {
     .content h2{
         font-size: 24px;
     }
-
     .content {
         padding: 15px;
     }
   }
 
   .myslider {
-    background: linear-gradient( 90deg, rgba(250, 166, 30, 0.75), rgba(237, 23, 69, 0.75) ), url(../images/about-content-bg.png);
+    background: linear-gradient( 90deg, rgba(250, 166, 30, 0.75), rgba(237, 23, 69, 0.75) );
     height: 397px;
     padding: 20px 0;
     border-radius: 6px;
@@ -5823,6 +5823,16 @@ img.hover-shadow.cursor {
     border-top-right-radius: 0;
 }
 
+.mobile-width-auto{
+    padding-right: 0px;
+}
+
+.mobile-width-auto .profilewraper.withinfo.addevent-box {
+    width: auto;
+    height: auto;
+    min-height: 313px !important;
+}
+
 /* a.open-tab-focus:focus + ul{
     display: block;
 } */
@@ -5834,3 +5844,4 @@ img.hover-shadow.cursor {
         height: 38px;
     }
 }
+
