@@ -2250,6 +2250,8 @@ span.text-hili-top {
 
 
 
+
+
     .back-img.img-gallery.gallery-member .thumbnail.p-relative img {
         height: 160px !important;
     }
@@ -5821,6 +5823,16 @@ img.hover-shadow.cursor {
 .accordion-item:first-of-type {
     border-top-left-radius: 0;
     border-top-right-radius: 0;
+}
+
+.mobile-width-auto{
+    padding-right: 0px;
+}
+
+.mobile-width-auto .profilewraper.withinfo.addevent-box {
+    width: auto;
+    height: auto;
+    min-height: 313px !important;
 }
 
 /* a.open-tab-focus:focus + ul{

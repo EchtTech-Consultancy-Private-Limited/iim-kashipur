@@ -2,6 +2,8 @@
 
 @section('content')
 
+
+
     @php
         $mmenu = @content_menus($get[0]->id);
     @endphp
@@ -316,7 +318,7 @@
 
 
 
-                            <div class="col-md-4 col-lg-4 " title="{{ $students->name }}">
+                            <div class="col-md-3 col-lg-3 mobile-width-auto" title="{{ $students->name }}">
 
                                 <a href="{{ url('/student-profile-more-info/'.$students->id) }}" target="_blank">
 

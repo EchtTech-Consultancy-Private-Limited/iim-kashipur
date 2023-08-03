@@ -7,12 +7,7 @@
 $mmenu = @content_menus($type[0]->menu_id);
 @endphp
 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
   <!-- Magnific Popup css -->
-
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/magnific-popup.css" />
-
-
 
     {{-- banner and  breadcrumbs   --}}
 
