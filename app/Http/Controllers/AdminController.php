@@ -923,12 +923,9 @@ function Add_childMenu(Request $request,$id=null){
 
 
                 $data=Admin::find(\Auth::guard('admin')->user()->id);
-                $data->login_time=date('d-m-Y H:i:s');
-                $data->ip=$request->ip();
-                $data->login_check=1;
-                $data->save();
+                $userId = Auth::guard('admin')->user()->id;
 
-
+                $sqlUpdate = DB::table('admins')->where('id', $userId)->update(array('login_time'=>date('d-m-Y H:i:s'),'ip'=>$request->ip(),'login_check'=>'1'));
 
                 return redirect()->route('admin.dashboard')->with('success','Hello '.$data->name.'. Welcome to admin panel !');
             }
@@ -937,11 +934,12 @@ function Add_childMenu(Request $request,$id=null){
             }
             }
             else{
-                return redirect()->route('admin.login')->with('error','A user is already signed in with these credentials.');
+                return redirect()->route('admin.login')->with('error','Second login person');
             }
         }
         return view('admin.index')->with(compact('title'));
     }
+
 
     function Dashboard(){
         $data=audit_log::simplePaginate(10);
@@ -967,14 +965,18 @@ function Add_childMenu(Request $request,$id=null){
     }
 
     function Logout(Request $request){
-
+        //$data=Admin::find(\Auth::guard('admin')->user()->id);
+        //$login_t=$data->login_time;
 
         $data=Admin::find(\Auth::guard('admin')->user()->id);
-        $data->login_time=date('d-m-Y H:i:s');
-        $data->ip=$request->ip();
-        $data->login_check=0;
-        $data->save();
-        $login_t=$data->login_time;
+        $userId = Auth::guard('admin')->user()->id;
+
+                $sqlUpdate = DB::table('admins')->where('id', $userId)->update(array('logout_time'=>date('d-m-Y H:i:s'),'ip'=>$request->ip(),'login_check'=>'0'));
+
+
+        //$data->update(['last_login_time'=>$login_t,'logout_time'=>date('d-m-Y H:i:s'),'ip'=>$request->ip(),'login_check'=>'0']);
+
+
         \Auth::guard('admin')->logout();
         return redirect()->route('admin.login')->with('success','Logged Out successfully !');
     }
