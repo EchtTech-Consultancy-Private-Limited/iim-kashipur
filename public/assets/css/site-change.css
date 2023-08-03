@@ -530,9 +530,13 @@ a.btn2::after{
 .sidebarwraper ul li.hasnested.opened a svg, .sidebarwraper ul li.hasnested .plus {
     fill: #ff0 !important;
 }
-.sidebarwraper ul li a.active, .sidebarwraper ul li a, a h5, a h6, a h4, a h3,.sidebarwraper ul li.hasnested, .sidebarwraper ul li.hasnested.opened a, .sidebarwraper ul li ul  {
+.sidebarwraper ul li a.active, .sidebarwraper ul li a,.box-rti a, a h5, a h6, a h4, a h3,.sidebarwraper ul li.hasnested, .sidebarwraper ul li.hasnested.opened a, .sidebarwraper ul li ul  {
     color: #ff0 !important;
     background: #000 !important;
+}
+
+.box-rti{
+    border: 1px solid #fff;
 }
 
 .profilewraper.bg-hover, ol li, .master-class table tr, .master-class table td, .master-class table th, .master-class h5 span, .gallery-member .partnership-img div.top-text {
