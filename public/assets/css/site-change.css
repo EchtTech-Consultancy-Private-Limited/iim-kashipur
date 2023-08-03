@@ -499,16 +499,49 @@ section.event-wrap .event-card.aos-init.aos-animate {
     background: #000000 !important;
 }
 
-.site-header .navbar-nav .dropdown-menu li a, .site-header .navbar-nav .dropdown-menu .dropdown-item:hover ul.dropdown-menu li.dropdown-item a {
+.site-header .navbar-nav .dropdown-menu li a, .site-header .navbar-nav .dropdown-menu .dropdown-item:hover ul.dropdown-menu li.dropdown-item ,
+.site-header .navbar-nav .dropdown-menu .dropdown-item:hover a.dropdown-toggle.internal-add, .site-header .navbar-nav .dropdown-menu .dropdown-item:hover ul.dropdown-menu li.dropdown-item:hover a {
     color: #ffff00 !important;
 }
 
-.header-top-right .social-icon ul li a .fa, .nav.nav-tabs.tab-center .nav-link{
+.header-top-right .social-icon ul li a .fa, .nav.nav-tabs.tab-center .nav-link, .excellence-wrap #excellenceTab .nav-link, .dropdown-item a, .site-header .navbar-nav .dropdown-menu .dropdown-item:hover{
+    color: #ff0 !important;
+}
+
+.site-header .navbar-nav .dropdown-menu li a,a, .master-class table a ,
+.site-header .navbar-nav .dropdown-menu .dropdown-item:hover ul.dropdown-menu li.dropdown-item a{
     color: #ff0 !important;
 }
 
 .academic-card .title-green:after{
     border: 2px solid #ff0;
+}
+
+a.btn2::after{
+    border: 0px !important;
+}
+
+.master-class h3 , .innerpagecontent h3 span, a.btn2{
+    color: #ff0 !important;
+    background: #000 !important;
+    border: 0px !important;
+}
+
+.sidebarwraper ul li.hasnested.opened a svg, .sidebarwraper ul li.hasnested .plus {
+    fill: #ff0 !important;
+}
+.sidebarwraper ul li a.active, .sidebarwraper ul li a, a h5, a h6, a h4, a h3,.sidebarwraper ul li.hasnested, .sidebarwraper ul li.hasnested.opened a, .sidebarwraper ul li ul  {
+    color: #ff0 !important;
+    background: #000 !important;
+}
+
+.profilewraper.bg-hover, ol li, .master-class table tr, .master-class table td, .master-class table th, .master-class h5 span, .gallery-member .partnership-img div.top-text {
+    color: #fff;
+    background-color: #000 !important;
+}
+
+p, ul li {
+    color: #fff;
 }
 
 .about-wrap .counter-wrap ul li .counter-no, span.percentage, .about-wrap .counter-wrap ul li .counter-title{
@@ -523,7 +556,7 @@ section.excellence-wrap.pt-5 {
     background: #000000;
 }
 
-.bg-light-grey, .myslider, .instagram-bg {
+.bg-light-grey, .myslider, .instagram-bg, section.excellence-wrap.pt-5 {
     background: #000000 !important;
 }
 
@@ -540,4 +573,12 @@ section.excellence-wrap.pt-5 {
     width: 30px;
     font-weight: 600;
     text-align: center;
+}
+
+.back-img .thumbnail.p-relative img{
+    background-color: #000;
+}
+
+.excellence-gallery.partnership-img .thumbnail img{
+    border: 1px solid #f6f6f6;
 }
