@@ -30,12 +30,12 @@ class SessionTimeout {
         elseif(time() - $this->session->get('lastActivityTime') > $timeout){
             $this->session->forget('lastActivityTime');
             $cookie = cookie('intend', $isLoggedIn ? url()->current() : 'dashboard');
-            $email = $request->user()->email;
+           // $email = $request->user()->email;
             auth()->logout();
             $userId = Auth::guard('admin')->user()->id;
 
             $sqlUpdate = DB::table('admins')->where('id', $userId)->update(array('login_time'=>date('d-m-Y H:i:s'),'ip'=>$request->ip(),'login_check'=>'1'));
-            return message('You had not activity in '.$timeout/60 .' minutes ago.', 'warning', 'login')->withInput(compact('email'))->withCookie($cookie);
+           // return message('You had not activity in '.$timeout/60 .' minutes ago.', 'warning', 'login')->withInput(compact('email'))->withCookie($cookie);
         }
         $isLoggedIn ? $this->session->put('lastActivityTime', time()) : $this->session->forget('lastActivityTime');
         return $next($request);

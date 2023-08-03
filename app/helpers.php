@@ -95,7 +95,7 @@ function FindQuickLinksNew($placement='',$sort_order=''){
       $newkey='AX345678ZX98765Y';
 
       $newEncrypter = new \Illuminate\Encryption\Encrypter($newkey,'AES-128-CBC');
-
+//dd($newEncrypter);
       return $newEncrypter->encrypt($value);
 
    }
