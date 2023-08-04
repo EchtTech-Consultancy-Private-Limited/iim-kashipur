@@ -460,7 +460,7 @@
                                         <!-- ../public/banner/banner-1.jpg-->
                                         <img src="{{ asset('/banner/' . $M->image) }}"
                                             class="d-block w-100 @if ($key == 0) img-responsive @endif"
-                                            alt="{{ $M->banner_Alt }}" title="{{ $M->banner_title }}">
+                                            alt="{{ $M->banner_Alt }}" title="{{ $M->banner_title }}" loading="eager">
                                     @endif
                                 </div>
                             </div>
@@ -541,6 +541,9 @@
         $(".search-show-popup").click(function(){
             $(".serch-box-show").toggleClass('d-none')
         });
+
+
+    $("img.d-block.w-100.img-responsive").removeAttr('loading');
         
     });
 </script>
