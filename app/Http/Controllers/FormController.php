@@ -795,7 +795,7 @@ public function add_cells(Request $request,$id=null){
             if($id){
             $request->validate([
 
-                'Title'=>'required','unique:cells',
+                'title'=>'required',
                 'Cell_logo'  => 'image|mimes:jpeg,png,jpg,gif|max:2048',
                 'Cell_image'  =>   'image|mimes:jpeg,png,jpg,gif|max:2048',
                 'bannerimage'=>'max:5120|mimes:png,jpg|dimensions:max_width=1920,min_width=1920,max_height=500,min_height=500',
@@ -805,6 +805,7 @@ public function add_cells(Request $request,$id=null){
             else{
                 $request->validate([
 
+                    'title'=>'required|unique:cells',
                     'Cell_logo'  => 'image|mimes:jpeg,png,jpg,gif|max:2048',
                     'Cell_image'  =>   'image|mimes:jpeg,png,jpg,gif|max:2048',
                     'bannerimage'=>'max:5120|mimes:png,jpg|dimensions:max_width=1920,min_width=1920,max_height=500,min_height=500',
@@ -812,8 +813,7 @@ public function add_cells(Request $request,$id=null){
             ]);
         }
 
-
-        $data->title=$request->Cell_name;
+        $data->title=$request->title;
         $data->chairperson= $request->chairperson;
         $data->about_details= $request->about_details;
         $data->activites= $request->activites;
@@ -904,9 +904,9 @@ public function add_club(Request $request,$id=NULL){
             if($id){
             $request->validate([
 
-                'title'                =>      'required',
+                 'title'               =>      'required',
                 'club_logo'          =>       'image|mimes:jpeg,png,jpg,gif|max:2048',
-                 'club_image'       =>        'image|mimes:jpeg,png,jpg,gif|max:2048',
+                'club_image'       =>        'image|mimes:jpeg,png,jpg,gif|max:2048',
                 'bannerimage'=>'max:5120|mimes:png,jpg|dimensions:max_width=1920,min_width=1920,max_height=500,min_height=500',
 
             ]);
@@ -914,7 +914,7 @@ public function add_club(Request $request,$id=NULL){
             else{
                 $request->validate([
 
-                    'title'          =>        'required|unique:clubs',
+                   'title'          =>           'required|unique:clubs',
                     'club_logo'          =>       'image|mimes:jpeg,png,jpg,gif|max:2048',
                     'club_image'       =>        'image|mimes:jpeg,png,jpg,gif|max:2048',
                     'bannerimage'=>'max:5120|mimes:png,jpg|dimensions:max_width=1920,min_width=1920,max_height=500,min_height=500',
@@ -922,7 +922,7 @@ public function add_club(Request $request,$id=NULL){
             ]);
         }
 
-        $data->title=$request->club_name;
+        $data->title=$request->title;
         $data->about_details= $request->about_details;
         $data->activitie= $request->activitie;
         $data->chairperson= $request->chairperson;
@@ -1027,7 +1027,7 @@ public function add_committee(Request $request,$id=NULL)
             ]);
         }
 
-        $data->title=$request->Commmittee_name;
+        $data->title=$request->title;
         $data->chairperson= $request->chairperson;
         $data->type= $request->type;
         $data->about_details=$request->about_details;
