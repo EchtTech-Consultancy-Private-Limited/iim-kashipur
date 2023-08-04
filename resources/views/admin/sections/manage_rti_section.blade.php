@@ -53,9 +53,6 @@
                         <div class="card-body">
                             <h4 class="card-title">Manage Annual and Audit Report</h4>
 
-
-
-
                             <div class="row">
 
                                 <div class="col-md-12">
@@ -173,7 +170,7 @@
 
                     <div class="modal-header">
 
-                        <h5 class="modal-title" id="exampleModalLabel">Upload New Pdf</h5>
+                        <h5 class="modal-title" id="exampleModalLabel">New Pdf</h5>
 
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
 
@@ -183,7 +180,13 @@
 
                     </div>
 
+                    @if (Session::has('error'))
+                    <div class="alert alert-danger col-md-12 text-center">
 
+                        <strong>Oops!</strong> {{ Session::get('error') }}
+
+                    </div>
+                    @endif
 
                     <div class="modal-body pb-0">
 
@@ -195,7 +198,7 @@
 
                                 <label for="filename">PDF*</label>
 
-                                <input type="file" name="filename" placeholder="Enter your Image"
+                                <input type="file" name="filename" placeholder="Enter your"
                                     class="form-first-name form-control" id="form-first-name">
 
                                 <label for="filename" id="filename-error" class="error">
@@ -211,7 +214,7 @@
                                 <label for="image_text">Title PDF*</label>
 
                                 <input type="text" name="text" placeholder="Enter your Image Text"
-                                    class="form-last-name form-control" id="form-last-name" autocomplete="off">
+                                    class="form-last-name form-control" id="image_text" autocomplete="off">
 
 
                                 <label for="image_text" id="image_text-error" class="error">
@@ -227,8 +230,6 @@
                                     <option value="">Select Section</option>
                                     <option value="1">Annual report</option>
                                     <option value="2">Comptroller And Auditor General Audit Report</option>
-                                    <option value="3">Quarterly Return</option>
-
                                 </select>
 
                                 <label for="image_text" id="image_text-error" class="error"></label>
@@ -236,7 +237,7 @@
                             </div>
 
 
-                            <div class="form-group col-md-6" id="QUARTER_div">
+                            {{-- <div class="form-group col-md-6" id="QUARTER_div">
 
                                 <label for="image_text">Quarterly type*</label>
 
@@ -251,7 +252,7 @@
 
                                 <label for="image_text" id="image_text-error" class="error"></label>
 
-                            </div>
+                            </div> --}}
 
                             <div class="form-group col-md-6">
 
@@ -319,6 +320,9 @@
                             @csrf
 
 
+
+
+
                             <div class="form-group col-md-6">
 
                                 <label for="form-first-name">Multiple Image</label>
@@ -364,7 +368,6 @@
                                     <option value="">Select Section</option>
                                     <option value="1">Annual report</option>
                                     <option value="2">Comptroller And Auditor General Audit Report</option>
-                                    <option value="3">Quarterly Return</option>
 
                                 </select>
 
@@ -373,7 +376,7 @@
                             </div>
 
 
-                            <div class="form-group col-md-6" id="QUARTER_div">
+                            {{-- <div class="form-group col-md-6" id="QUARTER_div">
 
                                 <label for="image_text">Quarterly type*</label>
 
@@ -387,7 +390,7 @@
                                 </select>
 
 
-                            </div>
+                            </div> --}}
 
                             <div class="form-group col-md-6">
 

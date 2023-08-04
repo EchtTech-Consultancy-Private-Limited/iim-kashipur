@@ -48,8 +48,10 @@ class AdminController extends Controller
         DB::table($db)->where('id',dDecrypt($id))->update(['status'=>$status]);
         return redirect()->back()->with('success','Status Changed Successfully');
     }
+
+
     public function add_sub_child_menu(Request $request,$id=NULL)
-{
+   {
 
     $data1=MainMenu::orderBy('name','ASC')->cursor();
     $data2=URLList::orderBy('type','ASC')->groupBy('type')->cursor();
@@ -189,7 +191,6 @@ public function childmenushow(Request $request){
     function View_QuickLinks(Request $request){
        // $data=QuickLink::orderBy('id','DESC')->cursor();
         $value=quick_linkcategory::all();
-
 
         if(!empty($request->cat_id))$data=QuickLink::where('link_category',$request->cat_id)->orderby('id','Desc')->paginate(10);
         else $data=QuickLink::orderby('id','Desc')->paginate(10);
@@ -343,10 +344,7 @@ public function childmenushow(Request $request){
             return back()->with('error','You are trying to perform unethical process. Your requst is failed.');
         }
         return redirect()->back()->with('success','Record Deleted Successfully');
-
-
     }
-
 
     function View_SiteSetting(Request $request){
         $data=SiteSetting::orderBy('id','ASC')->cursor();
@@ -469,7 +467,6 @@ public function childmenushow(Request $request){
             if(!$id){
             $request->validate([
                 'name'=>'required|unique:sub_menus',
-
             ]);}
             else{
             $request->validate([
@@ -531,9 +528,8 @@ function Add_childMenu(Request $request,$id=null){
           ]);}
         else{
         $request->validate([
-            'name'=>'required',
+            'name'=>'required|unique:child_menus',
             'menu_id'=>'required',
-
         ]);
         }
 
@@ -598,16 +594,17 @@ function Add_childMenu(Request $request,$id=null){
                 $request->validate([
                     'title'=>'required',
                     'type'=>'required',
-                    'image'=>'max:5120|mimes:png,jpg,svg|dimensions:max_width=1920,min_width=1920,max_height=500,min_height=500',
+                    'image'=>'max:5120|mimes:png,jpg|dimensions:max_width=1920,min_width=1920,max_height=500,min_height=500',
 
                 ]);
                 }
                 else{
                     if($request->type=="Banners"){
                     $request->validate([
+                    'title'=>'required',
                     'title'=>'required|unique:banner_sliders',
                     'type'=>'required',
-                    'image'=>'required|max:5120|mimes:png,jpg,svg|dimensions:max_width=1920,min_width=1920,max_height=500,min_height=500',
+                    'image'=>'required|max:5120|mimes:png,jpg|dimensions:max_width=1920,min_width=1920,max_height=500,min_height=500',
                 ]);
               }
             }
@@ -655,17 +652,15 @@ function Add_childMenu(Request $request,$id=null){
 
     function Delete_Banners($id){
 
-          $exit = BannerSlider::where('id',dDecrypt($id))->first();
-          if(!empty($exit)){
-               BannerSlider::find(dDecrypt($id))->delete();
-          }else{
-              return back()->with('error','You are trying to perform unethical process. Your requst is failed.');
-          }
-          return redirect()->back()->with('success','Record Deleted Successfully');
+        $exit = BannerSlider::where('id',dDecrypt($id))->first();
+        if(!empty($exit)){
+            BannerSlider::find(dDecrypt($id))->delete();
+        }else{
+            return back()->with('error','You are trying to perform unethical process. Your requst is failed.');
+        }
+        return redirect()->back()->with('success','Record Deleted Successfully');
 
     }
-
-
 
     function View_OrganisationDetails(){
         $data=Org::cursor();
@@ -697,10 +692,10 @@ function Add_childMenu(Request $request,$id=null){
                 'logo3'=>'mimes:png,jpg,ico|max:1024',
                 'logo4'=>'mimes:png,jpg,ico|max:1024',
                 'about_image'=>'mimes:png,jpg,ico|max:1024',
-                'default_banner_image'=>'max:5120|mimes:png,jpg,svg|dimensions:max_width=1920,max_height=500',
+                'default_banner_image'=>'max:5120|mimes:png,jpg|dimensions:max_width=1920,max_height=500',
             ]);}
 			else{ $request->validate([
-                'name'=>'required',
+                'name'=>'required|unique:orgs',
                 'logo'=>'required|mimes:png,jpg,ico',
                 'fevicon'=>'required|mimes:png,jpg,ico',
                 'contact'=>'required',
@@ -709,10 +704,8 @@ function Add_childMenu(Request $request,$id=null){
                 'logo3'=>'mimes:png,jpg,ico|max:1024',
                 'logo4'=>'mimes:png,jpg,ico|max:1024',
                 'about_image'=>'mimes:png,jpg,ico|max:1024',
-                'default_banner_image'=>'required|max:5120|mimes:png,jpg,svg|dimensions:max_width=1920,max_height=500',
+                'default_banner_image'=>'required|max:5120|mimes:png,jpg|dimensions:max_width=1920,max_height=500',
             ]);}
-
-
 
             $data->name=($request->name);
             $data->name_h=$request->name_h;
@@ -721,7 +714,6 @@ function Add_childMenu(Request $request,$id=null){
             $data->about_title=$request->about_title;
             $data->about_Alt=$request->about_Alt;
             $data->address=($request->address);
-            $data->address_h=$request->address_h;
             $data->email=$request->email;
             $data->contact=$request->contact;
             $data->location=$request->location;
@@ -909,12 +901,24 @@ function Add_childMenu(Request $request,$id=null){
     }
 
     function Delete_OptionMaster($id){
-          $data=OptionsDump::find(dDecrypt($id))->delete();
+
+          $exit = OptionsDump::where('id',dDecrypt($id))->first();
+          if(!empty($exit)){
+            OptionsDump::find(dDecrypt($id))->delete();
+          }else{
+              return back()->with('error','You are trying to perform unethical process. Your requst is failed.');
+          }
           return redirect()->back()->with('success','Record Deleted Successfully');
     }
 
      function Delete_OrganisationDetails($id){
-          $data=Org::find(dDecrypt($id))->delete();
+
+          $exit = Org::where('id',dDecrypt($id))->first();
+          if(!empty($exit)){
+            Org::find(dDecrypt($id))->delete();
+          }else{
+              return back()->with('error','You are trying to perform unethical process. Your requst is failed.');
+          }
           return redirect()->back()->with('success','Record Deleted Successfully');
     }
 
@@ -1016,6 +1020,7 @@ function Add_childMenu(Request $request,$id=null){
     }
 
     function Add_Admins(Request $request,$id=null){
+
         if($id){
             $title='Edit User ';
             $msg= 'User Edited Successfully !';
@@ -1029,9 +1034,9 @@ function Add_childMenu(Request $request,$id=null){
         if($request->isMethod('post')){
             if($id){
             $request->validate([
-                'name'=>'required',
+                'name'=>'required','unique:admins',
                 'email' => ['required','string','email','max:50','regex:/^([a-z0-9\+_\-]+)(\.[a-z0-9\+_\-]+)*@([a-z0-9\-]+\.)+[a-z]{2,6}$/ix'],
-                'mobile' =>'required'
+                'mobile' =>'required','unique:admins'
             ]);
             }
             else{
@@ -1057,8 +1062,6 @@ function Add_childMenu(Request $request,$id=null){
     }
 
     function Delete_Admin($id){
-
-      //  dd($id);
         $exit = Admin::where('id',$id)->first();
         if(!empty($exit)){
             Admin::find(dDecrypt($id))->delete();
@@ -1149,7 +1152,12 @@ function Add_childMenu(Request $request,$id=null){
 
 public function project_index($id)
 {
-    $data=project_logo::find(dDecrypt($id))->delete();
+    $exit = project_logo::where('id',dDecrypt($id))->first();
+    if(!empty($exit)){
+        project_logo::find(dDecrypt($id))->delete();
+    }else{
+        return back()->with('error','You are trying to perform unethical process. Your requst is failed.');
+    }
     return redirect()->back()->with('success','Record Deleted Successfully');
 }
 
@@ -1172,25 +1180,25 @@ public function project_index($id)
         $title="Add Project Counter";
         $data=new  project_logo;
         $msg="project logo Added Successfully";
+
     }
     if($request->isMethod('post')){
         if($id){
         $request->validate([
 
+            'name'=>'required','unique:project_logos',
             'number'=>'required',
-            'name'=>'required',
-            // 'image'=>'required|mimes:jpg,jpeg,gif,png',
             'name_h'=>'required',
         ]);
         }
         else{
              $request->validate([
+            'name'=>'required','unique:project_logos',
             'number'=>'required',
-            'name'=>'required',
-            // 'image'=>'required|mimes:jpg,jpeg,gif,png',
             'name_h'=>'required',
         ]);
         }
+
         $data->number=$request->number;
         $data->name=$request->name;
         $data->name_h=$request->name_h;
@@ -1221,15 +1229,18 @@ public function Department_info()
 
 
  //profile biography
-
-
  function biography_view($id){
     $data= multiple_profile::where('parent_id','=',$id)->orderBy('id','DESC')->get();
     return view('admin.sections.manage_profile_details',(['data'=>$data]));
 }
 
 function biography_delete($id){
-    $data=multiple_profile::find(dDecrypt($id))->delete();
+    $exit = multiple_profile::where('id',dDecrypt($id))->first();
+    if(!empty($exit)){
+        multiple_profile::find(dDecrypt($id))->delete();
+    }else{
+        return back()->with('error','You are trying to perform unethical process. Your requst is failed.');
+    }
     return redirect()->back()->with('success','Record Deleted Successfully');
 }
 
@@ -1237,11 +1248,9 @@ function biography_delete($id){
 function biography_add(Request $request,$id=null){
 
     if($id){
-
         $title="Edit Organisation profile";
         $msg="Organisation profile Edited Successfully!";
         $data=multiple_profile::find(dDecrypt($id));
-
     }
     else{
          $title="Add Organisation profile";
@@ -1249,11 +1258,17 @@ function biography_add(Request $request,$id=null){
          $data=new multiple_profile;
 
 
-    if($request->isMethod('post')){
-        $request->validate([
-            'Title'=>'required',
-
-        ]);
+        if($id){
+            $request->validate([
+                'name'=>'required','unique:multiple_profile',
+                'Title'=>'required',
+            ]);
+            }
+            else{
+                 $request->validate([
+                'Title'=>'required',
+            ]);
+            }
 
         $data->Title=Str::title($request->Title);
         $data->title_h=$request->title_h;
@@ -1288,12 +1303,19 @@ function biography_add(Request $request,$id=null){
     return view('admin.sections.addprofile_details',compact('data','title','id'));
 }
 
-}
+
 
 
 public function Org_journey($id){
-$data=org_journies::find(dDecrypt($id))->delete();
+
+$exit = org_journies::where('id',dDecrypt($id))->first();
+if(!empty($exit)){
+    org_journies::find(dDecrypt($id))->delete();
+}else{
+    return back()->with('error','You are trying to perform unethical process. Your requst is failed.');
+}
 return redirect()->back()->with('success','Record Deleted Successfully');
+
 }
 
 function Org_journey_index(){
@@ -1318,16 +1340,17 @@ function add_journey_edit_org(Request $request,$id=null){
         $request->validate([
 
             'number'=>'required',
-            'title'=>'required',
             'title_h'=>'required',
+            'title'=>'required',
+            'file' => 'image|mimes:jpeg,png,jpg,gif|max:2048'
         ]);
         }
         else{
              $request->validate([
                 'number'=>'required',
-                'title'=>'required',
+                'title'=>'required|unique:org_journey',
                 'title_h'=>'required',
-                'file'          =>       'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+                'file' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
 
         ]);
         }
@@ -1379,17 +1402,19 @@ function News_Event_index(){
         if($request->isMethod('post')){
             if($id){
             $request->validate([
+
                 'title'=>'required',
                 'title_h'=>'required',
-                'file'  => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+                'file'  => 'image|mimes:jpeg,png,jpg,gif|max:2048',
 
             ]);
             }
             else{
                  $request->validate([
                     'title'=>'required',
+                    'title'=>'required','unique:news_events',
                     'title_h'=>'required',
-                    'file'  =>  'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+                    'file'  =>  'image|mimes:jpeg,png,jpg,gif|max:2048',
 
             ]);
             }
@@ -1419,8 +1444,16 @@ function News_Event_index(){
     }
 
     public function News_Event_delete($id){
-    $data=news_event::find(dDecrypt($id))->delete();
+
+    $exit = news_event::where('id',dDecrypt($id))->first();
+    if(!empty($exit)){
+        news_event::find(dDecrypt($id))->delete();
+    }else{
+        return back()->with('error','You are trying to perform unethical process. Your requst is failed.');
+    }
     return redirect()->back()->with('success','Record Deleted Successfully');
+
+
     }
 
 //press media
@@ -1441,19 +1474,20 @@ function News_Event_index(){
                 $data=new  press_media;
                 $msg="Press & Media Added Successfully";
             }
+
             if($request->isMethod('post')){
                 if($id){
                 $request->validate([
                     'heading'=>'required',
                     'heading_h'=>'required',
-                    "file"   =>   "mimes:pdf|max:10000"
+                    "file"   =>  "mimes:pdf|max:10000"
                 ]);
                 }
                 else{
                      $request->validate([
-                        'heading'=>'required',
+                        'heading'=>'required|unique:press_medias',
                         'heading_h'=>'required',
-                         "file"            => "mimes:pdf|max:10000"
+                        "file"  => "mimes:pdf|max:10000"
                 ]);
                 }
                 $data->heading=$request->heading;
@@ -1480,8 +1514,15 @@ function News_Event_index(){
         }
 
         public function press_media_delete($id){
-        $data=press_media::find(dDecrypt($id))->delete();
+
+        $exit = press_media::where('id',dDecrypt($id))->first();
+        if(!empty($exit)){
+            press_media::find(dDecrypt($id))->delete();
+        }else{
+            return back()->with('error','You are trying to perform unethical process. Your requst is failed.');
+        }
         return redirect()->back()->with('success','Record Deleted Successfully');
+
         }
 
 

@@ -116,7 +116,7 @@ class UIController extends Controller
                 else{
                   $request->validate([
                     'type'=>'required',
-                    'title'=>'required',
+                    'title'=>'required|unique:file_to_urls',
                     'file'=>'mimes:jpg,jpeg,gif,png',
                 ]);
                 }
