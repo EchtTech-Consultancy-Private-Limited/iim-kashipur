@@ -24,7 +24,7 @@ class EnsureTokenIsValid
         if($userAgent->user_agent == $br['name']){
             return $next($request);
         }else{
-            return redirect()->route('admin.login')->with('error','Your session is not authorized!');
+            return redirect()->route('Accounts/log-out')->with('error','Your session is not authorized!');
         }
 
     }
