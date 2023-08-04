@@ -57,12 +57,12 @@
                             @csrf
 
                             <div class="col-md-3">
-                                <label for="inputText" class="col-form-label">Cells Name*</label>
+                                <label for="title" class="col-form-label">Cells Name*</label>
                                 <div class="">
                                     <input type="text" class="form-control"
-                                        name="Cell_name"placeholder="Please enter Club Name" required
-                                        @if ($id) value="{{ $data->title }}" @else value="{{ old('Cell_name') }}" @endif><br>
-                                    <label for="Cell_name" id="Cell_name-error" class="error"></label>
+                                        name="title"placeholder="Please enter Club Name"
+                                        @if ($id) value="{{ $data->title }}" @else value="{{ old('title') }}" @endif><br>
+                                    <label for="title" id="title-error" class="error"></label>
                                 </div>
                             </div>
 

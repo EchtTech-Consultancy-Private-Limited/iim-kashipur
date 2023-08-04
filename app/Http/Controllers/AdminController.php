@@ -1062,7 +1062,7 @@ function Add_childMenu(Request $request,$id=null){
     }
 
     function Delete_Admin($id){
-        $exit = Admin::where('id',$id)->first();
+        $exit = Admin::where('id',dDecrypt($id))->first();
         if(!empty($exit)){
             Admin::find(dDecrypt($id))->delete();
         }else{
@@ -1186,14 +1186,15 @@ public function project_index($id)
         if($id){
         $request->validate([
 
-            'name'=>'required','unique:project_logos',
+            'name'=>'required',
             'number'=>'required',
             'name_h'=>'required',
         ]);
         }
         else{
              $request->validate([
-            'name'=>'required','unique:project_logos',
+
+            'name'=>'required|unique:project_logos',
             'number'=>'required',
             'name_h'=>'required',
         ]);
