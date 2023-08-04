@@ -64,13 +64,13 @@ class gallaycontroller extends Controller
 
             [
 
-            'name'  =>      'required',
+            'name'         =>  'required|unique:photo_galleries',
 
             'name_h'  =>  'required',
 
             'imagename'  => 'mimes:png,jpg,ico|max:1024',
 
-            'bannerimage'=>'max:5120|mimes:png,jpg,svg|dimensions:max_width=1920,max_height=500',
+            'bannerimage'=>'max:5120|mimes:png,jpg|dimensions:max_width=1920,max_height=500',
 
             'pdf'  =>  "mimes:pdf|max:20480"
 
@@ -258,7 +258,7 @@ class gallaycontroller extends Controller
 
                     'imagename'  => 'mimes:png,jpg,ico|max:1024',
 
-                    'bannerimage'=>'max:5120|mimes:png,jpg,svg|dimensions:max_width=1920,max_height=500',
+                    'bannerimage'=>'max:5120|mimes:png,jpg|dimensions:max_width=1920,max_height=500',
 
                     'pdf'  =>  "mimes:pdf|max:20480"
 
@@ -462,7 +462,7 @@ class gallaycontroller extends Controller
 
                             'filename'  => 'required|mimes:png,jpg,ico|max:1024',
 
-                            'image_text'   =>  'required|string|max:200',
+                            'image_text'         =>  'required|unique:photo_gallery_images',
 
                             'image_alt'  =>  'required|string|max:200',
 

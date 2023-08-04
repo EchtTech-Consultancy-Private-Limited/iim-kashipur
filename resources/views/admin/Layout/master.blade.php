@@ -187,9 +187,29 @@
        @include('admin.Layout.sidebar')
 
 
+       <div class="modal fade" id="exampleModalupdate" tabindex="-1" aria-labelledby="exampleModalLabel" data-backdrop="static">
+
+        <div class="modal-dialog modal-md" role="document">
+            <div class="modal-content">
+                <div class="modal-header p-3 pl-4">
+                    <h5 class="modal-title" id="exampleModalLabel">Session Expired
+                    <span id="timer"></span>
+                    </h5>
+                </div>
+                <div class="modal-body">
+                  <p> Your Session has been expired Please Login Again! </p>
+                </div>
+               <div class="modal-footer">
+                <button type="button" class="close btn btn-info btn-modal-footer" data-dismiss="modal" aria-label="Close">Ok</button>
+              </div>
+            </div>
+        </div>
+    </div>
+
+
+
 
        @yield('content')
-
 
 
 
@@ -342,6 +362,24 @@ button.btn {
 
 
 
+
+
+<script>
+    var count=-1; // initially -1 as we are having a delay of 1000ms
+    var counter=setInterval(timer, 900000); //1000 will  run it every 1 second
+    function timer()
+    {
+      count=count+1;
+      if (count >=6) //+1 than the req time as we have a delay of 1000ms
+      {
+         clearInterval(counter);
+          window.location='{{ url("/Accounts/log-out") }}';
+          $("#exampleModalupdate").modal();
+         return;
+      }
+        document.getElementById("timer").innerHTML=count + " secs"; // watch for spelling
+    }
+    </script>
 
 
 </body>

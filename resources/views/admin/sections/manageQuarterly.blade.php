@@ -187,6 +187,7 @@
 
 
 
+
                     <div class="modal-body pb-0">
 
                         <form role="form" id="regForm" action="{{ url('Accounts/add_rit') }}" method="post"
