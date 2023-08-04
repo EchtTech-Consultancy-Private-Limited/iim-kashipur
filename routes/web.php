@@ -65,7 +65,7 @@ Route::match(['get','post'],'change-password',[AdminController::class,'Change_Pa
 //Route::middleware(['preventBackHistory'])->group(function () {
 
 
-    Route::middleware(['preventBackHistory'])->group(function () {
+        Route::middleware(['preventBackHistory','EnsureTokenIsValid'])->group(function () {
         Route::get('dashboard', [AdminController::class,'Dashboard'])->name('dashboard');
 
 
