@@ -47,7 +47,10 @@
 
   <link rel="shortcut icon" href="{{asset('uploads/site-logo/'.GetOrganisationDetails('fevicon'))}}" />
 
-  <script src="//cdn.ckeditor.com/4.17.2/full/ckeditor.js"></script>
+  {{-- <script src="//cdn.ckeditor.com/4.17.2/full/ckeditor.js"></script> --}}
+  <script src="{{url('admin/js/ckeditor/ckeditor.js')}}"></script>
+
+
   <script src="{{url('admin/js/jquery-3.6.0.min.js')}}"></script>
 
 

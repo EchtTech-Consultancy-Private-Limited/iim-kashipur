@@ -367,11 +367,15 @@
             </div>
 
         </div>
+
+
+
         <script type="text/javascript">
+
             CKEDITOR.replace('content');
 
             CKEDITOR.replace('content_h');
         </script>
-        <!-- content-wrapper ends -->
+
 
     @endsection

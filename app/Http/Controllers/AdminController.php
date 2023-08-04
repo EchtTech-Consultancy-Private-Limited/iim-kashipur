@@ -45,6 +45,7 @@ class AdminController extends Controller
     }
 
     function StatusChange($status,$id,$db){
+
         DB::table($db)->where('id',dDecrypt($id))->update(['status'=>$status]);
         return redirect()->back()->with('success','Status Changed Successfully');
     }
@@ -119,6 +120,7 @@ public function childmenushow(Request $request){
     return response()->json(['data'=>$data]);
     }
     function Menu_StatusChange($type,$id,$status){
+
         if($type=='menu'){
             if($status==0){
                 MainMenu::find(dDecrypt($id))->update(['status'=>1]);
@@ -158,23 +160,21 @@ public function childmenushow(Request $request){
                 else{
                     child_menu::find(dDecrypt($id))->update(['status'=>0]);
                 }
-
-
         }
-        elseif($type=='sub-child-menu'){
+        elseif($type=='subchildmenu'){
 
-            //dd('hii');
+
             if($status==0){
             $a=subchildmenu::find(dDecrypt($id));
             $a1=child_menu::find($a->child_id);
-         if($a1->status==0){
+            if($a1->status==0){
                 return redirect()->back()->with('error','Sub menu must be active');
             }
             else{
-                child_menu::find(dDecrypt($id))->update(['status'=>1]);}
+                subchildmenu::find(dDecrypt($id))->update(['status'=>1]);}
             }
             else{
-                child_menu::find(dDecrypt($id))->update(['status'=>0]);
+                subchildmenu::find(dDecrypt($id))->update(['status'=>0]);
             }
 
 
