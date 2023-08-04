@@ -68,18 +68,15 @@ class vidoecontroller extends Controller
         $request->validate(
 
             [
-
-               'name'              =>      'required',
+               'name'=>'required|unique:video_galleries',
 
                'name_h'             =>      'required',
 
-               'imagename'          =>      'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+               'imagename'          =>      'image|mimes:jpeg,png,jpg,gif|max:2048',
 
-               'bannerimage'       =>       'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+               'bannerimage'       =>       'image|mimes:jpeg,png,jpg,gif|max:2048',
 
                 'pdf'                =>       "mimes:pdf|max:10000"
-
-
 
             ]
 
@@ -283,9 +280,9 @@ class vidoecontroller extends Controller
 
                 'name_h'             =>      'required',
 
-                'imagename'          =>      'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+                'imagename'          =>      'image|mimes:jpeg,png,jpg,gif|max:2048',
 
-                'bannerimage'       =>       'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+                'bannerimage'       =>       'image|mimes:jpeg,png,jpg,gif|max:2048',
 
                'pdf'                =>       "mimes:pdf|max:10000"
 
@@ -474,13 +471,13 @@ class vidoecontroller extends Controller
         $request->validate(
 
             [
-
-
                'video_image'  => 'required|mimes:png,jpg,ico|max:1024',
 
-               'video_text'   =>  'required|string|max:200',
+               'video_text'=>'required|unique:video_gallery_tittles',
 
-               'order'              =>      'required',
+               'video_url'=>     'required',
+
+               'order'  =>  'required',
 
             ]
 
@@ -550,13 +547,13 @@ class vidoecontroller extends Controller
 
             [
 
-            //    'video_image'  => 'required|mimes:png,jpg,ico|max:1024',
+                'video_image'  => 'mimes:png,jpg,ico|max:1024',
 
-            //    'video_text'   =>  'required|string|max:200',
+                'video_text'   =>  'required|string|max:200',
 
-            //    'video_url'=>     'required',
+                'video_url'=>     'required',
 
-            //    'order'  =>      'required',
+                'order'  =>      'required',
 
             ]
 

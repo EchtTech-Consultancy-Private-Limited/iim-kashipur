@@ -40,10 +40,10 @@ class pagecontroller extends Controller
 
         $request->validate(
         [
-        'name'              =>        'required',
+        'name'         =>        'required|unique:content_pages',
         'name_h'             =>       'required',
-        'imagename'          =>       'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
-        'bannerimage'       =>        'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+        'imagename'          =>       'image|mimes:jpeg,png,jpg,gif|max:2048',
+        'bannerimage'       =>        'image|mimes:jpeg,png,jpg,gif|max:2048',
         "file"            =>          "mimes:pdf|max:10000"
         ]
 
@@ -140,8 +140,8 @@ class pagecontroller extends Controller
         [
         'name'              =>      'required',
         'name_h'             =>      'required',
-        'imagename'          =>      'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
-        'bannerimage'       =>       'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+        'imagename'          =>      'image|mimes:jpeg,png,jpg,gif|max:2048',
+        'bannerimage'       =>       'image|mimes:jpeg,png,jpg,gif|max:2048',
         'pdf'                =>       "mimes:pdf|max:10000"
         ]
         );

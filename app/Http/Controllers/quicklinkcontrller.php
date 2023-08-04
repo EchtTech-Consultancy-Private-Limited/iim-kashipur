@@ -35,6 +35,10 @@ class quicklinkcontrller extends Controller
 
     public function add_link_action(Request $request)
     {
+        $request->validate([
+
+            'short_note'=>'required|unique:quick_linkcategories',
+        ]);
 
         $e = new quick_linkcategory();
         $e->Section=$request->title;
@@ -48,34 +52,36 @@ class quicklinkcontrller extends Controller
         return redirect('/Accounts/show_link')->with('success', 'Data Add Succesfull!!');
         }
 
-            public function delete_link($id){
-            $data=quick_linkcategory::find(dDecrypt($id));
-            $data->delete();
-            return back()->with('success', 'Data delete Succesfull!!');
-            }
+        public function delete_link($id){
+        $data=quick_linkcategory::find(dDecrypt($id));
+        $data->delete();
+        return back()->with('success', 'Data delete Succesfull!!');
+        }
 
-            public function update_link($id)
-            {
-            $data=quick_linkcategory::find(dDecrypt($id));
-            return view('admin.quck_link_category.update_link',['data'=>$data]);
+        public function update_link($id)
+        {
+        $data=quick_linkcategory::find(dDecrypt($id));
+        return view('admin.quck_link_category.update_link',['data'=>$data]);
 
-            }
+        }
 
+        public function update_linkpost(Request $request,$id){
 
+            $request->validate([
+                'short_note'=>'required',
+            ]);
 
-                    public function update_linkpost(Request $request,$id){
-
-                    $file=quick_linkcategory::find(dDecrypt($id));
-                    $file->Section=$request->title;
-                    $file->placement=$request->link;
-                    $file->short_note=$request->short_note;
-                    $file->short_note_h=$request->short_note_h	;
-                    $file->Section_h=$request->Section_h;
-                    $file->status=$request->status;
-                    $file->slug=SlugCheck('quick_linkcategories',($request->title));
-                    $file->save();
-                    return redirect('/Accounts/show_link')->with('success', 'Data update Succesfull!!');
-                   }
+        $file=quick_linkcategory::find(dDecrypt($id));
+        $file->Section=$request->title;
+        $file->placement=$request->link;
+        $file->short_note=$request->short_note;
+        $file->short_note_h=$request->short_note_h	;
+        $file->Section_h=$request->Section_h;
+        $file->status=$request->status;
+        $file->slug=SlugCheck('quick_linkcategories',($request->title));
+        $file->save();
+        return redirect('/Accounts/show_link')->with('success', 'Data update Succesfull!!');
+        }
 
 
 
