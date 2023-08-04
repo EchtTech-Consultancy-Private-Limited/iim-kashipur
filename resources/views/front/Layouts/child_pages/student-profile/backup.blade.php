@@ -191,13 +191,31 @@
                                     d="M10 19v-5h4v5c0 .55.45 1 1 1h3c.55 0 1-.45 1-1v-7h1.7c.46 0 .68-.57.33-.87L12.67 3.6c-.38-.34-.96-.34-1.34 0l-8.36 7.53c-.34.3-.13.87.33.87H5v7c0 .55.45 1 1 1h3c.55 0 1-.45 1-1z" />
                             </svg></a></li>
 
-                    <li><span>
+
+                            <li>
+                                <a href="{{  URL::previous()  }}">
+                                    <span>
+                                Academics
+                            </span></a></li>
+                            <li><a href="{{  URL::previous()  }}"><span>
+                                Doctoral Programme
+                            </span><a></li>
+
+
+                            <li><a href="{{  URL::previous()  }}"><span>
+                                Student Profiles
+                            </span></a></li>
+
+
+                        <li><span>
                             @if (GetLang() == 'en')
                                 {{ $item[0]->name ?? '' }} {{ $item[0]->last_name ?? '' }}
                             @else
                                 {{ $item[0]->title_h ?? '' }}
                             @endif
                         </span></li>
+
+
                 </ul>
             </div>
         </div>
@@ -336,10 +354,16 @@
 
                                     <div class=" top text-center mt-0">
                                         <div class="profile-img">
-                                            <img src="{{ asset('uploads/organisation/' . $items->image) }}"
-                                                alt="{{ $items->title }}">
-                                        </div>
 
+                                            @if ($items->image != '')
+                                            <img src="{{ asset('uploads/organisation/'.$items->image) }}"
+                                            alt="{{ $items->title }}">
+
+                                            @else
+                                            <img src="{{ asset('admin/images/faces/default.jpg') }}">
+                                            @endif
+
+                                        </div>
                                         <h6>{{ $items->title }}</h6>
                                     </div>
                                 </div>
@@ -614,6 +638,7 @@
 
                                         <div class=" top text-center mt-0">
                                             <div class="profile-img">
+
                                                 <img src="{{ asset('uploads/organisation/' . $items->image) }}"
                                                     alt="{{ $items->title }}">
                                             </div>
@@ -785,15 +810,15 @@
                                         <h6>{{ $items->area_specialization }} </h6>
 
 
-                                      
-        
+
+
                                         <?php
                                             $email_address = $item[0]->email;
                                             $str = $email_address;
                                             $var = str_replace('@', '[at]', $str);
                                             $email = str_replace('.', '[dot]', $var);
                                         ?>
-        
+
 
                                    <span>  {{ $email }} </span> <br>
                                    <span> {{$item[0]->contact}} </span>
@@ -874,15 +899,16 @@
                                     </div>
                                 </div>
                         @endforeach
+
+
+
+
                     </div>
 
-                                 
-                             
+
+                    <div class="col-xl-8 col-md-8 col-lg-12">
 
 
-
-                    <div class="col-xl-8 col-md-8 col-lg-8">                            
-                                    
 
                     <div class="import-dates">
                         <div class="title"></div>
@@ -932,9 +958,17 @@
 
                                                         </div>
 
-                                                        
+
+
+                                                    </div><hr>
+
+
                                                     </div>
                                                     <hr> --}}
+
+
+                                                    </div>
+
                                                     <div class="row">
                                                         <div class="col-sm-12">
                                                             <P class="h6 txt_formate"  >About Us:  </P> <P> {{$datas->about}}</P>
@@ -965,9 +999,9 @@
                                                         </div>
                                                     </div>
 
-                                                    
-                                                   
-                                                    
+
+
+
                                                 </div>
 
                                             </div>

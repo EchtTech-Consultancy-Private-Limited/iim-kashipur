@@ -33,7 +33,7 @@
                 </div>
                 @endif
                </p>
-               <form class="forms-sample row col-md-12" method="POST" action="{{url('/Accounts/add-students-profile')}}"  enctype="multipart/form-data">
+               <form class="forms-sample row col-md-12" method="POST" id="regForm" action="{{url('/Accounts/add-students-profile')}}"  enctype="multipart/form-data">
                   @csrf
 
                   <div class="col-md-12">
@@ -166,7 +166,7 @@
                   </div>
 
 
-                  <input type="submit" value="Add Student Profile">
+                  <input type="submit" onclick="load();" value="Add Student Profile">
 
                </form>
             </div>

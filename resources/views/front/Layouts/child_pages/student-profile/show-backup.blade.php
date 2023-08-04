@@ -235,7 +235,7 @@
                                                             </a>
                                                         </li>
                                                     @else
-                                                        <li><a 
+                                                        <li><a
                                                                 href={{ url($mmenu[0]->slug . '/' . $S->slug . '/' . $C->slug) }}>
                                                                 @if (GetLang() == 'en')
                                                                     {{ $C->name ?? '' }}
@@ -315,7 +315,7 @@
 
                             @foreach ($item as $students)
 
-                          
+
 
                             <div class="col-md-5 col-lg-3 " title="{{ $students->name }}">
 
@@ -330,9 +330,9 @@
                                     <h4> {{ $students->name }}  {{ $students->last_name }}</h4>
                                     <p>{{ $students->area_specialization }}</p>
 
-                                   
-                                   
- 
+
+
+
                                 </div>
 
 
@@ -343,7 +343,7 @@
 
 
 
-                            
+
 
                             @endforeach
 
@@ -359,7 +359,7 @@
 
 
 
-                   
+
 
 
                 </div>

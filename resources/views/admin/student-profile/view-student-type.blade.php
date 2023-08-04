@@ -26,7 +26,7 @@
 
                 </div>
 
-                 @endif   
+                 @endif
 
           <div class="row">
 
@@ -39,12 +39,12 @@
                   <div class="top-menu-button">
 
                   <p class="card-title">Student Profile List</p>
-                  
+
 
                   <div>
 
-                      <button type="button" class="btn btn-primary" ><a target="_blank" href="{{ url('/Accounts/add-students-type') }}" > Add Student Profile Type</a></button>
-                     
+                      <button type="button" class="btn btn-primary" ><a  href="{{ url('/Accounts/add-students-type') }}" > Add Student Profile Type</a></button>
+
 
                     </div>
 
@@ -65,11 +65,11 @@
                             <tr>
 
                               <th>S.No</th>
-                              
+
                               <th>Student Type</th>
                               <th>Action</th>
 
-                              
+
 
 
 
@@ -87,17 +87,25 @@
 
                           <td>{{$students->student_type}}</td>
 
- 
 
-                          
-                         
+
+
+
                           <td>
-                          
-                            <a href="/Accounts/update-student-profile-type/{{$students->id}}" onclick="return confirm('Are you sure to edit this record?')"><i class="ti-pencil btn-icon-append" style="color:black;"></i></a> &nbsp;
-                            <a href="/Accounts/delete-student-profile-type/{{$students->id}}" onclick="return confirm('Are you sure to delete this record?')"><i class="ti-trash btn-icon-append" style="color:black;"></i></a> &nbsp;
+
+                            <a href="
+                                {{url('Accounts/update-student-profile-type/'.dEncrypt($students->id))}}
+
+                                " onclick="return confirm('Are you sure to edit this record?')"><i class="ti-pencil btn-icon-append" style="color:black;"></i></a> &nbsp;
+                            <a href=" {{url('Accounts/delete-student-profile-type/'.dEncrypt($students->id))}}"
+
+
+                                {{url('Accounts/delete-student-profile-type/'.dEncrypt($students->id))}}
+
+                                onclick="return confirm('Are you sure to delete this record?')"><i class="ti-trash btn-icon-append" style="color:black;"></i></a> &nbsp;
 
                           </td>
-                         
+
                            </tr>
 
                           @endforeach
@@ -105,7 +113,7 @@
 
 
 
-                        
+
 
                           </tbody>
 
@@ -123,7 +131,7 @@
 
 
 
-                
+
 
               </div>
 

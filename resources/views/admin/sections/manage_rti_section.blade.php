@@ -123,12 +123,13 @@
                                                                     class="ti-pencil btn-icon-append"
                                                                     style="color:black;"></i></button>
 
-
+                                                                    @if (\Auth::guard('admin')->user()->id == 1  )
                                                             <a class="btn btn-primary"
                                                                 href="{{ url('Accounts/delete-rit-pdf/'.dEncrypt($item->id)) }}"
                                                                 onclick="return confirm('Are you sure to edit this record?')"><i
                                                                     class="ti-trash btn-icon-append"
                                                                     style="color:black;"></i></a>
+                                                                    @endif
                                                         </td>
 
                                                     </tr>
@@ -273,7 +274,7 @@
 
 
                             <div class="col-md-12 modal-footer">
-                                <button type="submit" class="btn btn-primary" id="savebtn">Save</button>
+                                <button type="submit" class="btn btn-primary" onclick="load();" id="savebtn">Save</button>
                             </div>
 
                         </form>
@@ -408,7 +409,7 @@
 
                             <div class="modal-footer">
 
-                                <button type="submit" class="btn btn-primary" id="savebtn">Save</button>
+                                <button type="submit" class="btn btn-primary" onclick="load();" id="savebtn">Save</button>
 
 
                             </div>
@@ -508,4 +509,16 @@ $( document ).ready(function() {
 
             });
         </script>
+
+<script>
+    function load(){
+      $('.btn').prop('disabled', true);
+     setTimeout(function() {
+           $('.btn').prop('disabled', false);
+     }, 10000);
+        $("#form").submit();
+    }
+</script>
+
+
     @endsection

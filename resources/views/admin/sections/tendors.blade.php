@@ -47,7 +47,7 @@
                             </p>
 
                             @if(isset($id))
-                                <form class="forms-sample row col-md-12" method="POST"
+                                <form class="forms-sample row col-md-12" method="POST" id="regForm"
                                     action="{{ url('Accounts/add-edit-tender/' . $id) }}" enctype="multipart/form-data">
                                 @else
                                     <form class="forms-sample row col-md-12" method="POST" id="regForm"
@@ -118,7 +118,7 @@
 
                             <div class="col-md-12 mt-4">
                                 <div class="col-sm-10">
-                                    <button type="submit" class="btn btn-primary" class="form-control">Submit</button>
+                                    <button type="submit" class="btn btn-primary" class="form-control"  onclick="load();" >Submit</button>
                                 </div>
                             </div>
                             </form>

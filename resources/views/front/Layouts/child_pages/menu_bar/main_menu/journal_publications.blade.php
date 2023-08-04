@@ -661,7 +661,16 @@
                     <div class="col-md-9">
                         <div class="innerpagecontent">
                             <h3>
-                                <span>PUBLICATIONS</span>
+
+
+                                @if (GetLang() == 'en')
+                                {{ $type[0]->name ?? '' }}
+                            @else
+                                {{ $type[0]->name_h ?? '' }}
+                            @endif
+
+
+
                             </h3>
                             <div class="commontxt">
                                 <div class="row">
@@ -693,10 +702,15 @@
                                                     <th>S.NO</th>
                                                     <th>TITLE</th>
                                                 </tr>
-                                                <?php $l=1; $srN=(request('page'))?10+request('page')-1:$l ?>
+                                                <?php
+                                                $number = 1;
+                                                $numElementsPerPage = 10; // How many elements per page
+                                                $pageNumber = (request('page')) ? (int)request('page') : 1;
+                                                $currentNumber = ($pageNumber - 1) * $numElementsPerPage + $number;
+                                                ?>
                                                  @foreach ($item as $K=>$items)
                                                 <tr>
-                                                    <td>{{ $srN++; }}</td>
+                                                    <td>{{ $currentNumber++; }}</td>
                                                     <td> <a @if($items->external=='yes')  onclick="return confirm('Are you sure  external window open?')" target="_blank" href="{{url($items->url)}}" @else href="{{url ('journal/'.dEncrypt($items->id)) }}" @endif  class="text-black"> {{ $items->title  ??''}} </a> </td>
                                                 </tr>
 

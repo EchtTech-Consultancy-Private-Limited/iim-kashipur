@@ -54,11 +54,11 @@
 
                 @if($id)
 
-                  <form class="forms-sample row col-md-12" method="POST" action="{{url('Accounts/add-edit-quicklink/'.$id)}}" enctype="multipart/form-data">
+                  <form class="forms-sample row col-md-12" method="POST"  id="regForm"   action="{{url('Accounts/add-edit-quicklink/'.$id)}}" enctype="multipart/form-data">
 
                 @else
 
-                  <form class="forms-sample row col-md-12" method="POST" id="regForm"  action="{{url('Accounts/add-edit-quicklink')}}" enctype="multipart/form-data">
+                  <form class="forms-sample row col-md-12" method="POST" id="regForm"   action="{{url('Accounts/add-edit-quicklink')}}" enctype="multipart/form-data">
 
                 @endif
 
@@ -90,11 +90,11 @@
                            <option value="1" @if(isset($id)) {{ $data->news_type=='1'?'selected':'' }} @endif>New & Events</option>
                            <option value="2" @if(isset($id)) {{ $data->news_type=='2'?'selected':'' }} @endif>Industry Connect</option>
                            <option value="3" @if(isset($id)) {{ $data->news_type=='3'?'selected':'' }} @endif>Notice Board</option>
-                         
+
                        </select>
                     </div>
                   </div>
- 
+
 
                   <input type="hidden" name="section" id="section" value="">
 
@@ -275,7 +275,7 @@
 
                    <div class="col-md-12">
 
-                    <button type="submit" class="btn btn-primary mr-2">Submit</button>
+                    <button type="submit" class="btn btn-primary mr-2" onclick="load();">Submit</button>
 
                    </div>
 
@@ -754,13 +754,13 @@ $("#hide_url").on('change',function(){
 <script>
               $( document ).ready(function() {
                  $('#news_board').hide();
-                
+
               });
 
                   $(".news_board_main").on("change", function(){
                    // alert("test");
                   var listvalue = $(this).val();
-                  //alert(listvalue);  
+                  //alert(listvalue);
                   if(listvalue==25)
                   {
                       $('#news_board').show();
@@ -770,9 +770,9 @@ $("#hide_url").on('change',function(){
                      $('#news_board').hide();
 
                   }
-                 
-                    
-                   
+
+
+
                  });
             </script>
 {{-- -------------------------------------- Cube Cell committee---------------------------------------------------- --}}

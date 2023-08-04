@@ -65,7 +65,7 @@ Route::match(['get','post'],'change-password',[AdminController::class,'Change_Pa
 //Route::middleware(['preventBackHistory'])->group(function () {
 
 
-    Route::middleware(['preventBackHistory'])->group(function () {
+    Route::middleware(['preventBackHistory','SessionTimeout'])->group(function () {
         Route::get('dashboard', [AdminController::class,'Dashboard'])->name('dashboard');
 
 
@@ -460,13 +460,14 @@ Route::post('/from',[frontpagecontroller::class,'front_form']);
 Route::get('/student-profile-more-info/{id}',[StudentProfileController::class,'front_profile_show_more']);
 //forget password
 
+
+
+
+});
 Route::get('forget-password', [ForgotPasswordController::class, 'showForgetPasswordForm'])->name('forget.password.get');
 Route::post('forget-password', [ForgotPasswordController::class, 'submitForgetPasswordForm'])->name('forget.password.post');
 Route::get('reset-password/{token}', [ForgotPasswordController::class, 'showResetPasswordForm'])->name('reset.password.get');
 Route::post('reset-password', [ForgotPasswordController::class, 'submitResetPasswordForm'])->name('reset.password.post');
-
-});
-
 //website search
 
 Route::post('search',[InnerpageController::class,'search']);

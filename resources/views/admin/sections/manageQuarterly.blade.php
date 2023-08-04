@@ -123,11 +123,15 @@
                                                                     style="color:black;"></i></button>
 
 
+
+
                                                             <a class="btn btn-primary"
-                                                                href="{{ url('Accounts/delete-rit-pdf/' . dEncrypt($item->id)) }}"
+                                                                href="{{ url('Accounts/delete_rit/' . dEncrypt($item->id)) }}"
                                                                 onclick="return confirm('Are you sure to edit this record?')"><i
                                                                     class="ti-trash btn-icon-append"
                                                                     style="color:black;"></i></a>
+
+
                                                         </td>
 
                                                     </tr>
@@ -280,7 +284,7 @@
 
 
                             <div class="col-md-12 modal-footer">
-                                <button type="submit" class="btn btn-primary" id="savebtn">Save</button>
+                                <button type="submit" class="btn btn-primary" id="savebtn" onclick="load();">Save</button>
                             </div>
 
                         </form>
@@ -442,7 +446,7 @@
 
                             <div class="modal-footer">
 
-                                <button type="submit" class="btn btn-primary" id="savebtn">Save</button>
+                                <button type="submit" class="btn btn-primary" id="savebtn" onclick="load();">Save</button>
 
 
                             </div>
@@ -548,4 +552,15 @@
 
             });
         </script>
+
+<script>
+    function load(){
+      $('.btn').prop('disabled', true);
+     setTimeout(function() {
+           $('.btn').prop('disabled', false);
+     }, 10000);
+        $("#form").submit();
+    }
+</script>
+
     @endsection

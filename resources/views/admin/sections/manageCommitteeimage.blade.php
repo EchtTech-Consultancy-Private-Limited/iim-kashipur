@@ -111,12 +111,16 @@
                                                                     class="ti-pencil btn-icon-append"
                                                                     style="color:black;"></i></button>
 
+                                                                    @if (\Auth::guard('admin')->user()->id == 1  )
 
                                                             <a class="btn btn-primary"
                                                                 href="{{ url('Accounts/committee-images-delete/'.dEncrypt($item->id))}}"
                                                                 onclick="return confirm('Are you sure to edit this record?')"><i
                                                                     class="ti-trash btn-icon-append"
                                                                     style="color:black;"></i></a>
+
+                                                                   @endif
+
                                                         </td>
                                                     </tr>
                                                 @endforeach

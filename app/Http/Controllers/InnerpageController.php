@@ -44,9 +44,8 @@ use App\Models\rti;
 use App\Models\rit_report_section;
 use App\Models\quarter_report;
 use App\Models\BannerSlider;
-use App\Models\org;
+use App\Models\Org;
 use App\Models\project_logo;
-
 use App\Models\quick_linkcategory;
 use App\Models\search;
 
@@ -60,8 +59,6 @@ class InnerpageController extends Controller
 //
 //
 //
-
-
 
 
 public function search(Request $request){
@@ -84,7 +81,7 @@ public function search(Request $request){
     $multiple_profile= multiple_profile::where("Title","like","%$search%")->orwhere("heading","like","%$search%")->orwhere("description","like","%$search%")->get();
     $OrganisationStructure=OrganisationStructure::where("title","like","%$search%") ->orwhere("email","like","%$search%")->orwhere("designation","like","%$search%")->orwhere("phone","like","%$search%") ->orwhere("description","like","%$search%")->get();
     $news_event= news_event::where("title","like","%$search%")->get();
-    $org=org::where("name","like","%$search%")
+    $org=Org::where("name","like","%$search%")
                  ->orwhere("contact","like","%$search%")
                  ->orwhere("email","like","%$search%")
                  ->orwhere("about","like","%$search%")
@@ -103,7 +100,7 @@ public function search(Request $request){
     $project_logo = project_logo::where("name","like","%$search%")
             ->orwhere("number","like","%$search%")
              ->get();
-    $quick_linkcategory= quick_linkcategory::where("Section","like","%$search%")
+    $quick_linkcategory=quick_linkcategory::where("Section","like","%$search%")
                     ->orwhere("short_note","like","%$search%")
                 ->get();
     $QuickLink=QuickLink::where("title","like","%$search%")
@@ -541,6 +538,14 @@ public function sub_childInnerpage($main_slug,$slug,$subchild,$superchild)  //co
          }else{
              return abort(401);
          }
+     }elseif(OrganisationStructure::whereslug($superchild)->get()->count()){
+        $item=OrganisationStructure::whereslug($superchild)->get();
+        if(count($item) > 0){
+        $data=multiple_profile::whereparent_id($item[0]->id)->get();
+            return view('front.Layouts.profile',['item'=>$item,'data'=>$data]);
+        }else{
+            return abort(401);
+        }
      }else{
         return abort(401);
      }
@@ -1454,7 +1459,6 @@ public function screen_reader_access()
 
     $sub_menu="sub menu";
     $type=SubMenu::whereslug($slug)->get();
-   // dd($type);
     if(Count($type)>0)
     {
         if($type[0]->url == '/content-page')
@@ -1869,6 +1873,17 @@ public function screen_reader_access()
             return abort(401);
         }
     }
+    elseif('student-profile-more-info' == $main_slug)
+    {
+        //dd($main_slug);
+           $item=StudentProfile::where('id',dDecrypt($slug))->get();
+        if(Count($item)>0){
+
+            return view('front.Layouts.child_pages.student-profile.backup',compact('item'));
+        }else{
+            return abort(401);
+        }
+    }
     else
     {
         return abort(401);
@@ -1969,7 +1984,6 @@ public function screen_reader_access()
 
 public function Child_barInnerpage($main_slug,$Sub_slug,$slug) //content page
 {
-
 
     $data=child_menu::whereslug($slug)->get();
 

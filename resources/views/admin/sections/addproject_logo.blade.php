@@ -54,7 +54,7 @@
 
                 @if($id)
 
-                  <form class="forms-sample row col-md-12" method="POST"  action="{{url('Accounts/add_edit_project_logo/'.$id)}}" enctype="multipart/form-data">
+                  <form class="forms-sample row col-md-12" method="POST" id="regForm"   action="{{url('Accounts/add_edit_project_logo/'.$id)}}" enctype="multipart/form-data">
 
                 @else
 
@@ -116,7 +116,7 @@
                 </div>
 
                    </div>
-
+{{--
 
                  <div class="col-md-6">
 
@@ -125,13 +125,13 @@
 
                 </div>
 
-                  </div>
+                  </div> --}}
 
                     <div class="clearfix"></div>
 
                    <div class="col-md-12">
 
-                    <button type="submit" class="btn btn-primary mr-2">Submit</button>
+                    <button type="submit" class="btn btn-primary mr-2" onclick="load();">Submit</button>
 
                    </div>
 

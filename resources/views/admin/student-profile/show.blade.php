@@ -26,7 +26,7 @@
 
                 </div>
 
-                 @endif   
+                 @endif
 
           <div class="row">
 
@@ -39,12 +39,12 @@
                   <div class="top-menu-button">
 
                   <p class="card-title">Student Profile List</p>
-                  
+
 
                   <div>
 
-                      <button type="button" class="btn btn-primary" ><a target="_blank" href="{{ url('/Accounts/add-students-profile') }}" > Add Student Profile</a></button>
-                     
+                      <button type="button" class="btn btn-primary" ><a  href="{{ url('/Accounts/add-students-profile') }}" > Add Student Profile</a></button>
+
 
                     </div>
 
@@ -65,20 +65,20 @@
                             <tr>
 
                               <th>S.No</th>
-                              
+
                               <th>Student Type</th>
 
                               <th>Name</th>
 
                               <th>Area Specialization</th>
 
-                             
 
-                              
+
+
 
                             <th>Email</th>
                             <th>Contact</th>
-                         
+
 
 
                             <th>About</th>
@@ -116,17 +116,19 @@
                           <td>{{$students->research_interests}}</td>
                           <td>{{$students->papers_publications}}</td>
 
-                          <td><img src="{{ asset('uploads/'.$students->student_image) }}" alt="" title="" style="height: 100px;  width: 100px;"></td>   
+                          <td><img src="{{ asset('uploads/'.$students->student_image) }}" alt="" title="" style="height: 100px;  width: 100px;"></td>
 
-                          
-                         
                           <td>
-                          
-                            <a href="/Accounts/update-student-profile/{{$students->id}}" onclick="return confirm('Are you sure to edit this record?')"><i class="ti-pencil btn-icon-append" style="color:black;"></i></a> &nbsp;
-                            <a href="/Accounts/delete-student-profile/{{$students->id}}" onclick="return confirm('Are you sure to delete this record?')"><i class="ti-trash btn-icon-append" style="color:black;"></i></a> &nbsp;
 
+                            <a href="{{url('/Accounts/update-student-profile'.dEncrypt($students->id))}}"
+                                onclick="return confirm('Are you sure to edit this record?')"><i class="ti-pencil btn-icon-append" style="color:black;"></i></a> &nbsp;
+
+                            @if (\Auth::guard('admin')->user()->id == 1  )
+                            <a href="{{url('/Accounts/delete-student-profile'.dEncrypt($students->id))}}"
+                                onclick="return confirm('Are you sure to delete this record?')"><i class="ti-trash btn-icon-append" style="color:black;"></i></a> &nbsp;
+                            @endif
                           </td>
-                         
+
                            </tr>
 
                           @endforeach
@@ -134,7 +136,7 @@
 
 
 
-                        
+
 
                           </tbody>
 
@@ -152,7 +154,7 @@
 
 
 
-                
+
 
               </div>
 

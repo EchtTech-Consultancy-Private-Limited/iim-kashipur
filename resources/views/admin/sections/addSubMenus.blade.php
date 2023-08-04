@@ -52,7 +52,7 @@
 
                             @if ($id)
 
-                                <form class="forms-sample row col-md-12" method="POST"
+                                <form class="forms-sample row col-md-12" method="POST" id="regForm"
                                     action="{{ url('Accounts/add-edit-sub-menu/' . $id) }}" enctype="multipart/form-data">
                                 @else
                                     <form class="forms-sample row col-md-12" method="POST" id="regForm"
@@ -240,7 +240,7 @@
 
                             <div class="col-md-12">
 
-                                <button type="submit" class="btn btn-primary mr-2">Submit</button>
+                                <button type="submit" class="btn btn-primary mr-2" onclick="load();">Submit</button>
 
                             </div>
 
@@ -902,5 +902,45 @@
         }
     });
 </script>
+
+<!--------------------------------------- Event & Activity -------------------------------------->
+
+<script >
+    $("#url").change(function(e){
+
+ $.ajaxSetup({
+  headers: {
+  'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+    }
+      });
+
+      var data3=$("#url").val();
+
+      if(data3=='Events-Activites')
+      {
+
+      $.ajax({
+        url: "{{url('Accounts/event-activity')}}",
+        type: "get",
+        success: function(data){
+
+         console.log(data);
+         var resdata = data.data;
+
+         console.log(resdata);
+
+       var formoption = "<option value='0'>Please select</option>";
+       for(i=0; i<resdata.length; i++)
+       {
+       formoption += "<option value='"+resdata[i].id+"'>"+resdata[i].title+"</option>";
+        }
+        $('#countries').html(formoption);
+
+        }
+     });
+   }
+});
+</script>
+
 
     @endsection

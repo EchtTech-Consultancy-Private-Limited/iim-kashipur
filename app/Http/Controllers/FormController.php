@@ -69,6 +69,8 @@ class FormController extends Controller
     if($request->isMethod('post')){
         $request->validate([
 
+            "tender_document"   =>   "mimes:pdf|max:10000"
+
         ]);
 
             $tender->published_date=$request->published_date;
@@ -123,6 +125,9 @@ class FormController extends Controller
 
     if($request->isMethod('post')){
         $request->validate([
+
+            "related_document"   =>   "mimes:pdf|max:10000"
+
             ]);
 
             $vendorsdebarred->vendor_name=$request->vendor_name;
@@ -177,6 +182,9 @@ class FormController extends Controller
 
     if($request->isMethod('post')){
         $request->validate([
+
+            "detail_advertisement"   =>   "mimes:pdf|max:10000"
+
             ]);
 
             $career->name_of_the_post=$request->name_of_the_post;
@@ -262,6 +270,7 @@ function Add_OrganisationStructure(Request $request,$id=null){
                 'type'=>'required',
                 'phone'=>'required',
                 'email'=>'required',
+                'image'=>'image|mimes:jpeg,png,jpg,gif,svg|max:2048'
             ]);
             $data->type=$request->type;
             $data->title=ucwords($request->title);
@@ -564,10 +573,6 @@ function Add_OrganisationStructure(Request $request,$id=null){
 
 
         // dd($routes);
-
-
-
-
         foreach ($routes as $value)
          {
 
@@ -670,6 +675,11 @@ public function add_cells(Request $request,$id=null){
     if($request->isMethod('post')){
         $request->validate([
 
+            'Cell_logo'  => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'Cell_image'  =>   'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'bannerimage'=>'max:5120|mimes:png,jpg,svg|dimensions:max_width=1920,min_width=1920,max_height=500,min_height=500',
+
+
         ]);
         $data->title=$request->Cell_name;
         $data->chairperson= $request->chairperson;
@@ -753,6 +763,11 @@ public function add_club(Request $request,$id=NULL){
     if($request->isMethod('post')){
         $request->validate([
 
+            'club_logo'          =>       'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'club_image'       =>        'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'bannerimage'=>'max:5120|mimes:png,jpg,svg|dimensions:max_width=1920,min_width=1920,max_height=500,min_height=500',
+
+
         ]);
         $data->title=$request->club_name;
         $data->about_details= $request->about_details;
@@ -830,6 +845,11 @@ public function add_committee(Request $request,$id=NULL)
 
     if($request->isMethod('post')){
         $request->validate([
+
+            'Commmittee_logo'  => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'Commmittee_image'  =>   'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'bannerimage'=>'max:5120|mimes:png,jpg,svg|dimensions:max_width=1920,min_width=1920,max_height=500,min_height=500',
+
 
         ]);
         $data->title=$request->Commmittee_name;
@@ -910,7 +930,7 @@ public function delete_cells_image($id){
             $request->validate(
 
                 [
-
+                    'filename'          =>       'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
                 ]
 
 
@@ -953,6 +973,8 @@ public function delete_cells_image($id){
             $request->validate(
 
                 [
+
+                'filename'          =>       'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
 
                 ]
 
@@ -999,6 +1021,8 @@ public function delete_cells_image($id){
             $request->validate(
 
                 [
+                    'filename'          =>       'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+
 
                 ]
 
@@ -1046,6 +1070,7 @@ public function delete_cells_image($id){
            $request->validate(
               [
 
+                'filename'          =>       'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
 
 
               ]
@@ -1093,6 +1118,7 @@ public function delete_cells_image($id){
            $request->validate(
               [
 
+                'filename'          =>       'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
 
 
               ]
@@ -1130,7 +1156,7 @@ public function delete_cells_image($id){
           //  dd($request->all());
            $request->validate(
               [
-
+                'filename'          =>       'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
 
 
               ]
@@ -1218,6 +1244,9 @@ public function delete_cells_image($id){
 
     if($request->isMethod('post')){
         $request->validate([
+
+            'image'          =>       'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+
             ]);
 
           $event->image_title= $request->image_title;
@@ -1268,6 +1297,9 @@ public function delete_cells_image($id){
 
     if($request->isMethod('post')){
         $request->validate([
+
+
+            "attachement_file"            =>          "mimes:pdf|max:10000"
             ]);
 
           $data->date= $request->date;
@@ -1325,6 +1357,13 @@ public function Add_student_council(Request $request,$id=null)
 
     if($request->isMethod('post')){
         $request->validate([
+
+
+            'imagename'          =>       'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            "attachement_file"            =>          "mimes:pdf|max:10000",
+            'bannerimage'=>'max:5120|mimes:png,jpg,svg|dimensions:max_width=1920,min_width=1920,max_height=500,min_height=500',
+
+
 
         ]);
         $data->student_council=$request->student_council;
@@ -1500,6 +1539,9 @@ public function add_ANTI_RAGGING(Request $request,$id=null)
     if($request->isMethod('post')){
         $request->validate([
 
+
+            "pdf"            =>          "mimes:pdf|max:10000"
+
         ]);
 
         $data->status=$request->status;
@@ -1549,6 +1591,8 @@ public function add_Wellness_Facilities(Request $request,$id=null)
 
     if($request->isMethod('post')){
         $request->validate([
+
+            'bannerimage'=>'max:5120|mimes:png,jpg,svg|dimensions:max_width=1920,min_width=1920,max_height=500,min_height=500',
 
         ]);
         $data->title=$request->title;
@@ -1605,6 +1649,9 @@ public function add_Wellness_Facilities(Request $request,$id=null)
 
           [
 
+            'filename'=>'max:5120|mimes:png,jpg,svg|dimensions:max_width=1920,min_width=1920,max_height=500,min_height=500',
+
+
           ]
 
 
@@ -1618,6 +1665,7 @@ public function add_Wellness_Facilities(Request $request,$id=null)
     $data->DESCRIPTION=$request->DESCRIPTION;
     $data->sort_order=$request->sort_order;
     $data->status= $request->status;
+
     $path=public_path('uploads/wellness/');
     if($request->hasFile('filename')){
         $file=$request->file('filename');
@@ -1635,7 +1683,7 @@ public function add_Wellness_Facilities(Request $request,$id=null)
      $request->validate(
         [
 
-
+            'filename'=>'max:5120|mimes:png,jpg,svg|dimensions:max_width=1920,min_width=1920,max_height=500,min_height=500',
 
         ]
        );
@@ -1693,6 +1741,8 @@ public function add_RTI(Request $request,$id=NULL)
     if($request->isMethod('post')){
         $request->validate([
 
+            "pdf" => "mimes:pdf|max:10000"
+
         ]);
 
         $data->title=$request->title;
@@ -1728,10 +1778,11 @@ public function add_RTI(Request $request,$id=NULL)
     public function add_rit_pdf(Request $request)
     {
 
+
         $request->validate(
             [
 
-
+            "filename"   =>   "mimes:pdf|max:10000"
 
             ]
            );
@@ -1750,7 +1801,7 @@ public function add_RTI(Request $request,$id=NULL)
             $data->pdf= $newname;
         }
         $data->save();
-        return back()->with('success','Record Edit Successfully');
+        return back()->with('success','Record Add Successfully');
 
     }
 
@@ -1764,6 +1815,7 @@ public function add_RTI(Request $request,$id=NULL)
             [
 
 
+             "filename"   =>   "mimes:pdf|max:10000"
 
             ]
            );
@@ -1789,8 +1841,11 @@ public function add_RTI(Request $request,$id=NULL)
     public function delete_rti_section($id)
     {
         rit_report_section::find(dDecrypt($id))->delete();
-        return redirect()->back()->with('success','committee deleted Successfully');
+        return redirect()->back()->with('success','Rti deleted Successfully');
     }
+
+
+
 
     public function pdf_section(Request $request){
         $item=rit_report_section::whereid($request->id)->first();
@@ -1806,10 +1861,16 @@ public function add_RTI(Request $request,$id=NULL)
     public function add_rit_QUARTER(Request $request)
     {
 
+
+
         $request->validate(
             [
 
 
+                "QUARTER_pdf1"            =>          "mimes:pdf|max:10000",
+                "QUARTER_pdf2"            =>          "mimes:pdf|max:10000",
+                "QUARTER_pdf3"            =>          "mimes:pdf|max:10000",
+                "QUARTER_pdf4"            =>          "mimes:pdf|max:10000"
 
             ]
            );
@@ -1865,6 +1926,10 @@ public function add_RTI(Request $request,$id=NULL)
         $request->validate(
             [
 
+                "QUARTER_pdf1"            =>          "mimes:pdf|max:10000",
+                "QUARTER_pdf2"            =>          "mimes:pdf|max:10000",
+                "QUARTER_pdf3"            =>          "mimes:pdf|max:10000",
+                "QUARTER_pdf4"            =>          "mimes:pdf|max:10000"
 
 
             ]
@@ -1917,7 +1982,7 @@ public function add_RTI(Request $request,$id=NULL)
     public function delete_rit_QUARTER($id)
     {
         quarter_report::find(dDecrypt($id))->delete();
-        return redirect()->back()->with('success','committee deleted Successfully');
+        return redirect()->back()->with('success','Quarterly Rti deleted Successfully');
     }
 
     public function rti_QUARTER_data(Request $request){
