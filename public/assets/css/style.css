@@ -2597,10 +2597,26 @@ span.text-hili-top {
         margin-bottom: 20px;
     }
 
+    span.btn-p{
+        top: 45%  !important;
+    left: 45% !important;
+    }
+
     span.top-text {
         position: absolute;
-        bottom: 12% !important;
+        bottom:5% !important;
+        right: 10% !important;
+        font-size: 9px!important;
     }
+
+    span.btn-p i
+        {
+            font-size: 40px !important;
+            height: 25px !important;
+            width: 30px !important;
+            line-height: 30px !important;
+        }
+    
 
 }
 
@@ -2665,6 +2681,11 @@ span.text-hili-top {
     .internalpagebanner h1 {
         font-size: 20px;
     }
+
+    .width-50-sm{
+        width:50% !important;
+    }
+
 }
 
 .breadcrumbs {
