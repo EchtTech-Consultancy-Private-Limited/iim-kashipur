@@ -24,16 +24,16 @@ class EnsureTokenIsValid
         if($userAgent->user_agent == $br['name']){
             return $next($request);
         }else{
-            return redirect('Accounts')->with('error','Your session is not authorized!');
+            return redirect()->route('admin.login')->with('error','Your session is not authorized!');
         }
-        
+
     }
-    function getBrowser() { 
+    function getBrowser() {
         $u_agent = $_SERVER['HTTP_USER_AGENT'];
         $bname = 'Unknown';
         $platform = 'Unknown';
         $version= "";
-      
+
         //First get the platform?
         if (preg_match('/linux/i', $u_agent)) {
           $platform = 'linux';
@@ -42,7 +42,7 @@ class EnsureTokenIsValid
         }elseif (preg_match('/windows|win32/i', $u_agent)) {
           $platform = 'windows';
         }
-      
+
         // Next get the name of the useragent yes seperately and for good reason
         if(preg_match('/MSIE/i',$u_agent) && !preg_match('/Opera/i',$u_agent)){
           $bname = 'Internet Explorer';
@@ -69,7 +69,7 @@ class EnsureTokenIsValid
           $bname = 'Internet Explorer';
           $ub = "MSIE";
         }
-      
+
         // finally get the correct version number
         $known = array('Version', $ub, 'other');
         $pattern = '#(?<browser>' . join('|', $known) .
@@ -90,10 +90,10 @@ class EnsureTokenIsValid
         }else {
           $version= $matches['version'][0];
         }
-      
+
         // check if we have a number
         if ($version==null || $version=="") {$version="?";}
-      
+
         return array(
           'userAgent' => $u_agent,
           'name'      => $bname,
@@ -101,5 +101,5 @@ class EnsureTokenIsValid
           'platform'  => $platform,
           'pattern'    => $pattern
         );
-      } 
+      }
 }
