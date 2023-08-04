@@ -977,7 +977,7 @@
                                                 <div class="excellence-gallery partnership-img">
                                                     <div class="row masonry-grid">
                                                         @foreach ($chairpersons as  $chairperson)
-                                                            <div class="col-md-3 col-lg-3">
+                                                            <div class="col-md-3 col-lg-3 width-50-sm">
                                                                 <div class="d-flex flex-column h-100">
 
                                                                     <div>
