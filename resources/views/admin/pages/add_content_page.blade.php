@@ -349,7 +349,7 @@
                                 </div>
                                 <div class="col-md-12">
                                     <div class="col-sm-10">
-                                        <button type="submit" class="btn btn-primary" class="form-control">Save</button>
+                                        <button type="submit" class="btn btn-primary" onclick="load();" class="form-control">Save</button>
                                     </div>
                                 </div>
 
