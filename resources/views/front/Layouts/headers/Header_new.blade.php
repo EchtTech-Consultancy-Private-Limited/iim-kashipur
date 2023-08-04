@@ -543,7 +543,7 @@
         });
 
 
-    $("img.d-block.w-100.img-responsive").attr('loading', 'eager');
+    $("img.d-block.w-100.img-responsive").removeAttr('loading');
         
     });
 </script>

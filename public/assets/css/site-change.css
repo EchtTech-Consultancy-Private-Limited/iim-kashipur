@@ -521,10 +521,11 @@ a.btn2::after{
     border: 0px !important;
 }
 
-.master-class h3 , .innerpagecontent h3 span, a.btn2{
-    color: #ff0 !important;
+.master-class h3 , .innerpagecontent h3 span, a.btn2, .master-class h5 span{
+    color: #fff !important;
     background: #000 !important;
     border: 0px !important;
+    padding-left: 0px !important;
 }
 
 .sidebarwraper ul li.hasnested.opened a svg, .sidebarwraper ul li.hasnested .plus {
@@ -533,6 +534,10 @@ a.btn2::after{
 .sidebarwraper ul li a.active, .sidebarwraper ul li a,.box-rti a, a h5, a h6, a h4, a h3,.sidebarwraper ul li.hasnested, .sidebarwraper ul li.hasnested.opened a, .sidebarwraper ul li ul  {
     color: #ff0 !important;
     background: #000 !important;
+}
+
+.img-fac .top-text, .gallery-member .partnership-img div.top-text, .text-box .text-b{
+    border: 1px solid #f6f6f6;
 }
 
 .box-rti{
