@@ -2261,8 +2261,10 @@ span.text-hili-top {
 
     .fb-set,
     .linkedin-set {
-        padding-bottom: 0px !important;
+        padding-bottom: 10px !important;
     }
+
+    
 
     .section-title-box h2 {
         font-size: 30px !important;
@@ -2279,7 +2281,7 @@ span.text-hili-top {
 
 
     .profile-img img{
-        width: 50% !important;
+        width: 100% !important;
     }
 
     .designation h6 {
@@ -5882,6 +5884,10 @@ right: auto;
     z-index: -5;
 }
 
+p{
+    word-wrap: break-word !important;
+}
+
 @media (max-width: 767px) {
     .submit-btn-apply{
         padding: 5px 30px !important;
@@ -5890,8 +5896,26 @@ right: auto;
     }
 
     .breadcrumbs ul li span{
-        white-space: break-spaces !important;
+        white-space:normal !important;
 
+    }
+
+    ul.nav.nav-tabs{
+        gap: 5px;
+        margin-top: 30px;
+    }
+
+    .profile-img.img-fac img{
+        margin-left: 10px;
+    }
+    
+
+    .excellence-gallery.partnership-img .thumbnail img{
+        padding:0px !important;
+    }
+
+    img.mfp-img {
+        height: auto !important;
     }
 
 }
