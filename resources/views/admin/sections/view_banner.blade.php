@@ -1,6 +1,6 @@
 @extends('admin.Layout.master')
 
-@section('title', $title)
+@section('title','View Banner')
 
 @section('content')
 
@@ -18,7 +18,7 @@
 
                 <div class="card-body">
 
-                  <h4 class="card-title">{{$title}}</h4>
+                  <h4 class="card-title"> View Banner</h4>
 
                   <p class="card-description">
 
@@ -52,58 +52,14 @@
 
                   </p>
 
-                @if($id)
-
-                  <form class="forms-sample row col-md-12" method="POST" id="regForm" action="{{url('Accounts/add-edit-banner/'.$id)}}" enctype="multipart/form-data">
-
-                @else
-
-                  <form class="forms-sample row col-md-12" method="POST" id="regForm"    action="{{url('Accounts/add-edit-banner')}}" enctype="multipart/form-data">
-
-                @endif
-
-                    @csrf
-
-
-
-                     {{-- <div class="col-md-12">
-
-                        <div class="form-group"> <label for="form_name"> Type*</label>
-
-                            <select name="type" class="form-control">
-
-                                <option value="">Please Select</option>
-
-                                @foreach(GetOptionsByName('Banner/Sliders') as $D)
-
-                                    <option value="{{$D->option}}" id="type" @if($id) @if($D->option == $data->type) selected @endif @endif>{{$D->option}}</option>
-
-                                @endforeach
-
-                            </select>
-
-                            <label for="type"  id="type-error" class="error">
-                                @error('type')
-                                    {{ $message }}
-                                @enderror
-                            </label>
-
-                        </div>
-
-                    </div> --}}
 
                     <input  type="hidden" name="type"  value="Banners" >
 
                       <div class="col-md-6">
 
-                        <div class="form-group"> <label for="title">Title*</label> <input id="title" type="text" name="title" @if($id) value="{{$data->title}}" @else value="{{old('title')}}" @endif class="form-control" placeholder="Please enter title *" required="required" >
+                        <div class="form-group"> <label for="title">Title*</label> <input id="title" type="text" name="title"  value="{{$data->title}}"  readonly   class="form-control" placeholder="Please enter title *" required="required" >
 
 
-                            <label for="title"  id="title-error" class="error">
-                                @error('title')
-                                    {{ $message }}
-                                @enderror
-                            </label>
 
 
 
@@ -116,7 +72,7 @@
 
                     <div class="col-md-6">
 
-                      <div class="form-group"> <label for="title_h">Title[Hindi]*</label> <input id="title_h" type="text" name="title_h" @if($id) value="{{$data->title_h}}" @else value="{{old('title_h')}}" @endif class="form-control" placeholder="Please enter title *" required="required" >
+                      <div class="form-group"> <label for="title_h">Title[Hindi]*</label> <input id="title_h" type="text" name="title_h" value="{{$data->title_h}}"  readonly  class="form-control" placeholder="Please enter title *" required="required" >
 
 
 
@@ -136,7 +92,7 @@
 
                     <div class="col-md-6">
 
-                        <div class="form-group"> <label for="heading1">Heading</label> <input id="heading1" type="text" name="heading1" @if($id) value="{{$data->heading1}}" @else value="{{old('heading1')}}" @endif class="form-control" placeholder="Please enter name in hindi *"  >
+                        <div class="form-group"> <label for="heading1">Heading</label> <input id="heading1" type="text" name="heading1" value="{{$data->heading1}}"  readonly  class="form-control" placeholder="Please enter name in hindi *"  >
 
 
 
@@ -158,7 +114,7 @@
 
                     <div class="col-md-6">
 
-                      <div class="form-group"> <label for="heading1_h">Heading[Hindi]</label> <input id="heading1_h" type="text" name="heading1_h" @if($id) value="{{$data->heading1_h}}" @else value="{{old('heading1_h')}}" @endif class="form-control" placeholder="Please enter name in hindi *"  >
+                      <div class="form-group"> <label for="heading1_h">Heading[Hindi]</label> <input id="heading1_h" type="text" name="heading1_h" value="{{$data->heading1_h}}"  readonly  class="form-control" placeholder="Please enter name in hindi *"  >
 
                         <label for="heading1_h"  id="heading1_h-error" class="error">
                             @error('heading1_h')
@@ -176,7 +132,7 @@
 
                     <div class="col-md-6">
 
-                    <div class="form-group"> <label for="sort_note"> Short Description</label> <input id="sort_note" type="text" name="sort_note" @if($id) value="{{$data->short}}" @else value="{{old('short')}}" @endif class="form-control" placeholder="Please enter short description in hindi "  >
+                    <div class="form-group"> <label for="sort_note"> Short Description</label> <input id="sort_note" type="text" name="sort_note" value="{{$data->sort_note}}"  readonly  class="form-control" placeholder="Please enter short description in hindi "  >
 
 
                         <label for="sort_note"  id="sort_note-error" class="error">
@@ -195,7 +151,7 @@
 
                     <div class="col-md-6">
 
-                      <div class="form-group"> <label for="short_h"> Short Description[hindi]</label> <input id="short_h" type="text" name="short_h" @if($id) value="{{$data->short_h}}" @else value="{{old('short_h')}}" @endif class="form-control" placeholder="Please enter short description in hindi "  >
+                      <div class="form-group"> <label for="short_h"> Short Description[hindi]</label> <input id="short_h" type="text" name="short_h" value="{{$data->short_h}}"  readonly class="form-control" placeholder="Please enter short description in hindi "  >
 
 
                         <label for="short_h"  id="short_h-error" class="error">
@@ -242,12 +198,12 @@
                    <div class="col-md-12"  >
                         <div class="form-group"> <label for="form_name">
 
-                            <input type="radio" value="yes" name="external"  @if($id) {{ ($data->external=="yes")? "checked" : "" }}  @endif style="margin-left:50px;" id="checkbox"> &nbsp;External URL  </label>
+                            {{-- <input type="radio" value="yes" name="external"  @if($id) {{ ($data->external=="yes")? "checked" : "" }}  @endif style="margin-left:50px;" id="checkbox"> &nbsp;External URL  </label>
 
                             <input type="radio" value="no" name="external"  @if($id) {{ ($data->external=="no")? "checked" : "" }} @endif  style="margin-left:50px;" id="checkboxs"> &nbsp;Internal URL </label>
+ --}}
 
-
-                            <input  type="text" name="url1" @if($id) value="{{$data->url}}"  @else value="{{old('url1')}}" @endif class="form-control" id="url_ext" placeholder="Please enter full url; example https://www.example.com ">
+                            <input  type="url" name="url1"  readonly value="{{$data->url}}"   class="form-control" id="url_ext" placeholder="Please enter full url; example https://www.example.com ">
 
 
 
@@ -256,7 +212,7 @@
 
                     </div>
 
-                    <div class="col-md-6"   >
+                    {{-- <div class="col-md-6"   >
 
                         <div class="form-group"><label> Link Option  </label> &nbsp;
 
@@ -268,23 +224,22 @@
 
                         </div>
 
-                         </div>
+                         </div> --}}
 
 
 
                      <div class="col-md-6">
 
-                            <div class="form-group"> <label for="form_name"> Image* [Width:1920px,Height:500px]</label>
-                            <span style="color:green;font-size:12px;"> @if($id) [{{$data->image}}] @endif</span>
-                            <input id="form_name" type="file" name="image" @if($id) value="{{$data->image}}" @endif class="form-control" > </div>
+                            <div class="form-group"> <label for="form_name"> Image* </label>
 
+                                <img src=  "{{asset('/banner/'.$data->image)}}" width="200" height="100" />
                     </div>
 
 
 
                        <div class="col-md-6">
 
-                        <div class="form-group"> <label for="form_name">Banner Title</label> <input id="form_name" type="text" name="banner_title" @if($id) value="{{$data->banner_title}}" @else value="{{old('banner_title')}}" @endif class="form-control" placeholder="Please enter banner title "  > </div>
+                        <div class="form-group"> <label for="form_name">Banner Title</label> <input id="form_name" type="text" name="banner_title"value="{{$data->banner_title}}"  readonly  class="form-control" placeholder="Please enter banner title "  > </div>
 
                         </div>
 
@@ -292,26 +247,20 @@
 
                            <div class="col-md-6">
 
-                            <div class="form-group"> <label for="form_name">Banner Alt</label> <input id="form_name" type="text" name="banner_Alt" @if($id) value="{{$data->banner_Alt}}" @else value="{{old('banner_Alt')}}" @endif class="form-control" placeholder="Please enter banner Alt "  > </div>
+                            <div class="form-group"> <label for="form_name">Banner Alt</label> <input id="form_name" type="text" name="banner_Alt" value="{{$data->banner_Alt}}"  readonly class="form-control" placeholder="Please enter banner Alt "  > </div>
 
                             </div>
 
 
 
 
-                 <input type="hidden" @if($id) value="{{ $data->status }}" @else value="0" @endif  name="status" >
+
 
 
 
                     <div class="clearfix"></div>
 
-                   <div class="col-md-12">
 
-                    <button type="submit" class="btn btn-primary mr-2" onclick="load();">Submit</button>
-
-                   </div>
-
-                  </form>
 
                 </div>
 

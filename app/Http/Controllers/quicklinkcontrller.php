@@ -14,26 +14,19 @@ class quicklinkcontrller extends Controller
 //quick link dropdown
 
 
-    public function add_link()
+
+    public function Show_Section(){
+        $data=quick_linkcategory::orderBy('id','DESC')->get();
+        return view('admin.quck_link_category.show_link',['data'=>$data]);
+    }
+
+    public function Add_Section()
     {
         return view('admin.quck_link_category.add_link');
 
     }
 
-    public function show_link()
-     {
-        $data=quick_linkcategory::all();
-        return view('admin.quck_link_category.show_link',['data'=>$data]);
-
-    }
-    function add_page(){
-
-        return view('admin.pages.add_content_page');
-    }
-
-
-
-    public function add_link_action(Request $request)
+    public function Add_Section_Submit(Request $request)
     {
         $request->validate([
 
@@ -52,20 +45,20 @@ class quicklinkcontrller extends Controller
         return redirect('/Accounts/show_link')->with('success', 'Data Add Succesfull!!');
         }
 
-        public function delete_link($id){
+        public function Delete_Section($id){
         $data=quick_linkcategory::find(dDecrypt($id));
         $data->delete();
         return back()->with('success', 'Data delete Succesfull!!');
         }
 
-        public function update_link($id)
+        public function Update_Section($id)
         {
         $data=quick_linkcategory::find(dDecrypt($id));
         return view('admin.quck_link_category.update_link',['data'=>$data]);
 
         }
 
-        public function update_linkpost(Request $request,$id){
+        public function  Update_Section_Submit(Request $request,$id){
 
             $request->validate([
                 'short_note'=>'required',
@@ -84,5 +77,10 @@ class quicklinkcontrller extends Controller
         }
 
 
+
+        function add_page(){
+
+            return view('admin.pages.add_content_page');
+        }
 
 }

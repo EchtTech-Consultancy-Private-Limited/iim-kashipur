@@ -682,7 +682,7 @@ function Add_OrganisationStructure(Request $request,$id=null){
         foreach ($routes as $value)
          {
 
-             if(str_contains($value->getActionname(), 'App\Http\Controllers\AdminController') || str_contains($value->getActionname(), 'App\Http\Controllers\FormController')  || str_contains($value->getActionname(), 'App\Http\Controllers\blogcontroller')  || str_contains($value->getActionname(), 'App\Http\Controllers\gallaycontroller') || str_contains($value->getActionname(), 'App\Http\Controllers\pagecontroller') || str_contains($value->getActionname(), 'App\Http\Controllers\quicklinkcontrller')  || str_contains($value->getActionname(), 'App\Http\Controllers\vidoecontroller') || str_contains($value->getActionname(), 'App\Http\Controllers\UIController')){
+             if(str_contains($value->getActionname(), 'App\Http\Controllers\AdminController') || str_contains($value->getActionname(), 'App\Http\Controllers\FormController')   || str_contains($value->getActionname(), 'App\Http\Controllers\gallaycontroller') || str_contains($value->getActionname(), 'App\Http\Controllers\pagecontroller') || str_contains($value->getActionname(), 'App\Http\Controllers\quicklinkcontrller')  || str_contains($value->getActionname(), 'App\Http\Controllers\vidoecontroller')){
 
              $action = explode("@",$value->getActionname());
 
@@ -1514,23 +1514,20 @@ public function add_committee(Request $request,$id=NULL)
     return view('admin.sections.event&activitiesimageview',['data'=>$data]);
     }
 
-        public function delete_industry($id){
-        Industry::find(dDecrypt($id))->delete();
-        return redirect()->back()->with('success','Club deleted Successfully');
 
+    //industry
 
-        $exit = event_image::where('id',dDecrypt($id))->first();
+    public function delete_industry($id){
+        $exit = Industry::where('id',dDecrypt($id))->first();
         if(!empty($exit)){
-            event_image::find(dDecrypt($id))->delete();
+            Industry::find(dDecrypt($id))->delete();
         }else{
             return back()->with('error','You are trying to perform unethical process. Your requst is failed.');
         }
         return redirect()->back()->with('success','Record Deleted Successfully');
+    }
 
-
-        }
-
-     public function add_industry(Request $request,$id=NULL){
+     public function add_edit_industry(Request $request,$id=NULL){
      if($id){
 
         $title="Edit Details";
@@ -1578,11 +1575,16 @@ public function add_committee(Request $request,$id=NULL)
     return view('admin.sections.industry',compact('data','title','id'));
     }
 
-    public function industry()
-    {
+    public function View_industry(){
     $data=Industry::orderBy('id')->get();
     return view('admin.sections.viewindustry',['data'=>$data]);
     }
+
+
+
+
+
+
     public function event_activity_show(){
 
     $data=Events::get();

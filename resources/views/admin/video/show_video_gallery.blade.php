@@ -71,20 +71,14 @@
 
                                 <div>
 
-                                    @if (@checkRoute('add_videoget') )
-
-                                          <button type="button" class="btn btn-primary"><a
-                                            href="{{ url('/Accounts/add_videoget') }}">Add New Entry</a></button>
-
+                                    @if (@checkRoute('Add_Vgallery'))
+                                        <button type="button" class="btn btn-primary"><a
+                                                href="{{ url('/Accounts/add_videoget') }}">Add New Entry</a></button>
                                     @endif
 
                                 </div>
 
                             </div>
-
-
-
-
 
 
 
@@ -188,7 +182,7 @@
                                                                     style="color:black;"></i></a> &nbsp;
 
 
-                                                            <a href="{{ url('/Accounts/view-video/'.dEncrypt($value->id)) }}"
+                                                            <a href="{{ url('/Accounts/view-video/' . dEncrypt($value->id)) }}"
                                                                 onclick="return confirm('Are you sure to view this record?')"><i
                                                                     class="ti-eye btn-icon-append"
                                                                     style="color:black;"></i></a> &nbsp;
@@ -291,15 +285,15 @@
 
 
 
-           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
 
 
 
-              <span aria-hidden="true">&times;</span>
+                  <span aria-hidden="true">&times;</span>
 
 
 
-            </button>-->
+                </button>-->
 
 
 

@@ -102,9 +102,85 @@ Route::GET('/restored/{id}',[pagecontroller::class,'restored']);
 Route::get('/show',[pagecontroller::class,'firstshow']);
 
 
+//gallery controller
+Route::get('view-gallery/{id?}',[gallaycontroller::class,'Show_Pgallery'])->name('Viewpgallery');
+Route::get('/show_gallery',[gallaycontroller::class,'View_pgallery']);
+Route::get('/add_gallery',[gallaycontroller::class,'Add_pgallery']);
+Route::post('/addaction_gallery',[gallaycontroller::class,'Add_Pgallery_submit']);
+Route::GET('/delete_galleryimage/{id}',[gallaycontroller::class,'Delete_Pgallery']);
+Route::get('/updategallery/{id}',[gallaycontroller::class,'Update_pgallery']);
+Route::post('/addaction_gallerypost/{id}',[gallaycontroller::class,'Update_Pgallery_submit']);
+
+Route::post('/multimagePost',[gallaycontroller::class,'Add_Pgallery_Csubmit']);
+Route::post('/multi_updte_gallery_data_submit/{id?}',[gallaycontroller::class,'Update_Pgallery_Csubmit']);
+Route::GET('/delete_image/{id}',[gallaycontroller::class,'Delete_Pcgallery']);
+
+//ajax photo gallery
+Route::get('/photodata', [gallaycontroller::class, 'photodata']);
+Route::GET('/multdelete_image/{id?}',[gallaycontroller::class,'multdelete_image']);
+Route::get('/updatedelete_image/{id?}',[gallaycontroller::class,'updategalleryimage']);
+Route::get('gallery_id',[gallaycontroller::class,'gallery_id']);
 
 
+//vidoe gallery
+Route::get('/show_videogallery',[vidoecontroller::class,'View_Vgallery']);
+Route::get('view-video/{id?}',[vidoecontroller::class,'Show_Vgallery'])->name('ViewVgallery');
+Route::get('/add_videoget',[vidoecontroller::class,'Add_Vgallery']);
+Route::post('/add_videopost',[vidoecontroller::class,'Add_Vgallery_Submit']);
+Route::get('/update_videoget/{id}',[vidoecontroller::class,'Update_Vgallery']);
+Route::post('/update_videopost/{id}',[vidoecontroller::class,'Update_Vgallery_Submit']);
+Route::GET('/delete_vidoegallery/{id}',[vidoecontroller::class,'Delete_Vgallery']);
+Route::post('/multivideopost',[vidoecontroller::class,'Add_Vgallery_Csubmit']);
+Route::post('/updatemultivideopost/{id}',[vidoecontroller::class,'Update_Vgallery_Csubmit']);
+Route::GET('/delete_vidoemultiplegallery/{id}',[vidoecontroller::class,'Delete_VCgallery']);
 
+//ajax url
+Route::get('/videodata', [vidoecontroller::class, 'videodata']);
+Route::get('/multi_id',[vidoecontroller::class,'video_id']);
+
+
+//Quick link controller
+Route::get('/show_link',[quicklinkcontrller::class,'Show_Section']);
+Route::get('/add_link',[quicklinkcontrller::class,'Add_Section']);
+Route::post('/add_link_action',[quicklinkcontrller::class,'Add_Section_Submit']);
+Route::get('/delete_link/{id}',[quicklinkcontrller::class,'Delete_Section']);
+Route::get('/update_link/{id}',[quicklinkcontrller::class,'Update_Section']);
+Route::post('/update_linkpost/{id}',[quicklinkcontrller::class,'Update_Section_Submit']);
+
+//--------------------------------------------------------------------------------------//
+
+//Admincontroller
+
+//client logo
+Route::match(['get','post'],'add-edit-file2url',[AdminController::class,'Add_ClientLogo']);
+Route::get('delete-file2url/{id}',[AdminController::class,'Delete_ClientLogo']);
+Route::get('file-to-url',[AdminController::class,'Show_ClientLogo'])->name('filetourl');
+Route::get('View-Client-logo/{id?}',[AdminController::class,'View_ClientLogo'])->name('ViewclientLogo');
+
+//organisation details
+Route::get('manage-organisation-detail',[AdminController::class,'View_OrganisationDetails'])->name('organisation');
+Route::get('delete-org/{id}',[AdminController::class,'Delete_OrganisationDetails']);
+Route::match(['get','post'],'add-edit-org/{id?}',[AdminController::class,'Add_OrganisationDetails'])->name('org');
+
+
+//counter
+Route::get('view_index/{id?}',[AdminController::class,'Show_Counter']);
+Route::get('project_index/{id?}',[AdminController::class,'delete_Counter']);
+Route::get('website-index',[AdminController::class,'View_Counter'])->name('websiteIndex');
+Route::match(['get','post'],'add_edit_project_logo/{id?}',[AdminController::class,'add_edit_Counter']);
+
+
+//banner
+Route::get('view_banner/{id?}',[AdminController::class,'Show_banner']);
+Route::get('manage-banners-sliders',[AdminController::class,'View_Banners'])->name('banners');
+Route::match(['get','post'],'add-edit-banner/{id?}',[AdminController::class,'Add_Banners'])->name('addBanner');
+Route::get('delete-banner/{id}',[AdminController::class,'Delete_Banners']);
+
+//news & Events
+Route::get('News-Event-delete/{id?}',[AdminController::class,'delete_NewsEvent']);
+Route::get('News-Event',[AdminController::class,'View_NewsEvent']);
+Route::match(['get','post'],'add-news-edit-org/{id?}',[AdminController::class,'add_edit_NewsEvent']);
+Route::get('View-News-Event/{id?}',[AdminController::class,'show_NewsEvent']);
 
 
 
@@ -114,18 +190,21 @@ Route::get('/Department_info',[AdminController::class,'Department_info']);
 
 
 
+//-------------------------------Form controller-----------------------------------------------------------
+
+//industry
+Route::get('industry', [FormController::class, 'View_industry'])->name('industry');
+Route::match(['get','post'],'add-industry/{id?}',[FormController::class,'add_edit_industry']);
+Route::get('delete-industry/{id?}', [FormController::class, 'delete_industry']);
 
 
 
 
-//organisation details
-Route::get('manage-organisation-detail',[AdminController::class,'View_OrganisationDetails'])->name('organisation');
 
 
 
-//only view
-Route::get('view-video/{id?}',[vidoecontroller::class,'vvgallery'])->name('Viewvideogallery');
-Route::get('view-gallery/{id?}',[gallaycontroller::class,'vpgallery'])->name('Viewphotogallery');
+
+
 
 
 
@@ -169,9 +248,7 @@ Route::get('/delete-student-profile/{id}',[StudentProfileController::class,'dele
 Route::GET('Countact-us',[FormController::class,'countact_us']);
 Route::GET('feedback',[FormController::class,'feedback']);
 
-Route::get('project_index/{id?}',[AdminController::class,'project_index']);
-Route::get('website-index',[AdminController::class,'website_index'])->name('websiteIndex');
-Route::match(['get','post'],'add_edit_project_logo/{id?}',[AdminController::class,'add_edit_project_logo']);
+
 //my code
 
 //manage clube commite cells
@@ -194,13 +271,7 @@ Route::get('/ajax_log_table',[log::class, 'ajax_log_table']);
 Route::get('/file-export', [log::class, 'fileExport']);
 
 
-//Quick link controller
-Route::get('/show_link',[quicklinkcontrller::class,'show_link']);
-Route::get('/add_link',[quicklinkcontrller::class,'add_link']);
-Route::post('/add_link_action',[quicklinkcontrller::class,'add_link_action']);
-Route::get('/delete_link/{id}',[quicklinkcontrller::class,'delete_link']);
-Route::get('/update_link/{id}',[quicklinkcontrller::class,'update_link']);
-Route::post('/update_linkpost/{id}',[quicklinkcontrller::class,'update_linkpost']);
+
 
 
 //blog section controller
@@ -212,35 +283,9 @@ Route::post('/update_blogpost/{id}',[blogcontroller::class,'update_blog_content_
 Route::get('/delete_blog/{id}',[blogcontroller::class,'delete_blog_data']);
 Route::get('/blogdata', [blogcontroller::class, 'blogdata']);
 
-//gallery controller
-Route::get('/show_gallery',[gallaycontroller::class,'show_gallery_data_list']);
-Route::get('/add_gallery',[gallaycontroller::class,'add_gallery_data_page']);
-Route::post('/addaction_gallery',[gallaycontroller::class,'add_gallery_data_submit']);
-Route::GET('/delete_galleryimage/{id}',[gallaycontroller::class,'delete_gallery_data']);
-Route::get('/updategallery/{id}',[gallaycontroller::class,'update_gallery_data']);
-Route::post('/addaction_gallerypost/{id}',[gallaycontroller::class,'update_gallery_data_submit']);
-Route::get('/photodata', [gallaycontroller::class, 'photodata']);
 
-//multiple update modal image
-Route::post('/multimagePost',[gallaycontroller::class,'multiple_image_submit']);
-Route::post('/multi_updte_gallery_data_submit/{id?}',[gallaycontroller::class,'multi_updte_gallery_data_submit']);
-Route::GET('/multdelete_image/{id?}',[gallaycontroller::class,'multdelete_image']);
-Route::GET('/delete_image/{id}',[gallaycontroller::class,'multi_delete_image_data']);
-Route::get('/updatedelete_image/{id?}',[gallaycontroller::class,'updategalleryimage']);
-Route::get('gallery_id',[gallaycontroller::class,'gallery_id']);
 
-//vidoe gallery
-Route::get('/show_videogallery',[vidoecontroller::class,'show_videogallery']);
-Route::get('/add_videoget',[vidoecontroller::class,'add_videoget']);
-Route::post('/add_videopost',[vidoecontroller::class,'add_videopost']);
-Route::get('/update_videoget/{id}',[vidoecontroller::class,'update_videoget']);
-Route::post('/update_videopost/{id}',[vidoecontroller::class,'update_videopost']);
-Route::post('/multivideopost',[vidoecontroller::class,'multivideopost']);
-Route::post('/updatemultivideopost/{id}',[vidoecontroller::class,'updatemultivideopost']);
-Route::GET('/delete_vidoegallery/{id}',[vidoecontroller::class,'delete_vidoegallery']);
-Route::GET('/delete_vidoemultiplegallery/{id}',[vidoecontroller::class,'delete_vidoemultiplegallery']);
-Route::get('/videodata', [vidoecontroller::class, 'videodata']);
-Route::get('/multi_id',[vidoecontroller::class,'video_id']);
+
 
 //Sanchit Routes
 Route::match(['get','post'],'add-edit-tender/{id?}',[FormController::class,'add_tender']);
@@ -263,9 +308,6 @@ Route::get('title-image/{id?}', [FormController::class, 'title_image'])->name('t
 Route::match(['get','post'],'add-titleimage/{id?}',[FormController::class,'add_image']);
 Route::get('delete-imagetitle/{id?}', [FormController::class, 'delete_image']);
 Route::get('eventactivities/{id?}', [FormController::class, 'eventactivities'])->name('eventactivities');
-Route::get('industry/{id?}', [FormController::class, 'industry'])->name('industry');
-Route::match(['get','post'],'add-industry/{id?}',[FormController::class,'add_industry']);
-Route::get('delete-industry/{id?}', [FormController::class, 'delete_industry']);
 
 Route::get('event-activity', [FormController::class,'event_activity_show']);
 
@@ -302,10 +344,7 @@ Route::match(['get','post'],'add-journey-edit-org/{id?}',[AdminController::class
 //oug journey
 //Organization Journey Routes End
 
-//news & Events
-Route::get('News-Event-delete/{id?}',[AdminController::class,'News_Event_delete']);
-Route::get('News-Event',[AdminController::class,'News_Event_index']);
-Route::match(['get','post'],'add-news-edit-org/{id?}',[AdminController::class,'add_news_edit_org']);
+
 
 //press & media
 Route::get('press-media-delete/{id?}',[AdminController::class,'press_media_delete']);
@@ -392,15 +431,14 @@ Route::get('delete-people/{id}',[FormController::class,'Delete_OrganisationStruc
 Route::get('delete-department/{id}',[FormController::class,'Delete_department']);
 Route::get('delete-announcements/{id}',[FormController::class,'Delete_Announcement']);
 Route::get('delete-optionsmaster/{id}',[AdminController::class,'Delete_OptionMaster']);
-Route::get('delete-org/{id}',[AdminController::class,'Delete_OrganisationDetails']);
-Route::get('delete-banner/{id}',[AdminController::class,'Delete_Banners']);
+// Route::get('delete-banner/{id}',[AdminController::class,'Delete_Banners']);
 Route::get('delete-usp/{id}',[AdminController::class,'Delete_USP']);
 Route::get('delete-quicklink/{id}',[AdminController::class,'Delete_QuickLink']);
 Route::get('manage-headers',[UIController::class,'MTopBar'])->name('topbar');
-Route::get('manage-banners-sliders',[AdminController::class,'View_Banners'])->name('banners');
-Route::get('manage-banners-sliders_detail',[AdminController::class,'View_Banners_detail']);
-Route::match(['get','post'],'add-edit-bannerdetail/{id?}',[AdminController::class,'Add_Banners_detail']);
-Route::get(' Delete_Banners_detail/{id}',[AdminController::class,' Delete_Banners_detail']);
+// Route::get('manage-banners-sliders',[AdminController::class,'View_Banners'])->name('banners');
+// Route::get('manage-banners-sliders_detail',[AdminController::class,'View_Banners_detail']);
+// Route::match(['get','post'],'add-edit-bannerdetail/{id?}',[AdminController::class,'Add_Banners_detail']);
+// Route::get(' Delete_Banners_detail/{id}',[AdminController::class,' Delete_Banners_detail']);
 Route::get('file-to-url',[UIController::class,'FileToURL'])->name('filetourl');
 Route::get('manage-usps',[AdminController::class,'View_USPs'])->name('usp');
 Route::get('manage-home-sliders',[UIController::class,'MSliderH'])->name('homeslider');
@@ -432,7 +470,7 @@ Route::match(['get','post'],'create-database',[AdminController::class,'Create_Da
 Route::match(['get','post'],'permissions/{id}',[FormController::class,'Add_Permissions']);
 Route::match(['get','post'],'add-headers',[UIController::class,'Add_Topbar'])->name('addtopbar');
 Route::match(['get','post'],'add-footers',[UIController::class,'Add_Footbar'])->name('addfooter');
-Route::match(['get','post'],'add-edit-banner/{id?}',[AdminController::class,'Add_Banners'])->name('addBanner');
+// Route::match(['get','post'],'add-edit-banner/{id?}',[AdminController::class,'Add_Banners'])->name('addBanner');
 Route::match(['get','post'],'add-edit-quicklink/{id?}',[AdminController::class,'Add_QuickLink']);
 Route::match(['get','post'],'add-edit-announcements/{id?}',[FormController::class,'Add_Announcement'])->name('addAnnouncement');
 Route::match(['get','post'],'add-edit-optionsmaster/{id?}',[AdminController::class,'Add_OptionMaster'])->name('addOptionMaster');
@@ -446,7 +484,7 @@ Route::match(['get','post'],'add-edit-people/{id?}',[FormController::class,'Add_
 Route::match(['get','post'],'add-edit-department/{id?}',[FormController::class,'Add_department'])->name('add_department');
 Route::match(['get','post'],'add-edit-file2url/{id?}',[UIController::class,'Add_F2U']);
 Route::get('delete-file2url/{id}',[UIController::class,'Delete_F2U']);
-Route::match(['get','post'],'add-edit-org/{id?}',[AdminController::class,'Add_OrganisationDetails'])->name('org');
+
 Route::get('menu-status-change/{type}/{id}/{status}',[AdminController::class,'Menu_StatusChange']);
 Route::get('status-change/{status}/{id}/{db}',[AdminController::class,'StatusChange']);
 Route::post('form-creation',[UIController::class,'CreateForm']);
