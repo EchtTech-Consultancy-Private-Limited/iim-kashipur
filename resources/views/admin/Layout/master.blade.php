@@ -189,7 +189,7 @@
 
        @include('admin.Layout.sidebar')
 
-
+{{--
        <div class="modal fade" id="exampleModalupdate" tabindex="-1" aria-labelledby="exampleModalLabel" data-backdrop="static">
 
         <div class="modal-dialog modal-md" role="document">
@@ -207,7 +207,7 @@
               </div>
             </div>
         </div>
-    </div>
+    </div> --}}
 
 
 
