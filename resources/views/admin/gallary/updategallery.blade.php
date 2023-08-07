@@ -61,16 +61,11 @@
                                 @endif
                             </p>
 
-
-
-
                             <form class="forms-sample row col-md-12" method="POST" id="regForm"
                                 action="{{ url('/Accounts/addaction_gallerypost/' . dEncrypt($value->id)) }}"
                                 enctype="multipart/form-data">
 
                                 @csrf
-
-
                                 <div class="col-md-12">
                                     <label for="type" class="col-sm-12 col-form-label">Page Content Type* </label>
                                     <div class="col-sm-12">
@@ -422,7 +417,7 @@
 
                                     <div class="col-sm-12">
 
-                                        <button type="submit" class="btn btn-primary" onclick="load();" class="form-control">Save</button>
+                                        <button type="submit" class="btn btn-primary"  class="form-control">Save</button>
 
                                     </div>
 
@@ -486,13 +481,13 @@
 
                                                     <label for="image_text">Image Text</label>
 
-                                                    <input type="text" name="image_text"
+                                                    <input type="text" name="image_title"
                                                         placeholder="Enter your Image Text"
                                                         class="form-last-name form-control" id="form-last-name">
 
 
-                                                    <label for="image_text" id="image_text-error" class="error">
-                                                        @error('image_text')
+                                                    <label for="image_title" id="image_title-error" class="error">
+                                                        @error('image_title')
                                                             {{ $message }}
                                                         @enderror
                                                     </label>
@@ -588,7 +583,7 @@
 
                                                 </div>
 
-                                                <button type="submit" class="btn btn-primary" onclick="load();" id="savebtn"
+                                                <button type="submit" class="btn btn-primary" id="savebtn"
                                                     class="form-control">Save</button>
 
                                             </form>

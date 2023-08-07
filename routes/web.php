@@ -65,16 +65,11 @@ Route::match(['get','post'],'change-password',[AdminController::class,'Change_Pa
 //Route::middleware(['preventBackHistory'])->group(function () {
 
 
-        Route::middleware(['preventBackHistory','EnsureTokenIsValid'])->group(function () {
-        Route::get('dashboard', [AdminController::class,'Dashboard'])->name('dashboard');
-
-
+Route::middleware(['preventBackHistory','EnsureTokenIsValid'])->group(function () {
+Route::get('dashboard', [AdminController::class,'Dashboard'])->name('dashboard');
 
     //Route::get('dashboard',[AdminController::class,'Dashboard'])->middleware('Admin')->name('dashboard');
-
-
-
-    Route::middleware(['CustomAuth'])->group(function () {
+Route::middleware(['CustomAuth'])->group(function () {
 
 
 
@@ -88,6 +83,41 @@ Route::get('delete-Role/{id}',[FormController::class,'Delete_Role']);
 Route::match(['get','post'],'assign-role/{id}',[FormController::class,'Assign_Roles']);
 
 
+
+//content page
+Route::GET('/pages-list',[pagecontroller::class,'Show_Content']);
+Route::get('/add-page',[pagecontroller::class,'Add_Content']);
+Route::post('/add-page-act',[pagecontroller::class,'Add_Content_Submit']);
+Route::get("/update-page/{id}",[pagecontroller::class,"Update_Content"]);
+Route::post('/update_page_act/{id}',[pagecontroller::class,'Update_Content_Submit']);
+Route::GET('/delete-page/{id}',[pagecontroller::class,'Delete_Content']);
+Route::get("/pages-list/{id}",[pagecontroller::class,'Show_Content_Child']);
+Route::get('view-content/{id?}',[pagecontroller::class,'View_Content'])->name('ViewContent');
+
+//some more content page
+Route::get('/dropdown', [pagecontroller::class, 'indexdropdown']);  // content page value shair in dropdown box
+Route::GET('/pagesinput',[pagecontroller::class,'pagesinput']);
+Route::get('/deletedata',[pagecontroller::class,'deletedata']);
+Route::GET('/restored/{id}',[pagecontroller::class,'restored']);
+Route::get('/show',[pagecontroller::class,'firstshow']);
+
+
+
+
+
+
+
+
+//AdminController
+
+Route::get('/Department_info',[AdminController::class,'Department_info']);
+
+
+
+
+
+
+
 //organisation details
 Route::get('manage-organisation-detail',[AdminController::class,'View_OrganisationDetails'])->name('organisation');
 
@@ -96,7 +126,7 @@ Route::get('manage-organisation-detail',[AdminController::class,'View_Organisati
 //only view
 Route::get('view-video/{id?}',[vidoecontroller::class,'vvgallery'])->name('Viewvideogallery');
 Route::get('view-gallery/{id?}',[gallaycontroller::class,'vpgallery'])->name('Viewphotogallery');
-Route::get('view-content/{id?}',[pagecontroller::class,'vcgallery'])->name('Viewcontentgallery');
+
 
 
 
@@ -238,24 +268,6 @@ Route::match(['get','post'],'add-industry/{id?}',[FormController::class,'add_ind
 Route::get('delete-industry/{id?}', [FormController::class, 'delete_industry']);
 
 Route::get('event-activity', [FormController::class,'event_activity_show']);
-
-//content page
-Route::get('/add-page',[pagecontroller::class,'add_content_page']);
-Route::post('/add-page-act',[pagecontroller::class,'add_content_page_submit']);
-Route::GET('/delete-page/{id}',[pagecontroller::class,'delete_content_page']);
-Route::get("/update-page/{id}",[pagecontroller::class,"update_content_page"]);
-Route::post('/update_page_act/{id}',[pagecontroller::class,'update_content_page_submit']);
-Route::GET('/pages-list',[pagecontroller::class,'content_pages_list']);
-Route::get("/pages-list/{id}",[pagecontroller::class,'content_pages_post']);
-
-//some more content page
-Route::get('/Department_info',[AdminController::class,'Department_info']);
-Route::get('/dropdown', [pagecontroller::class, 'indexdropdown']);  // content page value shair in dropdown box
-Route::GET('/pagesinput',[pagecontroller::class,'pagesinput']);
-Route::get('/deletedata',[pagecontroller::class,'deletedata']);
-Route::GET('/restored/{id}',[pagecontroller::class,'restored']);
-Route::get('/show',[pagecontroller::class,'firstshow']);
-
 
 //Routes for Clubs,commiittees, About us, Journey Start
 Route::post('add-cells-image', [FormController::class, 'add_cells_image']);

@@ -497,8 +497,6 @@
                                                         id="video_image">
 
 
-
-
                                                     <label for="video_image" id="video_image-error" class="error">
                                                         @error('video_image')
                                                             {{ $message }}
@@ -512,13 +510,13 @@
 
                                                     <label for="form-first-name">Video Url*</label>
 
-                                                    <input type="text" name="url" value="{{ old('url') }}"
+                                                    <input type="text" name="video_url" value="{{ old('video_url') }}"
                                                         placeholder="Enter your Image"
-                                                        class="form-first-name form-control" id="url">
+                                                        class="form-first-name form-control" id="video_url">
 
 
-                                                    <label for="url" id="url-error" class="error">
-                                                        @error('url')
+                                                    <label for="video_url" id="video_url-error" class="error">
+                                                        @error('video_url')
                                                             {{ $message }}
                                                         @enderror
                                                     </label>
@@ -531,14 +529,14 @@
 
                                                     <label for="form-last-name">Video Text*</label>
 
-                                                    <input type="text" name="video_text"
-                                                        value="{{ old('video_text') }}"
+                                                    <input type="text" name="video_title"
+                                                        value="{{ old('video_title') }}"
                                                         placeholder="Enter your Image Text"
-                                                        class="form-last-name form-control" id="video_text">
+                                                        class="form-last-name form-control" id="video_title">
 
 
-                                                    <label for="video_text" id="video_text-error" class="error">
-                                                        @error('Video_Text')
+                                                    <label for="video_title" id="video_title-error" class="error">
+                                                        @error('video_title')
                                                             {{ $message }}
                                                         @enderror
                                                     </label>
@@ -761,12 +759,12 @@
 
                                                 <label for="form-first-name">Video Url</label>
 
-                                                <input type="text" name="url" placeholder="Enter your Image"
+                                                <input type="text" name="video_url" placeholder="Enter your Image"
                                                     class="form-first-name form-control" id="videourl1">
 
 
-                                                <label for="url" id="url-error" class="error">
-                                                    @error('url')
+                                                <label for="video_url" id="video_url-error" class="error">
+                                                    @error('video_url')
                                                         {{ $message }}
                                                     @enderror
                                                 </label>

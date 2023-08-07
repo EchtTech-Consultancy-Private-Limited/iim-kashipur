@@ -473,7 +473,7 @@ class vidoecontroller extends Controller
             [
                'video_image'  => 'required|mimes:png,jpg,ico|max:1024',
 
-               'video_text'=>'required|unique:video_gallery_tittles',
+               'video_title'=>'required|unique:video_gallery_tittles',
 
                'video_url'=>     'required',
 
@@ -486,7 +486,7 @@ class vidoecontroller extends Controller
 
         $file= new video_gallery_tittle;
 
-        $file->video_url=$request->url;
+        $file->video_url=$request->video_url;
 
         $file->gallery_id=$request->gallery_id;
 
@@ -513,13 +513,11 @@ class vidoecontroller extends Controller
 
 
 
-
-
         $file->url=('video/multiple-image'.'/'.$input['video_image']);
 
         $file->video_image=$input['video_image'];
 
-        $file->video_title=$request->video_text;
+        $file->video_title=$request->video_title;
 
         $file->sort_order=$request->order;
 
@@ -543,6 +541,8 @@ class vidoecontroller extends Controller
 
        public function updatemultivideopost(Request $request,$id){
 
+
+
         $request->validate(
 
             [
@@ -560,10 +560,9 @@ class vidoecontroller extends Controller
         );
         $file = video_gallery_tittle::find($id);
 
-        $file->video_url=$request->url;
+        $file->video_url=$request->video_url;
 
         $file->gallery_id=$request->gallery_id;
-
 
         if($request->video_image)
         {
@@ -596,8 +595,6 @@ class vidoecontroller extends Controller
         {
           $file->video_image=$request->multioldimage;
         }
-
-
 
         $file->video_title=$request->video_text;
 

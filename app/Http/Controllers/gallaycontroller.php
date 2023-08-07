@@ -462,7 +462,7 @@ class gallaycontroller extends Controller
 
                             'filename'  => 'required|mimes:png,jpg,ico|max:1024',
 
-                            'image_text'         =>  'required|unique:photo_gallery_images',
+                            'image_title' =>  'required|unique:photo_gallery_images',
 
                             'image_alt'  =>  'required|string|max:200',
 
@@ -510,7 +510,7 @@ class gallaycontroller extends Controller
 
                       $file->gallery_id=$request->gallery_id;
 
-                      $file->image_title=$request->image_text;
+                      $file->image_title=$request->image_title;
 
                       $file->image_alt=$request->image_alt;
 
