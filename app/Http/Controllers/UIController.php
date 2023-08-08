@@ -140,10 +140,13 @@ class UIController extends Controller
 
 
 
-    // function MSliderH(){
-    //     $data=SiteLayout::where('type','Slider')->orderBy('id','DESC')->get();
-    //     return view('admin.ui.manage_midbar',compact('data'));
-    // }
+
+
+
+    function MSliderH(){
+        $data=SiteLayout::where('type','Slider')->orderBy('id','DESC')->get();
+        return view('admin.ui.manage_midbar',compact('data'));
+    }
 
     function Add_MSlider(Request $request){
         if($request->isMethod('post')){
