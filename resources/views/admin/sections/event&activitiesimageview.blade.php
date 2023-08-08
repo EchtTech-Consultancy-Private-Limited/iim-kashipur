@@ -52,7 +52,7 @@
 
                                 <div class="col-md-12">
 
-                                    <button type="button" class="btn btn-primary float-right" ><a href="{{url('Accounts/add-titleimage')}}">Multiple Image Upload
+                                    <button type="button" class="btn btn-primary float-right" ><a href="{{url('Accounts/add-edit-EventsActivites-image')}}">Multiple Image Upload
                                         Section</a></button>
 
                                 </div>
@@ -105,6 +105,10 @@
                                                         <td>
                                                             <a class="btn btn-primary" href="{{url('Accounts/add-titleimage/'.dEncrypt($item->id))}}"><i
                                                                     class="ti-pencil btn-icon-append"
+                                                                    style="color:black;"></i></a>
+
+                                                                        <a class="btn btn-primary" href="{{url('Accounts/add-titleimage/'.dEncrypt($item->id))}}"><i
+                                                                    class="ti-eye btn-icon-append"
                                                                     style="color:black;"></i></a>
 
 

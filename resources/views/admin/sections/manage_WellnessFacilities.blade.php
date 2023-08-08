@@ -38,9 +38,10 @@
 
                                 <div>
 
+                                    @if(Count($data) < 0)
                                     <button type="button" class="btn btn-primary"><a
                                             href="{{ url('/Accounts/add-edit-Wellness-Facilities') }}">Add New Wellness Facilities  </a></button>
-
+                                    @endif
 
                                 </div>
 
@@ -116,16 +117,19 @@
                                                                     class="ti-pencil btn-icon-append"
                                                                     style="color:black;"></i></a> &nbsp;
 
+                                                                    <a
+                                                                    href="{{ url('Accounts/View-Wellness-Facilities/' . dEncrypt($D->id)) }}"><i
+                                                                        class="ti-eye btn-icon-append"
+                                                                        style="color:black;"></i></a> &nbsp;
 
 
-                                                                    @if (\Auth::guard('admin')->user()->id == 1  )
 
                                                             <a href="{{ url('Accounts/delete-Wellness-Facilities/' . dEncrypt($D->id)) }}"
                                                                 onclick="return confirm('Are You Sure?')"><i
                                                                     class="ti-archive btn-icon-append"
                                                                     style="color:black;"></i></a>
 
-                                                                    @endif
+
                                                         </td>
 
                                                     </tr>

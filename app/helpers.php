@@ -536,7 +536,9 @@ function FindQuickLinksNew($placement='',$sort_order=''){
 
     function GETClientlogomiddleTop($id){
         $value=\App\Models\QuickLink::where('link_category',$id)->where('status','1')->orderBy('sort_order', 'ASC')->get();
-      return @$value ;
+
+
+        return @$value ;
     }
 
 
@@ -647,9 +649,6 @@ function FindQuickLinksNew($placement='',$sort_order=''){
 
 
 
-
-
-
   //Center of Excellences  section
 
 
@@ -707,7 +706,7 @@ function FindQuickLinksNew($placement='',$sort_order=''){
         //website logo   default name Logo dana hoga
 
                 function  Getsmallphoto(){
-                $data=\App\Models\FileToUrl::take(10)->get();
+                $data=\App\Models\FileToUrl::take(10)->where('status','1')->get();
                 return @$data;
                 }
 

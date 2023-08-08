@@ -1,6 +1,6 @@
 @extends('admin.Layout.master')
 
-@section('title', 'Manage File2URL ')
+@section('title', 'Manage Client Logo ')
 
 @section('content')
 
@@ -38,11 +38,11 @@
 
                   <div class="top-menu-button">
 
-                  <p class="card-title">Manage File2URL </p>
+                  <p class="card-title">Manage Client Logo </p>
 
                   <div>
 
-                      <button type="button" class="btn btn-primary" ><a href="{{url('/Accounts/add-edit-file2url')}}">Add New File2URL </a></button>
+                      <button type="button" class="btn btn-primary" ><a href="{{url('/Accounts/add-edit-file2url')}}">Add New Client logo </a></button>
 
 
 
@@ -73,7 +73,7 @@
                               <th>Type</th>
                               <th>Title</th>
 
-
+                               <th>Status</td>
                                <th>File Name</th>
                               <th>Url</th>
 
@@ -95,6 +95,24 @@
                               <td>{{$D->type}}</td>
 
                               <td>{{$D->title}}</td>
+                              <td>
+                                @if (@checkRoute('StatusChange'))
+                                    @if ($D->status == 1)
+                                        <a href="{{ url('Accounts/status-change/0/' . dEncrypt($D->id) . '/file_to_urls') }}"
+                                            style="color:green;">Active</a>
+                                    @else
+                                        <a href="{{ url('Accounts/status-change/1/' . dEncrypt($D->id) . '/file_to_urls') }}"
+                                            style="color:red;">Inactive</a>
+                                    @endif
+                                @else
+                                    @if ($D->status == 1)
+                                        <span" style="color:green;">Active</span>
+                                        @else
+                                            <span style="color:red;">Inactive</span>
+                                    @endif
+                                @endif
+                            </td>
+
                                   <td> {{$D->file}}</td>
                               <td>{{$D->url}}</td>
 
@@ -102,9 +120,14 @@
 
                                 <a href="{{url('Accounts/add-edit-file2url/'.dEncrypt($D->id))}}"><i class="ti-pencil btn-icon-append" style="color:black;"></i></a> &nbsp;
 
-                                @if (\Auth::guard('admin')->user()->id == 1  )
+
+
+                                <a href="{{url('Accounts/View-Client-logo/'.dEncrypt($D->id))}}"><i class="ti-eye btn-icon-append" style="color:black;"></i></a> &nbsp;
+
+
+
                                 <a href="{{url('Accounts/delete-file2url/'.dEncrypt($D->id))}}" onclick="return confirm('Are You Sure?')"><i class="ti-archive btn-icon-append" style="color:black;"></i></a>
-                                @endif
+
                                </td>
 
 

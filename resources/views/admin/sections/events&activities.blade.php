@@ -48,10 +48,10 @@
 
                             @if ($id)
                                 <form class="forms-sample row col-md-12" method="POST" id="regForm"
-                                    action="{{ url('Accounts/add-edit-title/' . $id) }}" enctype="multipart/form-data">
+                                    action="{{ url('Accounts/add-edit-EventsActivites/' . $id) }}" enctype="multipart/form-data">
                                 @else
                                     <form class="forms-sample row col-md-12" method="POST" id="regForm"
-                                        action="{{ url('Accounts/add-edit-title') }}" enctype="multipart/form-data">
+                                        action="{{ url('Accounts/add-edit-EventsActivites') }}" enctype="multipart/form-data">
                             @endif
 
                             @csrf

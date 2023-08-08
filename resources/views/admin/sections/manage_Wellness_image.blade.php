@@ -122,13 +122,22 @@
                                                                     class="ti-pencil btn-icon-append"
                                                                     style="color:black;"></i></button>
 
-                                                                @if (\Auth::guard('admin')->user()->id == 1  )
+
+
+                                                                    <button type="button" class="btn btn-primary" id="view"
+                                                                    data-id="{{ $item->id }}" data-toggle="modal"
+                                                                    data-target="#exampleModalview"
+                                                                    data-whatever="@getbootstrap"><i
+                                                                        class="ti-eye btn-icon-append"
+                                                                        style="color:black;"></i></button>
+
+
                                                             <a class="btn btn-primary"
                                                                 href="{{ url('Accounts/delete-Wellness-image/' . dEncrypt($item->id)) }}"
                                                                 onclick="return confirm('Are you sure to edit this record?')"><i
                                                                     class="ti-trash btn-icon-append"
                                                                     style="color:black;"></i></a>
-                                                                    @endif
+
                                                         </td>
                                                     </tr>
                                                 @endforeach
@@ -294,6 +303,118 @@
             </div>
 
         </div>
+
+
+{{-- view modal --}}
+
+
+
+<div class="modal fade" id="exampleModalview" tabindex="-1" role="dialog"
+aria-labelledby="exampleModalLabel"  aria-hidden="true">
+
+<div class="modal-dialog modal-md" role="document">
+
+    <div class="modal-content">
+
+        <div class="modal-header">
+
+            <h5 class="modal-title" id="exampleModalLabel">Update
+                image</h5>
+
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+
+                <span aria-hidden="true">×</span>
+
+            </button>
+
+        </div>
+
+        <div class="modal-body">
+
+            <form action="" id="form" method="post" class="registration-form row"
+            enctype="multipart/form-data">
+
+                @csrf
+
+
+                <div class="form-group col-md-6">
+
+                    <label for="form-first-name">Multiple Image</label>
+
+
+
+                    <div class="image"></div>
+
+
+                </div>
+
+
+                <div class="form-group col-md-6">
+
+                    <label for="image_text">Image Text</label>
+
+                    <input type="text" name="image_text" placeholder="Enter your Image Text" readonly
+                        class="form-last-name form-control imagetext" required=""
+                        autocomplete="off">
+
+
+
+
+                </div>
+
+
+
+
+                <div class="form-group col-md-6">
+
+                    <label for="image_alt">Image Alt</label>
+
+                    <input type="text" name="image_alt" placeholder="Enter your image Alt" readonly
+                        class="form-email form-control imagealt"  required="" autocomplete="off">
+
+                </div>
+
+
+
+                <div class="col-md-12">
+                    <label for="DESCRIPTION" class="col-form-label">DESCRIPTION</label>
+                    <div class="">
+                        <textarea class="form-control DESCRIPTION"  readonly rows="4" name="DESCRIPTION" placeholder="Please enter DESCRIPTION"></textarea><br>
+
+                    </div>
+                </div>
+
+
+                <div class="form-group col-md-6">
+
+                    <label for="form-email">sort order</label>
+
+                    <input type="text" placeholder="pls enter sort order" name="sort_order"
+                        class="form-email form-control imagesort" readonly required="" autocomplete="off">
+
+                </div>
+
+                <div class="col-md-12">
+                    <label for="event" class="col-form-label">Events</label>
+                    <div class="">
+                        <textarea class="form-control" id="event" rows="4" readonly name="event" placeholder="Please enter event"></textarea><br>
+
+                    </div>
+                </div>
+
+        </div>
+
+
+
+
+
+    </div>
+
+</div>
+
+</div>
+
+
 
 
         <!-- multiple image table code -->
@@ -504,4 +625,51 @@
 
             });
         </script>
-    @endsection
+
+
+<script>
+    $(document).on("click", "#view", function() {
+        var UserName = $(this).data('id');
+      //  alert(UserName);
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+        });
+
+
+        $.ajax({
+            url: "{{ url('/Accounts/Wellness_Facilities-id') }}",
+            type: "get",
+            data: {
+                id: UserName
+            },
+            success: function(data) {
+
+                $(".imagetext").val(data.item.image_title);
+                $(".imagealt").val(data.item.image_alt);
+                $(".imagesort").val(data.item.sort_order);
+                $(".DESCRIPTION").val(data.item.DESCRIPTION);
+                $(".event").val(data.item.event);
+                $('.image').html('<img src="{{ asset('uploads/wellness/') }}/' + data.item
+                    .image + '" width="100" height="100" />')
+                $(".imagestatus").val(data.item.status);
+            }
+
+        });
+
+    });
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+@endsection

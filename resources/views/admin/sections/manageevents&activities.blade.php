@@ -39,7 +39,7 @@
                                 <div>
 
                                     <button type="button" class="btn btn-primary"><a
-                                            href="{{ url('/Accounts/add-edit-title') }}">Add Events & Activites</a></button>
+                                            href="{{ url('/Accounts/add-edit-EventsActivites') }}">Add Events & Activites</a></button>
 
 
                                 </div>
@@ -85,7 +85,7 @@
                                                         <td>
 
                                                             <button type="submit" class="btn btn-primary btn-sm"><a
-                                                                    href="{{ url('Accounts/eventactivities/'.dEncrypt($D->id)) }}"> Add
+                                                                    href="{{ url('Accounts/event-activities-image/'.dEncrypt($D->id)) }}"> Add
                                                                     Imges</a></button>
 
                                                         </td>
@@ -111,18 +111,24 @@
 
                                                         <td>
                                                             <a
-                                                                href="{{ url('Accounts/add-edit-title/' . dEncrypt($D->id)) }}"><i
+                                                                href="{{ url('Accounts/add-edit-EventsActivites/' . dEncrypt($D->id)) }}"><i
                                                                     class="ti-pencil btn-icon-append"
                                                                     style="color:black;"></i></a> &nbsp;
 
-                                                                    @if (\Auth::guard('admin')->user()->id == 1  )
 
-                                                            <a href="{{ url('Accounts/delete-title/' . dEncrypt($D->id)) }}"
+                                                                    <a
+                                                                    href="{{ url('Accounts/show-Events-Activites/' . dEncrypt($D->id)) }}"><i
+                                                                        class="ti-eye btn-icon-append"
+                                                                        style="color:black;"></i></a> &nbsp;
+
+
+
+                                                            <a href="{{ url('Accounts/delete-EventsActivites/' . dEncrypt($D->id)) }}"
                                                                 onclick="return confirm('Are You Sure?')"><i
                                                                     class="ti-archive btn-icon-append"
                                                                     style="color:black;"></i></a>
 
-                                                                    @endif
+
 
                                                         </td>
 

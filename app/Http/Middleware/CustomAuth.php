@@ -19,8 +19,6 @@ class CustomAuth
     public function handle(Request $request, Closure $next)
     {
 
-
-
         $data=new audit_log();
         $data->user_id=Auth::guard('admin')->user()->id;
         $data->user_name=Auth::guard('admin')->user()->name;

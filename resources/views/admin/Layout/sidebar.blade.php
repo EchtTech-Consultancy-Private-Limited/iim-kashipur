@@ -294,7 +294,7 @@
                         @endif
 
                         @if (@checkRoute('Events & Activites'))
-                            <li class="nav-item"><a class="nav-link" href="{{ route('admin.title') }}">Manage Events
+                            <li class="nav-item"><a class="nav-link" href="{{ url('Accounts/Event-Activites') }}">Manage Events
                                     & Activites</a></li>
                         @endif
 
@@ -376,7 +376,7 @@
             </li>
         @endif
 
-        @if (@checkRoute('add_gallery_data_page') || @checkRoute('show_gallery_data_list'))
+        @if (@checkRoute('View_pgallery') || @checkRoute('Show_Pgallery'))
             <li class="nav-item">
 
                 <a class="nav-link" data-toggle="collapse" href="#cmspagess" aria-expanded="false"
@@ -400,7 +400,7 @@
                         @endif --}}
 
 
-                        @if (@checkRoute('show_gallery_data_list'))
+                        @if (@checkRoute('View_pgallery'))
                             <li class="nav-item"> <a class="nav-link" href="{{ url('/Accounts/show_gallery') }}">
                                 Show Photo Gallary </a></li>
                         @endif
@@ -411,7 +411,7 @@
         @endif
 
 
-        @if (@checkRoute('add_videoget') || @checkRoute('show_videogallery'))
+        @if (@checkRoute('View_Vgallery') ||   @checkRoute('Show_Vgallery'))
 
             <li class="nav-item">
 
@@ -430,23 +430,14 @@
 
                     <ul class="nav flex-column sub-menu">
 
-
-                        @if (@checkRoute('add_videoget'))
-                            <li class="nav-item"> <a class="nav-link" href="{{ url('/Accounts/add_videoget') }}">Add
-                                    Video Gallery</a></li>
-                        @endif
-
-
-                        @if (@checkRoute('show_videogallery'))
+                        @if (@checkRoute('View_Vgallery'))
                             <li class="nav-item"> <a class="nav-link"
                                     href="{{ url('/Accounts/show_videogallery') }}">Show Video Gallery</a></li>
                         @endif
+
                     </ul>
-
                 </div>
-
             </li>
-
         @endif
 
         @if (@checkRoute('add_link') || @checkRoute('show_link') || @checkRoute('View_QuickLinks'))

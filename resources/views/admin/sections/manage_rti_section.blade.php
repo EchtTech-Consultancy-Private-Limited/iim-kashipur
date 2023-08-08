@@ -120,13 +120,20 @@
                                                                     class="ti-pencil btn-icon-append"
                                                                     style="color:black;"></i></button>
 
-                                                                    @if (\Auth::guard('admin')->user()->id == 1  )
+                                                                    <button type="button" class="btn btn-primary" id="view"
+                                                                    data-id="{{ $item->id }}" data-toggle="modal"
+                                                                    data-target="#exampleModalview"
+                                                                    data-whatever="@getbootstrap"><i
+                                                                        class="ti-eye btn-icon-append"
+                                                                        style="color:black;"></i></button>
+
+
                                                             <a class="btn btn-primary"
                                                                 href="{{ url('Accounts/delete-rit-pdf/'.dEncrypt($item->id)) }}"
                                                                 onclick="return confirm('Are you sure to edit this record?')"><i
                                                                     class="ti-trash btn-icon-append"
                                                                     style="color:black;"></i></a>
-                                                                    @endif
+
                                                         </td>
 
                                                     </tr>
@@ -427,7 +434,89 @@
         </div>
 
 
+{{-- view --}}
 
+
+<div class="modal fade" id="exampleModalview" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+aria-hidden="true">
+
+<div class="modal-dialog modal-md" role="document">
+
+    <div class="modal-content">
+
+        <div class="modal-header">
+
+            <h5 class="modal-title" id="exampleModalLabel">View  Pdf</h5>
+
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+
+                <span aria-hidden="true">×</span>
+
+            </button>
+
+        </div>
+
+        <div class="modal-body pb-0">
+
+
+
+            <div class="form-group col-md-6">
+
+                <label for="form-first-name">Multiple Image</label>
+
+
+                <a   href="" download  class="pdf_class view" >
+
+                    <img src="{{ asset('admin/images/viewpdf.jpg') }}"  width="170" height="70">
+
+                </a>
+
+
+
+            </div>
+
+
+            <div class="form-group col-md-6">
+
+                <label for="image_text">Title PDF*</label>
+
+                <input type="text" name="text" placeholder="Enter your Image Text"
+                 class="form-last-name form-control imagetext" id="form-last-name" autocomplete="off">
+
+
+                <label for="image_text" id="image_text-error" class="error"> </label>
+
+            </div>
+
+
+            <div class="form-group col-md-6">
+
+                <label for="image_text">Upload Section*</label>
+
+                <select name="Quarterly_section" class="form-control Quarterly_section" id="Quarterly_section">
+                    <option value="">Select Section</option>
+                    <option value="1">Annual report</option>
+                    <option value="2">Comptroller And Auditor General Audit Report</option>
+
+                </select>
+
+                <label for="image_text" id="image_text-error" class="error"></label>
+
+            </div>
+
+
+
+
+
+
+
+        </div>
+
+    </div>
+
+</div>
+
+</div>
 
 
 
@@ -512,6 +601,42 @@ $( document ).ready(function() {
 
             });
         </script>
+
+
+
+<script>
+    $(document).on("click", "#view", function() {
+        var UserName = $(this).data('id');
+        //  alert(UserName);
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+        });
+
+        $.ajax({
+            url: "{{ url('/Accounts/rti-pdfsection') }}",
+            type: "get",
+            data: {
+                id: UserName
+            },
+            success: function(data) {
+
+                console.log(data.item);
+
+
+                    $('.view').attr('href', '{{ url('uploads/rti/') }}' +
+                        '/' + data.item.image)
+
+                    $(".Quarterly_section").val(data.item.Quarterly_section);
+                    $(".imagetext").val(data.item.title);
+
+                }
+
+        });
+
+    });
+</script>
 
 <script>
     function load(){

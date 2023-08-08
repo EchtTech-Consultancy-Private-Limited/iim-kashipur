@@ -101,7 +101,7 @@
                                                         <td>{{ $K + 1 }}</td>
 
 
-                                                        <td>{{ $D->about_details }}</td>
+                                                        <td>{!! $D->about_details !!}</td>
 
                                                         <td>{{ $D->url }}</td>
 
@@ -133,13 +133,22 @@
                                                             style="color:black;"></i></button> &nbsp;
 
 
-                                                            @if (\Auth::guard('admin')->user()->id == 1  )
+                                                            <button type="button" class="btn btn-primary" id="view"
+                                                            data-id="{{ $D->id }}" data-toggle="modal"
+                                                            data-target="#exampleModalview"
+                                                            data-whatever="@getbootstrap"><i
+                                                                class="ti-eye btn-icon-append"
+                                                                style="color:black;"></i></button> &nbsp;
+
+
+
+
                                                             <a class="btn btn-primary"
                                                             href="{{ url('Accounts/delete-journal-publications_page/' . dEncrypt($D->id)) }}"
                                                             onclick="return confirm('Are you sure to edit this record?')"><i
                                                                 class="ti-trash btn-icon-append"
                                                                 style="color:black;"></i></a>
-                                                                @endif
+
 
                                                         </td>
 
@@ -262,6 +271,63 @@
             </div>
 
         </div>
+
+
+{{-- view --}}
+
+<div class="modal fade" id="exampleModalview" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+aria-hidden="true">
+
+<div class="modal-dialog modal-md" role="document">
+
+    <div class="modal-content">
+
+        <div class="modal-header">
+
+            <h5 class="modal-title" id="exampleModalLabel">View
+                image</h5>
+
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+
+                <span aria-hidden="true">×</span>
+
+            </button>
+
+        </div>
+
+        <div class="modal-body">
+
+
+
+
+        <div class="col-md-12">
+            <label for="about_details" class="col-form-label">About Details</label>
+            <div class="">
+                <textarea class="form-control about_details"  readonly rows="4" name="about_details"
+                    placeholder="Please enter About Details" ></textarea><br>
+
+            </div>
+        </div>
+
+
+        <div class="col-md-12">
+            <label for="inputText" class="col-form-label">url*</label>
+            <div class="">
+                <input type="text" readonly class="form-control url"
+                    name="url"placeholder="Please enter url"
+                      ><br>
+
+            </div>
+        </div>
+
+    </div>
+
+    </div>
+
+</div>
+
+</div>
+
 
 
         <!-- multiple image table code -->
@@ -391,13 +457,44 @@
             },
             success: function(data) {
 
-                console.log(data.item.about_details);
+               // console.log(data.item.about_details);
 
                 $('#form').attr('action', '{{ url('Accounts/add-edit-journal-publications_page') }}'+
                     '/'+data.item.id)
 
                 $("#url").val(data.item.url);
                 $("#imagestatus").val(data.item.status);
+                $(".about_details").html(data.item.about_details)
+
+            }
+
+        });
+
+    });
+</script>
+
+
+
+<script>
+    $(document).on("click", "#view", function() {
+        var UserName = $(this).data('id');
+       //alert(UserName);
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+        });
+
+
+        $.ajax({
+            url: "{{ url('/Accounts/journal_id') }}",
+            type: "get",
+            data: {
+                id: UserName
+            },
+            success: function(data) {
+
+                $(".url").val(data.item.url);
                 $(".about_details").html(data.item.about_details)
 
             }

@@ -72,7 +72,7 @@
 
                                 <div>
 
-                                    @if (@checkRoute('add_gallery'))
+                                    @if (@checkRoute('Add_pgallery'))
                                         <button type="button" class="btn btn-primary"><a
                                                 href="{{ url('/Accounts/add_gallery') }}">Add New Entry</a></button>
                                     @endif
