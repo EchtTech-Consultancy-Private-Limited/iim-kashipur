@@ -69,9 +69,7 @@ Route::middleware(['preventBackHistory','EnsureTokenIsValid'])->group(function (
 Route::get('dashboard', [AdminController::class,'Dashboard'])->name('dashboard');
 
     //Route::get('dashboard',[AdminController::class,'Dashboard'])->middleware('Admin')->name('dashboard');
-Route::middleware(['CustomAuth'])->group(function () {
-
-
+Route::middleware(['CustomAuth'])->group(function () {   //audit log middleware
 
 //user Management
 Route::get('manage-admin',[AdminController::class,'View_Admins'])->name('manageadmin');
@@ -152,10 +150,10 @@ Route::post('/update_linkpost/{id}',[quicklinkcontrller::class,'Update_Section_S
 //Admincontroller
 
 //client logo
-Route::match(['get','post'],'add-edit-file2url',[AdminController::class,'Add_ClientLogo']);
-Route::get('delete-file2url/{id}',[AdminController::class,'Delete_ClientLogo']);
-Route::get('file-to-url',[AdminController::class,'Show_ClientLogo'])->name('filetourl');
-Route::get('View-Client-logo/{id?}',[AdminController::class,'View_ClientLogo'])->name('ViewclientLogo');
+Route::match(['get','post'],'add-edit-file2url/{id?}',[AdminController::class,'Add_ClientLogo']);
+Route::get('delete-file2url/{id?}',[AdminController::class,'Delete_ClientLogo']);
+Route::get('file-to-url',[AdminController::class,'view_ClientLogo'])->name('filetourl');
+Route::get('View-Client-logo/{id?}',[AdminController::class,'show_ClientLogo'])->name('ViewclientLogo');
 
 //organisation details
 Route::get('manage-organisation-detail',[AdminController::class,'View_OrganisationDetails'])->name('organisation');
@@ -169,7 +167,6 @@ Route::get('project_index/{id?}',[AdminController::class,'delete_Counter']);
 Route::get('website-index',[AdminController::class,'View_Counter'])->name('websiteIndex');
 Route::match(['get','post'],'add_edit_project_logo/{id?}',[AdminController::class,'add_edit_Counter']);
 
-
 //banner
 Route::get('view_banner/{id?}',[AdminController::class,'Show_banner']);
 Route::get('manage-banners-sliders',[AdminController::class,'View_Banners'])->name('banners');
@@ -182,37 +179,158 @@ Route::get('News-Event',[AdminController::class,'View_NewsEvent']);
 Route::match(['get','post'],'add-news-edit-org/{id?}',[AdminController::class,'add_edit_NewsEvent']);
 Route::get('View-News-Event/{id?}',[AdminController::class,'show_NewsEvent']);
 
+//press & media
+Route::get('View_pressMedia/{id?}',[AdminController::class,'Show_PressMedia']);
+Route::get('press-media-delete/{id?}',[AdminController::class,'Delete_pressMedia']);
+Route::get('press-media',[AdminController::class,'View_PressMedia']);
+Route::match(['get','post'],'add-press-media-edit-org/{id?}',[AdminController::class,'Add_Edit_PressMedia']);
 
-
-//AdminController
-
-Route::get('/Department_info',[AdminController::class,'Department_info']);
+//oug journey
+Route::get('view-journey/{id?}', [AdminController::class, 'Show_journey'])->name('Show_industry');
+Route::get('Org-journey/{id?}',[AdminController::class,'Delete_journey']);
+Route::get('Org-journey-index',[AdminController::class,'View_journey'])->name('Viewjourney');
+Route::match(['get','post'],'add-journey-edit-org/{id?}',[AdminController::class,'Add_Edit_journey']);
 
 
 
 //-------------------------------Form controller-----------------------------------------------------------
 
 //industry
+Route::get('view-industry/{id?}', [FormController::class, 'Show_industry'])->name('Show_industry');
 Route::get('industry', [FormController::class, 'View_industry'])->name('industry');
 Route::match(['get','post'],'add-industry/{id?}',[FormController::class,'add_edit_industry']);
 Route::get('delete-industry/{id?}', [FormController::class, 'delete_industry']);
 
 
+//ANTI-RAGGING POLICY
+Route::get("/show-ANTI-RAGGING/{id?}",[FormController::class,'Show_antiRagging']);
+Route::get("/ANTI-RAGGING",[FormController::class,'View_antiRagging']);
+Route::match(['get','post'],'add-edit-ANTI-RAGGING/{id?}',[FormController::class,'Add_Edit_antiRagging'])->name('AddEditantiRagging');
+Route::get('delete-ANTI-RAGGING/{id}',[FormController::class,'Delte_antiRagging']);
+
+//tender
+Route::get("/show-tender/{id?}",[FormController::class,'Show_tender']);
+Route::match(['get','post'],'add-edit-tender/{id?}',[FormController::class,'Add_Edit_tender']);
+Route::get('viewtenders', [FormController::class, 'View_tender'])->name('viewtenders');
+Route::get('delete-tender/{id?}',[FormController::class,'Delete_tender']);
+
+//verdor
+Route::get("/show-vender/{id?}",[FormController::class,'Show_vender']);
+Route::get('vendordebarred', [FormController::class, 'View_vendor'])->name('vendordebarred');
+Route::match(['get','post'],'add-edit-vendor/{id?}',[FormController::class,'Add_Edit_vendor']);
+Route::get('delete-vendor/{id?}',[FormController::class,'Delete_vendor']);
+
+//career
+Route::get("/show-Career/{id?}",[FormController::class,'Show_career']);
+Route::get('careershow', [FormController::class, 'View_Career'])->name('careershow');
+Route::match(['get','post'],'add-edit-career/{id?}',[FormController::class,'Add_Edit_Career']);
+Route::get('delete-career/{id?}',[FormController::class,'Delete_Career']);
+
+
+//Events & Activites
+
+Route::get("/show-Events-Activites/{id?}",[FormController::class,'Show_EventsActivites']);
+Route::get('Event-Activites', [FormController::class,'View_EventsActivites'])->name('evnetActivites');
+Route::match(['get','post'],'add-edit-EventsActivites/{id?}',[FormController::class,'Add_Event_EventsActivites']);
+Route::get('delete-EventsActivites/{id?}',[FormController::class,'Delete_EventsActivites']);
+
+Route::match(['get','post'],'add-edit-EventsActivites-image/{id?}',[FormController::class,'Add_Edit_EventActivity_Image']);
+Route::get('delete-Event-image/{id?}', [FormController::class, 'Delete_Event_Image']);
+Route::get('event-activities-image/{id?}', [FormController::class, 'View_EventActivety_image'])->name('eventactivities');
+Route::get('event-activities-show/{id?}', [FormController::class, 'Show_EventActivety_image']);
+
+
+Route::get('title-image/{id?}', [FormController::class,'title_image'])->name('title_image');
 
 
 
+//student council
+Route::get("/student-council-view/{id?}",[FormController::class,'Show_studentCouncil']);
+Route::get("/student-council",[FormController::class,'View_studentCouncil']);
+Route::match(['get','post'],'add-edit-Student-Council/{id?}',[FormController::class,'Add_Edit_StudentCouncil'])->name('aadstudentcouncil');
+Route::get('delete-studentcouncil/{id}',[FormController::class,'Delete_StudentCouncil']);
 
 
+//journal-publications
+Route::get("/journal-publications",[FormController::class,'View_journalPublications']);
+Route::match(['get','post'],'add-edit-journal-publications/{id?}',[FormController::class,'Add_Edit_journalPublications'])->name('aadstudentcouncil');
+Route::get('delete-journal-publications/{id}',[FormController::class,'Delete_journalPublications']);
+Route::get('view-journal-publications/{id}',[FormController::class,'show_journalPublications']);
+
+//journal-publications-child
+Route::get("/journal-publications-page/{id?}",[FormController::class,'View_journalPublications_Child']);
+Route::match(['get','post'],'add-edit-journal-publications_page/{id?}',[FormController::class,'Add_Edit_journalPublications_Child'])->name('aadstudentcouncil');
+Route::get('delete-journal-publications_page/{id}',[FormController::class,'Delete_journalPublications_child']);
+
+// Wellness Facilities
+Route::get("/Wellness-Facilities",[FormController::class,'View_WellnessFacilities']);
+Route::match(['get','post'],'add-edit-Wellness-Facilities/{id?}',[FormController::class,'add_Edit_WellnessFacilities'])->name('addWellnessFacilities');
+Route::get('delete-Wellness-Facilities/{id}',[FormController::class,'delete_WellnessFacilities']);
+Route::get('View-Wellness-Facilities/{id}',[FormController::class,'show_WellnessFacilities']);
 
 
+Route::post('Add-Wellness-image',[FormController::class,'add_WellnessImage']);
+Route::post('edit-Wellness-image/{id?}',[FormController::class,'edit_WellnessImage']);
+Route::get('wellness-facilities/{id}',[FormController::class,'view_WellnessImages']);
+Route::get('delete-Wellness-image/{id}',[FormController::class,'delete_WellnessImages']);
+Route::get('View-Wellness-Facilities-image/{id}',[FormController::class,'show_WellnessFacilitiesImage']);
 
 
+//cell
+Route::match(['get','post'],'add-edit-cells/{id?}',[FormController::class,'Add_Edit_Cells'])->name('addcells');
+Route::get('manage-cells',[FormController::class,'View_cells']);
+Route::get('delete-cells/{id?}',[FormController::class,'Delete_cells'])->name('deletecells');
+Route::get('view-Cell/{id?}',[FormController::class,'Show_Cell'])->name('Show_Cell');
+
+Route::get('cells-images-delete/{id?}',[FormController::class,'Delete_cellsImage']);
+Route::post('add-cells-image', [FormController::class, 'add_cellsImage']);
+Route::post('edit-cells-image/{id?}',[FormController::class,'Edit_cellsImage']);
+Route::get('cells-image/{id?}', [FormController::class, 'View_cellsImage']);
+
+//club
+Route::get('manage-clubs',[FormController::class,'view_club']);
+Route::get('delete-club/{id?}',[FormController::class,'Delete_Club'])->name('deleteclub');
+Route::match(['get','post'],'add-edit-club/{id?}',[FormController::class,'add_Edit_club'])->name('addclub');
+Route::get('view-club/{id?}',[FormController::class,'Show_Club'])->name('Show_Club');
+
+Route::get('club-images-delete/{id?}',[FormController::class,'Delete_clubImage']);
+Route::post('add-club-image', [FormController::class, 'add_ClubImage']);
+Route::get('club-image/{id?}', [FormController::class, 'View_clubImage']);
+Route::post('edit-club-image/{id?}',[FormController::class,'edit_clubImage']);
 
 
+//committee
+Route::match(['get','post'],'add-edit-committee/{id?}',[FormController::class,'add_Edit_Committee'])->name('addcommittee');
+Route::get('delete-committee/{id?}',[FormController::class,'Delete_Committee'])->name('deletecommittee');
+Route::get('manage-committee',[FormController::class,'view_Committee']);
+Route::get('view-Committee/{id?}',[FormController::class,'Show_Committee'])->name('Show_Committee');
+
+Route::get('committee-images-delete/{id?}',[FormController::class,'delete_committeeImage']);
+Route::post('add-committee-image', [FormController::class, 'add_CommitteeImage']);
+Route::post('edit-committee-image/{id?}',[FormController::class,'edit_committeeImage']);
+Route::get('committee-image/{id?}', [FormController::class, 'View_committeeImage']);
 
 
+//ajax
+Route::get('event-activity', [FormController::class,'event_activity_show']);
+Route::get('student-list',[FormController::class, 'student_list']);
+Route::get('journal_id', [FormController::class, 'journal_id']);
+Route::get('journal-publications-list', [FormController::class, 'journal_publications_list']);
+Route::get("/Wellness_Facilities-id",[FormController::class,'Wellness_Facilities_index_id']);
+Route::get('Wellness-Facilities-id', [FormController::class, 'Wellness_Facilities_id']);
+          //manage clube commite cells
+Route::get('gallery_id_image',[FormController::class,'gallery_id_image']);
+Route::get('club_id_image',[FormController::class,'club_id_image']);
+Route::get('committee-id-image',[FormController::class,'committee_id_image']);
+Route::get('cells', [FormController::class, 'cells_list']);
 
 
+//AdminController  ajax
+
+Route::get('/Department_info',[AdminController::class,'Department_info']);
+Route::get('journey-value', [AdminController::class, 'journey_value']);
+
+Route::get('student-list',[FormController::class, 'student_list']);
 
 //By Vishal routes for add student profile
 
@@ -232,6 +350,8 @@ Route::get('/update-student-profile/{id}',[StudentProfileController::class,'edit
 Route::post('/update-student-profile/{id}',[StudentProfileController::class,'update_student_profile']);
 Route::get('/delete-student-profile/{id}',[StudentProfileController::class,'delete_student_profile']);
 
+
+
 //Route::get('/view-students-profile',[StudentProfileController::class,'view_profile']);
 //Route::get('/add-students-profile',[StudentProfileController::class,'add_profile']);
 //Route::post('/add-students-profile',[StudentProfileController::class,'add_student_profile']);
@@ -245,20 +365,10 @@ Route::get('/delete-student-profile/{id}',[StudentProfileController::class,'dele
 
 
 //feedback form & contact us form
-Route::GET('Countact-us',[FormController::class,'countact_us']);
+// Route::GET('Countact-us',[FormController::class,'countact_us']);
 Route::GET('feedback',[FormController::class,'feedback']);
 
 
-//my code
-
-//manage clube commite cells
-Route::post('edit-cells-image/{id?}',[FormController::class,'edit_cells_image']);
-Route::get('gallery_id_image',[FormController::class,'gallery_id_image']);
-Route::get('club_id_image',[FormController::class,'club_id_image']);
-Route::post('edit-club-image/{id?}',[FormController::class,'edit_club_image']);
-Route::get('committee-id-image',[FormController::class,'committee_id_image']);
-Route::post('edit-committee-image/{id?}',[FormController::class,'edit_committee_image']);
-//manage clube commite cells
 
 //Auth log  route
 Route::GET('/Audit-data-show',[log::class,'datefillerdata']);
@@ -274,171 +384,107 @@ Route::get('/file-export', [log::class, 'fileExport']);
 
 
 
-//blog section controller
-Route::get('/add_blog',[blogcontroller::class,'add_blog_content_page']);
-Route::post('/add_blog',[blogcontroller::class,'blog_content_data_submit']);
-Route::get('/show_blog',[blogcontroller::class,'show_blog_page_list']);
-Route::get('/update_blog/{id}',[blogcontroller::class,'update_blog_content_page']);
-Route::post('/update_blogpost/{id}',[blogcontroller::class,'update_blog_content_data_submit']);
-Route::get('/delete_blog/{id}',[blogcontroller::class,'delete_blog_data']);
-Route::get('/blogdata', [blogcontroller::class, 'blogdata']);
+//blog section controller ,student
+// Route::get('/add_blog',[blogcontroller::class,'add_blog_content_page']);
+// Route::post('/add_blog',[blogcontroller::class,'blog_content_data_submit']);
+// Route::get('/show_blog',[blogcontroller::class,'show_blog_page_list']);
+// Route::get('/update_blog/{id}',[blogcontroller::class,'update_blog_content_page']);
+// Route::post('/update_blogpost/{id}',[blogcontroller::class,'update_blog_content_data_submit']);
+// Route::get('/delete_blog/{id}',[blogcontroller::class,'delete_blog_data']);
+// Route::get('/blogdata', [blogcontroller::class, 'blogdata']);
 
+// Route::get('student-list',[FormController::class, 'student_list']);
+// Route::get("/student-council",[FormController::class,'student_council_index']);
+// Route::match(['get','post'],'add-edit-Student-Council/{id?}',[FormController::class,'Add_student_council'])->name('aadstudentcouncil');
+// Route::get('delete-studentcouncil/{id}',[FormController::class,'Delete_studentcouncil']);
 
-
-
-
-//Sanchit Routes
-Route::match(['get','post'],'add-edit-tender/{id?}',[FormController::class,'add_tender']);
-Route::get('viewtenders', [FormController::class, 'viewtenders'])->name('viewtenders');
-Route::get('delete-tender/{id?}',[FormController::class,'delete_tender']);
-
-Route::get('vendordebarred', [FormController::class, 'vendordebarred'])->name('vendordebarred');
-Route::match(['get','post'],'add-edit-vendor/{id?}',[FormController::class,'vendoradd']);
-Route::get('delete-vendor/{id?}',[FormController::class,'delete_vendor']);
-
-Route::get('careershow', [FormController::class, 'careershow'])->name('careershow');
-Route::match(['get','post'],'add-edit-career/{id?}',[FormController::class,'add_career']);
-Route::get('delete-career/{id?}',[FormController::class,'delete_career']);
-
-//Routes by Sanchit
-Route::get('title', [FormController::class, 'title'])->name('title');
-Route::match(['get','post'],'add-edit-title/{id?}',[FormController::class,'add_title']);
-Route::get('delete-title/{id?}',[FormController::class,'delete_title']);
-Route::get('title-image/{id?}', [FormController::class, 'title_image'])->name('title_image');
-Route::match(['get','post'],'add-titleimage/{id?}',[FormController::class,'add_image']);
-Route::get('delete-imagetitle/{id?}', [FormController::class, 'delete_image']);
-Route::get('eventactivities/{id?}', [FormController::class, 'eventactivities'])->name('eventactivities');
-
-Route::get('event-activity', [FormController::class,'event_activity_show']);
-
-//Routes for Clubs,commiittees, About us, Journey Start
-Route::post('add-cells-image', [FormController::class, 'add_cells_image']);
-Route::post('add-committee-image', [FormController::class, 'add_Committee_image']);
-Route::post('add-club-image', [FormController::class, 'add_club_image']);
-Route::get('cells-image/{id?}', [FormController::class, 'cells_image']);
-Route::get('committee-image/{id?}', [FormController::class, 'committee_image']);
-Route::get('club-image/{id?}', [FormController::class, 'club_image']);
-Route::get('cells-images-delete/{id?}',[FormController::class,'delete_cells_image']);
-Route::get('committee-images-delete/{id?}',[FormController::class,'delete_committee_image']);
-Route::get('club-images-delete/{id?}',[FormController::class,'delete_club_image']);
-
-
-Route::get('cells', [FormController::class, 'cells_list']);
-Route::get('manage-cells',[FormController::class,'view_cells']);
-Route::get('delete-cells/{id?}',[FormController::class,'delete_cells'])->name('deletecells');
-Route::get('manage-clubs',[FormController::class,'view_club']);
-Route::get('delete-club/{id?}',[FormController::class,'delete_club'])->name('deleteclub');
-Route::get('manage-committee',[FormController::class,'view_committee']);
-Route::get('delete-committee/{id?}',[FormController::class,'delete_committee'])->name('deletecommittee');
-Route::match(['get','post'],'add-edit-club/{id?}',[FormController::class,'add_club'])->name('addclub');
-Route::match(['get','post'],'add-edit-committee/{id?}',[FormController::class,'add_committee'])->name('addcommittee');
-Route::match(['get','post'],'add-edit-cells/{id?}',[FormController::class,'add_cells'])->name('addcells');
-//Routes for Clubs,commiittees End
-
-//Organization Journey Routes Start
-//oug journey
-Route::get('journey-value', [AdminController::class, 'journey_value']);
-Route::get('Org-journey/{id?}',[AdminController::class,'Org_journey']);
-Route::get('Org-journey-index',[AdminController::class,'Org_journey_index'])->name('Org_journey_index');
-Route::match(['get','post'],'add-journey-edit-org/{id?}',[AdminController::class,'add_journey_edit_org']);
-//oug journey
-//Organization Journey Routes End
-
-
-
-//press & media
-Route::get('press-media-delete/{id?}',[AdminController::class,'press_media_delete']);
-Route::get('press-media',[AdminController::class,'press_media_index']);
-Route::match(['get','post'],'add-press-media-edit-org/{id?}',[AdminController::class,'add_press_media_edit_org']);
-
-//Monu - Student,Journal, Wellness, Faculty
-//student council
-Route::get('student-list',[FormController::class, 'student_list']);
-Route::get("/student-council",[FormController::class,'student_council_index']);
-Route::match(['get','post'],'add-edit-Student-Council/{id?}',[FormController::class,'Add_student_council'])->name('aadstudentcouncil');
-Route::get('delete-studentcouncil/{id}',[FormController::class,'Delete_studentcouncil']);
-
-
-//student council
-Route::get('student-list',[FormController::class, 'student_list']);
-Route::get("/student-council",[FormController::class,'student_council_index']);
-Route::match(['get','post'],'add-edit-Student-Council/{id?}',[FormController::class,'Add_student_council'])->name('aadstudentcouncil');
-Route::get('delete-studentcouncil/{id}',[FormController::class,'Delete_studentcouncil']);
-
-//journal-publications
-Route::get('student-list',[FormController::class, 'student_list']);
-Route::get("/journal-publications",[FormController::class,'journal_publications_index']);
-Route::match(['get','post'],'add-edit-journal-publications/{id?}',[FormController::class,'Add_journal_publications'])->name('aadstudentcouncil');
-Route::get('delete-journal-publications/{id}',[FormController::class,'Delete_journal_publications']);
-
-//journal-publications-child
-Route::get("/journal-publications-page/{id?}",[FormController::class,'journal_publications_page_index']);
-Route::match(['get','post'],'add-edit-journal-publications_page/{id?}',[FormController::class,'Add_journal_publications_page'])->name('aadstudentcouncil');
-Route::get('delete-journal-publications_page/{id}',[FormController::class,'Delete_journal_publications_page']);
-
-Route::get('journal_id', [FormController::class, 'journal_id']);
-
-Route::get('journal-publications-list', [FormController::class, 'journal_publications_list']);
-
-//ANTI-RAGGING POLICY
-Route::get('student-list',[FormController::class, 'student_list']);
-Route::get("/ANTI-RAGGING",[FormController::class,'ANTI_RAGGING_index']);
-Route::match(['get','post'],'add-edit-ANTI-RAGGING/{id?}',[FormController::class,'add_ANTI_RAGGING'])->name('addANTIRAGGING');
-Route::get('delete-ANTI-RAGGING/{id}',[FormController::class,'delete_ANTI_RAGGING']);
-
-
-
-//11 july Wellness Facilities
-Route::get("/Wellness-Facilities",[FormController::class,'Wellness_Facilities_Index']);
-Route::match(['get','post'],'add-edit-Wellness-Facilities/{id?}',[FormController::class,'add_Wellness_Facilities'])->name('addWellnessFacilities');
-Route::get('delete-Wellness-Facilities/{id}',[FormController::class,'delete_Wellness_Facilities']);
-Route::post('Add-Wellness-image',[FormController::class,'add_Wellness_image']);
-Route::post('edit-Wellness-image/{id?}',[FormController::class,'edit_Wellness_image']);
-Route::get('wellness-facilities/{id}',[FormController::class,'Wellness_index']);
-Route::get('delete-Wellness-image/{id}',[FormController::class,'delete_Wellness_index']);
-Route::get("/Wellness_Facilities-id",[FormController::class,'Wellness_Facilities_index_id']);
-Route::get('Wellness-Facilities-id', [FormController::class, 'Wellness_Facilities_id']);
 
 
 //RIT module
-Route::get("/RTI",[FormController::class,'view_rti']);
-Route::match(['get','post'],'add-edit-RTI/{id?}',[FormController::class,'add_RTI'])->name('addRTI');
+Route::get("/RTI",[FormController::class,'view_RTI']);
+Route::match(['get','post'],'add-edit-RTI/{id?}',[FormController::class,'Add_Edit_RTI'])->name('addRTI');
 Route::get('delete-RTI/{id}',[FormController::class,'delete_RTI']);
-Route::get("/Rti-Section",[FormController::class,'view_rti_section']);
+Route::get('View-RTI/{id}',[FormController::class,'Show_RTI']);
 
-Route::post("/add-rit-pdf",[FormController::class,'add_rit_pdf']);
-Route::post("/edit-rit-pdf/{id?}",[FormController::class,'edit_rti_section']);
-Route::get("/delete-rit-pdf/{id?}",[FormController::class,'delete_rti_section']);
+
+//rti section 2
+Route::get("/Rti-Section",[FormController::class,'view_AnnualAudit_RTI']);
+Route::post("/add-rit-pdf",[FormController::class,'Add_AnnualAudit_RTI']);
+Route::post("/edit-rit-pdf/{id?}",[FormController::class,'Edit_AnnualAudit_RTI']);
+Route::get("/delete-rit-pdf/{id?}",[FormController::class,'Delete_AnnualAudit_RTI']);
+
+
+//rti section Quarterly
+Route::get("/view-rti",[FormController::class,'view_Quarter_RTI']);
+Route::post("/add_rit",[FormController::class,'Add_Quarter_RTI']);
+Route::post("/edit_rit/{id?}",[FormController::class,'Edit_Quarter_RTI']);
+Route::get("/delete_rit/{id?}",[FormController::class,'Delete_Quarter_RTI']);
+
+
 Route::get("/rti-pdfsection",[FormController::class,'pdf_section']);
-
-Route::get("/view-rti",[FormController::class,'view_rti_QUARTER']);
-Route::post("/add_rit",[FormController::class,'add_rit_QUARTER']);
-Route::post("/edit_rit/{id?}",[FormController::class,'edit_rit_QUARTER']);
-Route::get("/delete_rit/{id?}",[FormController::class,'delete_rit_QUARTER']);
 Route::get("/rti-pdfsection",[FormController::class,'rit_QUARTER']);
 Route::get("/rti-QUARTER-data",[FormController::class,'rti_QUARTER_data']);
 
 
-Route::get('manage-options-master',[AdminController::class,'View_OptionMaster'])->name('optionsmaster');
+// Route::get('manage-options-master',[AdminController::class,'View_OptionMaster'])->name('optionsmaster');
+//menu part
+Route::get('/submenushow',[AdminController::class,'submenushow']);
 Route::get('manage-main-menu',[AdminController::class,'View_Menus'])->name('menusetting');
 Route::match(['get','post'],'add-edit-menu/{id?}',[AdminController::class,'Add_Menu']);
 Route::match(['get','post'],'add-edit-sub-menu/{id?}',[AdminController::class,'Add_SubMenu']);
-Route::get('/submenushow',[AdminController::class,'submenushow']);
 Route::match(['get','post'],'add-edit-child-menu/{id?}',[AdminController::class,'Add_childMenu']);
+Route::get('delete-quicklink/{id}',[AdminController::class,'Delete_QuickLink']);
+Route::get('manage-quick-links',[AdminController::class,'View_QuickLinks'])->name('quicklink');
+Route::post('manage-quick-links',[AdminController::class,'View_QuickLinks'])->name('quicklink');
+Route::match(['get','post'],'add-edit-quicklink/{id?}',[AdminController::class,'Add_QuickLink']);
+
+Route::get('manage-people-department',[FormController::class,'View_department'])->name('people_department');
+Route::get('change-status/{status}/{id}',[AdminController::class,'Admin_StatusChange']);
+Route::match(['get','post'],'assign-role/{id}',[FormController::class,'Assign_Roles']);
+
+Route::get('manage-people-section',[FormController::class,'View_OrganisationStructure'])->name('people');
+Route::post('manage-people-section',[FormController::class,'View_OrganisationStructure'])->name('people');
+
+Route::get('menu-status-change/{type}/{id}/{status}',[AdminController::class,'Menu_StatusChange']);
+Route::get('status-change/{status}/{id}/{db}',[AdminController::class,'StatusChange']);
+
+Route::get('/Department_info',[AdminController::class,'Department_info']);
+Route::match(['get','post'],'add-edit-sub-child-menu/{id?}',[AdminController::class,'add_sub_child_menu'])->name('addsubchilmenu');
+Route::get('/childmenushow',[AdminController::class,'childmenushow']);
+
+//profile section url
+Route::get("/manage-people-profile/{id?}",[FormController::class,'view_biography']);
+Route::match(['get','post'],'add-edit-profile/{id?}',[FormController::class,'Add_biography'])->name('add_biography');
+Route::get('delete-profile/{id}',[FormController::class,'Delete_biography']);
+
+
+
+
+Route::match(['get','post'],'permissions/{id}',[FormController::class,'Add_Permissions']);
+
+//super admin part
 Route::get('manage-site-setting',[AdminController::class,'View_SiteSetting'])->name('sitesetting');
 Route::match(['get','post'],'Add-Edit-site-setting/{id?}',[AdminController::class,'Add_SiteSetting']);
+Route::match(['get','post'],'add-headers',[UIController::class,'Add_Topbar'])->name('addtopbar');
+Route::match(['get','post'],'add-footers',[UIController::class,'Add_Footbar'])->name('addfooter');
+
 Route::get('delete-people/{id}',[FormController::class,'Delete_OrganisationStructure']);
 Route::get('delete-department/{id}',[FormController::class,'Delete_department']);
 Route::get('delete-announcements/{id}',[FormController::class,'Delete_Announcement']);
 Route::get('delete-optionsmaster/{id}',[AdminController::class,'Delete_OptionMaster']);
 // Route::get('delete-banner/{id}',[AdminController::class,'Delete_Banners']);
 Route::get('delete-usp/{id}',[AdminController::class,'Delete_USP']);
-Route::get('delete-quicklink/{id}',[AdminController::class,'Delete_QuickLink']);
+
+
+
+
+
+//some route
 Route::get('manage-headers',[UIController::class,'MTopBar'])->name('topbar');
-// Route::get('manage-banners-sliders',[AdminController::class,'View_Banners'])->name('banners');
-// Route::get('manage-banners-sliders_detail',[AdminController::class,'View_Banners_detail']);
-// Route::match(['get','post'],'add-edit-bannerdetail/{id?}',[AdminController::class,'Add_Banners_detail']);
-// Route::get(' Delete_Banners_detail/{id}',[AdminController::class,' Delete_Banners_detail']);
+Route::get('manage-banners-sliders',[AdminController::class,'View_Banners'])->name('banners');
+Route::get('manage-banners-sliders_detail',[AdminController::class,'View_Banners_detail']);
+Route::match(['get','post'],'add-edit-bannerdetail/{id?}',[AdminController::class,'Add_Banners_detail']);
+Route::get(' Delete_Banners_detail/{id}',[AdminController::class,' Delete_Banners_detail']);
 Route::get('file-to-url',[UIController::class,'FileToURL'])->name('filetourl');
 Route::get('manage-usps',[AdminController::class,'View_USPs'])->name('usp');
 Route::get('manage-home-sliders',[UIController::class,'MSliderH'])->name('homeslider');
@@ -447,31 +493,16 @@ Route::get('manage-footers',[UIController::class,'MFooterS'])->name('footer');
 Route::get('manage-usp-section',[UIController::class,'MUSP'])->name('usps');
 Route::get('manage-upcoming-section',[UIController::class,'MUPC'])->name('upcoming');
 Route::get('manage-gallery-section',[UIController::class,'MHG'])->name('homegallery');
-
-Route::get('manage-quick-links',[AdminController::class,'View_QuickLinks'])->name('quicklink');
-Route::post('manage-quick-links',[AdminController::class,'View_QuickLinks'])->name('quicklink');
-
 Route::get('manage-announcement-section',[FormController::class,'View_Announcements'])->name('announcements');
-Route::get('manage-people-section',[FormController::class,'View_OrganisationStructure'])->name('people');
-Route::post('manage-people-section',[FormController::class,'View_OrganisationStructure'])->name('people');
-Route::get('manage-people-department',[FormController::class,'View_department'])->name('people_department');
-Route::get('change-status/{status}/{id}',[AdminController::class,'Admin_StatusChange']);
-Route::match(['get','post'],'assign-role/{id}',[FormController::class,'Assign_Roles']);
 Route::match(['get','post'],'add-edit-file2url',[UIController::class,'Add_F2U']);
 Route::get('delete-file2url/{id}',[UIController::class,'Delete_F2U']);
 
-//profile section url
-Route::get("/manage-people-profile/{id?}",[FormController::class,'view_biography']);
-Route::match(['get','post'],'add-edit-profile/{id?}',[FormController::class,'Add_biography'])->name('add_biography');
-Route::get('delete-profile/{id}',[FormController::class,'Delete_biography']);
 
 
-Route::match(['get','post'],'create-database',[AdminController::class,'Create_DataBase']);
-Route::match(['get','post'],'permissions/{id}',[FormController::class,'Add_Permissions']);
-Route::match(['get','post'],'add-headers',[UIController::class,'Add_Topbar'])->name('addtopbar');
-Route::match(['get','post'],'add-footers',[UIController::class,'Add_Footbar'])->name('addfooter');
+
+// Route::match(['get','post'],'create-database',[AdminController::class,'Create_DataBase']);
 // Route::match(['get','post'],'add-edit-banner/{id?}',[AdminController::class,'Add_Banners'])->name('addBanner');
-Route::match(['get','post'],'add-edit-quicklink/{id?}',[AdminController::class,'Add_QuickLink']);
+
 Route::match(['get','post'],'add-edit-announcements/{id?}',[FormController::class,'Add_Announcement'])->name('addAnnouncement');
 Route::match(['get','post'],'add-edit-optionsmaster/{id?}',[AdminController::class,'Add_OptionMaster'])->name('addOptionMaster');
 Route::match(['get','post'],'add-edit-usp/{id?}',[AdminController::class,'Add_USP']);
@@ -482,18 +513,15 @@ Route::match(['get','post'],'add-home-gallery',[UIController::class,'Add_HG'])->
 Route::match(['get','post'],'add-home-usp',[UIController::class,'Add_USP'])->name('addusp');
 Route::match(['get','post'],'add-edit-people/{id?}',[FormController::class,'Add_OrganisationStructure'])->name('addpeople');
 Route::match(['get','post'],'add-edit-department/{id?}',[FormController::class,'Add_department'])->name('add_department');
-Route::match(['get','post'],'add-edit-file2url/{id?}',[UIController::class,'Add_F2U']);
+// Route::match(['get','post'],'add-edit-file2url/{id?}',[UIController::class,'Add_F2U']);
 Route::get('delete-file2url/{id}',[UIController::class,'Delete_F2U']);
 
-Route::get('menu-status-change/{type}/{id}/{status}',[AdminController::class,'Menu_StatusChange']);
-Route::get('status-change/{status}/{id}/{db}',[AdminController::class,'StatusChange']);
+
 Route::post('form-creation',[UIController::class,'CreateForm']);
 Route::match(['get','post'],'dynamic-form',[UIController::class,'CForm']);
 
 
-Route::get('/Department_info',[AdminController::class,'Department_info']);
-Route::match(['get','post'],'add-edit-sub-child-menu/{id?}',[AdminController::class,'add_sub_child_menu'])->name('addsubchilmenu');
-Route::get('/childmenushow',[AdminController::class,'childmenushow']);
+
 //my code
 
 
@@ -505,8 +533,6 @@ Route::get('/childmenushow',[AdminController::class,'childmenushow']);
 
 Route::match(['get','post'],'forgot-password',[AdminController::class,'ForgotPSW'])->name('forgotpsw');
 Route::post('/from',[frontpagecontroller::class,'front_form']);
-
-
 Route::get('/student-profile-more-info/{id}',[StudentProfileController::class,'front_profile_show_more']);
 //forget password
 
@@ -529,11 +555,8 @@ Route::get('/career',[InnerpageController::class,'career']);
 Route::get('/Tenders',[InnerpageController::class,'Tenders']);
 // Vendors Debarred
 Route::get('/Vendors-Debarred',[InnerpageController::class,'Vendors_Debarred']);
-
-
 //RTI
 Route::get('/rti',[InnerpageController::class,'RTI_view']);
-
 //journal publication
 Route::get('journal/{id?}', [InnerpageController::class, 'journal_detail']);
 //anti-raggings policy
@@ -542,7 +565,6 @@ Route::get('anti-ragging', [InnerpageController::class, 'anti_raggings']);
 Route::get('/press-media',[InnerpageController::class,'press_media']);
 //news-media
 Route::get('/news-media',[InnerpageController::class,'news_media']);
-
 Route::get('/press-media',[InnerpageController::class,'press_media']);
 Route::get('/news-media',[InnerpageController::class,'news_media']);
 Route::get('/industry-connect',[InnerpageController::class,'Industry_Connect']);

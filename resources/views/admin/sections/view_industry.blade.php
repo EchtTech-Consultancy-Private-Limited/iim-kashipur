@@ -1,6 +1,6 @@
 @extends('admin.Layout.master')
 
-@section('title', $title)
+@section('title', 'View Industry')
 
 @section('content')
 
@@ -16,7 +16,7 @@
 
                         <div class="card-body">
 
-                            <h4 class="card-title">{{ $title }}</h4>
+                            <h4 class="card-title">View Industry</h4>
 
                             <p class="card-description">
 
@@ -46,48 +46,43 @@
 
                             </p>
 
-                            @if ($id)
-                                <form class="forms-sample row col-md-12" method="POST" id="regForm"
-                                    action="{{ url('Accounts/add-edit-EventsActivites/' . $id) }}" enctype="multipart/form-data">
-                                @else
-                                    <form class="forms-sample row col-md-12" method="POST" id="regForm"
-                                        action="{{ url('Accounts/add-edit-EventsActivites') }}" enctype="multipart/form-data">
-                            @endif
 
-                            @csrf
 
-                            <div class="col-md-3">
+                            <div class="col-md-6">
+                                <label for="inputText" class="col-form-label">Date</label>
+                                <div class="">
+
+                                       <label for="inputText" class="col-form-label"><b>{{ $data->date ??'' }}</b></label>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
                                 <label for="inputText" class="col-form-label">Title</label>
                                 <div class="">
                                     <input type="text" class="form-control"
                                         name="title"placeholder="Please enter"
-                                        @if ($id) value="{{ $data->title }}" @else value="{{ old('title') }}" @endif><br>
+                                        value="{{ $data->title }}" readonly ><br>
                                     <label for="title" id="title-error" class="error"></label>
                                 </div>
                             </div>
-
                             <div class="col-md-12">
+                                <label for="inputText" class="col-form-label">Attachment File
 
-                                <label for="event" class="col-form-label">Status</label>
+                                </label>
+                                <div class="">
 
-                                    <select class="form-control" aria-label="Default select example" name="status">
+                                        @if($data->attachement_file != '')
 
-                                        <option selected>Please select status</option>
+                                        <iframe src="{{ asset('uploads/view/attach/'.$data->attachement_file) }}" height="800px"
+                                            width="100%" ></iframe>
 
-                                        <option value="1" {{ $data->status == 1 ? 'selected' : '' }}>Active</option>
 
-                                        <option value="0" {{ $data->status == 0 ? 'selected' : '' }}>Inactive</option>
+                                        @endif
 
-                                    </select>
-
-                            </div>
-
-                            <div class="col-md-12">
-                                <div class="col-sm-10">
-                                    <button type="submit" class="btn btn-primary" onclick="load();" class="form-control">Submit</button>
                                 </div>
                             </div>
-                            </form>
+
+
+
                         </div>
                     </div>
                 </div>
@@ -100,11 +95,5 @@
     </div>
 
     </div>
-
-    <script type="text/javascript">
-        CKEDITOR.replace('about_details');
-        CKEDITOR.replace('activitie');
-        CKEDITOR.replace('event');
-    </script>
 
 @endsection

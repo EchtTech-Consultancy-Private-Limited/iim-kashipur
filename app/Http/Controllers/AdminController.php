@@ -373,6 +373,7 @@ public function childmenushow(Request $request){
             if($request->isMethod('post')){
                 $request->validate([
                     'page_type'=>'required',
+                    'header'=>'required|unique:site_settings',
                 ]);
 
                 $data1->header= $request->header;
@@ -849,7 +850,7 @@ function Add_childMenu(Request $request,$id=null){
         }else{
             return redirect('Accounts/manage-admin')->with('error','You are trying to perform unethical process. Your requst is failed.');
         }
-        return redirect()->back()->with('success','Admin Entry Deleted Successfully!');
+        return redirect('Accounts/manage-admin')->with('success','Admin Entry Deleted Successfully!');
     }
 
     function ForgotPSW(Request $request){
@@ -1021,93 +1022,23 @@ function biography_add(Request $request,$id=null){
 }
 
 
-
-
-public function Org_journey($id){
-
-$exit = org_journies::where('id',dDecrypt($id))->first();
-if(!empty($exit)){
-    org_journies::find(dDecrypt($id))->delete();
-}else{
-    return back()->with('error','You are trying to perform unethical process. Your requst is failed.');
-}
-return redirect()->back()->with('success','Record Deleted Successfully');
-
-}
-
-function Org_journey_index(){
-$data=org_journies::orderBy('id','DESC')->cursor();
-return view('admin.sections.managejourney',compact('data'));
-}
-
-function add_journey_edit_org(Request $request,$id=null){
-
-    if($id){
-        $title="Edit Org Journey";
-        $data= org_journies::find(dDecrypt($id));
-        $msg="Org Journey Edited Successfully";
-    }
-    else{
-        $title="Add Org Journey";
-        $data=new  org_journies;
-        $msg="Org Journey Added Successfully";
-    }
-    if($request->isMethod('post')){
-        if($id){
-        $request->validate([
-
-            'number'=>'required',
-            'title_h'=>'required',
-            'title'=>'required',
-            'file' => 'image|mimes:jpeg,png,jpg,gif|max:2048'
-        ]);
-        }
-        else{
-             $request->validate([
-                'number'=>'required',
-                'title'=>'required|unique:org_journey',
-                'title_h'=>'required',
-                'file' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
-
-        ]);
-        }
-        $data->year=$request->number;
-        $data->title=$request->title;
-        $data->title_h=$request->title_h;
-        $data->heading=$request->heading;
-        $data->heading_h=$request->heading_h;
-        $data->slug=SlugCheck('org_journey',($request->title));
-        $data->status=$request->status;
-        if($request->hasFile('file')){
-            $path=public_path('uploads/JourneyOrg');
-            $file=$request->file('file');
-            $newname= time().rand(10,99).'.'.$file->getClientOriginalExtension();
-            $file->move($path, $newname);
-            $data->file= $newname;
-        }
-        $data->save();
-        return redirect('/Accounts/Org-journey-index')->with('success',$msg);
-    }
-    return view('admin.sections.addjourney',compact('data','id','title'));
-
-}
-
-//ajax value call
-public function journey_value()
-{
-    $data=\App\Models\org_journies::get();
-    return response()->json($data);
-}
-
+//---------------------------------------------------------------------------------------------------------------------//
 
 
 //press media
-    function press_media_index(){
+public function Show_PressMedia($id){
+    $profile=OrganisationStructure::get();
+    $data=press_media::find(dDecrypt($id))->first();
+    $data=press_media::where('id',$data->id)->first();
+    return view('admin.sections.view_press_media',['data'=>$data,'profile'=>$profile]);
+}
+
+    function View_PressMedia(){
         $data=press_media::orderBy('id','DESC')->cursor();
         return view('admin.sections.managePressMedia',compact('data'));
         }
 
-        function add_press_media_edit_org(Request $request,$id=null){
+        function Add_Edit_PressMedia(Request $request,$id=null){
             $profile=OrganisationStructure::get();
             if($id){
                 $title="Edit Press & Media";
@@ -1158,7 +1089,7 @@ public function journey_value()
             return view('admin.sections.addPressMedia',compact('data','id','title','profile'));
         }
 
-        public function press_media_delete($id){
+        public function Delete_pressMedia($id){
 
         $exit = press_media::where('id',dDecrypt($id))->first();
         if(!empty($exit)){
@@ -1169,9 +1100,6 @@ public function journey_value()
         return redirect()->back()->with('success','Record Deleted Successfully');
 
         }
-
-
-
 
 //add orgination details
 
@@ -1384,15 +1312,22 @@ function Add_OrganisationDetails(Request $request,$id=null){
 
 //client logo
 
-   function Show_ClientLogo(){
+   function View_ClientLogo(){
     $data=FileToUrl::orderBy('id','DESC')->cursor();
     return view('admin.sections.filetourl_manage',compact('data'));
 }
 
 
+
+
 function Delete_ClientLogo($id){
-    $data=FileToUrl::find(dDecrypt($id))->delete();
-    return redirect()->back()->with('success','Record Deleted Successfully');
+    $exit = FileToUrl::where('id',dDecrypt($id))->first();
+    if(!empty($exit)){
+        FileToUrl::find(dDecrypt($id))->delete();
+    }else{
+        return redirect('Accounts/manage-admin')->with('error','You are trying to perform unethical process. Your requst is failed.');
+    }
+    return redirect('Accounts/manage-admin')->with('success','Admin Entry Deleted Successfully!');
 }
 
 
@@ -1444,11 +1379,12 @@ function Add_ClientLogo(Request $request,$id=null){
      return view('admin.sections.filetourl_add',compact('data','title','id'));
     }
 
-    public function View_ClientLogo($id){
+    public function  Show_ClientLogo($id){
         $data=FileToUrl::find(dDecrypt($id))->first();
         $data=FileToUrl::where('id',$data->id)->first();
         return view('admin.sections.viewClientlogo',['data'=>$data]);
     }
+
 
 //counter
     public function delete_Counter($id){
@@ -1625,13 +1561,10 @@ function Add_ClientLogo(Request $request,$id=null){
 
 
     //news and event
-
-
-
     public function show_NewsEvent($id){
         $data=news_event::find(dDecrypt($id))->first();
         $data=news_event::where('id',$data->id)->first();
-        return view('admin.sections.view_news_event',['data'=>$data]);
+        return view('admin.sections.view',['data'=>$data]);
     }
 
     function View_NewsEvent(){
@@ -1707,6 +1640,100 @@ function Add_ClientLogo(Request $request,$id=null){
 
 
         }
+
+//org journey
+
+
+   //news and event
+    public function Show_journey($id){
+        $data=org_journies::find(dDecrypt($id))->first();
+        $data=org_journies::where('id',$data->id)->first();
+        return view('admin.sections.view_journey',['data'=>$data]);
+    }
+
+
+    public function Delete_journey($id){
+        $exit = org_journies::where('id',dDecrypt($id))->first();
+        if(!empty($exit)){
+            org_journies::find(dDecrypt($id))->delete();
+        }else{
+            return back()->with('error','You are trying to perform unethical process. Your requst is failed.');
+        }
+        return redirect()->back()->with('success','Record Deleted Successfully');
+
+    }
+
+    function View_journey(){
+        $data=org_journies::orderBy('id','DESC')->cursor();
+        return view('admin.sections.managejourney',compact('data'));
+    }
+
+            function Add_Edit_journey(Request $request,$id=null){
+
+                if($id){
+                    $title="Edit Org Journey";
+                    $data= org_journies::find(dDecrypt($id));
+                    $msg="Org Journey Edited Successfully";
+                }
+                else{
+                    $title="Add Org Journey";
+                    $data=new  org_journies;
+                    $msg="Org Journey Added Successfully";
+                }
+                if($request->isMethod('post')){
+                    if($id){
+                    $request->validate([
+
+                        'number'=>'required',
+                        'title_h'=>'required',
+                        'title'=>'required',
+                        'file' => 'image|mimes:jpeg,png,jpg,gif|max:2048'
+                    ]);
+                    }
+                    else{
+                         $request->validate([
+                            'number'=>'required',
+                            'title'=>'required|unique:org_journey',
+                            'title_h'=>'required',
+                            'file' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
+
+                    ]);
+                    }
+                    $data->year=$request->number;
+                    $data->title=$request->title;
+                    $data->title_h=$request->title_h;
+                    $data->heading=$request->heading;
+                    $data->heading_h=$request->heading_h;
+                    $data->slug=SlugCheck('org_journey',($request->title));
+                    $data->status=$request->status;
+                    if($request->hasFile('file')){
+                        $path=public_path('uploads/JourneyOrg');
+                        $file=$request->file('file');
+                        $newname= time().rand(10,99).'.'.$file->getClientOriginalExtension();
+                        $file->move($path, $newname);
+                        $data->file= $newname;
+                    }
+                    $data->save();
+                    return redirect('/Accounts/Org-journey-index')->with('success',$msg);
+                }
+                return view('admin.sections.addjourney',compact('data','id','title'));
+
+            }
+
+
+
+
+
+
+//ajax value call ---------------------------------------------------------------
+public function journey_value()
+{
+    $data=\App\Models\org_journies::get();
+    return response()->json($data);
+}
+
+
+
 
 
 

@@ -111,8 +111,11 @@
                                                                     class="ti-pencil btn-icon-append"
                                                                     style="color:black;"></i></a> &nbsp;
 
+                                                                    <a
+                                                                    href="{{ url('Accounts/show-ANTI-RAGGING/' . dEncrypt($D->id)) }}"><i
+                                                                        class="ti-eye btn-icon-append"
+                                                                        style="color:black;"></i></a> &nbsp;
 
-                                                            @if (\Auth::guard('admin')->user()->id == 1  )
 
 
                                                             <a href="{{ url('Accounts/press-media-delete/'.dEncrypt($D->id)) }}"
@@ -120,7 +123,7 @@
                                                                     class="ti-archive btn-icon-append"
                                                                     style="color:black;"></i></a>
 
-                                                            @endif
+
                                                         </td>
 
                                                     </tr>

@@ -124,6 +124,15 @@
 
 
 
+                                                                    <button type="button" class="btn btn-primary" id="view"
+                                                                    data-id="{{ $item->id }}" data-toggle="modal"
+                                                                    data-target="#exampleModalview"
+                                                                    data-whatever="@getbootstrap"><i
+                                                                        class="ti-eye btn-icon-append"
+                                                                        style="color:black;"></i></button>
+
+
+
 
                                                             <a class="btn btn-primary"
                                                                 href="{{ url('Accounts/delete_rit/' . dEncrypt($item->id)) }}"
@@ -184,9 +193,6 @@
                         </button>
 
                     </div>
-
-
-
 
                     <div class="modal-body pb-0">
 
@@ -298,6 +304,113 @@
 
         </div>
 
+{{-- view --}}
+
+
+<div class="modal fade" id="exampleModalview" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+aria-hidden="true">
+
+<div class="modal-dialog modal-md" role="document">
+
+    <div class="modal-content">
+
+        <div class="modal-header">
+
+            <h5 class="modal-title" id="exampleModalLabel">View  Pdf</h5>
+
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+
+                <span aria-hidden="true">×</span>
+
+            </button>
+
+        </div>
+
+        <div class="modal-body pb-0">
+
+                <div class="form-group col-md-6">
+
+                    <label for="filename">QUARTER-1 PDF*</label>
+
+
+
+                        <a href=""  download  class="pdf_class QUARTER_pdf1">
+
+                            <img src="{{ asset('admin/images/viewpdf.jpg') }}"  width="170" height="70">
+
+                       </a>
+
+
+
+                </div>
+
+
+                <div class="form-group col-md-6">
+
+                    <label for="filename">QUARTER-2 PDF*</label>
+
+                    <a href=""  download  class="pdf_class QUARTER_pdf2">
+
+                        <img src="{{ asset('admin/images/viewpdf.jpg') }}"  width="170" height="70">
+
+                   </a>
+
+
+
+
+
+                </div>
+                <div class="form-group col-md-6">
+
+                    <label for="filename">QUARTER-3 PDF*</label>
+
+                    <a href=""  download  class="pdf_class QUARTER_pdf3">
+
+                        <img src="{{ asset('admin/images/viewpdf.jpg') }}"  width="170" height="70">
+
+                   </a>
+
+
+
+                </div>
+
+
+                <div class="form-group col-md-6">
+
+                    <label for="filename">QUARTER-4 PDF*</label>
+
+                    <a href=""  download  class="pdf_class QUARTER_pdf4">
+
+                        <img src="{{ asset('admin/images/viewpdf.jpg') }}"  width="170" height="70">
+
+                   </a>
+
+
+
+
+                </div>
+
+
+
+                <div class="form-group col-md-6">
+
+                    <label for="image_text">year*</label>
+
+                    <input type="date" name="year" placeholder="Enter your Image Text"  readonly
+                        class="form-last-name form-control year" id="form-last-name" autocomplete="off">
+
+
+
+                </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+</div>
+
 
         <!-- multiple image table code -->
 
@@ -368,6 +481,7 @@
 
 
                             </div>
+
                             <div class="form-group col-md-6">
 
                                 <label for="filename">QUARTER-3 PDF*</label>
@@ -380,11 +494,9 @@
 
                                  <a href=""  download id='QUARTER_pdf3' class="pdf_class">
 
-     <img src="{{ asset('admin/images/viewpdf.jpg') }}"  width="170" height="70">
+                                  <img src="{{ asset('admin/images/viewpdf.jpg') }}"  width="170" height="70">
 
-  </a>
-
-
+                                     </a>
                             </div>
 
 
@@ -527,7 +639,7 @@
                     },
                     success: function(data) {
 
-                        console.log(data.item);
+                      //  console.log(data.item);
 
                         $('#form').attr('action', '{{ url('Accounts/edit_rit') }}' +
                             '/' + data.item.id)
@@ -553,6 +665,59 @@
 
             });
         </script>
+
+
+<script>
+    $(document).on("click", "#view", function() {
+        var UserName = $(this).data('id');
+        //  alert(UserName);
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+        });
+
+        $.ajax({
+            url: "{{ url('/Accounts/rti-QUARTER-data') }}",
+            type: "get",
+            data: {
+                id: UserName
+            },
+            success: function(data) {
+
+              //  console.log(data.item);
+
+
+                $('.QUARTER_pdf1').attr('href', '{{ url('uploads/rti/') }}' +
+                    '/' + data.item.pdf_first)
+                    $('.QUARTER_pdf2').attr('href', '{{ url('uploads/rti/') }}' +
+                    '/' + data.item.pdf_second)
+
+                    $('.QUARTER_pdf3').attr('href', '{{ url('uploads/rti/') }}' +
+                    '/' + data.item.pdf_third)
+
+                    $('.QUARTER_pdf4').attr('href', '{{ url('uploads/rti/') }}' +
+                    '/' + data.item.pdf_fourth)
+
+
+                $(".year").val(data.item.year);
+
+            }
+
+        });
+
+    });
+</script>
+
+
+
+
+
+
+
+
+
+
 
 <script>
     function load(){

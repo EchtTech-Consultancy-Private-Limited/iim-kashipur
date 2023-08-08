@@ -294,7 +294,7 @@
                         @endif
 
                         @if (@checkRoute('Events & Activites'))
-                            <li class="nav-item"><a class="nav-link" href="{{ route('admin.title') }}">Manage Events
+                            <li class="nav-item"><a class="nav-link" href="{{ url('Accounts/Event-Activites') }}">Manage Events
                                     & Activites</a></li>
                         @endif
 
