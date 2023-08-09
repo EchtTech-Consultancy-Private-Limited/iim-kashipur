@@ -142,24 +142,11 @@
                                                 @foreach ($gallery as $value)
                                                     <tr>
 
-
-
                                                         <td>{{ $value->id }}</td>
-
-
 
                                                         <td>{{ $value->name }}</td>
 
-
-
                                                         <td>{{ $value->name_h }}</td>
-
-
-                                                        {{--
-                          <td><img src="{{ asset('gallery/image/'.$value->cover_image) }}" alt="" title=""  style="height: 100px;  width: 100px;" ></td>
- --}}
-
-
 
                                                         <td>
                                                             @if (@checkRoute('StatusChange'))
@@ -290,15 +277,15 @@
 
 
 
-           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
 
 
 
-              <span aria-hidden="true">&times;</span>
+                  <span aria-hidden="true">&times;</span>
 
 
 
-            </button>-->
+                </button>-->
 
 
 

@@ -112,7 +112,7 @@
                                                                     style="color:black;"></i></a> &nbsp;
 
                                                                     <a
-                                                                    href="{{ url('Accounts/show-ANTI-RAGGING/' . dEncrypt($D->id)) }}"><i
+                                                                    href="{{ url('Accounts/View_pressMedia/' . dEncrypt($D->id)) }}"><i
                                                                         class="ti-eye btn-icon-append"
                                                                         style="color:black;"></i></a> &nbsp;
 
