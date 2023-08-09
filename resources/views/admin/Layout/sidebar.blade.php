@@ -47,19 +47,18 @@
 
 
 
-        @if (\Auth::guard('admin')->user()->id == 1
-
-                 || @checkRoute('View_OrganisationStructure')
-                 || @checkRoute('View_OrganisationDetails')
-                 || @checkRoute('View_Counter')
-                 || @checkRoute('view_ClientLogo')
-                 || @checkRoute('view_ClientLogo')
-                 || @checkRoute('View_NewsEvent')
-                 || @checkRoute('View_antiRagging')
-                 || @checkRoute('View_tender')
-                 || @checkRoute('View_Career')
-                 || @checkRoute('view_RTI')
-                 )
+        @if (
+            \Auth::guard('admin')->user()->id == 1 ||
+                @checkRoute('View_OrganisationStructure') ||
+                @checkRoute('View_OrganisationDetails') ||
+                @checkRoute('View_Counter') ||
+                @checkRoute('view_ClientLogo') ||
+                @checkRoute('view_ClientLogo') ||
+                @checkRoute('View_NewsEvent') ||
+                @checkRoute('View_antiRagging') ||
+                @checkRoute('View_tender') ||
+                @checkRoute('View_Career') ||
+                @checkRoute('view_RTI'))
             <li class="nav-item">
 
                 <a class="nav-link" data-toggle="collapse" href="#master" aria-expanded="false" aria-controls="master">
@@ -77,7 +76,6 @@
                     <ul class="nav flex-column sub-menu">
 
                         @if (@checkRoute('View_OrganisationDetails'))
-
                             <li class="nav-item"><a class="nav-link"
                                     href="{{ route('admin.organisation') }}">Organisation Details</a></li>
                         @endif
@@ -121,14 +119,126 @@
                                     & Events</a></li>
                         @endif
 
+                    </ul>
 
-                        @if (@checkRoute('View_PressMedia'))
-                            <li class="nav-item"><a class="nav-link" href="{{ url('Accounts/press-media') }}">Manage
-                                    Press & Media</a></li>
+                </div>
+
+            </li>
+
+        @endif
+
+
+
+
+
+        @if (
+            \Auth::guard('admin')->user()->id == 1 ||
+                @checkRoute('View_journey') ||
+                @checkRoute('View_EventsActivites') ||
+                @checkRoute('View_studentCouncil') ||
+                @checkRoute('View_journalPublications') ||
+                @checkRoute('View_WellnessFacilities'))
+
+            <li class="nav-item">
+
+                <a class="nav-link" data-toggle="collapse" href="#ui-basicss" aria-expanded="false"
+                    aria-controls="ui-basic">
+
+                    <i class="icon-layout menu-icon"></i>
+
+                    <span class="menu-title">Manage Menu Forms</span>
+
+                    <i class="menu-arrow"></i>
+
+                </a>
+
+                <div class="collapse" id="ui-basicss">
+
+                    <ul class="nav flex-column sub-menu">
+
+
+
+                        @if (@checkRoute('View_journey'))
+                            <li class="nav-item"><a class="nav-link"
+                                    href="{{ url('/Accounts/Org-journey-index') }}">Manage Our Journey</a></li>
                         @endif
 
+
+
+                        @if (@checkRoute('View_EventsActivites'))
+                            <li class="nav-item"><a class="nav-link"
+                                    href="{{ url('Accounts/Event-Activites') }}">Manage Events
+                                    & Activites</a></li>
+                        @endif
+
+                        @if (@checkRoute('View_studentCouncil'))
+                            <li class="nav-item"><a class="nav-link"
+                                    href="{{ url('Accounts/student-council') }}">Manage Student Council</a></li>
+                        @endif
+
+                        @if (@checkRoute('View_journalPublications'))
+                            <li class="nav-item"><a class="nav-link"
+                                    href="{{ url('Accounts/journal-publications') }}">Manage Journal Publications </a>
+                            </li>
+                        @endif
+
+
+                        @if (@checkRoute('View_WellnessFacilities'))
+                            <li class="nav-item"><a class="nav-link"
+                                    href="{{ url('Accounts/Wellness-Facilities') }}">Manage Wellness Facilities </a>
+                            </li>
+                        @endif
+
+
+
+
+                    </ul>
+
+                </div>
+
+            </li>
+
+        @endif
+
+
+
+        @if (
+            \Auth::guard('admin')->user()->id == 1 ||
+                @checkRoute('View_vendor') ||
+                @checkRoute('View_antiRagging') ||
+                @checkRoute('View_tender') ||
+                @checkRoute('View_Career') ||
+                @checkRoute('view_RTI') ||
+                @checkRoute('View_PressMedia'))
+
+            <li class="nav-item">
+
+                <a class="nav-link" data-toggle="collapse" href="#ui-basics" aria-expanded="false"
+                    aria-controls="ui-basic">
+
+                    <i class="icon-layout menu-icon"></i>
+
+                    <span class="menu-title">Manage Footer Forms</span>
+
+                    <i class="menu-arrow"></i>
+
+                </a>
+
+                <div class="collapse" id="ui-basics">
+
+                    <ul class="nav flex-column sub-menu">
+
+
+
+                        @if (@checkRoute('View_vendor'))
+                            <li class="nav-item"><a class="nav-link"
+                                    href="{{ route('admin.vendordebarred') }}">Manage Vendors Debarred</a></li>
+                        @endif
+
+
                         @if (@checkRoute('View_antiRagging'))
-                            <li class="nav-item"><a class="nav-link" href="{{ url('Accounts/ANTI-RAGGING') }}">Manage
+                            <li class="nav-item"><a class="nav-link"
+                                    href="{{ url('Accounts/ANTI-RAGGING') }}">Manage
                                     Anti-Ragging </a></li>
                         @endif
 
@@ -147,6 +257,13 @@
                             <li class="nav-item"><a class="nav-link" href="{{ url('Accounts/RTI') }}">Manage RTI</a>
                             </li>
                         @endif
+
+                        @if (@checkRoute('View_PressMedia'))
+                            <li class="nav-item"><a class="nav-link" href="{{ url('Accounts/press-media') }}">Manage
+                                    Press & Media</a></li>
+                        @endif
+
+
 
                     </ul>
 
@@ -181,11 +298,13 @@
                                 Setting</a></li>
 
 
-                        <li class="nav-item"> <a class="nav-link" href="{{ route('admin.topbar') }}">Manage Headers</a>
+                        <li class="nav-item"> <a class="nav-link" href="{{ route('admin.topbar') }}">Manage
+                                Headers</a>
                         </li>
 
 
-                        <li class="nav-item"> <a class="nav-link" href="{{ route('admin.footer') }}">Manage Footer</a>
+                        <li class="nav-item"> <a class="nav-link" href="{{ route('admin.footer') }}">Manage
+                                Footer</a>
                         </li>
 
 
@@ -248,18 +367,12 @@
           </li>-->
 
 
-        @if ( @checkRoute('View_Menus')
-            || @checkRoute('View_OrganisationStructure')
-            || @checkRoute('view_club')
-            || @checkRoute('view_Committee')
-            || @checkRoute('View_cells')
-            || @checkRoute('View_journey')
-            || @checkRoute('View_vendor')
-            || @checkRoute('View_EventsActivites')
-            || @checkRoute('View_studentCouncil')
-            || @checkRoute('View_journalPublications')
-            || @checkRoute('View_WellnessFacilities')
-            )
+        @if (
+            @checkRoute('View_Menus') ||
+                @checkRoute('View_OrganisationStructure') ||
+                @checkRoute('view_club') ||
+                @checkRoute('view_Committee') ||
+                @checkRoute('View_cells'))
 
             <li class="nav-item">
 
@@ -297,42 +410,6 @@
                         @if (@checkRoute('View_cells'))
                             <li class="nav-item"><a class="nav-link"
                                     href="{{ url('Accounts/manage-cells') }}">Manage Cell</a></li>
-                        @endif
-
-
-                        @if (@checkRoute('View_journey'))
-                            <li class="nav-item"><a class="nav-link"
-                                    href="{{ url('/Accounts/Org-journey-index') }}">Manage Our Journey</a></li>
-                        @endif
-
-
-                        @if (@checkRoute('View_vendor'))
-                            <li class="nav-item"><a class="nav-link"
-                                    href="{{ route('admin.vendordebarred') }}">Manage Vendors Debarred</a></li>
-                        @endif
-
-                        @if (@checkRoute('View_EventsActivites'))
-                            <li class="nav-item"><a class="nav-link"
-                                    href="{{ url('Accounts/Event-Activites') }}">Manage Events
-                                    & Activites</a></li>
-                        @endif
-
-                        @if (@checkRoute('View_studentCouncil'))
-                            <li class="nav-item"><a class="nav-link"
-                                    href="{{ url('Accounts/student-council') }}">Manage Student Council</a></li>
-                        @endif
-
-                        @if (@checkRoute('View_journalPublications'))
-                            <li class="nav-item"><a class="nav-link"
-                                    href="{{ url('Accounts/journal-publications') }}">Manage Journal Publications </a>
-                            </li>
-                        @endif
-
-
-                        @if (@checkRoute('View_WellnessFacilities'))
-                            <li class="nav-item"><a class="nav-link"
-                                    href="{{ url('Accounts/Wellness-Facilities') }}">Manage Wellness Facilities </a>
-                            </li>
                         @endif
 
 
