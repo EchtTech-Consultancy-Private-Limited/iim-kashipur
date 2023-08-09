@@ -45,6 +45,179 @@ class AdminController extends Controller
         $this->middleware('Admin');
     }
 
+
+    //org member
+
+    public function Show_OrganisationStructure($id){
+
+        $data=OrganisationStructure::find(dDecrypt($id));
+
+       $faculty_dept= FacultyDepartment::where('faculty_id',$data->id)->first();
+       if($faculty_dept)
+       {
+           $faculty_dept= FacultyDepartment::where('faculty_id',$data->id)->first();
+       }
+       else
+       {
+           $faculty_dept=new FacultyDepartment;
+       }
+       $data1=cell::get();
+       $data2=commmittee::get();
+       $data3=club::get();
+       return view('admin.sections.view_orgstructre',['data'=>$data,'data'=>$data,'faculty_dept'=>$faculty_dept,'data1'=>$data2,'data1'=>$data2,'data3'=>$data3]);
+   }
+
+
+function View_OrganisationStructure(Request $request){
+   if(!empty($request->dp))$data=OrganisationStructure::where('organisation_structures.department',$request->dp)->orderby('id','Desc')->paginate(10);
+   else $data=OrganisationStructure::orderby('id','Desc')->paginate(10);
+
+   $departments=['0'=>'Filter Department','1'=>'Director','2'=>'Chairperson','3'=>'Members','4'=>'Secretary to the Board','6'=>'Faculty Directory','7'=>'Visiting Faculty','8'=>'International Relations Chairperson','9'=>'International Relations SENIOR MEMBERS'];
+
+   $data->appends(['dp' => $request->dp]);
+
+
+   return view('admin.sections.OrganisationStructure',compact('data','departments'));
+}
+
+function Delete_OrganisationStructure($id){
+
+   $exit = OrganisationStructure::where('id',dDecrypt($id))->first();
+   if(!empty($exit)){
+       OrganisationStructure::find(dDecrypt($id))->delete();
+   }else{
+       return back()->with('error','You are trying to perform unethical process. Your requst is failed.');
+   }
+   return redirect()->back()->with('success','Record Deleted Successfully');
+
+}
+
+
+function Add_OrganisationStructure(Request $request,$id=null){
+   $data1=cell::get();
+   $data2=commmittee::get();
+   $data3=club::get();
+
+   if($id){
+       $title="Edit Organisation Structure";
+       $msg="Organisation Structure Edited Successfully!";
+       $data=OrganisationStructure::find(dDecrypt($id));
+
+       $faculty_dept= FacultyDepartment::where('faculty_id',$data->id)->first();
+       if($faculty_dept)
+       {
+           $faculty_dept= FacultyDepartment::where('faculty_id',$data->id)->first();
+       }
+       else
+       {
+           $faculty_dept=new FacultyDepartment;
+       }
+      // dd("$faculty_dept");
+
+   }
+   else{
+        $title="Add Organisation Structure";
+       $msg="Organisation Structure Added Successfully!";
+      // dd($request);
+       $data=new OrganisationStructure;
+
+         $faculty_dept=new FacultyDepartment;
+   }
+
+   if($request->isMethod('post')){
+       if($id){
+       $request->validate([
+
+               'title'=>'required',
+               'type'=>'required',
+               'phone'=>'required',
+               'email'=>'required',
+               'image'=>'image|mimes:jpeg,png,jpg,gif|max:2048'
+
+       ]);
+       }
+       else{
+           $request->validate([
+
+           'title'=>'required',
+           'type'=>'required',
+           'phone'=>'required',
+           'email'=>'required|unique:organisation_structures',
+           'image'=>'image|mimes:jpeg,png,jpg,gif|max:2048'
+
+       ]);
+   }
+
+       $data->type=$request->type;
+       $data->title=ucwords($request->title);
+       $data->title_h=$request->title_h;
+       $data->description= $request->description;
+       $data->description_h= $request->description_h;
+       $data->department= $request->department;
+       $data->department_h= $request->department_h;
+       $data->email=$request->email;
+       $data->phone=$request->phone;
+       $data->extension=$request->extension;
+       $data->designation= $request->designation;
+       $data->designation_h= $request->designation_h;
+       $data->more_designation=$request->more_designation;
+      //social mediea links
+       $data->slug=SlugCheck('organisation_structures',($request->title));
+       $data->status= $request->status;
+       $data->instagram= $request->instagram;
+       $data->Instagram_title= $request->Instagram_title;
+       $data->Facebook= $request->Facebook;
+       $data->Facebook_title=$request->Facebook_title;
+       $data->twitter=$request->twitter;
+       $data->Twitter_title=$request->Twitter_title;
+       $data->linkedin= $request->linkedin;
+       $data-> linkedIn_title= $request->linkedIn_title;
+       $data->orcid= $request->orcid;
+       $data->orcid_title=$request->orcid_title;
+       $data->webofscience=$request->webofscience;
+       $data->webofscience_title=$request->webofscience_title;
+       $data->scopus= $request->scopus;
+       $data-> scopus_title= $request->scopus_title;
+       $data->scholar= $request->scholar;
+       $data->scholar_title= $request->scholar_title;
+       $data->wellness_cootdiantors= $request->wellness_cootdiantors;
+       $data->faculty_id= $request->faculty_dept_id;
+       $data->Club= $request->Club;
+       $data->Committee= $request->Committee;
+       $data->Cell= $request->Cell;
+       $data->more_designation_h = $request->more_designation_h;
+       $data->media_coordinators= $request->media_coordinators;
+       $data->student_council=$request->Student_Council;
+
+       $path=public_path('uploads/organisation');
+       if($request->hasFile('image')){
+           $file=$request->file('image');
+           $newname= time().rand(10,99).'.'.$file->getClientOriginalExtension();
+           $file->move($path, $newname);
+           $data->image= $newname;
+       }
+
+       $data->save();
+
+
+       $faculty_dept->faculty_id=$data->id;
+       $faculty_dept->faculty_dept_id=$request->faculty_dept_id;
+       $faculty_dept->save();
+       return redirect()->route('admin.people')->with('success',$msg);
+   }
+
+   $departments=Department::all();
+
+   //return $departments;
+   return view('admin.sections.addOrganisationStructure',compact('data','title','id','departments','data1','data2','data3'));
+}
+
+
+
+
+
+
+
     function StatusChange($status,$id,$db){
 
         DB::table($db)->where('id',dDecrypt($id))->update(['status'=>$status]);
@@ -1025,81 +1198,6 @@ function biography_add(Request $request,$id=null){
 //---------------------------------------------------------------------------------------------------------------------//
 
 
-//press media
-public function Show_PressMedia($id){
-    $profile=OrganisationStructure::get();
-    $data=press_media::find(dDecrypt($id))->first();
-    $data=press_media::where('id',$data->id)->first();
-    return view('admin.sections.view_press_media',['data'=>$data,'profile'=>$profile]);
-}
-
-    function View_PressMedia(){
-        $data=press_media::orderBy('id','DESC')->cursor();
-        return view('admin.sections.managePressMedia',compact('data'));
-        }
-
-        function Add_Edit_PressMedia(Request $request,$id=null){
-            $profile=OrganisationStructure::get();
-            if($id){
-                $title="Edit Press & Media";
-                $data= press_media::find(dDecrypt($id));
-                $msg="Press & Media Edited Successfully";
-            }
-            else{
-                $title="Add Press & Media";
-                $data=new  press_media;
-                $msg="Press & Media Added Successfully";
-            }
-
-            if($request->isMethod('post')){
-                if($id){
-                $request->validate([
-                    'heading'=>'required',
-                    'heading_h'=>'required',
-                    "file"   =>  "mimes:pdf|max:10000"
-                ]);
-                }
-                else{
-                     $request->validate([
-                        'heading'=>'required|unique:press_medias',
-                        'heading_h'=>'required',
-                        "file"  => "mimes:pdf|max:10000"
-                ]);
-                }
-                $data->heading=$request->heading;
-                $data->heading_h=$request->heading_h;
-                $data->media_publication=$request->media_publication;
-                $data->publishing_link=$request->publishing_link;
-                $data->slug=SlugCheck('news_events',($request->heading));
-                $data->chairperson=$request->chairperson;
-                $data->status=$request->status;
-                $data->external=$request->external;
-
-
-                if($request->hasFile('file')){
-                    $path=public_path('uploads/prss_medias');
-                    $file=$request->file('file');
-                    $newname= time().rand(10,99).'.'.$file->getClientOriginalExtension();
-                    $file->move($path, $newname);
-                    $data->pdf= $newname;
-                }
-                $data->save();
-                return redirect('/Accounts/press-media')->with('success',$msg);
-            }
-            return view('admin.sections.addPressMedia',compact('data','id','title','profile'));
-        }
-
-        public function Delete_pressMedia($id){
-
-        $exit = press_media::where('id',dDecrypt($id))->first();
-        if(!empty($exit)){
-            press_media::find(dDecrypt($id))->delete();
-        }else{
-            return back()->with('error','You are trying to perform unethical process. Your requst is failed.');
-        }
-        return redirect()->back()->with('success','Record Deleted Successfully');
-
-        }
 
 //add orgination details
 
@@ -1560,91 +1658,8 @@ function Add_ClientLogo(Request $request,$id=null){
     }
 
 
-    //news and event
-    public function show_NewsEvent($id){
-        $data=news_event::find(dDecrypt($id))->first();
-        $data=news_event::where('id',$data->id)->first();
-        return view('admin.sections.view',['data'=>$data]);
-    }
-
-    function View_NewsEvent(){
-        $data=news_event::orderBy('id','DESC')->cursor();
-        return view('admin.sections.manageNewsEvent',compact('data'));
-        }
-
-        function add_edit_NewsEvent(Request $request,$id=null){
-
-            if($id){
-                $title="Edit News & Event";
-                $data= news_event::find(dDecrypt($id));
-                $msg="News & Event Edited Successfully";
-            }
-            else{
-                $title="Add News & Event";
-                $data=new  news_event;
-                $msg="News & Event Added Successfully";
-            }
-            if($request->isMethod('post')){
-                if($id){
-                $request->validate([
-
-                    'title'=>'required',
-                    'title_h'=>'required',
-                    'file'  => 'image|mimes:jpeg,png,jpg,gif|max:2048',
-
-                ]);
-                }
-                else{
-                     $request->validate([
-                        'title'=>'required',
-                        'title'=>'required','unique:news_events',
-                        'title_h'=>'required',
-                        'file'  =>  'image|mimes:jpeg,png,jpg,gif|max:2048',
-
-                ]);
-                }
-                $data->title=$request->title;
-                $data->title_h=$request->title_h;
-                $data->file_title=$request->file_title;
-                $data->file_alt=$request->file_alt;
-                $data->slug=SlugCheck('news_events',($request->title));
-                $data->status=$request->status;
-                $data->status=$request->status;
-                $data->external=$request->external;
-                $data->url=$request->url;
-                $data->type=$request->type;
-
-                if($request->hasFile('file')){
-                    $path=public_path('uploads/news_event');
-                    $file=$request->file('file');
-                    $newname= time().rand(10,99).'.'.$file->getClientOriginalExtension();
-                    $file->move($path, $newname);
-                    $data->image= $newname;
-                }
-                $data->save();
-                return redirect('/Accounts/News-Event')->with('success',$msg);
-            }
-            return view('admin.sections.addNewsEvent',compact('data','id','title'));
-
-        }
-
-        public function delete_NewsEvent($id){
-
-        $exit = news_event::where('id',dDecrypt($id))->first();
-        if(!empty($exit)){
-            news_event::find(dDecrypt($id))->delete();
-        }else{
-            return back()->with('error','You are trying to perform unethical process. Your requst is failed.');
-        }
-        return redirect()->back()->with('success','Record Deleted Successfully');
-
-
-        }
 
 //org journey
-
-
-   //news and event
     public function Show_journey($id){
         $data=org_journies::find(dDecrypt($id))->first();
         $data=org_journies::where('id',$data->id)->first();
