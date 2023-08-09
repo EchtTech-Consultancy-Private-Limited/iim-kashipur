@@ -14,9 +14,13 @@ class pagecontroller extends Controller
 {
 
 
+    public function Show_Content($id){
+        $data=content_page ::find(dDecrypt($id));
+       return view("admin.pages.view_content_page",['data'=>$data]);
+      }
 
 
-    public function Show_Content(){
+    public function View_Content(){
     $data =content_page::where('parent_id',NULL)->orderBy('id','DESC')->get();
     return view('admin.pages.content_list',["data"=>$data]);
     }
@@ -243,10 +247,6 @@ class pagecontroller extends Controller
     return redirect("/Accounts/pages-list")->with('success','Record Deleted Successfully');
     }
 
-    public function View_Content($id){
-      $data=content_page ::find(dDecrypt($id));
-     return view("admin.pages.view_content_page",['data'=>$data]);
-    }
 
 
     public function indexdropdown(){

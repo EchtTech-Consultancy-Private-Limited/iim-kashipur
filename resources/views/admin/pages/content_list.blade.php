@@ -70,7 +70,7 @@
 
                                 <div>
 
-                                    @if (@checkRoute('add_content_page'))
+                                    @if (@checkRoute('Add_Content'))
                                         <button type="button" class="btn btn-primary"><a
                                                 href="{{ url('/Accounts/add-page') }}?pid={{ basename(request()->url()) }}">Add
                                                 New Entry</a></button>

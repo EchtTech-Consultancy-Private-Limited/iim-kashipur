@@ -81,16 +81,15 @@ Route::get('delete-Role/{id}',[FormController::class,'Delete_Role']);
 Route::match(['get','post'],'assign-role/{id}',[FormController::class,'Assign_Roles']);
 
 
-
 //content page
-Route::GET('/pages-list',[pagecontroller::class,'Show_Content']);
+Route::GET('/pages-list',[pagecontroller::class,'View_Content']);
 Route::get('/add-page',[pagecontroller::class,'Add_Content']);
 Route::post('/add-page-act',[pagecontroller::class,'Add_Content_Submit']);
 Route::get("/update-page/{id}",[pagecontroller::class,"Update_Content"]);
 Route::post('/update_page_act/{id}',[pagecontroller::class,'Update_Content_Submit']);
 Route::GET('/delete-page/{id}',[pagecontroller::class,'Delete_Content']);
 Route::get("/pages-list/{id}",[pagecontroller::class,'Show_Content_Child']);
-Route::get('view-content/{id?}',[pagecontroller::class,'View_Content'])->name('ViewContent');
+Route::get('view-content/{id?}',[pagecontroller::class,'Show_Content'])->name('ViewContent');
 
 //some more content page
 Route::get('/dropdown', [pagecontroller::class, 'indexdropdown']);  // content page value shair in dropdown box
@@ -228,7 +227,6 @@ Route::get('delete-career/{id?}',[FormController::class,'Delete_Career']);
 
 
 //Events & Activites
-
 Route::get("/show-Events-Activites/{id?}",[FormController::class,'Show_EventsActivites']);
 Route::get('Event-Activites', [FormController::class,'View_EventsActivites'])->name('evnetActivites');
 Route::match(['get','post'],'add-edit-EventsActivites/{id?}',[FormController::class,'Add_Event_EventsActivites']);
