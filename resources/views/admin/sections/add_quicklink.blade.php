@@ -335,15 +335,6 @@
 
 
 
-<s>
-
-
-
-
-
-
-
-
 {{-- onload content page show --}}
 <script>
     $( document ).ready(function() {
