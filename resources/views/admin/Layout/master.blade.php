@@ -52,6 +52,9 @@
   <link rel="shortcut icon" href="{{asset('uploads/site-logo/'.GetOrganisationDetails('fevicon'))}}" />
 
   {{-- <script src="//cdn.ckeditor.com/4.17.2/full/ckeditor.js"></script> --}}
+  <script src="{{url('admin/js/ckeditor/ckeditor.js')}}"></script>
+
+
   <script src="{{url('admin/js/jquery-3.6.0.min.js')}}"></script>
 
 
@@ -190,7 +193,7 @@
 
        @include('admin.Layout.sidebar')
 
-
+{{--
        <div class="modal fade" id="exampleModalupdate" tabindex="-1" aria-labelledby="exampleModalLabel" data-backdrop="static">
 
         <div class="modal-dialog modal-md" role="document">
@@ -208,7 +211,7 @@
               </div>
             </div>
         </div>
-    </div>
+    </div> --}}
 
 
 

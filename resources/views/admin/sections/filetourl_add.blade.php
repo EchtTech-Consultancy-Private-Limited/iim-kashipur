@@ -155,6 +155,8 @@
 
                   </div>
 
+                  <input type="hidden"  name="status"  @if($id)  value="{{ $data->status }}"   @else   value="0" @endif >
+
 
                     <div class="clearfix"></div>
 

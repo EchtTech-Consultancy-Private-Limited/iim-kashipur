@@ -15,8 +15,7 @@
         </li>
 
 
-        @if (\Auth::guard('admin')->user()->id == 1 ||  @checkRoute('manageadmin') || @checkRoute('roles') )
-
+        @if (\Auth::guard('admin')->user()->id == 1 || @checkRoute('manageadmin') || @checkRoute('roles'))
             <li class="nav-item">
 
                 <a class="nav-link" data-toggle="collapse" href="#auth" aria-expanded="false" aria-controls="auth">
@@ -48,11 +47,7 @@
 
 
 
-        @if (
-            \Auth::guard('admin')->user()->id == 1 ||
-                @checkRoute('View_OrganisationDetails')
-                || @checkRoute('websiteIndex')
-             )
+        @if (\Auth::guard('admin')->user()->id == 1 || @checkRoute('View_OrganisationDetails') || @checkRoute('websiteIndex'))
             <li class="nav-item">
 
                 <a class="nav-link" data-toggle="collapse" href="#master" aria-expanded="false" aria-controls="master">
@@ -90,8 +85,9 @@
                         @endif
 
                         @if (@checkRoute('Manage Student Profile'))
-                            <li class="nav-item"><a class="nav-link" href="{{ url('/Accounts/view-students-profile') }}">
-                                Manage Student Profile</a></li>
+                            <li class="nav-item"><a class="nav-link"
+                                    href="{{ url('/Accounts/view-students-profile') }}">
+                                    Manage Student Profile</a></li>
                         @endif
 
 
@@ -108,7 +104,8 @@
 
 
                         @if (@checkRoute('View_Banners'))
-                            <li class="nav-item"><a class="nav-link" href="{{ url('Accounts/News-Event') }}">Manage News
+                            <li class="nav-item"><a class="nav-link" href="{{ url('Accounts/News-Event') }}">Manage
+                                    News
                                     & Events</a></li>
                         @endif
 
@@ -297,7 +294,7 @@
                         @endif
 
                         @if (@checkRoute('Events & Activites'))
-                            <li class="nav-item"><a class="nav-link" href="{{ route('admin.title') }}">Manage Events
+                            <li class="nav-item"><a class="nav-link" href="{{ url('Accounts/Event-Activites') }}">Manage Events
                                     & Activites</a></li>
                         @endif
 
@@ -364,34 +361,22 @@
 
                 <div class="collapse" id="cmspages">
 
-                    {{-- <ul class="nav flex-column sub-menu">
-              @if (@checkRoute('add_content_page'))
-                <li class="nav-item"> <a class="nav-link" href="{{ url("/Accounts/add-page") }}">Add new page</a></li>
-              @endif
-              </ul> --}}
                     <ul class="nav flex-column sub-menu">
+                         {{-- @if (@checkRoute('add_content_page'))
+                            <li class="nav-item"> <a class="nav-link" href="{{ url("/Accounts/add-page") }}">Add New Content</a></li>
+                         @endif --}}
+
                         @if (@checkRoute('content_pages_list'))
-                            <li class="nav-item"> <a class="nav-link" href="{{ url('/Accounts/pages-list') }}">Pages
-                                    List</a></li>
+                            <li class="nav-item"> <a class="nav-link" href="{{ url('/Accounts/pages-list') }}">
+                                Show Content List</a></li>
                         @endif
 
-
                     </ul>
-
-                    {{-- <ul class="nav flex-column sub-menu">
-              @if (@checkRoute('deletedata'))
-                 <li class="nav-item"> <a class="nav-link" href="{{url('/Accounts/deletedata')}}">Archive List</a></li>
-              @endif
-              </ul> --}}
-
-
-
                 </div>
-
             </li>
         @endif
 
-        @if (@checkRoute('add_gallery_data_page') || @checkRoute('show_gallery_data_list'))
+        @if (@checkRoute('View_pgallery') || @checkRoute('Show_Pgallery'))
             <li class="nav-item">
 
                 <a class="nav-link" data-toggle="collapse" href="#cmspagess" aria-expanded="false"
@@ -399,7 +384,7 @@
 
                     <i class="icon-grid-2 menu-icon"></i>
 
-                    <span class="menu-title">Manage Image Gallery</span>
+                    <span class="menu-title">Manage Photo Gallery</span>
 
                     <i class="menu-arrow"></i>
 
@@ -407,28 +392,26 @@
 
                 <div class="collapse" id="cmspagess">
 
-                    {{-- <ul class="nav flex-column sub-menu">
-              @if (@checkRoute('add_gallery_data_page'))
-                <li class="nav-item"> <a class="nav-link" href="{{ url('/Accounts/add_gallery') }}">Add Gallery</a></li>
-              @endif
-              </ul> --}}
                     <ul class="nav flex-column sub-menu">
-                        @if (@checkRoute('show_gallery_data_list'))
+
+                        {{-- @if (@checkRoute('add_gallery'))
+                        <li class="nav-item"> <a class="nav-link" href="{{ url('/Accounts/add_gallery') }}">
+                                Add Photo Gallary </a></li>
+                        @endif --}}
+
+
+                        @if (@checkRoute('View_pgallery'))
                             <li class="nav-item"> <a class="nav-link" href="{{ url('/Accounts/show_gallery') }}">
-                                    Show Gallary </a></li>
+                                Show Photo Gallary </a></li>
                         @endif
+
                     </ul>
-
-
-
                 </div>
-
             </li>
-
         @endif
 
 
-        @if (@checkRoute('add_videoget') || @checkRoute('show_videogallery'))
+        @if (@checkRoute('View_Vgallery') ||   @checkRoute('Show_Vgallery'))
 
             <li class="nav-item">
 
@@ -447,25 +430,14 @@
 
                     <ul class="nav flex-column sub-menu">
 
-
-                        @if (@checkRoute('add_videoget') )
-
-                          <li class="nav-item"> <a class="nav-link"
-                            href="{{ url('/Accounts/add_videoget') }}">Add Video Gallery</a></li>
-
-                       @endif
-
-
-                        @if (@checkRoute('show_videogallery'))
+                        @if (@checkRoute('View_Vgallery'))
                             <li class="nav-item"> <a class="nav-link"
                                     href="{{ url('/Accounts/show_videogallery') }}">Show Video Gallery</a></li>
                         @endif
+
                     </ul>
-
                 </div>
-
             </li>
-
         @endif
 
         @if (@checkRoute('add_link') || @checkRoute('show_link') || @checkRoute('View_QuickLinks'))
@@ -588,7 +560,7 @@
 
                     <i class="icon-head menu-icon"></i>
 
-                    <span class="menu-title">Contact us and Feedback</span>
+                    <span class="menu-title">Feedback List</span>
 
                     <i class="menu-arrow"></i>
 
@@ -598,9 +570,9 @@
 
                     <ul class="nav flex-column sub-menu">
 
-                        <li class="nav-item"> <a class="nav-link" href="{{ url('/Accounts/Countact-us') }}"> Contact us
+                        {{-- <li class="nav-item"> <a class="nav-link" href="{{ url('/Accounts/Countact-us') }}"> Contact us
 
-                              </a></li>
+                              </a></li> --}}
 
                         <li class="nav-item"> <a class="nav-link" href="{{ url('/Accounts/feedback') }}"> Feedback
                             </a>

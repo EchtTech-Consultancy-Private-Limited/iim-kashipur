@@ -26,7 +26,7 @@
 
                 </div>
 
-                 @endif   
+                 @endif
 
           <div class="row">
 
@@ -44,7 +44,7 @@
 
                       <button type="button" class="btn btn-primary" ><a href="{{route('admin.addBanner')}}">Add New Entry </a></button>
 
-                     
+
 
                     </div>
 
@@ -74,13 +74,13 @@
 
                               <th>Short Description</th>
 
-                            
+
 
                               <th>Status</th>
 
                               <th>Action</th>
 
-                              
+
 
                             </tr>
 
@@ -105,7 +105,7 @@
 
                               <td>{{$D->short}}</td>
 
-                            
+
                               <td>
                             @if(@checkRoute('StatusChange'))
                                 @if($D->status==1) <a href="{{url('Accounts/status-change/0/'.dEncrypt($D->id).'/banner_sliders')}}" style="color:green;">Active</a> @else <a href="{{url('Accounts/status-change/1/'.dEncrypt($D->id).'/banner_sliders')}}" style="color:red;">Inactive</a> @endif
@@ -113,17 +113,19 @@
                                 @if($D->status==1) <span" style="color:green;">Active</span> @else <span style="color:red;">Inactive</span> @endif
                             @endif
                            </td>
-  
 
                              <td>
 
                               <a href="{{url('Accounts/add-edit-banner/'.dEncrypt($D->id))}}"><i class="ti-pencil btn-icon-append" style="color:black;"></i></a> &nbsp;
 
+                              <a href="{{url('Accounts/view_banner/'.dEncrypt($D->id))}}" onclick="return confirm('Are You Sure?')"><i class="ti-eye btn-icon-append" style="color:black;"></i></a>
+
+
                               <a href="{{url('Accounts/delete-banner/'.dEncrypt($D->id))}}" onclick="return confirm('Are You Sure?')"><i class="ti-archive btn-icon-append" style="color:black;"></i></a>
 
                              </td>
 
-                              
+
 
                             </tr>
 
@@ -145,7 +147,7 @@
 
 
 
-                
+
 
               </div>
 
@@ -185,7 +187,7 @@
 
 function abc(id){
 
-  a='<?php echo asset('uploads');?>'; 
+  a='<?php echo asset('uploads');?>';
 
   src = a+"/"+id;
 

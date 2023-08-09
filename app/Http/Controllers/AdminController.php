@@ -25,6 +25,7 @@ use App\Models\multiple_profile;
 use App\Models\quick_linkcategory;
 use App\Models\OrganisationStructure;
 use App\Models\login_check;
+use App\Models\FileToUrl;
 use DB;
 use Auth;
 use Hash;
@@ -45,6 +46,7 @@ class AdminController extends Controller
     }
 
     function StatusChange($status,$id,$db){
+
         DB::table($db)->where('id',dDecrypt($id))->update(['status'=>$status]);
         return redirect()->back()->with('success','Status Changed Successfully');
     }
@@ -119,6 +121,7 @@ public function childmenushow(Request $request){
     return response()->json(['data'=>$data]);
     }
     function Menu_StatusChange($type,$id,$status){
+
         if($type=='menu'){
             if($status==0){
                 MainMenu::find(dDecrypt($id))->update(['status'=>1]);
@@ -158,23 +161,21 @@ public function childmenushow(Request $request){
                 else{
                     child_menu::find(dDecrypt($id))->update(['status'=>0]);
                 }
-
-
         }
-        elseif($type=='sub-child-menu'){
+        elseif($type=='subchildmenu'){
 
-            //dd('hii');
+
             if($status==0){
             $a=subchildmenu::find(dDecrypt($id));
             $a1=child_menu::find($a->child_id);
-         if($a1->status==0){
+            if($a1->status==0){
                 return redirect()->back()->with('error','Sub menu must be active');
             }
             else{
-                child_menu::find(dDecrypt($id))->update(['status'=>1]);}
+                subchildmenu::find(dDecrypt($id))->update(['status'=>1]);}
             }
             else{
-                child_menu::find(dDecrypt($id))->update(['status'=>0]);
+                subchildmenu::find(dDecrypt($id))->update(['status'=>0]);
             }
 
 
@@ -372,6 +373,7 @@ public function childmenushow(Request $request){
             if($request->isMethod('post')){
                 $request->validate([
                     'page_type'=>'required',
+                    'header'=>'required|unique:site_settings',
                 ]);
 
                 $data1->header= $request->header;
@@ -570,292 +572,8 @@ function Add_childMenu(Request $request,$id=null){
          }
 
 
-    function View_Banners(){
-        $data=BannerSlider::orderBy('id','ASC')->cursor();
-        return view('admin.sections.BannerSlider',compact('data'));
-    }
-
-    function Add_Banners(Request $request,$id=null){
-
-        $data2=URLList::orderBy('type','ASC')->groupBy('type')->cursor();
-        if($id){
-            $title="Edit Banner/Slider";
-            $msg="Banner/Slider Edited Successfully!";
-            $data=BannerSlider::find(dDecrypt($id));
-        }
-        else{
-
-             $title="Add Banner/Slider";
-            $msg="Banner/Slider Added Successfully!";
-            $data=new BannerSlider;
-        }
-        if($request->isMethod('post')){
-                if($id){
-                $request->validate([
-                    'title'=>'required',
-                    'type'=>'required',
-                    'image'=>'max:5120|mimes:png,jpg|dimensions:max_width=1920,min_width=1920,max_height=500,min_height=500',
-
-                ]);
-                }
-                else{
-                    if($request->type=="Banners"){
-                    $request->validate([
-                    'title'=>'required',
-                    'title'=>'required|unique:banner_sliders',
-                    'type'=>'required',
-                    'image'=>'required|max:5120|mimes:png,jpg|dimensions:max_width=1920,min_width=1920,max_height=500,min_height=500',
-                ]);
-              }
-            }
-
-            $data->title=ucwords($request->title);
-            $data->title_h=$request->title_h;
-            $data->type=$request->type;
-            $data->short=$request->sort_note;
-            $data->short_h=$request->short_h;
-            $path=public_path('banner');
-            if($request->hasFile('image')){
-                $file=$request->file('image');
-                $newname= time().rand(10,99).'.'.$file->getClientOriginalExtension();
-                $file->move($path, $newname);
-                $data->image= $newname;
-                $data->url=('banner/'.$newname);
-            }
-
-            $data->linkbutton=$request->buttonlink;
-            $data->heading1=$request->heading1;
-            $data->heading1_h=$request->heading1_h;
-            $data->video_url=$request->video_url;
-
-            $data->banner_Alt=$request->banner_Alt;
-            $data->banner_title=$request->banner_title;
 
 
-
-
-            if($request->has('external')){
-               // dd($request->all());
-                $data->external= $request->external;
-                $data->url=rtrim($request->url1,'/');
-            }
-            else{
-                $data->url="/".$request->url;
-            }
-
-            $data->save();
-            return redirect()->route('admin.banners')->with('success',$msg);
-        }
-
-        return view('admin.sections.addBannerSlider',compact('data','data2','title','id'));
-    }
-
-    function Delete_Banners($id){
-
-        $exit = BannerSlider::where('id',dDecrypt($id))->first();
-        if(!empty($exit)){
-            BannerSlider::find(dDecrypt($id))->delete();
-        }else{
-            return back()->with('error','You are trying to perform unethical process. Your requst is failed.');
-        }
-        return redirect()->back()->with('success','Record Deleted Successfully');
-
-    }
-
-    function View_OrganisationDetails(){
-        $data=Org::cursor();
-        return view('admin.sections.Organisation',compact('data'));
-    }
-
-    function Add_OrganisationDetails(Request $request,$id=null){
-
-        if($id){
-            $title="Edit Organisation Details";
-            $msg="Organisation Details Edited Successfully!";
-            $data=Org::find(dDecrypt($id));
-        }
-        else{
-             $title="Add Organisation Details";
-            $msg="Organisation Details Added Successfully!";
-            $data=new Org;
-        }
-
-        if($request->isMethod('post')){
-			if($id){
-            $request->validate([
-                'name'=>'required',
-                'contact'=>'required',
-                'email' => ['required','string','email','max:50','regex:/^([a-z0-9\+_\-]+)(\.[a-z0-9\+_\-]+)*@([a-z0-9\-]+\.)+[a-z]{2,6}$/ix'],
-                'fevicon'=>'mimes:png,jpg,ico',
-                'logo'=>'mimes:png,jpg,ico|max:1024',
-                'logo2'=>'mimes:png,jpg,ico|max:1024',
-                'logo3'=>'mimes:png,jpg,ico|max:1024',
-                'logo4'=>'mimes:png,jpg,ico|max:1024',
-                'about_image'=>'mimes:png,jpg,ico|max:1024',
-                'default_banner_image'=>'max:5120|mimes:png,jpg|dimensions:max_width=1920,max_height=500',
-            ]);}
-			else{ $request->validate([
-                'name'=>'required|unique:orgs',
-                'logo'=>'required|mimes:png,jpg,ico',
-                'fevicon'=>'required|mimes:png,jpg,ico',
-                'contact'=>'required',
-                'email' => ['required','string','email','max:50','regex:/^([a-z0-9\+_\-]+)(\.[a-z0-9\+_\-]+)*@([a-z0-9\-]+\.)+[a-z]{2,6}$/ix'],
-                'logo2'=>'mimes:png,jpg,ico|max:1024',
-                'logo3'=>'mimes:png,jpg,ico|max:1024',
-                'logo4'=>'mimes:png,jpg,ico|max:1024',
-                'about_image'=>'mimes:png,jpg,ico|max:1024',
-                'default_banner_image'=>'required|max:5120|mimes:png,jpg|dimensions:max_width=1920,max_height=500',
-            ]);}
-
-            $data->name=($request->name);
-            $data->name_h=$request->name_h;
-            $data->about_h=$request->about_h;
-            $data->about=$request->about;
-            $data->about_title=$request->about_title;
-            $data->about_Alt=$request->about_Alt;
-            $data->address=($request->address);
-            $data->email=$request->email;
-            $data->contact=$request->contact;
-            $data->location=$request->location;
-            $data->time=$request->time;
-
-            $data->facebook=$request->facebook;
-            $data->Facebook_title=$request->Facebook_title;
-            $data->Facebook_Alt=$request->Facebook_Alt;
-            $data->url_Facebook=$request->url_Facebook;
-
-
-            $data->twitter=$request->twitter;
-            $data->Twitter_title=$request->Twitter_title;
-            $data->Twitter_Alt=$request->Twitter_Alt;
-            $data->url_Twitter=$request->url_Twitter;
-
-
-            $data->instagram=$request->instagram;
-            $data->Instagram_title=$request->Instagram_title;
-            $data->Instagram_Alt=$request->Instagram_Alt;
-            $data->url_Instagram=$request->url_Instagram;
-
-
-
-
-            $data->linkedin=$request->linkedin;
-            $data->LinkedIn_title=$request->LinkedIn_title;
-            $data->LinkedIn_Alt=$request->LinkedIn_Alt;
-            $data->url_LinkedIn=$request->url_LinkedIn;
-
-
-
-
-            $data->youtube=$request->youtube;
-            $data->YouTube_title=$request->YouTube_title;
-            $data->YouTube_Alt=$request->YouTube_Alt;
-            $data->url_YouTube=$request->url_YouTube;
-
-
-
-            $data->meta_title= $request->meta_title;
-            $data->meta_keywords= $request->meta_keywords;
-            $data->meta_description= $request->meta_description;
-            $data->head_google_tags= htmlentities($request->HeadGoogleTag);
-            $data->body_google_tags= htmlentities($request->BodyGoogleTag);
-
-
-            if($request->external == 'yes' || $request->external == 'no'){
-                $data->external=$request->external;
-                $data->url=$request->url;
-                }
-                else{
-
-                    $data->url="/".$request->url;
-                    $data->external=$request->external;
-               }
-
-            $path=public_path('uploads/site-logo/');
-            if($request->hasFile('logo')){
-                $file=$request->file('logo');
-                $newname= time().rand(10,99).'.'.$file->getClientOriginalExtension();
-                $file->move($path, $newname);
-                $data->logo= $newname;
-            }
-
-            $data->Logo_Title1=$request->Logo_Title1;
-            $data->Logo_Alt1=$request->Logo_Alt1;
-            $data->url_logo=$request->url_logo;
-
-
-            if($request->hasFile('logo2')){
-                $file2=$request->file('logo2');
-                $newname2= time().rand(10,99).'.'.$file2->getClientOriginalExtension();
-                $file2->move($path, $newname2);
-                $data->logo2= $newname2;
-            }
-            $data->url_logo2=$request->url_logo2;
-            $data->Logo_Title2=$request->Logo_Title2;
-            $data->Logo_Alt2=$request->Logo_Alt2;
-
-
-
-            if($request->hasFile('logo3')){
-                $file3=$request->file('logo3');
-                $newname3= time().rand(10,99).'.'.$file3->getClientOriginalExtension();
-                $file3->move($path, $newname3);
-                $data->logo3= $newname3;
-            }
-            $data->url_logo3=$request->url_logo3;
-            $data->Logo_Title3=$request->Logo_Title3;
-            $data->Logo_Alt3=$request->Logo_Alt3;
-
-
-            if($request->hasFile('logo4')){
-                $file4=$request->file('logo4');
-                $newname4= time().rand(10,99).'.'.$file4->getClientOriginalExtension();
-                $file4->move($path, $newname4);
-                $data->logo4= $newname4;
-            }
-
-            $data->url_logo4=$request->url_logo4;
-            $data->Logo_Title4=$request->Logo_Title4;
-            $data->Logo_Alt4=$request->Logo_Alt4;
-
-
-
-
-             if($request->hasFile('fevicon')){
-                $file1=$request->file('fevicon');
-                $newname1= time().rand(10,99).'.'.$file1->getClientOriginalExtension();
-                $file1->move($path, $newname1);
-                $data->fevicon= $newname1;
-            }
-            /*$data->fevicon_Title=$request->fevicon_Title;
-            $data->fevicon_Alt=$request->fevicon_Alt;banner
-            $data->url_fevicon=$request->url_fevicon;SKP*/
-
-
-            if($request->hasFile('about_image')){
-                $file5=$request->file('about_image');
-                $newname5= time().rand(10,99).'.'.$file5->getClientOriginalExtension();
-                $file5->move($path, $newname5);
-                $data->about_image= $newname5;
-            }
-
-            if($request->hasFile('default_banner_image')){
-                $file6=$request->file('default_banner_image');
-                $newname6= time().rand(10,99).'.'.$file6->getClientOriginalExtension();
-                $file6->move($path, $newname6);
-                $data->default_banner_image= $newname6;
-            }
-            $data->Default_Banner_tittle=$request->Default_Banner_tittle;
-            $data->Default_Banner_alt=$request->Default_Banner_alt;
-
-
-
-            $data->save();
-            Cache::forget('organization_details');
-            return redirect()->route('admin.organisation')->with('success',$msg);
-        }
-        return view('admin.sections.addOrganisation',compact('data','title','id'));
-    }
 
     function Add_OptionMaster(Request $request,$id=null){
         $data1=OptionsDump::groupBy('main')->get();
@@ -911,17 +629,6 @@ function Add_childMenu(Request $request,$id=null){
           return redirect()->back()->with('success','Record Deleted Successfully');
     }
 
-     function Delete_OrganisationDetails($id){
-
-          $exit = Org::where('id',dDecrypt($id))->first();
-          if(!empty($exit)){
-            Org::find(dDecrypt($id))->delete();
-          }else{
-              return back()->with('error','You are trying to perform unethical process. Your requst is failed.');
-          }
-          return redirect()->back()->with('success','Record Deleted Successfully');
-    }
-
     function Login(Request $request)
     {
 
@@ -949,8 +656,8 @@ function Add_childMenu(Request $request,$id=null){
 
                 $data=Admin::find(\Auth::guard('admin')->user()->id);
                 $userId = Auth::guard('admin')->user()->id;
-
-                $sqlUpdate = DB::table('admins')->where('id', $userId)->update(array('login_time'=>date('d-m-Y H:i:s'),'ip'=>$request->ip(),'login_check'=>'1'));
+                $br= $this->getBrowser();
+                $sqlUpdate = DB::table('admins')->where('id', $userId)->update(array('login_time'=>date('d-m-Y H:i:s'),'ip'=>$request->ip(),'user_agent'=>$br['name'],'login_check'=>'1'));
 
                 return redirect()->route('admin.dashboard')->with('success','Hello '.$data->name.'. Welcome to admin panel !');
             }
@@ -964,6 +671,81 @@ function Add_childMenu(Request $request,$id=null){
         }
         return view('admin.index')->with(compact('title'));
     }
+
+    function getBrowser() {
+        $u_agent = $_SERVER['HTTP_USER_AGENT'];
+        $bname = 'Unknown';
+        $platform = 'Unknown';
+        $version= "";
+
+        //First get the platform?
+        if (preg_match('/linux/i', $u_agent)) {
+          $platform = 'linux';
+        }elseif (preg_match('/macintosh|mac os x/i', $u_agent)) {
+          $platform = 'mac';
+        }elseif (preg_match('/windows|win32/i', $u_agent)) {
+          $platform = 'windows';
+        }
+
+        // Next get the name of the useragent yes seperately and for good reason
+        if(preg_match('/MSIE/i',$u_agent) && !preg_match('/Opera/i',$u_agent)){
+          $bname = 'Internet Explorer';
+          $ub = "MSIE";
+        }elseif(preg_match('/Firefox/i',$u_agent)){
+          $bname = 'Mozilla Firefox';
+          $ub = "Firefox";
+        }elseif(preg_match('/OPR/i',$u_agent)){
+          $bname = 'Opera';
+          $ub = "Opera";
+        }elseif(preg_match('/Chrome/i',$u_agent) && !preg_match('/Edge/i',$u_agent)){
+          $bname = 'Google Chrome';
+          $ub = "Chrome";
+        }elseif(preg_match('/Safari/i',$u_agent) && !preg_match('/Edge/i',$u_agent)){
+          $bname = 'Apple Safari';
+          $ub = "Safari";
+        }elseif(preg_match('/Netscape/i',$u_agent)){
+          $bname = 'Netscape';
+          $ub = "Netscape";
+        }elseif(preg_match('/Edge/i',$u_agent)){
+          $bname = 'Edge';
+          $ub = "Edge";
+        }elseif(preg_match('/Trident/i',$u_agent)){
+          $bname = 'Internet Explorer';
+          $ub = "MSIE";
+        }
+
+        // finally get the correct version number
+        $known = array('Version', $ub, 'other');
+        $pattern = '#(?<browser>' . join('|', $known) .
+      ')[/ ]+(?<version>[0-9.|a-zA-Z.]*)#';
+        if (!preg_match_all($pattern, $u_agent, $matches)) {
+          // we have no matching number just continue
+        }
+        // see how many we have
+        $i = count($matches['browser']);
+        if ($i != 1) {
+          //we will have two since we are not using 'other' argument yet
+          //see if version is before or after the name
+          if (strripos($u_agent,"Version") < strripos($u_agent,$ub)){
+              $version= $matches['version'][0];
+          }else {
+              $version= $matches['version'][1];
+          }
+        }else {
+          $version= $matches['version'][0];
+        }
+
+        // check if we have a number
+        if ($version==null || $version=="") {$version="?";}
+
+        return array(
+          'userAgent' => $u_agent,
+          'name'      => $bname,
+          'version'   => $version,
+          'platform'  => $platform,
+          'pattern'    => $pattern
+        );
+      }
 
 
     function Dashboard(){
@@ -1068,7 +850,7 @@ function Add_childMenu(Request $request,$id=null){
         }else{
             return redirect('Accounts/manage-admin')->with('error','You are trying to perform unethical process. Your requst is failed.');
         }
-        return redirect()->back()->with('success','Admin Entry Deleted Successfully!');
+        return redirect('Accounts/manage-admin')->with('success','Admin Entry Deleted Successfully!');
     }
 
     function ForgotPSW(Request $request){
@@ -1150,72 +932,7 @@ function Add_childMenu(Request $request,$id=null){
 // my code
 
 
-public function project_index($id)
-{
-    $exit = project_logo::where('id',dDecrypt($id))->first();
-    if(!empty($exit)){
-        project_logo::find(dDecrypt($id))->delete();
-    }else{
-        return back()->with('error','You are trying to perform unethical process. Your requst is failed.');
-    }
-    return redirect()->back()->with('success','Record Deleted Successfully');
-}
 
-
-
-    function website_index(){
-    $data=project_logo::orderBy('id','DESC')->cursor();
-    return view('admin.sections.manage_index',compact('data'));
-   }
-
-
-    function add_edit_project_logo(Request $request,$id=null){
-
-    if($id){
-        $title="Edit Project Counter";
-        $data= project_logo::find(dDecrypt($id));
-        $msg="project logo Edited Successfully";
-    }
-    else{
-        $title="Add Project Counter";
-        $data=new  project_logo;
-        $msg="project logo Added Successfully";
-
-    }
-    if($request->isMethod('post')){
-        if($id){
-        $request->validate([
-
-            'name'=>'required',
-            'number'=>'required',
-            'name_h'=>'required',
-        ]);
-        }
-        else{
-             $request->validate([
-
-            'name'=>'required|unique:project_logos',
-            'number'=>'required',
-            'name_h'=>'required',
-        ]);
-        }
-
-        $data->number=$request->number;
-        $data->name=$request->name;
-        $data->name_h=$request->name_h;
-        if($request->hasFile('image')){
-            $path=public_path('uploads/project_icons');
-            $file=$request->file('image');
-            $newname= time().rand(10,99).'.'.$file->getClientOriginalExtension();
-            $file->move($path, $newname);
-            $data->image= $newname;
-        }
-        $data->save();
-        return redirect('/Accounts/website-index')->with('success',$msg);
-    }
-    return view('admin.sections.addproject_logo',compact('data','id','title'));
-
-}
 
 //who is who dropdown
 
@@ -1305,165 +1022,23 @@ function biography_add(Request $request,$id=null){
 }
 
 
+//---------------------------------------------------------------------------------------------------------------------//
 
-
-public function Org_journey($id){
-
-$exit = org_journies::where('id',dDecrypt($id))->first();
-if(!empty($exit)){
-    org_journies::find(dDecrypt($id))->delete();
-}else{
-    return back()->with('error','You are trying to perform unethical process. Your requst is failed.');
-}
-return redirect()->back()->with('success','Record Deleted Successfully');
-
-}
-
-function Org_journey_index(){
-$data=org_journies::orderBy('id','DESC')->cursor();
-return view('admin.sections.managejourney',compact('data'));
-}
-
-function add_journey_edit_org(Request $request,$id=null){
-
-    if($id){
-        $title="Edit Org Journey";
-        $data= org_journies::find(dDecrypt($id));
-        $msg="Org Journey Edited Successfully";
-    }
-    else{
-        $title="Add Org Journey";
-        $data=new  org_journies;
-        $msg="Org Journey Added Successfully";
-    }
-    if($request->isMethod('post')){
-        if($id){
-        $request->validate([
-
-            'number'=>'required',
-            'title_h'=>'required',
-            'title'=>'required',
-            'file' => 'image|mimes:jpeg,png,jpg,gif|max:2048'
-        ]);
-        }
-        else{
-             $request->validate([
-                'number'=>'required',
-                'title'=>'required|unique:org_journey',
-                'title_h'=>'required',
-                'file' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
-
-        ]);
-        }
-        $data->year=$request->number;
-        $data->title=$request->title;
-        $data->title_h=$request->title_h;
-        $data->heading=$request->heading;
-        $data->heading_h=$request->heading_h;
-        $data->slug=SlugCheck('org_journey',($request->title));
-        $data->status=$request->status;
-        if($request->hasFile('file')){
-            $path=public_path('uploads/JourneyOrg');
-            $file=$request->file('file');
-            $newname= time().rand(10,99).'.'.$file->getClientOriginalExtension();
-            $file->move($path, $newname);
-            $data->file= $newname;
-        }
-        $data->save();
-        return redirect('/Accounts/Org-journey-index')->with('success',$msg);
-    }
-    return view('admin.sections.addjourney',compact('data','id','title'));
-
-}
-
-//ajax value call
-public function journey_value()
-{
-    $data=\App\Models\org_journies::get();
-    return response()->json($data);
-}
-
-function News_Event_index(){
-    $data=news_event::orderBy('id','DESC')->cursor();
-    return view('admin.sections.manageNewsEvent',compact('data'));
-    }
-
-    function add_news_edit_org(Request $request,$id=null){
-
-        if($id){
-            $title="Edit News & Event";
-            $data= news_event::find(dDecrypt($id));
-            $msg="News & Event Edited Successfully";
-        }
-        else{
-            $title="Add News & Event";
-            $data=new  news_event;
-            $msg="News & Event Added Successfully";
-        }
-        if($request->isMethod('post')){
-            if($id){
-            $request->validate([
-
-                'title'=>'required',
-                'title_h'=>'required',
-                'file'  => 'image|mimes:jpeg,png,jpg,gif|max:2048',
-
-            ]);
-            }
-            else{
-                 $request->validate([
-                    'title'=>'required',
-                    'title'=>'required','unique:news_events',
-                    'title_h'=>'required',
-                    'file'  =>  'image|mimes:jpeg,png,jpg,gif|max:2048',
-
-            ]);
-            }
-            $data->title=$request->title;
-            $data->title_h=$request->title_h;
-            $data->file_title=$request->file_title;
-            $data->file_alt=$request->file_alt;
-            $data->slug=SlugCheck('news_events',($request->title));
-            $data->status=$request->status;
-            $data->status=$request->status;
-            $data->external=$request->external;
-            $data->url=$request->url;
-            $data->type=$request->type;
-
-            if($request->hasFile('file')){
-                $path=public_path('uploads/news_event');
-                $file=$request->file('file');
-                $newname= time().rand(10,99).'.'.$file->getClientOriginalExtension();
-                $file->move($path, $newname);
-                $data->image= $newname;
-            }
-            $data->save();
-            return redirect('/Accounts/News-Event')->with('success',$msg);
-        }
-        return view('admin.sections.addNewsEvent',compact('data','id','title'));
-
-    }
-
-    public function News_Event_delete($id){
-
-    $exit = news_event::where('id',dDecrypt($id))->first();
-    if(!empty($exit)){
-        news_event::find(dDecrypt($id))->delete();
-    }else{
-        return back()->with('error','You are trying to perform unethical process. Your requst is failed.');
-    }
-    return redirect()->back()->with('success','Record Deleted Successfully');
-
-
-    }
 
 //press media
-    function press_media_index(){
+public function Show_PressMedia($id){
+    $profile=OrganisationStructure::get();
+    $data=press_media::find(dDecrypt($id))->first();
+    $data=press_media::where('id',$data->id)->first();
+    return view('admin.sections.view_press_media',['data'=>$data,'profile'=>$profile]);
+}
+
+    function View_PressMedia(){
         $data=press_media::orderBy('id','DESC')->cursor();
         return view('admin.sections.managePressMedia',compact('data'));
         }
 
-        function add_press_media_edit_org(Request $request,$id=null){
+        function Add_Edit_PressMedia(Request $request,$id=null){
             $profile=OrganisationStructure::get();
             if($id){
                 $title="Edit Press & Media";
@@ -1514,7 +1089,7 @@ function News_Event_index(){
             return view('admin.sections.addPressMedia',compact('data','id','title','profile'));
         }
 
-        public function press_media_delete($id){
+        public function Delete_pressMedia($id){
 
         $exit = press_media::where('id',dDecrypt($id))->first();
         if(!empty($exit)){
@@ -1525,6 +1100,641 @@ function News_Event_index(){
         return redirect()->back()->with('success','Record Deleted Successfully');
 
         }
+
+//add orgination details
+
+function Delete_OrganisationDetails($id){
+
+    $exit = Org::where('id',dDecrypt($id))->first();
+    if(!empty($exit)){
+      Org::find(dDecrypt($id))->delete();
+    }else{
+        return back()->with('error','You are trying to perform unethical process. Your requst is failed.');
+    }
+    return redirect()->back()->with('success','Record Deleted Successfully');
+}
+
+function View_OrganisationDetails(){
+    $data=Org::cursor();
+    return view('admin.sections.Organisation',compact('data'));
+}
+
+function Add_OrganisationDetails(Request $request,$id=null){
+
+    if($id){
+        $title="Edit Organisation Details";
+        $msg="Organisation Details Edited Successfully!";
+        $data=Org::find(dDecrypt($id));
+    }
+    else{
+         $title="Add Organisation Details";
+        $msg="Organisation Details Added Successfully!";
+        $data=new Org;
+    }
+
+    if($request->isMethod('post')){
+        if($id){
+        $request->validate([
+            'name'=>'required',
+            'contact'=>'required',
+            'email' => ['required','string','email','max:50','regex:/^([a-z0-9\+_\-]+)(\.[a-z0-9\+_\-]+)*@([a-z0-9\-]+\.)+[a-z]{2,6}$/ix'],
+            'fevicon'=>'mimes:png,jpg,ico',
+            'logo'=>'mimes:png,jpg,ico|max:1024',
+            'logo2'=>'mimes:png,jpg,ico|max:1024',
+            'logo3'=>'mimes:png,jpg,ico|max:1024',
+            'logo4'=>'mimes:png,jpg,ico|max:1024',
+            'about_image'=>'mimes:png,jpg,ico|max:1024',
+            'default_banner_image'=>'max:5120|mimes:png,jpg|dimensions:max_width=1920,max_height=500',
+        ]);}
+        else{ $request->validate([
+            'name'=>'required|unique:orgs',
+            'logo'=>'required|mimes:png,jpg,ico',
+            'fevicon'=>'required|mimes:png,jpg,ico',
+            'contact'=>'required',
+            'email' => ['required','string','email','max:50','regex:/^([a-z0-9\+_\-]+)(\.[a-z0-9\+_\-]+)*@([a-z0-9\-]+\.)+[a-z]{2,6}$/ix'],
+            'logo2'=>'mimes:png,jpg,ico|max:1024',
+            'logo3'=>'mimes:png,jpg,ico|max:1024',
+            'logo4'=>'mimes:png,jpg,ico|max:1024',
+            'about_image'=>'mimes:png,jpg,ico|max:1024',
+            'default_banner_image'=>'required|max:5120|mimes:png,jpg|dimensions:max_width=1920,max_height=500',
+        ]);}
+
+        $data->name=($request->name);
+        $data->name_h=$request->name_h;
+        $data->about_h=$request->about_h;
+        $data->about=$request->about;
+        $data->about_title=$request->about_title;
+        $data->about_Alt=$request->about_Alt;
+        $data->address=($request->address);
+        $data->email=$request->email;
+        $data->contact=$request->contact;
+        $data->location=$request->location;
+        $data->time=$request->time;
+
+        $data->facebook=$request->facebook;
+        $data->Facebook_title=$request->Facebook_title;
+        $data->Facebook_Alt=$request->Facebook_Alt;
+        $data->url_Facebook=$request->url_Facebook;
+
+
+        $data->twitter=$request->twitter;
+        $data->Twitter_title=$request->Twitter_title;
+        $data->Twitter_Alt=$request->Twitter_Alt;
+        $data->url_Twitter=$request->url_Twitter;
+
+
+        $data->instagram=$request->instagram;
+        $data->Instagram_title=$request->Instagram_title;
+        $data->Instagram_Alt=$request->Instagram_Alt;
+        $data->url_Instagram=$request->url_Instagram;
+
+
+
+
+        $data->linkedin=$request->linkedin;
+        $data->LinkedIn_title=$request->LinkedIn_title;
+        $data->LinkedIn_Alt=$request->LinkedIn_Alt;
+        $data->url_LinkedIn=$request->url_LinkedIn;
+
+
+
+
+        $data->youtube=$request->youtube;
+        $data->YouTube_title=$request->YouTube_title;
+        $data->YouTube_Alt=$request->YouTube_Alt;
+        $data->url_YouTube=$request->url_YouTube;
+
+
+
+        $data->meta_title= $request->meta_title;
+        $data->meta_keywords= $request->meta_keywords;
+        $data->meta_description= $request->meta_description;
+        $data->head_google_tags= htmlentities($request->HeadGoogleTag);
+        $data->body_google_tags= htmlentities($request->BodyGoogleTag);
+
+
+        if($request->external == 'yes' || $request->external == 'no'){
+            $data->external=$request->external;
+            $data->url=$request->url;
+            }
+            else{
+
+                $data->url="/".$request->url;
+                $data->external=$request->external;
+           }
+
+        $path=public_path('uploads/site-logo/');
+        if($request->hasFile('logo')){
+            $file=$request->file('logo');
+            $newname= time().rand(10,99).'.'.$file->getClientOriginalExtension();
+            $file->move($path, $newname);
+            $data->logo= $newname;
+        }
+
+        $data->Logo_Title1=$request->Logo_Title1;
+        $data->Logo_Alt1=$request->Logo_Alt1;
+        $data->url_logo=$request->url_logo;
+
+
+        if($request->hasFile('logo2')){
+            $file2=$request->file('logo2');
+            $newname2= time().rand(10,99).'.'.$file2->getClientOriginalExtension();
+            $file2->move($path, $newname2);
+            $data->logo2= $newname2;
+        }
+        $data->url_logo2=$request->url_logo2;
+        $data->Logo_Title2=$request->Logo_Title2;
+        $data->Logo_Alt2=$request->Logo_Alt2;
+
+
+
+        if($request->hasFile('logo3')){
+            $file3=$request->file('logo3');
+            $newname3= time().rand(10,99).'.'.$file3->getClientOriginalExtension();
+            $file3->move($path, $newname3);
+            $data->logo3= $newname3;
+        }
+        $data->url_logo3=$request->url_logo3;
+        $data->Logo_Title3=$request->Logo_Title3;
+        $data->Logo_Alt3=$request->Logo_Alt3;
+
+
+        if($request->hasFile('logo4')){
+            $file4=$request->file('logo4');
+            $newname4= time().rand(10,99).'.'.$file4->getClientOriginalExtension();
+            $file4->move($path, $newname4);
+            $data->logo4= $newname4;
+        }
+
+        $data->url_logo4=$request->url_logo4;
+        $data->Logo_Title4=$request->Logo_Title4;
+        $data->Logo_Alt4=$request->Logo_Alt4;
+
+
+
+
+         if($request->hasFile('fevicon')){
+            $file1=$request->file('fevicon');
+            $newname1= time().rand(10,99).'.'.$file1->getClientOriginalExtension();
+            $file1->move($path, $newname1);
+            $data->fevicon= $newname1;
+        }
+        /*$data->fevicon_Title=$request->fevicon_Title;
+        $data->fevicon_Alt=$request->fevicon_Alt;banner
+        $data->url_fevicon=$request->url_fevicon;SKP*/
+
+
+        if($request->hasFile('about_image')){
+            $file5=$request->file('about_image');
+            $newname5= time().rand(10,99).'.'.$file5->getClientOriginalExtension();
+            $file5->move($path, $newname5);
+            $data->about_image= $newname5;
+        }
+
+        if($request->hasFile('default_banner_image')){
+            $file6=$request->file('default_banner_image');
+            $newname6= time().rand(10,99).'.'.$file6->getClientOriginalExtension();
+            $file6->move($path, $newname6);
+            $data->default_banner_image= $newname6;
+        }
+        $data->Default_Banner_tittle=$request->Default_Banner_tittle;
+        $data->Default_Banner_alt=$request->Default_Banner_alt;
+
+
+
+        $data->save();
+        Cache::forget('organization_details');
+        return redirect()->route('admin.organisation')->with('success',$msg);
+    }
+    return view('admin.sections.addOrganisation',compact('data','title','id'));
+}
+
+
+//client logo
+
+   function View_ClientLogo(){
+    $data=FileToUrl::orderBy('id','DESC')->cursor();
+    return view('admin.sections.filetourl_manage',compact('data'));
+}
+
+
+
+
+function Delete_ClientLogo($id){
+    $exit = FileToUrl::where('id',dDecrypt($id))->first();
+    if(!empty($exit)){
+        FileToUrl::find(dDecrypt($id))->delete();
+    }else{
+        return redirect('Accounts/manage-admin')->with('error','You are trying to perform unethical process. Your requst is failed.');
+    }
+    return redirect('Accounts/manage-admin')->with('success','Admin Entry Deleted Successfully!');
+}
+
+
+
+function Add_ClientLogo(Request $request,$id=null){
+    if($id){
+         $title="Edit Client logo";
+         $msg="Manage File2URL Edited Successfully!";
+         $data=FileToUrl::find(dDecrypt($id));
+
+     }
+     else{
+          $title="Add Client logo";
+          $msg="Organisation Structure Added Successfully!";
+          $data=new FileToUrl;
+     }
+
+    if($request->isMethod('post')){
+
+        if($id){
+            $request->validate([
+                'type'=>'required',
+                'title'=>'required',
+                'file'=>'mimes:jpg,jpeg,gif,png',
+            ]);
+            }
+            else{
+              $request->validate([
+                'type'=>'required',
+                'title'=>'required|unique:file_to_urls',
+                'file'=>'mimes:jpg,jpeg,gif,png',
+            ]);
+            }
+
+        $data->title=ucwords($request->title);
+        $data->status=$request->status;
+        $data->type=$request->type;
+        if($request->hasFile('file')){
+            $path=public_path('uploads');
+            $file=$request->file('file');
+            $newname= time().rand(10,99).'.'.$file->getClientOriginalExtension();
+            $file->move($path, $newname);
+            $data->file= $newname;
+        }
+        $data->url=$request->url;
+        $data->save();
+        return redirect()->route('admin.filetourl')->with('success','Url created Successfully',$msg);
+    }
+     return view('admin.sections.filetourl_add',compact('data','title','id'));
+    }
+
+    public function  Show_ClientLogo($id){
+        $data=FileToUrl::find(dDecrypt($id))->first();
+        $data=FileToUrl::where('id',$data->id)->first();
+        return view('admin.sections.viewClientlogo',['data'=>$data]);
+    }
+
+
+//counter
+    public function delete_Counter($id){
+    $exit = project_logo::where('id',dDecrypt($id))->first();
+    if(!empty($exit)){
+        project_logo::find(dDecrypt($id))->delete();
+    }else{
+        return back()->with('error','You are trying to perform unethical process. Your requst is failed.');
+    }
+    return redirect()->back()->with('success','Record Deleted Successfully');
+}
+
+
+    function View_Counter(){
+    $data=project_logo::orderBy('id','DESC')->cursor();
+    return view('admin.sections.manage_index',compact('data'));
+    }
+
+    public function Show_Counter($id){
+        $data=project_logo::find(dDecrypt($id))->first();
+        $data=project_logo::where('id',$data->id)->first();
+        return view('admin.sections.view_Counter',['data'=>$data]);
+    }
+
+
+    function add_edit_Counter(Request $request,$id=null){
+
+        if($id){
+            $title="Edit Project Counter";
+            $data= project_logo::find(dDecrypt($id));
+            $msg="project logo Edited Successfully";
+        }
+        else{
+            $title="Add Project Counter";
+            $data=new  project_logo;
+            $msg="project logo Added Successfully";
+
+        }
+        if($request->isMethod('post')){
+            if($id){
+            $request->validate([
+
+                'name'=>'required',
+                'number'=>'required',
+                'name_h'=>'required',
+            ]);
+            }
+            else{
+                 $request->validate([
+
+                'name'=>'required|unique:project_logos',
+                'number'=>'required',
+                'name_h'=>'required',
+            ]);
+            }
+
+            $data->number=$request->number;
+            $data->name=$request->name;
+            $data->name_h=$request->name_h;
+            if($request->hasFile('image')){
+                $path=public_path('uploads/project_icons');
+                $file=$request->file('image');
+                $newname= time().rand(10,99).'.'.$file->getClientOriginalExtension();
+                $file->move($path, $newname);
+                $data->image= $newname;
+            }
+            $data->save();
+            return redirect('/Accounts/website-index')->with('success',$msg);
+        }
+        return view('admin.sections.addproject_logo',compact('data','id','title'));
+
+    }
+
+//banner
+
+    function View_Banners(){
+        $data=BannerSlider::orderBy('id','ASC')->cursor();
+        return view('admin.sections.BannerSlider',compact('data'));
+    }
+
+    public function Show_banner($id){
+        $data=BannerSlider::find(dDecrypt($id))->first();
+        $data=BannerSlider::where('id',$data->id)->first();
+        return view('admin.sections.view_banner',['data'=>$data]);
+    }
+
+
+    function Add_Banners(Request $request,$id=null){
+
+        $data2=URLList::orderBy('type','ASC')->groupBy('type')->cursor();
+        if($id){
+            $title="Edit Banner/Slider";
+            $msg="Banner/Slider Edited Successfully!";
+            $data=BannerSlider::find(dDecrypt($id));
+        }
+        else{
+
+             $title="Add Banner/Slider";
+            $msg="Banner/Slider Added Successfully!";
+            $data=new BannerSlider;
+        }
+        if($request->isMethod('post')){
+                if($id){
+                $request->validate([
+                    'title'=>'required',
+                    'type'=>'required',
+                    'image'=>'max:5120|mimes:png,jpg|dimensions:max_width=1920,max_height=500',
+
+                ]);
+                }
+                else{
+                    if($request->type=="Banners"){
+                    $request->validate([
+                    'title'=>'required',
+                    'title'=>'required|unique:banner_sliders',
+                    'type'=>'required',
+                    'image'=>'required|max:5120|mimes:png,jpg|dimensions:max_width=1920,max_height=500',
+                ]);
+              }
+            }
+
+            $data->title=ucwords($request->title);
+            $data->title_h=$request->title_h;
+            $data->type=$request->type;
+            $data->short=$request->sort_note;
+            $data->short_h=$request->short_h;
+            $path=public_path('banner');
+            if($request->hasFile('image')){
+                $file=$request->file('image');
+                $newname= time().rand(10,99).'.'.$file->getClientOriginalExtension();
+                $file->move($path, $newname);
+                $data->image= $newname;
+                $data->url=('banner/'.$newname);
+            }
+
+            $data->linkbutton=$request->buttonlink;
+            $data->heading1=$request->heading1;
+            $data->heading1_h=$request->heading1_h;
+            $data->video_url=$request->video_url;
+
+            $data->banner_Alt=$request->banner_Alt;
+            $data->banner_title=$request->banner_title;
+            $data->status=$request->status;
+
+
+
+            if($request->has('external')){
+               // dd($request->all());
+                $data->external= $request->external;
+                $data->url=rtrim($request->url1,'/');
+            }
+            else{
+                $data->url="/".$request->url;
+            }
+
+            $data->save();
+            return redirect()->route('admin.banners')->with('success',$msg);
+        }
+
+        return view('admin.sections.addBannerSlider',compact('data','data2','title','id'));
+    }
+
+    function Delete_Banners($id){
+
+        $exit = BannerSlider::where('id',dDecrypt($id))->first();
+        if(!empty($exit)){
+            BannerSlider::find(dDecrypt($id))->delete();
+        }else{
+            return back()->with('error','You are trying to perform unethical process. Your requst is failed.');
+        }
+        return redirect()->back()->with('success','Record Deleted Successfully');
+
+    }
+
+
+    //news and event
+    public function show_NewsEvent($id){
+        $data=news_event::find(dDecrypt($id))->first();
+        $data=news_event::where('id',$data->id)->first();
+        return view('admin.sections.view',['data'=>$data]);
+    }
+
+    function View_NewsEvent(){
+        $data=news_event::orderBy('id','DESC')->cursor();
+        return view('admin.sections.manageNewsEvent',compact('data'));
+        }
+
+        function add_edit_NewsEvent(Request $request,$id=null){
+
+            if($id){
+                $title="Edit News & Event";
+                $data= news_event::find(dDecrypt($id));
+                $msg="News & Event Edited Successfully";
+            }
+            else{
+                $title="Add News & Event";
+                $data=new  news_event;
+                $msg="News & Event Added Successfully";
+            }
+            if($request->isMethod('post')){
+                if($id){
+                $request->validate([
+
+                    'title'=>'required',
+                    'title_h'=>'required',
+                    'file'  => 'image|mimes:jpeg,png,jpg,gif|max:2048',
+
+                ]);
+                }
+                else{
+                     $request->validate([
+                        'title'=>'required',
+                        'title'=>'required','unique:news_events',
+                        'title_h'=>'required',
+                        'file'  =>  'image|mimes:jpeg,png,jpg,gif|max:2048',
+
+                ]);
+                }
+                $data->title=$request->title;
+                $data->title_h=$request->title_h;
+                $data->file_title=$request->file_title;
+                $data->file_alt=$request->file_alt;
+                $data->slug=SlugCheck('news_events',($request->title));
+                $data->status=$request->status;
+                $data->status=$request->status;
+                $data->external=$request->external;
+                $data->url=$request->url;
+                $data->type=$request->type;
+
+                if($request->hasFile('file')){
+                    $path=public_path('uploads/news_event');
+                    $file=$request->file('file');
+                    $newname= time().rand(10,99).'.'.$file->getClientOriginalExtension();
+                    $file->move($path, $newname);
+                    $data->image= $newname;
+                }
+                $data->save();
+                return redirect('/Accounts/News-Event')->with('success',$msg);
+            }
+            return view('admin.sections.addNewsEvent',compact('data','id','title'));
+
+        }
+
+        public function delete_NewsEvent($id){
+
+        $exit = news_event::where('id',dDecrypt($id))->first();
+        if(!empty($exit)){
+            news_event::find(dDecrypt($id))->delete();
+        }else{
+            return back()->with('error','You are trying to perform unethical process. Your requst is failed.');
+        }
+        return redirect()->back()->with('success','Record Deleted Successfully');
+
+
+        }
+
+//org journey
+
+
+   //news and event
+    public function Show_journey($id){
+        $data=org_journies::find(dDecrypt($id))->first();
+        $data=org_journies::where('id',$data->id)->first();
+        return view('admin.sections.view_journey',['data'=>$data]);
+    }
+
+
+    public function Delete_journey($id){
+        $exit = org_journies::where('id',dDecrypt($id))->first();
+        if(!empty($exit)){
+            org_journies::find(dDecrypt($id))->delete();
+        }else{
+            return back()->with('error','You are trying to perform unethical process. Your requst is failed.');
+        }
+        return redirect()->back()->with('success','Record Deleted Successfully');
+
+    }
+
+    function View_journey(){
+        $data=org_journies::orderBy('id','DESC')->cursor();
+        return view('admin.sections.managejourney',compact('data'));
+    }
+
+            function Add_Edit_journey(Request $request,$id=null){
+
+                if($id){
+                    $title="Edit Org Journey";
+                    $data= org_journies::find(dDecrypt($id));
+                    $msg="Org Journey Edited Successfully";
+                }
+                else{
+                    $title="Add Org Journey";
+                    $data=new  org_journies;
+                    $msg="Org Journey Added Successfully";
+                }
+                if($request->isMethod('post')){
+                    if($id){
+                    $request->validate([
+
+                        'number'=>'required',
+                        'title_h'=>'required',
+                        'title'=>'required',
+                        'file' => 'image|mimes:jpeg,png,jpg,gif|max:2048'
+                    ]);
+                    }
+                    else{
+                         $request->validate([
+                            'number'=>'required',
+                            'title'=>'required|unique:org_journey',
+                            'title_h'=>'required',
+                            'file' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
+
+                    ]);
+                    }
+                    $data->year=$request->number;
+                    $data->title=$request->title;
+                    $data->title_h=$request->title_h;
+                    $data->heading=$request->heading;
+                    $data->heading_h=$request->heading_h;
+                    $data->slug=SlugCheck('org_journey',($request->title));
+                    $data->status=$request->status;
+                    if($request->hasFile('file')){
+                        $path=public_path('uploads/JourneyOrg');
+                        $file=$request->file('file');
+                        $newname= time().rand(10,99).'.'.$file->getClientOriginalExtension();
+                        $file->move($path, $newname);
+                        $data->file= $newname;
+                    }
+                    $data->save();
+                    return redirect('/Accounts/Org-journey-index')->with('success',$msg);
+                }
+                return view('admin.sections.addjourney',compact('data','id','title'));
+
+            }
+
+
+
+
+
+
+//ajax value call ---------------------------------------------------------------
+public function journey_value()
+{
+    $data=\App\Models\org_journies::get();
+    return response()->json($data);
+}
+
+
+
+
 
 
 }

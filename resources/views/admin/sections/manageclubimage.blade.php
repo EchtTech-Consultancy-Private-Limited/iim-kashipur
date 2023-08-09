@@ -112,13 +112,21 @@
                                                                     style="color:black;"></i></button>
 
 
-                                                                    @if (\Auth::guard('admin')->user()->id == 1  )
+                                                                    <button type="button" class="btn btn-primary" id="view"
+                                                                    data-id="{{ $item->id }}" data-toggle="modal"
+                                                                    data-target="#exampleModalview"
+                                                                    data-whatever="@getbootstrap"><i
+                                                                        class="ti-eye btn-icon-append"
+                                                                        style="color:black;"></i></button>
+
+
+
                                                             <a class="btn btn-primary"
                                                                 href="{{ url('Accounts/club-images-delete/'.dEncrypt($item->id)) }}"
                                                                 onclick="return confirm('Are you sure to edit this record?')"><i
                                                                     class="ti-trash btn-icon-append"
                                                                     style="color:black;"></i></a>
-                                                                    @endif
+
                                                         </td>
                                                     </tr>
                                                 @endforeach
@@ -270,6 +278,105 @@
 
         </div>
 
+
+        {{-- view --}}
+
+
+        <div class="modal fade" id="exampleModalview" tabindex="-1" role="dialog"
+        aria-labelledby="exampleModalLabel" aria-hidden="true">
+
+        <div class="modal-dialog modal-md" role="document">
+
+            <div class="modal-content">
+
+                <div class="modal-header">
+
+                    <h5 class="modal-title" id="exampleModalLabel">Update
+                        image</h5>
+
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+
+                        <span aria-hidden="true">×</span>
+
+                    </button>
+
+                </div>
+
+                <div class="modal-body">
+
+
+
+                        <div class="form-group col-md-6">
+
+                            <label for="form-first-name">Multiple Image</label>
+
+
+                            <div class="image"></div>
+
+
+
+                        </div>
+
+
+
+                        <div class="form-group col-md-6">
+
+                            <label for="image_text">Image Text</label>
+
+                            <input type="text" name="image_text" placeholder="Enter your Image Text"
+                                class="form-last-name form-control imagetext" readonly required=""
+                                autocomplete="off">
+
+                            <label for="image_text" id="image_text-error" class="error">
+                            </label>
+
+
+
+                        </div>
+
+
+
+                        <div class="form-group col-md-6">
+
+                            <label for="image_alt">Image Alt</label>
+
+                            <input type="text" name="image_alt" placeholder="Enter your image Alt"
+                                class="form-email form-control imagealt" readonly required="" autocomplete="off">
+
+                        </div>
+
+
+
+                        <div class="form-group col-md-6">
+
+                            <label for="form-email">sort order</label>
+
+                            <input type="text" placeholder="pls enter sort order" name="order"
+                                class="form-email form-control imagesort" readonly required="" autocomplete="off">
+
+                            <label for="order" id="order-error" class="error">
+                            </label>
+
+                        </div>
+
+
+                        <div class="col-md-12">
+                            <label for="event" class="col-form-label">Events</label>
+                            <div class="">
+                                <textarea class="form-control event" readonly rows="4" name="event" placeholder="Please enter event"></textarea><br>
+                                <label for="event" id="event-error" class="error"></label>
+                            </div>
+                        </div>
+
+
+                </div>
+
+
+            </div>
+
+        </div>
+
+    </div>
 
         <!-- multiple image table code -->
 
@@ -465,6 +572,41 @@
                 $('#image').html('<img src="{{ asset('uploads/multiple/club') }}/' + data.item
                     .image + '" width="100" height="100" />')
                 $("#imagestatus").val(data.item.status);
+            }
+
+        });
+
+    });
+</script>
+
+<script>
+    $(document).on("click", "#view", function() {
+        var UserName = $(this).data('id');
+          // alert(UserName);
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+        });
+
+
+        $.ajax({
+            url: "{{ url('/Accounts/club_id_image') }}",
+            type: "get",
+            data: {
+                id: UserName
+            },
+            success: function(data) {
+
+
+                $(".imagetext").val(data.item.image_title);
+                $(".imagealt").val(data.item.image_alt);
+                $(".imagesort").val(data.item.sort_order);
+                $(".imageoldid").val(data.item.cell_imges);
+                $(".event").val(data.item.event);
+                $('.image').html('<img src="{{ asset('uploads/multiple/club') }}/' + data.item
+                    .image + '" width="100" height="100" />')
+
             }
 
         });

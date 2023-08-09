@@ -299,7 +299,7 @@
 
 
 
-
+                 <input type="hidden" @if($id) value="{{ $data->status }}" @else value="0" @endif  name="status" >
 
 
 

@@ -73,9 +73,9 @@
                                 <label for="inputText" class="col-form-label">Committee Name*</label>
                                 <div class="">
                                     <input type="text" class="form-control"
-                                     required   name="Commmittee_name"placeholder="Please enter Club Name"
-                                        @if ($id) value="{{ $data->title }}" @else value="{{ old('Commmittee_name') }}" @endif><br>
-                                    <label for="Commmittee_name" id="Commmittee_name-error" class="error"></label>
+                                        name="title"placeholder="Please enter Club Name"
+                                        @if ($id) value="{{ $data->title }}" @else value="{{ old('title') }}" @endif><br>
+                                    <label for="title" id="title-error" class="error"></label>
                                 </div>
                             </div>
 

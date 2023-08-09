@@ -1,6 +1,6 @@
 @extends('admin.Layout.master')
 
-@section('title', 'Manage Index')
+@section('title', 'Manage Counter')
 
 @section('content')
 
@@ -38,7 +38,7 @@
 
                   <div class="top-menu-button">
 
-                  <p class="card-title">Manage Index </p>
+                  <p class="card-title">Manage Counter </p>
 
                   <div>
 
@@ -92,9 +92,11 @@
 
                                 <a href="{{url('Accounts/add_edit_project_logo/'.dEncrypt($D->id))}}"><i class="ti-pencil btn-icon-append" style="color:black;"></i></a> &nbsp;
 
-                                @if (\Auth::guard('admin')->user()->id == 1  )
+                                <a href="{{url('Accounts/view_index/'.dEncrypt($D->id))}}"><i class="ti-eye btn-icon-append" style="color:black;"></i></a> &nbsp;
+
+
                                 <a href="{{url('Accounts/project_index/'.dEncrypt($D->id))}}" onclick="return confirm('Are You Sure?')"><i class="ti-archive btn-icon-append" style="color:black;"></i></a>
-@endif
+
                                </td>
 
 

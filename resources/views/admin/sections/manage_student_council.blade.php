@@ -38,9 +38,10 @@
 
                                 <div>
 
+                                    @if(count($data) < 0)
                                     <button type="button" class="btn btn-primary"><a
                                             href="{{ url('/Accounts/add-edit-Student-Council') }}">Add New Student Council </a></button>
-
+                                   @endif
 
                                 </div>
 
@@ -79,7 +80,7 @@
 
                                                         <td>{{ $K + 1 }}</td>
 
-                                                        <td>{{ $D->about_details }}</td>
+                                                        <td>{!! $D->about_details  !!}</td>
 
                                                         <td>
                                                             @if (@checkRoute('StatusChange'))
@@ -105,12 +106,20 @@
                                                                     class="ti-pencil btn-icon-append"
                                                                     style="color:black;"></i></a> &nbsp;
 
-                                                                    @if (\Auth::guard('admin')->user()->id == 1  )
+
+
+                                                                    <a
+                                                                    href="{{ url('Accounts/student-council-view/'.dEncrypt($D->id)) }}"><i
+                                                                        class="ti-eye btn-icon-append"
+                                                                        style="color:black;"></i></a> &nbsp;
+
+
+
                                                             <a href="{{ url('Accounts/delete-studentcouncil/' . dEncrypt($D->id)) }}"
                                                                 onclick="return confirm('Are You Sure?')"><i
                                                                     class="ti-archive btn-icon-append"
                                                                     style="color:black;"></i></a>
-                                                                    @endif
+
                                                         </td>
 
                                                     </tr>

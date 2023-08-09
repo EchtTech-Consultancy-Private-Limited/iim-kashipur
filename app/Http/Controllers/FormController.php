@@ -28,7 +28,6 @@ use App\Models\Career;
 use App\Models\Events;
 use App\Models\event_image;
 use App\Models\Industry;
-
 use App\Models\student_council;
 use App\Models\journal_publication;
 use App\Models\journal_publication_child;
@@ -41,241 +40,6 @@ use App\Models\quarter_report;
 class FormController extends Controller
 {
 
-    //Sanchit Code Starts
-    public function viewtenders()
-        {
-            $tender=Tender::orderBy('id')->get();
-            return view('admin.sections.tendersadd',['tender'=>$tender]);
-        }
-
-        public function add_tender(Request $request,$id=null)
-        {
-
-    if($id){
-        $title="Edit Tender Details";
-        $msg="Tender Details Edited Successfully!";
-        $tender=Tender::find(dDecrypt($id));
-
-
-    }
-    else{
-
-          $title="Add Tender Details";
-          $msg="Tender Details Added Successfully!";
-          $tender=new Tender;
-        //  dd($request->all());
-    }
-
-
-    if($request->isMethod('post')){
-        if($id){
-        $request->validate([
-
-            'title'=>'required',
-            "tender_document"   =>   "mimes:pdf|max:10000"
-
-        ]);
-        }
-        else{
-                $request->validate([
-            'title'=>'required',
-            'title'=>'required|unique:tenders',
-            "tender_document"   =>   "mimes:pdf|max:10000"
-
-        ]);
-        }
-
-
-            $tender->published_date=$request->published_date;
-            $tender->submission_date=$request->submission_date;
-            $tender->title=$request->title;
-
-
-            if($request->hasFile('tender_document')){
-                $tender->pdfsize=$request->tender_document->getSize();
-                $file=$request->file('tender_document');
-                $newname=time().rand(10,99).'.'.$file->getClientOriginalExtension();
-                $path=public_path('uploads/tenders');
-                $file->move($path,$newname);
-            $tender->tender_document=$newname;
-            }
-            $tender->corrigendum=$request->corrigendum;
-            $tender->status=$request->status;
-            $tender->save();
-        return redirect()->route('admin.viewtenders')->with('success',$msg);
-    }
-    return view('admin.sections.tendors',compact('tender','title','id'));
-    }
-
-    public function delete_tender($id){
-
-        $exit = Tender::where('id',dDecrypt($id))->first();
-        if(!empty($exit)){
-            Tender::find(dDecrypt($id))->delete();
-        }else{
-            return back()->with('error','You are trying to perform unethical process. Your requst is failed.');
-        }
-        return redirect()->back()->with('success','Record Deleted Successfully');
-    }
-
-    public function vendordebarred()
-        {
-            $vendordebarred=Vendorsdebarred::orderBy('id')->get();
-            return view('admin.sections.vendorsdebarredmanage',['vendordebarred'=>$vendordebarred]);
-        }
-
-        public function vendoradd(Request $request,$id=null)
-        {
-
-    if($id){
-        $title="Edit Details";
-        $msg="Tender Details Edited Successfully!";
-        $vendorsdebarred=Vendorsdebarred::find(dDecrypt($id));
-
-
-    }
-    else{
-
-          $title="Add Details";
-          $msg="Details Added Successfully!";
-          $vendorsdebarred=new Vendorsdebarred;
-        //  dd($request->all());
-    }
-
-
-        if($request->isMethod('post')){
-            if($id){
-            $request->validate([
-
-                'vendor_name'=>'required',
-                "related_document"   =>   "mimes:pdf|max:10000"
-
-            ]);
-            }
-            else{
-                $request->validate([
-
-                'vendor_name'=>'required|unique:Vendorsdebarred',
-                "related_document"   =>   "mimes:pdf|max:10000"
-
-            ]);
-            }
-
-
-            $vendorsdebarred->vendor_name=$request->vendor_name;
-
-            if($request->hasFile('related_document')){
-                $vendorsdebarred->pdfsize=$request->related_document->getSize();
-                $file=$request->file('related_document');
-                $newname=time().rand(10,99).'.'.$file->getClientOriginalExtension();
-                $path=public_path('uploads/vendorsdebarred');
-                $file->move($path,$newname);
-            $vendorsdebarred->related_document=$newname;
-            }
-            $vendorsdebarred->status=$request->status;
-            $vendorsdebarred->save();
-
-        return redirect()->route('admin.vendordebarred')->with('success',$msg);
-    }
-    return view('admin.sections.editvendor',compact('vendorsdebarred','title','id'));
-    }
-
-    public function delete_vendor($id){
-
-        $exit = Vendorsdebarred::where('id',dDecrypt($id))->first();
-        if(!empty($exit)){
-            Vendorsdebarred::find(dDecrypt($id))->delete();
-        }else{
-            return back()->with('error','You are trying to perform unethical process. Your requst is failed.');
-        }
-        return redirect()->back()->with('success','Record Deleted Successfully');
-
-
-    }
-
-    public function careershow()
-        {
-            $career=Career::orderBy('id')->get();
-            return view('admin.sections.managecareer',['career'=>$career]);
-        }
-
-        public function add_career(Request $request,$id=null)
-        {
-
-
-    if($id){
-
-
-        $title="Edit Details";
-        $msg="Details Edited Successfully!";
-        $career=Career::find(dDecrypt($id));
-
-
-    }
-    else{
-
-          $title="Add Details";
-          $msg="Details Added Successfully!";
-          $career=new Career;
-
-    }
-
-
-        if($request->isMethod('post')){
-            if($id){
-            $request->validate([
-                'name_of_the_post'=>'required','unique: career',
-                "detail_advertisement"   =>   "mimes:pdf|max:10000"
-
-            ]);
-            }
-            else{
-                $request->validate([
-                'name_of_the_post'=>'required',
-                "detail_advertisement"   =>   "mimes:pdf|max:10000"
-
-            ]);
-        }
-
-
-            $career->name_of_the_post=$request->name_of_the_post;
-
-            if($request->hasFile('detail_advertisement')){
-                $career->pdfsize=$request->detail_advertisement->getSize();
-                $file=$request->file('detail_advertisement');
-                $newname=time().rand(10,99).'.'.$file->getClientOriginalExtension();
-                $path=public_path('uploads/fo');
-                $file->move($path,$newname);
-            $career->detail_advertisement=$newname;
-            }
-            $career->note=$request->note;
-            $career->opening_date=$request->opening_date;
-            $career->closing_date=$request->closing_date;
-            $career->online_link=$request->online_link;
-            $career->corrigendum=$request->corrigendum;
-            $career->status=$request->status;
-            $career->save();
-
-        return redirect()->route('admin.careershow')->with('success',$msg);
-    }
-
-    return view('admin.sections.careers',compact('career','title','id'));
-    }
-
-    public function delete_career($id){
-
-        $exit = Career::where('id',dDecrypt($id))->first();
-        if(!empty($exit)){
-            Career::find(dDecrypt($id))->delete();
-        }else{
-            return back()->with('error','You are trying to perform unethical process. Your requst is failed.');
-        }
-        return redirect()->back()->with('success','Record Deleted Successfully');
-
-
-
-    }
-    //Sanchit Code Ends
 
     function View_OrganisationStructure(Request $request){
         if(!empty($request->dp))$data=OrganisationStructure::where('organisation_structures.department',$request->dp)->orderby('id','Desc')->paginate(10);
@@ -682,7 +446,7 @@ function Add_OrganisationStructure(Request $request,$id=null){
         foreach ($routes as $value)
          {
 
-             if(str_contains($value->getActionname(), 'App\Http\Controllers\AdminController') || str_contains($value->getActionname(), 'App\Http\Controllers\FormController')  || str_contains($value->getActionname(), 'App\Http\Controllers\blogcontroller')  || str_contains($value->getActionname(), 'App\Http\Controllers\gallaycontroller') || str_contains($value->getActionname(), 'App\Http\Controllers\pagecontroller') || str_contains($value->getActionname(), 'App\Http\Controllers\quicklinkcontrller')  || str_contains($value->getActionname(), 'App\Http\Controllers\vidoecontroller') || str_contains($value->getActionname(), 'App\Http\Controllers\UIController')){
+             if(str_contains($value->getActionname(), 'App\Http\Controllers\AdminController') || str_contains($value->getActionname(), 'App\Http\Controllers\FormController')   || str_contains($value->getActionname(), 'App\Http\Controllers\gallaycontroller') || str_contains($value->getActionname(), 'App\Http\Controllers\pagecontroller') || str_contains($value->getActionname(), 'App\Http\Controllers\quicklinkcontrller')  || str_contains($value->getActionname(), 'App\Http\Controllers\vidoecontroller')){
 
              $action = explode("@",$value->getActionname());
 
@@ -775,762 +539,142 @@ public function Add_biography(Request $request,$id=null)
 
 }
 
-//cell
-public function add_cells(Request $request,$id=null){
-    $profile=OrganisationStructure::get();
-    if($id){
-        $title="Edit Cells Details";
-        $msg="Cells Details Edited Successfully!";
-        $data=cell::find(dDecrypt($id));
-    }
-    else{
+//Ajax function
 
-          $title="Add Cells Details";
-          $msg="Cells Details Added Successfully!";
-          $data=new cell;
+    public function rti_QUARTER_data(Request $request){
+        $item=quarter_report::whereid($request->id)->first();
+        return response()->json(['item'=>$item]);
     }
 
-
-        if($request->isMethod('post')){
-            if($id){
-            $request->validate([
-
-                'Title'=>'required','unique:cells',
-                'Cell_logo'  => 'image|mimes:jpeg,png,jpg,gif|max:2048',
-                'Cell_image'  =>   'image|mimes:jpeg,png,jpg,gif|max:2048',
-                'bannerimage'=>'max:5120|mimes:png,jpg|dimensions:max_width=1920,min_width=1920,max_height=500,min_height=500',
-
-            ]);
-            }
-            else{
-                $request->validate([
-
-                    'Cell_logo'  => 'image|mimes:jpeg,png,jpg,gif|max:2048',
-                    'Cell_image'  =>   'image|mimes:jpeg,png,jpg,gif|max:2048',
-                    'bannerimage'=>'max:5120|mimes:png,jpg|dimensions:max_width=1920,min_width=1920,max_height=500,min_height=500',
-
-            ]);
-        }
-
-
-        $data->title=$request->Cell_name;
-        $data->chairperson= $request->chairperson;
-        $data->about_details= $request->about_details;
-        $data->activites= $request->activites;
-        $data->status= $request->status;
-        $data->event= $request->event;
-        $data->slug=SlugCheck('cells',($request->Cell_name));
-        $data->logo_title= $request->cell_logo_title;
-        $data->logo_alt= $request->cell_logo_alt;
-        $data->image_title= $request->cell_image_title;
-        $data->image_alt= $request->cell_image_alt;
-
-
-
-        $path=public_path('uploads/club');
-        if($request->hasFile('Cell_logo')){
-            $file=$request->file('Cell_logo');
-            $newname= time().rand(10,99).'.'.$file->getClientOriginalExtension();
-            $file->move($path, $newname);
-            $data->logo= $newname;
-        }
-        $path=public_path('uploads/club');
-        if($request->hasFile('Cell_image')){
-            $file=$request->file('Cell_image');
-            $newname= time().rand(10,99).'.'.$file->getClientOriginalExtension();
-            $file->move($path, $newname);
-            $data->image= $newname;
-        }
-
-        $data->banner_title= $request->banner_title;
-        $data->banner_alt= $request->banner_alt;
-        $path=public_path('page/banner');
-        if($request->hasFile('bannerimage')){
-            $file=$request->file('bannerimage');
-            $newname= time().rand(10,99).'.'.$file->getClientOriginalExtension();
-            $file->move($path, $newname);
-            $data->bannerimage= $newname;
-        }
-
-
-
-        $data->save();
-       return redirect('Accounts/manage-cells')->with('success',$msg);
+    public function Wellness_Facilities_index_id(Request $request){
+        $item=wellness_facilitie_image::whereid($request->id)->first();
+        return response()->json(['item'=>$item]);
     }
 
-    return view('admin.sections.add_cells',compact('data','title','id','profile'));
-}
-
-public function view_cells(){
-    $data=cell:: orderBy('id')->get();
-    return view('admin.sections.managecells',['data'=>$data]);
-}
-
-
-
-function delete_cells($id){
-
-    $exit = cell::where('id',dDecrypt($id))->first();
-    if(!empty($exit)){
-        cell::find(dDecrypt($id))->delete();
-    }else{
-        return back()->with('error','You are trying to perform unethical process. Your requst is failed.');
-    }
-    return redirect()->back()->with('success','Record Deleted Successfully');
-}
-
-
-
-
-
-public function add_club(Request $request,$id=NULL){
-    $profile=OrganisationStructure::get();
-    if($id){
-        $title="Edit club Details";
-        $msg="club Details Edited Successfully!";
-        $data=club::find(dDecrypt($id));
-    }
-    else{
-
-          $title="Add club Details";
-          $msg="club Details Added Successfully!";
-          $data=new club;
-        //  dd($request->all());
+    public function rit_QUARTER(Request $request){
+        $item=rit_report_section::whereid($request->id)->first();
+        return response()->json(['item'=>$item]);
     }
 
-
-
-        if($request->isMethod('post')){
-            if($id){
-            $request->validate([
-
-                'title'                =>      'required',
-                'club_logo'          =>       'image|mimes:jpeg,png,jpg,gif|max:2048',
-                 'club_image'       =>        'image|mimes:jpeg,png,jpg,gif|max:2048',
-                'bannerimage'=>'max:5120|mimes:png,jpg|dimensions:max_width=1920,min_width=1920,max_height=500,min_height=500',
-
-            ]);
-            }
-            else{
-                $request->validate([
-
-                    'title'          =>        'required|unique:clubs',
-                    'club_logo'          =>       'image|mimes:jpeg,png,jpg,gif|max:2048',
-                    'club_image'       =>        'image|mimes:jpeg,png,jpg,gif|max:2048',
-                    'bannerimage'=>'max:5120|mimes:png,jpg|dimensions:max_width=1920,min_width=1920,max_height=500,min_height=500',
-
-            ]);
-        }
-
-        $data->title=$request->club_name;
-        $data->about_details= $request->about_details;
-        $data->activitie= $request->activitie;
-        $data->chairperson= $request->chairperson;
-        $data->slug=SlugCheck('clubs',($request->club_name));
-        $data->status= $request->status;
-        $data->event= $request->event;
-        $data->type=$request->club_type;
-        $data->logo_title= $request->club_logo_title;
-        $data->logo_alt= $request->club_logo_alt;
-        $data->image_title	= $request->club_image_title	;
-        $data->image_alt= $request->club_image_alt;
-
-        $path=public_path('uploads/club');
-        if($request->hasFile('club_logo')){
-            $file=$request->file('club_logo');
-            $newname= time().rand(10,99).'.'.$file->getClientOriginalExtension();
-            $file->move($path, $newname);
-            $data->logo= $newname;
-        }
-        $path=public_path('uploads/club');
-        if($request->hasFile('club_image')){
-            $file=$request->file('club_image');
-            $newname= time().rand(10,99).'.'.$file->getClientOriginalExtension();
-            $file->move($path, $newname);
-            $data->image= $newname;
-        }
-
-
-        $data->banner_title= $request->banner_title;
-        $data->banner_alt= $request->banner_alt;
-        $path=public_path('page/banner');
-        if($request->hasFile('bannerimage')){
-            $file=$request->file('bannerimage');
-            $newname= time().rand(10,99).'.'.$file->getClientOriginalExtension();
-            $file->move($path, $newname);
-            $data->bannerimage= $newname;
-        }
-
-
-        $data->save();
-       return redirect('Accounts/manage-clubs')->with('success',$msg);
-    }
-
-    return view('admin.sections.add_club',compact('data','title','id','profile'));
-}
-
-public function view_club(){
-    $data=club:: orderBy('id')->get();
-    return view('admin.sections.manageclub',['data'=>$data]);
-}
-
-function delete_club($id){
-
-    $exit = club::where('id',dDecrypt($id))->first();
-    if(!empty($exit)){
-        club::find(dDecrypt($id))->delete();
-    }else{
-        return back()->with('error','You are trying to perform unethical process. Your requst is failed.');
-    }
-    return redirect()->back()->with('success','Record Deleted Successfully');
-
-
-
-}
-
-//committee
-public function add_committee(Request $request,$id=NULL)
-{
-    $profile=OrganisationStructure::get();
-    if($id){
-        $title="Edit Commmittee Details";
-        $msg="Commmittee Details Edited Successfully!";
-        $data=commmittee::find(dDecrypt($id));
-    }
-    else{
-
-          $title="Add Commmittee Details";
-          $msg="Commmittee Details Added Successfully!";
-          $data=new commmittee;
-        //  dd($request->all());
-    }
-
-        if($request->isMethod('post')){
-            if($id){
-            $request->validate([
-
-                'title'         =>'required',
-                'Commmittee_logo'  => 'image|mimes:jpeg,png,jpg,gif|max:2048',
-                'Commmittee_image'  =>   'image|mimes:jpeg,png,jpg,gif|max:2048',
-                'bannerimage'=>'max:5120|mimes:png,jpg|dimensions:max_width=1920,min_width=1920,max_height=500,min_height=500',
-
-            ]);
-            }
-            else{
-                $request->validate([
-
-                    'title'=>'required|unique:commmittees',
-                    'Commmittee_logo'  => 'image|mimes:jpeg,png,jpg,gif|max:2048',
-                    'Commmittee_image'  =>   'image|mimes:jpeg,png,jpg,gif|max:2048',
-                    'bannerimage'=>'max:5120|mimes:png,jpg|dimensions:max_width=1920,min_width=1920,max_height=500,min_height=500',
-
-            ]);
-        }
-
-        $data->title=$request->Commmittee_name;
-        $data->chairperson= $request->chairperson;
-        $data->type= $request->type;
-        $data->about_details=$request->about_details;
-        $data->activites= $request->activeites;
-        $data->placement= $request->Placement;
-        $data->event= $request->event;
-        $data->status= $request->status;
-        $data->logo_title= $request->Committee_logo_title;
-        $data->logo_alt= $request->Committee_logo_alt;
-        $data->image_title= $request->Committee_image_title;
-        $data->image_alt= $request->Committee_image_alt;
-        $data->slug=SlugCheck('commmittees',($request->Commmittee_name));
-        $data->banner_title= $request->banner_title;
-        $data->banner_alt= $request->banner_alt;
-
-        $path=public_path('uploads/club');
-        if($request->hasFile('Commmittee_logo')){
-            $file=$request->file('Commmittee_logo');
-            $newname= time().rand(10,99).'.'.$file->getClientOriginalExtension();
-            $file->move($path, $newname);
-            $data->logo= $newname;
-        }
-
-        $path=public_path('uploads/club');
-        if($request->hasFile('Commmittee_image')){
-            $file=$request->file('Commmittee_image');
-            $newname= time().rand(10,99).'.'.$file->getClientOriginalExtension();
-            $file->move($path, $newname);
-            $data->image= $newname;
-        }
-
-
-        $data->banner_title= $request->banner_title;
-        $data->banner_alt= $request->banner_alt;
-        $path=public_path('page/banner');
-        if($request->hasFile('bannerimage')){
-            $file=$request->file('bannerimage');
-            $newname= time().rand(10,99).'.'.$file->getClientOriginalExtension();
-            $file->move($path, $newname);
-            $data->bannerimage= $newname;
-        }
-
-
-        $data->save();
-       return redirect('Accounts/manage-committee')->with('success',$msg);
-    }
-    return view('admin.sections.add_committee',compact('data','title','id','profile'));
-    }
-
-    function delete_committee($id){
-
-        $exit = commmittee::where('id',dDecrypt($id))->first();
-        if(!empty($exit)){
-            commmittee::find(dDecrypt($id))->delete();
-        }else{
-            return back()->with('error','You are trying to perform unethical process. Your requst is failed.');
-        }
-        return redirect()->back()->with('success','Record Deleted Successfully');
-    }
-
-    public function view_committee(){
-    $data=commmittee:: orderBy('id')->get();
-   return view('admin.sections.manageCommittee',['data'=>$data]);
-
-}
-     public function cells_list()
+    public function countact_us()
     {
-        $data=\App\Models\commmittee::get();
-        return response()->json($data);
+     $data=feedback::whereform_type('contact_us')->get();
+     return view ('admin.sections.manageContactus',['data'=>$data]);
     }
 
-//cells images
-        public function delete_cells_image($id){
+    public function feedback()
+    {
+      $data=feedback::whereform_type('feedback')->get();
+     return view ('admin.sections.manageFeedback',['data'=>$data]);
+    }
 
-        $exit = cell_multiple_image::where('id',dDecrypt($id))->first();
-        if(!empty($exit)){
-            cell_multiple_image::find(dDecrypt($id))->delete();
-        }else{
-            return back()->with('error','You are trying to perform unethical process. Your requst is failed.');
-        }
-        return redirect()->back()->with('success','Record Deleted Successfully');
 
+    public function pdf_section(Request $request){
+        $item=rit_report_section::whereid($request->id)->first();
+        return response()->json(['item'=>$item]);
+    }
 
-        }
 
-        public function add_cells_image(Request $request)
-        {
 
-            $request->validate(
+//-----------------------------------------------------------------------------------------------------------//
 
-                [
-                    'filename'          =>       'image|mimes:jpeg,png,jpg,gif|max:2048',
-                    'image_title'    =>           'required|unique:cell_multiple_images'
-                ]
+  //add-edit-ANTI-RAGGING
 
+  public function Show_antiRagging($id){
+    $data=anti_raggings::find(dDecrypt($id))->first();
+    $data=anti_raggings::where('id',$data->id)->first();
+    return view('admin.sections.view_antiragging',['data'=>$data]);
+}
 
-            );
 
-            $data= new cell_multiple_image();
-            $data->image_title= $request->image_text;
-            $data->image_alt= $request->image_alt;
-            $data->sort_order= $request->order;
-            $data->event= $request->event;
-            $data->parent_id=$request->parent_id;
-            $data->status= $request->status;
-            $path=public_path('uploads/multiple/club');
-            if($request->hasFile('filename')){
-                $file=$request->file('filename');
-                $newname= time().rand(10,99).'.'.$file->getClientOriginalExtension();
-                $file->move($path, $newname);
-                $data->image= $newname;
-            }
-            $data->save();
-            return back()->with('success','Record save Successfully');
-          }
+  public function View_antiRagging()
+{
+    $data=\App\Models\anti_raggings::get();
+    return view('admin.sections.mange_ANTI_RAGGING',['data'=>$data]);
+}
 
+public function Add_Edit_antiRagging(Request $request,$id=null)
+{
 
-        public function cells_image($id)
-        {
-        $data=cell_multiple_image::whereparent_id(dDecrypt($id))->get();
-         $id=dDecrypt($id);
-        return view('admin.sections.managecellsimages',['data'=>$data,'id'=>$id]);
-        }
-
-// club image
-
-        public function delete_club_image($id){
-
-        $exit = club_multiple_image::where('id',dDecrypt($id))->first();
-        if(!empty($exit)){
-            club_multiple_image::find(dDecrypt($id))->delete();
-        }else{
-            return back()->with('error','You are trying to perform unethical process. Your requst is failed.');
-        }
-        return redirect()->back()->with('success','Record Deleted Successfully');
-
-        }
-
-        public function add_club_image(Request $request){
-
-            $request->validate(
-
-                [
-
-                'filename'          =>       'image|mimes:jpeg,png,jpg,gif|max:2048',
-                'image_title'   =>       'required|unique:club_multiple_images'
-
-                ]
-
-
-            );
-          //data in database
-          $data= new club_multiple_image();
-          $data->image_title= $request->image_text;
-          $data->image_alt= $request->image_alt;
-          $data->sort_order= $request->order;
-          $data->event= $request->event;
-          $data->parent_id=$request->parent_id;
-          $data->status= $request->status;
-          $path=public_path('uploads/multiple/club');
-          if($request->hasFile('filename')){
-              $file=$request->file('filename');
-              $newname= time().rand(10,99).'.'.$file->getClientOriginalExtension();
-              $file->move($path, $newname);
-              $data->image	= $newname;
-          }
-          $data->save();
-          return back()->with('success','Record save Successfully');
-
-        }
-
-        public function club_image($id)
-        {
-            $data=club_multiple_image::whereparent_id(dDecrypt($id))->get();
-            $id=dDecrypt($id);
-        return view('admin.sections.manageclubimage',['data'=>$data,'id'=>$id]);
-        }
-
-//committee image
-
-        public function delete_committee_image($id){
-
-        $exit = committee_multiple_image::where('id',dDecrypt($id))->first();
-        if(!empty($exit)){
-            committee_multiple_image::find(dDecrypt($id))->delete();
-        }else{
-            return back()->with('error','You are trying to perform unethical process. Your requst is failed.');
-        }
-        return redirect()->back()->with('success','Record Deleted Successfully');
-
-
-        }
-
-
-        public function add_Committee_image(Request $request){
-
-            $request->validate(
-
-                [
-                    'filename'          =>       'image|mimes:jpeg,png,jpg,gif|max:2048',
-                     'committee_title'   =>       'required|unique:committee_multiple_images'
-
-                ]
-
-
-            );
-          //data in database
-          $data= new committee_multiple_image();
-          $data->committee_title= $request->committee_title;
-          $data->committee_alt= $request->committee_alt;
-          $data->sort_order= $request->order;
-          $data->event= $request->event;
-          $data->parent_id=$request->parent_id;
-          $data->status= $request->status;
-          $path=public_path('uploads/multiple/club');
-          if($request->hasFile('filename')){
-              $file=$request->file('filename');
-              $newname= time().rand(10,99).'.'.$file->getClientOriginalExtension();
-              $file->move($path, $newname);
-              $data->image= $newname;
-          }
-          $data->save();
-          return back()->with('success','Record save Successfully');
-
-        }
-
-        public function committee_image($id)
-        {
-            $data=committee_multiple_image::whereparent_id(dDecrypt($id))->get();
-            $id=dDecrypt($id);
-            return view('admin.sections.manageCommitteeimage',['data'=>$data,'id'=>$id]);
-        }
-
-
-    //code 3 july
-
-        public function gallery_id_image(Request $request)
-        {
-            $show=cell_multiple_image::find($request->id);
-            $item=cell_multiple_image::whereid($show->id)->first();
-            return response()->json(['item'=>$item]);
-        }
-
-        public function edit_cells_image(Request $request)
-        {
-           $request->validate(
-              [
-
-                'filename'          =>       'image|mimes:jpeg,png,jpg,gif|max:2048',
-                'image_text'         =>       'required'
-
-              ]
-             );
-             $data=cell_multiple_image::find($request->id);
-             $data->image_title=$request->image_text;
-             $data->image_alt=$request->image_alt;
-             $data->sort_order=$request->order;
-             $data->status=$request->status;
-             $data->event= $request->event;
-             $data->parent_id=$request->parent_id;
-
-
-            $path=public_path('uploads/multiple/club');
-            if($request->hasFile('filename')){
-                $file=$request->file('filename');
-                $newname= time().rand(10,99).'.'.$file->getClientOriginalExtension();
-                $file->move($path, $newname);
-                $data->image= $newname;
-
-            }
-
-            $data->save();
-          return back()->with('success','Record Edit Successfully');
-        }
-
-
-
-
-        public function club_id_image(Request $request)
-        {
-
-            $show=club_multiple_image::find($request->id);
-
-            $item=club_multiple_image::whereid($show->id)->first();
-
-            return response()->json(['item'=>$item]);
-
-        }
-
-
-        public function edit_club_image(Request $request)
-        {
-          //  dd($request->all());
-           $request->validate(
-              [
-
-                'filename'          =>       'image|mimes:jpeg,png,jpg,gif|max:2048',
-                'image_text'        =>       'required'
-
-              ]
-             );
-             $data=club_multiple_image::find($request->id);
-             $data->image_title=$request->image_text;
-             $data->image_alt=$request->image_alt;
-             $data->sort_order=$request->order;
-             $data->status=$request->status;
-             $data->parent_id=$request->parent_id;
-             $data->event= $request->event;
-            $path=public_path('uploads/multiple/club');
-            if($request->hasFile('filename')){
-                $file=$request->file('filename');
-                $newname= time().rand(10,99).'.'.$file->getClientOriginalExtension();
-                $file->move($path, $newname);
-                $data->image = $newname;
-
-            }
-
-            $data->save();
-          return back()->with('success','Record Edit Successfully');
-        }
-
-
-        public function committee_id_image(Request $request)
-        {
-            $show=committee_multiple_image::find($request->id);
-            $item=committee_multiple_image::whereid($show->id)->first();
-            return response()->json(['item'=>$item]);
-        }
-
-        public function edit_committee_image(Request $request)
-        {
-          //  dd($request->all());
-           $request->validate(
-              [
-                'filename'          =>       'image|mimes:jpeg,png,jpg,gif|max:2048',
-                'image_text'        =>        'required'
-              ]
-             );
-             $data=committee_multiple_image::find($request->id);
-             $data->committee_title=$request->image_text;
-             $data->committee_alt=$request->image_alt;
-             $data->sort_order=$request->order;
-             $data->status=$request->status;
-             $data->event= $request->event;
-             $data->parent_id=$request->parent_id;
-            $path=public_path('uploads/multiple/club');
-            if($request->hasFile('filename')){
-                $file=$request->file('filename');
-                $newname= time().rand(10,99).'.'.$file->getClientOriginalExtension();
-                $file->move($path, $newname);
-                $data->image = $newname;
-
-            }
-
-            $data->save();
-          return back()->with('success','Record Edit Successfully');
-        }
-
-        //Code by Sanchit starts
-        public function add_title(Request $request,$id=NULL){
     if($id){
-        $title="Edit title Details";
-        $msg="title Details Edited Successfully!";
-        $data=Events::find(dDecrypt($id));
+        $title="Edit Anti Ragging Section";
+        $msg="Anti Ragging Edited Successfully!";
+        $data=anti_raggings::find(dDecrypt($id));
     }
     else{
+        $title="Add Anti Ragging Section";
+        $msg="Anti Ragging Added Successfully!";
+        $data=new anti_raggings;
 
-          $title="Add title Details";
-          $msg="title Details Added Successfully!";
-          $data=new Events;
-        //  dd($request->all());
+        //child journal_publication_child
     }
-
 
         if($request->isMethod('post')){
             if(!$id){
-                $request->validate([
+               $request->validate([
+                'title'=>'required|unique:anti_raggings',
+                "pdf" => "mimes:pdf|max:10000"
 
-                    'title'=>'required|unique:events&activities',
-                ]);}
+              ]);}
             else{
             $request->validate([
-
                 'title'=>'required',
+                "pdf"  =>  "mimes:pdf|max:10000"
             ]);
         }
+
+
+        $data->status=$request->status;
         $data->title=$request->title;
-        $data->status= $request->status;
-        $data->save();
-       // dd($request->all());
-       return redirect()->route('admin.title')->with('success',$msg);
-    }
 
-    return view('admin.sections.events&activities',compact('data','title','id'));
-    }
-    public function title(){
-    $data=Events:: orderBy('id')->get();
-    return view('admin.sections.manageevents&activities',['data'=>$data]);
-    }
-
-    public function delete_title($id){
-
-    $exit = Events::where('id',dDecrypt($id))->first();
-    if(!empty($exit)){
-        Events::find(dDecrypt($id))->delete();
-    }else{
-        return back()->with('error','You are trying to perform unethical process. Your requst is failed.');
-    }
-    return redirect()->back()->with('success','Record Deleted Successfully');
-
-
-    }
-
-    public function delete_image($id){
-
-    $exit = event_image::where('id',dDecrypt($id))->first();
-    if(!empty($exit)){
-        event_image::find(dDecrypt($id))->delete();
-    }else{
-        return back()->with('error','You are trying to perform unethical process. Your requst is failed.');
-    }
-    return redirect()->back()->with('success','Record Deleted Successfully');
-
-    }
-
-     public function add_image(Request $request,$id=NULL){
-     if($id){
-
-
-        $title="Edit Details";
-        $msg="Details Edited Successfully!";
-        $event=event_image::find(dDecrypt($id));
-        $data=Events::get();
+        $path=public_path('uploads/pdf');
+        if($request->hasFile('pdf')){
+            $data->pdfsize=$request->pdf->getSize();
+            $file=$request->file('pdf');
+            $newname= time().rand(10,99).'.'.$file->getClientOriginalExtension();
+            $file->move($path, $newname);
+            $data->pdf= $newname;
         }
-    else{
+        $data->save();
+        return redirect('/Accounts/ANTI-RAGGING')->with('success',$msg);
+    }
+    return view('admin.sections.add_ANTI_RAGGING',compact('data','title','id'));
 
-          $title="Add Details";
-          $msg="Details Added Successfully!";
-          $event=new event_image;
-          $data=Events::get();
+}
 
+    public function Delte_antiRagging($id){
+    $data=anti_raggings::find(dDecrypt($id));
+    $data->delete();
+     return redirect()->back()->with('success','Anti Ragging deleted Successfully');
+  }
+
+
+
+
+  //industry
+    public function Show_industry($id){
+        $data=Industry::find(dDecrypt($id))->first();
+        $data=Industry::where('id',$data->id)->first();
+        return view('admin.sections.view_industry',['data'=>$data]);
     }
 
+    public function View_industry(){
+        $data=Industry::orderBy('id')->get();
+        return view('admin.sections.viewindustry',['data'=>$data]);
+        }
 
 
-  if($request->isMethod('post')){
-        if(!$id){
-            $request->validate([
-                'image'          =>       'image|mimes:jpeg,png,jpg,gif|max:2048',
-                'image_title'=>'required|unique:events&activities_image',
-            ]);}
-        else{
-        $request->validate([
-            'image'          =>       'image|mimes:jpeg,png,jpg,gif|max:2048',
-
-        ]);
-    }
-
-
-
-          $event->image_title= $request->image_title;
-          $event->image_alt= $request->image_alt;
-          $event->order= $request->order;
-          $event->status= $request->status;
-          $event->parent_id=$request->parent_id;
-          if($request->hasFile('image')){
-              $file=$request->file('image');
-              $newname= time().rand(10,99).'.'.$file->getClientOriginalExtension();
-              $path=public_path('uploads/multiple/event_image');
-              $file->move($path, $newname);
-              $event->image    = $newname;
-          }
-          $event->save();
-
-        return redirect()->route('admin.title')->with('success',$msg);
-    }
-
-    return view('admin.sections.event&activitiesimage',compact('event','title','id','data'));
-    }
-
-    public function eventactivities($id)
-    {
-    $data=event_image::orderBy('id')->where('parent_id',$id)->get();
-    return view('admin.sections.event&activitiesimageview',['data'=>$data]);
-    }
-
-        public function delete_industry($id){
-        Industry::find(dDecrypt($id))->delete();
-        return redirect()->back()->with('success','Club deleted Successfully');
-
-
-        $exit = event_image::where('id',dDecrypt($id))->first();
+    public function delete_industry($id){
+        $exit = Industry::where('id',dDecrypt($id))->first();
         if(!empty($exit)){
-            event_image::find(dDecrypt($id))->delete();
+            Industry::find(dDecrypt($id))->delete();
         }else{
             return back()->with('error','You are trying to perform unethical process. Your requst is failed.');
         }
         return redirect()->back()->with('success','Record Deleted Successfully');
+    }
 
-
-        }
-
-     public function add_industry(Request $request,$id=NULL){
+     public function add_edit_industry(Request $request,$id=NULL){
      if($id){
 
         $title="Edit Details";
@@ -1578,25 +722,420 @@ public function add_committee(Request $request,$id=NULL)
     return view('admin.sections.industry',compact('data','title','id'));
     }
 
-    public function industry()
-    {
-    $data=Industry::orderBy('id')->get();
-    return view('admin.sections.viewindustry',['data'=>$data]);
+
+//tender
+
+    public function Show_tender($id){
+        $data=Tender::find(dDecrypt($id))->first();
+        $data=Tender::where('id',$data->id)->first();
+        return view('admin.sections.view_tender',['data'=>$data]);
     }
-    public function event_activity_show(){
 
-    $data=Events::get();
-    return response()->json(['data'=>$data]);
 
+    public function View_tender()
+        {
+            $tender=Tender::orderBy('id')->get();
+            return view('admin.sections.tendersadd',['tender'=>$tender]);
+        }
+
+    public function Add_Edit_tender(Request $request,$id=null)
+        {
+
+    if($id){
+        $title="Edit Tender Details";
+        $msg="Tender Details Edited Successfully!";
+        $tender=Tender::find(dDecrypt($id));
+
+
+    }
+    else{
+
+          $title="Add Tender Details";
+          $msg="Tender Details Added Successfully!";
+          $tender=new Tender;
+        //  dd($request->all());
+    }
+
+
+    if($request->isMethod('post')){
+        if($id){
+        $request->validate([
+
+            'title'=>'required',
+            "tender_document"   =>   "mimes:pdf|max:10000"
+
+        ]);
+        }
+        else{
+                $request->validate([
+            'title'=>'required',
+            'title'=>'required|unique:tenders',
+            "tender_document"   =>   "mimes:pdf|max:10000"
+
+        ]);
+        }
+
+
+            $tender->published_date=$request->published_date;
+            $tender->submission_date=$request->submission_date;
+            $tender->title=$request->title;
+
+
+            if($request->hasFile('tender_document')){
+                $tender->pdfsize=$request->tender_document->getSize();
+                $file=$request->file('tender_document');
+                $newname=time().rand(10,99).'.'.$file->getClientOriginalExtension();
+                $path=public_path('uploads/tenders');
+                $file->move($path,$newname);
+            $tender->tender_document=$newname;
+            }
+            $tender->corrigendum=$request->corrigendum;
+            $tender->status=$request->status;
+            $tender->save();
+        return redirect()->route('admin.viewtenders')->with('success',$msg);
+    }
+    return view('admin.sections.tendors',compact('tender','title','id'));
+    }
+
+    public function Delete_tender($id){
+
+        $exit = Tender::where('id',dDecrypt($id))->first();
+        if(!empty($exit)){
+            Tender::find(dDecrypt($id))->delete();
+        }else{
+            return back()->with('error','You are trying to perform unethical process. Your requst is failed.');
+        }
+        return redirect()->back()->with('success','Record Deleted Successfully');
+    }
+
+
+
+//vendord
+
+    public function Show_vender($id){
+        $data=Vendorsdebarred::find(dDecrypt($id))->first();
+        $data=Vendorsdebarred::where('id',$data->id)->first();
+        return view('admin.sections.view_vendor',['data'=>$data]);
+    }
+
+    public function View_vendor()
+        {
+            $vendordebarred=Vendorsdebarred::orderBy('id')->get();
+            return view('admin.sections.vendorsdebarredmanage',['vendordebarred'=>$vendordebarred]);
+        }
+
+    public function Add_Edit_vendor(Request $request,$id=null)
+        {
+
+    if($id){
+        $title="Edit Details";
+        $msg="Tender Details Edited Successfully!";
+        $vendorsdebarred=Vendorsdebarred::find(dDecrypt($id));
+
+
+    }
+    else{
+
+          $title="Add Details";
+          $msg="Details Added Successfully!";
+          $vendorsdebarred=new Vendorsdebarred;
+        //  dd($request->all());
+    }
+
+
+        if($request->isMethod('post')){
+            if($id){
+            $request->validate([
+
+                'vendor_name'=>'required',
+                "related_document"   =>   "mimes:pdf|max:10000"
+
+            ]);
+            }
+            else{
+                $request->validate([
+
+                'vendor_name'=>'required|unique:Vendorsdebarred',
+                "related_document"   =>   "mimes:pdf|max:10000"
+
+            ]);
+            }
+
+
+            $vendorsdebarred->vendor_name=$request->vendor_name;
+
+            if($request->hasFile('related_document')){
+                $vendorsdebarred->pdfsize=$request->related_document->getSize();
+                $file=$request->file('related_document');
+                $newname=time().rand(10,99).'.'.$file->getClientOriginalExtension();
+                $path=public_path('uploads/vendorsdebarred');
+                $file->move($path,$newname);
+            $vendorsdebarred->related_document=$newname;
+            }
+            $vendorsdebarred->status=$request->status;
+            $vendorsdebarred->save();
+
+        return redirect()->route('admin.vendordebarred')->with('success',$msg);
+    }
+    return view('admin.sections.editvendor',compact('vendorsdebarred','title','id'));
+    }
+
+    public function Delete_vendor($id){
+
+        $exit = Vendorsdebarred::where('id',dDecrypt($id))->first();
+        if(!empty($exit)){
+            Vendorsdebarred::find(dDecrypt($id))->delete();
+        }else{
+            return back()->with('error','You are trying to perform unethical process. Your requst is failed.');
+        }
+        return redirect()->back()->with('success','Record Deleted Successfully');
+
+
+    }
+
+
+    //career
+
+    public function Show_career($id){
+        $data=Career::find(dDecrypt($id))->first();
+        $data=Career::where('id',$data->id)->first();
+        return view('admin.sections.view_carrer',['data'=>$data]);
+    }
+
+
+    public function View_Career()
+        {
+            $career=Career::orderBy('id')->get();
+            return view('admin.sections.managecareer',['career'=>$career]);
+        }
+
+        public function Add_Edit_Career(Request $request,$id=null)
+        {
+
+
+    if($id){
+
+
+        $title="Edit Details";
+        $msg="Details Edited Successfully!";
+        $career=Career::find(dDecrypt($id));
+
+
+    }
+    else{
+
+          $title="Add Details";
+          $msg="Details Added Successfully!";
+          $career=new Career;
+
+    }
+
+
+        if($request->isMethod('post')){
+            if($id){
+            $request->validate([
+                'name_of_the_post'=>'required','unique: career',
+                "detail_advertisement"   =>   "mimes:pdf|max:10000"
+
+            ]);
+            }
+            else{
+                $request->validate([
+                'name_of_the_post'=>'required',
+                "detail_advertisement"   =>   "mimes:pdf|max:10000"
+
+            ]);
+        }
+
+
+            $career->name_of_the_post=$request->name_of_the_post;
+
+            if($request->hasFile('detail_advertisement')){
+                $career->pdfsize=$request->detail_advertisement->getSize();
+                $file=$request->file('detail_advertisement');
+                $newname=time().rand(10,99).'.'.$file->getClientOriginalExtension();
+                $path=public_path('uploads/fo');
+                $file->move($path,$newname);
+            $career->detail_advertisement=$newname;
+            }
+            $career->note=$request->note;
+            $career->opening_date=$request->opening_date;
+            $career->closing_date=$request->closing_date;
+            $career->online_link=$request->online_link;
+            $career->corrigendum=$request->corrigendum;
+            $career->status=$request->status;
+            $career->save();
+
+        return redirect()->route('admin.careershow')->with('success',$msg);
+    }
+
+    return view('admin.sections.careers',compact('career','title','id'));
+    }
+
+    public function Delete_Career($id){
+
+        $exit = Career::where('id',dDecrypt($id))->first();
+        if(!empty($exit)){
+            Career::find(dDecrypt($id))->delete();
+        }else{
+            return back()->with('error','You are trying to perform unethical process. Your requst is failed.');
+        }
+        return redirect()->back()->with('success','Record Deleted Successfully');
+
+
+
+    }
+
+//evnets & Activites
+    public function Add_Event_EventsActivites(Request $request,$id=NULL){
+        if($id){
+            $title="Edit title Details";
+            $msg="title Details Edited Successfully!";
+            $data=Events::find(dDecrypt($id));
+        }
+        else{
+
+              $title="Add title Details";
+              $msg="title Details Added Successfully!";
+              $data=new Events;
+            //  dd($request->all());
+        }
+
+
+            if($request->isMethod('post')){
+                if(!$id){
+                    $request->validate([
+
+                        'title'=>'required|unique:events&activities',
+                    ]);}
+                else{
+                $request->validate([
+
+                    'title'=>'required',
+                ]);
+            }
+            $data->title=$request->title;
+            $data->status= $request->status;
+            $data->save();
+           // dd($request->all());
+           return redirect('Accounts/Event-Activites')->with('success',$msg);
+        }
+
+        return view('admin.sections.events&activities',compact('data','title','id'));
+    }
+
+    public function View_EventsActivites(){
+        $data=Events:: orderBy('id')->get();
+        return view('admin.sections.manageevents&activities',['data'=>$data]);
+    }
+
+    public function Delete_EventsActivites($id){
+
+        $exit = Events::where('id',dDecrypt($id))->first();
+        if(!empty($exit)){
+            Events::find(dDecrypt($id))->delete();
+        }else{
+            return back()->with('error','You are trying to perform unethical process. Your requst is failed.');
+        }
+        return redirect()->back()->with('success','Record Deleted Successfully');
+    }
+
+
+
+    public function  Show_EventsActivites($id){
+
+        $data=Events::find(dDecrypt($id))->first();
+        $data=Events::where('id',$data->id)->first();
+        return view('admin.sections.view_EventsActivety',['data'=>$data]);
+    }
+
+  //evnet and activty image
+  public function Delete_Event_Image($id){
+
+    $exit = event_image::where('id',dDecrypt($id))->first();
+    if(!empty($exit)){
+        event_image::find(dDecrypt($id))->delete();
+    }else{
+        return back()->with('error','You are trying to perform unethical process. Your requst is failed.');
+    }
+    return redirect()->back()->with('success','Record Deleted Successfully');
+
+    }
+
+     public function Add_Edit_EventActivity_Image(Request $request,$id=NULL){
+     if($id){
+
+
+        $title="Edit Details";
+        $msg="Details Edited Successfully!";
+        $event=event_image::find(dDecrypt($id));
+        $data=Events::get();
+        }
+    else{
+
+          $title="Add Details";
+          $msg="Details Added Successfully!";
+          $event=new event_image;
+          $data=Events::get();
+
+    }
+     if($request->isMethod('post')){
+        if(!$id){
+            $request->validate([
+                'image'          =>       'image|mimes:jpeg,png,jpg,gif|max:2048',
+                'image_title'=>'required|unique:events&activities_image',
+            ]);}
+        else{
+        $request->validate([
+            'image'          =>       'image|mimes:jpeg,png,jpg,gif|max:2048',
+
+        ]);
+    }
+
+          $event->image_title= $request->image_title;
+          $event->image_alt= $request->image_alt;
+          $event->order= $request->order;
+          $event->status= $request->status;
+          $event->parent_id=$request->parent_id;
+          if($request->hasFile('image')){
+              $file=$request->file('image');
+              $newname= time().rand(10,99).'.'.$file->getClientOriginalExtension();
+              $path=public_path('uploads/multiple/event_image');
+              $file->move($path, $newname);
+              $event->image    = $newname;
+          }
+          $event->save();
+
+        return back()->with('success',$msg);
+    }
+
+    return view('admin.sections.event&activitiesimage',compact('event','title','id','data'));
+    }
+
+    public function View_EventActivety_image($id)
+    {
+    $data=event_image::orderBy('id')->where('parent_id',$id)->get();
+    return view('admin.sections.event&activitiesimageview',['data'=>$data]);
+    }
+
+
+public function  Show_EventActivety_image($id){
+
+    $data=event_image::find(dDecrypt($id))->first();
+    $data=event_image::where('id',$data->id)->first();
+
+    return view('admin.sections.view_event_activites_image',['data'=>$data]);
 }
-//add student council
-public function student_council_index()
+
+
+//student council
+public function View_studentCouncil()
 {
     $data=\App\Models\student_council::get();
     return view('admin.sections.manage_student_council',['data'=>$data]);
 }
 
-public function Add_student_council(Request $request,$id=null)
+public function Add_Edit_StudentCouncil(Request $request,$id=null)
 {
     $profile=OrganisationStructure::get();
     if($id){
@@ -1653,29 +1192,40 @@ public function Add_student_council(Request $request,$id=null)
 
 }
 
-    public function Delete_studentcouncil($id){
+    public function Delete_StudentCouncil($id){
     $data=student_council::find(dDecrypt($id));
     $data->delete();
      return redirect()->back()->with('success','committee deleted Successfully');
-  }
+    }
 
-  public function student_list()
-  {
-   $data=student_council::get();
-   return response()->json($data, 200);
-  }
+
+    public function  Show_studentCouncil($id){
+
+        $data=student_council::find(dDecrypt($id))->first();
+        $data=student_council::where('id',$data->id)->first();
+          $profile=OrganisationStructure::get();
+        return view('admin.sections.view_StudentConsil',['data'=>$data,'profile'=>$profile]);
+    }
+
+
 
 //journal_publications
-public function journal_publications_index()
-{
+public function View_journalPublications(){
     $data=\App\Models\journal_publication::get();
     return view('admin.sections.managejournalpublications',['data'=>$data]);
 }
 
-public function Add_journal_publications(Request $request,$id=null)
+
+    public function show_journalPublications($id){
+           $data=journal_publication::find(dDecrypt($id))->first();
+           $data=journal_publication::where('id',$data->id)->first();
+     return view('admin.sections.view_journal_publication',['data'=>$data]);
+    }
+
+
+
+public function Add_Edit_journalPublications(Request $request,$id=null)
 {
-
-
     if($id){
         $title="Edit journal publications Section";
         $msg="journal publications Section Edited Successfully!";
@@ -1712,31 +1262,28 @@ public function Add_journal_publications(Request $request,$id=null)
 
         $data->save();
         return redirect('/Accounts/journal-publications')->with('success',$msg);
-
     }
-
     return view('admin.sections.add_journal_publications',compact('data','title','id'));
-
 }
 
-    public function Delete_journal_publications($id){
+    public function Delete_journalPublications($id){
     $data=journal_publication::find(dDecrypt($id));
     $data->delete();
      return redirect()->back()->with('success','journal publications deleted Successfully');
-  }
+    }
 
 
-  //journal publications page
-public function journal_publications_page_index($id)
-{
+//journal publications page
+public function View_journalPublications_Child($id){
     $id=$id;
     $data=\App\Models\journal_publication_child::where('parent_id',dDecrypt($id))->get();
     return view('admin.sections.journal_publications_page',['data'=>$data,'id'=>$id]);
 }
 
-public function Add_journal_publications_page(Request $request,$id=null)
-{
 
+
+public function Add_Edit_journalPublications_Child(Request $request,$id=null)
+{
     if($id){
         $title="Edit journal publications Section";
         $msg="journal publications Section Edited Successfully!";
@@ -1749,9 +1296,6 @@ public function Add_journal_publications_page(Request $request,$id=null)
 
         //child journal_publication_child
     }
-
-
-
     if($request->isMethod('post')){
         if(!$id){
             $request->validate([
@@ -1774,97 +1318,27 @@ public function Add_journal_publications_page(Request $request,$id=null)
 
 }
 
-    public function Delete_journal_publications_page($id){
+    public function Delete_journalPublications_child($id){
     $data=journal_publication_child::find(dDecrypt($id));
     $data->delete();
      return redirect()->back()->with('success','journal publications deleted Successfully');
-  }
-
-  public function journal_id(Request $request)
-  {
-      $show=journal_publication_child::find($request->id);
-      $item=journal_publication_child::whereid($show->id)->first();
-      return response()->json(['item'=>$item]);
-  }
-
-  public function journal_publications_list()
-  {
-      $item=journal_publication::get();
-      return response()->json(['item'=>$item]);
-  }
-
-
-  //add-edit-ANTI-RAGGING
-  public function ANTI_RAGGING_index()
-{
-    $data=\App\Models\anti_raggings::get();
-    return view('admin.sections.mange_ANTI_RAGGING',['data'=>$data]);
-}
-
-public function add_ANTI_RAGGING(Request $request,$id=null)
-{
-
-    if($id){
-        $title="Edit Anti Ragging Section";
-        $msg="Anti Ragging Edited Successfully!";
-        $data=anti_raggings::find(dDecrypt($id));
-    }
-    else{
-        $title="Add Anti Ragging Section";
-        $msg="Anti Ragging Added Successfully!";
-        $data=new anti_raggings;
-
-        //child journal_publication_child
     }
 
-        if($request->isMethod('post')){
-            if(!$id){
-               $request->validate([
-                'title'=>'required|unique:anti_raggings',
-                "pdf" => "mimes:pdf|max:10000"
-
-              ]);}
-            else{
-            $request->validate([
-                'title'=>'required',
-                "pdf"  =>  "mimes:pdf|max:10000"
-            ]);
-        }
-
-
-        $data->status=$request->status;
-        $data->title=$request->title;
-
-        $path=public_path('uploads/pdf');
-        if($request->hasFile('pdf')){
-            $data->pdfsize=$request->pdf->getSize();
-            $file=$request->file('pdf');
-            $newname= time().rand(10,99).'.'.$file->getClientOriginalExtension();
-            $file->move($path, $newname);
-            $data->pdf= $newname;
-        }
-        $data->save();
-        return redirect('/Accounts/ANTI-RAGGING')->with('success',$msg);
-    }
-    return view('admin.sections.add_ANTI_RAGGING',compact('data','title','id'));
-
-}
-
-    public function delete_ANTI_RAGGING($id){
-    $data=anti_raggings::find(dDecrypt($id));
-    $data->delete();
-     return redirect()->back()->with('success','Anti Ragging deleted Successfully');
-  }
 
 
 //Wellness-Facilities
-public function Wellness_Facilities_Index()
-{
+public function show_WellnessFacilities($id){
+    $data=wellness_facilitie::find(dDecrypt($id))->first();
+    $data=wellness_facilitie::where('id',$data->id)->first();
+return view('admin.sections.view_wellness_facility',['data'=>$data]);
+}
+
+public function View_WellnessFacilities(){
     $data=\App\Models\wellness_facilitie::get();
     return view('admin.sections.manage_WellnessFacilities',['data'=>$data]);
 }
 
-public function add_Wellness_Facilities(Request $request,$id=null)
+public function add_Edit_WellnessFacilities(Request $request,$id=null)
 {
     if($id){
         $title="Edit wellness facilities Section";
@@ -1918,7 +1392,7 @@ public function add_Wellness_Facilities(Request $request,$id=null)
 
 }
 
-    public function delete_Wellness_Facilities($id){
+    public function delete_WellnessFacilities($id){
     $data=wellness_facilitie::find(dDecrypt($id));
     $data->delete();
      return redirect()->back()->with('success','journal publications deleted Successfully');
@@ -1926,21 +1400,28 @@ public function add_Wellness_Facilities(Request $request,$id=null)
 
 
  //wellness_facilitie_image
- public function Wellness_index($id)
+ public function show_WellnessFacilitiesImage($id){
+    $data=wellness_facilitie_image::find(dDecrypt($id))->first();
+    $data=wellness_facilitie_image::where('id',$data->id)->first();
+return view('admin.sections.view_StudentConsil',['data'=>$data]);
+}
+
+
+ public function view_WellnessImages($id)
   {
      $data=wellness_facilitie_image::whereparent_id(dDecrypt($id))->get();
      $id=dDecrypt($id);
     return view('admin.sections.manage_Wellness_image',['data'=>$data,'id'=>$id]);
   }
 
-  public function delete_Wellness_index($id){
+  public function delete_WellnessImages($id){
     $data=wellness_facilitie_image::find(dDecrypt($id));
     $data->delete();
   return redirect()->back()->with('success','committee deleted Successfully');
   }
 
 
-  public function add_Wellness_image(Request $request){
+  public function add_WellnessImage(Request $request){
 
       $request->validate(
 
@@ -1975,7 +1456,7 @@ public function add_Wellness_Facilities(Request $request,$id=null)
 
   }
 
-  public function edit_Wellness_image(Request $request,$id)
+  public function edit_WellnessImage(Request $request,$id)
   {
      $request->validate(
         [
@@ -2005,6 +1486,239 @@ public function add_Wellness_Facilities(Request $request,$id=null)
     return back()->with('success','Record Edit Successfully');
   }
 
+
+
+//cell
+
+
+public function Show_Cell($id){
+    $data=cell::find(dDecrypt($id))->first();
+    $data=cell::where('id',$data->id)->first();
+    $profile=OrganisationStructure::get();
+    return view('admin.sections.view_cell',['data'=>$data,'profile'=>$profile]);
+}
+
+public function Add_Edit_Cells(Request $request,$id=null){
+    $profile=OrganisationStructure::get();
+    if($id){
+        $title="Edit Cells Details";
+        $msg="Cells Details Edited Successfully!";
+        $data=cell::find(dDecrypt($id));
+    }
+    else{
+
+          $title="Add Cells Details";
+          $msg="Cells Details Added Successfully!";
+          $data=new cell;
+    }
+
+
+        if($request->isMethod('post')){
+            if($id){
+            $request->validate([
+
+                'title'=>'required',
+                'Cell_logo'  => 'image|mimes:jpeg,png,jpg,gif|max:2048',
+                'Cell_image'  =>   'image|mimes:jpeg,png,jpg,gif|max:2048',
+                'bannerimage'=>'max:5120|mimes:png,jpg|dimensions:max_width=1920,min_width=1920,max_height=500,min_height=500',
+
+            ]);
+            }
+            else{
+                $request->validate([
+
+                    'title'=>'required|unique:cells',
+                    'Cell_logo'  => 'image|mimes:jpeg,png,jpg,gif|max:2048',
+                    'Cell_image'  =>   'image|mimes:jpeg,png,jpg,gif|max:2048',
+                    'bannerimage'=>'max:5120|mimes:png,jpg|dimensions:max_width=1920,min_width=1920,max_height=500,min_height=500',
+
+            ]);
+        }
+
+        $data->title=$request->title;
+        $data->chairperson= $request->chairperson;
+        $data->about_details= $request->about_details;
+        $data->activites= $request->activites;
+        $data->status= $request->status;
+        $data->event= $request->event;
+        $data->slug=SlugCheck('cells',($request->Cell_name));
+        $data->logo_title= $request->cell_logo_title;
+        $data->logo_alt= $request->cell_logo_alt;
+        $data->image_title= $request->cell_image_title;
+        $data->image_alt= $request->cell_image_alt;
+
+
+
+        $path=public_path('uploads/club');
+        if($request->hasFile('Cell_logo')){
+            $file=$request->file('Cell_logo');
+            $newname= time().rand(10,99).'.'.$file->getClientOriginalExtension();
+            $file->move($path, $newname);
+            $data->logo= $newname;
+        }
+        $path=public_path('uploads/club');
+        if($request->hasFile('Cell_image')){
+            $file=$request->file('Cell_image');
+            $newname= time().rand(10,99).'.'.$file->getClientOriginalExtension();
+            $file->move($path, $newname);
+            $data->image= $newname;
+        }
+
+        $data->banner_title= $request->banner_title;
+        $data->banner_alt= $request->banner_alt;
+        $path=public_path('page/banner');
+        if($request->hasFile('bannerimage')){
+            $file=$request->file('bannerimage');
+            $newname= time().rand(10,99).'.'.$file->getClientOriginalExtension();
+            $file->move($path, $newname);
+            $data->bannerimage= $newname;
+        }
+
+
+
+        $data->save();
+       return redirect('Accounts/manage-cells')->with('success',$msg);
+    }
+
+    return view('admin.sections.add_cells',compact('data','title','id','profile'));
+}
+
+public function View_cells(){
+    $data=cell:: orderBy('id')->get();
+    return view('admin.sections.managecells',['data'=>$data]);
+}
+
+
+
+function Delete_cells($id){
+
+    $exit = cell::where('id',dDecrypt($id))->first();
+    if(!empty($exit)){
+        cell::find(dDecrypt($id))->delete();
+    }else{
+        return back()->with('error','You are trying to perform unethical process. Your requst is failed.');
+    }
+    return redirect()->back()->with('success','Record Deleted Successfully');
+}
+
+
+
+//cells images
+public function Delete_cellsImage($id){
+
+    $exit = cell_multiple_image::where('id',dDecrypt($id))->first();
+    if(!empty($exit)){
+        cell_multiple_image::find(dDecrypt($id))->delete();
+    }else{
+        return back()->with('error','You are trying to perform unethical process. Your requst is failed.');
+    }
+    return redirect()->back()->with('success','Record Deleted Successfully');
+
+
+    }
+
+    public function add_cellsImage(Request $request)
+    {
+
+        $request->validate(
+
+            [
+                'filename'          =>       'image|mimes:jpeg,png,jpg,gif|max:2048',
+                'image_title'    =>           'required|unique:cell_multiple_images'
+            ]
+
+
+        );
+
+        $data= new cell_multiple_image();
+        $data->image_title= $request->image_text;
+        $data->image_alt= $request->image_alt;
+        $data->sort_order= $request->order;
+        $data->event= $request->event;
+        $data->parent_id=$request->parent_id;
+        $data->status= $request->status;
+        $path=public_path('uploads/multiple/club');
+        if($request->hasFile('filename')){
+            $file=$request->file('filename');
+            $newname= time().rand(10,99).'.'.$file->getClientOriginalExtension();
+            $file->move($path, $newname);
+            $data->image= $newname;
+        }
+        $data->save();
+        return back()->with('success','Record save Successfully');
+      }
+
+
+    public function View_cellsImage($id)
+    {
+    $data=cell_multiple_image::whereparent_id(dDecrypt($id))->get();
+     $id=dDecrypt($id);
+    return view('admin.sections.managecellsimages',['data'=>$data,'id'=>$id]);
+    }
+
+
+    public function Edit_cellsImage(Request $request)
+    {
+       $request->validate(
+          [
+
+            'filename'          =>       'image|mimes:jpeg,png,jpg,gif|max:2048',
+            'image_text'         =>       'required'
+
+          ]
+         );
+         $data=cell_multiple_image::find($request->id);
+         $data->image_title=$request->image_text;
+         $data->image_alt=$request->image_alt;
+         $data->sort_order=$request->order;
+         $data->status=$request->status;
+         $data->event= $request->event;
+         $data->parent_id=$request->parent_id;
+
+
+        $path=public_path('uploads/multiple/club');
+        if($request->hasFile('filename')){
+            $file=$request->file('filename');
+            $newname= time().rand(10,99).'.'.$file->getClientOriginalExtension();
+            $file->move($path, $newname);
+            $data->image= $newname;
+
+        }
+
+        $data->save();
+      return back()->with('success','Record Edit Successfully');
+    }
+
+
+
+
+
+//ajax
+public function event_activity_show(){
+
+    $data=Events::get();
+    return response()->json(['data'=>$data]);
+}
+
+public function student_list()
+{
+ $data=student_council::get();
+ return response()->json($data, 200);
+}
+
+public function journal_id(Request $request)
+  {
+      $show=journal_publication_child::find($request->id);
+      $item=journal_publication_child::whereid($show->id)->first();
+      return response()->json(['item'=>$item]);
+  }
+
+  public function journal_publications_list()
+  {
+      $item=journal_publication::get();
+      return response()->json(['item'=>$item]);
+  }
+
   public function Wellness_Facilities_id(Request $request)
   {
 
@@ -2012,28 +1726,230 @@ public function add_Wellness_Facilities(Request $request,$id=null)
       return response()->json(['item'=>$item]);
   }
 
+     public function cells_list()
+    {
+        $data=\App\Models\commmittee::get();
+        return response()->json($data);
+    }
 
-  //Rit
 
-public function view_rti(){
-$data=rti:: orderBy('id')->get();
-return view('admin.sections.manage_RTI',['data'=>$data]);
-
-}
-
-public function add_RTI(Request $request,$id=NULL)
+//committee
+public function add_Edit_Committee(Request $request,$id=NULL)
 {
-
+    $profile=OrganisationStructure::get();
     if($id){
-        $title="Edit Rti Details";
-        $msg="Rti Details Edited Successfully!";
-        $data=rti::find(dDecrypt($id));
+        $title="Edit Commmittee Details";
+        $msg="Commmittee Details Edited Successfully!";
+        $data=commmittee::find(dDecrypt($id));
     }
     else{
 
-          $title="Add Rti Details";
-          $msg="Rti Details Added Successfully!";
-          $data=new rti;
+          $title="Add Commmittee Details";
+          $msg="Commmittee Details Added Successfully!";
+          $data=new commmittee;
+        //  dd($request->all());
+    }
+
+        if($request->isMethod('post')){
+            if($id){
+            $request->validate([
+
+                'title'         =>'required',
+                'Commmittee_logo'  => 'image|mimes:jpeg,png,jpg,gif|max:2048',
+                'Commmittee_image'  =>   'image|mimes:jpeg,png,jpg,gif|max:2048',
+                'bannerimage'=>'max:5120|mimes:png,jpg|dimensions:max_width=1920,min_width=1920,max_height=500,min_height=500',
+
+            ]);
+            }
+            else{
+                $request->validate([
+
+                    'title'=>'required|unique:commmittees',
+                    'Commmittee_logo'  => 'image|mimes:jpeg,png,jpg,gif|max:2048',
+                    'Commmittee_image'  =>   'image|mimes:jpeg,png,jpg,gif|max:2048',
+                    'bannerimage'=>'max:5120|mimes:png,jpg|dimensions:max_width=1920,min_width=1920,max_height=500,min_height=500',
+
+            ]);
+        }
+
+        $data->title=$request->title;
+        $data->chairperson= $request->chairperson;
+        $data->type= $request->type;
+        $data->about_details=$request->about_details;
+        $data->activites= $request->activeites;
+        $data->placement= $request->Placement;
+        $data->event= $request->event;
+        $data->status= $request->status;
+        $data->logo_title= $request->Committee_logo_title;
+        $data->logo_alt= $request->Committee_logo_alt;
+        $data->image_title= $request->Committee_image_title;
+        $data->image_alt= $request->Committee_image_alt;
+        $data->slug=SlugCheck('commmittees',($request->Commmittee_name));
+        $data->banner_title= $request->banner_title;
+        $data->banner_alt= $request->banner_alt;
+
+        $path=public_path('uploads/club');
+        if($request->hasFile('Commmittee_logo')){
+            $file=$request->file('Commmittee_logo');
+            $newname= time().rand(10,99).'.'.$file->getClientOriginalExtension();
+            $file->move($path, $newname);
+            $data->logo= $newname;
+        }
+
+        $path=public_path('uploads/club');
+        if($request->hasFile('Commmittee_image')){
+            $file=$request->file('Commmittee_image');
+            $newname= time().rand(10,99).'.'.$file->getClientOriginalExtension();
+            $file->move($path, $newname);
+            $data->image= $newname;
+        }
+
+
+        $data->banner_title= $request->banner_title;
+        $data->banner_alt= $request->banner_alt;
+        $path=public_path('page/banner');
+        if($request->hasFile('bannerimage')){
+            $file=$request->file('bannerimage');
+            $newname= time().rand(10,99).'.'.$file->getClientOriginalExtension();
+            $file->move($path, $newname);
+            $data->bannerimage= $newname;
+        }
+
+
+        $data->save();
+       return redirect('Accounts/manage-committee')->with('success',$msg);
+    }
+    return view('admin.sections.add_committee',compact('data','title','id','profile'));
+    }
+
+    function Delete_Committee($id){
+
+        $exit = commmittee::where('id',dDecrypt($id))->first();
+        if(!empty($exit)){
+            commmittee::find(dDecrypt($id))->delete();
+        }else{
+            return back()->with('error','You are trying to perform unethical process. Your requst is failed.');
+        }
+        return redirect()->back()->with('success','Record Deleted Successfully');
+    }
+
+    public function view_Committee(){
+       $data=commmittee:: orderBy('id')->get();
+     return view('admin.sections.manageCommittee',['data'=>$data]);
+
+   }
+
+
+   public function Show_Committee($id){
+    $data=commmittee::find(dDecrypt($id))->first();
+    $data=commmittee::where('id',$data->id)->first();
+    $profile=OrganisationStructure::get();
+    return view('admin.sections.view_committee',['data'=>$data,'profile'=>$profile]);
+}
+
+
+
+//committee image
+
+        public function delete_committeeImage($id){
+
+        $exit = committee_multiple_image::where('id',dDecrypt($id))->first();
+        if(!empty($exit)){
+            committee_multiple_image::find(dDecrypt($id))->delete();
+        }else{
+            return back()->with('error','You are trying to perform unethical process. Your requst is failed.');
+        }
+        return redirect()->back()->with('success','Record Deleted Successfully');
+
+
+        }
+
+
+        public function add_CommitteeImage(Request $request){
+
+            $request->validate(
+
+                [
+                    'filename'          =>       'image|mimes:jpeg,png,jpg,gif|max:2048',
+                     'committee_title'   =>       'required|unique:committee_multiple_images'
+
+                ]
+
+
+            );
+          //data in database
+          $data= new committee_multiple_image();
+          $data->committee_title= $request->committee_title;
+          $data->committee_alt= $request->committee_alt;
+          $data->sort_order= $request->order;
+          $data->event= $request->event;
+          $data->parent_id=$request->parent_id;
+          $data->status= $request->status;
+          $path=public_path('uploads/multiple/club');
+          if($request->hasFile('filename')){
+              $file=$request->file('filename');
+              $newname= time().rand(10,99).'.'.$file->getClientOriginalExtension();
+              $file->move($path, $newname);
+              $data->image= $newname;
+          }
+          $data->save();
+          return back()->with('success','Record save Successfully');
+
+        }
+
+        public function View_committeeImage($id)
+        {
+            $data=committee_multiple_image::whereparent_id(dDecrypt($id))->get();
+            $id=dDecrypt($id);
+            return view('admin.sections.manageCommitteeimage',['data'=>$data,'id'=>$id]);
+        }
+
+
+        public function edit_committeeImage(Request $request)
+        {
+          //  dd($request->all());
+           $request->validate(
+              [
+                'filename'          =>       'image|mimes:jpeg,png,jpg,gif|max:2048',
+                'image_text'        =>        'required'
+              ]
+             );
+             $data=committee_multiple_image::find($request->id);
+             $data->committee_title=$request->image_text;
+             $data->committee_alt=$request->image_alt;
+             $data->sort_order=$request->order;
+             $data->status=$request->status;
+             $data->event= $request->event;
+             $data->parent_id=$request->parent_id;
+            $path=public_path('uploads/multiple/club');
+            if($request->hasFile('filename')){
+                $file=$request->file('filename');
+                $newname= time().rand(10,99).'.'.$file->getClientOriginalExtension();
+                $file->move($path, $newname);
+                $data->image = $newname;
+
+            }
+
+            $data->save();
+          return back()->with('success','Record Edit Successfully');
+        }
+
+// club
+
+
+public function add_Edit_club(Request $request,$id=NULL){
+    $profile=OrganisationStructure::get();
+    if($id){
+        $title="Edit club Details";
+        $msg="club Details Edited Successfully!";
+        $data=club::find(dDecrypt($id));
+    }
+    else{
+
+          $title="Add club Details";
+          $msg="club Details Added Successfully!";
+          $data=new club;
+        //  dd($request->all());
     }
 
 
@@ -2041,270 +1957,498 @@ public function add_RTI(Request $request,$id=NULL)
         if($request->isMethod('post')){
             if($id){
             $request->validate([
-                "pdf" => "mimes:pdf|max:10000",
-                'title'=>'required',
+
+                 'title'               =>      'required',
+                'club_logo'          =>       'image|mimes:jpeg,png,jpg,gif|max:2048',
+                'club_image'       =>        'image|mimes:jpeg,png,jpg,gif|max:2048',
+                'bannerimage'=>'max:5120|mimes:png,jpg|dimensions:max_width=1920,min_width=1920,max_height=500,min_height=500',
 
             ]);
             }
             else{
-                 $request->validate([
-                    "pdf" => "mimes:pdf|max:10000",
-                 'title'=>'required|unique:rtis',
+                $request->validate([
+
+                   'title'          =>           'required|unique:clubs',
+                    'club_logo'          =>       'image|mimes:jpeg,png,jpg,gif|max:2048',
+                    'club_image'       =>        'image|mimes:jpeg,png,jpg,gif|max:2048',
+                    'bannerimage'=>'max:5120|mimes:png,jpg|dimensions:max_width=1920,min_width=1920,max_height=500,min_height=500',
 
             ]);
         }
 
-
         $data->title=$request->title;
-        $data->CPIO=$request->CPIO;
-        $data->Authority=$request->Authority;
-        $data->status=$request->status;
-        $path=public_path('uploads/rti');
-        if($request->hasFile('pdf')){
-            $data->pdfsize=$request->pdf->getSize();
-            $file=$request->file('pdf');
+        $data->about_details= $request->about_details;
+        $data->activitie= $request->activitie;
+        $data->chairperson= $request->chairperson;
+        $data->slug=SlugCheck('clubs',($request->club_name));
+        $data->status= $request->status;
+        $data->event= $request->event;
+        $data->type=$request->club_type;
+        $data->logo_title= $request->club_logo_title;
+        $data->logo_alt= $request->club_logo_alt;
+        $data->image_title	= $request->club_image_title	;
+        $data->image_alt= $request->club_image_alt;
+
+        $path=public_path('uploads/club');
+        if($request->hasFile('club_logo')){
+            $file=$request->file('club_logo');
             $newname= time().rand(10,99).'.'.$file->getClientOriginalExtension();
             $file->move($path, $newname);
-            $data->pdf= $newname;
+            $data->logo= $newname;
         }
+        $path=public_path('uploads/club');
+        if($request->hasFile('club_image')){
+            $file=$request->file('club_image');
+            $newname= time().rand(10,99).'.'.$file->getClientOriginalExtension();
+            $file->move($path, $newname);
+            $data->image= $newname;
+        }
+
+
+        $data->banner_title= $request->banner_title;
+        $data->banner_alt= $request->banner_alt;
+        $path=public_path('page/banner');
+        if($request->hasFile('bannerimage')){
+            $file=$request->file('bannerimage');
+            $newname= time().rand(10,99).'.'.$file->getClientOriginalExtension();
+            $file->move($path, $newname);
+            $data->bannerimage= $newname;
+        }
+
+
         $data->save();
-       return redirect('Accounts/RTI')->with('success',$msg);
-    }
-    return view('admin.sections.add_RTI',compact('data','title','id'));
+       return redirect('Accounts/manage-clubs')->with('success',$msg);
     }
 
-    function delete_RTI($id){
-        rti::find(dDecrypt($id))->delete();
-        return redirect()->back()->with('success','committee deleted Successfully');
+    return view('admin.sections.add_club',compact('data','title','id','profile'));
+}
+
+public function view_club(){
+    $data=club:: orderBy('id')->get();
+    return view('admin.sections.manageclub',['data'=>$data]);
+}
+
+
+
+
+public function Show_Club($id){
+    $data=club::find(dDecrypt($id))->first();
+    $data=club::where('id',$data->id)->first();
+    $profile=OrganisationStructure::get();
+    return view('admin.sections.view_club',['data'=>$data,'profile'=>$profile]);
+}
+
+
+
+function Delete_Club($id){
+
+    $exit = club::where('id',dDecrypt($id))->first();
+    if(!empty($exit)){
+        club::find(dDecrypt($id))->delete();
+    }else{
+        return back()->with('error','You are trying to perform unethical process. Your requst is failed.');
+    }
+    return redirect()->back()->with('success','Record Deleted Successfully');
+}
+
+
+
+//club images
+public function Delete_clubImage($id){
+
+    $exit = club_multiple_image::where('id',dDecrypt($id))->first();
+    if(!empty($exit)){
+        club_multiple_image::find(dDecrypt($id))->delete();
+    }else{
+        return back()->with('error','You are trying to perform unethical process. Your requst is failed.');
+    }
+    return redirect()->back()->with('success','Record Deleted Successfully');
+
     }
 
-    public function view_rti_section()
-    {
-    $data=rit_report_section::get();
-    return view ('admin.sections.manage_rti_section',['data'=>$data]);
-    }
+    public function add_ClubImage(Request $request){
 
-    public function add_rit_pdf(Request $request)
-    {
         $request->validate(
+
             [
-            "filename"   => "mimes:pdf|max:10000",
-            'title'=>'required|unique:rit_report_sections',
+
+            'filename'          =>       'image|mimes:jpeg,png,jpg,gif|max:2048',
+            'image_title'   =>       'required|unique:club_multiple_images'
+
             ]
+
+
         );
+      //data in database
+      $data= new club_multiple_image();
+      $data->image_title= $request->image_text;
+      $data->image_alt= $request->image_alt;
+      $data->sort_order= $request->order;
+      $data->event= $request->event;
+      $data->parent_id=$request->parent_id;
+      $data->status= $request->status;
+      $path=public_path('uploads/multiple/club');
+      if($request->hasFile('filename')){
+          $file=$request->file('filename');
+          $newname= time().rand(10,99).'.'.$file->getClientOriginalExtension();
+          $file->move($path, $newname);
+          $data->image	= $newname;
+      }
+      $data->save();
+      return back()->with('success','Record save Successfully');
 
-        $data=New rit_report_section;
-        $data->title= $request->text;
-        $data->Quarterly_section= $request->Quarterly_section;
-        $data->status= $request->status;
+    }
 
-        $path=public_path('uploads/rti/');
+    public function View_clubImage($id)
+    {
+        $data=club_multiple_image::whereparent_id(dDecrypt($id))->get();
+        $id=dDecrypt($id);
+    return view('admin.sections.manageclubimage',['data'=>$data,'id'=>$id]);
+    }
+    public function edit_clubImage(Request $request)
+    {
+      //  dd($request->all());
+       $request->validate(
+          [
+
+            'filename'          =>       'image|mimes:jpeg,png,jpg,gif|max:2048',
+            'image_text'        =>       'required'
+
+          ]
+         );
+         $data=club_multiple_image::find($request->id);
+         $data->image_title=$request->image_text;
+         $data->image_alt=$request->image_alt;
+         $data->sort_order=$request->order;
+         $data->status=$request->status;
+         $data->parent_id=$request->parent_id;
+         $data->event= $request->event;
+        $path=public_path('uploads/multiple/club');
         if($request->hasFile('filename')){
-            $data->pdfsize=$request->filename->getSize();
             $file=$request->file('filename');
             $newname= time().rand(10,99).'.'.$file->getClientOriginalExtension();
             $file->move($path, $newname);
-            $data->pdf= $newname;
-        }
-        $data->save();
-        return back()->with('success','Record Add Successfully');
+            $data->image = $newname;
 
-    }
-
-
-
-    public function edit_rti_section(Request $request,$id)
-    {
-        $request->validate(
-            [
-             "filename"   =>   "mimes:pdf|max:10000"
-            ]
-           );
-        $data=rit_report_section::find($id);
-        $data->title= $request->text;
-        $data->Quarterly_section= $request->Quarterly_section;
-        $data->Quarterly_type= $request->Quarterly_type;
-        $data->status= $request->status;
-
-        $path=public_path('uploads/rti/');
-        if($request->hasFile('filename')){
-            $data->pdfsize=$request->filename->getSize();
-            $file=$request->file('filename');
-            $newname= time().rand(10,99).'.'.$file->getClientOriginalExtension();
-            $file->move($path, $newname);
-            $data->pdf= $newname;
-        }
-        $data->save();
-        return back()->with('success','Record Edit Successfully');
-
-    }
-
-    public function delete_rti_section($id)
-    {
-        rit_report_section::find(dDecrypt($id))->delete();
-        return redirect()->back()->with('success','Rti deleted Successfully');
-    }
-
-    public function pdf_section(Request $request){
-        $item=rit_report_section::whereid($request->id)->first();
-        return response()->json(['item'=>$item]);
-    }
-    //QUARTER section
-    public function view_rti_QUARTER()
-    {
-    $data=quarter_report::get();
-    return view ('admin.sections.manageQuarterly',['data'=>$data]);
-    }
-
-    public function add_rit_QUARTER(Request $request)
-    {
-
-        $request->validate(
-            [
-                "QUARTER_pdf1"            =>          "mimes:pdf|max:10000",
-                "QUARTER_pdf2"            =>          "mimes:pdf|max:10000",
-                "QUARTER_pdf3"            =>          "mimes:pdf|max:10000",
-                "QUARTER_pdf4"            =>          "mimes:pdf|max:10000",
-                'year'                     =>          'required|unique:quarter_reports'
-            ]
-           );
-
-        $data=New quarter_report;
-        $data->status= $request->status;
-        $data->year= $request->year;
-
-        $path=public_path('uploads/rti/');
-        if($request->hasFile('QUARTER_pdf1')){
-            $data->pdfsize_first=$request->QUARTER_pdf1->getSize();
-            $file=$request->file('QUARTER_pdf1');
-            $newname= time().rand(10,99).'.'.$file->getClientOriginalExtension();
-            $file->move($path, $newname);
-            $data->pdf_first= $newname;
-        }
-
-        $path=public_path('uploads/rti/');
-        if($request->hasFile('QUARTER_pdf2')){
-            $data->pdfsize_second=$request->QUARTER_pdf2->getSize();
-            $file=$request->file('QUARTER_pdf2');
-            $newname= time().rand(10,99).'.'.$file->getClientOriginalExtension();
-            $file->move($path, $newname);
-            $data->pdf_second= $newname;
-        }
-
-        $path=public_path('uploads/rti/');
-        if($request->hasFile('QUARTER_pdf3')){
-            $data->pdfsize_third=$request->QUARTER_pdf3->getSize();
-            $file=$request->file('QUARTER_pdf3');
-            $newname= time().rand(10,99).'.'.$file->getClientOriginalExtension();
-            $file->move($path, $newname);
-            $data->pdf_third= $newname;
-        }
-
-        $path=public_path('uploads/rti/');
-        if($request->hasFile('QUARTER_pdf4')){
-            $data->pdfsize_fourth=$request->QUARTER_pdf4->getSize();
-            $file=$request->file('QUARTER_pdf4');
-            $newname= time().rand(10,99).'.'.$file->getClientOriginalExtension();
-            $file->move($path, $newname);
-            $data->pdf_fourth = $newname;
-        }
-        $data->save();
-        return back()->with('success','Record Edit Successfully');
-
-    }
-
-    public function edit_rit_QUARTER(Request $request,$id)
-    {
-
-
-        $request->validate(
-            [
-
-                "QUARTER_pdf1"            =>          "mimes:pdf|max:10000",
-                "QUARTER_pdf2"            =>          "mimes:pdf|max:10000",
-                "QUARTER_pdf3"            =>          "mimes:pdf|max:10000",
-                "QUARTER_pdf4"            =>          "mimes:pdf|max:10000",
-                'year'                     =>          'required'
-
-            ]
-           );
-        $data=quarter_report::find($id);
-        $data->status= $request->status;
-        $data->year= $request->year;
-
-        $path=public_path('uploads/rti/');
-        if($request->hasFile('QUARTER_pdf1')){
-            $data->pdfsize_first=$request->QUARTER_pdf1->getSize();
-            $file=$request->file('QUARTER_pdf1');
-            $newname= time().rand(10,99).'.'.$file->getClientOriginalExtension();
-            $file->move($path, $newname);
-            $data->pdf_first= $newname;
-        }
-
-        $path=public_path('uploads/rti/');
-        if($request->hasFile('QUARTER_pdf2')){
-            $data->pdfsize_second=$request->QUARTER_pdf2->getSize();
-            $file=$request->file('QUARTER_pdf2');
-            $newname= time().rand(10,99).'.'.$file->getClientOriginalExtension();
-            $file->move($path, $newname);
-            $data->pdf_second= $newname;
-        }
-
-        $path=public_path('uploads/rti/');
-        if($request->hasFile('QUARTER_pdf3')){
-            $data->pdfsize_third=$request->QUARTER_pdf3->getSize();
-            $file=$request->file('QUARTER_pdf3');
-            $newname= time().rand(10,99).'.'.$file->getClientOriginalExtension();
-            $file->move($path, $newname);
-            $data->pdf_third= $newname;
-        }
-
-        $path=public_path('uploads/rti/');
-        if($request->hasFile('QUARTER_pdf4')){
-            $data->pdfsize_fourth=$request->QUARTER_pdf4->getSize();
-            $file=$request->file('QUARTER_pdf4');
-            $newname= time().rand(10,99).'.'.$file->getClientOriginalExtension();
-            $file->move($path, $newname);
-            $data->pdf_fourth = $newname;
         }
 
         $data->save();
-        return back()->with('success','Record Edit Successfully');
-
+      return back()->with('success','Record Edit Successfully');
     }
 
-    public function delete_rit_QUARTER($id)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        public function club_id_image(Request $request)
+        {
+
+            $show=club_multiple_image::find($request->id);
+
+            $item=club_multiple_image::whereid($show->id)->first();
+
+            return response()->json(['item'=>$item]);
+
+        }
+
+        public function gallery_id_image(Request $request)
+        {
+            $show=cell_multiple_image::find($request->id);
+            $item=cell_multiple_image::whereid($show->id)->first();
+            return response()->json(['item'=>$item]);
+        }
+
+        public function committee_id_image(Request $request)
+        {
+            $show=committee_multiple_image::find($request->id);
+            $item=committee_multiple_image::whereid($show->id)->first();
+            return response()->json(['item'=>$item]);
+        }
+
+
+//Rit
+public function Show_RTI($id){
+    $data=rti::find(dDecrypt($id))->first();
+    $data=rti::where('id',$data->id)->first();
+    return view('admin.sections.view_rit',['data'=>$data]);
+}
+
+public function view_RTI(){
+    $data=rti:: orderBy('id')->get();
+    return view('admin.sections.manage_RTI',['data'=>$data]);
+
+    }
+    public function Add_Edit_RTI(Request $request,$id=NULL)
     {
-        quarter_report::find(dDecrypt($id))->delete();
-        return redirect()->back()->with('success','Quarterly Rt deleted Successfully');
-    }
 
-    public function rti_QUARTER_data(Request $request){
-        $item=quarter_report::whereid($request->id)->first();
-        return response()->json(['item'=>$item]);
-    }
+        if($id){
+            $title="Edit Rti Details";
+            $msg="Rti Details Edited Successfully!";
+            $data=rti::find(dDecrypt($id));
+        }
+        else{
 
-    public function Wellness_Facilities_index_id(Request $request){
-        $item=wellness_facilitie_image::whereid($request->id)->first();
-        return response()->json(['item'=>$item]);
-    }
+              $title="Add Rti Details";
+              $msg="Rti Details Added Successfully!";
+              $data=new rti;
+        }
 
-    public function rit_QUARTER(Request $request){
-        $item=rit_report_section::whereid($request->id)->first();
-        return response()->json(['item'=>$item]);
-    }
 
-    public function countact_us()
-    {
-     $data=feedback::whereform_type('contact_us')->get();
-     return view ('admin.sections.manageContactus',['data'=>$data]);
-    }
 
-    public function feedback()
-    {
-      $data=feedback::whereform_type('feedback')->get();
-     return view ('admin.sections.manageFeedback',['data'=>$data]);
-    }
+            if($request->isMethod('post')){
+                if($id){
+                $request->validate([
+                    "pdf" => "mimes:pdf|max:10000",
+                    'title'=>'required',
+
+                ]);
+                }
+                else{
+                     $request->validate([
+                        "pdf" => "mimes:pdf|max:10000",
+                     'title'=>'required|unique:rtis',
+
+                ]);
+            }
+
+
+            $data->title=$request->title;
+            $data->CPIO=$request->CPIO;
+            $data->Authority=$request->Authority;
+            $data->status=$request->status;
+            $path=public_path('uploads/rti');
+            if($request->hasFile('pdf')){
+                $data->pdfsize=$request->pdf->getSize();
+                $file=$request->file('pdf');
+                $newname= time().rand(10,99).'.'.$file->getClientOriginalExtension();
+                $file->move($path, $newname);
+                $data->pdf= $newname;
+            }
+            $data->save();
+           return redirect('Accounts/RTI')->with('success',$msg);
+        }
+        return view('admin.sections.add_RTI',compact('data','title','id'));
+        }
+
+        function delete_RTI($id){
+            rti::find(dDecrypt($id))->delete();
+            return redirect()->back()->with('success','committee deleted Successfully');
+        }
+
+
+    //rit section 2
+
+        public function view_AnnualAudit_RTI(){
+        $data=rit_report_section::get();
+        return view ('admin.sections.manage_rti_section',['data'=>$data]);
+        }
+
+        public function Add_AnnualAudit_RTI(Request $request)
+        {
+            $request->validate(
+                [
+                "filename"   => "mimes:pdf|max:10000",
+                'title'=>'required|unique:rit_report_sections',
+                ]
+            );
+
+            $data=New rit_report_section;
+            $data->title= $request->text;
+            $data->Quarterly_section= $request->Quarterly_section;
+            $data->status= $request->status;
+
+            $path=public_path('uploads/rti/');
+            if($request->hasFile('filename')){
+                $data->pdfsize=$request->filename->getSize();
+                $file=$request->file('filename');
+                $newname= time().rand(10,99).'.'.$file->getClientOriginalExtension();
+                $file->move($path, $newname);
+                $data->pdf= $newname;
+            }
+            $data->save();
+            return back()->with('success','Record Add Successfully');
+
+        }
+
+        public function Edit_AnnualAudit_RTI(Request $request,$id)
+        {
+            $request->validate(
+                [
+                 "filename"   =>   "mimes:pdf|max:10000"
+                ]
+               );
+            $data=rit_report_section::find($id);
+            $data->title= $request->text;
+            $data->Quarterly_section= $request->Quarterly_section;
+            $data->Quarterly_type= $request->Quarterly_type;
+            $data->status= $request->status;
+
+            $path=public_path('uploads/rti/');
+            if($request->hasFile('filename')){
+                $data->pdfsize=$request->filename->getSize();
+                $file=$request->file('filename');
+                $newname= time().rand(10,99).'.'.$file->getClientOriginalExtension();
+                $file->move($path, $newname);
+                $data->pdf= $newname;
+            }
+            $data->save();
+            return back()->with('success','Record Edit Successfully');
+
+        }
+
+        public function Delete_AnnualAudit_RTI($id)
+        {
+            rit_report_section::find(dDecrypt($id))->delete();
+            return redirect()->back()->with('success','Rti deleted Successfully');
+        }
+
+
+
+        //QUARTER section  3
+        public function view_Quarter_RTI()
+        {
+        $data=quarter_report::get();
+        return view ('admin.sections.manageQuarterly',['data'=>$data]);
+        }
+
+        public function Add_Quarter_RTI(Request $request)
+        {
+
+            $request->validate(
+                [
+                    "QUARTER_pdf1"            =>          "mimes:pdf|max:10000",
+                    "QUARTER_pdf2"            =>          "mimes:pdf|max:10000",
+                    "QUARTER_pdf3"            =>          "mimes:pdf|max:10000",
+                    "QUARTER_pdf4"            =>          "mimes:pdf|max:10000",
+                    'year'                     =>          'required|unique:quarter_reports'
+                ]
+               );
+
+            $data=New quarter_report;
+            $data->status= $request->status;
+            $data->year= $request->year;
+
+            $path=public_path('uploads/rti/');
+            if($request->hasFile('QUARTER_pdf1')){
+                $data->pdfsize_first=$request->QUARTER_pdf1->getSize();
+                $file=$request->file('QUARTER_pdf1');
+                $newname= time().rand(10,99).'.'.$file->getClientOriginalExtension();
+                $file->move($path, $newname);
+                $data->pdf_first= $newname;
+            }
+
+            $path=public_path('uploads/rti/');
+            if($request->hasFile('QUARTER_pdf2')){
+                $data->pdfsize_second=$request->QUARTER_pdf2->getSize();
+                $file=$request->file('QUARTER_pdf2');
+                $newname= time().rand(10,99).'.'.$file->getClientOriginalExtension();
+                $file->move($path, $newname);
+                $data->pdf_second= $newname;
+            }
+
+            $path=public_path('uploads/rti/');
+            if($request->hasFile('QUARTER_pdf3')){
+                $data->pdfsize_third=$request->QUARTER_pdf3->getSize();
+                $file=$request->file('QUARTER_pdf3');
+                $newname= time().rand(10,99).'.'.$file->getClientOriginalExtension();
+                $file->move($path, $newname);
+                $data->pdf_third= $newname;
+            }
+
+            $path=public_path('uploads/rti/');
+            if($request->hasFile('QUARTER_pdf4')){
+                $data->pdfsize_fourth=$request->QUARTER_pdf4->getSize();
+                $file=$request->file('QUARTER_pdf4');
+                $newname= time().rand(10,99).'.'.$file->getClientOriginalExtension();
+                $file->move($path, $newname);
+                $data->pdf_fourth = $newname;
+            }
+            $data->save();
+            return back()->with('success','Record Edit Successfully');
+
+        }
+
+        public function Edit_Quarter_RTI(Request $request,$id)
+        {
+
+
+            $request->validate(
+                [
+
+                    "QUARTER_pdf1"            =>          "mimes:pdf|max:10000",
+                    "QUARTER_pdf2"            =>          "mimes:pdf|max:10000",
+                    "QUARTER_pdf3"            =>          "mimes:pdf|max:10000",
+                    "QUARTER_pdf4"            =>          "mimes:pdf|max:10000",
+                    'year'                     =>          'required'
+
+                ]
+               );
+            $data=quarter_report::find($id);
+            $data->status= $request->status;
+            $data->year= $request->year;
+
+            $path=public_path('uploads/rti/');
+            if($request->hasFile('QUARTER_pdf1')){
+                $data->pdfsize_first=$request->QUARTER_pdf1->getSize();
+                $file=$request->file('QUARTER_pdf1');
+                $newname= time().rand(10,99).'.'.$file->getClientOriginalExtension();
+                $file->move($path, $newname);
+                $data->pdf_first= $newname;
+            }
+
+            $path=public_path('uploads/rti/');
+            if($request->hasFile('QUARTER_pdf2')){
+                $data->pdfsize_second=$request->QUARTER_pdf2->getSize();
+                $file=$request->file('QUARTER_pdf2');
+                $newname= time().rand(10,99).'.'.$file->getClientOriginalExtension();
+                $file->move($path, $newname);
+                $data->pdf_second= $newname;
+            }
+
+            $path=public_path('uploads/rti/');
+            if($request->hasFile('QUARTER_pdf3')){
+                $data->pdfsize_third=$request->QUARTER_pdf3->getSize();
+                $file=$request->file('QUARTER_pdf3');
+                $newname= time().rand(10,99).'.'.$file->getClientOriginalExtension();
+                $file->move($path, $newname);
+                $data->pdf_third= $newname;
+            }
+
+            $path=public_path('uploads/rti/');
+            if($request->hasFile('QUARTER_pdf4')){
+                $data->pdfsize_fourth=$request->QUARTER_pdf4->getSize();
+                $file=$request->file('QUARTER_pdf4');
+                $newname= time().rand(10,99).'.'.$file->getClientOriginalExtension();
+                $file->move($path, $newname);
+                $data->pdf_fourth = $newname;
+            }
+
+            $data->save();
+            return back()->with('success','Record Edit Successfully');
+
+        }
+
+        public function Delete_Quarter_RTI($id)
+        {
+            quarter_report::find(dDecrypt($id))->delete();
+            return redirect()->back()->with('success','Quarterly Rt deleted Successfully');
+        }
+
+
+
+
+
 
 }
 //end

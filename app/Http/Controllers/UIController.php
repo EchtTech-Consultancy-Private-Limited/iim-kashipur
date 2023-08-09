@@ -78,64 +78,67 @@ class UIController extends Controller
     }
 
 
-    function FileToURL(){
-        $data=FileToUrl::orderBy('id','DESC')->cursor();
-        return view('admin.sections.filetourl_manage',compact('data'));
-    }
+    // function FileToURL(){
+    //     $data=FileToUrl::orderBy('id','DESC')->cursor();
+    //     return view('admin.sections.filetourl_manage',compact('data'));
+    // }
 
 
-    function Delete_F2U($id){
-        $data=FileToUrl::find(dDecrypt($id))->delete();
-        return redirect()->back()->with('success','Record Deleted Successfully');
-    }
+    // function Delete_F2U($id){
+    //     $data=FileToUrl::find(dDecrypt($id))->delete();
+    //     return redirect()->back()->with('success','Record Deleted Successfully');
+    // }
 
 
 
-    function Add_F2U(Request $request,$id=null){
-        if($id){
-             $title="Edit Client logo";
-             $msg="Manage File2URL Edited Successfully!";
-             $data=FileToUrl::find(dDecrypt($id));
+    // function Add_F2U(Request $request,$id=null){
+    //     if($id){
+    //          $title="Edit Client logo";
+    //          $msg="Manage File2URL Edited Successfully!";
+    //          $data=FileToUrl::find(dDecrypt($id));
 
-         }
-         else{
-              $title="Add Client logo";
-              $msg="Organisation Structure Added Successfully!";
-              $data=new FileToUrl;
-         }
+    //      }
+    //      else{
+    //           $title="Add Client logo";
+    //           $msg="Organisation Structure Added Successfully!";
+    //           $data=new FileToUrl;
+    //      }
 
-        if($request->isMethod('post')){
+    //     if($request->isMethod('post')){
 
-            if($id){
-                $request->validate([
-                    'type'=>'required',
-                    'title'=>'required',
-                    'file'=>'mimes:jpg,jpeg,gif,png',
-                ]);
-                }
-                else{
-                  $request->validate([
-                    'type'=>'required',
-                    'title'=>'required|unique:file_to_urls',
-                    'file'=>'mimes:jpg,jpeg,gif,png',
-                ]);
-                }
+    //         if($id){
+    //             $request->validate([
+    //                 'type'=>'required',
+    //                 'title'=>'required',
+    //                 'file'=>'mimes:jpg,jpeg,gif,png',
+    //             ]);
+    //             }
+    //             else{
+    //               $request->validate([
+    //                 'type'=>'required',
+    //                 'title'=>'required|unique:file_to_urls',
+    //                 'file'=>'mimes:jpg,jpeg,gif,png',
+    //             ]);
+    //             }
 
-            $data->title=ucwords($request->title);
-            $data->type=$request->type;
-            if($request->hasFile('file')){
-                $path=public_path('uploads');
-                $file=$request->file('file');
-                $newname= time().rand(10,99).'.'.$file->getClientOriginalExtension();
-                $file->move($path, $newname);
-                $data->file= $newname;
-            }
-            $data->url=$request->url;
-            $data->save();
-            return redirect()->route('admin.filetourl')->with('success','Url created Successfully',$msg);
-        }
-         return view('admin.sections.filetourl_add',compact('data','title','id'));
-        }
+    //         $data->title=ucwords($request->title);
+    //         $data->type=$request->type;
+    //         if($request->hasFile('file')){
+    //             $path=public_path('uploads');
+    //             $file=$request->file('file');
+    //             $newname= time().rand(10,99).'.'.$file->getClientOriginalExtension();
+    //             $file->move($path, $newname);
+    //             $data->file= $newname;
+    //         }
+    //         $data->url=$request->url;
+    //         $data->save();
+    //         return redirect()->route('admin.filetourl')->with('success','Url created Successfully',$msg);
+    //     }
+    //      return view('admin.sections.filetourl_add',compact('data','title','id'));
+    //     }
+
+
+
 
 
 

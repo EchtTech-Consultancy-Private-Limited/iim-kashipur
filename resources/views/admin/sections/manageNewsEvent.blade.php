@@ -119,13 +119,20 @@
                                                                     style="color:black;"></i></a> &nbsp;
 
 
-                                                                    @if (\Auth::guard('admin')->user()->id == 1  )
+                                                                    <a href="{{ url('Accounts/View_pressMedia/'.dEncrypt($D->id)) }}"
+                                                                        onclick="return confirm('Are You Sure?')"><i
+                                                                            class="ti-eye btn-icon-append"
+                                                                            style="color:black;"></i></a>
+
+
+
+
                                                             <a href="{{ url('Accounts/News-Event-delete/'.dEncrypt($D->id)) }}"
                                                                 onclick="return confirm('Are You Sure?')"><i
                                                                     class="ti-archive btn-icon-append"
                                                                     style="color:black;"></i></a>
 
-                                                               @endif
+
                                                         </td>
 
                                                     </tr>

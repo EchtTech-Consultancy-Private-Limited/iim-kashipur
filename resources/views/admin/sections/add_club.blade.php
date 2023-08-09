@@ -60,9 +60,9 @@
                                 <label for="inputText" class="col-form-label">Club Name*</label>
                                 <div class="">
                                     <input type="text" class="form-control"
-                                        name="club_name"placeholder="Please enter Club Name" required
-                                        @if ($id) value="{{ $data->title }}" @else value="{{ old('club_name') }}" @endif  ><br>
-                                    <label for="club_name" id="club_name-error" class="error"></label>
+                                        name="title"placeholder="Please enter Club Name"
+                                        @if ($id) value="{{ $data->title }}" @else value="{{ old('title') }}" @endif  ><br>
+                                    <label for="title" id="title-error" class="error"></label>
                                 </div>
                             </div>
 

@@ -26,62 +26,30 @@ class vidoecontroller extends Controller
 
 {
 
-
-    public function videodata()
-
-    {
-
-        $data=video_gallery::get();
-
-        return response()->json(['data'=>$data]);
-
+    public function Show_Vgallery(Request $request, $id){
+        $value=video_gallery::find(dDecrypt($id));
+        $data=video_gallery_tittle::wheregallery_id(dDecrypt($id))->get();
+        return view('admin.video.view_video_gallery',['data'=>$data ,'value'=>$value]);
     }
 
-
-
-    public function show_videogallery()
-
-    {
-
+    public function  View_Vgallery(){
         $gallery= video_gallery::all();
-
         return view('admin.video.show_video_gallery',['gallery'=>$gallery]);
-
-
-
     }
 
-    public function add_videoget()
-
-    {
-
+    public function Add_Vgallery(){
         return view('admin.video.add_video_gallery');
-
     }
 
-    public function add_videopost(Request $request){
-
-
-
-
-
+    public function Add_Vgallery_Submit(Request $request){
         $request->validate(
-
             [
                'name'=>'required|unique:video_galleries',
-
                'name_h'             =>      'required',
-
                'imagename'          =>      'image|mimes:jpeg,png,jpg,gif|max:2048',
-
                'bannerimage'       =>       'image|mimes:jpeg,png,jpg,gif|max:2048',
-
                 'pdf'                =>       "mimes:pdf|max:10000"
-
             ]
-
-
-
         );
 
 
@@ -258,19 +226,15 @@ class vidoecontroller extends Controller
 
 
 
-    public function update_videoget(Request $request, $id)
-
-    {
-
+    public function Update_Vgallery(Request $request, $id){
     $value=video_gallery::find(dDecrypt($id));
     $data=video_gallery_tittle::wheregallery_id(dDecrypt($id))->get();
     return view('admin.video.updatevideogallery',['data'=>$data ,'value'=>$value]);
-
     }
 
 
 
-    public function update_videopost( Request $request ,$id){
+    public function Update_Vgallery_Submit( Request $request ,$id){
 
         $request->validate(
 
@@ -439,21 +403,11 @@ class vidoecontroller extends Controller
 
     }
 
-
-
-
-
     // vidoe gallery page delete
-
-
-
-    public function delete_vidoegallery($id){
-
-    $data=video_gallery::find(dDecrypt($id));
-
-    $data->delete();
-
-    return redirect("/Accounts/show_videogallery")->with('success','Record Deleted Successfully');
+    public function Delete_Vgallery($id){
+      $data=video_gallery::find(dDecrypt($id));
+      $data->delete();
+     return redirect("/Accounts/show_videogallery")->with('success','Record Deleted Successfully');
 
     }
 
@@ -466,70 +420,45 @@ class vidoecontroller extends Controller
 
     // multiple video link add
 
-       public function multivideopost(Request $request){
+       public function Add_Vgallery_Csubmit(Request $request){
 
-        $request->validate(
+            $request->validate(
 
-            [
-               'video_image'  => 'required|mimes:png,jpg,ico|max:1024',
+                [
+                'video_image'  => 'required|mimes:png,jpg,ico|max:1024',
 
-               'video_text'=>'required|unique:video_gallery_tittles',
+                'video_title'=>'required|unique:video_gallery_tittles',
 
-               'video_url'=>     'required',
+                'video_url'=>     'required',
 
-               'order'  =>  'required',
+                'order'  =>  'required',
 
-            ]
+                ]
 
-        );
-
+            );
 
         $file= new video_gallery_tittle;
-
-        $file->video_url=$request->url;
-
+        $file->video_url=$request->video_url;
         $file->gallery_id=$request->gallery_id;
 
-
              $image = $request->file('video_image');
-
              $input['video_image'] = time().'.'.$image->extension();
-
              $destinationPath = public_path('video/multiple-image');
-
-
              $img = Image::make($image->path());
-
              $img->resize(400,200, function ($constraint) {
-
              $constraint->aspectRatio();
-
              })->save($destinationPath.'/'.$input['video_image']);
-
-
               $destinationPath = public_path('video/multiple-image');
-
               $image->move($destinationPath, $input['video_image']);
 
-
-
-
-
         $file->url=('video/multiple-image'.'/'.$input['video_image']);
-
         $file->video_image=$input['video_image'];
-
-        $file->video_title=$request->video_text;
-
+        $file->video_title=$request->video_title;
         $file->sort_order=$request->order;
-
         $file->status=$request->status;
-
         $file->slug=SlugCheck('video_gallery_tittles',($request->video_title));
-
         $file->save();
-
-        return back();
+        return back()->with('success','Record Add Successfully!!!!!!!!!');
 
 
 
@@ -541,112 +470,65 @@ class vidoecontroller extends Controller
 
       //multiple video link update
 
-       public function updatemultivideopost(Request $request,$id){
-
-        $request->validate(
-
-            [
-
-                'video_image'  => 'mimes:png,jpg,ico|max:1024',
-
-                'video_text'   =>  'required|string|max:200',
-
-                'video_url'=>     'required',
-
-                'order'  =>      'required',
-
-            ]
-
-        );
+       public function Update_Vgallery_Csubmit(Request $request,$id){
+            $request->validate(
+                [
+                    'video_image'  => 'mimes:png,jpg,ico|max:1024',
+                    'video_text'   =>  'required|string|max:200',
+                    'video_url'=>     'required',
+                    'order'  =>      'required',
+                ]
+            );
         $file = video_gallery_tittle::find($id);
-
-        $file->video_url=$request->url;
-
+        $file->video_url=$request->video_url;
         $file->gallery_id=$request->gallery_id;
-
-
         if($request->video_image)
         {
             $image = $request->file('video_image');
-
             $input['video_image'] = time().'.'.$image->extension();
-
             $destinationPath = public_path('video/multiple-image');
-
-
             $img = Image::make($image->path());
-
             $img->resize(400,200, function ($constraint) {
-
             $constraint->aspectRatio();
-
             })->save($destinationPath.'/'.$input['video_image']);
-
-
             $destinationPath = public_path('video/multiple-image');
-
             $image->move($destinationPath, $input['video_image']);
-
-
             $file->url=('video/multiple-image'.'/'.$input['video_image']);
-
             $file->video_image=$input['video_image'];
         }
         else
         {
           $file->video_image=$request->multioldimage;
         }
-
-
-
         $file->video_title=$request->video_text;
-
         $file->sort_order=$request->order;
-
         $file->status=$request->status;
-
         $file->slug=SlugCheck('video_gallery_tittles',($request->video_title));
-
         $file->save();
-
-        return back();
+        return back()->with('success','Record Update Successfully!!!!!!!!!');
 
        }
 
+        // video gallery delete
+        public function Delete_VCgallery($id){
+            $data=video_gallery_tittle::find(dDecrypt($id));
+            $data->delete();
+        return back()->with('success','Record Deleted Successfully');
+        }
 
-     // video gallery delete
-    public function delete_vidoemultiplegallery($id){
 
-    $data=video_gallery_tittle::find(dDecrypt($id));
 
-    $data->delete();
-
-    return back()->with('success','Record Deleted Successfully');
-
+    public function video_id(Request $request){
+        $show=video_gallery_tittle::find($request->id);
+        $item=video_gallery_tittle::whereid($show->id)->first();
+        return response()->json(['item'=>$item]);
     }
 
 
-
-public function video_id(Request $request)
-{
-
-    $show=video_gallery_tittle::find($request->id);
-
-    $item=video_gallery_tittle::whereid($show->id)->first();
-
-    return response()->json(['item'=>$item]);
-
-}
-
-
-
-public function vvgallery(Request $request, $id){
-$value=video_gallery::find(dDecrypt($id));
-$data=video_gallery_tittle::wheregallery_id(dDecrypt($id))->get();
-return view('admin.video.view_video_gallery',['data'=>$data ,'value'=>$value]);
-}
-
-
+    public function videodata(){
+        $data=video_gallery::get();
+        return response()->json(['data'=>$data]);
+    }
 
 
 

@@ -47,6 +47,7 @@
                             </p>
 
                             @if ($id)
+
                                 <form class="forms-sample row col-md-12" method="POST" id="regForm"
                                     action="{{ url('Accounts/add-edit-Wellness-Facilities/' . $id) }}" enctype="multipart/form-data">
                                 @else

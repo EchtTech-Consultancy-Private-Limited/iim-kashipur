@@ -75,7 +75,7 @@
                                 </div>
                             </div>
                             <div class="col-md-12">
-                                <label for="inputText" class="col-form-label">ATTACHMENT FILE
+                                <label for="inputText" class="col-form-label">Attachment File
 
                                     @if($id)
                                     <span style="font-size: 12px;margin-left: 5px;color: #ed2044;">
@@ -93,7 +93,7 @@
                                         value="{{ old('attachement_file') }}">
 
 
-                                        @if($id)
+                                        @if($data->attachement_file != '')
 
                                           <a href="{{ asset('uploads/view/attach/'.$data->attachement_file) }}" download>
 
@@ -106,7 +106,7 @@
                                 </div>
                             </div>
 
-                            <div class="col-md-6">
+                            {{-- <div class="col-md-6">
 
                                 <label for="event" class="col-form-label">Status</label>
 
@@ -120,7 +120,10 @@
 
                                     </select>
 
-                            </div>
+                            </div> --}}
+
+
+                            <input type="hidden" name="status" @if($id) value="{{ $data->status }}" @else value="0"  @endif >
 
                             <div class="col-md-12 mt-4">
                                 <div class="col-sm-10">
