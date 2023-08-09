@@ -14,6 +14,10 @@
 
   <title> @yield('title') | {{GetOrganisationDetails('name')}}</title>
 
+
+  <script src="{{url('admin/js/iim_ckeditor.js')}}"></script>
+
+
   <!-- plugins:css -->
 
   <link rel="stylesheet" href="{{url('admin/vendors/feather/feather.css')}}">
@@ -47,7 +51,7 @@
 
   <link rel="shortcut icon" href="{{asset('uploads/site-logo/'.GetOrganisationDetails('fevicon'))}}" />
 
-  <script src="//cdn.ckeditor.com/4.17.2/full/ckeditor.js"></script>
+  {{-- <script src="//cdn.ckeditor.com/4.17.2/full/ckeditor.js"></script> --}}
   <script src="{{url('admin/js/jquery-3.6.0.min.js')}}"></script>
 
 
