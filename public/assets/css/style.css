@@ -2771,7 +2771,7 @@ span.text-hili-top {
 
     display: block;
 
-    white-space: nowrap;
+    white-space: normal;
 
     color: #0d0d0d;
 }
@@ -2969,13 +2969,13 @@ span.text-hili-top {
 .innerpagecontent h3 span {
     display: inline-block;
 
-    padding: 5px 15px;
+    padding: 5px 0px;
 
     background: #f03340;
 
     color: #ffffff;
 
-    font-size: 16px;
+    font-size: 18px;
 
     font-weight: 500;
 }
@@ -2994,6 +2994,15 @@ p.small.text-muted {
     font-weight: 500;
 
     margin-bottom: 15px;
+}
+
+.innerpagecontent.master-class h4, .innerpagecontent.master-class h4 strong, .innerpagecontent.master-class h1, .innerpagecontent.master-class h2, strong{
+    font-size: 18px !important;
+    font-weight: 400 !important;
+}
+
+p strong{
+    font-size: 14px !important;
 }
 
 .profilewithinfo p {
@@ -3354,7 +3363,7 @@ p {
 }
 
 .addevent-box h6 {
-    font-size: 13px;
+    font-size: 14px;
     color: #343333;
 }
 
@@ -3928,7 +3937,7 @@ strong {
 }
 
 .master-class h5 {
-    font-size: 18px;
+    font-size: 16px;
     font-weight: 500;
 }
 
@@ -5326,11 +5335,14 @@ img.img-icon {
 .img-fac .top-text {
     background: #ed2044;
     color: #fff;
-    padding: 5px 28px;
+    padding: 0px 28px;
     font-size: 15px;
     margin-bottom: 30px;
-    width: 210px;
     text-align: center;
+    width: 210px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     border-radius: 50px;
     line-height: 22px;
     margin-top: -35px;
@@ -5356,8 +5368,10 @@ img.img-icon {
 }
 
 .designation h6 {
-    font-size: 15px;
+    font-size: 14px;
     padding-top: 3px;
+    font-weight: 400;
+    color: #000;
 }
 
 .gallery-member .thumbnail img {
@@ -5858,7 +5872,7 @@ img.hover-shadow.cursor {
 }
 
 .excellence-gallery.partnership-img .thumbnail img {
-    border: 1px solid #f6f6f6;
+    border:1px solid #ed20447d;
     padding: 6px !important;
     border-bottom: 0;
 }

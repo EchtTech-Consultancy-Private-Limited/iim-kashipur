@@ -66,7 +66,7 @@ ul.nav.nav-tabs.border-0 {border: 1px solid #EBEBEB !important;border-radius: 5p
 .sidemenu ul li a {display: flex;align-items: center;justify-content: space-between; font-size: 16px;color: #000;padding: 10px;background:#F8F8F8;margin-bottom: 10px;text-decoration: none;border: 1px solid #EBEBEB;}
 .sidemenu ul li a:hover, .sidemenu ul li a.active {background-color:#FFFFFF;color:#F03340;}
 h4.hp-4 {font-size:20px;color: #343333;margin-bottom: 0px;padding-bottom: 10px;font-weight:600;}
-a.btn2 {text-decoration: none;color: #fff;background: #f03340;padding: 8px 20px;font-size: 15px;display: inline-block;transition: 1.5s;position: relative;}
+a.btn2 {text-decoration: none;color: #fff;background: #f03340;padding: 8px 12px;font-weight: 500;font-size:17px;display: inline-block;transition: 1.5s;position: relative;}
 a.btn2:hover {background: #92001d;}
 a.btn2::after {content: '';position: absolute;top: 0px;border-bottom: 1px solid #EBEBEB;left: 0px;width: 100%;right: 0px;}
 .sidemenu ul li a:hover {background: #f03340;color: #fff;}
