@@ -14,6 +14,10 @@
 
   <title> @yield('title') | {{GetOrganisationDetails('name')}}</title>
 
+
+  <script src="{{url('admin/js/iim_ckeditor.js')}}"></script>
+
+
   <!-- plugins:css -->
 
   <link rel="stylesheet" href="{{url('admin/vendors/feather/feather.css')}}">
