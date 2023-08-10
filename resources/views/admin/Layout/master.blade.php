@@ -83,6 +83,14 @@
         <link rel="apple-touch-icon-precomposed" sizes="72x72" href="{{asset('assets/ico/apple-touch-icon-72-precomposed.png')}}">
         <link rel="apple-touch-icon-precomposed" href="{{asset('assets/ico/apple-touch-icon-57-precomposed.png')}}"> --}}
 
+        
+<style>
+  .content-wrapper table img {
+      width: 140px;
+      height: auto;
+  }
+      </style>   
+
 </head>
 
 <body>
