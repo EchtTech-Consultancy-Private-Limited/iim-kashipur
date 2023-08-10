@@ -68,6 +68,13 @@
                              @foreach ($item as $items)
 
 
+                             {{Getarchivedata($items->created_at->format('Y-m-d'),$items->archive_date)}}
+
+
+
+                             @if(Getarchivedata($items->created_at->format('Y-m-d'),$items->archive_date) != 'True')
+
+
                             <div class="col-md-6 mt-3">
                                 <div class="box-rti-pdf">
                                   <a   href="{{url('uploads/rti/'.$items->pdf)}}" download   class="pdf-links"> <i class="fa fa-file-pdf-o"></i><span>{{$items->title}}</span></a>
@@ -82,6 +89,8 @@
                                 </div>
                              </div>
 
+
+                             @endif
 
                              @endforeach
 
@@ -106,6 +115,14 @@
 
                                         @foreach ($data as $K=>$datas)
 
+
+                             {{Getarchivedata($datas->created_at->format('Y-m-d'),$datas->archive_date)}}
+
+
+
+                             @if(Getarchivedata($datas->created_at->format('Y-m-d'),$datas->archive_date) != 'True')
+
+
                                             @if($datas->Quarterly_section == '1')
 
                                         <tr>
@@ -124,6 +141,8 @@
 
                                         </td>
                                         </tr>
+
+                                        @endif
 
                                           @endif
 
@@ -152,6 +171,14 @@
 									<?php $i=1; ?>
                                     @foreach ($data as $s=>$datas)
 
+
+                             {{Getarchivedata($datas->created_at->format('Y-m-d'),$datas->archive_date)}}
+
+
+
+                             @if(Getarchivedata($datas->created_at->format('Y-m-d'),$datas->archive_date) != 'True')
+
+
                                     @if($datas->Quarterly_section == '2')
 
                                 <tr>
@@ -169,6 +196,8 @@
 
                                     </td>
                                 </tr>
+
+                                  @endif
 
                                   @endif
 
@@ -200,6 +229,13 @@
                             <tbody>
 
                              @foreach ($value as $K=>$values)
+
+
+                             {{Getarchivedata($values->created_at->format('Y-m-d'),$values->archive_date)}}
+
+
+
+                             @if(Getarchivedata($values->created_at->format('Y-m-d'),$values->archive_date) != 'True')
 
 
 
@@ -266,7 +302,7 @@
 
                                 </tr>
 
-
+@endif
 
 
                             @endforeach

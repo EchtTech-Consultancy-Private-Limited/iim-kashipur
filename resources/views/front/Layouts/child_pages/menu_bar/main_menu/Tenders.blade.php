@@ -44,6 +44,12 @@
 
 
             @foreach($item as $K=>$value)
+
+              {{Getarchivedata($value->created_at->format('Y-m-d'),$value->archive_date)}}
+
+
+
+              @if(Getarchivedata($value->created_at->format('Y-m-d'),$value->archive_date) != 'True')
             <tr>
                 <td>{{$K+1}}</td>
                 <td>{{$value->published_date}}</td>
@@ -67,6 +73,9 @@
 
 
             </tr>
+
+            @endif
+
             @endforeach
 
         </table>

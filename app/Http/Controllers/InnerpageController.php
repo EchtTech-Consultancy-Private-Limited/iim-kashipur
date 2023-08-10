@@ -448,7 +448,7 @@ public function  career(){
         return view('front.Layouts.child_pages.menu_bar.main_menu.event&activity_image',['data'=>$data,'item'=>$item]);
     }
 // Tenders
-public function  Tenders(){
+public function  Tenders(){   //->paginate(10)
 
     $item=Tender::wherestatus('1')->paginate(10);
     return view('front.Layouts.child_pages.menu_bar.main_menu.Tenders',['item'=>$item]);
