@@ -2997,7 +2997,7 @@ p.small.text-muted {
 }
 
 .innerpagecontent.master-class h4, .innerpagecontent.master-class h4 strong, .innerpagecontent.master-class h1, .innerpagecontent.master-class h2, strong{
-    font-size: 18px !important;
+    font-size: 16px !important;
     font-weight: 400 !important;
 }
 
@@ -5324,7 +5324,7 @@ img.img-icon {
 
 .master-class h5 span{
     color: #84061f;
-    font-size: 14px;
+    font-size: 16px;
     font-weight: 600;
     background: #fef2f2;
     display: table;

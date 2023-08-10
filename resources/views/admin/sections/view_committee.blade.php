@@ -14,11 +14,11 @@
 
                     <div class="card">
 
-                        <div class="card-body">
+                        <div class="card-body row">
 
-                            <h4 class="card-title">View Committee </h4>
+                            <h4 class="card-title col-md-12">View Committee </h4>
 
-                            <div class="col-md-12">
+                            <div class="col-md-6">
                                 <label for="inputText" class="col-form-label">type*</label>
                                 <div class="">
 
@@ -30,7 +30,7 @@
                                     </div>
                             </div>
 
-                            <div class="col-md-3">
+                            <div class="col-md-6">
                                 <label for="inputText" class="col-form-label">Committee Name*</label>
                                 <div class="">
                                     <input type="text" class="form-control"
@@ -40,14 +40,14 @@
                                 </div>
                             </div>
 
-                            <div class="col-md-3">
+                            <div class="col-md-6">
                                 <label for="inputText" class="col-form-label">Commmittee Logo* <span style="color:green;font-size:12px;">  [{{$data->logo}}]  </span></label>
                                 <div class="">
 
                                 </div>
                             </div>
 
-                            <div class="col-md-3">
+                            <div class="col-md-6">
                                 <label for="inputText" class="col-form-label">Committee Logo Title*</label>
                                 <div class="">
                                     <input type="text" class="form-control"
@@ -57,7 +57,7 @@
                                 </div>
                             </div>
 
-                            <div class="col-md-3">
+                            <div class="col-md-6">
                                 <label for="inputText" class="col-form-label">Committee Logo Alt*</label>
                                 <div class="">
                                     <input type="text" class="form-control"
@@ -67,14 +67,14 @@
                                 </div>
                             </div>
 
-                            <div class="col-md-3">
+                            <div class="col-md-6">
                                 <label for="inputText" class="col-form-label">Commmittee Cover Image* <span style="color:green;font-size:12px;">   [{{$data->image}}] </span></label>
                                 <div class="">
 
                                 </div>
                             </div>
 
-                            <div class="col-md-3">
+                            <div class="col-md-6">
                                 <label for="inputText" class="col-form-label">Committee image Title*</label>
                                 <div class="">
                                     <input type="text" class="form-control"
@@ -84,7 +84,7 @@
                                 </div>
                             </div>
 
-                            <div class="col-md-3">
+                            <div class="col-md-6">
                                 <label for="inputText" class="col-form-label">Committee Image Alt*</label>
                                 <div class="">
                                     <input type="text" class="form-control"
@@ -96,7 +96,7 @@
 
 
 
-                            <div class="col-md-3">
+                            <div class="col-md-6">
                                 <label for="inputText" class="col-form-label">Chairperson*</label>
                                 <div class="">
 
@@ -114,7 +114,7 @@
                             </div>
 
 
-                            <div class="col-md-3">
+                            <div class="col-md-6">
                                 <label for="inputText" class="col-form-label">Placement*</label>
                                 <div class="">
 
@@ -161,49 +161,37 @@
 
 
                             <div class="col-md-12">
-                                <label for="inputText" class="col-sm-12 col-form-label">Banner Image</label>
-                                <div class="col-sm-12">
+                                <label for="inputText" class="col-form-label">Banner Image</label>
+                                <div class="">
                                     <input type="file" class="form-control" name="bannerimage"
                                         placeholder="Please browse banner image" accept=".jpeg,.jpg,.gif,.png"><br>
 
+                             <img src="{{ asset('page/banner/' . $data->bannerimage) }}" style="width:100%" />
 
                                 </div>
 
-                                <img src="{{ asset('page/banner/' . $data->bannerimage) }}" width="150"
-                                    height="100" />
-
+                               
 
                             </div>
 
-                            <div class="col-md-12">
-                                <label for="inputText" class="col-sm-12 col-form-label">Banner title </label>
-                                <div class="col-sm-12">
+                            <div class="col-md-6">
+                                <label for="inputText" class="col-form-label">Banner title </label>
+                                <div class="">
                                     <input type="text" class="form-control" name="banner_title" {{$data->banner_title}} readonly
-                                        placeholder="Please enter text for title of banner photo, use for seo"
-                                      ><br>
-
-
-
-
+                                        placeholder="Please enter text for title of banner photo, use for seo">
 
                                 </div>
                             </div>
 
 
-                            <div class="col-md-12">
-                                <label for="inputText" class="col-sm-12 col-form-label">Banner Alt </label>
-                                <div class="col-sm-12">
+                            <div class="col-md-6">
+                                <label for="inputText" class="col-form-label">Banner Alt </label>
+                                <div class="6">
                                     <input type="text" class="form-control" name="banner_alt" {{$data->banner_alt}}  readonly
                                         placeholder="Please enter text for alt of banner photo, use for seo"
-                                        ><br>
-
-
+                                        >
                                 </div>
                             </div>
-
-
-
-
 
                         </div>
                     </div>
@@ -214,9 +202,6 @@
 
         </div>
 
-    </div>
-
-    </div>
-
-
+  
+  
 @endsection

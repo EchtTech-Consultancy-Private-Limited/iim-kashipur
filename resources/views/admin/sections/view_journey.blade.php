@@ -89,9 +89,9 @@
 
                     <div class="card">
 
-                        <div class="card-body">
+                        <div class="card-body row">
 
-                            <h4 class="card-title">View Journey</h4>
+                            <h4 class="card-title col-md-12">View Journey</h4>
 
                             <p class="card-description">
 
@@ -131,7 +131,7 @@
 
                             </div>
 
-                            <div class="col-md-6">
+                            <div class="col-md-12">
 
                                 <div class="form-group"> <label for="heading">Heading*</label> <input id="heading"
                                         type="text"
@@ -144,7 +144,7 @@
 
                             </div>
 
-                            <div class="col-md-6">
+                            <div class="col-md-12">
 
                                 <div class="form-group"> <label for="name_h">Heading[Hindi] *</label> <input
                                         id="heading_h"

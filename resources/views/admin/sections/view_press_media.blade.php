@@ -13,9 +13,9 @@
 
                     <div class="card">
 
-                        <div class="card-body">
+                        <div class="card-body row">
 
-                            <h4 class="card-title">View Press Media</h4>
+                            <h4 class="card-title col-md-12">View Press Media</h4>
 
                             <p class="card-description">
 
@@ -72,7 +72,7 @@
                             </div>
 
 
-                            <div class="col-md-6">
+                            <div class="col-md-12">
                                 <div class="form-group"> <label for="kdf">Pdf*</label><span
                                         style="color:green;font-size:12px;">
 
@@ -115,7 +115,7 @@
                                 </div>
                             </div>
 
-                            <div class="col-md-6">
+                            <div class="col-md-12">
 
                                 <div class="form-group"> <label for="publishing_link">Publishing link*</label>
 

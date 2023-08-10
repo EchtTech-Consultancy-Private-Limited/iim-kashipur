@@ -16,9 +16,9 @@
 
               <div class="card">
 
-                <div class="card-body">
+                <div class="card-body row">
 
-                  <h4 class="card-title"> View Banner</h4>
+                  <h4 class="card-title  col-md-12"> View Banner</h4>
 
                   <p class="card-description">
 
@@ -195,7 +195,7 @@
                     </div> --}}
 
 
-                   <div class="col-md-12"  >
+                   <div class="col-md-6"  >
                         <div class="form-group"> <label for="form_name">
 
                             {{-- <input type="radio" value="yes" name="external"  @if($id) {{ ($data->external=="yes")? "checked" : "" }}  @endif style="margin-left:50px;" id="checkbox"> &nbsp;External URL  </label>
@@ -235,7 +235,7 @@
                                 <img src=  "{{asset('/banner/'.$data->image)}}" width="200" height="100" />
                     </div>
 
-
+                     </div>
 
                        <div class="col-md-6">
 
@@ -319,7 +319,6 @@
 
 
 
-<s>
 
 
 

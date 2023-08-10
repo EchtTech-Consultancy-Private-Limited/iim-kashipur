@@ -986,7 +986,8 @@
                                                                                 alt="gallery-img" class="img-fluid"
                                                                                 loading="lazy">
                                                                             <div class="top-text">
-                                                                                {{ $chairperson->title  ??''}} <br>
+                                                                                {{ $chairperson->title  ??''}} 
+                                                                                {{-- <br>
 
                                                                               <span style="font-size: 12px;color:#000">
                                                                                 @if (GetLang() == 'en')
@@ -994,7 +995,7 @@
                                                                                   @else
                                                                                 {{ $chairperson->designation_h ?? '' }}
                                                                                 @endif
-                                                                              </span>
+                                                                              </span> --}}
                                                                             </div>
 
 

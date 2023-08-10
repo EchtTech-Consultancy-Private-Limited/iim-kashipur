@@ -14,9 +14,9 @@
 
                     <div class="card">
 
-                        <div class="card-body">
+                        <div class="card-body row">
 
-                            <h4 class="card-title">{{ $title }}</h4>
+                            <h4 class="card-title col-md-12">{{ $title }}</h4>
 
                             <p class="card-description">
 
@@ -55,7 +55,7 @@
                             @endif
 
                             @csrf
-							<div class="col-md-3">
+							<div class="col-md-12">
                                 <label for="inputText" class="col-form-label">Title*</label>
                                 <div class="">
                                     <input type="text" class="form-control"

@@ -1,97 +1,103 @@
 @extends('admin.Layout.master')
 
-@section('title','View Counter Detail')
+@section('title', 'View Counter Detail')
 
 @section('content')
 
-      <div class="main-panel">
+    <div class="main-panel">
 
         <div class="content-wrapper">
 
 
 
-          <div class="row">
+            <div class="row">
 
-           <div class="col-md-12 grid-margin stretch-card">
+                <div class="col-md-12 grid-margin stretch-card">
 
-              <div class="card">
+                    <div class="card">
 
-                <div class="card-body">
+                        <div class="card-body">
 
-                  <h4 class="card-title">{{ 'View Counter Detail' }}</h4>
+                            <h4 class="card-title">{{ 'View Counter Detail' }}</h4>
 
-                  <p class="card-description">
+                            <p class="card-description">
 
-                        @if($errors->any())
+                                @if ($errors->any())
 
-                        <div class="alert alert-danger">
+                                    <div class="alert alert-danger">
 
-                            <ul>
+                                        <ul>
 
-                            @foreach ($errors->all() as $error)
+                                            @foreach ($errors->all() as $error)
+                                                <li>{{ $error }}</li>
+                                            @endforeach
 
-                                <li>{{ $error }}</li>
+                                        </ul>
 
-                            @endforeach
+                                    </div>
 
-                            </ul>
+                                @endif
 
-                        </div>
+                                @if (Session::has('error'))
+                                    <div class="alert alert-danger col-md-12 text-center">
 
-                        @endif
+                                        <strong>Oops!</strong> {{ Session::get('error') }}
 
-                        @if(Session::has('error'))
+                                    </div>
+                                @endif
 
-                           <div class="alert alert-danger col-md-12 text-center">
-
-                         <strong>Oops!</strong> {{ Session::get('error') }}
-
-                </div>
-
-                 @endif
-
-                  </p>
+                            </p>
 
 
+<div class="row">
+
+  <div class="col-md-6">
+
+    <div class="form-group"> <label for="name">NAME *</label> <input id="name"
+            type="text" value="{{ $data->name }}" name="name" class="form-control"
+            placeholder="Please enter name*" readonly>
 
 
+    </div>
 
-                    <div class="col-md-6">
-
-                   <div class="form-group"> <label for="name">NAME *</label> <input id="name" type="text"  value="{{$data->name}}"  name="name" class="form-control" placeholder="Please enter name*"  readonly >
-
-
-                   </div>
-
-                  </div>
+</div>
 
 
 
-                  <div class="col-md-6">
+<div class="col-md-6">
 
-                    <div class="form-group"> <label for="name_h">NAME[Hindi] *</label> <input id="name_h" value="{{$data->name_h}}"  type="text" name="name_h" class="form-control" placeholder="Please enter name_h*"  readonly >
-
-
-
-
-                    </div>
-
-                </div>
+    <div class="form-group"> <label for="name_h">NAME[Hindi] *</label> <input id="name_h"
+            value="{{ $data->name_h }}" type="text" name="name_h" class="form-control"
+            placeholder="Please enter name_h*" readonly>
 
 
 
 
-                 <div class="col-md-6">
+    </div>
 
-                  <div class="form-group"><label for="number">Number *</label> <input id="number" type="text"  value="{{$data->number}}"  name="number"  class="form-control" placeholder="Please enter number *" readonly  >
-
-
+</div>
 
 
-                </div>
 
-                   </div>
-{{--
+
+<div class="col-md-6">
+
+    <div class="form-group"><label for="number">Number *</label> <input id="number"
+            type="text" value="{{ $data->number }}" name="number" class="form-control"
+            placeholder="Please enter number *" readonly>
+
+
+
+
+    </div>
+
+</div>
+
+  
+</div>
+
+
+                                                       {{--
 
                  <div class="col-md-6">
 
@@ -102,21 +108,21 @@
 
                   </div> --}}
 
-                    <div class="clearfix"></div>
+                            <div class="clearfix"></div>
 
-                   <div class="col-md-12">
+                            <div class="col-md-12">
 
-                    <button type="submit" class="btn btn-primary mr-2" onclick="load();">Submit</button>
+                                <button type="submit" class="btn btn-primary mr-2" onclick="load();">Submit</button>
 
-                   </div>
+                            </div>
 
-                  </form>
+                            </form>
+
+                        </div>
+
+                    </div>
 
                 </div>
-
-              </div>
-
-            </div>
 
             </div>
 
@@ -128,6 +134,4 @@
 
 
 
-       @endsection
-
-
+    @endsection
