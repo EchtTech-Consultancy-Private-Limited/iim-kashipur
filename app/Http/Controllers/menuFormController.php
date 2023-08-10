@@ -182,6 +182,7 @@ public function Add_Edit_journalPublications(Request $request,$id=null)
         $data->external=$request->external;
         $data->url=$request->url1;
         $data->year=$request->year;
+        $data->archive_date=$request->archive_date;
         $data->status=$request->status;
 
         $data->save();

@@ -256,9 +256,9 @@ Route::get('View-RTI/{id}',[footerController::class,'Show_RTI']);
 
 
 //rti section 2
-Route::get("/Rti-Section",[footerController::class,'view_AnnualAudit_RTI']);
 Route::post("/add-rit-pdf",[footerController::class,'Add_AnnualAudit_RTI']);
 Route::post("/edit-rit-pdf/{id?}",[footerController::class,'Edit_AnnualAudit_RTI']);
+Route::get("/Rti-Section",[footerController::class,'view_AnnualAudit_RTI']);
 Route::get("/delete-rit-pdf/{id?}",[footerController::class,'Delete_AnnualAudit_RTI']);
 
 

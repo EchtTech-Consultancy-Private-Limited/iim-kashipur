@@ -270,28 +270,22 @@
 
 
 
-                            <div class="form-group col-md-6">
-
-                                <label for="status">status</label>
-
-                                <select class="form-control" aria-label="Default select example" name="status">
-
-                                    <option selected="">Please select status</option>
-
-                                    <option value="1">Active</option>
-
-                                    <option value="0">Inactive</option>
-
-                                </select>
-
-
-                                <label for="status" id="status-error" class="error">
-                                </label>
+                            <div class="col-md-6">
+                                <label for="inputText" class="col-form-label">Archive Date</label>
+                                <div class="">
+                                    <input type="date" class="form-control" name="archive_date"
+                                                  placeholder="Please enter" id="archive_date" ><br>
+                                    <label for="archive_date" id="archive_date-error" class="error"></label>
+                                </div>
                             </div>
 
 
+                                <input type="hidden" name="status" value="0" >
+
+
+
                             <div class="col-md-12 modal-footer">
-                                <button type="submit" class="btn btn-primary" id="savebtn" onclick="load();">Save</button>
+                                <button type="submit" class="btn btn-primary" id="savebtn" >Save</button>
                             </div>
 
                         </form>
@@ -402,6 +396,9 @@ aria-hidden="true">
 
 
                 </div>
+
+
+
 
         </div>
 
@@ -535,26 +532,21 @@ aria-hidden="true">
 
                             </div>
 
-
-
-                            <div class="form-group col-md-6">
-
-                                <label for="status">status</label>
-
-                                <select class="form-control" aria-label="Default select example" name="status" id="imagestatus">
-
-                                    <option selected="">Please select status</option>
-
-                                    <option value="1">Active</option>
-
-                                    <option value="0">Inactive</option>
-
-                                </select>
-
-
-                                <label for="status" id="status-error" class="error">
-                                </label>
+                            <div class="col-md-6">
+                                <label for="inputText" class="col-form-label">Archive Date</label>
+                                <div class="">
+                                    <input type="date" class="form-control" name="archive_date"
+                                                  placeholder="Please enter" id="archive_date" ><br>
+                                    <label for="archive_date" id="archive_date-error" class="error"></label>
+                                </div>
                             </div>
+
+
+                                <input type="hidden" name="status" value="0"  id="imagestatus"  >
+
+
+
+
 
 
                             <div class="modal-footer">
@@ -572,9 +564,6 @@ aria-hidden="true">
             </div>
 
         </div>
-
-
-
 
 
 

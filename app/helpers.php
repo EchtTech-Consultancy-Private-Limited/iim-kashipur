@@ -893,4 +893,21 @@ function FindQuickLinksNew($placement='',$sort_order=''){
             return $bytes;
     }
 
+
+
+    function Getarchivedata($date,$adate){
+
+
+            $formatted_dt1=Carbon\Carbon::parse($date);
+            $formatted_dt2=Carbon\Carbon::parse($adate);
+            $date_diff=$formatted_dt1->diffInDays($formatted_dt2);
+
+            if($date_diff == 0){
+                return 'True';
+            }else{
+                return  $date_diff;
+            }
+
+    }
+
 ?>

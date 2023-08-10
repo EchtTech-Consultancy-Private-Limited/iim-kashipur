@@ -49,6 +49,12 @@
                 </tr>
 
                 @foreach ($item as $value)
+
+                {{Getarchivedata($value->created_at->format('Y-m-d'),$value->archive_date)}}
+
+
+
+                @if(Getarchivedata($value->created_at->format('Y-m-d'),$value->archive_date) != 'True')
                     <tr>
                         <td>{{ $value->name_of_the_post }} </td>
                         <td> {{ $value->opening_date }} </td>
@@ -75,12 +81,14 @@
 
                         <td>{{ $value->corrigendum }}</td>
                     </tr>
+
+                    @endif
                 @endforeach
 
             </table>
 
 
-           
+
 
         </div>
     </section>
