@@ -56,7 +56,7 @@
 
                             @csrf
 
-                            <div class="col-md-3">
+                            <div class="col-md-12">
                                 <label for="inputText" class="col-form-label">Club Name*</label>
                                 <div class="">
                                     <input type="text" class="form-control"

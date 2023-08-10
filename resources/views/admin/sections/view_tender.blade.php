@@ -12,19 +12,10 @@
 
                     <div class="card">
 
-                        <div class="card-body">
+                        <div class="card-body row">
 
-                            <h4 class="card-title"></h4>
-
-                            <p class="card-description">
-
-
-
-
-
-                            </p>
-
-
+                            <h4 class="card-title col-md-12">View Tender</h4>
+                           
 
                             <div class="col-md-6">
                                 <label for="inputText" class="col-form-label">Published Date</label>
@@ -41,7 +32,7 @@
                                 </div>
                             </div>
 
-                            <div class="col-md-6">
+                            <div class="col-md-12">
                                 <label for="inputText" class="col-form-label">Title</label>
                                 <div class="">
                                     <input type="text" class="form-control" readonly name="title" value="{{ $data->title }}"   placeholder="Please enter" value=""><br>
@@ -49,7 +40,7 @@
                                 </div>
                             </div>
 
-                            <div class="col-md-6">
+                            <div class="col-md-12">
                                 <label for="tender_document" class="col-form-label">Tender Documents <span style="color:green;font-size:12px;">  [{{$data->tender_document }}]</span></label>
                                 <div class="">
 
