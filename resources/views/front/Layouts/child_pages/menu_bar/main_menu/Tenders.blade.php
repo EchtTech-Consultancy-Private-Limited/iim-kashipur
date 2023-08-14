@@ -31,6 +31,11 @@
 
 <section class="withsidebar-wrap innerpagecontent ptb-60">
     <div class="container">
+        <div class="d-flex justify-content-end">
+            <a href="{{url(request()->path().'/archive')}}" class="btn2 float-right mb-3" style="border-radius: 30px; background:#0d6efd">
+               Archive List
+              </a>
+        </div>
         <table>
             <tr>
                 <th class="text-nowrap">Sr.No</th>

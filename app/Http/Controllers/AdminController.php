@@ -817,15 +817,16 @@ function Add_childMenu(Request $request,$id=null){
             'password' => 'required',
             'captcha' => 'required|captcha'
             ]);
-          //  dd($request->password);
+        
+         //dd(count(Admin::where('email',$request->email)->get()) );
 
+          if(count(Admin::where('email',$request->email)->get()) == 1){
 
-
-          if(count(Admin::where('email',$request->email)->get()) > 0){
+           // dd(Admin::where('email',$request->email)->first()->login_check);
 
           if(Admin::where('email',$request->email)->first()->login_check == '0'){
 
-         // if(DB::table('login_checks')->where('user_id',\Auth::guard('admin')->user()->id))
+         if(DB::table('login_checks')->where('user_id',\Auth::guard('admin')->user()->id))
             if(\Auth::guard('admin')->attempt(['email'=>$request->email,'password'=>$request->password,'status'=>1])){
 
 
@@ -841,17 +842,20 @@ function Add_childMenu(Request $request,$id=null){
             }
             }
             else{
-                return redirect()->route('admin.login')->with('error','Record not exits');
+                return redirect()->route('admin.login')->with('error','Invalid Credentials');
             }
 
-          }
+         }
           else{
-            return redirect()->route('admin.login')->with('error','Invalid Credentials');
+   
+
+            return redirect()->route('admin.login')->with('error','Record not exits');
         }
+       }
 
 
 
-        }
+
         return view('admin.index')->with(compact('title'));
     }
 
