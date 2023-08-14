@@ -247,7 +247,6 @@ Route::get('careershow', [footerController::class, 'View_Career'])->name('career
 Route::match(['get','post'],'add-edit-career/{id?}',[footerController::class,'Add_Edit_Career']);
 Route::get('delete-career/{id?}',[footerController::class,'Delete_Career']);
 
-
 //RIT module
 Route::get("/RTI",[footerController::class,'view_RTI']);
 Route::match(['get','post'],'add-edit-RTI/{id?}',[footerController::class,'Add_Edit_RTI'])->name('addRTI');
@@ -501,10 +500,6 @@ Route::get('change-status/{status}/{id}',[AdminController::class,'Admin_StatusCh
 Route::match(['get','post'],'assign-role/{id}',[FormController::class,'Assign_Roles']);
 
 
-
-
-
-
 Route::get('menu-status-change/{type}/{id}/{status}',[AdminController::class,'Menu_StatusChange']);
 Route::get('status-change/{status}/{id}/{db}',[AdminController::class,'StatusChange']);
 
@@ -606,6 +601,9 @@ Route::post('reset-password', [ForgotPasswordController::class, 'submitResetPass
 //website search
 
 Route::post('search',[InnerpageController::class,'search']);
+
+
+Route::get('/{slug?}/archive',[InnerpageController::class,'archive']);
 
 //Monu Routes
 // Career

@@ -34,9 +34,17 @@
     </div>
 
 
+
+
     {{-- remember that $contact is your variable --}}
     <section class="withsidebar-wrap innerpagecontent ptb-60">
         <div class="container">
+            <div class="d-flex justify-content-end">
+                <a href="{{url(request()->path().'/archive')}}" class="btn2 float-right mb-3" style="border-radius: 30px; background:#0d6efd">
+                   Archive List
+                  </a>
+            </div>
+
             <table>
                 <tr>
                     <th class="text-nowrap">NAME OF THE POST</th>
@@ -50,8 +58,7 @@
 
                 @foreach ($item as $value)
 
-                {{Getarchivedata($value->created_at->format('Y-m-d'),$value->archive_date)}}
-
+                {{-- {{Getarchivedata($value->created_at->format('Y-m-d'),$value->archive_date)}} --}}
 
 
                 @if(Getarchivedata($value->created_at->format('Y-m-d'),$value->archive_date) != 'True')

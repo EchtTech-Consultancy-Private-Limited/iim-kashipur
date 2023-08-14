@@ -30,6 +30,7 @@
                         </svg></a></li>
 
                 <li><span>RTI</span></li>
+                <li><span>Archive</span></li>
             </ul>
         </div>
     </div>
@@ -39,12 +40,7 @@
         <section class="withsidebar-wrap ptb-60">
 
             <div class="container">
-                <div class="d-flex justify-content-end">
-                    <a href="{{ url(request()->path() . '/archive') }}" class="btn2 float-right mb-3"
-                        style="border-radius: 30px; background:#0d6efd">
-                        Archive List
-                    </a>
-                </div>
+
 
                 <div class="row">
                     <div class="col-md-12">
@@ -56,34 +52,11 @@
                             <div class="commontxt">
                                 <div class="row">
 
-                                    <div class="col-md-6 col-lg-6 mb-4">
-
-                                        <div class="box-rti">
-                                            <h5><span class="bg-white mb-3">CPIO</span></h5>
-
-                                            {!! $item[0]->CPIO !!}
-
-
-                                        </div>
-                                    </div>
-
-                                    <div class="col-md-6 col-lg-6 mb-4">
-
-                                        <div class="box-rti">
-                                            <h5><span class="bg-white mb-3">First Appellate Authority</span></h5>
-
-                                            {!! $item[0]->Authority !!}
-
-                                        </div>
-                                    </div>
 
 
                                     @foreach ($item as $items)
-                                        {{-- {{Getarchivedata($items->created_at->format('Y-m-d'),$items->archive_date)}} --}}
 
-
-
-                                        @if (Getarchivedata($items->created_at->format('Y-m-d'), $items->archive_date) != 'True')
+                                        @if (Getarchivedata($items->created_at->format('Y-m-d'), $items->archive_date) == 'True')
                                             <div class="col-md-6 mt-3">
                                                 <div class="box-rti-pdf">
                                                     <a href="{{ url('uploads/rti/' . $items->pdf) }}" download
@@ -121,11 +94,8 @@
 
 
                                                 @foreach ($data as $K => $datas)
-                                                    {{-- {{Getarchivedata($datas->created_at->format('Y-m-d'),$datas->archive_date)}} --}}
 
-
-
-                                                    @if (Getarchivedata($datas->created_at->format('Y-m-d'), $datas->archive_date) != 'True')
+                                                    @if (Getarchivedata($datas->created_at->format('Y-m-d'), $datas->archive_date) == 'True')
                                                         @if ($datas->Quarterly_section == '1')
                                                             <tr>
                                                                 <td>{{ $K + 1 }}</td>
@@ -158,12 +128,6 @@
                                             Comptroller And Auditor General Audit Report
                                         </h3>
 
-                                        <div class="d-flex justify-content-end">
-                                            <a href="{{ url(request()->path() . '/archive') }}" class="btn2 float-right mb-3"
-                                                style="border-radius: 30px; background:#0d6efd">
-                                                Archive List
-                                            </a>
-                                        </div>
 
                                         <table class="mt-2">
 
@@ -179,11 +143,8 @@
                                             <tbody>
                                                 <?php $i = 1; ?>
                                                 @foreach ($data as $s => $datas)
-                                                    {{-- {{Getarchivedata($datas->created_at->format('Y-m-d'),$datas->archive_date)}} --}}
 
-
-
-                                                    @if (Getarchivedata($datas->created_at->format('Y-m-d'), $datas->archive_date) != 'True')
+                                                    @if (Getarchivedata($datas->created_at->format('Y-m-d'), $datas->archive_date) == 'True')
                                                         @if ($datas->Quarterly_section == '2')
                                                             <tr>
                                                                 <td>{{ $i++ }}</td>
@@ -216,12 +177,6 @@
                                             Quarterly Return
                                         </h3>
 
-                                        <div class="d-flex justify-content-end">
-                                            <a href="{{ url(request()->path() . '/archive') }}" class="btn2 float-right mb-3"
-                                                style="border-radius: 30px; background:#0d6efd">
-                                                Archive List
-                                            </a>
-                                        </div>
 
                                         <table class="mt-2">
 
@@ -240,11 +195,9 @@
                                             <tbody>
 
                                                 @foreach ($value as $K => $values)
-                                                    {{-- {{Getarchivedata($values->created_at->format('Y-m-d'),$values->archive_date)}} --}}
+                                                    {{-- {{ Getarchivedata($values->created_at->format('Y-m-d'), $values->archive_date) }} --}}
 
-
-
-                                                    @if (Getarchivedata($values->created_at->format('Y-m-d'), $values->archive_date) != 'True')
+                                                    @if (Getarchivedata($values->created_at->format('Y-m-d'), $values->archive_date) == 'True')
                                                         <tr>
                                                             <td>{{ $K + 1 }}</td>
                                                             <td> {{ date('Y', strtotime($values->year)) - 1 }} -
@@ -341,75 +294,6 @@
             </div>
         </section>
     @else
-        <section class="ptb-60">
-
-            <div class="container">
-
-                <a href="javascript:void(0)" class="btn2 margin_bottom mb-4"> News & Events </a><br>
-
-                <div class="row mt-4">
-                    <div class="col-md-4">
-                        <div class="event-card news-card aos-init aos-animate" data-aos="fade-up" data-aos-duration="3000">
-
-                            <div class="event-body">
-                                <div class="event-image">
-                                    <img src="http://localhost/kashipur-design1/public/uploads/header_top/167776088848.png"
-                                        title="News &amp; Events" alt="News &amp; Events" class="img-fluid" loading="lazy">
-                                </div>
-                                <div class="event-content">
-                                    <h3 class="title">
-                                        Iim kashipur congratulates on clearing cfa level 2
-                                    </h3>
-
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-md-4">
-                        <div class="event-card news-card aos-init aos-animate" data-aos="fade-up" data-aos-duration="3000">
-
-                            <div class="event-body">
-                                <div class="event-image">
-                                    <img src="http://localhost/kashipur-design1/public/uploads/header_top/167776088848.png"
-                                        title="News &amp; Events" alt="News &amp; Events" class="img-fluid"
-                                        loading="lazy">
-                                </div>
-                                <div class="event-content">
-                                    <h3 class="title">
-                                        Iim kashipur congratulates on clearing cfa level 2
-                                    </h3>
-
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-md-4">
-                        <div class="event-card news-card aos-init aos-animate" data-aos="fade-up"
-                            data-aos-duration="3000">
-
-                            <div class="event-body">
-                                <div class="event-image">
-                                    <img src="http://localhost/kashipur-design1/public/uploads/header_top/167776088848.png"
-                                        title="News &amp; Events" alt="News &amp; Events" class="img-fluid"
-                                        loading="lazy">
-                                </div>
-                                <div class="event-content">
-                                    <h3 class="title">
-                                        Iim kashipur congratulates on clearing cfa level 2
-                                    </h3>
-
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-            </div>
-
-        </section>
     @endif
 
 @endsection

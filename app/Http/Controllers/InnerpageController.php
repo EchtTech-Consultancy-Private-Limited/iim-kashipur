@@ -60,6 +60,54 @@ class InnerpageController extends Controller
 //
 //
 
+public function archive($slug){
+
+   if($slug == 'career'){
+
+     $bread="Career";
+     $data =Career::get();
+     return view('front.Layouts.child_pages.menu_bar.main_menu.archive',['data'=>$data,'bread'=>$bread]);
+    }elseif($slug == 'Tenders'){
+    $bread="Tender";
+    $data =Tender::get();
+    return view('front.Layouts.child_pages.menu_bar.main_menu.archive',['data'=>$data,'bread'=>$bread]);
+    }elseif($slug == 'Vendors-Debarred'){
+    $bread="Vendors-Debarred";
+    $data =Vendorsdebarred::get();
+    return view('front.Layouts.child_pages.menu_bar.main_menu.archive',['data'=>$data,'bread'=>$bread]);
+    }elseif($slug == 'rti'){
+     $bread="Rti";
+     $item=rti::wherestatus('1')->get();
+     $data=rit_report_section::get();
+     $value=quarter_report::get();
+    return view('front.Layouts.child_pages.menu_bar.main_menu.archive-rti',['data'=>$data,'item'=>$item,'item'=>$item,'value'=>$value,'bread'=>$bread]);
+    }elseif($slug == 'industry-connect'){
+    $bread="industry-connect";
+    $data =Industry::get();
+    return view('front.Layouts.child_pages.menu_bar.main_menu.archive',['data'=>$data,'bread'=>$bread]);
+    }
+
+
+
+
+
+
+   
+
+
+
+
+
+
+
+
+
+   else{
+
+   }
+
+}
+
 
 public function search(Request $request){
 
@@ -433,7 +481,6 @@ public function  career(){
 
 }
 //Industry_Connect
-
     public function Industry_Connect()
     {
         $item=Industry::get();
