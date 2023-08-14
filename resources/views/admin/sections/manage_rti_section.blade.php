@@ -197,7 +197,7 @@
 
                     <div class="modal-body pb-0">
 
-                        <form role="form" id="regForm" action="{{ url('Accounts/add-rit-pdf') }}" method="post"
+                        <form role="form" id="regForm" action="{{ url('Accounts/add-rit-pdf')}}" method="post"
                             class="registration-form row" enctype="multipart/form-data" novalidate="novalidate">
                             @csrf
 
@@ -244,45 +244,21 @@
                             </div>
 
 
-                            {{-- <div class="form-group col-md-6" id="QUARTER_div">
-
-                                <label for="image_text">Quarterly type*</label>
-
-                                <select name="Quarterly_type" class="form-control">
-                                    <option value="">Select Section</option>
-                                    <option value="1">Quarterly-1</option>
-                                    <option value="2">Quarterly-2</option>
-                                    <option value="3">Quarterly-3</option>
-                                    <option value="3">Quarterly-4</option>
-
-                                </select>
-
-                                <label for="image_text" id="image_text-error" class="error"></label>
-
-                            </div> --}}
-
-                            <div class="form-group col-md-6">
-
-                                <label for="status">status</label>
-
-                                <select class="form-control" aria-label="Default select example" name="status">
-
-                                    <option selected="">Please select status</option>
-
-                                    <option value="1">Active</option>
-
-                                    <option value="0">Inactive</option>
-
-                                </select>
-
-
-                                <label for="status" id="status-error" class="error">
-                                </label>
+                            <div class="col-md-6">
+                                <label for="inputText" class="col-form-label">Archive Date</label>
+                                <div class="">
+                                    <input type="date" class="form-control" name="archive_date"
+                                                  placeholder="Please enter" id="archive_date" ><br>
+                                    <label for="archive_date" id="archive_date-error" class="error"></label>
+                                </div>
                             </div>
 
 
+                                <input type="hidden" name="status"  >
+
+
                             <div class="col-md-12 modal-footer">
-                                <button type="submit" class="btn btn-primary" onclick="load();" id="savebtn">Save</button>
+                                <button type="submit" class="btn btn-primary"  id="savebtn">Save</button>
                             </div>
 
                         </form>
@@ -326,10 +302,6 @@
 
                             @csrf
 
-
-
-
-
                             <div class="form-group col-md-6">
 
                                 <label for="form-first-name">Multiple Image</label>
@@ -349,9 +321,6 @@
 
 
                             </div>
-
-
-
 
 
                             <div class="form-group col-md-6">
@@ -382,39 +351,17 @@
 
                             </div>
 
-
-                            {{-- <div class="form-group col-md-6" id="QUARTER_div">
-
-                                <label for="image_text">Quarterly type*</label>
-
-                                <select name="Quarterly_type" class="form-control Quarterly_type">
-                                    <option value="">Select Section</option>
-                                    <option value="1">Quarterly-1</option>
-                                    <option value="2">Quarterly-2</option>
-                                    <option value="3">Quarterly-3</option>
-                                    <option value="3">Quarterly-4</option>
-
-                                </select>
-
-
-                            </div> --}}
-
-                            <div class="form-group col-md-6">
-
-                                <label for="form-email">status</label>
-
-                                <select class="form-control" aria-label="Default select example" name="status"
-                                    id="imagestatus" required="">
-
-                                    <option selected="">Please select status</option>
-
-                                    <option value="1">Active</option>
-
-                                    <option value="0">Inactive</option>
-
-                                </select>
-
+                            <div class="col-md-6">
+                                <label for="inputText" class="col-form-label">Archive Date</label>
+                                <div class="">
+                                    <input type="date" class="form-control" name="archive_date"
+                                       placeholder="Please enter" value=""><br>
+                                    <label for="archive_date" id="archive_date-error" class="error"></label>
+                                </div>
                             </div>
+
+
+                             <input type="hidden" name="status"  id="status" >
 
 
                             <div class="modal-footer">
@@ -506,10 +453,6 @@ aria-hidden="true">
 
 
 
-
-
-
-
         </div>
 
     </div>
@@ -595,6 +538,7 @@ $( document ).ready(function() {
                             $(".Quarterly_section").val(data.item.Quarterly_section);
                             $("#imagetext").val(data.item.title);
                             $("#imagestatus").val(data.item.status);
+                            $("#archive_date").val(data.item.archive_date);
                         }
 
                 });

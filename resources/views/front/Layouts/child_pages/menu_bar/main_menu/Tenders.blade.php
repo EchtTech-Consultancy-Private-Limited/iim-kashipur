@@ -31,6 +31,11 @@
 
 <section class="withsidebar-wrap innerpagecontent ptb-60">
     <div class="container">
+        <div class="d-flex justify-content-end">
+            <a href="{{url(request()->path().'/archive')}}" class="btn2 float-right mb-3" style="border-radius: 30px; background:#0d6efd">
+               Archive List
+              </a>
+        </div>
         <table>
             <tr>
                 <th class="text-nowrap">Sr.No</th>
@@ -44,6 +49,12 @@
 
 
             @foreach($item as $K=>$value)
+
+              {{Getarchivedata($value->created_at->format('Y-m-d'),$value->archive_date)}}
+
+
+
+              @if(Getarchivedata($value->created_at->format('Y-m-d'),$value->archive_date) != 'True')
             <tr>
                 <td>{{$K+1}}</td>
                 <td>{{$value->published_date}}</td>
@@ -67,6 +78,9 @@
 
 
             </tr>
+
+            @endif
+
             @endforeach
 
         </table>

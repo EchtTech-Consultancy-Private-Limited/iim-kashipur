@@ -128,7 +128,6 @@ public function Add_Edit_antiRagging(Request $request,$id=null)
 
 
 //tender
-
 public function Show_tender($id){
     $data=Tender::find(dDecrypt($id))->first();
     $data=Tender::where('id',$data->id)->first();
@@ -157,7 +156,7 @@ else{
       $title="Add Tender Details";
       $msg="Tender Details Added Successfully!";
       $tender=new Tender;
-    //  dd($request->all());
+
 }
 
 
@@ -178,12 +177,10 @@ if($request->isMethod('post')){
 
     ]);
     }
-
-
         $tender->published_date=$request->published_date;
         $tender->submission_date=$request->submission_date;
         $tender->title=$request->title;
-
+        $tender->archive_date=$request->archive_date;
 
         if($request->hasFile('tender_document')){
             $tender->pdfsize=$request->tender_document->getSize();
@@ -266,6 +263,7 @@ else{
 
 
         $vendorsdebarred->vendor_name=$request->vendor_name;
+        $vendorsdebarred->archive_date=$request->archive_date;
 
         if($request->hasFile('related_document')){
             $vendorsdebarred->pdfsize=$request->related_document->getSize();
@@ -362,6 +360,7 @@ else{
         }
         $career->note=$request->note;
         $career->opening_date=$request->opening_date;
+        $career->archive_date=$request->archive_date;
         $career->closing_date=$request->closing_date;
         $career->online_link=$request->online_link;
         $career->corrigendum=$request->corrigendum;
@@ -437,6 +436,7 @@ public function view_RTI(){
             $data->title=$request->title;
             $data->CPIO=$request->CPIO;
             $data->Authority=$request->Authority;
+            $data->archive_date=$request->archive_date;
             $data->status=$request->status;
             $path=public_path('uploads/rti');
             if($request->hasFile('pdf')){
@@ -459,8 +459,8 @@ public function view_RTI(){
 
 
     //rit section 2
-
         public function view_AnnualAudit_RTI(){
+
         $data=rit_report_section::get();
         return view ('admin.sections.manage_rti_section',['data'=>$data]);
         }
@@ -469,8 +469,8 @@ public function view_RTI(){
         {
             $request->validate(
                 [
-                "filename"   => "mimes:pdf|max:10000",
-                'title'=>'required|unique:rit_report_sections',
+                // "filename"   => "mimes:pdf|max:10000",
+                // 'title'=>'required|unique:rit_report_sections',
                 ]
             );
 
@@ -478,6 +478,7 @@ public function view_RTI(){
             $data->title= $request->text;
             $data->Quarterly_section= $request->Quarterly_section;
             $data->status= $request->status;
+            $data->archive_date=$request->archive_date;
 
             $path=public_path('uploads/rti/');
             if($request->hasFile('filename')){
@@ -504,6 +505,7 @@ public function view_RTI(){
             $data->Quarterly_section= $request->Quarterly_section;
             $data->Quarterly_type= $request->Quarterly_type;
             $data->status= $request->status;
+            $data->archive_date=$request->archive_date;
 
             $path=public_path('uploads/rti/');
             if($request->hasFile('filename')){
@@ -549,6 +551,7 @@ public function view_RTI(){
             $data=New quarter_report;
             $data->status= $request->status;
             $data->year= $request->year;
+            $data->archive_date=$request->archive_date;
 
             $path=public_path('uploads/rti/');
             if($request->hasFile('QUARTER_pdf1')){
@@ -608,6 +611,7 @@ public function view_RTI(){
             $data=quarter_report::find($id);
             $data->status= $request->status;
             $data->year= $request->year;
+            $data->archive_date=$request->archive_date;
 
             $path=public_path('uploads/rti/');
             if($request->hasFile('QUARTER_pdf1')){
@@ -707,6 +711,7 @@ function View_PressMedia(){
             $data->chairperson=$request->chairperson;
             $data->status=$request->status;
             $data->external=$request->external;
+            $data->archive_date=$request->archive_date;
 
 
             if($request->hasFile('file')){
@@ -732,6 +737,12 @@ function View_PressMedia(){
     }
     return redirect()->back()->with('success','Record Deleted Successfully');
 
+    }
+
+    //ajax
+    public function rit_QUARTER(Request $request){
+        $item=rit_report_section::whereid($request->id)->first();
+        return response()->json(['item'=>$item]);
     }
 
 

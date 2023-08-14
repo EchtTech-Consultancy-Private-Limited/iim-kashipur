@@ -102,11 +102,11 @@
 
                             <div class="col-md-12">
 
-                                <label for="event" class="col-form-label">Status</label>
+                                <label for="event" class="col-form-label">Archive Status</label>
 
-                                    <select class="form-control" aria-label="Default select example" name="status">
+                                    <select class="form-control" aria-label="Default select example" name="archive_status">
 
-                                        <option selected>Please select status</option>
+                                        <option selected>Please select Archive Status</option>
 
                                         <option value="1" {{ $tender->status == 1 ? 'selected' : '' }}>Active</option>
 
@@ -115,6 +115,19 @@
                                     </select>
 
                             </div>
+
+                            <div class="col-md-6">
+                                <label for="inputText" class="col-form-label">Archive Date</label>
+                                <div class="">
+                                    <input type="date" class="form-control" name="archive_date"
+                                    @if (isset($id)) value="{{ $tender->archive_date }}" @else value="{{ old('archive_date') }}" @endif  placeholder="Please enter" value=""><br>
+                                    <label for="archive_date" id="archive_date-error" class="error"></label>
+                                </div>
+                            </div>
+
+
+                             <input type="hidden" name="status" @if($id) value="{{ $tender->status }}" @else value="0" @endif >
+
 
                             <div class="col-md-12 mt-4">
                                 <div class="col-sm-10">

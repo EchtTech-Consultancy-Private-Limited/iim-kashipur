@@ -820,8 +820,11 @@ function Add_childMenu(Request $request,$id=null){
           //  dd($request->password);
 
 
+         // dd(count(Admin::where('email',$request->email)->get()) );
 
-          if(Admin::where('email',$request->email)->first()->login_check == '0'){
+        //   if(count(Admin::where('email',$request->email)->first()) > 0){
+
+        //   if(Admin::where('email',$request->email)->first()->login_check == '0'){
 
          // if(DB::table('login_checks')->where('user_id',\Auth::guard('admin')->user()->id))
             if(\Auth::guard('admin')->attempt(['email'=>$request->email,'password'=>$request->password,'status'=>1])){
@@ -839,9 +842,18 @@ function Add_childMenu(Request $request,$id=null){
             }
             }
             else{
-                return redirect()->route('admin.login')->with('error','Another Person is Logged In. So We Are Sorry That You Cant Login!');
+                return redirect()->route('admin.login')->with('error','Record not exits');
             }
-        }
+
+        //  }
+        //   else{
+        //     return redirect()->route('admin.login')->with('error','Invalid Credentials');
+        // }
+       //}
+
+
+
+
         return view('admin.index')->with(compact('title'));
     }
 

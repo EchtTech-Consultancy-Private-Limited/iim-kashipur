@@ -122,19 +122,20 @@
                                 </div>
                             </div>
 
-                          <div class="col-md-12">
-                                    <label for="event" class="col-form-label">Status</label>
 
-                                    <select class="form-control" aria-label="Default select example" name="status">
-
-                                        <option selected>Please select status</option>
-
-                                        <option value="1" {{ $career->status == 1 ? 'selected' : '' }}>Active</option>
-
-                                        <option value="0" {{ $career->status == 0 ? 'selected' : '' }}>Inactive</option>
-
-                                    </select>
+                            <div class="col-md-6">
+                                <label for="inputText" class="col-form-label">Archive Date</label>
+                                <div class="">
+                                    <input type="date" class="form-control" name="archive_date"
+                                    @if (isset($id)) value="{{ $career->archive_date }}" @else value="{{ old('archive_date') }}" @endif  placeholder="Please enter" value=""><br>
+                                    <label for="archive_date" id="archive_date-error" class="error"></label>
+                                </div>
                             </div>
+
+
+                             <input type="hidden" name="status" @if($id) value="{{ $career->status }}" @else value="0" @endif >
+
+
 
                             <div class="col-md-12 mt-4">
                                 <div class="col-sm-10">

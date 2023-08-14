@@ -247,7 +247,6 @@ Route::get('careershow', [footerController::class, 'View_Career'])->name('career
 Route::match(['get','post'],'add-edit-career/{id?}',[footerController::class,'Add_Edit_Career']);
 Route::get('delete-career/{id?}',[footerController::class,'Delete_Career']);
 
-
 //RIT module
 Route::get("/RTI",[footerController::class,'view_RTI']);
 Route::match(['get','post'],'add-edit-RTI/{id?}',[footerController::class,'Add_Edit_RTI'])->name('addRTI');
@@ -256,9 +255,9 @@ Route::get('View-RTI/{id}',[footerController::class,'Show_RTI']);
 
 
 //rti section 2
-Route::get("/Rti-Section",[footerController::class,'view_AnnualAudit_RTI']);
 Route::post("/add-rit-pdf",[footerController::class,'Add_AnnualAudit_RTI']);
 Route::post("/edit-rit-pdf/{id?}",[footerController::class,'Edit_AnnualAudit_RTI']);
+Route::get("/Rti-Section",[footerController::class,'view_AnnualAudit_RTI']);
 Route::get("/delete-rit-pdf/{id?}",[footerController::class,'Delete_AnnualAudit_RTI']);
 
 
@@ -501,10 +500,6 @@ Route::get('change-status/{status}/{id}',[AdminController::class,'Admin_StatusCh
 Route::match(['get','post'],'assign-role/{id}',[FormController::class,'Assign_Roles']);
 
 
-
-
-
-
 Route::get('menu-status-change/{type}/{id}/{status}',[AdminController::class,'Menu_StatusChange']);
 Route::get('status-change/{status}/{id}/{db}',[AdminController::class,'StatusChange']);
 
@@ -606,6 +601,9 @@ Route::post('reset-password', [ForgotPasswordController::class, 'submitResetPass
 //website search
 
 Route::post('search',[InnerpageController::class,'search']);
+
+
+Route::get('/{slug?}/archive',[InnerpageController::class,'archive']);
 
 //Monu Routes
 // Career

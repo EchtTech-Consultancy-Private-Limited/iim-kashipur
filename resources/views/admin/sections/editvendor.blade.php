@@ -94,19 +94,18 @@
                                 </div>
                             </div>
 
-                           <div class="col-md-6 ">
-                                <label for="event" class="col-form-label">Status</label>
+                            <div class="col-md-6">
+                                <label for="inputText" class="col-form-label">Archive Date</label>
+                                <div class="">
+                                    <input type="date" class="form-control" name="archive_date"
+                                    @if (isset($id)) value="{{ $vendorsdebarred->archive_date }}" @else value="{{ old('archive_date') }}" @endif  placeholder="Please enter" value=""><br>
+                                    <label for="archive_date" id="archive_date-error" class="error"></label>
+                                </div>
+                            </div>
 
-                                    <select class="form-control" aria-label="Default select example" name="status">
 
-                                        <option selected>Please select status</option>
+                             <input type="hidden" name="status" @if($id) value="{{ $vendorsdebarred->status }}" @else value="0" @endif >
 
-                                        <option value="1"{{$vendorsdebarred->status==1?'selected':''}}>Active</option>
-
-                                        <option value="0"{{$vendorsdebarred->status==0?'selected':''}}>Inactive</option>
-
-                                    </select>
-                               </div>
 
 
                             <div class="col-md-12 mt-4">
