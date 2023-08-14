@@ -1388,13 +1388,7 @@
 
                         <!-- Chairpersons -->
 
-
-
-
-
                         @if(count($chairperson) > 0 )
-
-
 
                         <h5>
                            <span>  Chairperson </span>
