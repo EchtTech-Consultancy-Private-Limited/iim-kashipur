@@ -65,9 +65,7 @@
                                 </div>
                             </div>
                             <div class="col-md-12">
-                                <label for="inputText" class="col-form-label">Attachment File
-
-                                </label>
+                                <label for="inputText" class="col-form-label">Attachment File</label>
                                 <div class="">
 
                                         @if($data->attachement_file != '')

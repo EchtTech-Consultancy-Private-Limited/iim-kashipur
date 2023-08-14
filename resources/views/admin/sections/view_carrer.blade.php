@@ -14,29 +14,20 @@
 
                     <div class="card">
 
-                        <div class="card-body">
+                        <div class="card-body row">
 
-                            <h4 class="card-title">View Carrer</h4>
+                            <h4 class="card-title col-md-12">View Carrer</h4>
 
-                            <p class="card-description">
-
-
-
-
-                            </p>
-
-
+                           
                             <div class="col-md-6">
                                 <label for="inputText" class="col-form-label">NAME OF THE POST</label>
-                                <div class="col-md-12">
+                                <div>
                                     <input type="text" class="form-control"
                                         name="name_of_the_post"placeholder="Please enter"
                                          value="{{ $data->name_of_the_post }}" readonly><br>
                                     <label for="name_of_the_post" id="name_of_the_post-error" class="error"></label>
                                 </div>
                             </div>
-
-
 
 
                             <div class="col-md-6">

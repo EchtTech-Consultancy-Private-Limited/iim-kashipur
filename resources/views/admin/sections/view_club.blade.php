@@ -14,13 +14,13 @@
 
                     <div class="card">
 
-                        <div class="card-body">
+                        <div class="card-body row">
 
-                            <h4 class="card-title">Add Club</h4>
+                            <h4 class="card-title col-md-12">Add Club</h4>
 
 
 
-                            <div class="col-md-3">
+                            <div class="col-md-6">
                                 <label for="inputText" class="col-form-label">Club Name*</label>
                                 <div class="">
                                     <input type="text" class="form-control"
@@ -30,14 +30,14 @@
                                 </div>
                             </div>
 
-                            <div class="col-md-3">
+                            <div class="col-md-6">
                                 <label for="inputText" class="col-form-label">Club Logo* <span style="color:green;font-size:12px;">  [{{$data->logo}}] </span></label>
                                 <div class="">
 
                                 </div>
                             </div>
 
-                            <div class="col-md-3">
+                            <div class="col-md-6">
                                 <label for="inputText" class="col-form-label">Club Logo Title*</label>
                                 <div class="">
                                     <input type="text" class="form-control" name="club_logo_title"
@@ -46,7 +46,7 @@
                                 </div>
                             </div>
 
-                            <div class="col-md-3">
+                            <div class="col-md-6">
                                 <label for="inputText" class="col-form-label">Club Logo Alt*</label>
                                 <div class="">
                                     <input type="text" class="form-control" name="club_logo_alt"
@@ -55,14 +55,14 @@
                                 </div>
                             </div>
 
-                            <div class="col-md-3">
+                            <div class="col-md-12">
                                 <label for="inputText" class="col-form-label">Club Cover Image* <span style="color:green;font-size:12px;">  [{{$data->image}}] </span></label>
                                 <div class="">
 
 
                                 </div>
                             </div>
-                            <div class="col-md-3">
+                            <div class="col-md-6">
                                 <label for="inputText" class="col-form-label">Club Cover Image Title*</label>
                                 <div class="">
                                     <input type="text" class="form-control" name="club_image_title"
@@ -71,7 +71,7 @@
                                 </div>
                             </div>
 
-                            <div class="col-md-3">
+                            <div class="col-md-6">
                                 <label for="inputText" class="col-form-label">Club Cover Image Alt*</label>
                                 <div class="">
                                     <input type="text" class="form-control" name="club_image_alt"
@@ -80,7 +80,7 @@
                                 </div>
                             </div>
 
-                            <div class="col-md-3">
+                            <div class="col-md-6">
                                 <label for="inputText" class="col-form-label">Chairperson*</label>
                                 <div class="">
                                     {{-- <input type="text" class="form-control" name="chairperson"
@@ -100,7 +100,7 @@
                                 </div>
                             </div>
 
-                            <div class="col-md-3">
+                            <div class="col-md-6">
                                 <label for="cell_type" class="col-form-label">Club Type</label>
                                 <div class="">
                                     <select class="form-control" name="club_type" required disabled>
@@ -139,13 +139,10 @@
 
 
                             <div class="col-md-12">
-                                <label for="inputText" class="col-sm-12 col-form-label">Banner Image</label>
-                                <div class="col-sm-12">
+                                <label for="inputText" class="col-form-label">Banner Image</label>
+                                <div class="">
                                     <input type="file" class="form-control" name="bannerimage"
                                         placeholder="Please browse banner image" accept=".jpeg,.jpg,.gif,.png"><br>
-
-
-
                                 </div>
 
                                 <img src="{{ asset('page/banner/' . $data->bannerimage) }}" width="150"
@@ -154,9 +151,9 @@
 
                             </div>
 
-                            <div class="col-md-12">
-                                <label for="inputText" class="col-sm-12 col-form-label">Banner title </label>
-                                <div class="col-sm-12">
+                            <div class="col-md-6">
+                                <label for="inputText" class="col-form-label">Banner title </label>
+                                <div class="">
                                     <input type="text" class="form-control" name="banner_title"  {{$data->banner_title}} readonly
                                         placeholder="Please enter text for title of banner photo, use for seo"
                                       ><br>
@@ -167,9 +164,9 @@
                             </div>
 
 
-                            <div class="col-md-12">
-                                <label for="inputText" class="col-sm-12 col-form-label">Banner Alt </label>
-                                <div class="col-sm-12">
+                            <div class="col-md-6">
+                                <label for="inputText" class="col-form-label">Banner Alt </label>
+                                <div class="">
                                     <input type="text" class="form-control" name="banner_alt" readonly {{$data->banner_alt}}
                                         placeholder="Please enter text for alt of banner photo, use for seo"
                                         ><br>

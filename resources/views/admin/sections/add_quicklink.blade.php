@@ -377,18 +377,10 @@
 
 
 
-        <s>
+{{-- onload content page show --}}
+<script>
+    $( document ).ready(function() {
 
-
-
-
-
-
-
-
-            {{-- onload content page show --}}
-            <script>
-                $(document).ready(function() {
 
                     $.ajaxSetup({
                         headers: {

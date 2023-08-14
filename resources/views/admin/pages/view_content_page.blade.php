@@ -34,11 +34,11 @@
 
 
 
-                        <div class="card-body">
+                        <div class="card-body row">
 
 
 
-                            <h4 class="card-title">{{ 'View Content Page' }}</h4>
+                            <h4 class="card-title col-md-12">{{ 'View Content Page' }}</h4>
 
 
 
@@ -93,11 +93,11 @@
                             </p>
 
 
-                            <div class="col-md-12">
+                            <div class="col-md-6">
 
-                                <label for="inputText" class="col-sm-12 col-form-label">Page Title*</label>
+                                <label for="inputText" class="col-form-label">Page Title*</label>
 
-                                <div class="col-sm-12">
+                                <div class="">
 
                                     <input type="text" class="form-control" name="name"
                                         placeholder="Please enter content page title" value="{{ $data->name }}" readonly>
@@ -116,11 +116,11 @@
 
 
 
-                            <div class="col-md-12">
+                            <div class="col-md-6">
 
-                                <label for="name_h" class="col-sm-12 col-form-label">शीर्षक*</label>
+                                <label for="name_h" class="col-form-label">शीर्षक*</label>
 
-                                <div class="col-sm-12">
+                                <div class="">
 
                                     <input type="text" class="form-control"name="name_h" id="name_h"
                                         placeholder="Please enter content page title in hindi" value="{{ $data->name_h }}"
@@ -141,9 +141,9 @@
 
                             <div class="col-md-12">
 
-                                <label for="inputText" class="col-sm-12 col-form-label">Page Content</label>
+                                <label for="inputText" class="col-form-label">Page Content</label>
 
-                                <div class="col-sm-12">
+                                <div class="">
 
                                     <textarea class="form-control" id="content" rows="4" readonly name="content" placeholder="Please enter content">{{ $data->content }}</textarea>
 
@@ -155,9 +155,9 @@
 
                             <div class="col-md-12">
 
-                                <label for="inputText" class="col-sm-12 col-form-label">विवरण</label>
+                                <label for="inputText" class="col-form-label">विवरण</label>
 
-                                <div class="col-sm-12">
+                                <div class="">
 
                                     <textarea class="form-control" id="content_h" readonly rows="4" name="content_h"
                                         placeholder="Please enter content in hindi">{{ $data->content_h }}</textarea>
@@ -170,9 +170,9 @@
 
                             <div class="col-md-12">
 
-                                <label for="inputText" class="col-sm-12 col-form-label">Meta Tittle</label>
+                                <label for="inputText" class="col-form-label">Meta Tittle</label>
 
-                                <div class="col-sm-12">
+                                <div class="">
 
                                     <input type="text" class="form-control" readonly name="tittle"
                                         placeholder="Please enter meta tittle, use for seo" value="{{ $data->meta_title }}">
@@ -185,9 +185,9 @@
 
                             <div class="col-md-12">
 
-                                <label for="inputText" class="col-sm-12 col-form-label">Meta Keywords</label>
+                                <label for="inputText" class="col-form-label">Meta Keywords</label>
 
-                                <div class="col-sm-12">
+                                <div class="">
 
                                     <input type="text" class="form-control" readonly name="keyword"
                                         placeholder="Please enter meta keywords, use for seo"
@@ -201,9 +201,9 @@
 
                             <div class="col-md-12">
 
-                                <label for="inputText" class="col-sm-12 col-form-label">Meta Description</label>
+                                <label for="inputText" class="col-form-label">Meta Description</label>
 
-                                <div class="col-sm-12">
+                                <div class="">
 
                                     <textarea class="form-control" id="keyword" rows="4" readonly name="description"
                                         placeholder="Please enter meta description, use for seo">{{ $data->meta_description }}</textarea><br>
@@ -218,7 +218,7 @@
 
                             <div class="col-md-12">
 
-                                <label for="inputText" class="col-sm-12 col-form-label">PDF File
+                                <label for="inputText" class="col-form-label">PDF File
 
 
                                     <span style="color:green;font-size:12px;"> [{{ $data->file_download }}]
@@ -233,16 +233,11 @@
 
                                 </label>
 
-                                <div class="col-sm-12">
-
-
-
-
-
+                                <div class="">
 
                                     <a href="{{ url('page/pdf/' . $data->file_download) }}" download>
 
-                                        <img src="{{ asset('admin/images/viewpdf.jpg') }}" width="170" height="70">
+                                        <img src="{{ asset('admin/images/viewpdf.jpg') }}" width="140">
 
                                     </a>
 
@@ -256,14 +251,13 @@
 
                             <div class="col-md-12">
 
-                                <label for="inputText" class="col-sm-2 col-form-label">Banner image</label>
+                                <label for="inputText" class="col-form-label">Banner image</label>
 
-                                <div class="col-sm-12">
+                                <div class="">
 
 
                                     @if (isset($data->banner_image))
-                                        <img src="{{ asset('page/banner/' . $data->banner_image) }}" width="150"
-                                            height="100" />
+                                        <img src="{{ asset('page/banner/' . $data->banner_image) }}" style="width: 100%" />
                                     @else
                                         <img src="public/banner.png" />
                                     @endif
@@ -281,9 +275,9 @@
 
                             <div class="col-md-12">
 
-                                <label for="inputText" class="col-sm-2 col-form-label">Banner image text</label>
+                                <label for="inputText" class="col-form-label">Banner image text</label>
 
-                                <div class="col-sm-12">
+                                <div class="">
 
                                     <input type="text" class="form-control"name="banner_title"
                                         placeholder="Please enter text for title of banner photo, use for seo"
@@ -293,11 +287,11 @@
 
                             </div>
 
-                            <div class="col-md-12">
+                            <div class="col-md-6">
 
-                                <label for="inputText" class="col-sm-2 col-form-label">Banner image alt </label>
+                                <label for="inputText" class="col-form-label">Banner image alt </label>
 
-                                <div class="col-sm-12">
+                                <div class="">
 
                                     <input type="text" class="form-control"name="banner_alt"
                                         placeholder="Please enter text for alt of banner photo, use for seo"
@@ -311,15 +305,12 @@
 
                             <div class="col-md-12">
 
-                                <label for="inputText" class="col-sm-2 col-form-label">Content Photo</label>
+                                <label for="inputText" class="col-form-label">Content Photo</label>
 
-                                <div class="col-sm-12">
-
-
+                                <div class="">
 
                                     @if (isset($data->cover_image))
-                                        <img src="{{ asset('page/image/' . $data->cover_image) }}" width="150"
-                                            height="100" />
+                                        <img src="{{ asset('page/image/' . $data->cover_image) }}" style="width: 100%" />
                                     @else
                                         <img src="photo-path/default.png" />
                                     @endif
@@ -337,11 +328,11 @@
 
 
 
-                            <div class="col-md-12">
+                            <div class="col-md-6">
 
-                                <label for="inputText" class="col-sm-2 col-form-label">Content image text</label>
+                                <label for="inputText" class="col-form-label">Content image text</label>
 
-                                <div class="col-sm-12">
+                                <div class="">
 
                                     <input type="text" class="form-control"name="cover_title"
                                         placeholder="Please enter text for title of content photo, use for seo"
@@ -351,11 +342,11 @@
 
                             </div>
 
-                            <div class="col-md-12">
+                            <div class="col-md-6">
 
-                                <label for="inputText" class="col-sm-2 col-form-label">Content image alt</label>
+                                <label for="inputText" class="col-form-label">Content image alt</label>
 
-                                <div class="col-sm-12">
+                                <div class="">
 
                                     <input type="text" class="form-control"name="cover_alt"
                                         placeholder="Please enter text for title of content photo, use for seo"
@@ -367,11 +358,11 @@
 
 
 
-                            <div class="col-md-12">
+                            <div class="col-md-6">
 
-                                <label for="inputText" class="col-sm-2 col-form-label">Sort Order</label>
+                                <label for="inputText" class="col-form-label">Sort Order</label>
 
-                                <div class="col-sm-12">
+                                <div class="">
 
                                     <input type="text" class="form-control" name="sort_order"
                                         placeholder="Please enter sorting position number"

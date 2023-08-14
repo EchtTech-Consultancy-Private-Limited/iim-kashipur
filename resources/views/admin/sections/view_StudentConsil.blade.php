@@ -14,9 +14,9 @@
 
                     <div class="card">
 
-                        <div class="card-body">
+                        <div class="card-body row">
 
-                            <h4 class="card-title">view Student Council</h4>
+                            <h4 class="card-title col-md-12">view Student Council</h4>
 
                             <p class="card-description">
 

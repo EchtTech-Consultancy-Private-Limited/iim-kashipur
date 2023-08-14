@@ -977,7 +977,7 @@
                                                 <div class="excellence-gallery partnership-img">
                                                     <div class="row masonry-grid">
                                                         @foreach ($chairpersons as  $chairperson)
-                                                            <div class="col-md-3 col-lg-3">
+                                                            <div class="col-md-3 col-lg-3 width-50-sm">
                                                                 <div class="d-flex flex-column h-100">
 
                                                                     <div>
@@ -986,7 +986,8 @@
                                                                                 alt="gallery-img" class="img-fluid"
                                                                                 loading="lazy">
                                                                             <div class="top-text">
-                                                                                {{ $chairperson->title  ??''}} <br>
+                                                                                {{ $chairperson->title  ??''}} 
+                                                                                {{-- <br>
 
                                                                               <span style="font-size: 12px;color:#000">
                                                                                 @if (GetLang() == 'en')
@@ -994,7 +995,7 @@
                                                                                   @else
                                                                                 {{ $chairperson->designation_h ?? '' }}
                                                                                 @endif
-                                                                              </span>
+                                                                              </span> --}}
                                                                             </div>
 
 
