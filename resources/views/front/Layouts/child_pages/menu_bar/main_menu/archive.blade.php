@@ -89,8 +89,6 @@
                 </table>
             @endif
 
-
-
             @if ($bread == 'Tender')
                 <table>
                     <tr>
