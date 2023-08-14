@@ -818,28 +818,22 @@ function Add_childMenu(Request $request,$id=null){
             'captcha' => 'required|captcha'
             ]);
         
-         //dd(count(Admin::where('email',$request->email)->get()) );
-
+        
           if(count(Admin::where('email',$request->email)->get()) == 1){
 
-           // dd(Admin::where('email',$request->email)->first()->login_check);
+            if(Admin::where('email',$request->email)->first()->login_check == '0'){
 
-          if(Admin::where('email',$request->email)->first()->login_check == '0'){
+                if(\Auth::guard('admin')->attempt(['email'=>$request->email,'password'=>$request->password,'status'=>1])){
+                    $data=Admin::find(\Auth::guard('admin')->user()->id);
+                    $userId = Auth::guard('admin')->user()->id;
+                    $br= $this->getBrowser();
+                    $sqlUpdate = DB::table('admins')->where('id', $userId)->update(array('login_time'=>date('d-m-Y H:i:s'),'ip'=>$request->ip(),'user_agent'=>$br['name'],'login_check'=>'1'));
 
-         if(DB::table('login_checks')->where('user_id',\Auth::guard('admin')->user()->id))
-            if(\Auth::guard('admin')->attempt(['email'=>$request->email,'password'=>$request->password,'status'=>1])){
-
-
-                $data=Admin::find(\Auth::guard('admin')->user()->id);
-                $userId = Auth::guard('admin')->user()->id;
-                $br= $this->getBrowser();
-                $sqlUpdate = DB::table('admins')->where('id', $userId)->update(array('login_time'=>date('d-m-Y H:i:s'),'ip'=>$request->ip(),'user_agent'=>$br['name'],'login_check'=>'1'));
-
-                return redirect()->route('admin.dashboard')->with('success','Hello '.$data->name.'. Welcome to admin panel !');
-            }
-            else{
-                return redirect()->route('admin.login')->with('error','Invalid Credentials');
-            }
+                    return redirect()->route('admin.dashboard')->with('success','Hello '.$data->name.'. Welcome to admin panel !');
+                }
+                else{
+                    return redirect()->route('admin.login')->with('error','Invalid Credentials');
+                }
             }
             else{
                 return redirect()->route('admin.login')->with('error','Invalid Credentials');
