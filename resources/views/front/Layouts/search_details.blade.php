@@ -102,12 +102,10 @@
                                         @foreach ($Career as $Careers)
                                             <div class="search-content-box">
 
+                                            <a href="{{url('career') }}">
                                                 <h6>{{ $Careers->name_of_the_post ?? '' }}</h6>
-                                                <p>
 
-
-
-                                                </p>
+                                            </a>
                                             </div>
                                         @endforeach
                                     @endif
@@ -150,15 +148,17 @@
                                         @foreach ($content_page as $content_pages)
                                             <div class="search-content-box">
 
-                                                <h6>{{ $content_pages->name ?? '' }}</h6>
+
+                                                <a href="{{ url($content_pages->slug) }}">
+                                                    <h6>{{ $content_pages->name ?? '' }}</h6>
+                                                </a>
                                                 <p>
 
-
-
-                                                    {!!  substr_replace($content_pages->content,'...',200) !!}
+                                                    {!! substr_replace($content_pages->content, '...', 200) !!}
 
 
                                                 </p>
+
                                             </div>
                                         @endforeach
                                     @endif
@@ -256,12 +256,9 @@
                                         @foreach ($OrganisationStructure as $OrganisationStructures)
                                             <div class="search-content-box">
 
-                                                <h6>{{ $OrganisationStructures->title ?? '' }}</h6>
-                                                <p>
-
-
-
-                                                </p>
+                                                <a href="{{ $OrganisationStructures->slug }}">
+                                                    <h6>{{ $OrganisationStructures->title ?? '' }}</h6>
+                                                </a>
                                             </div>
                                         @endforeach
                                     @endif
@@ -271,13 +268,14 @@
                                     @if (count($news_event) > 0)
                                         @foreach ($news_event as $news_events)
                                             <div class="search-content-box">
+                                                <a href="{{ url('news-media') }}">
+                                                    <h6>{{ $news_events->title ?? '' }}</h6>
+                                                    <p>
 
-                                                <h6>{{ $news_events->title ?? '' }}</h6>
-                                                <p>
 
 
-
-                                                </p>
+                                                    </p>
+                                                </a>
                                             </div>
                                         @endforeach
                                     @endif
@@ -304,12 +302,14 @@
                                         @foreach ($org_journies as $org_journiess)
                                             <div class="search-content-box">
 
+                                                <h5><span> Org Journies</span></h5>
+
+                                                <a href="{{ url('about-institute/our-journey') }}">
                                                 <h6>{{ $org_journiess->name ?? '' }}</h6>
                                                 <p>
-
-
-
+                                                    {{ $org_journiess->heading ?? '' }}
                                                 </p>
+                                                </a>
                                             </div>
                                         @endforeach
                                     @endif
@@ -319,12 +319,13 @@
                                         @foreach ($press_media as $press_medias)
                                             <div class="search-content-box">
 
+
+                                                <h5><span> Press Media</span></h5>
+
+                                                <a href="{{ url('press-media') }}">
                                                 <h6>{{ $press_medias->heading ?? '' }}</h6>
-                                                <p>
 
-
-
-                                                </p>
+                                                </a>
                                             </div>
                                         @endforeach
                                     @endif
@@ -335,12 +336,12 @@
                                         @foreach ($project_logo as $project_logos)
                                             <div class="search-content-box">
 
+                                                <h5><span>Project logo</span></h5>
+
+
+
                                                 <h6>{{ $project_logos->name ?? '' }}</h6>
-                                                <p>
 
-
-
-                                                </p>
                                             </div>
                                         @endforeach
                                     @endif
@@ -350,6 +351,8 @@
                                     @if (count($quick_linkcategory) > 0)
                                         @foreach ($quick_linkcategory as $quick_linkcategorys)
                                             <div class="search-content-box">
+
+                                                <h5><span>Quick Link</span></h5>
 
                                                 <h6>{{ $quick_linkcategorys->Section ?? '' }}</h6>
                                                 <p>
@@ -367,12 +370,10 @@
                                         @foreach ($QuickLink as $QuickLinks)
                                             <div class="search-content-box">
 
+
+
                                                 <h6>{{ $QuickLinks->title ?? '' }}</h6>
-                                                <p>
 
-
-
-                                                </p>
                                             </div>
                                         @endforeach
                                     @endif
@@ -384,12 +385,13 @@
                                         @foreach ($rit as $rits)
                                             <div class="search-content-box">
 
+                                                <h5><span>RTI</span></h5>
+
+                                               <a href="{{ url('rti') }}">
+
                                                 <h6>{{ $rits->title ?? '' }}</h6>
-                                                <p>
 
-
-
-                                                </p>
+                                               </a>
                                             </div>
                                         @endforeach
                                     @endif
@@ -401,11 +403,10 @@
                                         @foreach ($student_council as $student_councils)
                                             <div class="search-content-box">
 
+                                               <a href="{{ url('students-corner/student-council') }}">
                                                 <h6>{{ $student_councils->student_council ?? '' }}</h6>
-                                                <p>
-
-
-                                                </p>
+                                                {{-- <p>{!!  $student_councils->about_details  !!}</p> --}}
+                                               </a>
                                             </div>
                                         @endforeach
                                     @endif
@@ -415,12 +416,9 @@
                                         @foreach ($StudentProfile as $StudentProfiles)
                                             <div class="search-content-box">
 
+                                                <a href="{{ url('academics/doctoral-programme/student-profiles') }}">
                                                 <h6>{{ $StudentProfiles->name ?? '' }}</h6>
-                                                <p>
-
-
-
-                                                </p>
+                                                 <a>
                                             </div>
                                         @endforeach
                                     @endif
@@ -430,12 +428,11 @@
                                         @foreach ($tender as $tenders)
                                             <div class="search-content-box">
 
+                                                <h5><span> Tenders</span></h5>
+
+                                                <a href="{{ url('Tenders') }}">
                                                 <h6>{{ $tenders->title ?? '' }}</h6>
-                                                <p>
-
-
-
-                                                </p>
+                                                </a>
                                             </div>
                                         @endforeach
                                     @endif
@@ -445,12 +442,13 @@
                                         @foreach ($Vendorsdebarred as $Vendorsdebarreds)
                                             <div class="search-content-box">
 
-                                                <h6>{{ $Vendorsdebarreds->vendor_name ?? '' }}</h6>
-                                                <p>
 
+                                                <h5><span>Vendors Debarred</span></h5>
 
+                                                <a href="{{ url('Vendors-Debarred') }}">
+                                                    <h6>{{ $Vendorsdebarreds->vendor_name ?? '' }}</h6>
+                                                <a>
 
-                                                </p>
                                             </div>
                                         @endforeach
                                     @endif
@@ -459,39 +457,94 @@
                                         @foreach ($video_gallery as $video_gallerys)
                                             <div class="search-content-box">
 
-                                                <h6>{{ $video_gallerys->title ?? '' }}</h6>
-                                                <p>
+                                                <h5><span>Video gallery</span></h5>
 
 
+                                                <a href="{{ url('video-gallery') }} ">
 
-                                                </p>
+                                                    <h6>{{ $video_gallerys->title ?? '' }}</h6>
+
+                                                </a>
                                             </div>
                                         @endforeach
                                     @endif
+
+
+                                    {{--  video_gallery child --}}
+                                    @if (count($video_gallery_tittles) > 0)
+                                        @foreach ($video_gallery_tittles as $video_gallery_tittle)
+                                            <div class="search-content-box">
+
+                                                <h5><span>Video gallery</span></h5>
+
+
+                                                <a href="{{ url('video-gallery') }} ">
+
+                                                    <h6>{{ $video_gallery_tittle->video_title ?? '' }}</h6>
+
+                                                </a>
+                                            </div>
+                                        @endforeach
+                                    @endif
+
+
+
+
                                     {{-- wellness_facilitie --}}
 
                                     @if (count($wellness_facilitie) > 0)
                                         @foreach ($wellness_facilitie as $wellness_facilities)
-                                            <div class="search-content-box">
+                                            <a href="{{ url('students-corner/wellness-facilities') }}">
+                                                <div class="search-content-box">
 
-                                                <h6>{{ $wellness_facilities->title ?? '' }}</h6>
-                                                <p>
+                                                    <h5><span>Wellness Facilities</span></h5>
 
-                                                    {!! $wellness_facilities->about_details !!}
+                                                    <h6>{{ $wellness_facilities->title ?? '' }}</h6>
+                                                    <p>
 
-                                                </p>
-                                            </div>
+                                                        {!! $wellness_facilities->about_details !!}
+
+                                                    </p>
+                                                </div>
+                                            </a>
+                                        @endforeach
+                                    @endif
+
+                                    {{-- wellness_facilitie_image --}}
+
+                                    @if (count($wellness_facilitie_image) > 0)
+                                        @foreach ($wellness_facilitie_image as $wellness_facilitie_images)
+                                            <a href="{{ url('students-corner/wellness-facilities') }}">
+                                                <div class="search-content-box">
+
+                                                    <h5><span>Wellness Facilities</span></h5>
+
+                                                    <h6>{{ $wellness_facilitie_images->image_title ?? '' }}</h6>
+                                                    <p>
+
+                                                        {!! $wellness_facilitie_images->event !!}
+
+                                                    </p>
+
+                                                    <p>
+
+                                                        {!! $wellness_facilitie_images->DESCRIPTION !!}
+
+                                                    </p>
+
+
+                                                </div>
+                                            </a>
                                         @endforeach
                                     @endif
 
 
 
+
+
+
+
                                 </div>
-
-
-
-
-
 
 
                             </div>

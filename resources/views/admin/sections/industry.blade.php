@@ -66,10 +66,10 @@
                                 </div>
                             </div>
                             <div class="col-md-6">
-                                <label for="inputText" class="col-form-label">Title</label>
+                                <label for="title" class="col-form-label">Title*</label>
                                 <div class="">
                                     <input type="text" class="form-control"
-                                        name="title"placeholder="Please enter"
+                                        name="title"placeholder="Please enter" id="title"
                                         @if ($id) value="{{ $data->title }}" @else value="{{ old('title') }}" @endif><br>
                                     <label for="title" id="title-error" class="error"></label>
                                 </div>

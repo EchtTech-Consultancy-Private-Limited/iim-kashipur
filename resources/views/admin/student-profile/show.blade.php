@@ -120,11 +120,11 @@
 
                           <td>
 
-                            <a href="{{url('/Accounts/update-student-profile'.dEncrypt($students->id))}}"
+                            <a href="{{url('/Accounts/update-student-profile/'.dEncrypt($students->id))}}"
                                 onclick="return confirm('Are you sure to edit this record?')"><i class="ti-pencil btn-icon-append" style="color:black;"></i></a> &nbsp;
 
                             @if (\Auth::guard('admin')->user()->id == 1  )
-                            <a href="{{url('/Accounts/delete-student-profile'.dEncrypt($students->id))}}"
+                            <a href="{{url('/Accounts/delete-student-profile/'.dEncrypt($students->id))}}"
                                 onclick="return confirm('Are you sure to delete this record?')"><i class="ti-trash btn-icon-append" style="color:black;"></i></a> &nbsp;
                             @endif
                           </td>

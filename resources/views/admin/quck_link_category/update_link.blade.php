@@ -144,7 +144,7 @@
                                             <option value="section11"{{ $data->placement == 'section11' ? 'selected' : '' }}>
                                                 section(Header Top)</option>
 
-                                            <option value="section12" {{ $data->placement == 'section12' ? 'selected' : '' }}>section(Client Logo Meddle Section)</option>
+                                            <option value="section12" {{ $data->placement == 'section12' ? 'selected' : '' }}>section(Client Logo Middle Section)</option>
 
 
                                         </select>
@@ -249,7 +249,7 @@
 
 
 
-                                    <div class="form-group"> <label for="form_name">Sort Order*</label>
+                                    <div class="form-group"> <label for="form_name">Sort Order</label>
 
 
 
@@ -265,7 +265,7 @@
 
 
 
-                                <div class="col-md-6">
+                                {{-- <div class="col-md-6">
 
 
 
@@ -286,10 +286,10 @@
 
 
 
-                                </div>
+                                </div> --}}
 
 
-
+                                <input type="hidden" value="{{ $data->status }}" name="status">
 
 
 

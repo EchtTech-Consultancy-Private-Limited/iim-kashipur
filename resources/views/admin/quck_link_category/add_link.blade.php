@@ -100,16 +100,12 @@
 
                                 @csrf
 
-
-
-
-
                                 <div class="col-md-6">
 
                                     <div class="form-group"> <label for="title">Title*</label>
 
-                                        <input id="title" type="text" name="title" class="form-control"
-                                            placeholder="Please enter title *" value="{{ old('title') }}">
+                                        <input  type="text" name="title" class="form-control"
+                                            placeholder="Please enter title *" id="title" required value="{{ old('title') }}">
 
                                         <label for="title" id="title-error" class="error">
                                             @error('title')
@@ -121,10 +117,6 @@
                                     </div>
 
                                 </div>
-
-
-
-
 
 
 
@@ -155,7 +147,7 @@
 
                                         <select name="link" id="link" class="form-control">
 
-                                            <option value="not_select">Please Select</option>
+                                            <option value="">Please Select</option>
 
                                             <option value="section1">section(Academics)</option>
 
@@ -179,7 +171,7 @@
 
                                             <option value="section11">section(Header Top)</option>
 
-                                            <option value="section12">section(Client Logo Meddle Section)</option>
+                                            <option value="section12">section(Client Logo Middle Section)</option>
 
 
                                         </select>
@@ -203,12 +195,10 @@
 
 
 
-                                    <div class="form-group"> <label for="form_name">Short Note</label>
-
-
+                                    <div class="form-group"> <label for="form_name">Short Note*</label>
 
                                         <input id="form_name" type="text" name="short_note" class="form-control"
-                                            placeholder="Please enter short note" value="{{ old('short_note') }}">
+                                            placeholder="Please enter short note" value="{{ old('short_note') }}" required>
                                     </div>
 
 
@@ -238,7 +228,7 @@
 
 
 
-                                    <div class="form-group"> <label for="form_name"> Sort Order*</label>
+                                    <div class="form-group"> <label for="form_name"> Sort Order</label>
 
 
 
@@ -255,7 +245,7 @@
 
 
 
-                                <div class="col-md-6">
+                                {{-- <div class="col-md-6">
 
 
                                     <label for="status">Status*</label>
@@ -284,7 +274,9 @@
 
 
 
-                                </div>
+                                </div> --}}
+
+                                <input type="hidden" value="0" name="status">
 
 
 

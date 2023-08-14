@@ -96,9 +96,9 @@
                         @endif
 
 
-                        @if (@checkRoute('Manage Student Profile'))
+                        @if (@checkRoute('view_profile'))
                             <li class="nav-item"><a class="nav-link"
-                                    href="{{ url('/Accounts/view-students-profile') }}">
+                                    href="{{ url('/Accounts/Manage-students-profile') }}">
                                     Manage Student Profile</a></li>
                         @endif
 
@@ -527,7 +527,7 @@
             </li>
         @endif
 
-        @if (@checkRoute('add_link') || @checkRoute('show_link') || @checkRoute('View_QuickLinks'))
+        @if (@checkRoute('Show_Section') || @checkRoute('show_link') || @checkRoute('View_QuickLinks'))
 
             <li class="nav-item">
 
@@ -546,15 +546,15 @@
                 <div class="collapse" id="cmspagesss">
 
                     <ul class="nav flex-column sub-menu">
-                        @if (@checkRoute('add_link'))
-                            <li class="nav-item"> <a class="nav-link" href="{{ url('/Accounts/add_link') }}">Add
-                                    Link Sections</a></li>
+                        @if (@checkRoute('Add_Section'))
+                            <li class="nav-item"> <a class="nav-link" href="{{ url('/Accounts/add_link') }}">
+                                Add Link Section</a></li>
                         @endif
                     </ul>
                     <ul class="nav flex-column sub-menu">
-                        @if (@checkRoute('show_link'))
-                            <li class="nav-item"> <a class="nav-link" href="{{ url('/Accounts/show_link') }}"> List
-                                    Link Sections</a></li>
+                        @if (@checkRoute('Show_Section'))
+                            <li class="nav-item"> <a class="nav-link" href="{{ url('/Accounts/show_link') }}">
+                                Manage Link Section</a></li>
                         @endif
                     </ul>
 

@@ -59,7 +59,7 @@
                             @csrf
 
                             <div class="col-md-6">
-                                <label for="inputText" class="col-form-label">NAME OF THE POST</label>
+                                <label for="inputText" class="col-form-label">Name Of The Post</label>
                                 <div class="col-md-12">
                                     <input type="text" class="form-control"
                                         name="name_of_the_post"placeholder="Please enter"
@@ -69,7 +69,7 @@
                             </div>
 
                             <div class="col-md-6">
-                                <label for="inputText" class="col-form-label">OPENING DATE</label>
+                                <label for="inputText" class="col-form-label">Opening Data</label>
                                 <div class="">
                                     <input type="date" class="form-control" name="opening_date"
                                         placeholder="Please enter" @if ($id) value="{{ $career->opening_date }}" @else value="{{ old('opening_date') }}" @endif><br>
@@ -78,7 +78,7 @@
                             </div>
 
                             <div class="col-md-6">
-                                <label for="inputText" class="col-form-label">CLOSING DATE</label>
+                                <label for="inputText" class="col-form-label">Closing Date</label>
                                 <div class="">
                                     <input type="date" class="form-control" name="closing_date"
                                         placeholder="Please enter"  @if ($id) value="{{ $career->closing_date }}" @else value="{{ old('closing_date') }}" @endif><br>
@@ -87,7 +87,7 @@
                             </div>
 
                             <div class="col-md-12">
-                                <label for="inputText" class="col-form-label">ONLINE LINK</label>
+                                <label for="inputText" class="col-form-label">Online Link </label>
                                 <div class="">
                                     <input type="text" class="form-control" name="online_link"
                                     @if ($id) value="{{ $career->online_link }}" @else value="{{ old('online_link') }}" @endif  placeholder="Please enter" value=""><br>
@@ -96,7 +96,7 @@
                             </div>
 
                             <div class="col-md-12">
-                                <label for="Commmittee_type" class="col-form-label">DETAIL ADVERTISEMENT<span style="color:green;font-size:12px;"> @if($id) [{{$career->detail_advertisement }}] @endif</span></label>
+                                <label for="Commmittee_type" class="col-form-label"> Detail Advertisement  <span style="color:green;font-size:12px;"> @if($id) [{{$career->detail_advertisement }}] @endif</span></label>
                                 <div class="">
                                     <input type="file" class="form-control" name="detail_advertisement"
                                     @if ($id) value="{{ $career->detail_advertisement }}" @else value="{{ old('detail_advertisement') }}" @endif  placeholder="Please enter"><br>
@@ -105,7 +105,7 @@
                             </div>
 
                             <div class="col-md-12">
-                                <label for="about_details" class="col-form-label">NOTE</label>
+                                <label for="about_details" class="col-form-label">Note</label>
                                 <div class="">
                                     <input type="text" class="form-control" name="note"
                                     @if ($id) value="{{ $career->note }}" @else value="{{ old('note') }}" @endif  placeholder="Please enter"><br>
@@ -114,7 +114,7 @@
                             </div>
 
                             <div class="col-md-12">
-                                <label for="activeites" class="col-form-label">CORRIGENDUM</label>
+                                <label for="activeites" class="col-form-label">Corrigendum</label>
                                 <div class="">
                                     <input type="text" class="form-control" name="corrigendum"
                                     @if ($id) value="{{ $career->corrigendum }}" @else value="{{ old('corrigendum') }}" @endif  placeholder="Please enter"><br>

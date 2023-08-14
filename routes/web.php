@@ -412,7 +412,7 @@ Route::get('/show',[pagecontroller::class,'firstshow']);
 
 //By Vishal routes for add student profile
 
-Route::get('/view-students-profile',[StudentProfileController::class,'view_profile']);
+Route::get('/Manage-students-profile',[StudentProfileController::class,'view_profile']);
 Route::get('/add-students-profile',[StudentProfileController::class,'add_profile']);
 Route::post('/add-students-profile',[StudentProfileController::class,'add_student_profile']);
 Route::get('/show-profile',[StudentProfileController::class,'show_front_profile']);
@@ -598,8 +598,9 @@ Route::get('forget-password', [ForgotPasswordController::class, 'showForgetPassw
 Route::post('forget-password', [ForgotPasswordController::class, 'submitForgetPasswordForm'])->name('forget.password.post');
 Route::get('reset-password/{token}', [ForgotPasswordController::class, 'showResetPasswordForm'])->name('reset.password.get');
 Route::post('reset-password', [ForgotPasswordController::class, 'submitResetPasswordForm'])->name('reset.password.post');
-//website search
 
+
+//website search
 Route::post('search',[InnerpageController::class,'search']);
 
 
