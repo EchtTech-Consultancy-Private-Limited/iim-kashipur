@@ -59,16 +59,15 @@
 
                                                 <tr>
 
-                                                    <th>S.No#</th>
+                                                    <th>Sr.No#</th>
 
-                                                    <th>NAME OF THE POST</th>
+                                                    <th>Name Of The Post </th>
 
-                                                    <th>OPENING DATE</th>
+                                                    <th>Opening Date </th>
 
-                                                    <th>CLOSING DATE</th>
+                                                    <th>Closeing Date</th>
 
-                                                    <th>ONLINE LINK</th>
-
+                                                    <th>Online Link</th>
 
                                                     <th>Status</th>
 

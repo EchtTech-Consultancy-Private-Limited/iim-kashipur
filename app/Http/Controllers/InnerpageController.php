@@ -92,7 +92,7 @@ public function archive($slug){
 
 
 
-   
+
 
 
 
@@ -156,6 +156,7 @@ public function search(Request $request){
         ->get();
     $rit=rti::where("title","like","%$search%")->orwhere("CPIO","like","%$search%")->orwhere("Authority","like","%$search%")->get();
     $student_council=student_council::where("about_details","like","%$search%")->orwhere("student_council","like","%$search%")->get();
+
     $StudentProfile = StudentProfile::where("name","like","%$search%")
                 ->orwhere("area_specialization","like","%$search%")
                 ->orwhere("email","like","%$search%")
@@ -175,6 +176,11 @@ public function search(Request $request){
     $video_gallery=video_gallery::where("name","like","%$search%")
                     ->orwhere("content","like","%$search%")
                     ->get();
+    $video_gallery_tittles=	video_gallery_tittle::where("video_url","like","%$search%")
+       ->orwhere("video_title","like","%$search%")
+       ->orwhere("slug","like","%$search%")
+          ->get();
+
      $wellness_facilitie=  wellness_facilitie::where("about_details","like","%$search%")
                            ->orwhere("description","like","%$search%")
                            ->orwhere("EVENTS","like","%$search%")
@@ -182,7 +188,16 @@ public function search(Request $request){
                            ->orwhere("description","like","%$search%")
                            ->get();
 
-    return view('front.Layouts.search_details',compact('anti_raggings','BannerSlider','Career','cell_multiple_image','cell','club','commmittee','committee_multiple_image','content_page','Events','Industry','journal_publication_child','multiple_profile','OrganisationStructure','news_event','org','org_journies','press_media','project_logo','wellness_facilitie','video_gallery','Vendorsdebarred','tender','StudentProfile','student_council','rit','QuickLink','quick_linkcategory'));
+
+    $wellness_facilitie_image= wellness_facilitie_image::where("image_title","like","%$search%")
+                ->orwhere("event","like","%$search%")
+                ->orwhere("DESCRIPTION","like","%$search%")
+                ->get();
+
+
+
+
+    return view('front.Layouts.search_details',compact('video_gallery_tittles','wellness_facilitie_image','anti_raggings','BannerSlider','Career','cell_multiple_image','cell','club','commmittee','committee_multiple_image','content_page','Events','Industry','journal_publication_child','multiple_profile','OrganisationStructure','news_event','org','org_journies','press_media','project_logo','wellness_facilitie','video_gallery','Vendorsdebarred','tender','StudentProfile','student_council','rit','QuickLink','quick_linkcategory'));
 
 }
 

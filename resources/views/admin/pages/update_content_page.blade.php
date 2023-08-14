@@ -398,7 +398,7 @@
 
                                     <div class="col-sm-12">
 
-                                        <input type="text" class="form-control" name="sort_order"
+                                        <input type="text" class="form-control" name="sort_order"  id="mobile"
                                             placeholder="Please enter sorting position number"
                                             value="{{ $data->sort_order }}">
 

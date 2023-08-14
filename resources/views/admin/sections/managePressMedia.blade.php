@@ -78,8 +78,9 @@
 
                                                 @foreach ($data as $K => $D)
                                                     <tr>
+                                                        
 
-                                                        <td>{{ $D->$K+1 }}</td>
+                                                        <td>{{ $K+1 }}</td>
 
                                                         <td>{{ $D->heading }}</td>
 

@@ -379,12 +379,12 @@ public function childmenushow(Request $request){
         $data2=URLList::orderBy('type','ASC')->GroupBy('type')->cursor();
         $value=quick_linkcategory::all();
         if($id){
-            $title="Edit QuickLink";
+            $title="Edit Quick Link";
             $data=QuickLink::find(dDecrypt($id));
             $msg="QuickLink Edited Successfully";
         }
         else{
-            $title="Add QuickLink";
+            $title="Add Quick Link";
             $data=new QuickLink;
             $msg="QuickLink Added Successfully";
         }
