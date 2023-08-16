@@ -8,3 +8,7 @@ a, a:hover{	color: white;text-decoration: none;}
 .navbar .navbar-brand-wrapper .navbar-brand img{
     height: auto !important;
 }
+
+select.form-control{
+    color:#333 !important;
+}
