@@ -14,6 +14,10 @@
 
   <title> @yield('title') | {{GetOrganisationDetails('name')}}</title>
 
+
+  <script src="{{url('admin/js/iim_ckeditor.js')}}"></script>
+
+
   <!-- plugins:css -->
 
   <link rel="stylesheet" href="{{url('admin/vendors/feather/feather.css')}}">
@@ -78,6 +82,14 @@
         <link rel="apple-touch-icon-precomposed" sizes="114x114" href="{{asset('assets/ico/apple-touch-icon-114-precomposed.png')}}">
         <link rel="apple-touch-icon-precomposed" sizes="72x72" href="{{asset('assets/ico/apple-touch-icon-72-precomposed.png')}}">
         <link rel="apple-touch-icon-precomposed" href="{{asset('assets/ico/apple-touch-icon-57-precomposed.png')}}"> --}}
+
+        
+<style>
+  .content-wrapper table img {
+      width: 140px;
+      height: auto;
+  }
+      </style>   
 
 </head>
 

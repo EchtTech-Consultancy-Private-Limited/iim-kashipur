@@ -82,8 +82,6 @@
                                                     <tr>
 
                                                         <td>{{ $K + 1 }}</td>
-
-
                                                         <td>{{ $D->published_date }}</td>
 
                                                         <td>{{ $D->submission_date }}</td>
@@ -121,7 +119,7 @@
                                                                 @endif
                                                             @else
                                                                 @if ($D->status == 1)
-                                                                    <span" style="color:green;">Active</span>
+                                                                    <span style="color:green;">Active</span>
                                                                     @else
                                                                         <span style="color:red;">Inactive</span>
                                                                 @endif
@@ -167,9 +165,6 @@
                                 </div>
 
                             </div>
-
-
-
                         </div>
 
                     </div>

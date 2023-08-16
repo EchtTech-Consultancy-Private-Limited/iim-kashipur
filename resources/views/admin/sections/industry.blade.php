@@ -1,5 +1,12 @@
 @extends('admin.Layout.master')
 
+<style>
+.content-wrapper table img {
+    width: 140px;
+    height: auto;
+}
+    </style>
+
 @section('title', $title)
 
 @section('content')
@@ -97,8 +104,7 @@
 
                                           <a href="{{ asset('uploads/view/attach/'.$data->attachement_file) }}" download>
 
-                                            <img src="{{ asset('admin/images/viewpdf.jpg') }}" width="170"
-                                                height="70"></a>
+                                            <img src="{{ asset('admin/images/viewpdf.jpg') }}"></a>
                                         @endif
 
                                     <label for="attachement_file" id="attachement_file-error" class="error"></label>

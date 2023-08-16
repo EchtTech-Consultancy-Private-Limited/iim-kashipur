@@ -1397,7 +1397,7 @@
 
 
                         <h5>
-                            Chairperson
+                           <span>  Chairperson </span>
                         </h5>
 
                         <div class="row mt-4 mb-5">

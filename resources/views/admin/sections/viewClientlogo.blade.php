@@ -41,37 +41,34 @@
 
                         @if(Session::has('error'))
 
-                     <div class="alert alert-danger col-md-12 text-center">
+                         <div class="alert alert-danger col-md-12 text-center">
 
-                  <strong>Oops!</strong> {{ Session::get('error') }}
+                        <strong>Oops!</strong> {{ Session::get('error') }}
 
-                </div>
+                        </div>
 
                  @endif
 
                   </p>
 
+                  <div class="row">
 
-                    <div class="col-md-12">
+                    <div class="col-md-6">
 
-                        <div class="form-group"> <label for="type">Type *</label>
-
-
-                            <label for="type"> <b>{{ $data->type ??'' }}</b></label>
-
-
-
+                        <div class="form-group">
+                          <label for="type" class="mr-4">Type *</label>
+                          <label for="type"> <b>{{ $data->type ??'' }}</b></label>
                          </div>
 
                     </div>
 
 
 
-                      <div class="col-md-12">
+                      <div class="col-md-6">
 
                         <div class="form-group">
 
-                            <label for="title">Title *</label>
+                            <label for="title" class="mr-4">Title *</label>
 
 
                             <label for="type"><b>{{ $data->title ??'' }}</b></label>
@@ -85,12 +82,12 @@
 
 
 
-                     <div class="col-md-12">
+                     <div class="col-md-6">
 
                             <div class="form-group">
 
 
-                                <label for="title">Image *</label>
+                                <label for="title" class="mr-4 mt-3">Image *</label>
 
                              {{-- <span style="color:green;font-size:12px;"> [{{$data->file}}] </span> --}}
 
@@ -109,14 +106,14 @@
 
 
 
-                    <div class="col-md-12">
+                    <div class="col-md-6">
 
-                      <div class="form-group"> <label for="url">External url *</label>
-
+                      <div class="form-group"> 
+                        <label for="url" class="mr-4">External url *</label>
                         <label for="type"><b>{{ $data->url }}</b></label>
 
                     </div>
-
+                  </div>
                   </div>
 
 
