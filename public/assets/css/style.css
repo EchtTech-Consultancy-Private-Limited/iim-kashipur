@@ -5970,3 +5970,10 @@ p{
         box-shadow: none;
     }
 
+    .sidebarwraper ul li.hasnested.opened ul li.hasnested ul {
+        display: none;
+    }
+
+    .sidebarwraper ul li.hasnested.opened ul li.hasnested.opened ul {
+        display: block;
+    }

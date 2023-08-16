@@ -36,7 +36,6 @@
         </div>
 
 
-
         {{-- breadcrumbs setion --}}
         <div class="breadcrumbs">
             <div class="container">
