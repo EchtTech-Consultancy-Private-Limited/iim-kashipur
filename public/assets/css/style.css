@@ -5954,3 +5954,19 @@ p{
     }
 
 }
+    /* 
+    .sidebarwraper ul li.hasnested a.active + ul {
+        display: block !important;
+    } */
+
+    .sidebarwraper ul li.hasnested.opened ul {
+        display: block;
+    }
+
+    li.hasnested.opened a.active-sub {
+        background: #f03340 !important;
+        color: #fff !important;
+        padding: 10px!important;
+        box-shadow: none;
+    }
+

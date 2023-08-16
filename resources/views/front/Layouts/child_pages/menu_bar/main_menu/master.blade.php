@@ -225,7 +225,7 @@ $mmenu = @content_menus($type[0]->menu_id);
                     <ul>
 
                         @if (count(GetchildMenusFront($gets[0]->menu_id, $S->id)) > 0)
-                            <li class="hasnested"><a @if ($S->id == $gets[0]->id) class="active" @endif>
+                            <li class="hasnested @if ($S->id == $gets[0]->id)opened @endif"><a @if ($S->id == $gets[0]->id) class="active" @endif>
                                     @if (GetLang() == 'en')
                                         {{ $S->name ?? '' }}
                                     @else
@@ -265,7 +265,7 @@ $mmenu = @content_menus($type[0]->menu_id);
                                                 </a>
                                             </li>
                                         @else
-                                            <li><a href={{ url($mmenu[0]->slug . '/' . $S->slug . '/' . $C->slug) }}>
+                                            <li><a href={{ url($mmenu[0]->slug . '/' . $S->slug . '/' . $C->slug) }}  class="@if ($C->id == $type_child[0]->id) active-sub @endif">
                                                     @if (GetLang() == 'en')
                                                         {{ $C->name ?? '' }}
                                                     @else

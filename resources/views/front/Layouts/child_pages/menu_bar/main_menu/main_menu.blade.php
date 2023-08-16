@@ -3,25 +3,24 @@
 @section('content')
 
 
-  @isset($type)
-    @php
-        $mmenu = @content_menus($type[0]->menu_id);
-    @endphp
-  @endisset
+    @isset($type)
+        @php
+            $mmenu = @content_menus($type[0]->menu_id);
+        @endphp
+    @endisset
 
-   @isset($get)
-    @php
-    $mmenu = @content_menus($get[0]->id );
-   @endphp
+    @isset($get)
+        @php
+            $mmenu = @content_menus($get[0]->id);
+        @endphp
+    @endisset
 
-   @endisset
 
-
-   @isset($subchildmenu)
-    @php
-    $mmenu = @content_menus($menu[0]->id);
-    @endphp
-   @endisset
+    @isset($subchildmenu)
+        @php
+            $mmenu = @content_menus($menu[0]->id);
+        @endphp
+    @endisset
 
     {{-- banner and  breadcrumbs   --}}
 
@@ -63,7 +62,7 @@
                                 <path
                                     d="M10 19v-5h4v5c0 .55.45 1 1 1h3c.55 0 1-.45 1-1v-7h1.7c.46 0 .68-.57.33-.87L12.67 3.6c-.38-.34-.96-.34-1.34 0l-8.36 7.53c-.34.3-.13.87.33.87H5v7c0 .55.45 1 1 1h3c.55 0 1-.45 1-1z" />
                             </svg></a></li>
-                    <li><a href="{{  URL::previous()  }}">
+                    <li><a href="{{ URL::previous() }}">
                             @if (GetLang() == 'en')
                                 {{ $mmenu[0]->name ?? '' }}
                             @else
@@ -72,26 +71,26 @@
                         </a>
                     </li>
                     <li>
-                        <a href="{{  URL::previous()  }}">
-                        <span>
-                            @if (GetLang() == 'en')
-                                {{ $sub[0]->name ?? '' }}
-                            @else
-                                {{ $sub[0]->name_h ?? '' }}
-                            @endif
-                        </span>
-                    </a>
+                        <a href="{{ URL::previous() }}">
+                            <span>
+                                @if (GetLang() == 'en')
+                                    {{ $sub[0]->name ?? '' }}
+                                @else
+                                    {{ $sub[0]->name_h ?? '' }}
+                                @endif
+                            </span>
+                        </a>
                     </li>
                     <li>
-                        <a href="{{  URL::previous() }}">
-                        <span>
-                            @if (GetLang() == 'en')
-                                {{ $child[0]->name ?? '' }}
-                            @else
-                                {{ $child[0]->name_h ?? '' }}
-                            @endif
-                        </span>
-                       </a>
+                        <a href="{{ URL::previous() }}">
+                            <span>
+                                @if (GetLang() == 'en')
+                                    {{ $child[0]->name ?? '' }}
+                                @else
+                                    {{ $child[0]->name_h ?? '' }}
+                                @endif
+                            </span>
+                        </a>
                     </li>
 
                     <li>
@@ -115,9 +114,6 @@
         </div>
         </div>
     @elseif (isset($get))
-
-
-
         {{-- child menu section  --}}
         {{-- banner setion --}}
         <div class="internalpagebanner">
@@ -132,7 +128,7 @@
                     alt="{{ $type_child[0]->name ?? '' }}" title="{{ $type_child[0]->name ?? '' }}">
             @endif
 
-{{--
+            {{--
             @if ($item[0]->banner_image != '')
 
               <img src="{{ asset('page/banner/' . $item[0]->banner_image) ?? '' }}"
@@ -169,7 +165,7 @@
                                 <path
                                     d="M10 19v-5h4v5c0 .55.45 1 1 1h3c.55 0 1-.45 1-1v-7h1.7c.46 0 .68-.57.33-.87L12.67 3.6c-.38-.34-.96-.34-1.34 0l-8.36 7.53c-.34.3-.13.87.33.87H5v7c0 .55.45 1 1 1h3c.55 0 1-.45 1-1z" />
                             </svg></a></li>
-                    <li><a href="{{  URL::previous()  }}">
+                    <li><a href="{{ URL::previous() }}">
                             @if (GetLang() == 'en')
                                 {{ $get[0]->name ?? '' }}
                             @else
@@ -178,15 +174,15 @@
                         </a>
                     </li>
                     <li>
-                        <a href="{{  URL::previous()  }}">
-                        <span>
-                            @if (GetLang() == 'en')
-                                {{ $gets[0]->name ?? '' }}
-                            @else
-                                {{ $gets[0]->name_h ?? '' }}
-                            @endif
-                        </span>
-                      </a>
+                        <a href="{{ URL::previous() }}">
+                            <span>
+                                @if (GetLang() == 'en')
+                                    {{ $gets[0]->name ?? '' }}
+                                @else
+                                    {{ $gets[0]->name_h ?? '' }}
+                                @endif
+                            </span>
+                        </a>
                     </li>
                     <li>
 
@@ -208,7 +204,8 @@
         </ul>
         </div>
         </div>
-    @elseif(isset($sub_menu)) {{-- sub menu section --}}
+    @elseif(isset($sub_menu))
+        {{-- sub menu section --}}
 
 
         {{-- banner Section --}}
@@ -246,7 +243,7 @@
                                 <path
                                     d="M10 19v-5h4v5c0 .55.45 1 1 1h3c.55 0 1-.45 1-1v-7h1.7c.46 0 .68-.57.33-.87L12.67 3.6c-.38-.34-.96-.34-1.34 0l-8.36 7.53c-.34.3-.13.87.33.87H5v7c0 .55.45 1 1 1h3c.55 0 1-.45 1-1z" />
                             </svg></a></li>
-                    <li><a href="{{  URL::previous()  }}">
+                    <li><a href="{{ URL::previous() }}">
                             @if (GetLang() == 'en')
                                 {{ @$mmenu[0]->name ?? '' }}
                             @else
@@ -256,20 +253,21 @@
                     </li>
                     <li>
                         <a href="{{ URL::previous() }}">
-                        <span>
-                            @if (GetLang() == 'en')
-                            {{ ucfirst(strtolower($item[0]->name)) ?? '' }}
-                         @else
-                            {{ ucfirst(strtolower($item[0]->name_h)) ?? '' }}
-                            @endif
-                        </span>
-                    </a>
+                            <span>
+                                @if (GetLang() == 'en')
+                                    {{ ucfirst(strtolower($item[0]->name)) ?? '' }}
+                                @else
+                                    {{ ucfirst(strtolower($item[0]->name_h)) ?? '' }}
+                                @endif
+                            </span>
+                        </a>
 
                     </li>
                 </ul>
             </div>
         </div>
-    @else  {{-- main banner --}}
+    @else
+        {{-- main banner --}}
 
         {{-- banner section --}}
         <div class="internalpagebanner">
@@ -299,14 +297,14 @@
                                     d="M10 19v-5h4v5c0 .55.45 1 1 1h3c.55 0 1-.45 1-1v-7h1.7c.46 0 .68-.57.33-.87L12.67 3.6c-.38-.34-.96-.34-1.34 0l-8.36 7.53c-.34.3-.13.87.33.87H5v7c0 .55.45 1 1 1h3c.55 0 1-.45 1-1z" />
                             </svg></a></li>
 
-                    <li><a href="{{  URL::previous()  }}">
-                        <span>
-                            @if (GetLang() == 'en')
-                                {{ $type[0]->name ?? '' }}
-                            @else
-                                {{ $type[0]->name_h ?? '' }}
-                            @endif
-                        </span></li>
+                    <li><a href="{{ URL::previous() }}">
+                            <span>
+                                @if (GetLang() == 'en')
+                                    {{ $type[0]->name ?? '' }}
+                                @else
+                                    {{ $type[0]->name_h ?? '' }}
+                                @endif
+                            </span></li>
                 </ul>
             </div>
         </div>
@@ -320,7 +318,6 @@
 
 
     @if (isset($subchildmenu))
-
         {{-- superhild value --}}
         <section class="withsidebar-wrap ptb-60">
             <div class="container">
@@ -332,9 +329,11 @@
 
                             @foreach (GetSubMenusFront($type[0]->menu_id) as $key1 => $S)
                                 <ul>
+                                  
                                     @if (count(GetchildMenusFront($type[0]->menu_id, $S->id)) > 0)
-                                        <li class="hasnested">
-                                            <a @if ($S->id == $type[0]->id) class="active" @endif href="javascript:void();">
+                                        <li class="hasnested @if ($S->id  == $sub[0]->id)opened @endif">
+                                            <a @if ($S->id == $type[0]->id) class="active" @endif
+                                                href="javascript:void();">
                                                 @if (GetLang() == 'en')
                                                     {{ $S->name ?? '' }}
                                                 @else
@@ -355,8 +354,9 @@
                                             <ul>
                                                 @foreach (GetchildMenusFront($type[0]->menu_id, $S->id) as $key2 => $C)
                                                     @if (count(GetsubchildMenusFront($type[0]->menu_id, $S->id, $C->id)) > 0)
-                                                        <li class="hasnested">
-                                                            <a @if ($C->id == $type[0]->id) class="active" @endif href="javascript:void();">
+                                                        <li class="hasnested @if ($C->id  == $child[0]->id)opened @endif">
+                                                            <a @if ($C->id == $type[0]->id) class="active" @endif
+                                                                href="javascript:void();">
                                                                 @if (GetLang() == 'en')
                                                                     {{ $C->name ?? '' }}
                                                                 @else
@@ -368,14 +368,15 @@
                                                                         <path d="M19 13H5a1 1 0 0 1 0-2h14a1 1 0 0 1 0 2z"
                                                                             data-name="minus" />
                                                                     </g>
-                                                                </svg><svg viewBox="0 0 24 24" class="plus internal-menu-plus">
+                                                                </svg><svg viewBox="0 0 24 24"
+                                                                    class="plus internal-menu-plus">
                                                                     <path
                                                                         d="M19,11H13V5a1,1,0,0,0-2,0v6H5a1,1,0,0,0,0,2h6v6a1,1,0,0,0,2,0V13h6a1,1,0,0,0,0-2Z" />
                                                                 </svg>
-                                                                </a>
+                                                            </a>
 
-                                                                <ul>
-                                                                  @foreach (GetsubchildMenusFront($type[0]->menu_id, $S->id, $C->id) as $k => $D)
+                                                            <ul>
+                                                                @foreach (GetsubchildMenusFront($type[0]->menu_id, $S->id, $C->id) as $k => $D)
                                                                     @if ($D->external == 'yes')
                                                                         <li><a href="{{ url($D->url) }}"
                                                                                 onclick="return confirm('Are you sure  external window open?')"
@@ -397,17 +398,21 @@
                                                                             </a>
                                                                         </li>
                                                                     @else
-                                                                        <li><a
-                                                                                href={{ url($mmenu[0]->slug . '/' . $S->slug . '/' . $C->slug . '/' . $D->slug) }}>
+                                                                        <li>
+
+
+                                                                            <a href={{ url($mmenu[0]->slug . '/' . $S->slug . '/' . $C->slug . '/' . $D->slug) }}
+                                                                                      class="@if ($D->id  == $type[0]->id) active-sub @endif">
                                                                                 @if (GetLang() == 'en')
                                                                                     {{ $D->name ?? '' }}
                                                                                 @else
                                                                                     {{ $D->name_h ?? '' }}
                                                                                 @endif
-                                                                            </a></li>
+                                                                            </a>
+                                                                        </li>
                                                                     @endif
-                                                                    @endforeach
-                                                                </ul>
+                                                                @endforeach
+                                                            </ul>
 
                                                         </li>
 
@@ -475,15 +480,15 @@
                                         @endif
                                     </a></li>
                             @endif
-                            @endif
-                            </ul>
-                            @endforeach
+    @endif
+    </ul>
+    @endforeach
 
 
 
-                        </div>
+    </div>
 
-                    </div>
+    </div>
 
 
 
@@ -549,10 +554,8 @@
     </div>
     </div>
     </section>
-
 @elseif (isset($get))
-
-{{-------------------------------child menu content setion------------------------------------------------------------------------------ --}}
+    {{-- -----------------------------child menu content setion------------------------------------------------------------------------------ --}}
 
     <section class="withsidebar-wrap ptb-60">
         <div class="container">
@@ -565,8 +568,9 @@
 
 
                                 @if (count(GetchildMenusFront($gets[0]->menu_id, $S->id)) > 0)
-                                    <li class="hasnested">
-                                        <a @if ($S->id == $gets[0]->id) class="active" @endif href="javascript:void();" >
+                                    <li class="hasnested @if ($S->id == $gets[0]->id) opened @endif">
+                                        <a @if ($S->id == $gets[0]->id) class="active" @endif
+                                            href="javascript:void();">
                                             @if (GetLang() == 'en')
                                                 {{ $S->name ?? '' }}
                                             @else
@@ -587,7 +591,6 @@
                                         {{-- child menu --}}
                                         <ul>
                                             @foreach (GetchildMenusFront($gets[0]->menu_id, $S->id) as $key2 => $C)
-
                                                 @if (count(GetsubchildMenusFront($gets[0]->menu_id, $S->id, $C->id)) > 0)
                                                     <li class="hasnested">
                                                         <a @if ($C->id == $gets[0]->id) class="active" @endif>
@@ -602,18 +605,19 @@
                                                                     <path d="M19 13H5a1 1 0 0 1 0-2h14a1 1 0 0 1 0 2z"
                                                                         data-name="minus" />
                                                                 </g>
-                                                            </svg><svg viewBox="0 0 24 24" class="plus internal-menu-plus">
+                                                            </svg><svg viewBox="0 0 24 24"
+                                                                class="plus internal-menu-plus">
                                                                 <path
                                                                     d="M19,11H13V5a1,1,0,0,0-2,0v6H5a1,1,0,0,0,0,2h6v6a1,1,0,0,0,2,0V13h6a1,1,0,0,0,0-2Z" />
                                                             </svg>
-                                                            </a>
+                                                        </a>
 
 
                                                         <ul>
-                                                        @foreach (GetsubchildMenusFront($gets[0]->menu_id, $S->id, $C->id) as $k => $D)
-
+                                                            @foreach (GetsubchildMenusFront($gets[0]->menu_id, $S->id, $C->id) as $k => $D)
                                                                 @if ($D->external == 'yes')
-                                                                    <li><a href="{{ url($D->url) }}"
+                                                                    <li>
+                                                                        <a href="{{ url($D->url) }}"
                                                                             onclick="return confirm('Are you sure  external window open?')"
                                                                             target="_blank">
                                                                             @if (GetLang() == 'en')
@@ -642,9 +646,8 @@
                                                                             @endif
                                                                         </a></li>
                                                                 @endif
-
-                                                        @endforeach
-                                                    </ul>
+                                                            @endforeach
+                                                        </ul>
                                                     </li>
 
 
@@ -671,7 +674,8 @@
                                             </a>
                                         </li>
                                     @else
-                                        <li><a href={{ url($get[0]->slug . '/' . $S->slug . '/' . $C->slug) }}>
+                                        <li><a href={{ url($get[0]->slug . '/' . $S->slug . '/' . $C->slug) }}
+                                                class="@if ($C->id == $type_child[0]->id) active-sub @endif">
                                                 @if (GetLang() == 'en')
                                                     {{ $C->name ?? '' }}
                                                 @else
@@ -732,8 +736,6 @@
 
                     </div>
                 @else
-
-
                     <div class="col-md-9">
                         <div class="innerpagecontent">
                             <h3><span>
@@ -748,51 +750,52 @@
 
 
                             @isset($membersList)
-                            <div class="row">
+                                <div class="row">
 
-                            @foreach ($membersList as $membersLists)
-
-                            <div class="col-md-4 col-lg-4 mb-2">
-
-
-
-                                <a href="{{ url($membersLists->slug) }}">
-
-                                    <a  href="{{ url(@$mmenu[0]->slug.'/'.$gets[0]->slug.'/'.$type_sub[0]->slug.'/'.$membersLists->slug) }}" >
-
-                                    <div class="profilewraper withinfo addevent-box">
-
-                                        <figure><img src="{{ asset('uploads/organisation/' . $membersLists->image) }}"
-                                                alt="{{ $membersLists->title ?? '' }}"
-                                                title="{{ $membersLists->title ?? '' }}"></figure>
-
-                                        <h4>
-                                            @if (GetLang() == 'en')
-                                                {{ $membersLists->title ?? '' }}
-                                            @else
-                                                {{ $membersLists->title_h ?? '' }}
-                                            @endif
-                                        </h4>
-                                        <p>
-                                            @if (GetLang() == 'en')
-                                                {{ $membersLists->designation ?? '' }}
-                                            @else
-                                                {{ $membersLists->designation_h ?? '' }}
-                                            @endif
-                                        </p>
-
-                                    </div>
+                                    @foreach ($membersList as $membersLists)
+                                        <div class="col-md-4 col-lg-4 mb-2">
 
 
 
-                                </a>
+                                            <a href="{{ url($membersLists->slug) }}">
 
-                            </div>
+                                                <a
+                                                    href="{{ url(@$mmenu[0]->slug . '/' . $gets[0]->slug . '/' . $type_sub[0]->slug . '/' . $membersLists->slug) }}">
 
-                            @endforeach
+                                                    <div class="profilewraper withinfo addevent-box">
 
-                        </div>
+                                                        <figure>
+                                                            <img src="{{ asset('uploads/organisation/' . $membersLists->image) }}"
+                                                                alt="{{ $membersLists->title ?? '' }}"
+                                                                title="{{ $membersLists->title ?? '' }}">
+                                                        </figure>
 
+                                                        <h4>
+                                                            @if (GetLang() == 'en')
+                                                                {{ $membersLists->title ?? '' }}
+                                                            @else
+                                                                {{ $membersLists->title_h ?? '' }}
+                                                            @endif
+                                                        </h4>
+
+                                                        <p>
+                                                            @if (GetLang() == 'en')
+                                                                {{ $membersLists->designation ?? '' }}
+                                                            @else
+                                                                {{ $membersLists->designation_h ?? '' }}
+                                                            @endif
+                                                        </p>
+
+                                                    </div>
+
+
+
+                                                </a>
+
+                                        </div>
+                                    @endforeach
+
+                                </div>
                             @endisset
 
 
@@ -856,7 +859,8 @@
                             <ul>
                                 @if (count(GetchildMenusFront($type[0]->menu_id, $S->id)) > 0)
                                     <li class="hasnested">
-                                        <a @if ($S->id == $type[0]->id) class="active" @endif href="javascript:void();" class="open-tab-focus">
+                                        <a @if ($S->id == $type[0]->id) class="active" @endif
+                                            href="javascript:void();" class="open-tab-focus">
                                             @if (GetLang() == 'en')
                                                 {{ $S->name ?? '' }}
                                             @else
@@ -877,8 +881,8 @@
                                         <ul>
                                             @foreach (GetchildMenusFront($type[0]->menu_id, $S->id) as $key2 => $C)
                                                 @if (count(GetsubchildMenusFront($type[0]->menu_id, $S->id, $C->id)) > 0)
-                                                    <li class="hasnested {{ ($C->id == $type[0]->id)?'opened':'' }}">
-                                                        <a @if ($C->id == $type[0]->id) class="active" @endif >
+                                                    <li class="hasnested {{ $C->id == $type[0]->id ? 'opened' : '' }}">
+                                                        <a @if ($C->id == $type[0]->id) class="active" @endif>
                                                             @if (GetLang() == 'en')
                                                                 {{ $C->name ?? '' }}
                                                             @else
@@ -890,14 +894,14 @@
                                                                     <path d="M19 13H5a1 1 0 0 1 0-2h14a1 1 0 0 1 0 2z"
                                                                         data-name="minus" />
                                                                 </g>
-                                                            </svg><svg viewBox="0 0 24 24" class="plus internal-menu-plus">
+                                                            </svg><svg viewBox="0 0 24 24"
+                                                                class="plus internal-menu-plus">
                                                                 <path
                                                                     d="M19,11H13V5a1,1,0,0,0-2,0v6H5a1,1,0,0,0,0,2h6v6a1,1,0,0,0,2,0V13h6a1,1,0,0,0,0-2Z" />
                                                             </svg>
-                                                            </a>
+                                                        </a>
                                                         <ul>
-                                                        @foreach (GetsubchildMenusFront($type[0]->menu_id, $S->id, $C->id) as $k => $D)
-
+                                                            @foreach (GetsubchildMenusFront($type[0]->menu_id, $S->id, $C->id) as $k => $D)
                                                                 @if ($D->external == 'yes')
                                                                     <li><a href="{{ url($D->url) }}"
                                                                             onclick="return confirm('Are you sure  external window open?')"
@@ -928,9 +932,8 @@
                                                                             @endif
                                                                         </a></li>
                                                                 @endif
-
-                                                        @endforeach
-                                                    </ul>
+                                                            @endforeach
+                                                        </ul>
                                                     </li>
 
 

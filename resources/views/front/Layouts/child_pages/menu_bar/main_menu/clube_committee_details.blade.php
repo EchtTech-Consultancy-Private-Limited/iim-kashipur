@@ -513,7 +513,6 @@
                                                     <img src="http://localhost/kashipur-design1/public/gallery/image/1677559777.png"
                                                         alt="gallery-img" class="img-fluid" loading="lazy">
                                                     <div class="top-text">Event 3</div>
-
                                                 </div>
                                             </a>
                                         </div>
@@ -527,7 +526,6 @@
                                                     <img src="http://localhost/kashipur-design1/public/gallery/image/1677559777.png"
                                                         alt="gallery-img" class="img-fluid" loading="lazy">
                                                     <div class="top-text">Event 3</div>
-
                                                 </div>
                                             </a>
                                         </div>
@@ -595,7 +593,6 @@
                     </div>
                 </div>
             </div>
-
             <!-- Photo Gallery section End -->
 
             <!-- Event section start  -->
@@ -1413,15 +1410,12 @@
                                         <h6>{{ $chairperson[0]->title ?? '' }} </h6>
                                         <h6>{{ $chairperson[0]->phone ?? '' }} </h6>
 
-
-
                                         <?php
                                         $email_address = $chairperson[0]->email;
                                         $str = $email_address;
                                         $var = str_replace('@', '[at]', $str);
                                         $email = str_replace('.', '[dot]', $var);
                                         ?>
-
 
                                         <h6>{{ $email ?? '' }} </h6>
                                 </div>
@@ -1435,12 +1429,10 @@
                         @if (count($chairpersons) > 0)
                             <h5>
                                 <span> Members</span>
-
                             </h5>
                             <div class="excellence-wrap back-img Activities gallery-member img-gallery mb-3 mt-4">
                                 <div class="container">
                                     <div class="row">
-
                                         <div class="col-md-12 p-0">
                                             <div class="excellence-gallery partnership-img">
                                                 <div class="row masonry-grid">
@@ -1524,19 +1516,12 @@
                             <div class="excellence-wrap event-text mb-3 mt-4">
                                 <div class="container p-0">
                                     <div class="row">
-
-                                        
-                                       
-
                                         <!-- Multiple Image Popup -->
                                         <div id="gallery-1" class="hidden">
                                             @foreach ($data as $k=>$datas)
                                             <a href="{{ asset('uploads/multiple/club/' . $datas->image) ?? '' }}"></a>
                                             @endforeach
                                         </div>
-                                        
-                                        
-
 
                                         @foreach ($data as $k=>$datas)
                                         @if($k == '1')
