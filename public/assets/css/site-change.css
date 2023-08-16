@@ -11,7 +11,9 @@ background:#3B3B3B;
     padding: 10px 0;
 }
 
-
+body{
+    color: #fff;
+}
 
 
 .nav-wrapper ul li.open ul li a {
