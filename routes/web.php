@@ -6,8 +6,9 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\UIController;
 use App\Http\Controllers\FrontController;
-use App\Http\Controllers\pagecontroller;
-use App\Http\Controllers\gallaycontroller;
+use App\Http\Controllers\contentController;
+use App\Http\Controllers\photoController;
+use App\Http\Controllers\sectionController;
 use App\Http\Controllers\vidoecontroller;
 use App\Http\Controllers\quicklinkcontrller;
 use App\Http\Controllers\frontpagecontroller;
@@ -76,35 +77,35 @@ Route::middleware(['CustomAuth'])->group(function () {   //audit log middleware
 
 
 
-//------------------------------- Pagecontroller start  ---------------------------------------------------------//
+//------------------------------- contentController start  ---------------------------------------------------------//
 
 //content page
-Route::GET('/pages-list',[pagecontroller::class,'View_Content']);
-Route::get('/add-page',[pagecontroller::class,'Add_Content']);
-Route::post('/add-page-act',[pagecontroller::class,'Add_Content_Submit']);
-Route::get("/update-page/{id}",[pagecontroller::class,"Update_Content"]);
-Route::post('/update_page_act/{id}',[pagecontroller::class,'Update_Content_Submit']);
-Route::GET('/delete-page/{id}',[pagecontroller::class,'Delete_Content']);
-Route::get("/pages-list/{id}",[pagecontroller::class,'Show_Content_Child']);
-Route::get('view-content/{id?}',[pagecontroller::class,'Show_Content'])->name('ViewContent');
+Route::GET('/pages-list',[contentController::class,'View_Content']);
+Route::get('/add-page',[contentController::class,'Add_Content']);
+Route::post('/add-page-act',[contentController::class,'Add_Content_Submit']);
+Route::get("/update-page/{id}",[contentController::class,"Update_Content"]);
+Route::post('/update_page_act/{id}',[contentController::class,'Update_Content_Submit']);
+Route::GET('/delete-page/{id}',[contentController::class,'Delete_Content']);
+Route::get("/pages-list/{id}",[contentController::class,'Show_Content_Child']);
+Route::get('view-content/{id?}',[contentController::class,'Show_Content'])->name('ViewContent');
 
-//------------------------------- Pagecontroller end  ---------------------------------------------------------//
+//------------------------------- contentController end  ---------------------------------------------------------//
 
 
 //------------------------------- gallerycontroller start  ---------------------------------------------------------//
 
 //gallery controller
-Route::get('view-gallery/{id?}',[gallaycontroller::class,'Show_Pgallery'])->name('Viewpgallery');
-Route::get('/show_gallery',[gallaycontroller::class,'View_pgallery']);
-Route::get('/add_gallery',[gallaycontroller::class,'Add_pgallery']);
-Route::post('/addaction_gallery',[gallaycontroller::class,'Add_Pgallery_submit']);
-Route::GET('/delete_galleryimage/{id}',[gallaycontroller::class,'Delete_Pgallery']);
-Route::get('/updategallery/{id}',[gallaycontroller::class,'Update_pgallery']);
-Route::post('/addaction_gallerypost/{id}',[gallaycontroller::class,'Update_Pgallery_submit']);
+Route::get('view-gallery/{id?}',[photoController::class,'Show_Pgallery'])->name('Viewpgallery');
+Route::get('/show_gallery',[photoController::class,'View_pgallery']);
+Route::get('/add_gallery',[photoController::class,'Add_pgallery']);
+Route::post('/addaction_gallery',[photoController::class,'Add_Pgallery_submit']);
+Route::GET('/delete_galleryimage/{id}',[photoController::class,'Delete_Pgallery']);
+Route::get('/updategallery/{id}',[photoController::class,'Update_pgallery']);
+Route::post('/addaction_gallerypost/{id}',[photoController::class,'Update_Pgallery_submit']);
 
-Route::post('/multimagePost',[gallaycontroller::class,'Add_Pgallery_Csubmit']);
-Route::post('/multi_updte_gallery_data_submit/{id?}',[gallaycontroller::class,'Update_Pgallery_Csubmit']);
-Route::GET('/delete_image/{id}',[gallaycontroller::class,'Delete_Pcgallery']);
+Route::post('/multimagePost',[photoController::class,'Add_Pgallery_Csubmit']);
+Route::post('/multi_updte_gallery_data_submit/{id?}',[photoController::class,'Update_Pgallery_Csubmit']);
+Route::GET('/delete_image/{id}',[photoController::class,'Delete_Pcgallery']);
 
 //------------------------------- gallerycontroller end  ---------------------------------------------------------//
 
@@ -133,12 +134,12 @@ Route::get('/multi_id',[vidoecontroller::class,'video_id']);
 //------------------------------- Quicklinkcontroller start  ---------------------------------------------------------//
 
 //Quick link controller
-Route::get('/show_link',[quicklinkcontrller::class,'Show_Section']);
-Route::get('/add_link',[quicklinkcontrller::class,'Add_Section']);
-Route::post('/add_link_action',[quicklinkcontrller::class,'Add_Section_Submit']);
-Route::get('/delete_link/{id}',[quicklinkcontrller::class,'Delete_Section']);
-Route::get('/update_link/{id}',[quicklinkcontrller::class,'Update_Section']);
-Route::post('/update_linkpost/{id}',[quicklinkcontrller::class,'Update_Section_Submit']);
+Route::get('/show_link',[sectionController::class,'Show_Section']);
+Route::get('/add_link',[sectionController::class,'Add_Section']);
+Route::post('/add_link_action',[sectionController::class,'Add_Section_Submit']);
+Route::get('/delete_link/{id}',[sectionController::class,'Delete_Section']);
+Route::get('/update_link/{id}',[sectionController::class,'Update_Section']);
+Route::post('/update_linkpost/{id}',[sectionController::class,'Update_Section_Submit']);
 
 
 //------------------------------- Quicklinkcontroller end  ---------------------------------------------------------//
@@ -398,17 +399,17 @@ Route::get('cells', [FormController::class, 'cells_list']);
 Route::get('/Department_info',[AdminController::class,'Department_info']);
 Route::get('journey-value', [AdminController::class, 'journey_value']);
 Route::get('student-list',[FormController::class, 'student_list']);
-//ajax photo gallery
-Route::get('/photodata', [gallaycontroller::class, 'photodata']);
-Route::GET('/multdelete_image/{id?}',[gallaycontroller::class,'multdelete_image']);
-Route::get('/updatedelete_image/{id?}',[gallaycontroller::class,'updategalleryimage']);
-Route::get('gallery_id',[gallaycontroller::class,'gallery_id']);
+//ajax photo galleryfv
+Route::get('/photodata', [photoController::class, 'photodata']);
+Route::GET('/multdelete_image/{id?}',[photoController::class,'multdelete_image']);
+Route::get('/updatedelete_image/{id?}',[photoController::class,'updategalleryimage']);
+Route::get('gallery_id',[photoController::class,'gallery_id']);
 //some more content page
-Route::get('/dropdown', [pagecontroller::class, 'indexdropdown']);  // content page value shair in dropdown box
-Route::GET('/pagesinput',[pagecontroller::class,'pagesinput']);
-Route::get('/deletedata',[pagecontroller::class,'deletedata']);
-Route::GET('/restored/{id}',[pagecontroller::class,'restored']);
-Route::get('/show',[pagecontroller::class,'firstshow']);
+Route::get('/dropdown', [contentController::class, 'indexdropdown']);  // content page value shair in dropdown box
+Route::GET('/pagesinput',[contentController::class,'pagesinput']);
+Route::get('/deletedata',[contentController::class,'deletedata']);
+Route::GET('/restored/{id}',[contentController::class,'restored']);
+Route::get('/show',[contentController::class,'firstshow']);
 
 //By Vishal routes for add student profile
 
