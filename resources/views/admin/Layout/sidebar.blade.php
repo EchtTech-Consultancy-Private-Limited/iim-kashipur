@@ -168,7 +168,7 @@
                         @if (@checkRoute('View_EventsActivites'))
                             <li class="nav-item"><a class="nav-link"
                                     href="{{ url('Accounts/Event-Activites') }}">Manage Events
-                                    & Activites</a></li>
+                                    & Activities  </a></li>
                         @endif
 
                         @if (@checkRoute('View_studentCouncil'))
@@ -489,7 +489,7 @@
 
                         @if (@checkRoute('View_pgallery'))
                             <li class="nav-item"> <a class="nav-link" href="{{ url('/Accounts/show_gallery') }}">
-                                    Show Photo Gallary </a></li>
+                                    Show Photo Gallery </a></li>
                         @endif
 
                     </ul>

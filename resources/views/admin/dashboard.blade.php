@@ -18,27 +18,27 @@
               <div class="row">
                 <div class="col-12 col-xl-7 mb-4 mb-xl-0">
                   <h3 class="font-weight-bold">Welcome {{\Auth::guard('admin')->user()->name}}</h3>
-                
+
                 </div>
                 <div class="col-12 col-xl-5">
                  <div class="justify-content-end d-flex">
                   <div class="dropdown flex-md-grow-1 flex-xl-grow-0">
                     <button class="btn btn-sm btn-light bg-white " type="button" id="dropdownMenuDate2" >
-                     <i class="mdi mdi-calendar"></i> Last Login: <b>{{\Auth::guard('admin')->user()->last_login_time}}</b>, From IP: <b>{{\Auth::guard('admin')->user()->ip}}</b>
+                     <i class="mdi mdi-calendar"></i> Last Logout: <b>{{\Auth::guard('admin')->user()->logout_time}}</b>, From IP: <b>{{\Auth::guard('admin')->user()->ip}}</b>
                     </button>
-                    
+
                   </div>
                  </div>
                 </div>
               </div>
             </div>
           </div>
-          
-        
 
 
 
-        
+
+
+
      <!--      <div class="row">
             <div class="col-md-12 grid-margin stretch-card">
               <div class="card">
@@ -67,7 +67,7 @@
                   </div>
                 </div>
 
-                
+
               </div>
             </div> -->
 
@@ -76,7 +76,7 @@
         </div>
 
         <script>
-          //setInterval(function () { window.location.assign('/Accounts/file-export')},9000); 
+          //setInterval(function () { window.location.assign('/Accounts/file-export')},9000);
         </script>
 
         <!-- content-wrapper ends -->
