@@ -163,7 +163,7 @@
 
                     <div class="col-md-6">
 
-                        <div class="form-group"> <label for="more_designation"> More Designation*</label> <input id="more_designation" type="text" name="more_designation" @if($id) value="{{$data->more_designation	}}" @else value="{{old('more_designation')}}" @endif class="form-control" placeholder="Please enter more designation*" >
+                        <div class="form-group"> <label for="more_designation"> Additional Designation*</label> <input id="more_designation" type="text" name="more_designation" @if($id) value="{{$data->more_designation	}}" @else value="{{old('more_designation')}}" @endif class="form-control" placeholder="Please enter more designation*" >
 
                             <label for="more_designation"  id="more_designation-error" class="error">
                                 @error('more_designation')

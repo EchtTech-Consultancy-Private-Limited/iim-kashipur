@@ -611,7 +611,7 @@ Route::get('/{slug?}/archive',[InnerpageController::class,'archive']);
 // Career
 Route::get('/career',[InnerpageController::class,'career']);
 // Tenders
-Route::get('/Tenders',[InnerpageController::class,'Tenders']);
+Route::get('/tenders',[InnerpageController::class,'Tenders']);
 // Vendors Debarred
 Route::get('/Vendors-Debarred',[InnerpageController::class,'Vendors_Debarred']);
 //RTI
