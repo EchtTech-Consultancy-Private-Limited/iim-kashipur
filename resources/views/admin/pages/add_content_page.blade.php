@@ -296,7 +296,7 @@
                                     <div class="col-sm-12">
                                         <input type="text" class="form-control" name="sort_order"
                                             placeholder="Please enter sorting position number"
-                                            value="{{ old('sort_order') }}" maxlength="10" id="mobile"><br>
+                                            value="{{ old('sort_order') }}"  id="mobile"><br>
 
                                             <label for="sort_order" id="sort_order-error" class="error">
                                                 @error('sort_order')

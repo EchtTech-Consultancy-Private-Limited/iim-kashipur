@@ -817,8 +817,8 @@ function Add_childMenu(Request $request,$id=null){
             'password' => 'required',
             'captcha' => 'required|captcha'
             ]);
-        
-        
+
+
           if(count(Admin::where('email',$request->email)->get()) == 1){
 
             if(Admin::where('email',$request->email)->first()->login_check == '0'){
@@ -836,12 +836,12 @@ function Add_childMenu(Request $request,$id=null){
                 }
             }
             else{
-                return redirect()->route('admin.login')->with('error','Invalid Credentials');
+                return redirect()->route('admin.login')->with('error','Another Person login!!!!!');
             }
 
          }
           else{
-   
+
 
             return redirect()->route('admin.login')->with('error','Record not exits');
         }
