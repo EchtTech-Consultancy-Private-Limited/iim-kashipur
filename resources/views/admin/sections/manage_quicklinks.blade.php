@@ -1,6 +1,6 @@
 @extends('admin.Layout.master')
 
-@section('title', 'Manage Quick Links ')
+@section('title', 'Quick Links Listing ')
 
 @section('content')
 
@@ -38,16 +38,17 @@
 
                   <div class="top-menu-button">
 
-                  <p class="card-title">Manage Quick Links </p>
+                  <p class="card-title">Quick Links Listing </p>
+
+                @if (@checkRoute('Add_QuickLink'))
 
                     <div>
 
                       <button type="button" class="btn btn-primary" ><a href="{{url('/Accounts/add-edit-quicklink')}}">Add New QuickLink </a></button>
 
-
                     </div>
 
-
+                @endif
 
                     <form role="form" method="POST" action="{{ url('Accounts/manage-quick-links') }}" id="frmtypes">
                         @csrf

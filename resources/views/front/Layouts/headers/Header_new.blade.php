@@ -63,10 +63,10 @@
                                     <form action="{{ url('search') }}" method="post">
                                         @csrf
                                         <div class="d-flex">
-                                            
+
                                     <form action="#" method="get">
-                                        <div class="d-flex"> 
-                                            <input type="search" class="form-control" placeholder="Search here..." value="{{ request('search') ??''}}"  name="search" autocomplete="off">     
+                                        <div class="d-flex">
+                                            <input type="search" class="form-control" id="myInput" placeholder="Search here..." value="{{ request('search') ??''}}"  name="search" autocomplete="off">
                                             <button type="submit" class="btn-info submit-btn-apply"> <i class="fa fa-search"> </i> </button>
 
                                         </div>
@@ -544,7 +544,7 @@
 
 
     $("img.d-block.w-100.img-responsive").removeAttr('loading');
-        
+
     });
 </script>
 

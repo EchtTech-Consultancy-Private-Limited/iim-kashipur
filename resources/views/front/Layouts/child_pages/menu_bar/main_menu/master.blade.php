@@ -3,10 +3,25 @@
 @section('content')
 
 
+@isset($type)
 @php
-$mmenu = @content_menus($type[0]->menu_id);
+    $mmenu = @content_menus($type[0]->menu_id);
+@endphp
+@endisset
+
+@isset($get)
+@php
+$mmenu = @content_menus($get[0]->id );
 @endphp
 
+@endisset
+
+
+@isset($subchildmenu)
+@php
+$mmenu = @content_menus($menu[0]->id);
+@endphp
+@endisset
 
     {{-- banner and  breadcrumbs   --}}
 
@@ -246,7 +261,7 @@ $mmenu = @content_menus($type[0]->menu_id);
                                     @foreach (GetchildMenusFront($gets[0]->menu_id, $S->id) as $key2 => $C)
                                         @if ($C->external == 'yes')
                                             <li><a href="{{ url($C->url) }}"
-                                                    onclick="return confirm('Are you sure  external window open?')"
+                                                @if (GetLang() == 'en') onclick="return confirm('This link will take you to an external web site.')"  @else onclick="return confirm('यह लिंक आपको एक बाहरी वेब साइट पर ले जाएगा।')" @endif
                                                     target="_blank">
                                                     @if (GetLang() == 'en')
                                                         {{ $C->name ?? '' }}
@@ -282,7 +297,7 @@ $mmenu = @content_menus($type[0]->menu_id);
                         @else
                             @if ($S->external == 'yes')
                                 <li><a href="{{ url($S->url) }}"
-                                        onclick="return confirm('Are you sure  external window open?')"
+                                    @if (GetLang() == 'en') onclick="return confirm('This link will take you to an external web site.')"  @else onclick="return confirm('यह लिंक आपको एक बाहरी वेब साइट पर ले जाएगा।')" @endif
                                         target="_blank">
                                         @if (GetLang() == 'en')
                                             {{ $S->name ?? '' }}
@@ -331,7 +346,7 @@ $mmenu = @content_menus($type[0]->menu_id);
                             @foreach(GetchildMenusFront($type[0]->menu_id,$S->id) as $key2=>$C)
 
                                 @if($C->external=='yes')
-                                    <li><a href="{{url($C->url)}}" onclick="return confirm('Are you sure  external window open?')" target="_blank" > @if(GetLang()=='en') {{ $C->name ?? ''}} @else {{ $C->name_h ?? ''}} @endif</a></li>
+                                    <li><a href="{{url($C->url)}}"   @if (GetLang() == 'en') onclick="return confirm('This link will take you to an external web site.')"  @else onclick="return confirm('यह लिंक आपको एक बाहरी वेब साइट पर ले जाएगा।')" @endif target="_blank" > @if(GetLang()=='en') {{ $C->name ?? ''}} @else {{ $C->name_h ?? ''}} @endif</a></li>
 
                                  @elseif($C->external=='no')
 
@@ -351,7 +366,7 @@ $mmenu = @content_menus($type[0]->menu_id);
                     @else
 
                             @if($S->external=='yes')
-                                <li><a href="{{ url($S->url) }}" onclick="return confirm('Are you sure  external window open?')" target="_blank">  @if(GetLang()=='en') {{ $S->name ?? ''}} @else {{ $S->name_h ?? ''}} @endif </a></li>
+                                <li><a href="{{ url($S->url) }}"   @if (GetLang() == 'en') onclick="return confirm('This link will take you to an external web site.')"  @else onclick="return confirm('यह लिंक आपको एक बाहरी वेब साइट पर ले जाएगा।')" @endif target="_blank">  @if(GetLang()=='en') {{ $S->name ?? ''}} @else {{ $S->name_h ?? ''}} @endif </a></li>
 
                             @elseif($S->external=='no')
 

@@ -157,10 +157,10 @@ $(document).ready(function() {
         },
         messages: {
             name: {
-                required: "name is required",
+                required: "This field is required",
             },
             name_h:{
-                required: "hindi name is required",
+                required: "This field is required",
             },
             title:{
                 required: "This field is required",
@@ -324,7 +324,7 @@ $(document).ready(function() {
             },
 
         }
-    
+
     });
 });
 

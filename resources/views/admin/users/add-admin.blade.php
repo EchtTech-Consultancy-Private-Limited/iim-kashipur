@@ -62,7 +62,7 @@
 
 
                     <div class="col-md-6">
-                        <div class="form-group"> <label for="mobile"> Mobile *</label> <input id="mobile" type="text" value="{{$data->mobile}}" name="mobile" class="form-control" placeholder="Please enter mobile no *" maxlength="10"  >
+                        <div class="form-group"> <label for="mobile"> Mobile *</label> <input id="mobile"  type="text" value="{{$data->mobile}}" name="mobile" class="form-control" placeholder="Please enter mobile no *" maxlength="10"  >
 
                             <label for="mobile"  id="mobile-error" class="error">
                             @error('mobile')

@@ -72,7 +72,6 @@
 
                               <th>Type</th>
                               <th>Title</th>
-
                                <th>Status</td>
                                <th>File Name</th>
                               <th>Url</th>

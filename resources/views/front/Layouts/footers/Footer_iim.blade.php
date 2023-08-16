@@ -155,7 +155,7 @@
 
 
 
-                                <a href="javascript void(0);" class="tel-no">Email : &nbsp;{{ $email }}</a>
+                                <p class="tel-no">Email : &nbsp;{{ $email }}</p>
 
 
                             </div>
@@ -334,16 +334,16 @@ function decreaseFontSize() {
 
         $(".text-assesbility ").focus(function(){
             $(".text-assesbility-button").addClass('d-block');
-        });    
+        });
 
         $(".theme-btn-light").focus(function(){
             $(".text-assesbility-button").removeClass('d-block');
-        });     
+        });
 
         // $(".banner").focus(function(){
         //     $(".text-assesbility-button").removeClass('d-block');
-        // });       
-              
+        // });
+
     });
 
 
@@ -351,7 +351,7 @@ function decreaseFontSize() {
 </script>
 
 
-{{-- <script>
+<script>
     // disable right click
     document.addEventListener('contextmenu', event => event.preventDefault());
 
@@ -378,4 +378,7 @@ function decreaseFontSize() {
         }
     }
 
-</script> --}}
+</script>
+
+
+

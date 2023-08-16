@@ -60,7 +60,7 @@
 
                                 <div class="form-group">
 
-                                    <label for="event" class="col-form-label">Type*</label>
+                                    <label for="event" class="col-form-label">Type</label>
 
                                     <select class="form-control" aria-label="Default select example" name="type">
 
@@ -81,7 +81,7 @@
                                 <div class="form-group"> <label for="title">Title *</label> <input id="title"
                                         type="text"
                                         @if ($id) value="{{ $data->title }}" @else value="{{ old('title') }}" @endif
-                                        name="title" class="form-control" placeholder="Please enter name*">
+                                        name="title" class="form-control" placeholder="Please enter name*" required>
 
 
                                     <label for="title" id="title-error" class="error">
@@ -97,7 +97,7 @@
 
                             <div class="col-md-6">
 
-                                <div class="form-group"> <label for="title_h">Title[Hindi] *</label> <input id="title_h"
+                                <div class="form-group"> <label for="title_h">Title[Hindi] </label> <input id="title_h"
                                         @if ($id) value="{{ $data->title_h }}" @else value="{{ old('title_h') }}" @endif
                                         type="text" name="title_h" class="form-control"
                                         placeholder="Please enter name_h*">
@@ -115,7 +115,7 @@
 
                             <div class="col-md-6">
 
-                                <div class="form-group"> <label for="image">Image (45px * 45px)</label><span
+                                <div class="form-group"> <label for="image">Image </label><span
                                         style="color:green;font-size:12px;">
                                         @if ($id)
                                             [{{ $data->image }}]
@@ -134,7 +134,7 @@
 
                             <div class="col-md-6">
 
-                                <div class="form-group"> <label for="file_title">File Text*</label> <input id="file_title"
+                                <div class="form-group"> <label for="file_title">File Text</label> <input id="file_title"
                                         @if ($id) value="{{ $data->file_title }}" @else value="{{ old('file_title') }}" @endif
                                         type="text" name="file_title" class="form-control"
                                         placeholder="Please enter file title*">
@@ -150,7 +150,7 @@
                             </div>
                             <div class="col-md-6">
 
-                                <div class="form-group"> <label for="file_alt">File Alt *</label> <input id="file_alt"
+                                <div class="form-group"> <label for="file_alt">File Alt</label> <input id="file_alt"
                                         @if ($id) value="{{ $data->file_alt }}" @else value="{{ old('file_alt') }}" @endif
                                         type="text" name="file_alt" class="form-control"
                                         placeholder="Please enter file Alt*">
@@ -205,7 +205,7 @@
 
                             </div> --}}
 
-                             <input type="text" name="status" @if($id) value="{{ $data->status }}" @else  value="0" @endif>
+                             <input type="hidden" name="status" @if($id) value="{{ $data->status }}" @else  value="0" @endif>
 
 
                             <div class="clearfix"></div>

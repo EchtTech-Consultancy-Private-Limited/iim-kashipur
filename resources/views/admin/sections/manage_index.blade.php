@@ -64,9 +64,9 @@
 
                             <tr>
 
-                              <th>S.No#</th>
-                              <th>name</th>
-                              <th>name_h</th>
+                              <th>Sr.No#</th>
+                              <th>Name</th>
+                              <th>Name[hindi]</th>
                               <th>Number</th>
                               <th>Action</th>
 
