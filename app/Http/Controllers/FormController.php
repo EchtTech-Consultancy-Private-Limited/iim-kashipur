@@ -305,7 +305,7 @@ class FormController extends Controller
         foreach ($routes as $value)
          {
 
-             if(str_contains($value->getActionname(), 'App\Http\Controllers\AdminController') || str_contains($value->getActionname(), 'App\Http\Controllers\FormController')   || str_contains($value->getActionname(), 'App\Http\Controllers\gallaycontroller') || str_contains($value->getActionname(), 'App\Http\Controllers\pagecontroller') || str_contains($value->getActionname(), 'App\Http\Controllers\quicklinkcontrller')  || str_contains($value->getActionname(), 'App\Http\Controllers\vidoecontroller')
+             if(str_contains($value->getActionname(), 'App\Http\Controllers\AdminController') || str_contains($value->getActionname(), 'App\Http\Controllers\FormController')   || str_contains($value->getActionname(), 'App\Http\Controllers\photoController') || str_contains($value->getActionname(), 'App\Http\Controllers\contentController') || str_contains($value->getActionname(), 'App\Http\Controllers\sectionController')  || str_contains($value->getActionname(), 'App\Http\Controllers\vidoecontroller')
 
 
              || str_contains($value->getActionname(), 'App\Http\Controllers\footerController')
