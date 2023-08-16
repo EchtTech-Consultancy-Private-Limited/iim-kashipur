@@ -50,7 +50,7 @@
 
             @foreach($item as $K=>$value)
 
-              {{Getarchivedata($value->created_at->format('Y-m-d'),$value->archive_date)}}
+              {{-- {{Getarchivedata($value->created_at->format('Y-m-d'),$value->archive_date)}} --}}
 
 
 

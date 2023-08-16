@@ -18,10 +18,7 @@ class StudentProfileController extends Controller
         ->select('student_profiles.*', 'student_type.student_type as student_type')
         ->leftJoin('student_type', 'student_profiles.batch', '=', 'student_type.id')
         ->get();
-
         //return $data;
-
-
         return view('admin.student-profile.show',compact('student'));
     }
 
@@ -62,7 +59,7 @@ class StudentProfileController extends Controller
         $request->validate([
 
             'student_image'=>'required|mimes:jpg,jpeg,gif,png',
-            'email' => ['required|unique:student_profiles','string','email','max:50','regex:/^([a-z0-9\+_\-]+)(\.[a-z0-9\+_\-]+)*@([a-z0-9\-]+\.)+[a-z]{2,6}$/ix'],
+            'email' => ['required','unique:student_profiles','string','email','max:50','regex:/^([a-z0-9\+_\-]+)(\.[a-z0-9\+_\-]+)*@([a-z0-9\-]+\.)+[a-z]{2,6}$/ix'],
 
         ]);
 
@@ -89,7 +86,7 @@ class StudentProfileController extends Controller
             $student->student_image = $filename;
            }
         $student->save();
-        return redirect()->back()->with('success','Student Profile Added Successfully');
+        return redirect('Accounts/Manage-students-profile')->with('success','Student Profile Added Successfully');
     }
 
     public function show_front_profile()

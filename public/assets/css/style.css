@@ -3843,7 +3843,7 @@ img.mfp-img {
     padding-bottom: 10px;
 }
 
-.master-class h3 {
+.master-class h3, .master-class h1, .master-class h2 {
     display: inline-block;
     padding: 7px 15px;
     background: #f03340;
@@ -5618,7 +5618,7 @@ button.upload-btn.btn-info {
 }
 
 .profilewraper.withinfo {
-    height: 370px;
+    height: 330px;
 }
 
 .master-class h3 a {
