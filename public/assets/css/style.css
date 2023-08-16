@@ -4967,7 +4967,7 @@ h3.user-icon i {
 
 h3.user-icon {
     position: relative;
-    padding: 3px 15px 3px 55px;
+    padding: 3px 15px 3px 66px;
 }
 
 .box-content img {
@@ -5326,7 +5326,7 @@ img.img-icon {
     color: #84061f;
     font-size: 16px;
     font-weight: 600;
-    background: #fef2f2;
+    background: #ebb6b6;
     display: table;
     padding: 10px 13px;
 }
@@ -5407,18 +5407,18 @@ img.img-icon {
 }
 
 .text-box {
-    background: #f25c67;
+    background:#ed2044;
     padding: 10px 10px 0;
     border-radius: 15px 15px 5px 5px;
 }
 
 .text-box .text-b {
-    background: #f25c67;
+    background:#fef2f2;
     padding: 15px 15px 5px;
     height: 250px;
     border-radius: 15px 15px 0px 0px;
     overflow-y: auto;
-    color: #fff;
+    color: #000;
 }
 
 .text-box .top-text {
