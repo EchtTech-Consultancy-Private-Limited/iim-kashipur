@@ -452,7 +452,7 @@
             <div class="linkedin-set">
 
 
-            <h3 class="social-heading"> Linkedin Feed </h3>
+            <h3 class="social-heading">  @lang('common.Linkedin-Feed')</h3>
 
             <iframe src="https://www.linkedin.com/embed/feed/update/urn:li:ugcPost:6966090170878050305" allowfullscreen="" title="Embedded post" width="100%" height="350" frameborder="0"></iframe>
 
@@ -468,7 +468,7 @@
             <div class="linkedin-set instagram-bg">
 
 
-            <h3 class="social-heading"> Instagram Feed </h3>
+            <h3 class="social-heading">  @lang('common.Instagram-Feed')</h3>
 
             <iframe src="https://www.linkedin.com/embed/feed/update/urn:li:ugcPost:6966090170878050305" allowfullscreen="" title="Embedded post" width="100%" height="350" frameborder="0"></iframe>
 

@@ -309,7 +309,7 @@
                                                                 @foreach (GetsubchildMenusFront($gets[0]->menu_id, $S->id, $C->id) as $k => $D)
                                                                     @if ($D->external == 'yes')
                                                                         <li><a href="{{ url($D->url) }}"
-                                                                                onclick="return confirm('Are you sure  external window open?')"
+                                                                            @if (GetLang() == 'en') onclick="return confirm('This link will take you to an external web site.')"  @else onclick="return confirm('यह लिंक आपको एक बाहरी वेब साइट पर ले जाएगा।')" @endif
                                                                                 target="_blank">
                                                                                 @if (GetLang() == 'en')
                                                                                     {{ $D->name ?? '' }}
@@ -346,7 +346,7 @@
                                     @else
                                         @if ($C->external == 'yes')
                                             <li><a href="{{ url($C->url) }}"
-                                                    onclick="return confirm('Are you sure  external window open?')"
+                                                @if (GetLang() == 'en') onclick="return confirm('This link will take you to an external web site.')"  @else onclick="return confirm('यह लिंक आपको एक बाहरी वेब साइट पर ले जाएगा।')" @endif
                                                     target="_blank">
                                                     @if (GetLang() == 'en')
                                                         {{ $C->name ?? '' }}
@@ -381,7 +381,7 @@
                         @else
                             @if ($S->external == 'yes')
                                 <li><a href="{{ url($S->url) }}"
-                                        onclick="return confirm('Are you sure  external window open?')" target="_blank">
+                                    @if (GetLang() == 'en') onclick="return confirm('This link will take you to an external web site.')"  @else onclick="return confirm('यह लिंक आपको एक बाहरी वेब साइट पर ले जाएगा।')" @endif target="_blank">
                                         @if (GetLang() == 'en')
                                             {{ $S->name ?? '' }}
                                         @else
@@ -513,7 +513,6 @@
                                                     <img src="http://localhost/kashipur-design1/public/gallery/image/1677559777.png"
                                                         alt="gallery-img" class="img-fluid" loading="lazy">
                                                     <div class="top-text">Event 3</div>
-
                                                 </div>
                                             </a>
                                         </div>
@@ -527,7 +526,6 @@
                                                     <img src="http://localhost/kashipur-design1/public/gallery/image/1677559777.png"
                                                         alt="gallery-img" class="img-fluid" loading="lazy">
                                                     <div class="top-text">Event 3</div>
-
                                                 </div>
                                             </a>
                                         </div>
@@ -595,7 +593,6 @@
                     </div>
                 </div>
             </div>
-
             <!-- Photo Gallery section End -->
 
             <!-- Event section start  -->
@@ -828,7 +825,7 @@
                                                             @foreach (GetsubchildMenusFront($type[0]->menu_id, $S->id, $C->id) as $k => $D)
                                                                 @if ($D->external == 'yes')
                                                                     <li><a href="{{ url($D->url) }}"
-                                                                            onclick="return confirm('Are you sure  external window open?')"
+                                                                        @if (GetLang() == 'en') onclick="return confirm('This link will take you to an external web site.')"  @else onclick="return confirm('यह लिंक आपको एक बाहरी वेब साइट पर ले जाएगा।')" @endif
                                                                             target="_blank">
                                                                             @if (GetLang() == 'en')
                                                                                 {{ $D->name ?? '' }}
@@ -865,7 +862,7 @@
                                 @else
                                     @if ($C->external == 'yes')
                                         <li><a href="{{ url($C->url) }}"
-                                                onclick="return confirm('Are you sure  external window open?')"
+                                            @if (GetLang() == 'en') onclick="return confirm('This link will take you to an external web site.')"  @else onclick="return confirm('यह लिंक आपको एक बाहरी वेब साइट पर ले जाएगा।')" @endif
                                                 target="_blank">
                                                 @if (GetLang() == 'en')
                                                     {{ $C->name ?? '' }}
@@ -900,7 +897,7 @@
                     @else
                         @if ($S->external == 'yes')
                             <li><a href="{{ url($S->url) }}"
-                                    onclick="return confirm('Are you sure  external window open?')" target="_blank">
+                                @if (GetLang() == 'en') onclick="return confirm('This link will take you to an external web site.')"  @else onclick="return confirm('यह लिंक आपको एक बाहरी वेब साइट पर ले जाएगा।')" @endif target="_blank">
                                     @if (GetLang() == 'en')
                                         {{ $S->name ?? '' }}
                                     @else
@@ -1388,13 +1385,7 @@
 
                         <!-- Chairpersons -->
 
-
-
-
-
                         @if(count($chairperson) > 0 )
-
-
 
                         <h5>
                            <span>  Chairperson </span>
@@ -1419,15 +1410,12 @@
                                         <h6>{{ $chairperson[0]->title ?? '' }} </h6>
                                         <h6>{{ $chairperson[0]->phone ?? '' }} </h6>
 
-
-
                                         <?php
                                         $email_address = $chairperson[0]->email;
                                         $str = $email_address;
                                         $var = str_replace('@', '[at]', $str);
                                         $email = str_replace('.', '[dot]', $var);
                                         ?>
-
 
                                         <h6>{{ $email ?? '' }} </h6>
                                 </div>
@@ -1441,12 +1429,10 @@
                         @if (count($chairpersons) > 0)
                             <h5>
                                 <span> Members</span>
-
                             </h5>
                             <div class="excellence-wrap back-img Activities gallery-member img-gallery mb-3 mt-4">
                                 <div class="container">
                                     <div class="row">
-
                                         <div class="col-md-12 p-0">
                                             <div class="excellence-gallery partnership-img">
                                                 <div class="row masonry-grid">
@@ -1531,8 +1517,8 @@
                                 <div class="container p-0">
                                     <div class="row">
 
-                                        
-                                       
+
+
 
                                         <!-- Multiple Image Popup -->
                                         <div id="gallery-1" class="hidden">
@@ -1540,14 +1526,11 @@
                                             <a href="{{ asset('uploads/multiple/club/' . $datas->image) ?? '' }}"></a>
                                             @endforeach
                                         </div>
-                                        
-                                        
-
 
                                         @foreach ($data as $k=>$datas)
                                         @if($k == '1')
                                             <div class="col-md-3">
-                                                
+
                                                 <div class="multi-image-popup p-relative">
                                                     <a href="#gallery-1" class="btn-gallery multi-card">
                                                         <div class="card1"></div>
@@ -1558,7 +1541,7 @@
                                                     </a>
                                                 </div>
 
-                                               
+
 
                                             </div>
                                             @endif
@@ -1627,7 +1610,7 @@
 
 $('a.btn-gallery').on('click', function(event) {
     event.preventDefault();
-    
+
     var gallery = $(this).attr('href');
 
     $(gallery).magnificPopup({

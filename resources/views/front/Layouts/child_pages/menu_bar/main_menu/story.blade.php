@@ -272,7 +272,7 @@
 
                                                                     @if ($D->external == 'yes')
                                                                         <li><a href="{{ url($D->url) }}"
-                                                                                onclick="return confirm('Are you sure  external window open?')"
+                                                                               @if (GetLang() == 'en') onclick="return confirm('This link will take you to an external web site.')"  @else onclick="return confirm('यह लिंक आपको एक बाहरी वेब साइट पर ले जाएगा।')" @endif
                                                                                 target="_blank">
                                                                                 @if (GetLang() == 'en')
                                                                                     {{ $D->name ?? '' }}
@@ -310,7 +310,7 @@
                                     @else
                                         @if ($C->external == 'yes')
                                             <li><a href="{{ url($C->url) }}"
-                                                    onclick="return confirm('Are you sure  external window open?')"
+                                                   @if (GetLang() == 'en') onclick="return confirm('This link will take you to an external web site.')"  @else onclick="return confirm('यह लिंक आपको एक बाहरी वेब साइट पर ले जाएगा।')" @endif
                                                     target="_blank">
                                                     @if (GetLang() == 'en')
                                                         {{ $C->name ?? '' }}
@@ -345,7 +345,7 @@
                         @else
                             @if ($S->external == 'yes')
                                 <li><a href="{{ url($S->url) }}"
-                                        onclick="return confirm('Are you sure  external window open?')" target="_blank">
+                                       @if (GetLang() == 'en') onclick="return confirm('This link will take you to an external web site.')"  @else onclick="return confirm('यह लिंक आपको एक बाहरी वेब साइट पर ले जाएगा।')" @endif target="_blank">
                                         @if (GetLang() == 'en')
                                             {{ $S->name ?? '' }}
                                         @else
@@ -500,7 +500,7 @@
 
                                                                     @if ($D->external == 'yes')
                                                                         <li><a href="{{ url($D->url) }}"
-                                                                                onclick="return confirm('Are you sure  external window open?')"
+                                                                               @if (GetLang() == 'en') onclick="return confirm('This link will take you to an external web site.')"  @else onclick="return confirm('यह लिंक आपको एक बाहरी वेब साइट पर ले जाएगा।')" @endif
                                                                                 target="_blank">
                                                                                 @if (GetLang() == 'en')
                                                                                     {{ $D->name ?? '' }}
@@ -538,7 +538,7 @@
                                     @else
                                         @if ($C->external == 'yes')
                                             <li><a href="{{ url($C->url) }}"
-                                                    onclick="return confirm('Are you sure  external window open?')"
+                                                   @if (GetLang() == 'en') onclick="return confirm('This link will take you to an external web site.')"  @else onclick="return confirm('यह लिंक आपको एक बाहरी वेब साइट पर ले जाएगा।')" @endif
                                                     target="_blank">
                                                     @if (GetLang() == 'en')
                                                         {{ $C->name ?? '' }}
@@ -573,7 +573,7 @@
                         @else
                             @if ($S->external == 'yes')
                                 <li><a href="{{ url($S->url) }}"
-                                        onclick="return confirm('Are you sure  external window open?')" target="_blank">
+                                       @if (GetLang() == 'en') onclick="return confirm('This link will take you to an external web site.')"  @else onclick="return confirm('यह लिंक आपको एक बाहरी वेब साइट पर ले जाएगा।')" @endif target="_blank">
                                         @if (GetLang() == 'en')
                                             {{ $S->name ?? '' }}
                                         @else

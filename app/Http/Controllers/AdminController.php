@@ -213,11 +213,6 @@ function Add_OrganisationStructure(Request $request,$id=null){
 }
 
 
-
-
-
-
-
     function StatusChange($status,$id,$db){
 
         DB::table($db)->where('id',dDecrypt($id))->update(['status'=>$status]);
@@ -817,8 +812,8 @@ function Add_childMenu(Request $request,$id=null){
             'password' => 'required',
             'captcha' => 'required|captcha'
             ]);
-        
-        
+
+
           if(count(Admin::where('email',$request->email)->get()) == 1){
 
             if(Admin::where('email',$request->email)->first()->login_check == '0'){
@@ -829,6 +824,7 @@ function Add_childMenu(Request $request,$id=null){
                     $br= $this->getBrowser();
                     $sqlUpdate = DB::table('admins')->where('id', $userId)->update(array('login_time'=>date('d-m-Y H:i:s'),'ip'=>$request->ip(),'user_agent'=>$br['name'],'login_check'=>'1'));
 
+
                     return redirect()->route('admin.dashboard')->with('success','Hello '.$data->name.'. Welcome to admin panel !');
                 }
                 else{
@@ -836,12 +832,12 @@ function Add_childMenu(Request $request,$id=null){
                 }
             }
             else{
-                return redirect()->route('admin.login')->with('error','Invalid Credentials');
+                return redirect()->route('admin.login')->with('error','Another Person login!!!!!');
             }
 
          }
           else{
-   
+
 
             return redirect()->route('admin.login')->with('error','Record not exits');
         }
@@ -958,8 +954,17 @@ function Add_childMenu(Request $request,$id=null){
 
         $data=Admin::find(\Auth::guard('admin')->user()->id);
         $userId = Auth::guard('admin')->user()->id;
+         //  dd($userId);
 
-                $sqlUpdate = DB::table('admins')->where('id', $userId)->update(array('logout_time'=>date('d-m-Y H:i:s'),'ip'=>$request->ip(),'login_check'=>'0'));
+                // $sqlUpdate = DB::table('admins')->where('id', $userId)->update(array('logout_time'=>date('d-m-Y H:i:s'),'ip'=>$request->ip(),'login_check'=>'0'));
+
+                $ldate = date('Y-m-d H:i:s');
+
+                $sqlUpdate =admin::find($userId);
+                $sqlUpdate->logout_time=$ldate;
+                $sqlUpdate->ip=$request->ip();
+                $sqlUpdate->login_check='0';
+                $sqlUpdate->save();
 
 
         //$data->update(['last_login_time'=>$login_t,'logout_time'=>date('d-m-Y H:i:s'),'ip'=>$request->ip(),'login_check'=>'0']);

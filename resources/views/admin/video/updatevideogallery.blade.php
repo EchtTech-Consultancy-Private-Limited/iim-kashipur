@@ -75,7 +75,7 @@
                                 @csrf
 
                                 <div class="col-md-12">
-                                    <label for="type" class="col-sm-12 col-form-label">Page Content Type* </label>
+                                    <label for="type" class="col-sm-12 col-form-label">Page Content Type </label>
                                     <div class="col-sm-12">
                                         <select class="form-control" aria-label="Default select example" name="type"
                                         value="{{ old('type') }}"><br>
@@ -547,7 +547,7 @@
 
                                                 <div class="form-group col-md-6">
 
-                                                    <label for="form-email">Sort Order*</label>
+                                                    <label for="form-email">Sort Order</label>
 
                                                     <input type="number" name="order" value="{{ old('order') }}"
                                                         placeholder="pls enter sort order" class="form-email form-control"

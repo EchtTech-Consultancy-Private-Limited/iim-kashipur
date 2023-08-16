@@ -710,7 +710,7 @@
                                                 ?>
                                                  @foreach ($item as $K=>$items)
                                                 <tr>
-                                                    <td>{{ $currentNumber++;}}</td>
+                                                    <td>{{ $currentNumber++ }}</td>
                                                     <td> <a @if($items->external=='yes')  onclick="return confirm('Are you sure  external window open?')" target="_blank" href="{{url($items->url)}}" @else href="{{url ('journal/'.dEncrypt($items->id)) }}" @endif  class="text-black"> {{ $items->title  ??''}} </a> </td>
                                                 </tr>
 

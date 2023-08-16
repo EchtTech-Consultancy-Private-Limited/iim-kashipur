@@ -192,7 +192,7 @@
                                                     <a href="{{ url($item[0]->twitter) }}"
                                                         alt="{{ $item[0]->Twitter_title }}"
                                                         title="{{ $item[0]->Twitter_title }}"
-                                                        onclick="return confirm('Are you sure  external window open?')"
+                                                       @if (GetLang() == 'en') onclick="return confirm('This link will take you to an external web site.')"  @else onclick="return confirm('यह लिंक आपको एक बाहरी वेब साइट पर ले जाएगा।')" @endif
                                                         target="_blank">
                                                         <i class="fa fa-twitter fa-2x" class="w3-xxlarge"
                                                             aria-hidden="true"></i>
@@ -203,7 +203,7 @@
                                                     <a href="{{ url($item[0]->instagram) }}"
                                                         alt="{{ $item[0]->Instagram_title }}"
                                                         title="{{ $item[0]->Instagram_title }}"
-                                                        onclick="return confirm('Are you sure  external window open?')"
+                                                       @if (GetLang() == 'en') onclick="return confirm('This link will take you to an external web site.')"  @else onclick="return confirm('यह लिंक आपको एक बाहरी वेब साइट पर ले जाएगा।')" @endif
                                                         target="_blank">
                                                         <i class="fa fa-instagram fa-2x" class="w3-xxlarge"
                                                             aria-hidden="true"></i>
@@ -214,7 +214,7 @@
                                                     <a href="{{ url($item[0]->Facebook) }}"
                                                         alt="{{ $item[0]->Facebook_title }}"
                                                         title="{{ $item[0]->Facebook_title }}"
-                                                        onclick="return confirm('Are you sure  external window open?')"
+                                                       @if (GetLang() == 'en') onclick="return confirm('This link will take you to an external web site.')"  @else onclick="return confirm('यह लिंक आपको एक बाहरी वेब साइट पर ले जाएगा।')" @endif
                                                         target="_blank">
                                                         <i class="fa fa-facebook fa-2x" class="w3-xxlarge"
                                                             aria-hidden="true"></i>
@@ -225,7 +225,7 @@
                                                     <a href="{{ url($item[0]->linkedin) }}"
                                                         alt="{{ $item[0]->linkedIn_title }}"
                                                         title="{{ $item[0]->linkedIn_title }}"
-                                                        onclick="return confirm('Are you sure  external window open?')"
+                                                       @if (GetLang() == 'en') onclick="return confirm('This link will take you to an external web site.')"  @else onclick="return confirm('यह लिंक आपको एक बाहरी वेब साइट पर ले जाएगा।')" @endif
                                                         target="_blank">
                                                         <i class="fa fa-linkedin fa-2x" class="w3-xxlarge"
                                                             aria-hidden="true"></i>
