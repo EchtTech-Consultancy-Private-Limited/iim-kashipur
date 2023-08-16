@@ -67,7 +67,7 @@ public function archive($slug){
      $bread="Career";
      $data =Career::get();
      return view('front.Layouts.child_pages.menu_bar.main_menu.archive',['data'=>$data,'bread'=>$bread]);
-    }elseif($slug == 'Tenders'){
+    }elseif($slug == 'tenders'){
     $bread="Tender";
     $data =Tender::get();
     return view('front.Layouts.child_pages.menu_bar.main_menu.archive',['data'=>$data,'bread'=>$bread]);
