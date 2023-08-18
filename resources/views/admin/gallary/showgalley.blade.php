@@ -2,7 +2,7 @@
 
 
 
-@section('title', 'Manage Image Section')
+@section('title', 'Manage Photo Gallery')
 
 
 
@@ -66,7 +66,7 @@
 
 
 
-                                <p class="card-title">Manage Image Section</p>
+                                <p class="card-title">Manage Photo Gallery</p>
 
 
 

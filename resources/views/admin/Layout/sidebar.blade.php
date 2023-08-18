@@ -439,8 +439,6 @@
         @endif
 
 
-
-
         @if (@checkRoute('View_Content') || @checkRoute('Show_Content'))
             <li class="nav-item">
 

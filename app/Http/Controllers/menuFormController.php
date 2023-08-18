@@ -496,13 +496,13 @@ function View_journey(){
 //evnets & Activites
 public function Add_Event_EventsActivites(Request $request,$id=NULL){
     if($id){
-        $title="Edit title Details";
+        $title="Edit Event & Activites Details";
         $msg="title Details Edited Successfully!";
         $data=Events::find(dDecrypt($id));
     }
     else{
 
-          $title="Add title Details";
+          $title="Add Event & Activites Details";
           $msg="title Details Added Successfully!";
           $data=new Events;
         //  dd($request->all());

@@ -37,10 +37,10 @@
                   @csrf
 
                   <div class="col-md-12">
-                     <label for="inputText" class="col-sm-12 col-form-label">Select Type*</label>
+                     <label for="inputText" class="col-sm-12 col-form-label">Student Type*</label>
                      <div class="col-sm-12">
                         <select class="form-control" name="batch" required>
-                        	<option value="">Please Select Student Type</option>
+                        	<option value=""> Select Student Type</option>
                         	<option value="1">PhD 2021-25 Batch Profile</option>
                         	<option value="2">PhD 2020-24 Batch Profile</option>
                         	<option value="3">PhD 2019-23 Batch Profile</option>
@@ -121,13 +121,14 @@
                   <div class="col-md-12">
                      <label for="inputText" class="col-sm-12 col-form-label">About Content*</label>
                      <div class="col-sm-12">
-                        <textarea class="form-control" id="about" rows="4"  name="about" placeholder="About Content">{{ old('about') }}</textarea>
+                        <textarea class="form-control" id="abouts" rows="4"  name="about" placeholder="About Content">{{ old('about') }}</textarea>
                         <br>
-                        @error('about')
+                        @error('abouts')
                         <div class="alert alert-danger">{{ $message }}</div>
                         @enderror
                      </div>
                   </div>
+
                   <div class="col-md-12">
                      <label for="inputText" class="col-sm-12 col-form-label">Educational background</label>
                      <div class="col-sm-12">
@@ -144,7 +145,7 @@
                   <div class="col-md-12">
                    <label for="inputText" class="col-sm-12 col-form-label">Papers and Publications</label>
                      <div class="col-sm-12">
-                        <textarea class="form-control" id="papers_publications" name="papers_publications" rows="4"  placeholder="Papers Publications">{{ old('papers_publications') }}</textarea>
+                        <textarea class="form-control" id="papers_publications" name="papers_publications" rows="4"  placeholder="Papers and Publications">{{ old('papers_publications') }}</textarea>
                      </div>
                   </div>
 

@@ -81,7 +81,7 @@
                                 <div class="form-group"> <label for="title">Title *</label> <input id="title"
                                         type="text"
                                         @if ($id) value="{{ $data->title }}" @else value="{{ old('title') }}" @endif
-                                        name="title" class="form-control" placeholder="Please enter name*" required>
+                                        name="title" class="form-control" placeholder="Please enter title*" required>
 
 
                                     <label for="title" id="title-error" class="error">
@@ -176,7 +176,7 @@
 
                                     <input id="url"
                                         @if ($id) value="{{ $data->url }}" @else value="{{ old('url') }}" @endif
-                                        type="text" name="url" class="form-control"
+                                        type="url" name="url" class="form-control"
                                         placeholder="Please enter file Alt*">
 
                                     <label for="url" id="url-error" class="error">

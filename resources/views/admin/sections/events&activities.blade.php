@@ -56,7 +56,7 @@
 
                             @csrf
 
-                            <div class="col-md-3">
+                            <div class="col-md-7">
                                 <label for="inputText" class="col-form-label">Title</label>
                                 <div class="">
                                     <input type="text" class="form-control"
@@ -66,7 +66,7 @@
                                 </div>
                             </div>
 
-                            <div class="col-md-12">
+                            {{-- <div class="col-md-12">
 
                                 <label for="event" class="col-form-label">Status</label>
 
@@ -80,7 +80,9 @@
 
                                     </select>
 
-                            </div>
+                            </div> --}}
+
+                            <input type="hidden" name="status" @if($id) value="{{ $data->status  }}" @else value="0" @endif>
 
                             <div class="col-md-12">
                                 <div class="col-sm-10">

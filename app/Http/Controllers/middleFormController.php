@@ -60,7 +60,7 @@ class middleFormController extends Controller
     public function show_NewsEvent($id){
         $data=news_event::find(dDecrypt($id))->first();
         $data=news_event::where('id',$data->id)->first();
-        return view('admin.sections.view',['data'=>$data]);
+        return view('admin.sections.view_news_event',['data'=>$data]);
     }
 
     function View_NewsEvent(){
