@@ -13,9 +13,9 @@
 
                     <div class="card">
 
-                        <div class="card-body">
+                        <div class="card-body row">
 
-                            <h4 class="card-title">  View News Event </h4>
+                            <h4 class="card-title col-12">  View News Event </h4>
 
                             <p class="card-description">
 
@@ -164,7 +164,7 @@
 
 
                                     <input id="url"
-                                        value="{{ $data->url }}"
+                                        value="{{ $data->url }}" readonly
                                         type="text" name="url" class="form-control"
                                         placeholder="Please enter file Alt*">
 

@@ -62,26 +62,25 @@ class InnerpageController extends Controller
 
 public function archive($slug){
 
-   if($slug == 'career'){
-
+   if($slug == 'career' || 'Career'){
      $bread="Career";
      $data =Career::get();
      return view('front.Layouts.child_pages.menu_bar.main_menu.archive',['data'=>$data,'bread'=>$bread]);
-    }elseif($slug == 'Tenders'){
+    }elseif($slug == 'tenders' || 'Tender' || 'tender' || 'Tenders'){
     $bread="Tender";
     $data =Tender::get();
     return view('front.Layouts.child_pages.menu_bar.main_menu.archive',['data'=>$data,'bread'=>$bread]);
-    }elseif($slug == 'Vendors-Debarred'){
+    }elseif($slug == 'Vendors-Debarred' || 'vendors-debarred'){
     $bread="Vendors-Debarred";
     $data =Vendorsdebarred::get();
     return view('front.Layouts.child_pages.menu_bar.main_menu.archive',['data'=>$data,'bread'=>$bread]);
-    }elseif($slug == 'rti'){
+    }elseif($slug == 'rti'|| 'RTI'||'rtis'||'RTIS'){
      $bread="Rti";
      $item=rti::wherestatus('1')->get();
      $data=rit_report_section::get();
      $value=quarter_report::get();
     return view('front.Layouts.child_pages.menu_bar.main_menu.archive-rti',['data'=>$data,'item'=>$item,'item'=>$item,'value'=>$value,'bread'=>$bread]);
-    }elseif($slug == 'industry-connect'){
+    }elseif($slug == 'industry-connect' || 'Industry-Connect' || 'industry-connects'){
     $bread="industry-connect";
     $data =Industry::get();
     return view('front.Layouts.child_pages.menu_bar.main_menu.archive',['data'=>$data,'bread'=>$bread]);
@@ -1305,13 +1304,14 @@ public function screen_reader_access()
                     {
 
                                 $data=QuickLink::whereslug($slug)->get('link_option');
-                                //dd($data);
+
                                 if(Count($data)>0){
+
                                 $item=content_page::whereid($data[0]->link_option)->get();
 
-                                $data=content_page::whereparent_id($item[0]->id)->get();
-
                                 if(Count($item)>0){
+
+                                $data=content_page::whereparent_id($item[0]->id)->get();
 
                                 return view('front.Layouts.child_pages.middle_section.home_section',['item'=>$item,'data'=>$data]);
 
@@ -1366,16 +1366,14 @@ public function screen_reader_access()
                     }elseif(QuickLink::whereslug($slug)->first('section_name')->section_name == 'info3')
                     {
 
-
-
                                 $data=QuickLink::whereslug($slug)->get('link_option');
 
                                 if(Count($data)>0){
                                 $item=content_page::whereid($data[0]->link_option)->get();
 
-                                $data=content_page::whereparent_id($item[0]->id)->get();
-
                                 if(Count($item)>0){
+
+                                $data=content_page::whereparent_id($item[0]->id)->get();
 
                                 return view('front.Layouts.child_pages.middle_section.home_section',['item'=>$item,'data'=>$data]);
 

@@ -39,12 +39,14 @@
         <section class="withsidebar-wrap ptb-60">
 
             <div class="container">
+                @if(Count($data) < 0)
                 <div class="d-flex justify-content-end">
                     <a href="{{ url(request()->path() . '/archive') }}" class="btn2 float-right mb-3"
                         style="border-radius: 30px; background:#0d6efd">
                         Archive List
                     </a>
                 </div>
+                @endif
 
                 <div class="row">
                     <div class="col-md-12">
@@ -158,12 +160,18 @@
                                             Comptroller And Auditor General Audit Report
                                         </h3>
 
+
                                         <div class="d-flex justify-content-end">
+                                            @if(Count($item) < 0)
                                             <a href="{{ url(request()->path() . '/archive') }}" class="btn2 float-right mb-3"
                                                 style="border-radius: 30px; background:#0d6efd">
                                                 Archive List
                                             </a>
+                                            @endif
                                         </div>
+
+
+
 
                                         <table class="mt-2">
 
@@ -216,12 +224,17 @@
                                             Quarterly Return
                                         </h3>
 
+
+
                                         <div class="d-flex justify-content-end">
+                                            @if(Count($item) < 0)
                                             <a href="{{ url(request()->path() . '/archive') }}" class="btn2 float-right mb-3"
                                                 style="border-radius: 30px; background:#0d6efd">
                                                 Archive List
                                             </a>
+                                            @endif
                                         </div>
+
 
                                         <table class="mt-2">
 

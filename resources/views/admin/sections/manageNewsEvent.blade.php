@@ -119,7 +119,7 @@
                                                                     style="color:black;"></i></a> &nbsp;
 
 
-                                                                    <a href="{{ url('Accounts/View_pressMedia/'.dEncrypt($D->id)) }}"
+                                                                    <a href="{{ url('Accounts/View-News-Event/'.dEncrypt($D->id)) }}"
                                                                         onclick="return confirm('Are You Sure?')"><i
                                                                             class="ti-eye btn-icon-append"
                                                                             style="color:black;"></i></a>

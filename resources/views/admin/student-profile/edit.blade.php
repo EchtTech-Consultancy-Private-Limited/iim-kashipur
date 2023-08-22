@@ -37,10 +37,10 @@
                   @csrf
 
                   <div class="col-md-12">
-                     <label for="inputText" class="col-sm-2 col-form-label">Select Type*</label>
+                     <label for="inputText" class="col-sm-2 col-form-label">Student Type*</label>
                      <div class="col-sm-10">
                         <select class="form-control" name="batch" required>
-                        	<option value="">Please Select Student Type</option>
+                        	<option value=""> Select Student Type</option>
                         	<option value="1" {{ ($student->batch==1) ? 'selected' : '' }}>PhD 2021-25 Batch Profile</option>
                         	<option value="2" {{ ($student->batch==2) ? 'selected' : '' }}>PhD 2020-24 Batch Profile</option>
                         	<option value="3" {{ ($student->batch==3) ? 'selected' : '' }}>PhD 2019-23 Batch Profile</option>

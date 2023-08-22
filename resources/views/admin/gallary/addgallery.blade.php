@@ -59,7 +59,7 @@
 
 
                                 <div class="col-md-12">
-                                    <label for="type" class="col-sm-12 col-form-label">Page Content Type* </label>
+                                    <label for="type" class="col-sm-12 col-form-label">Page Content Type</label>
                                     <div class="col-sm-12">
                                         <select class="form-control" aria-label="Default select example" name="type"
                                         value="{{ old('type') }}"><br>
@@ -299,7 +299,7 @@
                                 </div>
 
                                 <div class="col-md-12">
-                                    <label for="inputText" class="col-sm-12 col-form-label">Sort Order*</label>
+                                    <label for="inputText" class="col-sm-12 col-form-label">Sort Order</label>
                                     <div class="col-sm-12">
                                         <input type="text" class="form-control" name="sort_order"
                                             placeholder="Please enter sorting position number"

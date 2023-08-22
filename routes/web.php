@@ -507,6 +507,8 @@ Route::get('status-change/{status}/{id}/{db}',[AdminController::class,'StatusCha
 Route::get('/Department_info',[AdminController::class,'Department_info']);
 Route::match(['get','post'],'add-edit-sub-child-menu/{id?}',[AdminController::class,'add_sub_child_menu'])->name('addsubchilmenu');
 Route::get('/childmenushow',[AdminController::class,'childmenushow']);
+Route::get('/childmenushowid',[AdminController::class,'childmenushowid']);
+
 
 //profile section url
 Route::get("/manage-people-profile/{id?}",[FormController::class,'view_biography']);

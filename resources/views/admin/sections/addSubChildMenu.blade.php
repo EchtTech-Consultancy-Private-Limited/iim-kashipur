@@ -446,6 +446,7 @@
             });
 
 
+
             $("#submenues").on('change', function() {
                 var parentvalue = ($("#submenues").val());
 
@@ -456,6 +457,40 @@
                 });
                 $.ajax({
                     url: "{{ url('/Accounts/childmenushow') }}",
+                    type: "get",
+                    data: {
+                        id: parentvalue
+                    },
+                    success: function(data) {
+
+                        var resdata = data.data;
+                        console.log(resdata);
+                        var formoption = "<option value=''>Please select</option>";
+                        for (i = 0; i < resdata.length; i++) {
+                            if ('{{ $data->link_option }}' == resdata[i].id) {
+                                formoption += "<option value='" + resdata[i].id + "' selected>" + resdata[i]
+                                    .name + "</option>";
+                            } else {
+                                formoption += "<option value='" + resdata[i].id + "'>" + resdata[i].name +
+                                    "</option>";
+                            }
+
+                        }
+                        $('#Childsubmenues').html(formoption);
+                    }
+                });
+
+            });
+
+
+              $(document).ready(function() {
+                $.ajaxSetup({
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    }
+                });
+                $.ajax({
+                    url: "{{ url('/Accounts/childmenushowid') }}",
                     type: "get",
                     data: {
                         id: parentvalue

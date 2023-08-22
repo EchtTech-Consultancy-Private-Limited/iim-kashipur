@@ -291,7 +291,7 @@
 
 
                                 <div class="col-md-12">
-                                    <label for="inputText" class="col-sm-2 col-form-label">Sort Order*
+                                    <label for="inputText" class="col-sm-2 col-form-label">Sort Order
                                         </label>
                                     <div class="col-sm-12">
                                         <input type="text" class="form-control" name="sort_order"

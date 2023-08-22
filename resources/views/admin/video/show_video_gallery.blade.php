@@ -2,7 +2,7 @@
 
 
 
-@section('title', ' Manage video Section ')
+@section('title', ' Manage Video Gallery ')
 
 
 
@@ -67,7 +67,7 @@
 
 
 
-                                <p class="card-title">Video Gallery</p>
+                                <p class="card-title">Manage Video Gallery</p>
 
                                 <div>
 
