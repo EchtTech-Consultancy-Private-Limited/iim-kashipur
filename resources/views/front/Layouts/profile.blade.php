@@ -421,6 +421,7 @@ ul.nav.nav-tabs {
                                         </div>
 
                                         <h6>{{ $items->designation }}</h6>
+
                                     </div>
                                 </div>
 
@@ -873,9 +874,15 @@ ul.nav.nav-tabs {
 
                                         {{-- <h6>{{ $items->designation }}</h6> --}}
 
+
+
                                         <h6> {{ $items->designation   ??'' }} </h6>
 
+                                        <span> @if(GetLang()=='en') {{ $items->more_designation  ?? ''}}  @else {{ $items->more_designation  ?? ''}}  @endif</span><br>
+
+
                                        <span>{{ $items->phone  ??'' }}</span>
+                                       <span>{{ $items->extension  ??'' }}</span>
 
                                         <?php
                                         $email_address =$items->email ;
