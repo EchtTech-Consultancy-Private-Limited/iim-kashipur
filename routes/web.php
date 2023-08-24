@@ -20,6 +20,7 @@ use App\Http\Controllers\middleFormController;
 use App\Http\Controllers\log;
 use App\Http\Controllers\InnerpageController;
 use App\Http\Controllers\StudentProfileController;
+use App\Http\Controllers\IcmiRegistrationController;
 
 
 /*
@@ -603,9 +604,10 @@ Route::get('reset-password/{token}', [ForgotPasswordController::class, 'showRese
 Route::post('reset-password', [ForgotPasswordController::class, 'submitResetPasswordForm'])->name('reset.password.post');
 
 
+
+Route::get('registeration',[IcmiRegistrationController::class,'registeration']);
 //website search
 Route::post('search',[InnerpageController::class,'search']);
-
 
 Route::get('/{slug?}/archive',[InnerpageController::class,'archive']);
 
