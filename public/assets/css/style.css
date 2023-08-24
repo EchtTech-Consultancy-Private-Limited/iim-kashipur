@@ -3942,10 +3942,10 @@ span {
 .text-right {
     text-align: right;
 }
-
+/* 
 strong {
     font-weight: 600;
-}
+} */
 
 .master-class h5 {
     font-size: 16px;
