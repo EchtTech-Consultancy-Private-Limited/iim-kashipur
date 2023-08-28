@@ -657,9 +657,11 @@
 
                             @csrf
 
+                              <label>Area</label>
+
                              <select name="dp" class="form-control" onchange="javascript:$('#frmtypes').submit();" style="padding:10px 15px 9px ">
 
-                                <option value="">Filter Deparment </option>
+                                <option value="">Any</option>
 
                                 @foreach($departments as $k=>$v)
 

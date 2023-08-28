@@ -843,6 +843,14 @@
                                             @endif
                                             </h6>
 
+                                            <h6>
+                                              {{ $items->phone ??'' }}
+                                            </h6>
+
+                                            <h6>
+                                                {{ $items->email ??'' }}
+                                              </h6>
+
                                         </div>
 
                                     </div>
@@ -858,6 +866,7 @@
 {{-- new section  --}}
 <a href="javascript:void(0)" class="btn2 margin_top margin_bottom">Student Coordinator</a><br><br>
 
+<span>Email-id: placecomm@iimkashipur.ac.in</span>
 <div class="profilewithinfo">
 
     <div class="row">
@@ -887,6 +896,8 @@
                             {{ $items->designation_h ?? '' }}
                         @endif
                         </h6>
+
+                        <p> {{ $items->phone ?? '' }}</p>
 
                     </div>
 
