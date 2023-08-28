@@ -751,7 +751,7 @@ function FindQuickLinksNew($placement='',$sort_order=''){
         }
 
         function GetTemplatesList(){
-        return Array('0'=>'Default','1'=>'Board of Governors','2'=>'Director Profile','3'=>'Faculties Directory','4'=>'visiting faculity','5'=>'International Relations Team','6'=>'Partnerships Collaborations','7'=>'Testimonials','8'=>'Master Page','9'=>'Club,Cell & Committee','10'=>'Our Journey','11'=>'placement(The Team)');
+        return Array('0'=>'Default','1'=>'Board of Governors','2'=>'Director Profile','3'=>'Faculties Directory','4'=>'visiting faculity','5'=>'International Relations Team','6'=>'Partnerships Collaborations','7'=>'mba Testimonials','8'=>'Master Page','9'=>'Club,Cell & Committee','10'=>'Our Journey','11'=>'placement(The Team)','12'=>'Alumni(The Team)','13'=>'mba(Analytics) Testimonials');
         }
 
 

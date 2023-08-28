@@ -408,7 +408,7 @@
 
                                 @foreach ($item as $items)
 
-                                @if(($items->department) == '10')
+                                @if(($items->department) == '16')
 
                                 <div class="col-md-5 col-lg-4 ">
 
@@ -661,7 +661,7 @@
 
                             @foreach ($item as $items)
 
-                            @if(($items->department) == '10')
+                            @if(($items->department) == '16')
 
                             <div class="col-md-5 col-lg-4 ">
 
@@ -761,7 +761,7 @@
                             <div class="row">
 
                                 @foreach ($item as $items)
-                                    @if ($items->department == '10')
+                                    @if ($items->department == '16')
                                         <div class="col-md-5 col-lg-4 ">
 
                                             <a href="{{ url($items->slug) }}">

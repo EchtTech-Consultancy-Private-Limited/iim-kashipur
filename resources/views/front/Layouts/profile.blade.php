@@ -81,9 +81,11 @@
                     </li>
                     <li><span>
                             @if (GetLang() == 'en')
-                                {{ $item[0]->title ?? '' }}
+
+                                {{ ucfirst(strtolower($item[0]->title)) ?? '' }}
                             @else
-                                {{ $item[0]->tittle_h ?? '' }}
+
+                                {{ ucfirst(strtolower($item[0]->tittle_h)) ?? '' }}
                             @endif
                         </span>
                     </li>
@@ -247,9 +249,11 @@
 
                     <li><span>
                             @if (GetLang() == 'en')
-                                {{ $item[0]->title ?? '' }}
+
+                                {{ ucfirst(strtolower($item[0]->title)) ?? '' }}
                             @else
-                                {{ $item[0]->title_h ?? '' }}
+
+                                {{ ucfirst(strtolower($item[0]->title_h)) ?? '' }}
                             @endif
                         </span></li>
                 </ul>
@@ -905,7 +909,7 @@
                                         </span><br>
 
 
-                                        <span>{{ $items->phone ?? '' }}</span>
+                                        <span>{{ $items->phone ?? '' }}</span><br>
                                         <span>{{ $items->extension ?? '' }}</span>
 
                                         <?php
@@ -914,11 +918,7 @@
                                         $var = str_replace('@', '[at]', $str);
                                         $email = str_replace('.', '[dot]', $var);
                                         ?>
-
-
-
                                         <br><span> {{ $email ?? '' }} </span>
-
 
                                         <div class="social-icon">
                                             <ul>

@@ -85,22 +85,6 @@ public function archive($slug){
     $data =Industry::get();
     return view('front.Layouts.child_pages.menu_bar.main_menu.archive',['data'=>$data,'bread'=>$bread]);
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
    else{
 
    }
@@ -2047,6 +2031,8 @@ public function Child_barInnerpage($main_slug,$Sub_slug,$slug) //content page
 
     $data=child_menu::whereslug($slug)->get();
 
+
+
     if(Count($data)>0){
 
         if($slug=="student-profiles")
@@ -2065,9 +2051,11 @@ public function Child_barInnerpage($main_slug,$Sub_slug,$slug) //content page
         if($data[0]->url == '/content-page')
         {
 
+
             $item=content_page::whereid($data[0]->link_option)->get();
 
             if($slug == 'communications'){
+
                 $membersList=OrganisationStructure::where('faculty_id',2)->get();
 
             }elseif($slug == 'economics')
@@ -2094,7 +2082,14 @@ public function Child_barInnerpage($main_slug,$Sub_slug,$slug) //content page
             elseif($slug == 'organisational-behaviour-human-resource-management')
             {
                 $membersList=OrganisationStructure::where('faculty_id',12)->get();
-            }else{
+            }
+
+            elseif($slug == 'strategy')
+            {
+                $membersList=OrganisationStructure::where('faculty_id',13)->get();
+            }
+
+            else{
 
                 if(Count($item)>0){
                     $type_sub=child_menu::whereslug($slug)->get();
@@ -2174,6 +2169,25 @@ public function Child_barInnerpage($main_slug,$Sub_slug,$slug) //content page
                 }
 
             }
+            elseif(isset($data[0]) && $data[0]->tpl_id == 12){     // Alumni Tema arc
+
+
+                $item=OrganisationStructure::where('department',15)->paginate(9);
+
+                if(count($item)>0){
+
+                    $type_sub=child_menu::whereslug($slug)->get();
+                    $gets=SubMenu::whereid($type_sub[0]->sub_id)->get();
+                    $get=MainMenu::whereid($type_sub[0]->menu_id)->get();
+                    $type_child=child_menu::whereslug($slug)->get();
+
+                return view('front.Layouts.child_pages.menu_bar.main_menu.alumni-team-rc',['item'=>$item,'type_sub'=>$type_sub,'type_child'=>$type_child,'gets'=>$gets,'get'=>$get]);
+
+                }else{
+                    return abort(401);
+                }
+
+            }
             elseif(isset($data[0]) && $data[0]->tpl_id == 3){     // factulty directry
 
                 $item=OrganisationStructure::where('department',6)->paginate(9);
@@ -2192,12 +2206,9 @@ public function Child_barInnerpage($main_slug,$Sub_slug,$slug) //content page
                 }
             }
 
-            elseif(isset($data[0]) && $data[0]->tpl_id == 7){     // testionials
+            elseif(isset($data[0]) && $data[0]->tpl_id == 7){     //mba testionials
 
                 $item=OrganisationStructure::where('department',10)->paginate(9);
-
-               // dd($item);
-
                 if(count($item)>0){
 
                     $type_sub=child_menu::whereslug($slug)->get();
@@ -2212,10 +2223,25 @@ public function Child_barInnerpage($main_slug,$Sub_slug,$slug) //content page
                 }
 
             }
+            elseif(isset($data[0]) && $data[0]->tpl_id == 13){     //mba analytics testionials
+                $item=OrganisationStructure::where('department',16)->paginate(9);
+
+                if(count($item)>0){
+
+                    $type_sub=child_menu::whereslug($slug)->get();
+                    $gets=SubMenu::whereid($type_sub[0]->sub_id)->get();
+                    $get=MainMenu::whereid($type_sub[0]->menu_id)->get();
+                    $type_child=child_menu::whereslug($slug)->get();
+
+                return view('front.Layouts.child_pages.menu_bar.main_menu.mba-analytics-testionials',['item'=>$item,'type_sub'=>$type_sub,'type_child'=>$type_child,'gets'=>$gets,'get'=>$get]);
+
+                }else{
+                    return abort(401);
+                }
+
+            }
 
             elseif(isset($data[0]) && $data[0]->tpl_id == 4){    //visiting faculty
-
-
                 $item=OrganisationStructure::where('department',7)->paginate(9);
                 if(count($item)>0){
 
@@ -2226,7 +2252,8 @@ public function Child_barInnerpage($main_slug,$Sub_slug,$slug) //content page
 
                 return view('front.Layouts.child_pages.menu_bar.main_menu.visiting_faculity',['item'=>$item,'type_sub'=>$type_sub,'type_child'=>$type_child,'gets'=>$gets,'get'=>$get]);
 
-                }else{
+                }
+                else{
                     $item=OrganisationStructure::whereid($data[0]->link_option)->get();
                      //dd($item);
                     if(count($item)>0){

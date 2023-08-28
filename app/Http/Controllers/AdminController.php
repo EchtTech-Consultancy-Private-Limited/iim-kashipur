@@ -169,6 +169,11 @@ function Add_OrganisationStructure(Request $request,$id=null){
       //social mediea links
        $data->slug=SlugCheck('organisation_structures',($request->title));
        $data->status= $request->status;
+
+
+       $data->video_url= $request->video_url;
+       $data->video_title= $request->video_title;
+
        $data->instagram= $request->instagram;
        $data->Instagram_title= $request->Instagram_title;
        $data->Facebook= $request->Facebook;
@@ -696,14 +701,14 @@ function Add_childMenu(Request $request,$id=null){
     if($request->isMethod('post')){
         if(!$id){
         $request->validate([
-            //'name'=>'required|unique:child_menus',
+            'name'=>'required|unique:child_menus',
             'name'=>'required',
             'menu_id'=>'required',
 
           ]);}
         else{
         $request->validate([
-            'name'=>'required|unique:child_menus',
+            'name'=>'required',
             'menu_id'=>'required',
         ]);
         }
