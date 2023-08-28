@@ -412,11 +412,11 @@
                                     <div class="profilewraper withinfo addevent-box">
 
                                         <figure><img src="{{asset('uploads/organisation/'.$items->image)}}"  alt="{{ $items->title ?? '' }}" title="{{ $items->title ?? '' }}"></figure>
-
+                                        <div class="text-scroll"> 
                                         <h4> @if(GetLang()=='en') {{ $items->title  ?? ''}}  @else {{ $items->title_h  ?? ''}}  @endif</h4>
 
                                         <p> @if(GetLang()=='en') {{ $items->designation ?? '' }}  @else {{ $items->designation_h ?? '' }}  @endif</p>
-
+                                        </div>
                                     </div>
 
 
@@ -665,11 +665,12 @@
                                 <div class="profilewraper withinfo addevent-box">
 
                                     <figure><img src="{{asset('uploads/organisation/'.$items->image)}}"  alt="{{ $items->title ?? '' }}" title="{{ $items->title ?? '' }}"></figure>
-
+                                    <div class="text-scroll"> 
                                     <h4> @if(GetLang()=='en') {{ $items->title  ?? ''}}  @else {{ $items->title_h  ?? ''}}  @endif</h4>
 
                                     <p> @if(GetLang()=='en') {{ $items->designation ?? '' }}  @else {{ $items->designation_h ?? '' }}  @endif</p>
                                     <p> @if(GetLang()=='en')  @if(isset($items->id))   <?php echo get_dept_name($items->id); ?> @endif @endif</p>
+                                    </div>
                                 </div>
 
 
@@ -765,7 +766,7 @@
                                                     <figure><img src="{{ asset('uploads/organisation/' . $items->image) }}"
                                                             alt="{{ $items->title ?? '' }}"
                                                             title="{{ $items->title ?? '' }}"></figure>
-
+                                                            <div class="text-scroll"> 
                                                     <h4>
                                                         @if (GetLang() == 'en')
                                                             {{ $items->title ?? '' }}
@@ -780,7 +781,7 @@
                                                             {{ $items->designation_h ?? '' }}
                                                         @endif
                                                     </p>
-
+                                                            </div>
                                                 </div>
 
 

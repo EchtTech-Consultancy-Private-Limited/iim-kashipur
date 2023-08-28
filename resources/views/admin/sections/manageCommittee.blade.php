@@ -69,7 +69,7 @@
 
                                                     <th>Commmittee Image</th>
 
-                                                    <th>Image Uploar</th>
+                                                    <th>Image Upload</th>
 
                                                     <th>Status</th>
 
@@ -104,7 +104,7 @@
 
                                                             <td>
 
-                                                                <button type="submit" class="btn btn-primary btn-sm"><a href= "{{ url('Accounts/committee-image/'.dEncrypt($D->id)) }}" > Add Imges</a></button>
+                                                                <button type="submit" class="btn btn-primary btn-sm"><a href= "{{ url('Accounts/committee-image/'.dEncrypt($D->id)) }}" > Add Images</a></button>
 
                                                                 </td>
 

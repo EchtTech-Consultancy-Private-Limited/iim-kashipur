@@ -426,6 +426,9 @@
                                                                     alt="{{ $items->title ?? '' }}"
                                                                     title="{{ $items->title ?? '' }}"></figure>
 
+                                                                    <div class="text-scroll"> 
+
+
                                                             <h4>
                                                                 @if (GetLang() == 'en')
                                                                     {{ $items->title ?? '' }}
@@ -442,7 +445,7 @@
                                                             </p>
                                                         </div>
 
-
+                                                        </div>
 
                                                     </a>
 
@@ -692,6 +695,8 @@
                                                                     alt="{{ $items->title ?? '' }}"
                                                                     title="{{ $items->title ?? '' }}"></figure>
 
+                                                                    <div class="text-scroll"> 
+
                                                             <h4>
                                                                 @if (GetLang() == 'en')
                                                                     {{ $items->title ?? '' }}
@@ -715,7 +720,7 @@
                                                             </p>
                                                         </div>
 
-
+                                                        </div>
 
                                                     </a>
 
@@ -802,6 +807,7 @@
                                                                 alt="{{ $items->title ?? '' }}"
                                                                 title="{{ $items->title ?? '' }}"></figure>
 
+                                                                <div class="text-scroll"> 
                                                         <h4>
                                                             @if (GetLang() == 'en')
                                                                 {{ $items->title ?? '' }}
@@ -818,7 +824,7 @@
                                                         </p>
 
                                                     </div>
-
+                                                    </div>
 
 
                                                 </a>

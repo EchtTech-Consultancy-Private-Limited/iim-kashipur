@@ -853,6 +853,7 @@
                                                         alt="{{ $items->title ?? '' }}"
                                                         title="{{ $items->title ?? '' }}"></figure><br>
 
+                                                        <div class="text-scroll"> 
                                                 <h4>
                                                     @if (GetLang() == 'en')
                                                         {{ $items->title ?? '' }}
@@ -866,7 +867,7 @@
                                             @else
                                                 {{ $items->designation_h ?? '' }}
                                             @endif
-
+                                        </div>
                                         </div>
 
                                     </div>
@@ -878,12 +879,6 @@
 
 
                     </div>
-
-
-
-
-
-
 
                     <a href="javascript:void(0)" class="btn2 margin_bottom">Secretary to the Board</a><br>
 

@@ -704,7 +704,7 @@
                                         <figure><img src="{{ asset('uploads/organisation/' . $membersLists->image) }}"
                                                 alt="{{ $membersLists->title ?? '' }}"
                                                 title="{{ $membersLists->title ?? '' }}"></figure>
-
+                                                <div class="text-scroll"> 
                                         <h4>
                                             @if (GetLang() == 'en')
                                                 {{ $membersLists->title ?? '' }}
@@ -719,7 +719,7 @@
                                                 {{ $membersLists->designation_h ?? '' }}
                                             @endif
                                         </p>
-
+                                                </div>
                                     </div>
 
 

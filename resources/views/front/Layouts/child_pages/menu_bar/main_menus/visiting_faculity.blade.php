@@ -416,7 +416,7 @@
                                                                     src="{{ asset('uploads/organisation/' . $items->image) }}"
                                                                     alt="{{ $items->title ?? '' }}"
                                                                     title="{{ $items->title ?? '' }}"></figure>
-
+                                                                    <div class="text-scroll"> 
                                                             <h4>
                                                                 @if (GetLang() == 'en')
                                                                     {{ $items->title ?? '' }}
@@ -432,7 +432,7 @@
                                                                 @endif
                                                             </p>
                                                         </div>
-
+                                                        </div>
 
 
                                                     </a>
@@ -683,6 +683,7 @@
                                                                     alt="{{ $items->title ?? '' }}"
                                                                     title="{{ $items->title ?? '' }}"></figure>
 
+                                                                    <div class="text-scroll"> 
                                                             <h4>
                                                                 @if (GetLang() == 'en')
                                                                     {{ $items->title ?? '' }}
@@ -704,6 +705,7 @@
                                                                     @endif
                                                                 @endif
                                                             </p>
+                                                                    </div>
                                                         </div>
 
 
@@ -792,7 +794,7 @@
                                                                 src="{{ asset('uploads/organisation/' . $items->image) }}"
                                                                 alt="{{ $items->title ?? '' }}"
                                                                 title="{{ $items->title ?? '' }}"></figure>
-
+                                                                <div class="text-scroll"> 
                                                         <h4>
                                                             @if (GetLang() == 'en')
                                                                 {{ $items->title ?? '' }}
@@ -807,7 +809,7 @@
                                                                 {{ $items->designation_h ?? '' }}
                                                             @endif
                                                         </p>
-
+                                                                </div>
                                                     </div>
 
 

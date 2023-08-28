@@ -805,10 +805,11 @@
                                         <img src="{{asset('uploads/organisation/'.$items->image) ?? ''}}" alt="{{ $items->title ?? '' }}" title="{{ $items->title ?? '' }}">
                                     </div>
 
+                                    <div class="text-scroll"> 
                                     <h5> @if(GetLang()=='en') {{ $items->title ?? '' }}  @else {{ $items->title_h ?? '' }}  @endif</h5>
 
                                   <h6>  @if(GetLang()=='en') {{ $items->designation ?? '' }}  @else {{ $items->designation_h ?? '' }}  @endif </h6>
-
+                                    </div>
 
 
                                         </div>
