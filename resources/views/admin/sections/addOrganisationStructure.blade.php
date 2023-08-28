@@ -266,11 +266,13 @@
                                     <option value="7"  {{ ($data->department==7) ? 'selected' : '' }} >Visiting Faculty</option>
                                     <option value="8"  {{ ($data->department==8) ? 'selected' : '' }} >International Relations Chairperson </option>
                                     <option value="9"  {{ ($data->department==9) ? 'selected' : '' }} >International Relations SENIOR MEMBERS </option>
-                                    <option value="10"  {{ ($data->department==10) ? 'selected' : '' }} >TESTIMONIALS </option>
+                                    <option value="10"  {{ ($data->department==10) ? 'selected' : '' }} >MBA Testimonials</option>
+                                    <option value="16"  {{ ($data->department==16) ? 'selected' : '' }} >MBA(analytics)Testimonials</option>
                                     <option value="11"  {{ ($data->department==11) ? 'selected' : '' }} >Placement(The Team) Chairperson </option>
                                     <option value="12"  {{ ($data->department==12) ? 'selected' : '' }} >Placement(The Team) Administrative </option>
                                     <option value="13"  {{ ($data->department==13) ? 'selected' : '' }} >Placement(The Team)  Student Coordinator </option>
-                                    <option value="14"  {{ ($data->department==14) ? 'selected' : '' }} >CORPORATE INTERACTIONS</option>
+                                    <option value="14"  {{ ($data->department==14) ? 'selected' : '' }} >Corporate Interactions</option>
+                                    <option value="15"  {{ ($data->department==15) ? 'selected' : '' }} >Alumni(The Team)</option>
 
                             </select>
 
@@ -566,10 +568,17 @@
 
 
 
+
+                    <div class="col-md-6">
+                        <div class="form-group"> <label for="form_name"> Video Url</label> <input id="form_name" type="url" name="video_url" @if($id) value="{{$data->video_url}}" @else value="{{old('video_url')}}" @endif class="form-control" placeholder="Please enter video url link ie. https://example.com "> </div>
+                    </div>
+
+                    <div class="col-md-6">
+                        <div class="form-group"> <label for="form_name"> Video Title</label> <input id="form_name" type="text" name="video_title" @if($id) value="{{$data->video_title}}" @else value="{{old('video_title')}}" @endif class="form-control" placeholder="Please enter Video title"  > </div>
+                    </div>
+
+
 {{-- google scholar --}}
-
-
-
 
                     <div class="col-md-6">
                         <div class="form-group"> <label for="form_name"> Social Media Link [Instagram]</label> <input id="form_name" type="text" name="instagram" @if($id) value="{{$data->instagram}}" @else value="{{old('instagram')}}" @endif class="form-control" placeholder="Please enter instagram link ie. https://example.com "  > </div>

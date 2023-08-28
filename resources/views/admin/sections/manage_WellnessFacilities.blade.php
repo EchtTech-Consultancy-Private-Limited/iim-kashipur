@@ -60,7 +60,7 @@
 
                                                 <tr>
 
-                                                    <th>S.No#</th>
+                                                    <th>Sr.No#</th>
 
                                                     <th>name</th>
 

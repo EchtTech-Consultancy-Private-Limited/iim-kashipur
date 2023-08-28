@@ -657,9 +657,11 @@
 
                             @csrf
 
+                              <label>Area</label>
+
                              <select name="dp" class="form-control" onchange="javascript:$('#frmtypes').submit();" style="padding:10px 15px 9px ">
 
-                                <option value="">Filter Deparment </option>
+                                <option value="">Any</option>
 
                                 @foreach($departments as $k=>$v)
 
@@ -713,9 +715,17 @@
 
                                     <h4> @if(GetLang()=='en') {{ $items->title  ?? ''}}  @else {{ $items->title_h  ?? ''}}  @endif</h4>
 
+
+
+
                                     <p> @if(GetLang()=='en') {{ $items->designation ?? '' }}  @else {{ $items->designation_h ?? '' }}  @endif</p>
+
+                                    <p> @if(GetLang()=='en') {{ $items->more_designation  ?? ''}}  @else {{ $items->more_designation  ?? ''}}  @endif</p>
+
+
                                     <p> @if(GetLang()=='en')  @if(isset($items->id))   <?php echo get_dept_name($items->id); ?> @endif @endif</p>
-                                </div>
+
+                                          </div>
 
 
 

@@ -119,6 +119,8 @@
                                                 English</option>
                                             <option value="hi" @if (GetLang() == 'hi') selected @endif>
                                                 Hindi</option>
+
+
                                         </select>
                                     </div>
 
@@ -325,7 +327,7 @@
                                                     </a></li>
                                             @else
                                                 <li class="dropdown-item"><a
-                                                        href="{{ url($M->slug . '/' . $S->slug) }}">
+                                                        href="{{ url($M->slug .'/'.$S->slug) }}">
                                                         @if (GetLang() == 'en')
                                                             {{ $S->name }}
                                                         @else
