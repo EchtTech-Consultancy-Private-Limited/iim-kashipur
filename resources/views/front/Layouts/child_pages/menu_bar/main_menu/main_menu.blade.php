@@ -329,7 +329,7 @@
 
                             @foreach (GetSubMenusFront($type[0]->menu_id) as $key1 => $S)
                                 <ul>
-                                  
+
                                     @if (count(GetchildMenusFront($type[0]->menu_id, $S->id)) > 0)
                                         <li class="hasnested @if ($S->id  == $sub[0]->id)opened @endif">
                                             <a @if ($S->id == $type[0]->id) class="active" @endif
@@ -784,12 +784,21 @@
                                                                 {{ $membersLists->designation_h ?? '' }}
                                                             @endif
                                                         </p>
+                                                    </a>
+                                                        <span>
+                                                            @if (GetLang() == 'en')
+                                                                {{ $membersLists->more_designation ?? '' }}
+                                                            @else
+                                                                {{ $membersLists->more_designation ?? '' }}
+                                                            @endif
+                                                        </span><br>
+
+
+
 
                                                     </div>
 
 
-
-                                                </a>
 
                                         </div>
                                     @endforeach

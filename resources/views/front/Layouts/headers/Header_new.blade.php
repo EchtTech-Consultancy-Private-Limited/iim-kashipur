@@ -112,7 +112,7 @@
                                     </div>
                                 </li>
                                 <li>
-                        
+
                                     <div class="select-wrap" tabindex="0">
                                         <select class="form-select" onchange="javascript:setlang(value);" tabindex="0">
                                             <option value="en" @if (GetLang() == 'en') selected @endif>
@@ -327,7 +327,7 @@
                                                     </a></li>
                                             @else
                                                 <li class="dropdown-item"><a
-                                                        href="{{ url($M->slug . '/' . $S->slug) }}">
+                                                        href="{{ url($M->slug .'/'.$S->slug) }}">
                                                         @if (GetLang() == 'en')
                                                             {{ $S->name }}
                                                         @else

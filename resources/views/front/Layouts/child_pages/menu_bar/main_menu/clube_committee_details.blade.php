@@ -1515,10 +1515,6 @@
                             <div class="excellence-wrap event-text mb-3 mt-4">
                                 <div class="container p-0">
                                     <div class="row">
-
-
-
-
                                         <!-- Multiple Image Popup -->
                                         <div id="gallery-1" class="hidden">
                                             @foreach ($data as $k=>$datas)

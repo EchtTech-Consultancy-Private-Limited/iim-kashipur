@@ -77,10 +77,8 @@ function View_OrganisationStructure(Request $request){
    if(!empty($request->dp))$data=OrganisationStructure::where('organisation_structures.department',$request->dp)->orderby('id','Desc')->paginate(10);
    else $data=OrganisationStructure::orderby('id','Desc')->paginate(10);
 
-   $departments=['0'=>'Filter Department','1'=>'Director','2'=>'Chairperson','3'=>'Members','4'=>'Secretary to the Board','6'=>'Faculty Directory','7'=>'Visiting Faculty','8'=>'International Relations Chairperson','9'=>'International Relations SENIOR MEMBERS'];
-
+   $departments=['0'=>'Filter Department','1'=>'Director','2'=>'Chairperson','3'=>'Members','4'=>'Secretary to the Board','6'=>'Faculty Directory','7'=>'Visiting Faculty','8'=>'International Relations Chairperson','9'=>'International Relations SENIOR MEMBERS'  ,'10'=>'MBA Testimonials','16'=>'MBA(analytics)Testimonials','16'=>'Placement(The Team) Chairperson','12'=>'Placement(The Team) Administrative','13'=>'Placement(The Team)  Student Coordinator ','14'=>'Corporate Interactions','15'=>'Alumni(The Team)'];
    $data->appends(['dp' => $request->dp]);
-
 
    return view('admin.sections.OrganisationStructure',compact('data','departments'));
 }
@@ -169,6 +167,11 @@ function Add_OrganisationStructure(Request $request,$id=null){
       //social mediea links
        $data->slug=SlugCheck('organisation_structures',($request->title));
        $data->status= $request->status;
+
+
+       $data->video_url= $request->video_url;
+       $data->video_title= $request->video_title;
+
        $data->instagram= $request->instagram;
        $data->Instagram_title= $request->Instagram_title;
        $data->Facebook= $request->Facebook;
@@ -696,14 +699,14 @@ function Add_childMenu(Request $request,$id=null){
     if($request->isMethod('post')){
         if(!$id){
         $request->validate([
-            //'name'=>'required|unique:child_menus',
+            'name'=>'required|unique:child_menus',
             'name'=>'required',
             'menu_id'=>'required',
 
           ]);}
         else{
         $request->validate([
-            'name'=>'required|unique:child_menus',
+            'name'=>'required',
             'menu_id'=>'required',
         ]);
         }
