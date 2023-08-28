@@ -423,11 +423,10 @@
 
 
 
-
                                 </div>
 
                             </div>
-                            <div class="col-md-7 col-lg-8">
+                            {{-- <div class="col-md-7 col-lg-8">
                                 <p>
                                     @if (GetLang() == 'en')
                                         {!! $items->description ?? '' !!}
@@ -435,7 +434,7 @@
                                         {!! $items->description_h ?? '' !!}
                                     @endif
                                 </p>
-                            </div>
+                            </div> --}}
                     @endif
                 @endforeach
 
@@ -473,6 +472,7 @@
                                         {{ $items->title_h ?? '' }}
                                     @endif
                                 </h4>
+
                                 @if (GetLang() == 'en')
                                     {{ $items->designation ?? '' }}
                                 @else
@@ -794,6 +794,12 @@
                                                         @else
                                                             {{ $items->designation_h ?? '' }}
                                                         @endif
+                                                    </h6>
+
+                                                    <h6>
+
+                                                            {{ $items->more_designation ?? '' }}
+
                                                     </h6>
 
                                                 </a>
