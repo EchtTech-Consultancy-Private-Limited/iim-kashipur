@@ -100,15 +100,12 @@
                                 <label for="inputText" class="col-form-label">Chairperson*</label>
                                 <div class="">
 
-
                                     <select class="form-control" name="chairperson" disabled >
                                         <option value=""> Select Type </option>
                                         @foreach ($profile as $profiles )
                                         <option  value="{{$profiles->id }}" {{$profiles->id == $data->chairperson  ? 'selected' : ''}}>{{$profiles->title}}</option>
                                         @endforeach
-
                                     </select>
-
 
                                 </div>
                             </div>
@@ -117,22 +114,14 @@
                             <div class="col-md-6">
                                 <label for="inputText" class="col-form-label">Placement*</label>
                                 <div class="">
-
                                     <select class="form-control" name="Placement" disabled >
                                         <option value=""> Select Type </option>
                                         @foreach ($profile as $profiles )
                                         <option  value="{{$profiles->id }}" {{$profiles->id == $data->placement  ? 'selected' : ''}}>{{$profiles->title}}</option>
                                         @endforeach
-
                                     </select>
-
-
                                 </div>
                             </div>
-
-
-
-
 
                             <div class="col-md-12">
                                 <label for="about_details" class="col-form-label">About Details</label>
@@ -163,15 +152,10 @@
                             <div class="col-md-12">
                                 <label for="inputText" class="col-form-label">Banner Image</label>
                                 <div class="">
-                                    <input type="file" class="form-control" name="bannerimage"
-                                        placeholder="Please browse banner image" accept=".jpeg,.jpg,.gif,.png"><br>
-
-                             <img src="{{ asset('page/banner/' . $data->bannerimage) }}" style="width:100%" />
-
+                                    <input type="file" class="form-control" name="bannerimage" placeholder="Please browse banner image" accept=".jpeg,.jpg,.gif,.png">
+                                    <br>
+                                    <img src="{{ asset('page/banner/' . $data->bannerimage) }}" style="width:100%" />
                                 </div>
-
-                               
-
                             </div>
 
                             <div class="col-md-6">
@@ -179,7 +163,6 @@
                                 <div class="">
                                     <input type="text" class="form-control" name="banner_title" {{$data->banner_title}} readonly
                                         placeholder="Please enter text for title of banner photo, use for seo">
-
                                 </div>
                             </div>
 
@@ -188,8 +171,7 @@
                                 <label for="inputText" class="col-form-label">Banner Alt </label>
                                 <div class="6">
                                     <input type="text" class="form-control" name="banner_alt" {{$data->banner_alt}}  readonly
-                                        placeholder="Please enter text for alt of banner photo, use for seo"
-                                        >
+                                        placeholder="Please enter text for alt of banner photo, use for seo">
                                 </div>
                             </div>
 

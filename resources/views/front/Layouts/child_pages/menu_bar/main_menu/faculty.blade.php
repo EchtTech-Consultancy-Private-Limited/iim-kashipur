@@ -422,10 +422,13 @@
 
                                         </figure>
 
+                                       <div class="text-scroll"> 
+                                    
                                         <h4> @if(GetLang()=='en') {{ $items->title  ?? ''}}  @else {{ $items->title_h  ?? ''}}  @endif</h4>
 
                                         <p> @if(GetLang()=='en') {{ $items->designation ?? '' }}  @else {{ $items->designation_h ?? '' }}  @endif</p>
 
+                                    </div>
                                     </div>
 
 
@@ -713,11 +716,9 @@
 
                                     </figure>
 
+                                    <div class="text-scroll"> 
+
                                     <h4> @if(GetLang()=='en') {{ $items->title  ?? ''}}  @else {{ $items->title_h  ?? ''}}  @endif</h4>
-
-
-
-
                                     <p> @if(GetLang()=='en') {{ $items->designation ?? '' }}  @else {{ $items->designation_h ?? '' }}  @endif</p>
 
                                     <p> @if(GetLang()=='en') {{ $items->more_designation  ?? ''}}  @else {{ $items->more_designation  ?? ''}}  @endif</p>
@@ -726,7 +727,7 @@
                                     <p> @if(GetLang()=='en')  @if(isset($items->id))   <?php echo get_dept_name($items->id); ?> @endif @endif</p>
 
                                           </div>
-
+                                </div>
 
 
                                  </a>
@@ -818,6 +819,8 @@
                                                             alt="{{ $items->title ?? '' }}"
                                                             title="{{ $items->title ?? '' }}"></figure>
 
+                                                            <div class="text-scroll"> 
+
                                                     <h4>
                                                         @if (GetLang() == 'en')
                                                             {{ $items->title ?? '' }}
@@ -835,7 +838,7 @@
 
                                                 </div>
 
-
+                                                </div>
 
                                             </a>
 
