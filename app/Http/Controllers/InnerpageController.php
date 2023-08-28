@@ -1689,8 +1689,8 @@ public function screen_reader_access()
 
         elseif($type[0]->url == '/placement-committee')
         {
-
                     $item=commmittee::wherestatus('1')->wheretype('2')->get();
+
                     if(count($type)>0){
                     $data=SubMenu::whereslug($slug)->get();
                     $type=SubMenu::whereslug($slug)->get();
@@ -2224,6 +2224,8 @@ public function Child_barInnerpage($main_slug,$Sub_slug,$slug) //content page
 
             }
             elseif(isset($data[0]) && $data[0]->tpl_id == 13){     //mba analytics testionials
+
+
                 $item=OrganisationStructure::where('department',16)->paginate(9);
 
                 if(count($item)>0){

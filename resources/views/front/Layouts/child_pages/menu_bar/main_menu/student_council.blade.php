@@ -943,7 +943,7 @@
                                     </div>
                                     <div class="col-md-9">
                                         <div class="designation">
-                                            <h4>{{ $chairperson[0]->designation ?? '' }} </h6>
+                                                <h6>{{ $chairperson[0]->designation ?? '' }} </h6>
                                                 <h6>{{ $chairperson[0]->title ?? '' }} </h6>
                                                 <h6>{{ $chairperson[0]->phone ?? '' }} </h6>
 
@@ -987,6 +987,7 @@
                                                                                 loading="lazy">
                                                                             <div class="top-text">
                                                                                 {{ $chairperson->title  ??''}}
+                                                                                <h6>{{ $chairperson->designation ?? '' }} </h6>
                                                                                 {{-- <br>
 
                                                                               <span style="font-size: 12px;color:#000">

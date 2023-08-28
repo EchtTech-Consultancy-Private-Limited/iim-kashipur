@@ -1092,29 +1092,50 @@
                             </div>
 
 
+
+
 <div class="excellence-gallery partnership-img mt-3">
     <div class="row masonry-grid">
 
-        @foreach ($data as $datas)
-        <div class="col-md-4">
+        @if (count($data) > 0)
+        <h5>
+            <span>Events Images</span>
+        </h5>
 
-            <div class="multi-image-popup">
-                <a href="https://iim.staggings.in/uploads/header_top/168690759793.jpg" class="image-link">
-                    <img
-                        src="https://iim.staggings.in/uploads/header_top/168690759793.jpg" />
-                </a>
+        <div class="excellence-wrap event-text mb-3 mt-4">
+            <div class="container p-0">
+                <div class="row">
+                    <!-- Multiple Image Popup -->
+                    <div id="gallery-1" class="hidden">
+                        @foreach ($data as $k=>$datas)
+                        <a href="{{ asset('uploads/multiple/club/' . $datas->image) ?? '' }}"></a>
+                        @endforeach
+                    </div>
+
+                    @foreach ($data as $k=>$datas)
+                    @if($k == '1')
+                        <div class="col-md-3">
+
+                            <div class="multi-image-popup p-relative">
+                                <a href="#gallery-1" class="btn-gallery multi-card">
+                                    <div class="card1"></div>
+                                    <div class="card3"></div>
+                                    <div class="card4"></div>
+                                    <div class="card5"></div>
+                                    <img src="{{ asset('uploads/multiple/club/' . $datas->image) ?? '' }}" />
+                                </a>
+                            </div>
+
+
+
+                        </div>
+                        @endif
+                    @endforeach
+
+
+                </div>
             </div>
-
-            <!-- Multiple Image Popup -->
-            <div id="gallery-1" class="hidden">
-                <a
-                    href="https://images.unsplash.com/photo-1462774603919-1d8087e62cad?ixlib=rb-0.3.5&q=80&fm=jpg&crop=entropy&s=0ebd884b4d6ac379f42146a2b26fbf2e">Image
-                    1</a>
-            </div>
-
-
-        </div>
-    @endforeach
+    @endif
 
     </div>
 </div>
@@ -1422,8 +1443,24 @@
             });
 
 
+$('a.btn-gallery').on('click', function(event) {
+    event.preventDefault();
 
-        });
+    var gallery = $(this).attr('href');
+
+    $(gallery).magnificPopup({
+  delegate: 'a',
+        type:'image',
+        gallery: {
+            enabled: true
+        }
+    }).magnificPopup('open');
+});
+
+});
+
+
+
     </script>
 
 @endsection

@@ -168,7 +168,7 @@ public function Add_Edit_journalPublications(Request $request,$id=null)
         if($request->isMethod('post')){
             if(!$id){
                 $request->validate([
-                'title'=>'required|unique:journal_publications',
+               // 'title'=>'required|unique:journal_publications',
 
                 ]);}
             else{
@@ -354,9 +354,9 @@ return view('admin.sections.view_StudentConsil',['data'=>$data]);
       $request->validate(
 
           [
-
-            'filename'=>'max:5120|mimes:png,jpg|dimensions:max_width=1920,min_width=1920,max_height=500,min_height=500',
-            'image_title'=>'required|unique:wellness_facilitie_images',
+            'filename'=>'mimes:png,jpg',
+          // 'filename'=>'max:5120|mimes:png,jpg|dimensions:max_width=1920,min_width=1920,max_height=500,min_height=500',
+          // 'image_title'=>'required|unique:wellness_facilitie_images',
 
           ]
 
@@ -388,9 +388,9 @@ return view('admin.sections.view_StudentConsil',['data'=>$data]);
   {
      $request->validate(
         [
-
-            'filename'=>'max:5120|mimes:png,jpg|dimensions:max_width=1920,min_width=1920,max_height=500,min_height=500',
-            'image_title'=>'required',
+            'filename'=>'mimes:png,jpg',
+           // 'filename'=>'max:5120|mimes:png,jpg|dimensions:max_width=1920,min_width=1920,max_height=500,min_height=500',
+           // 'image_title'=>'required',
 
         ]
        );

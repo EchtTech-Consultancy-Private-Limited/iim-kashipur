@@ -28,6 +28,7 @@
 
         <div class="content-wrapper">
 
+
             @if (Session::has('success'))
                 <div class="alert alert-success col-md-12 text-center">
 
@@ -194,6 +195,9 @@
 
                     <div class="modal-body pb-0">
 
+
+
+
                         <form role="form" id="regForm" action="{{ url('Accounts/Add-Wellness-image') }}" method="post"
                             class="registration-form row" enctype="multipart/form-data" novalidate="novalidate">
                             @csrf
@@ -331,6 +335,8 @@ aria-labelledby="exampleModalLabel"  aria-hidden="true">
 
         <div class="modal-body">
 
+
+
             <form action="" id="form" method="post" class="registration-form row"
             enctype="multipart/form-data">
 
@@ -441,6 +447,23 @@ aria-labelledby="exampleModalLabel"  aria-hidden="true">
                     </div>
 
                     <div class="modal-body">
+
+
+                        @if (Session::has('success'))
+                        <div class="alert alert-success col-md-12 text-center">
+
+                            <strong>Success!</strong> {{ Session::get('success') }}
+
+                        </div>
+                    @endif
+
+                    @if (Session::has('error'))
+                        <div class="alert alert-danger col-md-12 text-center">
+
+                            <strong>Oops!</strong> {{ Session::get('error') }}
+
+                        </div>
+                    @endif
 
                         <form action="" id="form" method="post" class="registration-form row"
                         enctype="multipart/form-data">
