@@ -253,6 +253,16 @@
                         <li><a href="{{ URL::previous() }}"><span>Academic Areas</span></a></li>
                         <li><a href="{{ URL::previous() }}"><span>Strategy</span></a></li>
 
+                    @elseif(URL::previous() == url('academics/mba/mba-testimonial'))
+                        <li><a href="{{ url('/') }}"><span>Academics</span></a></li>
+                        <li><a href="{{ URL::previous() }}"><span>MBA</span></a></li>
+                        <li><a href="{{ URL::previous() }}"><span>MBA Testimonial</span></a></li>
+                    @elseif(URL::previous() == url('academics/mba-analytics/mba-analytics-testimonials'))
+                        <li><a href="{{ url('/') }}"><span>Academics</span></a></li>
+                        <li><a href="{{ URL::previous() }}"><span>MBA Analytics</span></a></li>
+                         <li><a href="{{ URL::previous() }}"><span>MBA Analytics Testimonials</span></a></li>
+
+
                     @endif
 
                     <li><span>

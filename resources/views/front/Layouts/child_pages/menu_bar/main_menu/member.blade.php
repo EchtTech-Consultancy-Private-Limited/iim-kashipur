@@ -765,7 +765,7 @@
                 </div>
 
 
-
+                   <h5>{{ $item[0]->video_title}}</h5>
 
             @if($item[0]->video_url  != '')
 
