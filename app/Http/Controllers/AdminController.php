@@ -75,7 +75,7 @@ class AdminController extends Controller
 
 
 function View_OrganisationStructure(Request $request){
-    dd($request->dp);
+  //  dd($request->dp);
    if(!empty($request->dp))
    $data=OrganisationStructure::where('organisation_structures.department',$request->dp)->orderby('id','Desc')->paginate(10);
    else
