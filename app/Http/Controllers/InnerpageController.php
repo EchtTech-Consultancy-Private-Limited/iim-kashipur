@@ -1767,7 +1767,9 @@ public function screen_reader_access()
                 $item=journal_publication::wherestatus('1')->whereYear('year',$request->year)->paginate(10);
             }else{
                 $item=journal_publication::wherestatus('1')->paginate(10);
+
             }
+            $item->appends(['year' => $request->year]);
             $type=SubMenu::whereslug($slug)->get();
             if(count($type)>0){
            return view('front.Layouts.child_pages.menu_bar.main_menu.journal_publications',['item'=>$item,'sub_menu'=>$sub_menu,'type'=>$type,'data'=>$data]);
