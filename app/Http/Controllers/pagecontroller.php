@@ -36,6 +36,7 @@ class pagecontroller extends Controller
     }
 
     public function Add_Content_Submit(Request $request){
+
     $request->validate(
     [
     'name'         =>        'required|unique:content_pages',
@@ -91,6 +92,10 @@ class pagecontroller extends Controller
     $e->meta_keywords=$request->keyword;
     $e->meta_description=$request->description ;
     $e->banner_title=$request->banner_title;
+
+    $e->video_url= $request->video_url;
+    $e->video_title= $request->video_title;
+
     $e->banner_alt=$request->banner_alt;
     $e->cover_title=$request->cover_title;
     $e->cover_alt=$request->cover_alt;
@@ -124,6 +129,8 @@ class pagecontroller extends Controller
     }
 
     public function Update_Content_Submit(Request $request ,$id){
+
+        dd($request->all());
 
     $request->validate(
     [
@@ -207,6 +214,10 @@ class pagecontroller extends Controller
         $u->delete_range=$request->delete_range;
         $u->parent_id=$request-> parent_id;
         $u->slug=\Str::slug($request->name);
+
+
+        $u->video_url= $request->video_url;
+        $u->video_title= $request->video_title;
 
 
         if($request->hasfile('bannerimage'))

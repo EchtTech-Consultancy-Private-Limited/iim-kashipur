@@ -296,6 +296,12 @@ Route::get("/student-council",[menuFormController::class,'View_studentCouncil'])
 Route::match(['get','post'],'add-edit-Student-Council/{id?}',[menuFormController::class,'Add_Edit_StudentCouncil'])->name('aadstudentcouncil');
 Route::get('delete-studentcouncil/{id}',[menuFormController::class,'Delete_StudentCouncil']);
 
+//Dissertation
+Route::get("/dissertation-api",[AdminController::class,'dissertation_api']);
+Route::get("/dissertation-view/{id?}",[menuFormController::class,'Show_dissertation']);
+Route::get("/dissertation",[menuFormController::class,'View_dissertation']);
+Route::match(['get','post'],'add-edit-dissertation/{id?}',[menuFormController::class,'Add_Edit_dissertation'])->name('aaddissertation');
+Route::get('delete-dissertation/{id}',[menuFormController::class,'Delete_dissertation']);
 
 //journal-publications
 Route::get("/journal-publications",[menuFormController::class,'View_journalPublications']);

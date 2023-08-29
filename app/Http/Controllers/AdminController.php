@@ -10,6 +10,7 @@ use App\Models\FunctionList;
 use App\Models\child_menu;
 use App\Models\Org;
 use App\Models\BannerSlider;
+use App\Models\dissertation;
 use App\Models\slider_detail;
 use App\Models\SiteSetting;
 use App\Models\MainMenu;
@@ -296,6 +297,14 @@ public function childmenushow(Request $request){
 
     return response()->json(['data'=>$data]);
     }
+
+
+    public function dissertation_api(){
+        $data=dissertation::get();
+        return response()->json(['data'=>$data]);
+    }
+
+
     function Menu_StatusChange($type,$id,$status){
 
         if($type=='menu'){

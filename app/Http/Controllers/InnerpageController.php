@@ -12,6 +12,7 @@ use App\Models\video_gallery_tittle;
 use App\Models\feedback;
 use App\Models\StudentProfile;
 use App\Models\photo_gallery_image;
+use App\Models\dissertation;
 use App\Models\OrganisationStructure;
 use App\Models\multiple_profile;
 use Illuminate\Http\Request;
@@ -2031,8 +2032,6 @@ public function Child_barInnerpage($main_slug,$Sub_slug,$slug) //content page
 
     $data=child_menu::whereslug($slug)->get();
 
-
-
     if(Count($data)>0){
 
         if($slug=="student-profiles")
@@ -2290,6 +2289,19 @@ public function Child_barInnerpage($main_slug,$Sub_slug,$slug) //content page
                 $type_child=child_menu::whereslug($slug)->get();
                 return view('front.Layouts.child_pages.menu_bar.main_menu.master',['value'=>$value,'item'=>$item,'type_sub'=>$type_sub,'type_child'=>$type_child,'gets'=>$gets,'get'=>$get]);
                 }
+
+        }elseif($data[0]->url == '/dissertation'){
+
+            $item=dissertation::where('status',1)->get();
+            if(Count($item)>0){
+                $type_sub=child_menu::whereslug($slug)->get();
+                $gets=SubMenu::whereid($type_sub[0]->sub_id)->get();
+                $get=MainMenu::whereid($type_sub[0]->menu_id)->get();
+                $type_child=child_menu::whereslug($slug)->get();
+            return view('front.Layouts.child_pages.menu_bar.main_menu.dissertation',['item'=>$item,'type_sub'=>$type_sub,'type_child'=>$type_child,'gets'=>$gets,'get'=>$get]);
+            }else{
+                return abort(401);
+            }
 
         }elseif($data[0]->url == '/video-gallery')
         {

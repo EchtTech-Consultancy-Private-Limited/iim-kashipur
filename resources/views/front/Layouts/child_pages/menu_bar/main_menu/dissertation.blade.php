@@ -5,8 +5,6 @@
         $mmenu = @content_menus($type[0]->menu_id);
     @endphp
 
-
-
     {{-- banner and  breadcrumbs   --}}
 
     @if (isset($get))
@@ -374,111 +372,43 @@
         @else
             <div class="innerpagecontent">
                 <h3>
-                    <span>Club, Committee and Cells</span>
+                @if (GetLang() == 'en')
+                    {{ $type_child[0]->name ?? '' }}
+                @else
+                    {{ $type_child[0]->name_h ?? '' }}
+                @endif
                 </h3>
-                <div class="commontxt">
-                    <div class="row">
 
-                        <div class="col-md-12 col-lg-12">
-                            <h3 class="user-icon">
-                                <span><i class="fa fa-users"></i> Clubs</span>
-                            </h3>
-                        </div>
+                <table>
+                    <tr>
+                      <th>#Sr.no</th>
+                      <th>photo</th>
+                      <th>NAME</th>
+                      <th>BATCH</th>
+                      <th>TOPIC</th>
+                      <th>SUPERVISOR</th>
+                    </tr>
 
-                        <div class="col-md-6 mt-4 pr-lg-0">
-                            <h2 class="heading-light h-club-box">
-                                ACADEMIC CLUBS
-                            </h2>
-                            <div class="border-club-left">
-                                <div class="box-club">
-                                    @foreach ($data as $items)
-                                        @if ($items->type == '0')
-                                            <div class="box-content">
-                                                <img src="{{ asset('uploads/club/' . $items->image) ?? '' }}"
-                                                    title="Club img" alt="club">
-                                                <h4 class="box-text"> <a
-                                                        href="{{ url($items->slug) }}">{{ $items->title }}</a> </h4>
-                                            </div>
-                                        @endif
-                                    @endforeach
-                                </div>
-                            </div>
-                        </div>
+                    @if(count($item))
 
-                        <div class="col-md-6 mt-4 pl-lg-0">
-                            <h2 class="heading-light h-club-box">
-                                NON-ACADEMIC CLUBS
-                            </h2>
-                            <div class="border-club-right">
-                                <div class="box-club">
-
-                                    @foreach ($data as $items)
-                                        @if ($items->type == '1')
-                                            <div class="box-content">
-                                                <img src="{{ asset('uploads/club/' . $items->image) ?? '' }}"
-                                                    title="Club img" alt="club">
-                                                <h4 class="box-text"> <a
-                                                        href="{{ url($items->slug) }}">{{ $items->title }}</a> </h4>
-                                            </div>
-                                        @endif
-                                    @endforeach
-                                </div>
-                            </div>
-                        </div>
-
-
-                        <div class="col-md-12 col-lg-12 mt-5 pt-4">
-                            <h3 class="user-icon">
-                                <span><i class="fa fa-users"></i> Committee</span>
-                            </h3>
-                        </div>
-
-                        <div class="col-md-12 mt-2">
-
-                            <div class="border-club">
-                                <div class="box-club single">
-
-                                    @foreach ($data1 as $item1)
-                                        <div class="box-content width-5">
-                                            <img src="{{ asset('uploads/Commmittee/' . $item1->image) ?? '' }}"
-                                                title="Club img" alt="club">
-                                            <h4 class="box-text"> <a
-                                                    href="{{ url($item1->slug) }}">{{ $item1->title }}</a> </h4>
-                                        </div>
-                                    @endforeach
-
-
-                                </div>
-                            </div>
-                        </div>
-
-
-                        <div class="col-md-12 col-lg-12 mt-5 pt-4">
-                            <h3 class="user-icon">
-                                <span><i class="fa fa-users"></i> Cells</span>
-                            </h3>
-                        </div>
-
-                        <div class="col-md-12 mt-2">
-
-                            <div class="border-club">
-                                <div class="box-club single">
-
-                                    @foreach ($data2 as $item2)
-                                        <div class="box-content width-5">
-                                            <img src="{{ asset('uploads/cell/' . $item2->image) ?? '' }}" title="Club img"
-                                                alt="club">
-                                            <h4 class="box-text"> <a
-                                                    href="{{ url($item2->slug) }}">{{ $item2->title }}</a> </h4>
-                                        </div>
-                                    @endforeach
-
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
+                    @foreach ($item as $k=>$items)
+                    <tr>
+                      <td>{{ $k +1 }}</td>
+                      <td class="text-center">
+                         @if ($items->file != '')
+                          <img src={{ asset('uploads/dissertation/'.$items->file)}} title="{{ $items->image_title }}" style="width:100px">
+                         @else
+                          <img src="{{ asset('admin/images/faces/default.jpg') }}" style="width:100px">
+                         @endif
+                      </td>
+                      <td>{{ $items->name }}</td>
+                      <td>{{ $items->Batch }}</td>
+                      <td>{{ $items->Topic }}</td>
+                      <td>{{ $items->Supervisor }}</td>
+                    </tr>
+                    @endforeach
+                   @endif
+                  </table>
 
             </div>
     </div>
@@ -662,11 +592,14 @@
                         <div class="innerpagecontent">
                             <h3>
 
-                            @if (GetLang() == 'en')
+
+                                @if (GetLang() == 'en')
                                 {{ $type[0]->name ?? '' }}
                             @else
                                 {{ $type[0]->name_h ?? '' }}
                             @endif
+
+
 
                             </h3>
                             <div class="commontxt">
@@ -864,6 +797,9 @@
 
 
     @endif
+
+
+
 
 @endsection
 
