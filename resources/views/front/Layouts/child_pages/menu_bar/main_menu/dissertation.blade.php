@@ -383,10 +383,10 @@
                     <tr>
                       <th>#Sr.no</th>
                       <th>photo</th>
-                      <th>NAME</th>
-                      <th>BATCH</th>
-                      <th>TOPIC</th>
-                      <th>SUPERVISOR</th>
+                      <th>Name</th>
+                      <th>Batch</th>
+                      <th>Topic</th>
+                      <th>Supervisor</th>
                     </tr>
 
                     @if(count($item))
