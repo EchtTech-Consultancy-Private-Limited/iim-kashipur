@@ -1161,4 +1161,41 @@ $("#url").change(function(e) {
         }
     });
 </script>
+
+{{-- -------------------------------------------- dissertation ----------------------------------------------------------- --}}
+<script>
+    $("#url").change(function(e) {
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+        });
+
+        var data3 = $("#url").val();
+
+        if (data3 == 'dissertation') {
+
+            $.ajax({
+                url: "{{ url('Accounts/dissertation-api') }}",
+                type: "get",
+                success: function(data) {
+
+                 //   console.log(data)
+
+                    var resdata = data.data;
+
+                    //alert(resdata);
+
+                    var formoption = "<option value='0'>Please select</option>";
+                    for (i = 0; i < resdata.length; i++) {
+                        formoption += "<option value='" + resdata[i].id + "'>" + resdata[i].name +
+                            "</option>";
+                    }
+                    $('#countries').html(formoption);
+
+                }
+            });
+        }
+    });
+</script>
     @endsection

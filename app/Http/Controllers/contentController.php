@@ -37,6 +37,7 @@ class contentController extends Controller
 
     public function Add_Content_Submit(Request $request){
 
+
     $request->validate(
     [
     'name'         =>        'required|unique:content_pages',
@@ -99,6 +100,9 @@ class contentController extends Controller
     $e->status=$request->status;
     $e->delete_range=$request->delete_range;
     $e->slug=\Str::slug($request->name);
+
+    $e->video_url= $request->video_url;
+    $e->video_title= $request->video_title;
 
     if($request->parent_id != 'pages-list'  ){
         $e->parent_id=dDecrypt($request->parent_id);
@@ -209,6 +213,8 @@ class contentController extends Controller
         $u->parent_id=$request-> parent_id;
         $u->slug=\Str::slug($request->name);
 
+        $u->video_url= $request->video_url;
+        $u->video_title= $request->video_title;
 
         if($request->hasfile('bannerimage'))
         {

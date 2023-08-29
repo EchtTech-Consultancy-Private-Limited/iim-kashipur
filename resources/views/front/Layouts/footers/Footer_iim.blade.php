@@ -275,6 +275,26 @@
 
 </div>
 
+<script>
+    function changeURL(){
+        alert();
+        //var temp = new Array();
+        const queryString = window.location.search;
+        const urlParams = new URLSearchParams(queryString);
+        const pageval = urlParams.get('page');
+        const yearval = urlParams.get('year');
+       // var temp= e.split(',');
+        document.location.href = "journal-publications?page="+pageval+'&'+'year='+yearval;
+        }
+        $(document).ready(function() {
+            $(".btn2").click(function() {
+                $(".grid-item.filter2").removeClass('d-none');
+            });
+            $(".btn3").click(function() {
+                $(".grid-item.filter3").removeClass("d-none");
+            });
+        });
+</script>
 
 <script>
 

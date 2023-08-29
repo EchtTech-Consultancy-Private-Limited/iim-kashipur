@@ -309,6 +309,43 @@
                                 </div>
 
 
+                                <div class="col-md-12">
+                                    <label for="inputText" class="col-sm-2 col-form-label">Video url
+                                        </label>
+                                    <div class="col-sm-12">
+                                        <input type="url" class="form-control" name="video_url"
+                                            placeholder="Please enter video url!!"
+                                            value="{{ old('video_url') }}"  id="video_url"><br>
+
+                                            <label for="video_url" id="video_url-error" class="error">
+                                                @error('video_url')
+                                                    {{ $message }}
+                                                @enderror
+                                            </label>
+
+
+                                    </div>
+                                </div>
+
+                                <div class="col-md-12">
+                                    <label for="inputText" class="col-sm-2 col-form-label">Video Title
+                                        </label>
+                                    <div class="col-sm-12">
+                                        <input type="text" class="form-control" name="video_title"
+                                            placeholder="Please enter video title"
+                                            value="{{ old('video_title') }}"  id="video_title"><br>
+
+                                            <label for="video_title" id="video_title-error" class="error">
+                                                @error('video_title')
+                                                    {{ $message }}
+                                                @enderror
+                                            </label>
+
+
+                                    </div>
+                                </div>
+
+
 
 
                                 {{-- <div class="col-md-12">

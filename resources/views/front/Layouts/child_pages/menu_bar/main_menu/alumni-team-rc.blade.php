@@ -416,6 +416,12 @@
                                 {{ $items->designation_h ?? '' }}
                             @endif
 
+
+                            <h6>
+                                {{ $items->more_designation ?? '' }}
+                            </h6>
+
+
                         </div>
 
                     </div>

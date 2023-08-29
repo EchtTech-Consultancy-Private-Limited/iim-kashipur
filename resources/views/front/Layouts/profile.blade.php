@@ -205,7 +205,6 @@
 
 
                     @if (URL::previous() == url('/faculty/academic-areas/communications'))
-
                         <li><a href="{{ url('/') }}"><span>Faculty</span></a></li>
                         <li><a href="{{ URL::previous() }}"><span>Academic Areas</span></a></li>
                         <li><a href="{{ URL::previous() }}"><span>Communications</span></a></li>
@@ -244,6 +243,15 @@
                         <li><a href="{{ URL::previous() }}"><span>Academic Areas</span></a></li>
                         <li><a href="{{ URL::previous() }}"><span>Strategy</span></a></li>
 
+                    @elseif(URL::previous() == url('/faculty/academic-areas/strategy'))
+                        <li><a href="{{ url('/') }}"><span>Academics</span></a></li>
+                        <li><a href="{{ URL::previous() }}"><span>MBA (Analytics)</span></a></li>
+                        <li><a href="{{ URL::previous() }}"><span>MBA (Analytics) Testimonials</span></a></li>
+
+                    @elseif(URL::previous() == url('/faculty/academic-areas/strategy'))
+                        <li><a href="{{ url('/') }}"><span>Faculty</span></a></li>
+                        <li><a href="{{ URL::previous() }}"><span>Academic Areas</span></a></li>
+                        <li><a href="{{ URL::previous() }}"><span>Strategy</span></a></li>
 
                     @endif
 

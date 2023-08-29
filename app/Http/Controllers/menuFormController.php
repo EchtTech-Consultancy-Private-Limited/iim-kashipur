@@ -19,6 +19,7 @@ use App\Models\multiple_profile;
 use PhpOffice\PhpSpreadsheet\Calculation\MathTrig\Trunc;
 use PHPUnit\Framework\Constraint\Count;
 use App\Models\club;
+use App\Models\dissertation;
 use App\Models\cell;
 use App\Models\commmittee;
 use App\Models\Department;
@@ -536,6 +537,8 @@ public function View_EventsActivites(){
     return view('admin.sections.manageevents&activities',['data'=>$data]);
 }
 
+
+
 public function Delete_EventsActivites($id){
 
     $exit = Events::where('id',dDecrypt($id))->first();
@@ -636,6 +639,79 @@ return view('admin.sections.view_event_activites_image',['data'=>$data]);
 
 
 
+
+
+
+//dissertation
+public function Delete_dissertation($id){
+
+    $exit = dissertation::where('id',dDecrypt($id))->first();
+    if(!empty($exit)){
+        dissertation::find(dDecrypt($id))->delete();
+    }else{
+        return back()->with('error','You are trying to perform unethical process. Your requst is failed.');
+    }
+    return redirect()->back()->with('success','Record Deleted Successfully');
+}
+
+
+public function  View_dissertation(){
+    $data=dissertation::get();
+    return view('admin.sections.manage_dissertation',['data'=>$data]);
+}
+
+ public function Add_Edit_dissertation(Request $request,$id=NULL){
+ if($id){
+        $title="Edit Dissertation";
+        $msg="Details Edited Successfully!";
+        $data=dissertation::find(dDecrypt($id));
+    }
+    else{
+
+      $title="Add Dissertation";
+      $msg="Details Added Successfully!";
+      $data=new dissertation;
+}
+
+ if($request->isMethod('post')){
+    if(!$id){
+        $request->validate([
+       // 'file'=> 'image|mimes:jpeg,png,jpg,gif|max:2048',
+       // 'image_title'=>'required|unique:dissertation',
+        ]);}
+    else{
+    $request->validate([
+        //'file' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
+
+    ]);
+}
+      $data->name= $request->name;
+      $data->Batch= $request->Batch;
+      $data->Topic= $request->Topic;
+      $data->status= $request->status;
+      $data->Supervisor=$request->Supervisor;
+      $data->image_title=$request->image_title;
+      if($request->hasFile('file')){
+          $file=$request->file('file');
+          $newname= time().rand(10,99).'.'.$file->getClientOriginalExtension();
+          $path=public_path('uploads/dissertation');
+          $file->move($path, $newname);
+          $data->file    = $newname;
+      }
+      $data->save();
+
+    return redirect('/Accounts/dissertation')->with('success',$msg);
+}
+
+return view('admin.sections.add_dissertation',compact('data','title','id'));
+}
+
+
+
+public function Show_dissertation($id){
+    $data=dissertation::where('id',dDecrypt($id))->first();
+    return view('admin.sections.view_dissertation',['data'=>$data]);
+}
 
 
 }

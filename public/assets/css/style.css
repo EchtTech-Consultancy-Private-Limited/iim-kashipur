@@ -3393,6 +3393,11 @@ p {
     text-align: center;
     border-bottom-left-radius: 5px;
     border-bottom-right-radius: 5px;
+    white-space: nowrap;
+    width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    
 }
 
 .light {

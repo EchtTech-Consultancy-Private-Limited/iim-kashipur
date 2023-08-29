@@ -2,9 +2,24 @@
 
 @section('content')
 
-    @php
-        $mmenu = @content_menus($type[0]->menu_id);
-    @endphp
+@isset($type)
+@php
+    $mmenu = @content_menus($type[0]->menu_id);
+@endphp
+@endisset
+
+@isset($get)
+@php
+    $mmenu = @content_menus($get[0]->id);
+@endphp
+@endisset
+
+
+@isset($subchildmenu)
+@php
+    $mmenu = @content_menus($menu[0]->id);
+@endphp
+@endisset
 
     {{-- banner and  breadcrumbs   --}}
 
@@ -412,7 +427,7 @@
 
                                 <div class="col-md-5 col-lg-4 ">
 
-                                    <a href="{{ url($items->slug)}}">
+                                    <a  href="{{ url(@$mmenu[0]->slug.'/'. $gets[0]->slug.'/' .$type_child[0]->slug.'/'.$items->slug) }}" >
 
                                     <div class="profilewraper withinfo addevent-box">
 

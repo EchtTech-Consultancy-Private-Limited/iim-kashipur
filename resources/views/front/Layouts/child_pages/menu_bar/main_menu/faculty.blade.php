@@ -678,8 +678,9 @@
                     </div>
                     <div class="col-md-6">
                         <form action="{{ url('/faculty/faculty-directory') }}" method="get">
+                            <label> Search Name or Deparment </label>
+                           
                             <div class="d-flex">
-
                               <input type="text" class="form-control" placeholder="search name or deparment!!!!" value="{{ request('search') ??''}} " name="search">
 
                                 <button type="submit" class="btn-info submit-btn-apply">Apply</button>

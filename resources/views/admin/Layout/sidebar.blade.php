@@ -115,8 +115,7 @@
 
                         @if (@checkRoute('View_NewsEvent'))
                             <li class="nav-item"><a class="nav-link" href="{{ url('Accounts/News-Event') }}">Manage
-                                    News
-                                    & Events</a></li>
+                                    News & Events</a></li>
                         @endif
 
                     </ul>
@@ -186,6 +185,13 @@
                         @if (@checkRoute('View_WellnessFacilities'))
                             <li class="nav-item"><a class="nav-link"
                                     href="{{ url('Accounts/Wellness-Facilities') }}">Manage Wellness Facilities </a>
+                            </li>
+                        @endif
+
+
+                        @if (@checkRoute('View_dissertation'))
+                            <li class="nav-item"><a class="nav-link"
+                                    href="{{ url('Accounts/dissertation') }}">Manage Dissertation </a>
                             </li>
                         @endif
 
