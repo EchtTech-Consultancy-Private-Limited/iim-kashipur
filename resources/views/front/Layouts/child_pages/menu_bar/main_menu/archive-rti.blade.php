@@ -56,7 +56,7 @@
 
                                     @foreach ($item as $items)
 
-                                        @if (Getarchivedata($items->created_at->format('Y-m-d'), $items->archive_date) == 'True')
+                                        @if (Getarchivedata(now()->format('Y-m-d'),$items->archive_date) == 'True')
                                             <div class="col-md-6 mt-3">
                                                 <div class="box-rti-pdf">
                                                     <a href="{{ url('uploads/rti/' . $items->pdf) }}" download
@@ -95,7 +95,7 @@
 
                                                 @foreach ($data as $K => $datas)
 
-                                                    @if (Getarchivedata($datas->created_at->format('Y-m-d'), $datas->archive_date) == 'True')
+                                                    @if(Getarchivedata(now()->format('Y-m-d'), $datas->archive_date) == 'True')
                                                         @if ($datas->Quarterly_section == '1')
                                                             <tr>
                                                                 <td>{{ $K + 1 }}</td>
@@ -144,7 +144,7 @@
                                                 <?php $i = 1; ?>
                                                 @foreach ($data as $s => $datas)
 
-                                                    @if (Getarchivedata($datas->created_at->format('Y-m-d'), $datas->archive_date) == 'True')
+                                                    @if(Getarchivedata(now()->format('Y-m-d'),$datas->archive_date) == 'True')
                                                         @if ($datas->Quarterly_section == '2')
                                                             <tr>
                                                                 <td>{{ $i++ }}</td>
@@ -197,7 +197,7 @@
                                                 @foreach ($value as $K => $values)
                                                     {{-- {{ Getarchivedata($values->created_at->format('Y-m-d'), $values->archive_date) }} --}}
 
-                                                    @if (Getarchivedata($values->created_at->format('Y-m-d'), $values->archive_date) == 'True')
+                                                    @if (Getarchivedata(now()->format('Y-m-d'), $values->archive_date) == 'True')
                                                         <tr>
                                                             <td>{{ $K + 1 }}</td>
                                                             <td> {{ date('Y', strtotime($values->year)) - 1 }} -

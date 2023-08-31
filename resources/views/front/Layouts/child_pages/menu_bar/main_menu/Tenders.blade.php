@@ -55,18 +55,16 @@
 
             @foreach($item as $K=>$value)
 
-              {{Getarchivedata($value->created_at->format('Y-m-d'),$value->archive_date)}}
+              {{Getarchivedata(now()->format('Y-m-d'),$value->archive_date)}}<br>
 
-
-
-              @if(Getarchivedata($value->created_at->format('Y-m-d'),$value->archive_date) != 'True')
+              @if(Getarchivedata(now()->format('Y-m-d'),$value->archive_date) != 'True')
             <tr>
                 <td>{{$K+1}}</td>
                 <td>{{$value->published_date}}</td>
                 <td>{{$value->submission_date}}</td>
                 <td>{{$value->title}}</td>
                 <td>
-				<a href="{{ asset('uploads/tenders/' . $value->tender_document) }}" download><i class="fa fa-download"></i> Download</a>
+				<a href="{{ asset('uploads/tenders/'.$value->tender_document) }}" download><i class="fa fa-download"></i> Download</a>
 
 
                 <span style="font-size: 10px;margin-left: 5px;color: #ed2044;">
