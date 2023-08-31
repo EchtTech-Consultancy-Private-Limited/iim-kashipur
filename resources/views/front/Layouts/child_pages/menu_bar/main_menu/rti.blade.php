@@ -39,14 +39,14 @@
         <section class="withsidebar-wrap ptb-60">
 
             <div class="container">
-                @if(Count($data) < 0)
+
                 <div class="d-flex justify-content-end">
                     <a href="{{ url(request()->path() . '/archive') }}" class="btn2 float-right mb-3"
                         style="border-radius: 30px; background:#0d6efd">
                         Archive List
                     </a>
                 </div>
-                @endif
+
 
                 <div class="row">
                     <div class="col-md-12">
@@ -85,7 +85,7 @@
 
 
 
-                                        @if (Getarchivedata($items->created_at->format('Y-m-d'), $items->archive_date) != 'True')
+                                        @if (Getarchivedata(now()->format('Y-m-d'), $items->archive_date) != 'True')
                                             <div class="col-md-6 mt-3">
                                                 <div class="box-rti-pdf">
                                                     <a href="{{ url('uploads/rti/' . $items->pdf) }}" download
@@ -127,7 +127,7 @@
 
 
 
-                                                    @if (Getarchivedata($datas->created_at->format('Y-m-d'), $datas->archive_date) != 'True')
+                                                    @if (Getarchivedata(now()->format('Y-m-d'), $datas->archive_date) != 'True')
                                                         @if ($datas->Quarterly_section == '1')
                                                             <tr>
                                                                 <td>{{ $K + 1 }}</td>
@@ -162,12 +162,12 @@
 
 
                                         <div class="d-flex justify-content-end">
-                                            @if(Count($item) < 0)
+
                                             <a href="{{ url(request()->path() . '/archive') }}" class="btn2 float-right mb-3"
                                                 style="border-radius: 30px; background:#0d6efd">
                                                 Archive List
                                             </a>
-                                            @endif
+
                                         </div>
 
 
@@ -191,7 +191,7 @@
 
 
 
-                                                    @if (Getarchivedata($datas->created_at->format('Y-m-d'), $datas->archive_date) != 'True')
+                                                    @if (Getarchivedata(now()->format('Y-m-d'), $datas->archive_date) != 'True')
                                                         @if ($datas->Quarterly_section == '2')
                                                             <tr>
                                                                 <td>{{ $i++ }}</td>
@@ -227,12 +227,12 @@
 
 
                                         <div class="d-flex justify-content-end">
-                                            @if(Count($item) < 0)
+
                                             <a href="{{ url(request()->path() . '/archive') }}" class="btn2 float-right mb-3"
                                                 style="border-radius: 30px; background:#0d6efd">
                                                 Archive List
                                             </a>
-                                            @endif
+
                                         </div>
 
 
@@ -257,7 +257,7 @@
 
 
 
-                                                    @if (Getarchivedata($values->created_at->format('Y-m-d'), $values->archive_date) != 'True')
+                                                    @if (Getarchivedata(now()->format('Y-m-d'), $values->archive_date) != 'True')
                                                         <tr>
                                                             <td>{{ $K + 1 }}</td>
                                                             <td> {{ date('Y', strtotime($values->year)) - 1 }} -

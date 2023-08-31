@@ -63,25 +63,30 @@ class InnerpageController extends Controller
 
 public function archive($slug){
 
-   if($slug == 'career' || 'Career'){
+
+   if($slug == 'career' || $slug == 'Career'){
      $bread="Career";
      $data =Career::get();
      return view('front.Layouts.child_pages.menu_bar.main_menu.archive',['data'=>$data,'bread'=>$bread]);
-    }elseif($slug == 'tenders' || 'Tender' || 'tender' || 'Tenders'){
+    }
+    elseif($slug == 'tenders' || $slug ==  'Tender' || $slug ==  'tender' ||$slug ==  'Tenders'){
     $bread="Tender";
     $data =Tender::get();
     return view('front.Layouts.child_pages.menu_bar.main_menu.archive',['data'=>$data,'bread'=>$bread]);
-    }elseif($slug == 'Vendors-Debarred' || 'vendors-debarred'){
+    }
+    elseif($slug == 'Vendors-Debarred' || $slug ==  'vendors-debarred'){
     $bread="Vendors-Debarred";
     $data =Vendorsdebarred::get();
     return view('front.Layouts.child_pages.menu_bar.main_menu.archive',['data'=>$data,'bread'=>$bread]);
-    }elseif($slug == 'rti'|| 'RTI'||'rtis'||'RTIS'){
+    }
+    elseif($slug == 'rti'||$slug == 'RTI'||$slug == 'rtis'||$slug == 'RTIS'){
      $bread="Rti";
      $item=rti::wherestatus('1')->get();
      $data=rit_report_section::get();
      $value=quarter_report::get();
     return view('front.Layouts.child_pages.menu_bar.main_menu.archive-rti',['data'=>$data,'item'=>$item,'item'=>$item,'value'=>$value,'bread'=>$bread]);
-    }elseif($slug == 'industry-connect' || 'Industry-Connect' || 'industry-connects'){
+    }
+    elseif($slug == 'industry-connect' || 'Industry-Connect' || 'industry-connects'){
     $bread="industry-connect";
     $data =Industry::get();
     return view('front.Layouts.child_pages.menu_bar.main_menu.archive',['data'=>$data,'bread'=>$bread]);

@@ -896,16 +896,14 @@ function FindQuickLinksNew($placement='',$sort_order=''){
 
 
     function Getarchivedata($date,$adate){
-
-
             $formatted_dt1=Carbon\Carbon::parse($date);
             $formatted_dt2=Carbon\Carbon::parse($adate);
-            $date_diff=$formatted_dt1->diffInDays($formatted_dt2);
 
-            if($date_diff == 0){
+
+            if($formatted_dt1 >=  $formatted_dt2){
                 return 'True';
             }else{
-                return  $date_diff;
+                return false;
             }
 
     }

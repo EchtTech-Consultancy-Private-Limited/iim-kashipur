@@ -40,14 +40,13 @@
     <section class="withsidebar-wrap innerpagecontent ptb-60">
         <div class="container">
 
-            @if(Count($item) < 0)
             <div class="d-flex justify-content-end">
                 <a href="{{url(request()->path().'/archive')}}" class="btn2 float-right mb-3" style="border-radius: 30px; background:#0d6efd">
                    Archive List
                   </a>
             </div>
 
-            @endif
+
 
 
             <table>
@@ -58,6 +57,7 @@
                 </tr>
 
                 @foreach ($item as $K => $value)
+                  @if(Getarchivedata(now()->format('Y-m-d'),$value->archive_date) != 'True')
                     <tr>
                         <td>{{ $K + 1 }}</td>
                         <td>{{ $value->vendor_name }} </td>
@@ -72,11 +72,9 @@
                                     echo formatSizeUnits($value->pdfsize);
                                 ?>)
                             </span>
-
-
-
                         </td>
                     </tr>
+                    @endif
                 @endforeach
 
             </table>
