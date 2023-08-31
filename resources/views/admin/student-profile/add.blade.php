@@ -41,6 +41,7 @@
                      <div class="col-sm-12">
                         <select class="form-control" name="batch" required>
                         	<option value=""> Select Student Type</option>
+                            <option value="8">FPM 2022-26 Batch Profile</option>
                         	<option value="1">PhD 2021-25 Batch Profile</option>
                         	<option value="2">PhD 2020-24 Batch Profile</option>
                         	<option value="3">PhD 2019-23 Batch Profile</option>
