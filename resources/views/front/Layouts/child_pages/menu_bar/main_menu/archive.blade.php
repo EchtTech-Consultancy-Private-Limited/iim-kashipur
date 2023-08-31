@@ -57,7 +57,7 @@
                     @foreach ($data as $value)
                         {{-- {{ Getarchivedata($value->created_at->format('Y-m-d'), $value->archive_date) }} --}}
 
-                        @if (Getarchivedata(now()->format('Y-m-d'),$value->closing_date) == 'True')
+                        @if (Getarchivedata(now()->format('Y-m-d'),$value->archive_date) == 'True')
                             <tr>
                                 <td>{{ $value->name_of_the_post }} </td>
                                 <td> {{ $value->opening_date }} </td>
@@ -105,7 +105,7 @@
                     @foreach ($data as $K => $value)
                         {{-- {{ Getarchivedata($value->created_at->format('Y-m-d'), $value->archive_date) }} --}}
 
-                        @if (Getarchivedata(now()->format('Y-m-d'), $value->submission_date) == 'True')
+                        @if (Getarchivedata(now()->format('Y-m-d'), $value->archive_date) == 'True')
                             <tr>
                                 <td>{{ $K + 1 }}</td>
                                 <td>{{ $value->published_date }}</td>
@@ -148,7 +148,7 @@
                         {{--
                     {{ Getarchivedata($value->created_at->format('Y-m-d'), $value->archive_date) }} --}}
 
-                        @if (Getarchivedata($value->created_at->format('Y-m-d'), $value->archive_date) == 'True')
+                        @if (Getarchivedata(now()->format('Y-m-d'),$value->archive_date) == 'True')
                             <tr>
                                 <td>{{ $K + 1 }}</td>
                                 <td>{{ $value->vendor_name }} </td>
@@ -190,7 +190,7 @@
                     <tbody>
 
                         @foreach ($data as $K => $value)
-                        @if (Getarchivedata($value->created_at->format('Y-m-d'), $value->archive_date) == 'True')
+                        @if (Getarchivedata(now()->format('Y-m-d'),$value->archive_date) == 'True')
                             <tr>
                                 <td>{{ $K + 1 }}</td>
                                 <td>{{ $value->date }}</td>
