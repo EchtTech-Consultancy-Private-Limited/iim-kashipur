@@ -122,7 +122,7 @@ class StudentProfileController extends Controller
     {
         $request->validate([
 
-        'student_image'=>'required|mimes:jpg,jpeg,gif,png',
+        'student_image'=>'mimes:jpg,jpeg,gif,png',
         'email' => ['string','email','max:50','regex:/^([a-z0-9\+_\-]+)(\.[a-z0-9\+_\-]+)*@([a-z0-9\-]+\.)+[a-z]{2,6}$/ix'],
 
 

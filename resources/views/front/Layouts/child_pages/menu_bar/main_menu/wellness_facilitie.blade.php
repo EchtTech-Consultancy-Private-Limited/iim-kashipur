@@ -677,7 +677,7 @@
 
                                     <h5>
                                         <span>
-                                            ABOUT WELLNESS COORDINATORS
+                                            About Wellness Coordinators
                                         </span>
                                     </h5>
 
@@ -694,7 +694,7 @@
                                 <div class="col-md-12 mt-3">
                                     <h5>
                                         <span>
-                                            FACILITIES DESCRIPTION
+                                            Facilities Description
                                         </span>
                                     </h5>
 
@@ -711,7 +711,7 @@
 
                                     <h5 class="mt-4">
                                         <span>
-                                            WELLNESS COORDINATORS
+                                            Wellness Coordinators
                                         </span>
                                     </h5>
 
@@ -751,7 +751,7 @@
 
                                     <h5 class="mt-4">
                                         <span>
-                                            EVENTS
+                                            Events
                                         </span>
                                     </h5>
 
@@ -770,7 +770,7 @@
 
                                     <h5 class="mt-4">
                                         <span>
-                                            WELLNESS FACILITIES
+                                            Wellness Facilities
                                         </span>
                                     </h5>
 

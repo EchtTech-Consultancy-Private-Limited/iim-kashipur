@@ -33,7 +33,7 @@
                 </div>
                 @endif
                </p>
-               <form class="forms-sample row col-md-12" method="POST" id="regForm" action="{{url('/Accounts/update-student-profile/'.$student->id)}}"  enctype="multipart/form-data">
+               <form class="forms-sample row col-md-12" method="POST" id="regForm" action="{{url('/Accounts/update-student-profile/'.dEncrypt($student->id))}}"  enctype="multipart/form-data">
                   @csrf
 
                   <div class="col-md-12">
@@ -48,7 +48,7 @@
                         	<option value="5" {{ ($student->batch==5) ? 'selected' : '' }}>FPM 2017-21 Batch Profile</option>
                         	<option value="6" {{ ($student->batch==6) ? 'selected' : '' }}>FPM 2016-20 Batch Profile</option>
                         	<option value="7" {{ ($student->batch==7) ? 'selected' : '' }}>FPM 2015-19 Batch Profile</option>
-
+                            <option value="8" {{ ($student->batch==8) ? 'selected' : '' }}>PhD 2022-26 Batch Profile</option>
                         </select>
                         @error('batch')
                         <div class="alert alert-danger">{{ $message }}</div>

@@ -2305,6 +2305,7 @@ public function Child_barInnerpage($main_slug,$Sub_slug,$slug) //content page
                 $gets=SubMenu::whereid($type_sub[0]->sub_id)->get();
                 $get=MainMenu::whereid($type_sub[0]->menu_id)->get();
                 $type_child=child_menu::whereslug($slug)->get();
+                $item=dissertation::where('status',1)->paginate(10);
             return view('front.Layouts.child_pages.menu_bar.main_menu.dissertation',['item'=>$item,'type_sub'=>$type_sub,'type_child'=>$type_child,'gets'=>$gets,'get'=>$get]);
             }else{
                 return abort(401);

@@ -116,7 +116,13 @@
                           <td>{{$students->research_interests}}</td>
                           <td>{{$students->papers_publications}}</td>
 
+
+
+                          @if ($students->student_image != '')
                           <td><img src="{{ asset('uploads/'.$students->student_image) }}" alt="" title="" style="height: 100px;  width: 100px;"></td>
+                         @else
+                            <td><img src="{{ asset('admin/images/faces/default.jpg') }}" style="width:100px"></td>
+                         @endif
 
                           <td>
 
