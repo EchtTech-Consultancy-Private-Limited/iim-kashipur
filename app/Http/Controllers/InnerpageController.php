@@ -261,7 +261,6 @@ public function search(Request $request){
 
 
 //          $journal_publication= journal_publication::where("title","like","%$search%")->get();
-
 //     }elseif(journal_publication_child::where("about_details","like","%$search%")->get()->count()){
 
 //           $journal_publication_child=journal_publication_child::where("about_details","like","%$search%")->get();
@@ -1608,7 +1607,7 @@ public function screen_reader_access()
 
                     $item=OrganisationStructure::where('department',6)->paginate(9);
                 }
-                //dd($item);
+
                 if(count($item)>0){
                 $type=SubMenu::whereslug($slug)->get();
 
