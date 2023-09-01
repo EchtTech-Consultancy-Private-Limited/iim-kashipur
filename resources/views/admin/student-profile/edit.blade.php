@@ -138,7 +138,7 @@
                      <label for="inputText" class="col-sm-2 col-form-label">Work Experience</label>
                      <div class="col-sm-10">
 
-                        <textarea class="form-control" id="work_experience" name="work_experience" rows="4"  placeholder="Work Experience">{{ old('work_experience') }}</textarea>
+                        <textarea class="form-control" id="work_experience" name="work_experience" rows="4"  placeholder="Work Experience">{{ $student->work_experience }}</textarea>
                      </div>
                   </div>
 

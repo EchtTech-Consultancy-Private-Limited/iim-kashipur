@@ -774,6 +774,7 @@
                                                         {{ $items->title_h ?? '' }}
                                                     @endif
                                                 </h5>
+
                                                 <h6>
                                                     @if (GetLang() == 'en')
                                                         {{ $items->designation ?? '' }}
@@ -782,14 +783,11 @@
                                                     @endif
                                                 </h6>
 
+                                                <span> {{ $items->extension ?? '' }}</span>
+
                                             </div>
 
                                         </div>
-
-
-
-
-
 
                                         <div class="col-md-7 col-lg-8">
 
@@ -850,6 +848,8 @@
                                             <h6>
                                                 {{ $items->email ??'' }}
                                               </h6>
+
+                                              <span> {{ $items->extension ?? '' }}</span>
 
                                         </div>
 
