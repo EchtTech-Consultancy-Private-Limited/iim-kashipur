@@ -128,7 +128,7 @@
                                     d="M10 19v-5h4v5c0 .55.45 1 1 1h3c.55 0 1-.45 1-1v-7h1.7c.46 0 .68-.57.33-.87L12.67 3.6c-.38-.34-.96-.34-1.34 0l-8.36 7.53c-.34.3-.13.87.33.87H5v7c0 .55.45 1 1 1h3c.55 0 1-.45 1-1z" />
                             </svg></a></li>
 
-                    <li><a href="{{  URL::previous()  }}">
+                    <li><a href="{{ URL::previous() }}">
                             @if (GetLang() == 'en')
                                 {{ @$mmenu[0]->name ?? '' }}
                             @else
@@ -245,11 +245,12 @@
                                                                         <path d="M19 13H5a1 1 0 0 1 0-2h14a1 1 0 0 1 0 2z"
                                                                             data-name="minus" />
                                                                     </g>
-                                                                </svg><svg viewBox="0 0 24 24" class="plus internal-menu-plus">
+                                                                </svg><svg viewBox="0 0 24 24"
+                                                                    class="plus internal-menu-plus">
                                                                     <path
                                                                         d="M19,11H13V5a1,1,0,0,0-2,0v6H5a1,1,0,0,0,0,2h6v6a1,1,0,0,0,2,0V13h6a1,1,0,0,0,0-2Z" />
                                                                 </svg>
-                                                                </a>
+                                                            </a>
                                                             <ul>
                                                                 @foreach (GetsubchildMenusFront($gets[0]->menu_id, $S->id, $C->id) as $k => $D)
                                                                     @if ($D->external == 'yes')
@@ -372,45 +373,46 @@
         @else
             <div class="innerpagecontent">
                 <h3>
-                @if (GetLang() == 'en')
-                    {{ $type_child[0]->name ?? '' }}
-                @else
-                    {{ $type_child[0]->name_h ?? '' }}
-                @endif
+                    @if (GetLang() == 'en')
+                        {{ $type_child[0]->name ?? '' }}
+                    @else
+                        {{ $type_child[0]->name_h ?? '' }}
+                    @endif
                 </h3>
 
                 <table>
                     <tr>
-                      <th>#Sr.no</th>
-                      <th>photo</th>
-                      <th>Name</th>
-                      <th>Batch</th>
-                      <th>Topic</th>
-                      <th>Supervisor</th>
+                        {{-- <th>#Sr.no</th> --}}
+                        <th>Photo</th>
+                        <th>Name</th>
+                        <th>Batch</th>
+                        <th>Topic</th>
+                        <th>Supervisor</th>
                     </tr>
 
-                    @if(count($item))
-
-                    @foreach ($item as $k=>$items)
-                    <tr>
-                      <td>{{ $k +1 }}</td>
-                      <td class="text-center">
-                         @if ($items->file != '')
-                          <img src={{ asset('uploads/dissertation/'.$items->file)}} title="{{ $items->image_title }}" style="width:100px">
-                         @else
-                          <img src="{{ asset('admin/images/faces/default.jpg') }}" style="width:100px">
-                         @endif
-                      </td>
-                      <td>{{ $items->name }}</td>
-                      <td>{{ $items->Batch }}</td>
-                      <td>{{ $items->Topic }}</td>
-                      <td>{{ $items->Supervisor }}</td>
-                    </tr>
-                    @endforeach
-                   @endif
-                  </table>
+                    @if (count($item))
+                        @foreach ($item as $k => $items)
+                            <tr>
+                                {{-- <td>{{ $k + 1 }}</td> --}}
+                                <td class="text-center">
+                                    @if ($items->file != '')
+                                        <img src={{ asset('uploads/dissertation/' . $items->file) }}
+                                            title="{{ $items->image_title }}" style="width:100px">
+                                    @else
+                                        <img src="{{ asset('admin/images/faces/default.jpg') }}" style="width:100px">
+                                    @endif
+                                </td>
+                                <td>{{ $items->name }}</td>
+                                <td>{{ $items->Batch }}</td>
+                                <td>{{ $items->Topic }}</td>
+                                <td>{{ $items->Supervisor }}</td>
+                            </tr>
+                        @endforeach
+                    @endif
+                </table>
 
             </div>
+            {{$item->links('pagination::bootstrap-5')}}
     </div>
     @endif
     </div>
@@ -463,7 +465,8 @@
                                                                     <path d="M19 13H5a1 1 0 0 1 0-2h14a1 1 0 0 1 0 2z"
                                                                         data-name="minus" />
                                                                 </g>
-                                                            </svg><svg viewBox="0 0 24 24" class="plus internal-menu-plus">
+                                                            </svg><svg viewBox="0 0 24 24"
+                                                                class="plus internal-menu-plus">
                                                                 <path
                                                                     d="M19,11H13V5a1,1,0,0,0-2,0v6H5a1,1,0,0,0,0,2h6v6a1,1,0,0,0,2,0V13h6a1,1,0,0,0,0-2Z" />
                                                             </svg>
@@ -594,10 +597,10 @@
 
 
                                 @if (GetLang() == 'en')
-                                {{ $type[0]->name ?? '' }}
-                            @else
-                                {{ $type[0]->name_h ?? '' }}
-                            @endif
+                                    {{ $type[0]->name ?? '' }}
+                                @else
+                                    {{ $type[0]->name_h ?? '' }}
+                                @endif
 
 
 
@@ -607,19 +610,23 @@
 
                                     <div class="col-md-12 col-lg-12">
                                         <form action="{{ url('/research/journal-publications') }}" method="get">
-                                        <div class="d-flex">
+                                            <div class="d-flex">
 
-                                            <select class="form-control m-0" style="width: 100px;" name="year" style="padding:10px 15px 9px ">
-                                                <option value="">--Year--</option>
-                                                @for ($i=2011; $i<= date('Y'); $i++)
-                                                <option value="{{ $i }}" {{ (request('year') == $i)?'selected':'' }}> {{ $i }}</option>
-                                                @endfor
-                                            </select>
+                                                <select class="form-control m-0" style="width: 100px;" name="year"
+                                                    style="padding:10px 15px 9px ">
+                                                    <option value="">--Year--</option>
+                                                    @for ($i = 2011; $i <= date('Y'); $i++)
+                                                        <option value="{{ $i }}"
+                                                            {{ request('year') == $i ? 'selected' : '' }}>
+                                                            {{ $i }}</option>
+                                                    @endfor
+                                                </select>
 
-                                            <button type="submit" class="btn btn-info submit-btn-apply">Apply</button>
+                                                <button type="submit"
+                                                    class="btn btn-info submit-btn-apply">Apply</button>
 
-                                        </div>
-                                    </form>
+                                            </div>
+                                        </form>
 
 
                                     </div>
@@ -635,16 +642,16 @@
                                                 <?php
                                                 $number = 1;
                                                 $numElementsPerPage = 10; // How many elements per page
-                                                $pageNumber = (request('page')) ? (int)request('page') : 1;
+                                                $pageNumber = request('page') ? (int) request('page') : 1;
                                                 $currentNumber = ($pageNumber - 1) * $numElementsPerPage + $number;
                                                 ?>
-                                                 @foreach ($item as $K=>$items)
-                                                <tr>
-                                                    <td>{{ $currentNumber++ }}</td>
-                                                    <td> <a @if($items->external=='yes')  onclick="return confirm('Are you sure  external window open?')" target="_blank" href="{{url($items->url)}}" @else href="{{url ('journal/'.dEncrypt($items->id)) }}" @endif  class="text-black"> {{ $items->title  ??''}} </a> </td>
-                                                </tr>
-
-                                         @endforeach
+                                                @foreach ($item as $K => $items)
+                                                    <tr>
+                                                        <td>{{ $currentNumber++ }}</td>
+                                                        <td> <a @if ($items->external == 'yes') onclick="return confirm('Are you sure  external window open?')" target="_blank" href="{{ url($items->url) }}" @else href="{{ url('journal/' . dEncrypt($items->id)) }}" @endif
+                                                                class="text-black"> {{ $items->title ?? '' }} </a> </td>
+                                                    </tr>
+                                                @endforeach
 
 
                                             </tbody>
@@ -652,7 +659,7 @@
 
                                     </div>
 
-                                    {{$item->links('pagination::bootstrap-5')}}
+                                    {{ $item->links('pagination::bootstrap-5') }}
 
                                 </div>
                             </div>

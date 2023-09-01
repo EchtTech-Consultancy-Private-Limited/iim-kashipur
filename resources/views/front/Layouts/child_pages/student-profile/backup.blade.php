@@ -358,8 +358,7 @@
                                             @if ($items->image != '')
                                             <img src="{{ asset('uploads/organisation/'.$items->image) }}"
                                             alt="{{ $items->title }}">
-
-                                            @else
+                                              @else
                                             <img src="{{ asset('admin/images/faces/default.jpg') }}">
                                             @endif
 
