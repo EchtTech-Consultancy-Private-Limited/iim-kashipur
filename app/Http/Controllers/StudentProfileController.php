@@ -139,6 +139,7 @@ class StudentProfileController extends Controller
         $student->about=$request->about;
         $student->educational_background=$request->educational_background;
         $student->work_experience=$request->work_experience;
+        $student->papers_publications=$request->papers_publications;
         $student->research_interests=$request->research_interests;
         if($request->hasfile('student_image'))
            {

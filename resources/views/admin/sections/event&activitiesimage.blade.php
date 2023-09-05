@@ -36,10 +36,10 @@
 
                                 @endif
 
-                                @if (Session::has('error'))
-                                    <div class="alert alert-danger col-md-12 text-center">
+                                @if (Session::has('success'))
+                                    <div class="alert alert-success col-md-12 text-center">
 
-                                        <strong>Oops!</strong> {{ Session::get('error') }}
+                                        <strong>Oops!</strong> {{ Session::get('success') }}
 
                                     </div>
                                 @endif
@@ -56,7 +56,7 @@
 
                             @csrf
 
-                            <div class="col-md-3">
+                            <div class="col-md-6">
                                 <label for="inputText" class="col-form-label">Multiple Image</label>
                                 <div class="">
                                     <input type="file" class="form-control"
@@ -67,7 +67,7 @@
                                 </div>
                             </div>
 
-                            <div class="col-md-3">
+                            <div class="col-md-6">
                                 <label for="inputText" class="col-form-label">Image Text</label>
                                 <div class="">
                                     <input type="text" class="form-control" name="image_title"
@@ -76,7 +76,7 @@
                                 </div>
                             </div>
 
-                            <div class="col-md-3">
+                            <div class="col-md-6">
                                 <label for="inputText" class="col-form-label">Image Alt</label>
                                 <div class="">
                                     <input type="text" class="form-control" name="image_alt"
@@ -85,7 +85,7 @@
                                 </div>
                             </div>
 
-                            <div class="col-md-3">
+                            <div class="col-md-6">
                                 <label for="inputText" class="col-form-label">sort order</label>
                                 <div class="">
                                     <input type="number" class="form-control" name="order"
@@ -94,10 +94,11 @@
                                 </div>
                             </div>
 
-                            <div class="col-md-3">
+                            @if ($id == '')
+                            <div class="col-md-6">
                                 <label for="Commmittee_type" class="col-form-label">Title</label>
                                 <div class="">
-                                    <select class="form-control" name="parent_id">
+                                    <select class="form-control" name="parent_id" required>
                                         <option value=""> Select Type </option>
                                         @foreach($data as $title)
                                         <option  value="{{ $title->id}}" >  {{ $title->title}}</option>
@@ -106,8 +107,9 @@
                                     <label for="Commmittee_type" id="Commmittee_type-error" class="error"></label>
                                 </div>
                             </div>
+                            @endif
 
-                            <div class="col-md-12">
+                            {{-- <div class="col-md-12">
 
                                 <label for="event" class="col-form-label">Status</label>
 
@@ -121,7 +123,9 @@
 
                                     </select>
 
-                            </div>
+                            </div> --}}
+
+                            <input type="hidden" name="status"  @if ($id) value="{{ $event->status }}" @else value="0" @endif  >
 
                             <div class="col-md-12">
                                 <div class="col-sm-10">

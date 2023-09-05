@@ -147,7 +147,7 @@ class middleFormController extends Controller
     }
 
     public function View_industry(){
-        $data=Industry::orderBy('id')->get();
+        $data=Industry::orderBy('id','Asc')->get();
         return view('admin.sections.viewindustry',['data'=>$data]);
         }
 
@@ -193,6 +193,7 @@ class middleFormController extends Controller
 
           $data->date= $request->date;
           $data->title= $request->title;
+          $data->archive_date= $request->archive_date;
 
           if($request->hasFile('attachement_file')){
               $data->pdfsize=$request->attachement_file->getSize();

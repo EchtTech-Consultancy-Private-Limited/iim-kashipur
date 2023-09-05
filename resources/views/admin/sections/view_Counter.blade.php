@@ -49,55 +49,55 @@
                             </p>
 
 
-<div class="row">
+                            <div class="row">
 
-  <div class="col-md-6">
+                                <div class="col-md-6">
 
-    <div class="form-group"> <label for="name">NAME *</label> <input id="name"
-            type="text" value="{{ $data->name }}" name="name" class="form-control"
-            placeholder="Please enter name*" readonly>
-
-
-    </div>
-
-</div>
+                                    <div class="form-group"> <label for="name">NAME *</label> <input id="name"
+                                            type="text" value="{{ $data->name }}" name="name" class="form-control"
+                                            placeholder="Please enter name*" readonly>
 
 
+                                    </div>
 
-<div class="col-md-6">
-
-    <div class="form-group"> <label for="name_h">NAME[Hindi] *</label> <input id="name_h"
-            value="{{ $data->name_h }}" type="text" name="name_h" class="form-control"
-            placeholder="Please enter name_h*" readonly>
+                                </div>
 
 
 
+                                <div class="col-md-6">
 
-    </div>
-
-</div>
+                                    <div class="form-group"> <label for="name_h">NAME[Hindi] *</label> <input
+                                            id="name_h" value="{{ $data->name_h }}" type="text" name="name_h"
+                                            class="form-control" placeholder="Please enter name_h*" readonly>
 
 
 
 
-<div class="col-md-6">
+                                    </div>
 
-    <div class="form-group"><label for="number">Number *</label> <input id="number"
-            type="text" value="{{ $data->number }}" name="number" class="form-control"
-            placeholder="Please enter number *" readonly>
+                                </div>
 
 
 
 
-    </div>
+                                <div class="col-md-6">
 
-</div>
+                                    <div class="form-group"><label for="number">Number *</label> <input id="number"
+                                            type="text" value="{{ $data->number }}" name="number" class="form-control"
+                                            placeholder="Please enter number *" readonly>
 
-  
-</div>
 
 
-                                                       {{--
+
+                                    </div>
+
+                                </div>
+
+
+                            </div>
+
+
+                            {{--
 
                  <div class="col-md-6">
 
@@ -107,7 +107,7 @@
                 </div>
 
                   </div> --}}
-
+{{--
                             <div class="clearfix"></div>
 
                             <div class="col-md-12">
@@ -116,7 +116,7 @@
 
                             </div>
 
-                            </form>
+                            </form> --}}
 
                         </div>
 

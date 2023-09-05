@@ -195,6 +195,19 @@
                             </li>
                         @endif
 
+                        @if (@checkRoute('View_report'))
+                        <li class="nav-item"><a class="nav-link"
+                                href="{{ url('Accounts/report') }}">Manage placement  report</a>
+                        </li>
+                        @endif
+
+
+                        @if (@checkRoute('View_research_seminar'))
+                        <li class="nav-item">
+                            <a class="nav-link"
+                                href="{{ url('Accounts/research-seminar') }}">Manage  Research Seminar</a>
+                        </li>
+                        @endif
 
 
 

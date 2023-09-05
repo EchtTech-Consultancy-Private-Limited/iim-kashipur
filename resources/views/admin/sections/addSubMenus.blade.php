@@ -943,4 +943,87 @@
 </script>
 
 
+
+<!---------------------------------------Placement-Reports-------------------------------------->
+
+<script >
+    $("#url").change(function(e){
+
+ $.ajaxSetup({
+  headers: {
+  'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+    }
+      });
+
+      var data3=$("#url").val();
+
+      if(data3=='Placement-Reports')
+      {
+
+      $.ajax({
+        url: "{{url('Accounts/ajax-report')}}",
+        type: "get",
+        success: function(data){
+
+         console.log(data);
+         var resdata = data.data;
+
+         console.log(resdata);
+
+       var formoption = "<option value='0'>Please select</option>";
+       for(i=0; i<resdata.length; i++)
+       {
+       formoption += "<option value='"+resdata[i].id+"'>"+resdata[i].title+"</option>";
+        }
+        $('#countries').html(formoption);
+
+        }
+     });
+   }
+});
+</script>
+
+
+<!---------------------------------------Research-seminar -------------------------------------->
+
+<script >
+    $("#url").change(function(e){
+
+ $.ajaxSetup({
+  headers: {
+  'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+    }
+      });
+
+      var data3=$("#url").val();
+
+      //alert(data3);
+
+      if(data3=='Research-seminar')
+      {
+
+      $.ajax({
+        url: "{{url('Accounts/ajax-research-seminar')}}",
+        type: "get",
+        success: function(data){
+
+         console.log(data);
+         var resdata = data.data;
+
+         console.log(resdata);
+
+       var formoption = "<option value='0'>Please select</option>";
+       for(i=0; i<resdata.length; i++)
+       {
+       formoption += "<option value='"+resdata[i].id+"'>"+resdata[i].Speaker+"</option>";
+        }
+        $('#countries').html(formoption);
+
+        }
+     });
+   }
+});
+</script>
+
+
     @endsection

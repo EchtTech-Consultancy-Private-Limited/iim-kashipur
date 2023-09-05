@@ -86,7 +86,7 @@
 
                                                             <button type="submit" class="btn btn-primary btn-sm"><a
                                                                     href="{{ url('Accounts/event-activities-image/'.dEncrypt($D->id)) }}"> Add
-                                                                    Imges</a></button>
+                                                                    Images</a></button>
 
                                                         </td>
 

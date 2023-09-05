@@ -38,7 +38,7 @@
 
                   <div class="col-md-12">
                      <label for="inputText" class="col-sm-2 col-form-label">Student Type*</label>
-                     <div class="col-sm-10">
+                     <div class="col-sm-12">
                         <select class="form-control" name="batch" required>
                         	<option value=""> Select Student Type</option>
                         	<option value="1" {{ ($student->batch==1) ? 'selected' : '' }}>PhD 2021-25 Batch Profile</option>
@@ -58,7 +58,7 @@
 
                   <div class="col-md-12">
                      <label for="inputText" class="col-sm-3 col-form-label">First Name*</label>
-                     <div class="col-sm-10">
+                     <div class="col-sm-12">
                         <input type="text" class="form-control" name="name" placeholder="Name" value="{{ $student->name }}" ><br>
                         @error('name')
                         <div class="alert alert-danger">{{ $message }}</div>
@@ -68,7 +68,7 @@
 
                   <div class="col-md-12">
                      <label for="inputText" class="col-sm-3 col-form-label">Last Name*</label>
-                     <div class="col-sm-10">
+                     <div class="col-sm-12">
                         <input type="text" class="form-control" name="last_name" placeholder="Last Name" value="{{ $student->last_name }}" ><br>
                         @error('last_name')
                         <div class="alert alert-danger">{{ $message }}</div>
@@ -78,7 +78,7 @@
 
                   <div class="col-md-12">
                      <label for="inputText" class="col-sm-3 col-form-label">Area of Specialization *</label>
-                     <div class="col-sm-10">
+                     <div class="col-sm-12">
                         <input type="text" class="form-control"name="area_specialization" placeholder="Area of Specialization" value="{{ $student->area_specialization }}"><br>
                         @error('area_specialization')
                         <div class="alert alert-danger">{{ $message }}</div>
@@ -87,7 +87,7 @@
                   </div>
                   <div class="col-md-12">
                      <label for="inputText" class="col-sm-2 col-form-label">Email</label>
-                     <div class="col-sm-10">
+                     <div class="col-sm-12">
                         <input type="text" class="form-control"name="email" placeholder="Email" value="{{ $student->email }}"><br>
                         <br>
                         @error('email')
@@ -98,7 +98,7 @@
 
                    <div class="col-md-12">
                      <label for="inputText" class="col-sm-2 col-form-label">Sort</label>
-                     <div class="col-sm-10">
+                     <div class="col-sm-12">
                         <input type="text" class="form-control"name="sort" placeholder="Sort" value="{{ $student->sort }}"><br>
                         <br>
                         @error('sort')
@@ -109,7 +109,7 @@
 
                   <div class="col-md-12">
                      <label for="inputText" class="col-sm-2 col-form-label">Contact No.</label>
-                     <div class="col-sm-10">
+                     <div class="col-sm-12">
                         <input type="text" class="form-control"name="contact" placeholder="Contact" value="{{ $student->contact }}"><br>
                         <br>
                         @error('contact')
@@ -120,7 +120,7 @@
 
                   <div class="col-md-12">
                      <label for="inputText" class="col-sm-2 col-form-label">About Content</label>
-                     <div class="col-sm-10">
+                     <div class="col-sm-12">
                         <textarea class="form-control" id="about" rows="4"  name="about" placeholder="About Content">{{ $student->about }}</textarea>
                         <br>
                         @error('about')
@@ -130,13 +130,13 @@
                   </div>
                   <div class="col-md-12">
                      <label for="inputText" class="col-sm-3 col-form-label">Educational background</label>
-                     <div class="col-sm-10">
+                     <div class="col-sm-12">
                         <input type="text" class="form-control" name="educational_background" placeholder="Educational background" value="{{ $student->educational_background }}"><br>
                         <div class="col-md-12">
                         </div>
                      </div>
                      <label for="inputText" class="col-sm-2 col-form-label">Work Experience</label>
-                     <div class="col-sm-10">
+                     <div class="col-sm-12">
 
                         <textarea class="form-control" id="work_experience" name="work_experience" rows="4"  placeholder="Work Experience">{{ $student->work_experience }}</textarea>
                      </div>
@@ -144,7 +144,7 @@
 
                   <div class="col-md-12">
                      <label for="inputText" class="col-sm-2 col-form-label">Papers and Publications</label>
-                     <div class="col-sm-10">
+                     <div class="col-sm-12">
                         <textarea class="form-control" id="papers_publications" name="papers_publications" rows="4"  placeholder="Papers Publications">{{ $student->papers_publications }}</textarea>
                      </div>
                   </div>
@@ -152,7 +152,7 @@
 
                   <div class="col-md-12">
                      <label for="inputText" class="col-sm-2 col-form-label">Research Interests</label>
-                     <div class="col-sm-10">
+                     <div class="col-sm-12">
                         <!-- <input type="text" class="form-control" id="research_interests" name="research_interests1" placeholder="Research Interests" value="{{ old('research_interests') }}"><br> -->
 
                         <textarea class="form-control" id="research_interests" name="research_interests" rows="4"  placeholder="Research Interests">{{ $student->research_interests }}</textarea>
@@ -161,7 +161,7 @@
 
                   <div class="col-md-12">
                      <label for="inputText" class="col-sm-2 col-form-label">Image</label>
-                     <div class="col-sm-10">
+                     <div class="col-sm-12">
                         <input type="file" class="form-control"  name="student_image" value="{{ old('student_image') }}"><br>
                         @if($student->student_image)
                         <img src="{{ asset('uploads/'.$student->student_image) }}" alt="" title="" style="height: 100px;  width: 100px;">
@@ -182,10 +182,12 @@
    </div>
 </div>
 <script type="text/javascript">
-   CKEDITOR.replace('content');
+    CKEDITOR.replace('abouts');
 
-   CKEDITOR.replace('content_h');
+    CKEDITOR.replace('papers_publications');
+    CKEDITOR.replace('research_interests');
+    CKEDITOR.replace('work_experience');
 
-</script>
+ </script>
 <!-- content-wrapper ends -->
 @endsection

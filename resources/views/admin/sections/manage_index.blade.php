@@ -64,10 +64,11 @@
 
                             <tr>
 
-                              <th>Sr.No#</th>
+                              <th>Sr.No</th>
                               <th>Name</th>
                               <th>Name[hindi]</th>
                               <th>Number</th>
+                              <th>Status</th>
                               <th>Action</th>
 
 
@@ -82,11 +83,28 @@
 
                             <tr>
 
-                              <td>{{$K+1}}</td>
-                              <td>{{$D->name}}</td>
+                            <td>{{$K+1}}</td>
+                            <td>{{$D->name}}</td>
+                            <td>{{$D->name_h}}</td>
+                            <td> {{$D->number}}</td>
 
-                              <td>{{$D->name_h}}</td>
-                                  <td> {{$D->number}}</td>
+                            <td>
+                                @if (@checkRoute('StatusChange'))
+                                    @if ($D->status == 1)
+                                        <a href="{{ url('Accounts/status-change/0/' . dEncrypt($D->id) . '/project_logos') }}"
+                                            style="color:green;">Active</a>
+                                    @else
+                                        <a href="{{ url('Accounts/status-change/1/' . dEncrypt($D->id) . '/project_logos') }}"
+                                            style="color:red;">Inactive</a>
+                                    @endif
+                                @else
+                                    @if ($D->status == 1)
+                                        <span" style="color:green;">Active</span>
+                                        @else
+                                            <span style="color:red;">Inactive</span>
+                                    @endif
+                                @endif
+                            </td>
 
                               <td>
 

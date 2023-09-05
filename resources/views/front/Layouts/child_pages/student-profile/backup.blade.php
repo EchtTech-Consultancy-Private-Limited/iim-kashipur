@@ -970,7 +970,7 @@
 
                                                     <div class="row">
                                                         <div class="col-sm-12">
-                                                            <P class="h6 txt_formate"  >About Us:  </P> <P> {{$datas->about}}</P>
+                                                            <P class="h6 txt_formate"  >About Me:  </P> <P> {{$datas->about}}</P>
 
                                                         </div>
                                                     </div>

@@ -9,4 +9,6 @@ class quarter_report extends Model
 {
     use HasFactory;
     protected $table = 'quarter_reports';
+
 }
+

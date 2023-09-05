@@ -55,7 +55,6 @@
 
             @foreach($item as $K=>$value)
 
-              {{-- {{Getarchivedata(now()->format('Y-m-d'),$value->archive_date)}}<br> --}}
 
               @if(Getarchivedata(now()->format('Y-m-d'),$value->archive_date) != 'True')
             <tr>

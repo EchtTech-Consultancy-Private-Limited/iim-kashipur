@@ -59,16 +59,11 @@
 
                                                 <tr>
 
-                                                    <th>S.No#</th>
-
+                                                    <th>Sr.No</th>
                                                     <th>Type</th>
-
                                                     <th>Title</th>
-
                                                     <th>Image</th>
-
                                                     <th>Status</th>
-
                                                     <th>Action</th>
                                                 </tr>
 

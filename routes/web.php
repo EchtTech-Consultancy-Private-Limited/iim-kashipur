@@ -345,6 +345,21 @@ Route::get('title-image/{id?}', [menuFormController::class,'title_image'])->name
 
 
 
+//report
+Route::get("/show-report/{id?}",[menuFormController::class,'Show_report']);
+Route::get('report', [menuFormController::class,'View_report'])->name('report');
+Route::match(['get','post'],'add-edit-report/{id?}',[menuFormController::class,'Add_Event_report']);
+Route::get('delete-report/{id?}',[menuFormController::class,'Delete_report']);
+
+Route::get('ajax-report/{id?}',[menuFormController::class,'ajax_report']);
+
+//research seminar
+Route::get("/show-research-seminar/{id?}",[menuFormController::class,'Show_researchSeminar']);
+Route::get('research-seminar', [menuFormController::class,'View_researchSeminar'])->name('researchSeminar');
+Route::match(['get','post'],'add-edit-research-seminar/{id?}',[menuFormController::class,'Add_Event_researchSeminar']);
+Route::get('delete-research-seminar/{id?}',[menuFormController::class,'Delete_researchSeminar']);
+
+Route::get('ajax-research-seminar/{id?}',[menuFormController::class,'ajax_research_seminar']);
 //-------------------------------------  MenuFormController  End -------------------------------------------------------------//
 
 

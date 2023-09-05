@@ -423,20 +423,14 @@
 
                      <div class="col-md-6">
 
-                        <div class="form-group"> <label for="phone"> Contact No *</label> <input id="phone" type="text" name="phone" @if($id) value="{{$data->phone}}" @else value="{{old('phone')}}" @endif maxlength="50" class="form-control" placeholder="Please enter contact no *"  >
+                        <div class="form-group"> <label for="phone"> Contact No *</label> <input id="phone" type="text" name="phone" @if($id) value="{{$data->phone}}" @else value="{{old('phone')}}" @endif  class="form-control" placeholder="Please enter contact no *"  >
 
                             <label for="phone"  id="phone-error" class="error">
                                 @error('phone')
                                     {{ $message }}
                                 @enderror
                             </label>
-
-
-
-
                         </div>
-
-
                     </div>
 
 
