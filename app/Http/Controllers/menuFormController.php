@@ -50,6 +50,9 @@ use App\Models\Org;
 use App\Models\project_logo;
 use App\Models\quick_linkcategory;
 use App\Models\search;
+use App\Models\report;
+use App\Models\researchSeminars;
+
 
 
 class menuFormController extends Controller
@@ -624,21 +627,17 @@ return view('admin.sections.event&activitiesimage',compact('event','title','id',
 
 public function View_EventActivety_image($id)
 {
-$data=event_image::orderBy('id')->where('parent_id',$id)->get();
+
+$data=event_image::orderBy('id')->where('parent_id',dDecrypt($id))->get();
 return view('admin.sections.event&activitiesimageview',['data'=>$data]);
 }
 
 
 public function  Show_EventActivety_image($id){
-
-$data=event_image::find(dDecrypt($id))->first();
-$data=event_image::where('id',$data->id)->first();
-
-return view('admin.sections.view_event_activites_image',['data'=>$data]);
+    $data=event_image::find(dDecrypt($id))->first();
+    $event=event_image::where('id',$data->id)->first();
+return view('admin.sections.view_event_activites_image',['event'=>$event]);
 }
-
-
-
 
 
 
@@ -706,11 +705,156 @@ public function  View_dissertation(){
 return view('admin.sections.add_dissertation',compact('data','title','id'));
 }
 
-
-
 public function Show_dissertation($id){
     $data=dissertation::where('id',dDecrypt($id))->first();
     return view('admin.sections.view_dissertation',['data'=>$data]);
+}
+
+
+
+
+//report
+
+public function ajax_report(Request $request){
+    $data=report::get();
+    return response()->json(['data'=>$data]);
+}
+
+
+
+public function View_report(){
+    $data=report::get();
+    return view('admin.sections.manageReport',['data'=>$data]);
+}
+
+public function Delete_report($id){
+
+    $exit = report::where('id',dDecrypt($id))->first();
+    if(!empty($exit)){
+        report::find(dDecrypt($id))->delete();
+    }else{
+        return back()->with('error','You are trying to perform unethical process. Your requst is failed.');
+    }
+    return redirect()->back()->with('success','Record Deleted Successfully');
+}
+
+
+
+ public function Add_Event_report(Request $request,$id=NULL){
+ if($id){
+        $title="Edit Placment report";
+        $msg="Details Edited Successfully!";
+        $data=report::find(dDecrypt($id));
+    }
+    else{
+
+      $title="Add  Placment report";
+      $msg="Details Added Successfully!";
+      $data=new report;
+}
+
+ if($request->isMethod('post')){
+    if(!$id){
+        $request->validate([
+       // 'file'=> 'image|mimes:jpeg,png,jpg,gif|max:2048',
+       // 'image_title'=>'required|unique:dissertation',
+        ]);}
+    else{
+    $request->validate([
+        //'file' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
+
+    ]);
+}
+      $data->title= $request->title;
+      $data->mba_batch= $request->Batch;
+      $data->placement_reports_type= $request->placement_reports_type;
+
+
+      if($request->hasFile('file')){
+          $data->pdfsize=$request->file->getSize();
+          $file=$request->file('file');
+          $newname= time().rand(10,99).'.'.$file->getClientOriginalExtension();
+          $path=public_path('uploads/report');
+          $file->move($path, $newname);
+          $data->pdf = $newname;
+      }
+      $data->save();
+
+    return redirect('/Accounts/report')->with('success',$msg);
+}
+
+return view('admin.sections.add_report',compact('data','title','id'));
+}
+
+public function Show_report($id){
+    $data=report::where('id',dDecrypt($id))->first();
+    return view('admin.sections.view_dissertation',['data'=>$data]);
+}
+
+//Manage Research Seminar
+public function View_researchSeminar(){
+    $data=researchSeminars::get();
+    return view('admin.sections.mangeResearch_Seminar',['data'=>$data]);
+}
+
+public function Delete_researchSeminar($id){
+
+    $exit = researchSeminars::where('id',dDecrypt($id))->first();
+    if(!empty($exit)){
+        researchSeminars::find(dDecrypt($id))->delete();
+    }else{
+        return back()->with('error','You are trying to perform unethical process. Your requst is failed.');
+    }
+    return redirect()->back()->with('success','Record Deleted Successfully');
+}
+
+public function Add_Event_researchSeminar(Request $request,$id=NULL){
+ if($id){
+        $title="Edit Placment research Seminars";
+        $msg="Details Edited Successfully!";
+        $data=researchSeminars::find(dDecrypt($id));
+    }
+    else{
+
+      $title="Add  Placment research Seminars";
+      $msg="Details Added Successfully!";
+      $data=new researchSeminars;
+}
+
+ if($request->isMethod('post')){
+    if(!$id){
+        $request->validate([
+       // 'file'=> 'image|mimes:jpeg,png,jpg,gif|max:2048',
+       // 'image_title'=>'required|unique:dissertation',
+        ]);}
+    else{
+    $request->validate([
+        //'file' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
+
+    ]);
+}
+      $data->Speaker= $request->Speaker;
+      $data->Topic= $request->Topic;
+      $data->Date= $request->Date;
+      $data->Year= $request->Year;
+      $data->save();
+
+    return redirect('/Accounts/research-seminar')->with('success',$msg);
+}
+
+return view('admin.sections.add_researchseminar',compact('data','title','id'));
+}
+
+public function Show_researchSeminar($id){
+    $data=researchSeminars::where('id',dDecrypt($id))->first();
+    return view('admin.sections.Show_researchSeminar',['data'=>$data]);
+}
+
+
+public function ajax_research_seminar(Request $request){
+
+    $data=researchSeminars::get();
+    return response()->json(['data'=>$data]);
 }
 
 

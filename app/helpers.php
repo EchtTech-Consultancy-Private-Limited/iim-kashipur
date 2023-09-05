@@ -643,7 +643,7 @@ function FindQuickLinksNew($placement='',$sort_order=''){
 
             function getproject_logo()
             {
-            $data=\App\Models\project_logo::orderBy('id','DESC')->take(3)->get();
+            $data=\App\Models\project_logo::orderBy('id','DESC')->wherestatus('1')->take(3)->get();
             return $data;
             }
 

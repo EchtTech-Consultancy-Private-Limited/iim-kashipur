@@ -81,7 +81,7 @@
                                 <label for="inputText" class="col-form-label">Closing Date</label>
                                 <div class="">
                                     <input type="date" class="form-control" name="closing_date"
-                                        placeholder="Please enter"  @if ($id) value="{{ $career->closing_date }}" @else value="{{ old('closing_date') }}" @endif><br>
+                                        placeholder="Please enter"  @if($id) value="{{ $career->closing_date }}" @else value="{{ old('closing_date') }}" @endif><br>
                                     <label for="closing_date" id="closing_date-error" class="error"></label>
                                 </div>
                             </div>
@@ -113,21 +113,26 @@
                                 </div>
                             </div>
 
+
+
+
                             <div class="col-md-12">
-                                <label for="activeites" class="col-form-label">Corrigendum</label>
+                                <label for="Commmittee_type" class="col-form-label">Corrigendum <span style="color:green;font-size:12px;"> @if($id) [{{$career->corrigendum }}] @endif</span></label>
                                 <div class="">
-                                    <input type="text" class="form-control" name="corrigendum"
+                                    <input type="file" class="form-control" name="corrigendum"
                                     @if ($id) value="{{ $career->corrigendum }}" @else value="{{ old('corrigendum') }}" @endif  placeholder="Please enter"><br>
                                     <label for="corrigendum" id="corrigendum-error" class="error"></label>
                                 </div>
                             </div>
 
 
+
+
                             <div class="col-md-6">
                                 <label for="inputText" class="col-form-label">Archive Date</label>
                                 <div class="">
-                                    <input type="date" class="form-control" name="archive_date"
-                                    @if (isset($id)) value="{{ $career->archive_date }}" @else value="{{ old('archive_date') }}" @endif  placeholder="Please enter" value=""><br>
+                                    <input type="date" class="form-control" name="archive_date" required
+                                    @if (isset($id)) value="{{ $career->archive_date}}" @else value="{{ old('archive_date') }}" @endif  placeholder="Please enter" value=""><br>
                                     <label for="archive_date" id="archive_date-error" class="error"></label>
                                 </div>
                             </div>

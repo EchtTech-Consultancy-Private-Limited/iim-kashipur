@@ -103,17 +103,17 @@
 
 
                                                         <td>
-                                                            <a class="btn btn-primary" href="{{url('Accounts/add-titleimage/'.dEncrypt($item->id))}}"><i
+                                                            <a class="btn btn-primary" href="{{url('Accounts/add-edit-EventsActivites-image/'.dEncrypt($item->id))}}"><i
                                                                     class="ti-pencil btn-icon-append"
                                                                     style="color:black;"></i></a>
 
-                                                                        <a class="btn btn-primary" href="{{url('Accounts/add-titleimage/'.dEncrypt($item->id))}}"><i
+                                                                        <a class="btn btn-primary" href="{{url('Accounts/event-activities-show/'.dEncrypt($item->id))}}"><i
                                                                     class="ti-eye btn-icon-append"
                                                                     style="color:black;"></i></a>
 
 
                                                             <a class="btn btn-primary"
-                                                                href="{{ url('Accounts/delete-imagetitle/'.dEncrypt($item->id))}}"
+                                                                href="{{ url('Accounts/delete-Event-image/'.dEncrypt($item->id))}}"
                                                                 onclick="return confirm('Are you sure to edit this record?')"><i
                                                                     class="ti-trash btn-icon-append"
                                                                     style="color:black;"></i></a>

@@ -722,6 +722,7 @@
                                         </div>
 
                                         <h6>{{ $items->designation }}</h6>
+
                                     </div>
                                 </div>
 
@@ -912,9 +913,6 @@
                                             @endif
                                         </div>
 
-                                        {{-- <h6>{{ $items->designation }}</h6> --}}
-
-
 
                                         <h6> {{ $items->designation ?? '' }} </h6>
 
@@ -926,6 +924,7 @@
                                             @endif
                                         </span><br>
 
+                                        <p> @if(GetLang()=='en')  @if(isset($items->id))   <?php echo get_dept_name($items->id); ?> @endif @endif</p>
 
                                         <span>{{ $items->phone ?? '' }}</span><br>
                                         <span>{{ $items->extension ?? '' }}</span>

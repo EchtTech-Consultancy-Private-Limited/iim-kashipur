@@ -73,7 +73,7 @@
                                         <table id="example" class="display expandable-table" style="width:100%">
                                             <thead>
                                                 <tr>
-                                                    <th>S.No#</th>
+                                                    <th>S.No</th>
                                                     <th>pdf</th>
                                                     <th>Status</th>
                                                     <th>Action </th>

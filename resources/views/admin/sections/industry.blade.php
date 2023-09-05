@@ -128,6 +128,15 @@
 
                             </div> --}}
 
+                            <div class="col-md-6">
+                                <label for="inputText" class="col-form-label">Archive Date</label>
+                                <div class="">
+                                    <input type="date" class="form-control" name="archive_date" required
+                                    @if (isset($id)) value="{{ $data->archive_date}}" @else value="{{ old('archive_date') }}" @endif  placeholder="Please enter" ><br>
+                                    <label for="archive_date" id="archive_date-error" class="error"></label>
+                                </div>
+                            </div>
+
 
                             <input type="hidden" name="status" @if($id) value="{{ $data->status }}" @else value="0"  @endif >
 

@@ -313,43 +313,35 @@ public function View_Career()
     {
 
 
-if($id){
 
-
-    $title="Edit Details";
-    $msg="Details Edited Successfully!";
-    $career=Career::find(dDecrypt($id));
-
-
-}
-else{
-
+    if($id){
+        $title="Edit Details";
+        $msg="Details Edited Successfully!";
+        $career=Career::find(dDecrypt($id));
+    }
+    else{
       $title="Add Details";
       $msg="Details Added Successfully!";
       $career=new Career;
-
-}
-
-
+    }
     if($request->isMethod('post')){
         if($id){
         $request->validate([
             'name_of_the_post'=>'required','unique: career',
-            "detail_advertisement"   =>   "mimes:pdf|max:10000"
+            "detail_advertisement"   =>   "mimes:pdf|max:10000",
+            "corrigendum"   =>   "mimes:pdf|max:10000"
 
         ]);
         }
         else{
             $request->validate([
             'name_of_the_post'=>'required',
-            "detail_advertisement"   =>   "mimes:pdf|max:10000"
+            "detail_advertisement"   =>   "mimes:pdf|max:10000",
+            "corrigendum"   =>   "mimes:pdf|max:10000"
 
         ]);
     }
-
-
         $career->name_of_the_post=$request->name_of_the_post;
-
         if($request->hasFile('detail_advertisement')){
             $career->pdfsize=$request->detail_advertisement->getSize();
             $file=$request->file('detail_advertisement');
@@ -358,12 +350,22 @@ else{
             $file->move($path,$newname);
         $career->detail_advertisement=$newname;
         }
+
+        if($request->hasFile('corrigendum')){
+            $career->pdf_corrigendum=$request->corrigendum->getSize();
+            $file=$request->file('corrigendum');
+            $newname=time().rand(10,99).'.'.$file->getClientOriginalExtension();
+            $path=public_path('uploads/fo');
+            $file->move($path,$newname);
+        $career->corrigendum=$newname;
+        }
+
         $career->note=$request->note;
         $career->opening_date=$request->opening_date;
         $career->archive_date=$request->archive_date;
         $career->closing_date=$request->closing_date;
         $career->online_link=$request->online_link;
-        $career->corrigendum=$request->corrigendum;
+
         $career->status=$request->status;
         $career->save();
 

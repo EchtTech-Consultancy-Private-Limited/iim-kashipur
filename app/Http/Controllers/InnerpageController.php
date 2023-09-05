@@ -49,7 +49,8 @@ use App\Models\Org;
 use App\Models\project_logo;
 use App\Models\quick_linkcategory;
 use App\Models\search;
-
+use App\Models\report;
+use App\Models\researchSeminars;
 class InnerpageController extends Controller
 {
 
@@ -62,7 +63,6 @@ class InnerpageController extends Controller
 //
 
 public function archive($slug){
-
 
    if($slug == 'career' || $slug == 'Career'){
      $bread="Career";
@@ -486,19 +486,19 @@ public function  career(){
 //Industry_Connect
     public function Industry_Connect()
     {
-        $item=Industry::get();
+        $item=Industry::orderBy('id','Asc')->wherestatus(1)->get();
         return view('front.Layouts.child_pages.menu_bar.main_menu.Industry_connect',['item'=>$item]);
     }
 
 //evnet& activity
     public function event_activity_image($id)
     {
-        $data=event_image::whereparent_id(dDecrypt($id))->get();
+        $data=event_image::whereparent_id(dDecrypt($id))->wherestatus(1)->get();
         $item=Events::whereid(dDecrypt($id))->get();
         return view('front.Layouts.child_pages.menu_bar.main_menu.event&activity_image',['data'=>$data,'item'=>$item]);
     }
 // Tenders
-public function  Tenders(){   //->paginate(10)
+public function Tenders(){   //->paginate(10)
 
     $item=Tender::wherestatus('1')->paginate(10);
     return view('front.Layouts.child_pages.menu_bar.main_menu.Tenders',['item'=>$item]);
@@ -531,6 +531,7 @@ public function sub_childInnerpage($main_slug,$slug,$subchild,$superchild)  //co
 
     $subchildmenu=subchildmenu::whereslug($superchild)->get();
 
+    //dd($subchildmenu);
     if(Count($subchildmenu)>0)
     {
         if(Count($subchildmenu)>0)
@@ -602,10 +603,13 @@ public function sub_childInnerpage($main_slug,$slug,$subchild,$superchild)  //co
 
 }
 
-//
+//news media
 public function news_media()
 {
-    $item=news_event::get();
+    $item=news_event::wherestatus(1)->get();
+    if(count($item) < 0){
+        return abort(401);
+    }
     return view('front.Layouts.child_pages.menu_bar.main_menu.News_details',['item'=>$item]);
 }
 
@@ -1830,18 +1834,11 @@ public function screen_reader_access()
 
         elseif($type[0]->url == '/Events-Activites')
         {
-
-
             $item=SubMenu::whereslug($slug)->get();
             if(Count($item)>0){
-               // dd('dd');
             $data=Events::wherestatus('1')->get();
-
             $type=SubMenu::whereslug($slug)->get();
             if(count($type)>0){
-
-            //dd($type);
-
            return view('front.Layouts.child_pages.menu_bar.main_menu.event&activity',['item'=>$item,'sub_menu'=>$sub_menu,'type'=>$type,'data'=>$data]);
 
             }else{
@@ -1856,7 +1853,7 @@ public function screen_reader_access()
 
             $data=SubMenu::whereslug($slug)->get();
             if(Count($data)>0){
-            $item=org_journies::get();
+            $item=org_journies::wherestatus(1)->get();
             $type=SubMenu::whereslug($slug)->get();
             if(count($type)>0){
             return view('front.Layouts.child_pages.menu_bar.main_menu.story',['item'=>$item,'item'=>$item,'type'=>$type,'sub_menu'=>$sub_menu]);
@@ -1868,6 +1865,44 @@ public function screen_reader_access()
                 return abort(401);
             }
         }
+
+        //Placement-Reportsreport
+        elseif($type[0]->url == '/Placement-Reports')
+        {
+
+            $data=SubMenu::whereslug($slug)->get();
+            if(Count($data)>0){
+            $item=report::wherestatus(1)->paginate(10);
+            $type=SubMenu::whereslug($slug)->get();
+            if(count($type)>0){
+            return view('front.Layouts.child_pages.menu_bar.main_menu.placment_report',['item'=>$item,'item'=>$item,'type'=>$type,'sub_menu'=>$sub_menu]);
+
+            }else{
+                return abort(401);
+            }
+            }else{
+                return abort(401);
+            }
+        }
+        //Research-seminar
+        elseif($type[0]->url == '/Research-seminar')
+        {
+
+            $data=SubMenu::whereslug($slug)->get();
+            if(Count($data)>0){
+            $item=researchSeminars::wherestatus(1)->paginate(10);
+            $type=SubMenu::whereslug($slug)->get();
+            if(count($type)>0){
+            return view('front.Layouts.child_pages.menu_bar.main_menu.research-seminar',['item'=>$item,'item'=>$item,'type'=>$type,'sub_menu'=>$sub_menu]);
+
+            }else{
+                return abort(401);
+            }
+            }else{
+                return abort(401);
+            }
+        }
+
 
         elseif($type[0]->url == '/photo-gallery')
         {
@@ -1926,10 +1961,9 @@ public function screen_reader_access()
     }
     elseif('student-profile-more-info' == $main_slug)
     {
-        //dd($main_slug);
-           $item=StudentProfile::where('id',dDecrypt($slug))->get();
+       // dd($main_slug);
+           $item=StudentProfile::where('id',dDecrypt($slug))->where('status',1)->get();
         if(Count($item)>0){
-
             return view('front.Layouts.child_pages.student-profile.backup',compact('item'));
         }else{
             return abort(401);
@@ -2042,7 +2076,7 @@ public function Child_barInnerpage($main_slug,$Sub_slug,$slug) //content page
 
         if($slug=="student-profiles")
         {
-            $item = StudentProfile::orderBy('sort')->get();
+            $item = StudentProfile::orderBy('sort')->where('status',1)->get();
             if(Count($item)>0){
             $type_sub=child_menu::whereslug($slug)->get();
             $gets=SubMenu::whereid($type_sub[0]->sub_id)->get();

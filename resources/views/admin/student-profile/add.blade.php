@@ -187,9 +187,11 @@
    </div>
 </div>
 <script type="text/javascript">
-   CKEDITOR.replace('content');
+   CKEDITOR.replace('abouts');
 
-   CKEDITOR.replace('content_h');
+   CKEDITOR.replace('papers_publications');
+   CKEDITOR.replace('research_interests');
+   CKEDITOR.replace('work_experience');
 
 </script>
 <!-- content-wrapper ends -->

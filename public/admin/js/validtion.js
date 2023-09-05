@@ -110,12 +110,6 @@ $(document).ready(function() {
             description: {
                 required: true,
             },
-            phone: {
-                required: true,
-                minlength: 10,
-                maxlength: 10,
-                number: true
-            },
             type:{
                 required: true,
             },
@@ -303,10 +297,6 @@ $(document).ready(function() {
                 maxlength: "Email cannot be more than 50 characters"
             },
             mobile: {
-                required: "Phone number is required",
-                minlength: "Phone number must be of 10 digits"
-            },
-            phone: {
                 required: "Phone number is required",
                 minlength: "Phone number must be of 10 digits"
             },

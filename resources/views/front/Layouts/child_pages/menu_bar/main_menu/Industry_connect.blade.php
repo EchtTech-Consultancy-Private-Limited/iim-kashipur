@@ -71,6 +71,8 @@
 
                                             <tbody>
                                                 @foreach ($item as $K => $data)
+
+                                                  @if(Getarchivedata(now()->format('Y-m-d'),$data->archive_date) != 'True')
                                                     <tr>
                                                         <td>{{ $K + 1 }}</td>
                                                         <td>{{ $data->date }}</td>
@@ -91,6 +93,7 @@
                                                         @endif
 
                                                     </tr>
+                                                    @endif
                                                 @endforeach
 
                                             </tbody>
