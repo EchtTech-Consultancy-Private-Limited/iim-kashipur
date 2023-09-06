@@ -1893,6 +1893,17 @@ public function screen_reader_access()
             $data=SubMenu::whereslug($slug)->get();
             if(Count($data)>0){
             $item=researchSeminars::wherestatus(1)->paginate(10);
+
+            if($request->search){
+                $item=researchSeminars::
+                          where('Speaker',"like","%$request->search%")
+                        ->orwhere('Topic',"like","%$request->search%")
+                        ->paginate(10);
+            }else{
+
+                $item=researchSeminars::wherestatus(1)->paginate(10);
+            }
+
             $type=SubMenu::whereslug($slug)->get();
             if(count($type)>0){
             return view('front.Layouts.child_pages.menu_bar.main_menu.research-seminar',['item'=>$item,'item'=>$item,'type'=>$type,'sub_menu'=>$sub_menu]);

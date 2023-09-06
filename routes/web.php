@@ -466,6 +466,7 @@ Route::get('/delete-student-profile/{id}',[StudentProfileController::class,'dele
 
 
 //feedback form & contact us form
+Route::GET('sc-st-obc-list',[FormController::class,'View_scstobc']);
 
 Route::GET('feedback',[FormController::class,'feedback']);
 
