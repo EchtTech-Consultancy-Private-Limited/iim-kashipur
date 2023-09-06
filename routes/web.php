@@ -466,7 +466,7 @@ Route::get('/delete-student-profile/{id}',[StudentProfileController::class,'dele
 
 
 //feedback form & contact us form
-// Route::GET('Countact-us',[FormController::class,'countact_us']);
+
 Route::GET('feedback',[FormController::class,'feedback']);
 
 
@@ -625,7 +625,7 @@ Route::get('reset-password/{token}', [ForgotPasswordController::class, 'showRese
 Route::post('reset-password', [ForgotPasswordController::class, 'submitResetPasswordForm'])->name('reset.password.post');
 
 
-
+Route::post('sc-st-obc',[InnerpageController::class,'sc_st_obc']);
 Route::get('registeration',[IcmiRegistrationController::class,'registeration']);
 //website search
 Route::post('search',[InnerpageController::class,'search']);
