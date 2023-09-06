@@ -422,8 +422,8 @@
 
                                         </figure>
 
-                                       <div class="text-scroll"> 
-                                    
+                                       <div class="text-scroll">
+
                                         <h4> @if(GetLang()=='en') {{ $items->title  ?? ''}}  @else {{ $items->title_h  ?? ''}}  @endif</h4>
 
                                         <p> @if(GetLang()=='en') {{ $items->designation ?? '' }}  @else {{ $items->designation_h ?? '' }}  @endif</p>
@@ -679,9 +679,9 @@
                     <div class="col-md-6">
                         <form action="{{ url('/faculty/faculty-directory') }}" method="get">
                             <label> Search Name or Deparment </label>
-                           
+
                             <div class="d-flex">
-                              <input type="text" class="form-control" placeholder="search name or deparment!!!!" value="{{ request('search') ??''}} " name="search">
+                              <input type="text" class="form-control" placeholder="search name or deparment!!!!" value="{{ request('search') ??''}} " name="value">
 
                                 <button type="submit" class="btn-info submit-btn-apply">Apply</button>
 
@@ -717,7 +717,7 @@
 
                                     </figure>
 
-                                    <div class="text-scroll"> 
+                                    <div class="text-scroll">
 
                                     <h4> @if(GetLang()=='en') {{ $items->title  ?? ''}}  @else {{ $items->title_h  ?? ''}}  @endif</h4>
                                     <p> @if(GetLang()=='en') {{ $items->designation ?? '' }}  @else {{ $items->designation_h ?? '' }}  @endif</p>
@@ -727,7 +727,21 @@
 
                                     <p> @if(GetLang()=='en')  @if(isset($items->id))   <?php echo get_dept_name($items->id); ?> @endif @endif</p>
 
-                                          </div>
+                                    <?php
+                                    $email_address = $items->email;
+                                    $str = $email_address;
+                                    $var = str_replace('@', '[at]', $str);
+                                    $email = str_replace('.', '[dot]', $var);
+                                    ?>
+
+                                      <p>
+                                        {{ $email ??'' }}
+                                      </p>
+
+                                      <p>{{ $items->phone  ??''}}</p>
+                                      <p>{{ $items->extension ??'' }}</p>
+
+                                </div>
                                 </div>
 
 
@@ -820,7 +834,7 @@
                                                             alt="{{ $items->title ?? '' }}"
                                                             title="{{ $items->title ?? '' }}"></figure>
 
-                                                            <div class="text-scroll"> 
+                                                            <div class="text-scroll">
 
                                                     <h4>
                                                         @if (GetLang() == 'en')
