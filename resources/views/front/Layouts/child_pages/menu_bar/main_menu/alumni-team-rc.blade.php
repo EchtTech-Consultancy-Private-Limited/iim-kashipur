@@ -419,9 +419,18 @@
                             <h6>
                                 {{ $items->more_designation ?? '' }}
                             </h6>
-                            <span>
-                                {{ $items->email ?? '' }}
-                            </span>
+
+
+                            <?php
+                            $email_address = $items->email;
+                            $str = $email_address;
+                            $var = str_replace('@', '[at]', $str);
+                            $email = str_replace('.', '[dot]', $var);
+                            ?>
+
+                              <span>
+                                {{ $email ??'' }}
+                              </span>
 
                         </div>
 

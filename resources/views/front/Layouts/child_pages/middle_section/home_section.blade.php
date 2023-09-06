@@ -126,8 +126,150 @@
 
                 @endif
 
-            </div>
 
+
+               @if(request()->path() == 'scstobc-cell')
+                <div class="com-md-12">
+                    <form action="{{ url('sc-st-obc') }}" method="post"  enctype="multipart/form-data">
+                        <div class="card">
+                         @csrf
+                        @if ($errors->any())
+                            <div class="alert alert-danger">
+                                <ul>
+                                    @foreach ($errors->all() as $error)
+                                        <li>{{ $error }}</li>
+                                    @endforeach
+                                </ul>
+                            </div>
+                        @endif
+                        @if (Session::has('success'))
+                            <div class="alert alert-success alert-block" role="alert">
+                                <button class="close" data-dismiss="alert"></button>
+                                {{ Session::get('success') }}
+                            </div>
+                        @endif
+                            <div class="card-body">
+                                <div class="row align-items-center pt-4 pb-3">
+                                    <div class="col-md-3 ps-5">
+                                        <h6 class="mb-0" tabindex="0">Name <span class="text-danger">*</span> </h6>
+                                    </div>
+                                    <div class="col-md-9 pe-5">
+                                        <input type="text" value="" name="name" class="form-control special_no"placeholder="Enter Your Name">
+                                        @if ($errors->has('name'))
+                                        <div class="text-danger">{{ $errors->first('name') }}</div>
+                                       @endif
+
+                                    </div>
+                                </div>
+
+                                <div class="row align-items-center py-3">
+                                    <div class="col-md-3 ps-5">
+                                        <h6 class="mb-0" tabindex="0">Type <span class="text-danger">*</span> </h6>
+                                    </div>
+                                    <div class="col-md-9 pe-5">
+                                        <select class="form-control" name="Type">
+                                            <option value="">Select Type</option>
+                                            <option value="0"> Student</option>
+                                            <option value="1">Faculty</option>
+                                            <option value="2">Non-Teaching Staff</option>
+                                        </select>
+                                        @if ($errors->has('Type'))
+                                        <div class="text-danger">{{ $errors->first('Type') }}</div>
+                                        @endif
+                                    </div>
+
+                                </div>
+
+                                <div class="row align-items-center py-3">
+                                    <div class="col-md-3 ps-5">
+                                        <h6 class="mb-0">Roll No/ Employee Id  <span class="text-danger">*</span> </h6>
+                                    </div>
+                                    <div class="col-md-9 pe-5">
+                                        <input type="text" class="form-control" name="roll_no" placeholder="Roll No/ Employee Id ">
+
+                                        @if ($errors->has('roll_no'))
+                                        <div class="text-danger">{{ $errors->first('roll_no') }}</div>
+                                       @endif
+                                    </div>
+
+                                </div>
+
+                                <div class="row align-items-center py-3">
+                                    <div class="col-md-3 ps-5">
+                                        <h6 class="mb-0" tabindex="0">Complaint Discrimination <span class="text-danger">*</span> </h6>
+                                    </div>
+                                    <div class="col-md-9 pe-5">
+                                        <select class="form-control" name="Discrimination">
+                                            <option value="">Select Type</option>
+                                            <option value="0"> Scheduled Caste & Tribe (SC/ST)</option>
+                                            <option value="1">Other Backward Caste (OBC)</option>
+                                            <option value="2">Minority</option>
+                                            <option value="3">Disability</option>
+                                        </select>
+                                        @if ($errors->has('Discrimination'))
+                                        <div class="text-danger">{{ $errors->first('Discrimination') }}</div>
+                                       @endif
+                                    </div>
+
+                                </div>
+
+                                <div class="row align-items-center py-3">
+                                    <div class="col-md-3 ps-5">
+                                        <h6 class="mb-0">Complaint Details  <span class="text-danger">*</span> </h6>
+                                    </div>
+                                    <div class="col-md-9 pe-5">
+                                        <textarea class="form-control" rows="3" name="Complaint_Details" placeholder="Complaint Details "></textarea>
+
+                                        @if ($errors->has('Complaint_Details'))
+                                        <div class="text-danger">{{ $errors->first('Complaint_Details') }}</div>
+                                        @endif
+                                    </div>
+
+                                </div>
+
+
+                                <div class="row align-items-center py-3">
+                                    <div class="col-md-3 ps-5">
+                                        <h6 class="mb-0">Contact No. <span class="text-danger">*</span> </h6>
+                                    </div>
+                                    <div class="col-md-9 pe-5">
+                                        <input type="text" value="" name="mobile_no" id="mobile_no"
+                                            class="form-control" placeholder="Enter your Contact Number" maxlength="10">
+                                            @if ($errors->has('mobile_no'))
+                                            <div class="text-danger">{{ $errors->first('mobile_no') }}</div>
+                                            @endif
+                                    </div>
+
+                                </div>
+
+                                <div class="row align-items-center py-3">
+                                    <div class="col-md-3 ps-5">
+                                        <h6 class="mb-0">Attachment (only Image, if any) <span class="text-danger">*</span> </h6>
+                                    </div>
+                                    <div class="col-md-9 pe-5">
+                                        <input type="file" name="image" class="form-control">
+                                    </div>
+                                    @if ($errors->has('image'))
+                                    <div class="text-danger">{{ $errors->first('image') }}</div>
+                                    @endif
+                                </div>
+
+
+
+                                <div class="row align-items-center py-3">
+                                    <div class="col-md-12 text-ceter">
+                                        <button type="submit" class="btn btn-primary btn-sm submit-btn-apply">Submit Your Complaint</button>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+
+                    </form>
+                </div>
+                @endif
+
+            </div>
         </div>
 
     </section>
