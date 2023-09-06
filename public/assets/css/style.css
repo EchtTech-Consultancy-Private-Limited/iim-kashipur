@@ -581,6 +581,13 @@ a {
     }
 }
 
+@media (min-width: 1500px) {
+    .profilewraper.withinfo img {
+        height: 280px !important;
+        max-height: 280px;
+    }
+}
+
 @media (max-width: 991px) {
     .header-top-content .navbar-toggler {
         display: block;
@@ -992,6 +999,11 @@ span.text-hili-top {
     .hero-banner-content .title {
         font-size: 1.5em;
     }
+    .profilewraper.withinfo img {
+        height: 220px !important;
+        max-height: 235px !important;
+    }
+    
 }
 
 @media (max-width: 1199px) {
@@ -3607,23 +3619,19 @@ width: 50%;
 }
 
 .bg-hover .text-scroll, .profilewraper.withinfo .text-scroll {
-    height: 100px;
+    height: 105px;
     font-size: 13px;
-    overflow: auto;
-    scroll-behavior: smooth;
+    overflow: hidden;
 }
 
-.bg-hover .text-scroll::-webkit-scrollbar, .profilewraper.withinfo .text-scroll::-webkit-scrollbar {
-    /* display: none; */
+/* .bg-hover .text-scroll::-webkit-scrollbar, .profilewraper.withinfo .text-scroll::-webkit-scrollbar {
     width: 5px;
     height: 10px;
   }
   
-  /* Hide scrollbar for IE, Edge and Firefox */
   .bg-hover .text-scroll, .profilewraper.withinfo .text-scroll {
-    -ms-overflow-style: none;  /* IE and Edge */
-    scrollbar-width: none;  /* Firefox */
-  }
+    scrollbar-width: none;
+  } */
 
 h2.heading-light {
     font-weight: 700;
@@ -5356,7 +5364,7 @@ img.img-icon {
 .master-class h5 span{
     color: #84061f;
     font-size: 16px;
-    font-weight: 600;
+    font-weight: 500;
     background: #ebb6b6;
     display: table;
     padding: 10px 13px;
@@ -5645,7 +5653,8 @@ button.upload-btn.btn-info {
 }
 
 .profilewraper.withinfo img {
-    height: 190px;
+    height: auto;
+    max-height: 280px;
 }
 
 .master-class h3 a {
@@ -6013,4 +6022,40 @@ p{
    
     .social-icon ul li.text-lg-left1{
         text-align: left !important;
+    }
+
+    del{
+        text-decoration: line-through !important;
+    }
+
+    .mail-team {
+        width: 100%;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+    .image-box-border {
+        border: 1px solid #dee2e6 !important;
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+    .image-box-border p {
+        text-align: center;
+    }
+    .text-scroll.member-hight-200 {
+        height: 210px !important;
+        overflow: hidden;
+    }
+
+    .senear-box {
+        height: 135px;
+    }
+
+    .sub-text-b {
+        font-size: 12px;
+        white-space: break-spaces;
+    }
+
+    .student-p-box {
+        height: 80px;
     }

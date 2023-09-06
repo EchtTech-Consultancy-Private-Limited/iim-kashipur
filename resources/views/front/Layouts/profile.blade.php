@@ -918,13 +918,13 @@
 
                                         <h6> {{ $items->designation ?? '' }} </h6>
 
-                                        <span>
+                                        <div>
                                             @if (GetLang() == 'en')
                                                 {{ $items->more_designation ?? '' }}
                                             @else
                                                 {{ $items->more_designation ?? '' }}
                                             @endif
-                                        </span><br>
+                                        </div>
 
                                         <p> @if(GetLang()=='en')  @if(isset($items->id))   <?php echo get_dept_name($items->id); ?> @endif @endif</p>
 
@@ -939,7 +939,7 @@
                                         ?>
                                         <br><span> {{ $email ?? '' }} </span>
 
-                                        <div class="social-icon">
+                                        <div class="social-icon mt-3">
                                             <ul>
                                                 <li>
                                                     @if ($item[0]->twitter != '')

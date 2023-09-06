@@ -816,7 +816,7 @@
 
                             @foreach ($item as $items)
                                 @if ($items->department == '12')
-                                    <div class="col-6 col-lg-4 col-xxl-3 mb-4">
+                                    <div class="col-6 col-lg-4 col-xxl-4 mb-4">
 
 
                                         <div class="addevent-box top text-left mt-0">
@@ -826,6 +826,7 @@
                                                 alt="{{ $items->title ?? '' }}" title="{{ $items->title ?? '' }}">
                                             </div>
 
+                                          <div class="senear-box">
                                             <h5>
                                                 @if (GetLang() == 'en')
                                                 {{ $items->title ?? '' }}
@@ -833,17 +834,17 @@
                                                 {{ $items->title_h ?? '' }}
                                             @endif
                                             </h5>
-                                            <h6>
+                                            <p>
                                                 @if (GetLang() == 'en')
                                                 {{ $items->designation ?? '' }}
                                             @else
                                                 {{ $items->designation_h ?? '' }}
                                             @endif
-                                            </h6>
+                                            </p>
 
-                                            <h6>
+                                            <p>
                                               {{ $items->phone ??'' }}
-                                            </h6>
+                                            </p>
 
                                             <?php
                                             $email_address = $items->email;
@@ -852,12 +853,13 @@
                                             $email = str_replace('.', '[dot]', $var);
                                             ?>
 
-                                              <h6>
+                                              <p class="mail-team" title="{{ $email ??'' }}">
                                                 {{ $email ??'' }}
-                                              </h6>
+                                              </p>
 
-                                              <span> {{ $items->extension ?? '' }}</span>
+                                              <p> {{ $items->extension ?? '' }}</p>
 
+                                          </div>
                                         </div>
 
                                     </div>

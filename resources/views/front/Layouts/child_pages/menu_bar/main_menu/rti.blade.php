@@ -42,7 +42,7 @@
 
                 <div class="d-flex justify-content-end">
                     <a href="{{ url(request()->path() . '/archive') }}" class="btn2 float-right mb-3"
-                        style="border-radius: 30px; background:#0d6efd">
+                        style="border-radius: 30px; background:#174e91">
                         Archive List
                     </a>
                 </div>
@@ -168,7 +168,7 @@
                                         <div class="d-flex justify-content-end">
 
                                             <a href="{{ url(request()->path() . '/archive') }}" class="btn2 float-right mb-3"
-                                                style="border-radius: 30px; background:#0d6efd">
+                                                style="border-radius: 30px; background:#174e91">
                                                 Archive List
                                             </a>
 
@@ -233,7 +233,7 @@
                                         <div class="d-flex justify-content-end">
 
                                             <a href="{{ url(request()->path() . '/archive') }}" class="btn2 float-right mb-3"
-                                                style="border-radius: 30px; background:#0d6efd">
+                                                style="border-radius: 30px; background:#174e91">
                                                 Archive List
                                             </a>
 
