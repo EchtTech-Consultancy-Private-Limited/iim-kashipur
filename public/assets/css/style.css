@@ -581,6 +581,13 @@ a {
     }
 }
 
+@media (min-width: 1500px) {
+    .profilewraper.withinfo img {
+        height: 280px !important;
+        max-height: 280px;
+    }
+}
+
 @media (max-width: 991px) {
     .header-top-content .navbar-toggler {
         display: block;
@@ -993,7 +1000,7 @@ span.text-hili-top {
         font-size: 1.5em;
     }
     .profilewraper.withinfo img {
-        height: auto;
+        height: 220px !important;
         max-height: 235px !important;
     }
     
@@ -3612,7 +3619,7 @@ width: 50%;
 }
 
 .bg-hover .text-scroll, .profilewraper.withinfo .text-scroll {
-    height: 100px;
+    height: 105px;
     font-size: 13px;
     overflow: hidden;
 }
@@ -6034,4 +6041,17 @@ p{
     }
     .image-box-border p {
         text-align: center;
+    }
+    .text-scroll.member-hight-200 {
+        height: 210px !important;
+        overflow: hidden;
+    }
+
+    .senear-box {
+        height: 135px;
+    }
+
+    .sub-text-b {
+        font-size: 12px;
+        white-space: break-spaces;
     }

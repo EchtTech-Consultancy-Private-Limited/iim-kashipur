@@ -987,7 +987,7 @@
                                                                                 loading="lazy">
                                                                             <div class="top-text">
                                                                                 {{ $chairperson->title  ??''}}
-                                                                                <h6>{{ $chairperson->designation ?? '' }} </h6>
+                                                                                <div class="sub-text-b">{{ $chairperson->designation ?? '' }} </div>
                                                                                 {{-- <br>
 
                                                                               <span style="font-size: 12px;color:#000">
