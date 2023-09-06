@@ -94,10 +94,10 @@
                                                         <td>
                                                             @if (@checkRoute('StatusChange'))
                                                                 @if ($D->status == 1)
-                                                                    <a href="{{ url('Accounts/status-change/0/' . dEncrypt($D->id) . '/research-seminars') }}"
+                                                                    <a href="{{ url('Accounts/status-change/0/' . dEncrypt($D->id) . '/research_seminars') }}"
                                                                         style="color:green;">Active</a>
                                                                 @else
-                                                                    <a href="{{ url('Accounts/status-change/1/' . dEncrypt($D->id) . '/research-seminars') }}"
+                                                                    <a href="{{ url('Accounts/status-change/1/' . dEncrypt($D->id) . '/research_seminars') }}"
                                                                         style="color:red;">Inactive</a>
                                                                 @endif
                                                             @else

@@ -136,7 +136,7 @@
 
                             <div class="col-md-6">
 
-                                <div class="form-group"> <label for="title">NAME *</label> <input id="title"
+                                <div class="form-group"> <label for="title">NAME*</label> <input id="title"
                                         type="text"
                                         @if ($id) value="{{ $data->title }}" @else value="{{ old('title') }}" @endif
                                         name="title" class="form-control" placeholder="Please enter name*">

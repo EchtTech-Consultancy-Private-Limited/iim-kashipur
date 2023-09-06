@@ -59,7 +59,7 @@
 
                                                 <tr>
 
-                                                    <th>S.No#</th>
+                                                    <th>Sr.No</th>
 
                                                     <th>title</th>
 
