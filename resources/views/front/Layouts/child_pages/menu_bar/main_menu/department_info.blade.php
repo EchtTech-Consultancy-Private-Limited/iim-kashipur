@@ -765,7 +765,9 @@
                                 @if ($items->department == '2')
                                     <div class="row mt-4">
 
-                                        <div class="col-md-3 mx-auto">
+                                        <h5><span>Chairperson</span></h5>
+
+                                        <div class="col-md-3">
 
                                             <div class="addevent-box top text-center mt-0">
                                                 <a href="javascript:void(0)">
@@ -844,7 +846,7 @@
 
                             @foreach ($item as $items)
                                 @if ($items->department == '3')
-                                    <div class="col-6 col-lg-4 col-xxl-3 mb-4">
+                                    <div class="col-6 col-lg-4 col-xxl-4 mb-4">
 
                                         <div class="profilewraper bg-hover">
                                             <a href="javascript:void(0)">
@@ -888,7 +890,7 @@
                             @if ($items->department == '4')
                                 <div class="row">
 
-                                    <div class="col-md-3 col-lg-3 mx-auto">
+                                    <div class="col-md-3 col-lg-3">
 
                                         <div class="profilewraper withinfo bg-hover">
                                             <a href="{{ url(@$mmenu[0]->slug.'/'.$type[0]->slug.'/'.$items->slug) }}">

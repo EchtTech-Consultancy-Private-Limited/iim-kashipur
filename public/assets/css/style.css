@@ -3016,7 +3016,7 @@ p strong{
 
     background: #ffffff;
 
-    width: 250px;
+    width: 100%;
 
     max-width: 100%;
 
@@ -6011,3 +6011,6 @@ p{
     }
 
    
+    .social-icon ul li.text-lg-left1{
+        text-align: left !important;
+    }
