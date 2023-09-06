@@ -672,7 +672,7 @@
                         </div>
                         <div class="social-icon">
                             <ul>
-                                <li>
+                                <li class="text-lg-left1">
                                     @if ($item[0]->twitter != '')
                                         <a href="{{ url($item[0]->twitter) }}"
                                             alt="{{ $item[0]->Twitter_title }}"
@@ -761,19 +761,22 @@
                                 </li>
                             </ul>
                         </div>
+
+                        <h6>{{ $item[0]->video_title}}</h6>
+
+                        @if($item[0]->video_url  != '')
+            
+                             <div class="col-md-12 mx-auto">
+            
+                                <iframe width="100%" height="315" src="{{ $item[0]->video_url  ??'' }}" title="{{ url($item[0]->video_title)  ??''}}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+            
+                             </div>
+
                     @endif
                 </div>
 
 
-                   <h5>{{ $item[0]->video_title}}</h5>
-
-            @if($item[0]->video_url  != '')
-
-                 <div class="col-md-8 mx-auto">
-
-                    <iframe width="100%" height="315" src="{{ $item[0]->video_url  ??'' }}" title="{{ url($item[0]->video_title)  ??''}}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-
-                 </div>
+                
 
             @endif
 

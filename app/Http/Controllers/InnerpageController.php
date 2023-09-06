@@ -28,6 +28,7 @@ use App\Models\committee_multiple_image;
 use App\Models\cell_multiple_image;
 use App\Models\press_media;
 use App\Models\news_event;
+use App\Models\scstobc_forms;
 use App\Models\subchildmenu;
 use App\Models\Tender;
 use App\Models\Vendorsdebarred;
@@ -1612,6 +1613,7 @@ public function screen_reader_access()
                     $item=OrganisationStructure::where('department',6)->paginate(9);
                 }
 
+                 $item->appends(['dp' => $request->dp]);
                 if(count($item)>0){
                 $type=SubMenu::whereslug($slug)->get();
 
@@ -2733,6 +2735,31 @@ public function Child_barInnerpage($main_slug,$Sub_slug,$slug) //content page
         return view('front.Layouts.inner-page.Director.department_info',['data'=>$data]);
     }
 
+   public function sc_st_obc(Request $request){
+
+    $request->validate(
+        [
+            'name' => 'required|max:32|min:2',
+            'mobile_no'=>'required|numeric|min:10|numeric|digits:10',
+       ]
+   );
+    $data= new scstobc_forms;
+    $data->name=$request->name;
+    $data->Type=$request->Type;
+    $data->roll_no=$request->roll_no;
+    $data->Discrimination=$request->Discrimination;
+    $data->Complaint_Details=$request->Complaint_Details;
+    $data->mobile_no=$request->mobile_no;
+    $path=public_path('admin/scstobc-image');
+    if($request->hasFile('image')){
+        $file2=$request->file('image');
+        $newname2= time().rand(10,99).'.'.$file2->getClientOriginalExtension();
+        $file2->move($path, $newname2);
+        $data->image= $newname2;
+    }
+    $data->save();
+    return back()->with(['success'=>'sc st obc form Add Successfully!']);
+}
 
 
 

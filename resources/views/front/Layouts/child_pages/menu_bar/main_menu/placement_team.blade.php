@@ -845,8 +845,15 @@
                                               {{ $items->phone ??'' }}
                                             </h6>
 
-                                            <h6>
-                                                {{ $items->email ??'' }}
+                                            <?php
+                                            $email_address = $items->email;
+                                            $str = $email_address;
+                                            $var = str_replace('@', '[at]', $str);
+                                            $email = str_replace('.', '[dot]', $var);
+                                            ?>
+
+                                              <h6>
+                                                {{ $email ??'' }}
                                               </h6>
 
                                               <span> {{ $items->extension ?? '' }}</span>
