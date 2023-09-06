@@ -254,7 +254,34 @@
                                     @endif
                                 </div>
 
+                                <div class="row align-items-center py-3">
+                                    <div class="col-md-3 ps-5">
 
+                                        <h6 class="mb-0">Captcha Code <span class="text-danger">*</span> </h6>
+
+                                    </div>
+                                    <div class="col-md-4 pe-5">
+                                        <input id="captcha" type="text" class="form-control"
+                                            placeholder="Enter Captcha" name="captcha">
+                                    </div>
+
+                                    <div class="col-md-4 pe-5">
+
+                                        <div class="captcha d-flex">
+                                            <span style="margin-right: 10px;">{!! captcha_img('math') !!}</span>
+                                            <button type="button"
+                                                class="btn btn-danger px-3 py-1 refresh-captcha text-white"
+                                                id="refresh-captcha" style="background:#f03340;color:#fff !important">
+                                                &#x21bb;
+                                            </button>
+                                        </div>
+                                        @error('captcha')
+                                        <div class="alert alert-danger">{{ $message }}</div>
+                                      @enderror
+                                    </div>
+
+
+                                </div>
 
                                 <div class="row align-items-center py-3">
                                     <div class="col-md-12 text-ceter">
