@@ -37,10 +37,10 @@
                                 <p class="card-title">Manage Anti Ragging Policy </p>
 
                                 <div>
-
-                                    <button type="button" class="btn btn-primary"><a
-                                            href="{{ url('/Accounts/add-edit-ANTI-RAGGING') }}">Add New Anti Ragging Policy                                        </a></button>
-
+                                      @if(count($data) < 0)
+                                             <button type="button" class="btn btn-primary"><a
+                                                   href="{{ url('/Accounts/add-edit-ANTI-RAGGING') }}">Add New Anti Ragging Policy                                        </a></button>
+                                       @endif
 
                                 </div>
 

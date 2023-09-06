@@ -446,8 +446,8 @@ public function search(Request $request){
 public function RTI_view()
     {
         $item=rti::wherestatus('1')->get();
-        $data=rit_report_section::get();
-        $value=quarter_report::get();
+        $data=rit_report_section::wherestatus('1')->get();
+        $value=quarter_report::wherestatus('1')->get();
 		//dd($value);
         return view('front.Layouts.child_pages.menu_bar.main_menu.rti',['item'=>$item,'data'=>$data,'value'=>$value]);
     }
@@ -462,9 +462,9 @@ public function RTI_view()
         return view('front.Layouts.child_pages.menu_bar.main_menu.wellness_facilitie',['data'=>$data,'item'=>$item,'chairpersons'=>$chairpersons]);
     }
 
-    public function anti_raggings()
-    {
-      $data=anti_raggings::get();
+    public function anti_raggings(){
+      $data=anti_raggings::wherestatus(1)->get();
+
       return view('front.Layouts.child_pages.menu_bar.main_menu.anti-ragging-policy',['data'=>$data]);
     }
 
@@ -516,8 +516,7 @@ public function  Vendors_Debarred(){
 //press &media
 public function press_media()
 {
-
-    $item=press_media::get();
+    $item=press_media::wherestatus(1)->get();
     if(count($item)){
         $chairperson=OrganisationStructure::whereid($item[0]->chairperson)->get();
         $chairpersons=OrganisationStructure::where('MEDIA_COORDINATORS','=','1')->get();
@@ -1696,8 +1695,6 @@ public function screen_reader_access()
 
         }
 
-
-
         elseif($type[0]->url == '/placement-committee')
         {
                     $item=commmittee::wherestatus('1')->wheretype('2')->get();
@@ -2752,6 +2749,7 @@ public function Child_barInnerpage($main_slug,$Sub_slug,$slug) //content page
         [
             'name' => 'required|max:32|min:2',
             'mobile_no'=>'required|numeric|min:10|numeric|digits:10',
+            'captcha' => 'required|captcha'
        ]
    );
     $data= new scstobc_forms;
@@ -2775,3 +2773,9 @@ public function Child_barInnerpage($main_slug,$Sub_slug,$slug) //content page
 
 
 }
+
+
+
+
+
+

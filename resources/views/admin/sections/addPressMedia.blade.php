@@ -102,7 +102,7 @@
                                             [{{ $data->pdf }}]
                                         @endif
                                     </span>
-                                    <input  type="file" name="file" accept=".jpeg,.png,.gif,.jpg"  class="form-control">
+                                    <input  type="file" name="file" accept=".pdf"  class="form-control">
                                 </div>
                             </div>
 
@@ -163,7 +163,7 @@
 
                             </div>
 
-                            <div class="col-md-6">
+                            {{-- <div class="col-md-6">
 
                                 <label for="event">Status</label>
 
@@ -177,7 +177,9 @@
 
                                 </select>
 
-                            </div>
+                            </div> --}}
+
+                            <input type="hidden" name="status" @if($id) value="{{ $data->status }}"  @else value="0" @endif>
 
                             <div class="clearfix"></div>
 
