@@ -118,14 +118,12 @@
         {{-- banner setion --}}
         <div class="internalpagebanner">
 
-            @if (GetOrganisationAllDetails('default_banner_image') != '')
-                <img src="{{ asset('uploads/site-logo/' . GetOrganisationAllDetails('default_banner_image')) }}"
-                    style="height:auto;  min-height:200px; max-height:500px overflow:hidden;"
-                    alt="{{ $type_child[0]->name ?? '' }}" title="{{ $type_child[0]->name ?? '' }}">
-            @else
-                <img src="{{ asset('assets/images/banners/board-of-governer-banner.jpg') ?? '' }}"
-                    style="height:auto;  min-height:200px; max-height:350% overflow:hidden;"
-                    alt="{{ $type_child[0]->name ?? '' }}" title="{{ $type_child[0]->name ?? '' }}">
+            @if ($item[0]->banner_image != '')
+            <img src="{{ asset('page/banner/' . $item[0]->banner_image) ?? '' }}"
+                alt="{{ $item[0]->banner_alt ?? '' }}" title="{{ $item[0]->banner_title ?? '' }}">
+             @else
+            <img src="{{ asset('uploads/site-logo/' . GetOrganisationAllDetails('default_banner_image')) }}"
+                alt="{{ $item[0]->name ?? '' }}" title="{{ $item[0]->name ?? '' }}">
             @endif
 
             {{--
@@ -778,7 +776,7 @@
                                                                 alt="{{ $membersLists->title ?? '' }}"
                                                                 title="{{ $membersLists->title ?? '' }}">
                                                         </figure>
-                                                        <div class="text-scroll"> 
+                                                        <div class="text-scroll">
                                                         <h4>
                                                             @if (GetLang() == 'en')
                                                                 {{ $membersLists->title ?? '' }}

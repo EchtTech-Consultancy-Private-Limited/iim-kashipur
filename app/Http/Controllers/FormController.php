@@ -16,6 +16,7 @@ use App\Models\Department;
 use App\Models\cell;
 use App\Models\commmittee;
 use App\Models\club;
+use App\Models\scstobc_forms;
 use App\Models\feedback;
 use App\Models\committee_multiple_image;
 use App\Models\club_multiple_image;
@@ -1121,7 +1122,10 @@ public function Delete_clubImage($id){
 
 
 
-
+public function View_scstobc(){
+    $data=scstobc_forms::get();
+    return view('admin.sections.sc-st-obc-listing',['data'=>$data]);
+}
 
 
 

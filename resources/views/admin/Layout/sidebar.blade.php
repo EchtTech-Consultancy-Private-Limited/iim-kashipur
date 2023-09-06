@@ -689,6 +689,39 @@
             </li>
         @endif
 
+        @if (@checkRoute('View_scstobc'))
+            <li class="nav-item">
+
+                <a class="nav-link" data-toggle="collapse" href="#managment" aria-expanded="false"
+                    aria-controls="tables">
+
+                    <i class="icon-head menu-icon"></i>
+
+                    <span class="menu-title">SC ST OBC List</span>
+
+                    <i class="menu-arrow"></i>
+
+                </a>
+
+                <div class="collapse" id="managment">
+
+                    <ul class="nav flex-column sub-menu">
+
+                        {{-- <li class="nav-item"> <a class="nav-link" href="{{ url('/Accounts/Countact-us') }}"> Contact us
+
+                              </a></li> --}}
+
+                        <li class="nav-item"> <a class="nav-link" href="{{ url('/Accounts/sc-st-obc-list') }}"> Feedback
+                            </a>
+                        </li>
+
+                    </ul>
+
+                </div>
+
+            </li>
+        @endif
+
 
 
 
