@@ -792,19 +792,17 @@
                                                                 {{ $membersLists->designation_h ?? '' }}
                                                             @endif
                                                         </p>
-                                                        </div>
-                                                    </a>
-                                                        <span>
+
+                                                        <p>
                                                             @if (GetLang() == 'en')
                                                                 {{ $membersLists->more_designation ?? '' }}
                                                             @else
                                                                 {{ $membersLists->more_designation ?? '' }}
                                                             @endif
-                                                        </span><br>
-
-
-
-
+                                                        </p>
+                                                        </div>
+                                                    </a>
+                                                       
                                                     </div>
 
 
