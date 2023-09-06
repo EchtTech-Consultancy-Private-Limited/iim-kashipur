@@ -73,8 +73,8 @@
                                 <label for="inputText" class="col-form-label">Mba Batch</label>
                                 <div class="">
                                     <input type="text" class="form-control"
-                                        name="Batch"placeholder="Please enter  Batch" required
-                                        @if ($id) value="{{ $data->Batch }}" @else value="{{ old('Batch') }}" @endif><br>
+                                        name="Batch"placeholder="Please enter Batch" required
+                                        @if ($id) value="{{ $data->mba_batch }}" @else value="{{ old('mba_batch') }}" @endif><br>
                                     <label for="Batch" id="Batch-error" class="error"></label>
                                 </div>
                             </div>
@@ -110,8 +110,8 @@
                                 <div class="">
                                     <select  class="form-control" name="placement_reports_type" >
                                         <option value="">placement type</option>
-                                        <option value="1">Final Placement Reports</option>
-                                        <option value="2">Summer Placement Reports</option>
+                                        <option value="1" {{ $data->placement_reports_type == 1 ? 'selected' : '' }}>Final Placement Reports</option>
+                                        <option value="2" {{ $data->placement_reports_type == 2 ? 'selected' : '' }}>Summer Placement Reports</option>
                                     </select>
                                 </div>
                             </div>

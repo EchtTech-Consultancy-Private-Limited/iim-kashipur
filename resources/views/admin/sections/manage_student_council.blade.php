@@ -64,7 +64,6 @@
 
                                                     <th>About student Council</th>
 
-                                                    <th>chairperson</th>
 
                                                     <th>Status</th>
 

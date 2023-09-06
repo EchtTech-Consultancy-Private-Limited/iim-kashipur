@@ -89,7 +89,7 @@
 
                                                         <td>
 
-                                                            <button type="submit" class="btn btn-primary btn-sm"><a href= "{{ url('Accounts/wellness-facilities/'.dEncrypt($D->id)) }}" > Add Imges</a></button>
+                                                            <button type="submit" class="btn btn-primary btn-sm"><a href= "{{ url('Accounts/wellness-facilities/'.dEncrypt($D->id)) }}" > Add Images</a></button>
 
                                                         </td>
 

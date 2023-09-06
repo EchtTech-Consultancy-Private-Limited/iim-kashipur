@@ -80,7 +80,7 @@
 
                                                 <tr>
 
-                                                    <th>S.No#</th>
+                                                    <th>Sr.Nor</th>
 
                                                     <th>About</th>
 
@@ -126,28 +126,28 @@
 
                                                         <td>
                                                             <button type="button" class="btn btn-primary" id="update"
-                                                        data-id="{{ $D->id }}" data-toggle="modal"
-                                                        data-target="#exampleModalupdate"
-                                                        data-whatever="@getbootstrap"><i
-                                                            class="ti-pencil btn-icon-append"
-                                                            style="color:black;"></i></button> &nbsp;
+                                                                data-id="{{ $D->id }}" data-toggle="modal"
+                                                                data-target="#exampleModalupdate"
+                                                                data-whatever="@getbootstrap"><i
+                                                                    class="ti-pencil btn-icon-append"
+                                                                    style="color:black;"></i></button> &nbsp;
 
 
                                                             <button type="button" class="btn btn-primary" id="view"
-                                                            data-id="{{ $D->id }}" data-toggle="modal"
-                                                            data-target="#exampleModalview"
-                                                            data-whatever="@getbootstrap"><i
-                                                                class="ti-eye btn-icon-append"
-                                                                style="color:black;"></i></button> &nbsp;
+                                                                data-id="{{ $D->id }}" data-toggle="modal"
+                                                                data-target="#exampleModalview"
+                                                                data-whatever="@getbootstrap"><i
+                                                                    class="ti-eye btn-icon-append"
+                                                                    style="color:black;"></i></button> &nbsp;
 
 
 
 
                                                             <a class="btn btn-primary"
-                                                            href="{{ url('Accounts/delete-journal-publications_page/' . dEncrypt($D->id)) }}"
-                                                            onclick="return confirm('Are you sure to edit this record?')"><i
-                                                                class="ti-trash btn-icon-append"
-                                                                style="color:black;"></i></a>
+                                                                href="{{ url('Accounts/delete-journal-publications_page/' . dEncrypt($D->id)) }}"
+                                                                onclick="return confirm('Are you sure to edit this record?')"><i
+                                                                    class="ti-trash btn-icon-append"
+                                                                    style="color:black;"></i></a>
 
 
                                                         </td>
@@ -240,7 +240,7 @@
 
 
 
-                            <div class="col-md-12">
+                            {{-- <div class="col-md-12">
 
                                 <label for="event" class="col-form-label">Status</label>
 
@@ -254,7 +254,10 @@
 
                                 </select>
 
-                            </div>
+                            </div> --}}
+
+
+                            <input type="hidden" name="status" value="0">
 
                             <div class="col-md-12 mt-4">
                                 <div class="col-sm-10">
@@ -273,68 +276,67 @@
         </div>
 
 
-{{-- view --}}
+        {{-- view --}}
 
-<div class="modal fade" id="exampleModalview" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-aria-hidden="true">
+        <div class="modal fade" id="exampleModalview" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+            aria-hidden="true">
 
-<div class="modal-dialog modal-md" role="document">
+            <div class="modal-dialog modal-md" role="document">
 
-    <div class="modal-content">
+                <div class="modal-content">
 
-        <div class="modal-header">
+                    <div class="modal-header">
 
-            <h5 class="modal-title" id="exampleModalLabel">View
-                image</h5>
+                        <h5 class="modal-title" id="exampleModalLabel">View
+                            image</h5>
 
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
 
-                <span aria-hidden="true">×</span>
+                            <span aria-hidden="true">×</span>
 
-            </button>
+                        </button>
 
-        </div>
+                    </div>
 
-        <div class="modal-body">
-
-
+                    <div class="modal-body">
 
 
-        <div class="col-md-12">
-            <label for="about_details" class="col-form-label">About Details</label>
-            <div class="">
-                <textarea class="form-control about_details"  readonly rows="4" name="about_details"
-                    placeholder="Please enter About Details" ></textarea><br>
+
+
+                        <div class="col-md-12">
+                            <label for="about_details" class="col-form-label">About Details</label>
+                            <div class="">
+                                <textarea class="form-control about_details" readonly rows="4" name="about_details"
+                                    placeholder="Please enter About Details"></textarea><br>
+
+                            </div>
+                        </div>
+
+
+                        <div class="col-md-12">
+                            <label for="inputText" class="col-form-label">url*</label>
+                            <div class="">
+                                <input type="url" readonly class="form-control url"
+                                    name="url"placeholder="Please enter url"><br>
+
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
 
             </div>
+
         </div>
-
-
-        <div class="col-md-12">
-            <label for="inputText" class="col-form-label">url*</label>
-            <div class="">
-                <input type="text" readonly class="form-control url"
-                    name="url"placeholder="Please enter url"
-                      ><br>
-
-            </div>
-        </div>
-
-    </div>
-
-    </div>
-
-</div>
-
-</div>
 
 
 
         <!-- multiple image table code -->
 
 
-        <div class="modal fade" id="exampleModalupdate" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-            aria-hidden="true">
+        <div class="modal fade" id="exampleModalupdate" tabindex="-1" role="dialog"
+            aria-labelledby="exampleModalLabel" aria-hidden="true">
 
             <div class="modal-dialog modal-md" role="document">
 
@@ -357,50 +359,52 @@ aria-hidden="true">
 
 
 
-                <form class="forms-sample row col-md-12" method="POST" id="form"
-                        action="" enctype="multipart/form-data">
+                        <form class="forms-sample row col-md-12" method="POST" id="form" action=""
+                            enctype="multipart/form-data">
 
 
-                    @csrf
+                            @csrf
 
-                    <div class="col-md-12">
-                        <label for="about_details" class="col-form-label">About Details</label>
-                        <div class="">
-                            <textarea class="form-control about_details" id="about_details" rows="4" name="about_details"
-                                placeholder="Please enter About Details" ></textarea><br>
-                            <label for="about_details" id="about_details-error" class="error"></label>
-                        </div>
-                    </div>
-
-
-                    <div class="col-md-12">
-                        <label for="inputText" class="col-form-label">url*</label>
-                        <div class="">
-                            <input type="text" class="form-control"
-                                name="url"placeholder="Please enter url"  id="url"
-                                  ><br>
-                            <label for="url" id="url-error" class="error"></label>
-                        </div>
-                    </div>
-
-                    <input type="hidden" name="parent_id" value="{{ $id }}">
+                            <div class="col-md-12">
+                                <label for="about_details" class="col-form-label">About Details</label>
+                                <div class="">
+                                    <textarea class="form-control about_details" id="about_details" rows="4" name="about_details"
+                                        placeholder="Please enter About Details"></textarea><br>
+                                    <label for="about_details" id="about_details-error" class="error"></label>
+                                </div>
+                            </div>
 
 
-                    <div class="col-md-12">
+                            <div class="col-md-12">
+                                <label for="inputText" class="col-form-label">url*</label>
+                                <div class="">
+                                    <input type="url" class="form-control"
+                                        name="url"placeholder="Please enter url" id="url"><br>
+                                    <label for="url" id="url-error" class="error"></label>
+                                </div>
+                            </div>
 
-                        <label for="event" class="col-form-label">Status</label>
+                            <input type="hidden" name="parent_id" value="{{ $id }}">
 
-                            <select class="form-control" aria-label="Default select example" id="imagestatus" name="status">
 
-                                <option selected>Please select status</option>
+                            {{-- <div class="col-md-12">
 
-                                <option value="1" >Active</option>
+                                <label for="event" class="col-form-label">Status</label>
 
-                                <option value="0">Inactive</option>
+                                <select class="form-control" aria-label="Default select example" id="imagestatus"
+                                    name="status">
 
-                            </select>
+                                    <option selected>Please select status</option>
 
-                    </div>
+                                    <option value="1">Active</option>
+
+                                    <option value="0">Inactive</option>
+
+                                </select>
+
+                            </div> --}}
+
+                            <input type="hidden" name="status" id="imagestatus">
                     </div>
 
 
@@ -408,7 +412,7 @@ aria-hidden="true">
 
                         <button type="submit" class="btn btn-primary mr-2">Submit</button>
 
-                       </div>
+                    </div>
 
 
                 </div>
@@ -438,71 +442,72 @@ aria-hidden="true">
 
 
 
-<script>
-    $(document).on("click", "#update", function() {
-        var UserName = $(this).data('id');
-       //alert(UserName);
-        $.ajaxSetup({
-            headers: {
-                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-            }
-        });
+        <script>
+            $(document).on("click", "#update", function() {
+                var UserName = $(this).data('id');
+                //alert(UserName);
+                $.ajaxSetup({
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    }
+                });
 
 
-        $.ajax({
-            url: "{{ url('/Accounts/journal_id') }}",
-            type: "get",
-            data: {
-                id: UserName
-            },
-            success: function(data) {
+                $.ajax({
+                    url: "{{ url('/Accounts/journal_id') }}",
+                    type: "get",
+                    data: {
+                        id: UserName
+                    },
+                    success: function(data) {
 
-               // console.log(data.item.about_details);
+                        // console.log(data.item.about_details);
 
-                $('#form').attr('action', '{{ url('Accounts/add-edit-journal-publications_page') }}'+
-                    '/'+data.item.id)
+                        $('#form').attr('action',
+                            '{{ url('Accounts/add-edit-journal-publications_page') }}' +
+                            '/' + data.item.id)
 
-                $("#url").val(data.item.url);
-                $("#imagestatus").val(data.item.status);
-                $(".about_details").html(data.item.about_details)
+                        $("#url").val(data.item.url);
+                        $("#imagestatus").val(data.item.status);
+                        $(".about_details").html(data.item.about_details)
 
-            }
+                    }
 
-        });
+                });
 
-    });
-</script>
-
-
-
-<script>
-    $(document).on("click", "#view", function() {
-        var UserName = $(this).data('id');
-       //alert(UserName);
-        $.ajaxSetup({
-            headers: {
-                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-            }
-        });
+            });
+        </script>
 
 
-        $.ajax({
-            url: "{{ url('/Accounts/journal_id') }}",
-            type: "get",
-            data: {
-                id: UserName
-            },
-            success: function(data) {
 
-                $(".url").val(data.item.url);
-                $(".about_details").html(data.item.about_details)
+        <script>
+            $(document).on("click", "#view", function() {
+                var UserName = $(this).data('id');
+                //alert(UserName);
+                $.ajaxSetup({
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    }
+                });
 
-            }
 
-        });
+                $.ajax({
+                    url: "{{ url('/Accounts/journal_id') }}",
+                    type: "get",
+                    data: {
+                        id: UserName
+                    },
+                    success: function(data) {
 
-    });
-</script>
+                        $(".url").val(data.item.url);
+                        $(".about_details").html(data.item.about_details)
+
+                    }
+
+                });
+
+            });
+        </script>
 
 
 
