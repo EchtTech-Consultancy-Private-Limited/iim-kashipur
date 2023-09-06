@@ -6055,3 +6055,7 @@ p{
         font-size: 12px;
         white-space: break-spaces;
     }
+
+    .student-p-box {
+        height: 80px;
+    }

@@ -333,7 +333,7 @@ $mmenu = @content_menus($menu[0]->id);
 
 
 
-                            <div class="col-md-3 col-lg-3 mobile-width-auto" title="{{ $students->name }}">
+                            <div class="col-md-4 col-lg-4 mobile-width-auto" title="{{ $students->name }}">
 
                                 <a href="{{ url('/student-profile-more-info/'.dEncrypt($students->id))}}">
 
@@ -343,8 +343,10 @@ $mmenu = @content_menus($menu[0]->id);
                                         <img src="{{asset('uploads/'.$students->student_image)}}"  alt="{{ $items->title ?? '' }}" title="{{ $items->title ?? '' }}">
                                     </figure>
 
+                                   <div class="student-p-box">
                                     <h4> {{ $students->name }}  {{ $students->last_name }}  </h4>
                                     <p>{{ $students->area_specialization }}</p>
+                                   </div>
 
                                 </div>
 
