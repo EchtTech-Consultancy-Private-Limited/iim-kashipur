@@ -100,7 +100,7 @@
                                 </div>
                             </div>
 
-                            <div class="col-md-12">
+                            {{-- <div class="col-md-12">
 
                                 <label for="event" class="col-form-label">Archive Status</label>
 
@@ -114,7 +114,9 @@
 
                                     </select>
 
-                            </div>
+                            </div> --}}
+
+                            <input type="hidden" name="status" @if (isset($id)) value="{{ $tender->status }}" @else value="0" @endif>
 
                             <div class="col-md-6">
                                 <label for="inputText" class="col-form-label">Archive Date</label>

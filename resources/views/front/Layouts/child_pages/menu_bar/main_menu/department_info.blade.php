@@ -451,8 +451,6 @@
 
         <div class="profilewithinfo">
 
-
-
             <div class="row">
 
                 @foreach ($item as $items)
@@ -478,6 +476,14 @@
                                 @else
                                     {{ $items->designation_h ?? '' }}
                                 @endif
+
+                                <span>
+                                    @if (GetLang() == 'en')
+                                        {{ $items->more_designation ?? '' }}
+                                    @else
+                                        {{ $items->more_designation ?? '' }}
+                                    @endif
+                                </span><br>
 
                             </div>
 
@@ -855,7 +861,7 @@
                                                         alt="{{ $items->title ?? '' }}"
                                                         title="{{ $items->title ?? '' }}"></figure><br>
 
-                                                        <div class="text-scroll"> 
+                                                        <div class="text-scroll">
                                                 <h4>
                                                     @if (GetLang() == 'en')
                                                         {{ $items->title ?? '' }}

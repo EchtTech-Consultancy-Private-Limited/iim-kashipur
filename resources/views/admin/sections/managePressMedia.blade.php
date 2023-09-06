@@ -78,7 +78,7 @@
 
                                                 @foreach ($data as $K => $D)
                                                     <tr>
-                                                        
+
 
                                                         <td>{{ $K+1 }}</td>
 
@@ -91,10 +91,10 @@
                                                         <td>
                                                             @if (@checkRoute('StatusChange'))
                                                                 @if ($D->status == 1)
-                                                                    <a href="{{ url('Accounts/status-change/0/' . dEncrypt($D->id) . '/news_events') }}"
+                                                                    <a href="{{ url('Accounts/status-change/0/' . dEncrypt($D->id) . '/press_medias') }}"
                                                                         style="color:green;">Active</a>
                                                                 @else
-                                                                    <a href="{{ url('Accounts/status-change/1/' . dEncrypt($D->id) . '/news_events') }}"
+                                                                    <a href="{{ url('Accounts/status-change/1/' . dEncrypt($D->id) . '/press_medias') }}"
                                                                         style="color:red;">Inactive</a>
                                                                 @endif
                                                             @else

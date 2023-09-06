@@ -63,8 +63,11 @@
                                         <div class="box-rti">
                                             <h5><span class="bg-white mb-3">CPIO</span></h5>
 
+                                         @isset($item[0]->CPIO)
+
                                             {!! $item[0]->CPIO !!}
 
+                                        @endisset
 
                                         </div>
                                     </div>
@@ -74,8 +77,9 @@
                                         <div class="box-rti">
                                             <h5><span class="bg-white mb-3">First Appellate Authority</span></h5>
 
+                                            @isset($item[0]->CPIO)
                                             {!! $item[0]->Authority !!}
-
+                                            @endisset
                                         </div>
                                     </div>
 

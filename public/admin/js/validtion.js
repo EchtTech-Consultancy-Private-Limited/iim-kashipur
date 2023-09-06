@@ -77,12 +77,6 @@ $(document).ready(function() {
                 email: true,
                 maxlength: 50
             },
-            mobile: {
-                required: true,
-                minlength: 10,
-                maxlength: 10,
-                number: true
-            },
             content:{
                 minlength: 100,
             },
@@ -295,10 +289,6 @@ $(document).ready(function() {
                 required: "Email is required",
                 email: "Email must be a valid email address",
                 maxlength: "Email cannot be more than 50 characters"
-            },
-            mobile: {
-                required: "Phone number is required",
-                minlength: "Phone number must be of 10 digits"
             },
             title:{
                 required: "This field is required",
