@@ -394,7 +394,7 @@
 
                 @foreach ($item as $items)
                 @if ($items->department == '15')
-                    <div class="col-6 col-lg-4 col-xxl-3 mb-4 mt-4">
+                    <div class="col-6 col-lg-4 col-xxl-4 mb-4 mt-4">
 
                         <div class="profilewraper">
 
@@ -402,23 +402,25 @@
                                     alt="{{ $items->title ?? '' }}" title="{{ $items->title ?? '' }}">
                             </figure><br>
 
-                            <h4>
+                            <h6>
                                 @if (GetLang() == 'en')
                                     {{ $items->title ?? '' }}
                                 @else
                                     {{ $items->title_h ?? '' }}
                                 @endif
-                            </h4>
-
-                            @if (GetLang() == 'en')
-                                {{ $items->designation ?? '' }}
-                            @else
-                                {{ $items->designation_h ?? '' }}
-                            @endif
-
-                            <h6>
-                                {{ $items->more_designation ?? '' }}
                             </h6>
+
+                           <div>
+                                @if (GetLang() == 'en')
+                                {{ $items->designation ?? '' }}
+                                @else
+                                    {{ $items->designation_h ?? '' }}
+                                @endif    
+                           </div>
+
+                            <div>
+                                {{ $items->more_designation ?? '' }}
+                            </div>
 
 
                             <?php
@@ -428,9 +430,9 @@
                             $email = str_replace('.', '[dot]', $var);
                             ?>
 
-                              <span>
+                              <div class="mail-team" title="{{ $email ??'' }}">
                                 {{ $email ??'' }}
-                              </span>
+                              </div>
 
                         </div>
 
