@@ -1,374 +1,67 @@
+@extends('front.Layouts.master')
 
-
-<!doctype html>
-
-<html>
-
-<head>
-
-    <meta charset="utf-8">
-
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-
-    <meta name="twitter:card" value="summary">
-
-    <title>Error page</title>
-
-   
-
-
-
-<style>
-
-* {
-
-    -webkit-box-sizing: border-box;
-
-    box-sizing: border-box;
-
+<style> 
+html, body{
+  margin: 0;
+  padding: 0;
+  text-align: center;
+  font-family: sans-serif;
+  background-color: #E7FFFF;
 }
 
-body {
-
-    padding: 0;
-
-    margin: 0;
-
+h1, a{
+  margin: 0;
+  padding: 0;
+  text-decoration: none;
 }
 
-#notfound {
-
-    position: relative;
-
-    height: 100vh;
-
+.section{
+  padding: 4rem 2rem;
 }
 
-#notfound .notfound {
-
-    position: absolute;
-
-    left: 50%;
-
-    top: 50%;
-
-    -webkit-transform: translate(-50%, -50%);
-
-    -ms-transform: translate(-50%, -50%);
-
-    transform: translate(-50%, -50%);
-
+.section .error{
+  font-size: 150px;
+  color: #008B62;
+  text-shadow: 
+    1px 1px 1px #00593E,    
+    2px 2px 1px #00593E,
+    3px 3px 1px #00593E,
+    4px 4px 1px #00593E,
+    5px 5px 1px #00593E,
+    6px 6px 1px #00593E,
+    7px 7px 1px #00593E,
+    8px 8px 1px #00593E,
+    25px 25px 8px rgba(0,0,0, 0.2);
 }
 
-.notfound {
-
-    /* max-width: 560px;
-
-    width: 100%; */
-
-    padding-left: 160px;
-
-    line-height: 1.1;
-
+.page{
+  margin: 2rem 0;
+  font-size: 20px;
+  font-weight: 600;
+  color: #444;
 }
 
-.notfound .notfound-404 {
-
-    position: absolute;
-
-    left: 0;
-
-    top: 0;
-
-    display: inline-block;
-
-    width: 140px;
-
-    height: 140px;
-
-
-
-    background-size: contain;
-
-    background-repeat: no-repeat;
-
+.back-home{
+  display: inline-block;
+  border: 2px solid #222;
+  color: #222;
+  text-transform: uppercase;
+  font-weight: 600;
+  padding: 0.75rem 1rem 0.6rem;
+  transition: all 0.2s linear;
+  box-shadow: 0 3px 8px rgba(0,0,0, 0.3);
 }
-
-.notfound .notfound-404:before {
-
-    content: "";
-
-    position: absolute;
-
-    width: 100%;
-
-    height: 100%;
-
-    -webkit-transform: scale(2.4);
-
-    -ms-transform: scale(2.4);
-
-    transform: scale(2.4);
-
-    border-radius: 50%;
-
-   
-
-    z-index: -1;
-
+.back-home:hover{
+  background: #222;
+  color: #ddd;
 }
-
-
-
-.notfound h1 {
-
-    font-family: nunito, sans-serif;
-
-    font-size: 21px;
-
-    font-weight: 400;
-
-    margin: 0;
-
-    line-height:1.5;
-
-    margin-top: 48px;
-
-    color: #151723;
-
-}
-
-.notfound a{text-align:center;}
-
-.notfound p {
-
-    font-family: nunito, sans-serif;
-
-    color: #595959;
-
-    font-weight: 400;
-
-    line-height: 1.5;
-
-    margin-top:5px;
-
-}
-
-.notfound a {
-
-    font-family: nunito, sans-serif;
-
-    display: block;
-
-    font-weight: 700;
-
-    border-radius: 40px;
-
-    text-decoration: none;
-
-    text-align: center;
-
-    color: #388dbc;
-
-    width: 40%;
-
-    margin: 0 auto;
-
-}
-
-.gohome{background:#01537c;
-
-
-
-padding:15px 30px;
-
-border-radius:100px;
-
-text-align:center;
-
-color:#fff!important;
-
-font-weight:300!important;
-
-}
-
-@media only screen and (max-width: 767px) {
-
-    .notfound .notfound-404 {
-
-    width: 75px;
-
-    height: 75px;
-
-    margin: 0 auto;
-
-}
-
-    .notfound {
-
-        padding-left: 30px;
-
-        padding-right: 30px;
-
-        padding-top: 110px;
-
-    }
-
-
-
-    #notfound .notfound {
-
-  text-align:center;
-
-    width: 100%;
-
-    }
-
-    .notfound .notfound-404:before {
-
-    content: "";
-
-    position: absolute;
-
-    width: 60px;
-
-    height: 60px;
-
-    left: 7%;
-
-    -webkit-transform: scale(2.4);
-
-    -ms-transform: scale(2.4);
-
-    transform: scale(2.4);
-
-    border-radius: 50%;
-
-    background-color: #f2f5f8;
-
-    z-index: -1;
-
-
-
-}
-
-.notfound .notfound-404 {
-
-    position: relative;
-
-    /* left: 0; */
-
-    /* top: 0; */
-
-    display: block;
-
-    text-align: center;
-
-    width: 75px;
-
-    height: 75px;
-
-   
-
-    background-size: contain;
-
-    background-repeat: no-repeat;
-
-}
-
-.notfound h1 {
-
-   
-
-    margin-top: 50px;
-
-}
-
-#notfound .notfound {
-
- 
-
-    left: 50%;
-
-    top: 35%;
-
-    -webkit-transform: translate(-50%, -40%);
-
-    -ms-transform: translate(-50%, -40%);
-
-    transform: translate(-50%, -40%);
-
-}
-
-
-
-.notfound a {
-
-   
-
-    width: 70%;
-
-}
-
-}
-
 </style>
 
-</head>
+@section('content')
+<div class="section">
+    <h1 class="error">404</h1>
+    <div class="page">Ooops!!! The page you are looking for is not found</div>
+    <a class="back-home" href="{{ url('/') }}">Back to home</a>
+  </div>
 
-<body>
-
-<section style="background: #dbdbdb;">
-
-    <div id="notfound">
-
-        <div class="notfound">
-
-            <div class="notfound-404"></div>
-
-              
-
-
-
-                <a href="#">
-
-                    <img src="{{asset('uploads/site-logo/'.GetOrganisationDetails('logo'))}}" alt="logo" style="height:150px;" class="img-fluid">
-
-                </a>
-
-            
-
-
-
-                <section class="error-container text-center">
-
-                  
-
-                    <div class="error-divider">
-
-                        <h2>ooops!!</h2>
-
-                        <h3 class="description">no data available.</h3>
-
-                    </div>
-
-                </section>
-
-
-
-
-
-                <a href="{{  url()->previous() }}" class="gohome">GO HOME</a>
-
-        </div>
-
-    </div>   
-
-</body>
-
-</section>
-
-
-
-
-
+@endsection
