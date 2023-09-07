@@ -783,7 +783,7 @@
 
 
 
-                  @if(count($MEMBERS) < 0)
+                  @if(count($MEMBERS) > 0)
                     <a href="javascript:void(0)" class="btn2 margin_top margin_bottom">SENIOR MEMBERS</a><br><br>
                     <div class="profilewithinfo">
                         <div class="row">
