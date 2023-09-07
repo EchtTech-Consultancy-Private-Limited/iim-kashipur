@@ -244,7 +244,7 @@
 
 
 
-                            <div class="col-md-12">
+                            {{-- <div class="col-md-12">
 
                                 <label for="event" class="col-form-label">Status</label>
 
@@ -258,7 +258,10 @@
 
                                     </select>
 
-                            </div>
+                            </div> --}}
+
+                            <input type="hidden" name="status" @if($id) value="{{ $data->status }}" @else value="0" @endif>
+
 
                             <div class="col-md-12">
                                 <div class="col-sm-10">
