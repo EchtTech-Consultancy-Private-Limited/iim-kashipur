@@ -949,7 +949,7 @@
                             </div>
                         @endisset
 
-                        <h3> Placement </h3>
+                        <h3> Placement Manager</h3>
 
                         @isset($chairpersone[0]->image)
                             <div class="row mt-4 mb-5">
