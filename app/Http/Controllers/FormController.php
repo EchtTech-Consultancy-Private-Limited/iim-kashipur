@@ -589,8 +589,8 @@ public function Delete_cellsImage($id){
         $request->validate(
 
             [
-                'filename'          =>       'image|mimes:jpeg,png,jpg,gif|max:2048',
-                'image_title'    =>           'required|unique:cell_multiple_images'
+               // 'filename'          =>       'image|mimes:jpeg,png,jpg,gif|max:2048',
+               // 'image_title'    =>           'required|unique:cell_multiple_images'
             ]
 
 
@@ -628,8 +628,8 @@ public function Delete_cellsImage($id){
        $request->validate(
           [
 
-            'filename'          =>       'image|mimes:jpeg,png,jpg,gif|max:2048',
-            'image_text'         =>       'required'
+             //'filename'          =>       'image|mimes:jpeg,png,jpg,gif|max:2048',
+             //'image_text'         =>       'required'
 
           ]
          );
@@ -836,8 +836,8 @@ public function add_Edit_Committee(Request $request,$id=NULL)
             $request->validate(
 
                 [
-                    'filename'          =>       'image|mimes:jpeg,png,jpg,gif|max:2048',
-                     'committee_title'   =>       'required|unique:committee_multiple_images'
+                    //'filename'          =>       'image|mimes:jpeg,png,jpg,gif|max:2048',
+                    // 'committee_title'   =>       'required|unique:committee_multiple_images'
 
                 ]
 
@@ -876,8 +876,8 @@ public function add_Edit_Committee(Request $request,$id=NULL)
           //  dd($request->all());
            $request->validate(
               [
-                'filename'          =>       'image|mimes:jpeg,png,jpg,gif|max:2048',
-                'image_text'        =>        'required'
+                 // 'filename'          =>       'image|mimes:jpeg,png,jpg,gif|max:2048',
+                //'image_text'        =>        'required'
               ]
              );
              $data=committee_multiple_image::find($request->id);
@@ -1038,8 +1038,8 @@ public function Delete_clubImage($id){
 
             [
 
-            'filename'          =>       'image|mimes:jpeg,png,jpg,gif|max:2048',
-            'image_title'   =>       'required|unique:club_multiple_images'
+              // 'filename'          =>       'image|mimes:jpeg,png,jpg,gif|max:2048',
+               //'image_title'   =>       'required|unique:club_multiple_images'
 
             ]
 
@@ -1077,8 +1077,8 @@ public function Delete_clubImage($id){
        $request->validate(
           [
 
-            'filename'          =>       'image|mimes:jpeg,png,jpg,gif|max:2048',
-            'image_text'        =>       'required'
+             // 'filename'          =>       'image|mimes:jpeg,png,jpg,gif|max:2048',
+             // 'image_text'        =>       'required'
 
           ]
          );

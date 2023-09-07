@@ -896,7 +896,7 @@
             <div class="col-md-12">
                 <div class="content-desc">
                     <div class="innerpagecon">
-                        <a href="#" class="btn2">{{ ucfirst(strtolower($item[0]->title)) ?? '' }}</a>
+                        <a href="#" class="btn2">{{ $item[0]->title ?? '' }}</a>
                         {{-- <a href="#" class="btn2"><i class="fa fa-angle-left" aria-hidden="true" style="margin-right: 5px;"></i> Back</a> --}}
                         @foreach ($item as $items)
                             <div class="row mt-4">
