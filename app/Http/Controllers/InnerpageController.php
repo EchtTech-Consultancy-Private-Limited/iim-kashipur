@@ -1534,19 +1534,14 @@ public function screen_reader_access()
         {
             if(isset($type[0]) && $type[0]->tpl_id == 1)
             {
-
-                //// return "Board of directer";
-                   $data=SubMenu::whereslug($slug)->get();
-
-                    $item=OrganisationStructure::get();
-
-
+                    $data=SubMenu::whereslug($slug)->get();
+                    $item=OrganisationStructure::orderBy('short_order','DESC')->where('department','2')->orwhere('department','3')->orwhere('department','4')->get();
+                    $chairperson=OrganisationStructure::where('status','1')->where('department','2')->orderBy('short_order','DESC')->first();
+                    $member=OrganisationStructure::where('status','1')->where('department','3')->orderBy('short_order','DESC')->get();
+                    $Secretary=OrganisationStructure::where('status','1')->where('department','4')->orderBy('short_order','DESC')->first();
                     if(count($item)>0){
-
-                    $type=SubMenu::whereslug($slug)->get();
-
-                    return view('front.Layouts.child_pages.menu_bar.main_menu.department_info',['item'=>$item,'type'=>$type,'sub_menu'=>$sub_menu]);
-
+                      $type=SubMenu::whereslug($slug)->get();
+                      return view('front.Layouts.child_pages.menu_bar.main_menu.department_info',['chairperson'=>$chairperson,'member'=>$member,'Secretary'=>$Secretary,'item'=>$item,'type'=>$type,'sub_menu'=>$sub_menu]);
                     }else{
                         return abort(401);
                     }
@@ -1557,9 +1552,12 @@ public function screen_reader_access()
                 $data=SubMenu::whereslug($slug)->get();
                 if(Count($data)>0){
                 $item=OrganisationStructure::get();
+                $chairperson=OrganisationStructure::where('status','1')->where('department','11')->orderBy('short_order','DESC')->first();
+                $Administrative=OrganisationStructure::where('status','1')->where('department','12')->orderBy('short_order','DESC')->get();
+                $Coordinator=OrganisationStructure::where('status','1')->where('department','13')->orderBy('short_order','DESC')->get();
                 if(count($item)>0){
                 $type=SubMenu::whereslug($slug)->get();
-                return view('front.Layouts.child_pages.menu_bar.main_menu.placement_team',['item'=>$item,'type'=>$type,'sub_menu'=>$sub_menu]);
+                return view('front.Layouts.child_pages.menu_bar.main_menu.placement_team',['chairperson'=>$chairperson,'Administrative'=>$Administrative,'Coordinator'=>$Coordinator,'item'=>$item,'type'=>$type,'sub_menu'=>$sub_menu]);
                 }else{
                     return abort(401);
                 }
@@ -1574,14 +1572,15 @@ public function screen_reader_access()
 
                 if(Count($data)>0){
 
-                $item=OrganisationStructure::get();
-
+                $item=OrganisationStructure::where('department','8')->orwhere('department','9')->get();
+                $chairperson=OrganisationStructure::where('status','1')->where('department','8')->orderBy('short_order','DESC')->first();
+                $MEMBERS=OrganisationStructure::where('status','1')->where('department','9')->orderBy('short_order','DESC')->get();
 
                 if(count($item)>0){
 
                 $type=SubMenu::whereslug($slug)->get();
 
-                return view('front.Layouts.child_pages.menu_bar.main_menu.internation_team',['item'=>$item,'type'=>$type,'sub_menu'=>$sub_menu]);
+                return view('front.Layouts.child_pages.menu_bar.main_menu.internation_team',['chairperson'=>$chairperson,'MEMBERS'=>$MEMBERS,'item'=>$item,'type'=>$type,'sub_menu'=>$sub_menu]);
                 }else{
                     return abort(401);
                 }

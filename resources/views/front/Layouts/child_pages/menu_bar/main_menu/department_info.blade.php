@@ -141,7 +141,7 @@
                     </li>
                     <li><span>
                             @if (GetLang() == 'en')
-                                {{ $type[0]->name  ?? '' }}
+                                {{ $type[0]->name ?? '' }}
                             @else
                                 {{ $type[0]->name_h ?? '' }}
                             @endif
@@ -214,7 +214,8 @@
 
                                     @if (count(GetchildMenusFront($gets[0]->menu_id, $S->id)) > 0)
                                         <li class="hasnested">
-                                            <a @if ($S->id == $gets[0]->id) class="active" @endif href="javscript:void();">
+                                            <a @if ($S->id == $gets[0]->id) class="active" @endif
+                                                href="javscript:void();">
                                                 @if (GetLang() == 'en')
                                                     {{ $S->name ?? '' }}
                                                 @else
@@ -237,7 +238,8 @@
                                                 @foreach (GetchildMenusFront($gets[0]->menu_id, $S->id) as $key2 => $C)
                                                     @if (count(GetsubchildMenusFront($gets[0]->menu_id, $S->id, $C->id)) > 0)
                                                         <li class="hasnested">
-                                                            <a @if ($C->id == $gets[0]->id) class="active" @endif href="javscript:void();">
+                                                            <a @if ($C->id == $gets[0]->id) class="active" @endif
+                                                                href="javscript:void();">
                                                                 @if (GetLang() == 'en')
                                                                     {{ $C->name ?? '' }}
                                                                 @else
@@ -259,7 +261,7 @@
                                                                 @foreach (GetsubchildMenusFront($gets[0]->menu_id, $S->id, $C->id) as $k => $D)
                                                                     @if ($D->external == 'yes')
                                                                         <li><a href="{{ url($D->url) }}"
-                                                                             @if (GetLang() == 'en') onclick="return confirm('This link will take you to an external web site.')"  @else onclick="return confirm('यह लिंक आपको एक बाहरी वेब साइट पर ले जाएगा।')" @endif
+                                                                                @if (GetLang() == 'en') onclick="return confirm('This link will take you to an external web site.')"  @else onclick="return confirm('यह लिंक आपको एक बाहरी वेब साइट पर ले जाएगा।')" @endif
                                                                                 target="_blank">
                                                                                 @if (GetLang() == 'en')
                                                                                     {{ $D->name ?? '' }}
@@ -296,7 +298,7 @@
                                     @else
                                         @if ($C->external == 'yes')
                                             <li><a href="{{ url($C->url) }}"
-                                                 @if (GetLang() == 'en') onclick="return confirm('This link will take you to an external web site.')"  @else onclick="return confirm('यह लिंक आपको एक बाहरी वेब साइट पर ले जाएगा।')" @endif
+                                                    @if (GetLang() == 'en') onclick="return confirm('This link will take you to an external web site.')"  @else onclick="return confirm('यह लिंक आपको एक बाहरी वेब साइट पर ले जाएगा।')" @endif
                                                     target="_blank">
                                                     @if (GetLang() == 'en')
                                                         {{ $C->name ?? '' }}
@@ -331,7 +333,8 @@
                         @else
                             @if ($S->external == 'yes')
                                 <li><a href="{{ url($S->url) }}"
-                                     @if (GetLang() == 'en') onclick="return confirm('This link will take you to an external web site.')"  @else onclick="return confirm('यह लिंक आपको एक बाहरी वेब साइट पर ले जाएगा।')" @endif target="_blank">
+                                        @if (GetLang() == 'en') onclick="return confirm('This link will take you to an external web site.')"  @else onclick="return confirm('यह लिंक आपको एक बाहरी वेब साइट पर ले जाएगा।')" @endif
+                                        target="_blank">
                                         @if (GetLang() == 'en')
                                             {{ $S->name ?? '' }}
                                         @else
@@ -586,7 +589,8 @@
                             <ul>
                                 @if (count(GetchildMenusFront($type[0]->menu_id, $S->id)) > 0)
                                     <li class="hasnested">
-                                        <a @if ($S->id == $type[0]->id) class="active" @endif href="javscript:void();">
+                                        <a @if ($S->id == $type[0]->id) class="active" @endif
+                                            href="javscript:void();">
                                             @if (GetLang() == 'en')
                                                 {{ $S->name ?? '' }}
                                             @else
@@ -608,7 +612,8 @@
                                             @foreach (GetchildMenusFront($type[0]->menu_id, $S->id) as $key2 => $C)
                                                 @if (count(GetsubchildMenusFront($type[0]->menu_id, $S->id, $C->id)) > 0)
                                                     <li class="hasnested">
-                                                        <a @if ($C->id == $type[0]->id) class="active" @endif href="javscript:void();">
+                                                        <a @if ($C->id == $type[0]->id) class="active" @endif
+                                                            href="javscript:void();">
                                                             @if (GetLang() == 'en')
                                                                 {{ $C->name ?? '' }}
                                                             @else
@@ -630,7 +635,7 @@
                                                             @foreach (GetsubchildMenusFront($type[0]->menu_id, $S->id, $C->id) as $k => $D)
                                                                 @if ($D->external == 'yes')
                                                                     <li><a href="{{ url($D->url) }}"
-                                                                         @if (GetLang() == 'en') onclick="return confirm('This link will take you to an external web site.')"  @else onclick="return confirm('यह लिंक आपको एक बाहरी वेब साइट पर ले जाएगा।')" @endif
+                                                                            @if (GetLang() == 'en') onclick="return confirm('This link will take you to an external web site.')"  @else onclick="return confirm('यह लिंक आपको एक बाहरी वेब साइट पर ले जाएगा।')" @endif
                                                                             target="_blank">
                                                                             @if (GetLang() == 'en')
                                                                                 {{ $D->name ?? '' }}
@@ -666,7 +671,7 @@
                                 @else
                                     @if ($C->external == 'yes')
                                         <li><a href="{{ url($C->url) }}"
-                                             @if (GetLang() == 'en') onclick="return confirm('This link will take you to an external web site.')"  @else onclick="return confirm('यह लिंक आपको एक बाहरी वेब साइट पर ले जाएगा।')" @endif
+                                                @if (GetLang() == 'en') onclick="return confirm('This link will take you to an external web site.')"  @else onclick="return confirm('यह लिंक आपको एक बाहरी वेब साइट पर ले जाएगा।')" @endif
                                                 target="_blank">
                                                 @if (GetLang() == 'en')
                                                     {{ $C->name ?? '' }}
@@ -701,7 +706,8 @@
                     @else
                         @if ($S->external == 'yes')
                             <li><a href="{{ url($S->url) }}"
-                                 @if (GetLang() == 'en') onclick="return confirm('This link will take you to an external web site.')"  @else onclick="return confirm('यह लिंक आपको एक बाहरी वेब साइट पर ले जाएगा।')" @endif target="_blank">
+                                    @if (GetLang() == 'en') onclick="return confirm('This link will take you to an external web site.')"  @else onclick="return confirm('यह लिंक आपको एक बाहरी वेब साइट पर ले जाएगा।')" @endif
+                                    target="_blank">
                                     @if (GetLang() == 'en')
                                         {{ $S->name ?? '' }}
                                     @else
@@ -767,8 +773,10 @@
                                     {{ $type[0]->name_h ?? '' }}
                                 @endif
                             </a>
-                            @foreach ($item as $items)
-                                @if ($items->department == '2')
+
+                            @if ($chairperson != '')
+
+                                @if ($chairperson->department == '2')
                                     <div class="row mt-4">
 
                                         <h5><span>Chairperson</span></h5>
@@ -778,35 +786,37 @@
                                             <div class="addevent-box top text-center mt-0">
                                                 <a href="javascript:void(0)">
 
-                                                      <a  href="{{ url(@$mmenu[0]->slug.'/'.$type[0]->slug.'/'.$items->slug) }}" >
-                                                    <div class="profile-img">
+                                                    <a
+                                                        href="{{ url(@$mmenu[0]->slug . '/' . $type[0]->slug . '/' . $chairperson->slug) }}">
+                                                        <div class="profile-img">
 
 
 
-                                                        <img src="{{ asset('uploads/organisation/' . $items->image) ?? '' }}"
-                                                            alt="{{ $items->title }}" title="{{ $items->title }}">
+                                                            <img src="{{ asset('uploads/organisation/' . $chairperson->image) ?? '' }}"
+                                                                alt="{{ $chairperson->title ?? '' }}"
+                                                                title="{{ $Secretary->title ?? '' }}">
 
-                                                    </div>
-                                                     </a>
+                                                        </div>
+                                                    </a>
 
                                                     <h5>
                                                         @if (GetLang() == 'en')
-                                                            {{ $items->title ?? '' }}
+                                                            {{ $chairperson->title ?? '' }}
                                                         @else
-                                                            {{ $items->title_h ?? '' }}
+                                                            {{ $chairperson->title_h ?? '' }}
                                                         @endif
                                                     </h5>
                                                     <h6>
                                                         @if (GetLang() == 'en')
-                                                            {{ $items->designation ?? '' }}
+                                                            {{ $chairperson->designation ?? '' }}
                                                         @else
-                                                            {{ $items->designation_h ?? '' }}
+                                                            {{ $chairperson->designation_h ?? '' }}
                                                         @endif
                                                     </h6>
 
                                                     <h6>
 
-                                                            {{ $items->more_designation ?? '' }}
+                                                        {{ $chairperson->more_designation ?? '' }}
 
                                                     </h6>
 
@@ -831,7 +841,7 @@
                                 <p>  @if (GetLang() == 'en') {!! $items->description  ?? '' !!}  @else {!! $items->description_h  ?? '' !!}  @endif</p>
                             </div> --}}
                                 @endif
-                            @endforeach
+                            @endif
 
 
                         </div>
@@ -849,90 +859,87 @@
 
 
                         <div class="row">
+                            @if (count($member) > 0)
+                                @foreach ($member as $items)
+                                    @if ($items->department == '3')
+                                        <div class="col-6 col-lg-4 col-xxl-4 mb-4">
 
-                            @foreach ($item as $items)
-                                @if ($items->department == '3')
-                                    <div class="col-6 col-lg-4 col-xxl-4 mb-4">
+                                            <div class="profilewraper bg-hover">
+                                                <a href="javascript:void(0)">
+                                                    <figure><img
+                                                            src="{{ asset('uploads/organisation/' . $items->image) ?? '' }}"
+                                                            alt="{{ $items->title ?? '' }}"
+                                                            title="{{ $items->title ?? '' }}"></figure><br>
 
-                                        <div class="profilewraper bg-hover">
-                                            <a href="javascript:void(0)">
-                                                <figure><img
-                                                        src="{{ asset('uploads/organisation/' . $items->image) ?? '' }}"
-                                                        alt="{{ $items->title ?? '' }}"
-                                                        title="{{ $items->title ?? '' }}"></figure><br>
-
-                                                        <div class="text-scroll">
-                                                <h4>
-                                                    @if (GetLang() == 'en')
-                                                        {{ $items->title ?? '' }}
-                                                    @else
-                                                        {{ $items->title_h ?? '' }}
-                                                    @endif
-                                                </h4>
-                                            </a>
-                                            @if (GetLang() == 'en')
-                                                {{ $items->designation ?? '' }}
-                                            @else
-                                                {{ $items->designation_h ?? '' }}
-                                            @endif
+                                                    <div class="text-scroll">
+                                                        <h4>
+                                                            @if (GetLang() == 'en')
+                                                                {{ $items->title ?? '' }}
+                                                            @else
+                                                                {{ $items->title_h ?? '' }}
+                                                            @endif
+                                                        </h4>
+                                                </a>
+                                                @if (GetLang() == 'en')
+                                                    {{ $items->designation ?? '' }}
+                                                @else
+                                                    {{ $items->designation_h ?? '' }}
+                                                @endif
+                                            </div>
                                         </div>
-                                        </div>
-
-                                    </div>
-                                @endif
-                            @endforeach
 
                         </div>
-
-
-
-                    </div>
-
-                    <a href="javascript:void(0)" class="btn2 margin_bottom">Secretary to the Board</a><br>
-
-                    <div class="profilewithinfo mb-0">
-
-                        @foreach ($item as $items)
-                            @if ($items->department == '4')
-                                <div class="row">
-
-                                    <div class="col-md-3 col-lg-3">
-
-                                        <div class="profilewraper withinfo bg-hover">
-                                            <a href="{{ url(@$mmenu[0]->slug.'/'.$type[0]->slug.'/'.$items->slug) }}">
-                                                <figure><img src="{{ asset('uploads/organisation/' . $items->image) }}"
-                                                        alt="{{ $items->title ?? '' }}"
-                                                        title="{{ $items->title ?? '' }}"></figure>
-
-
-
-                                                <h4>
-                                                    @if (GetLang() == 'en')
-                                                        {{ $items->title ?? '' }}
-                                                    @else
-                                                        {{ $items->title_h ?? '' }}
-                                                    @endif
-                                                </h4>
-                                                <p>
-                                                    @if (GetLang() == 'en')
-                                                        {{ $items->designation ?? '' }}
-                                                    @else
-                                                        {{ $items->designation_h ?? '' }}
-                                                    @endif
-                                                </p>
-                                            </a>
-                                        </div>
-
-                                    </div>
-
-
-                                </div>
-                            @endif
-                        @endforeach
-
-                    </div>
-
+                @endif
+                @endforeach
+                @endif
             </div>
+
+
+
+        </div>
+
+        @if ($Secretary != '')
+            <a href="javascript:void(0)" class="btn2 margin_bottom">Secretary to the Board</a><br>
+
+            <div class="profilewithinfo mb-0">
+
+
+
+                @if ($Secretary->department == '4')
+                    <div class="row">
+
+                        <div class="col-md-3 col-lg-3">
+
+                            <div class="profilewraper withinfo bg-hover">
+                                <a href="{{ url(@$mmenu[0]->slug . '/' . $type[0]->slug . '/' . $Secretary->slug) }}">
+                                    <figure><img src="{{ asset('uploads/organisation/' . $Secretary->image) }}"
+                                            alt="{{ $Secretary->title ?? '' }}" title="{{ $Secretary->title ?? '' }}">
+                                    </figure>
+
+
+
+                                    <h4>
+                                        @if (GetLang() == 'en')
+                                            {{ $Secretary->title ?? '' }}
+                                        @else
+                                            {{ $Secretary->title_h ?? '' }}
+                                        @endif
+                                    </h4>
+                                    <p>
+                                        @if (GetLang() == 'en')
+                                            {{ $Secretary->designation ?? '' }}
+                                        @else
+                                            {{ $Secretary->designation_h ?? '' }}
+                                        @endif
+                                    </p>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                @endif
+            </div>
+        @endif
+        </div>
 
         </div>
         @endif

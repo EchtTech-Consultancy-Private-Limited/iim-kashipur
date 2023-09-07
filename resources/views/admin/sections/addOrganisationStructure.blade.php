@@ -463,6 +463,21 @@
 
                     </div>
 
+                    <div class="col-md-6">
+
+                        <div class="form-group"> <label for="short_order"> Short Order *</label> <input id="short_order" type="number" name="short_order" @if($id) value="{{$data->short_order}}" @else value="{{old('short_order')}}" @endif class="form-control" placeholder="Please enter short_order *" required="required" >
+
+                            <label for="short_order"  id="short_order-error" class="error">
+                                @error('short_order')
+                                    {{ $message }}
+                                @enderror
+                            </label>
+
+                        </div>
+
+                    </div>
+
+
 
 
                     <div class="col-md-6">
@@ -485,7 +500,7 @@
 
                     </div>
 
-
+{{--
 
                     <div class="col-md-6">
 
@@ -505,12 +520,12 @@
 
                         </div>
 
-                    </div>
+                    </div> --}}
 
 
 
 
-
+                      <input type="hidden" name="status" @if($id) value="{{ $data->status }}" @else value="0" @endif >
 
 
 

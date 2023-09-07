@@ -51,9 +51,7 @@ class AdminController extends Controller
         $this->middleware('Admin');
     }
 
-
-    //org member
-
+//org member
     public function Show_OrganisationStructure($id){
 
         $data=OrganisationStructure::find(dDecrypt($id));
@@ -172,6 +170,7 @@ function Add_OrganisationStructure(Request $request,$id=null){
       //social mediea links
        $data->slug=SlugCheck('organisation_structures',($request->title));
        $data->status= $request->status;
+       $data->short_order= $request->short_order;
 
 
        $data->video_url= $request->video_url;

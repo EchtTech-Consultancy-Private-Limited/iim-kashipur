@@ -237,7 +237,7 @@
 
 
 
-                            <div class="col-md-12">
+                            {{-- <div class="col-md-12">
 
                                 <label for="event" class="col-form-label">Status</label>
 
@@ -251,7 +251,9 @@
 
                                     </select>
 
-                            </div>
+                            </div> --}}
+
+                            <input type="hidden" @if($id) value="{{ $data->status }}" @else  value="0" @endif>
 
                             <div class="col-md-12">
                                 <div class="col-sm-10">
@@ -278,13 +280,13 @@
         CKEDITOR.replace('activitie');
         CKEDITOR.replace('event');
     </script>
-    
+
 {{-- <script>
     let star = document.querySelectorAll("label");
     star.forEach(e => {
-        
+
         var val = e.textContent;
-        // let text = 
+        // let text =
         let newString = val.trim();
         let str = newString.substring(0,newString.length-1);
 
@@ -297,7 +299,7 @@
             // re
             e.innerHTML= str  + "<span class='text-danger'>*</span>";
         }
-        
+
         // console.log(e)
     });
 </script> --}}
