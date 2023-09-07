@@ -362,14 +362,7 @@ $mmenu = @content_menus($menu[0]->id);
 
                             @endforeach
 
-
-
-
                         </div>
-
-
-
-
                     </div>
 
 
