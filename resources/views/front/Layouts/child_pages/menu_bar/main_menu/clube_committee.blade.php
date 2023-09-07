@@ -390,9 +390,9 @@
                                     </div>
 
                                     <div class="col-md-6 mt-4 pr-lg-0">
-                                        <h2 class="heading-light h-club-box">
-                                            ACADEMIC CLUBS
-                                        </h2>
+                                        <h5 class="heading-light h-club-box">
+                                            <span> ACADEMIC CLUBS </span>
+                                        </h5>
                                         <div class="border-club-left">
                                             <div class="box-club">
                                                 @foreach ($data as $items)
@@ -409,9 +409,10 @@
                                     </div>
 
                                     <div class="col-md-6 mt-4 pl-lg-0">
-                                        <h2 class="heading-light h-club-box">
-                                            NON-ACADEMIC CLUBS
-                                        </h2>
+                                        <h5 class="heading-light h-club-box">
+                                            <span>  NON-ACADEMIC CLUBS</span>
+                                        </h5>
+                                       
                                         <div class="border-club-right">
                                             <div class="box-club">
 
@@ -676,9 +677,9 @@
                                     </div>
 
                                     <div class="col-md-6 mt-4 pr-lg-0">
-                                        <h2 class="heading-light h-club-box">
-                                            ACADEMIC CLUBS
-                                        </h2>
+                                        <h5 class="heading-light h-club-box">
+                                            <span> ACADEMIC CLUBS </span>
+                                        </h5>
                                         <div class="border-club-left">
                                             <div class="box-club">
                                                 @foreach ($data as $items)
@@ -695,9 +696,9 @@
                                     </div>
 
                                     <div class="col-md-6 mt-4 pl-lg-0">
-                                        <h2 class="heading-light h-club-box">
-                                            NON-ACADEMIC CLUBS
-                                        </h2>
+                                        <h5 class="heading-light h-club-box">
+                                            <span>  NON-ACADEMIC CLUBS</span>
+                                        </h5>
                                         <div class="border-club-right">
                                             <div class="box-club">
 
@@ -800,9 +801,9 @@
                                     </div>
 
                                     <div class="col-md-6 mt-4 pr-lg-0">
-                                        <h2 class="heading-light h-club-box">
-                                            ACADEMIC CLUBS
-                                        </h2>
+                                        <h5 class="heading-light h-club-box">
+                                            <span> ACADEMIC CLUBS </span>
+                                        </h5>
                                         <div class="border-club-left">
                                             <div class="box-club">
                                                 @foreach ($data as $items)
@@ -819,9 +820,9 @@
                                     </div>
 
                                     <div class="col-md-6 mt-4 pl-lg-0">
-                                        <h2 class="heading-light h-club-box">
-                                            NON-ACADEMIC CLUBS
-                                        </h2>
+                                        <h5 class="heading-light h-club-box">
+                                            <span>  NON-ACADEMIC CLUBS</span>
+                                        </h5>
                                         <div class="border-club-right">
                                             <div class="box-club">
 
