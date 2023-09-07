@@ -14,9 +14,9 @@
             padding: 20px 26px;
         }
 
-        .modal{
-        overflow: auto !important;
-    }
+        .modal {
+            overflow: auto !important;
+        }
 
         .form-group {
             margin-bottom: 0.5rem;
@@ -30,17 +30,17 @@
 
             @if (Session::has('success'))
                 <div class="alert alert-success col-md-12 text-center">
-
                     <strong>Success!</strong> {{ Session::get('success') }}
-
                 </div>
             @endif
 
-            @if (Session::has('error'))
-                <div class="alert alert-danger col-md-12 text-center">
-
-                    <strong>Oops!</strong> {{ Session::get('error') }}
-
+            @if ($errors->any())
+                <div class="alert alert-danger">
+                    <ul>
+                        @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
                 </div>
             @endif
 
@@ -52,8 +52,6 @@
 
                         <div class="card-body">
                             <h4 class="card-title">Manage Cells Images</h4>
-
-
 
 
                             <div class="row">
@@ -117,12 +115,12 @@
                                                                     class="ti-pencil btn-icon-append"
                                                                     style="color:black;"></i></button>
 
-                                                                    <button type="button" class="btn btn-primary" id="view"
-                                                                    data-id="{{ $item->id }}" data-toggle="modal"
-                                                                    data-target="#exampleModalview"
-                                                                    data-whatever="@getbootstrap"><i
-                                                                        class="ti-pencil btn-icon-append"
-                                                                        style="color:black;"></i></button>
+                                                            <button type="button" class="btn btn-primary" id="view"
+                                                                data-id="{{ $item->id }}" data-toggle="modal"
+                                                                data-target="#exampleModalview"
+                                                                data-whatever="@getbootstrap"><i
+                                                                    class="ti-eye btn-icon-append"
+                                                                    style="color:black;"></i></button>
 
 
                                                             <a class="btn btn-primary"
@@ -190,6 +188,21 @@
                         <form role="form" id="regForm" action="{{ url('Accounts/add-cells-image') }}" method="post"
                             class="registration-form row" enctype="multipart/form-data" novalidate="novalidate">
                             @csrf
+                            @if (Session::has('success'))
+                            <div class="alert alert-success col-md-12 text-center">
+                                <strong>Success!</strong> {{ Session::get('success') }}
+                            </div>
+                        @endif
+
+                        @if ($errors->any())
+                            <div class="alert alert-danger">
+                                <ul>
+                                    @foreach ($errors->all() as $error)
+                                        <li>{{ $error }}</li>
+                                    @endforeach
+                                </ul>
+                            </div>
+                        @endif
 
                             <div class="form-group col-md-6">
 
@@ -204,17 +217,17 @@
 
                             </div>
 
-                            <input type="hidden" name="parent_id"  value="{{ $id }}">
+                            <input type="hidden" name="parent_id" value="{{ $id }}">
 
                             <div class="form-group col-md-6">
 
-                                <label for="image_text">Image Title</label>
+                                <label for="image_title">Image Title</label>
 
-                                <input type="text" name="image_text" placeholder="Enter your Image Text"
+                                <input type="text" name="image_title" placeholder="Enter your Image Text"
                                     class="form-last-name form-control" id="form-last-name" autocomplete="off">
 
 
-                                <label for="image_text" id="image_text-error" class="error">
+                                <label for="image_title" id="image_title-error" class="error">
                                 </label>
 
                             </div>
@@ -249,13 +262,13 @@
                             <div class="col-md-12">
                                 <label for="event" class="col-form-label">Events</label>
                                 <div class="">
-                                    <textarea class="form-control"  rows="4" name="event" placeholder="Please enter event"></textarea><br>
+                                    <textarea class="form-control" rows="4" name="event" placeholder="Please enter event"></textarea><br>
                                     <label for="event" id="event-error" class="error"></label>
                                 </div>
                             </div>
 
 
-                            <div class="form-group col-md-6">
+                            {{-- <div class="form-group col-md-6">
 
                                 <label for="status">status</label>
 
@@ -272,7 +285,10 @@
 
                                 <label for="status" id="status-error" class="error">
                                 </label>
-                            </div>
+                            </div> --}}
+
+
+                            <input type="hidden" name="status" value="0">
 
 
                             <div class="col-md-12 modal-footer">
@@ -291,111 +307,111 @@
 
 
 
-{{-- view --}}
-<div class="modal fade" id="exampleModalview" tabindex="-1" role="dialog"
-aria-labelledby="exampleModalLabel"  aria-hidden="true">
+        {{-- view --}}
+        <div class="modal fade" id="exampleModalview" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+            aria-hidden="true">
 
-<div class="modal-dialog modal-md" role="document">
+            <div class="modal-dialog modal-md" role="document">
 
-    <div class="modal-content">
+                <div class="modal-content">
 
-        <div class="modal-header">
+                    <div class="modal-header">
 
-            <h5 class="modal-title" id="exampleModalLabel">view
-                image</h5>
+                        <h5 class="modal-title" id="exampleModalLabel">view
+                            image</h5>
 
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
 
-                <span aria-hidden="true">×</span>
+                            <span aria-hidden="true">×</span>
 
-            </button>
-
-        </div>
-
-        <div class="modal-body">
-
-
-
-
-                <div class="form-group col-md-6">
-
-                    <label for="form-first-name">Multiple Image</label>
-
-
-
-                    <div class="image"></div>
-
-
-
-
-                </div>
-
-
-                <div class="form-group col-md-6">
-
-                    <label for="image_text">Image Text</label>
-
-                    <input type="text" name="image_text" placeholder="Enter your Image Text"
-                        class="form-last-name form-control imagetext" readonly required=""
-                        autocomplete="off">
-
-                    <label for="image_text" id="image_text-error" class="error">
-                    </label>
-
-
-
-                </div>
-
-
-
-
-                <div class="form-group col-md-6">
-
-                    <label for="image_alt">Image Alt</label>
-
-                    <input type="text" name="image_alt" placeholder="Enter your image Alt"
-                        class="form-email form-control imagealt"  readonly required="" autocomplete="off">
-
-
-
-
-
-
-
-
-                </div>
-
-
-
-                <div class="form-group col-md-6">
-
-                    <label for="form-email">sort order</label>
-
-                    <input type="text" placeholder="pls enter sort order" name="order"
-                        class="form-email form-control imagesort"  readonly required="" autocomplete="off">
-
-                    <label for="order" id="order-error" class="error">
-                    </label>
-
-
-
-                </div>
-
-                <div class="col-md-12">
-                    <label for="event" class="col-form-label">Events</label>
-                    <div class="">
-                        <textarea class="form-control event" readonly id="event" rows="4" name="event" placeholder="Please enter event"></textarea><br>
+                        </button>
 
                     </div>
+
+                    <div class="modal-body">
+
+
+
+
+                        <div class="form-group col-md-6">
+
+                            <label for="form-first-name">Multiple Image</label>
+
+
+
+                            <div class="image"></div>
+
+
+
+
+                        </div>
+
+
+                        <div class="form-group col-md-6">
+
+                            <label for="image_text">Image Text</label>
+
+                            <input type="text" name="image_text" placeholder="Enter your Image Text"
+                                class="form-last-name form-control imagetext" readonly required="" autocomplete="off">
+
+                            <label for="image_text" id="image_text-error" class="error">
+                            </label>
+
+
+
+                        </div>
+
+
+
+
+                        <div class="form-group col-md-6">
+
+                            <label for="image_alt">Image Alt</label>
+
+                            <input type="text" name="image_alt" placeholder="Enter your image Alt"
+                                class="form-email form-control imagealt" readonly required="" autocomplete="off">
+
+
+
+
+
+
+
+
+                        </div>
+
+
+
+                        <div class="form-group col-md-6">
+
+                            <label for="form-email">sort order</label>
+
+                            <input type="text" placeholder="pls enter sort order" name="order"
+                                class="form-email form-control imagesort" readonly required="" autocomplete="off">
+
+                            <label for="order" id="order-error" class="error">
+                            </label>
+
+
+
+                        </div>
+
+                        <div class="col-md-12">
+                            <label for="event" class="col-form-label">Events</label>
+                            <div class="">
+                                <textarea class="form-control event" readonly id="event" rows="4" name="event"
+                                    placeholder="Please enter event"></textarea><br>
+
+                            </div>
+                        </div>
+
+                    </div>
+
                 </div>
 
+            </div>
+
         </div>
-
-    </div>
-
-</div>
-
-</div>
 
 
 
@@ -405,7 +421,7 @@ aria-labelledby="exampleModalLabel"  aria-hidden="true">
 
 
         <div class="modal fade" id="exampleModalupdate" tabindex="-1" role="dialog"
-            aria-labelledby="exampleModalLabel"  aria-hidden="true">
+            aria-labelledby="exampleModalLabel" aria-hidden="true">
 
             <div class="modal-dialog modal-md" role="document">
 
@@ -427,9 +443,25 @@ aria-labelledby="exampleModalLabel"  aria-hidden="true">
                     <div class="modal-body">
 
                         <form action="" id="form" method="post" class="registration-form row"
-                        enctype="multipart/form-data">
+                            enctype="multipart/form-data">
 
                             @csrf
+
+                            @if (Session::has('success'))
+                            <div class="alert alert-success col-md-12 text-center">
+                                <strong>Success!</strong> {{ Session::get('success') }}
+                            </div>
+                        @endif
+
+                        @if ($errors->any())
+                            <div class="alert alert-danger">
+                                <ul>
+                                    @foreach ($errors->all() as $error)
+                                        <li>{{ $error }}</li>
+                                    @endforeach
+                                </ul>
+                            </div>
+                        @endif
 
 
                             <div class="form-group col-md-6">
@@ -449,20 +481,20 @@ aria-labelledby="exampleModalLabel"  aria-hidden="true">
 
                             <div class="form-group col-md-6">
 
-                                <label for="image_text">Image Text</label>
+                                <label for="image_title">Image Text</label>
 
-                                <input type="text" name="image_text" placeholder="Enter your Image Text"
+                                <input type="text" name="image_title" placeholder="Enter your Image Text"
                                     class="form-last-name form-control" id="imagetext" required=""
                                     autocomplete="off">
 
-                                <label for="image_text" id="image_text-error" class="error">
+                                <label for="image_title" id="image_title-error" class="error">
                                 </label>
 
 
 
                             </div>
 
-                            <input type="hidden" name="parent_id"  value="{{ $id }}">
+                            <input type="hidden" name="parent_id" value="{{ $id }}">
 
 
                             <div class="form-group col-md-6">
@@ -508,7 +540,7 @@ aria-labelledby="exampleModalLabel"  aria-hidden="true">
                             </div>
 
 
-                            <div class="form-group col-md-6">
+                            {{-- <div class="form-group col-md-6">
 
                                 <label for="form-email">status</label>
 
@@ -523,7 +555,9 @@ aria-labelledby="exampleModalLabel"  aria-hidden="true">
 
                                 </select>
 
-                            </div>
+                            </div> --}}
+
+                            <input type="hidden" name="status" id="imagestatus" >
 
 
                             <input type="hidden" name="gallery_id" placeholder="Enter your Gallery Tabel ID"
@@ -567,7 +601,7 @@ aria-labelledby="exampleModalLabel"  aria-hidden="true">
         <script>
             $(document).on("click", "#update", function() {
                 var UserName = $(this).data('id');
-              //  alert(UserName);
+                //  alert(UserName);
                 $.ajaxSetup({
                     headers: {
                         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -602,35 +636,35 @@ aria-labelledby="exampleModalLabel"  aria-hidden="true">
 
 
 
-<script>
-    $(document).on("click", "#view", function() {
-        var UserName = $(this).data('id');
-      //  alert(UserName);
-        $.ajaxSetup({
-            headers: {
-                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-            }
-        });
-        $.ajax({
-            url: "{{ url('/Accounts/gallery_id_image') }}",
-            type: "get",
-            data: {
-                id: UserName
-            },
-            success: function(data) {
+        <script>
+            $(document).on("click", "#view", function() {
+                var UserName = $(this).data('id');
+                //  alert(UserName);
+                $.ajaxSetup({
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    }
+                });
+                $.ajax({
+                    url: "{{ url('/Accounts/gallery_id_image') }}",
+                    type: "get",
+                    data: {
+                        id: UserName
+                    },
+                    success: function(data) {
 
-                $(".imagetext").val(data.item.image_title);
-                $(".imagealt").val(data.item.image_alt);
-                $(".imagesort").val(data.item.sort_order);
-                $(".imageoldid").val(data.item.cell_imges);
-                $(".event").val(data.item.event);
-                $('.image').html('<img src="{{ asset('uploads/multiple/club') }}/' + data.item
-                    .image + '" width="100" height="100" />')
+                        $(".imagetext").val(data.item.image_title);
+                        $(".imagealt").val(data.item.image_alt);
+                        $(".imagesort").val(data.item.sort_order);
+                        $(".imageoldid").val(data.item.cell_imges);
+                        $(".event").val(data.item.event);
+                        $('.image').html('<img src="{{ asset('uploads/multiple/club') }}/' + data.item
+                            .image + '" width="100" height="100" />')
 
-            }
+                    }
 
-        });
+                });
 
-    });
-</script>
+            });
+        </script>
     @endsection
