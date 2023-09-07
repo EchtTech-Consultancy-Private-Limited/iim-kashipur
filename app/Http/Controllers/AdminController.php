@@ -1180,7 +1180,7 @@ function biography_add(Request $request,$id=null){
          $title="Add Organisation profile";
          $msg="Organisation profile Added Successfully!";
          $data=new multiple_profile;
-
+         dd($request->all());
 
         if($id){
             $request->validate([
@@ -1200,6 +1200,7 @@ function biography_add(Request $request,$id=null){
 
         $path=public_path('uploads/organisation');
         if($request->hasFile('image')){
+
             $file=$request->file('image');
             $newname= time().rand(10,99).'.'.$file->getClientOriginalExtension();
             $file->move($path, $newname);
@@ -1214,10 +1215,7 @@ function biography_add(Request $request,$id=null){
         $data->description_h=$request->description_h;
         $data->parent_id=$request->parent_id;
         $data->Status=$request->status;
-
         $parent=$request->parent_id;
-
-        //dd($data);
         $data->save();
 
         return redirect('Accounts/manage-people-profile'.'/'.$request->parent_id)->with('success',$msg);

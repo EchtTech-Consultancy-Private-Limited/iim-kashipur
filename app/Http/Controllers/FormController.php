@@ -395,6 +395,15 @@ public function Add_biography(Request $request,$id=null)
         $data->title_h=$request->title_h;
         // $data->Image=$request->Image;
         $data->heading=$request->heading;
+
+        $path=public_path('uploads/organisation');
+        if($request->hasFile('image')){
+
+            $file=$request->file('image');
+            $newname= time().rand(10,99).'.'.$file->getClientOriginalExtension();
+            $file->move($path, $newname);
+            $data->image= $newname;
+        }
         $data->heading_h=$request->heading_h;
         $data->Image_Title=$request->Image_Title;
         $data->description=$request->description;
