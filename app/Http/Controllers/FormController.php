@@ -585,19 +585,14 @@ public function Delete_cellsImage($id){
 
     public function add_cellsImage(Request $request)
     {
-
         $request->validate(
-
             [
-               // 'filename'          =>       'image|mimes:jpeg,png,jpg,gif|max:2048',
-               // 'image_title'    =>           'required|unique:cell_multiple_images'
+                 'filename'          =>       'image|mimes:jpeg,png,jpg,gif|max:2048',
+                 'image_title'    =>           'required|unique:cell_multiple_images'
             ]
-
-
         );
-
         $data= new cell_multiple_image();
-        $data->image_title= $request->image_text;
+        $data->image_title= $request->image_title;
         $data->image_alt= $request->image_alt;
         $data->sort_order= $request->order;
         $data->event= $request->event;
