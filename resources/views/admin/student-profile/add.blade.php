@@ -133,7 +133,8 @@
                   <div class="col-md-12">
                      <label for="inputText" class="col-sm-12 col-form-label">Educational background</label>
                      <div class="col-sm-12">
-                        <input type="text" class="form-control" name="educational_background" placeholder="Educational background" value="{{ old('educational_background') }}"><br>
+                        {{-- <input type="text" class="form-control" name="educational_background" placeholder="Educational background" value="{{ old('educational_background') }}"><br>--}}
+                        <textarea class="form-control" id="educational_background" name="educational_background" rows="4"  placeholder="Educational background">{{ old('educational_background') }}</textarea>
                         <div class="col-md-12">
                         </div>
                      </div>
@@ -192,6 +193,7 @@
    CKEDITOR.replace('papers_publications');
    CKEDITOR.replace('research_interests');
    CKEDITOR.replace('work_experience');
+   CKEDITOR.replace('educational_background');
 
 </script>
 <!-- content-wrapper ends -->
