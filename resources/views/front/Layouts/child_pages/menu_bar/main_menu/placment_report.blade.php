@@ -302,7 +302,7 @@
 
                                         <td>{{ $items->mba_batch }}</td>
                                         <td>
-                                            <a @if (GetLang() == 'en') onclick="return confirm('This link will take you to an external web site.')"  @else onclick="return confirm('यह लिंक आपको एक बाहरी वेब साइट पर ले जाएगा।')" @endif
+                                            <a @if (GetLang() == 'en') onclick="return confirm('This link will take you to an external web site.')" target="_blank"  @else onclick="return confirm('यह लिंक आपको एक बाहरी वेब साइट पर ले जाएगा।')" target="_blank" @endif
                                                 href="{{ asset('uploads/report/' . $items->pdf) }}">{{ $items->title }} </a>
                                         </td>
 
