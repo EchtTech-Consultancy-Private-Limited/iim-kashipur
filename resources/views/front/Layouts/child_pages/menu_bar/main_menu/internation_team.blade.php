@@ -732,7 +732,7 @@
                             </a>
 
                             @if($chairperson != '')
-                                @if ($items->department == '8')
+                                @if ($chairperson->department == '8')
                                     <div class="row mt-4">
 
                                         <div class="col-md-3">
@@ -741,23 +741,23 @@
 
                                                 <div class="profile-img">
 
-                                                    <img src="{{ asset('uploads/organisation/' . $items->image) ?? '' }}"
-                                                        alt="{{ $items->title }}" title="{{ $items->title }}">
+                                                    <img src="{{ asset('uploads/organisation/' . $chairperson->image) ?? '' }}"
+                                                        alt="{{ $chairperson->title  ??''}}" title="{{ $chairperson->title  ??''}}">
 
                                                 </div>
 
                                                 <h5>
                                                     @if (GetLang() == 'en')
-                                                        {{ $items->title ?? '' }}
+                                                        {{ $chairperson->title ?? '' }}
                                                     @else
-                                                        {{ $items->title_h ?? '' }}
+                                                        {{ $chairperson->title_h ?? '' }}
                                                     @endif
                                                 </h5>
                                                 <h6>
                                                     @if (GetLang() == 'en')
-                                                        {{ $items->designation ?? '' }}
+                                                        {{ $chairperson->designation ?? '' }}
                                                     @else
-                                                        {{ $items->designation_h ?? '' }}
+                                                        {{ $chairperson->designation_h ?? '' }}
                                                     @endif
                                                 </h6>
                                             </div>
@@ -768,9 +768,9 @@
 
                                             <p>
                                                 @if (GetLang() == 'en')
-                                                    {!! $items->description ?? '' !!}
+                                                    {!! $chairperson->description ?? '' !!}
                                                 @else
-                                                    {!! $items->description_h ?? '' !!}
+                                                    {!! $chairperson->description_h ?? '' !!}
                                                 @endif
                                             </p>
                                         </div>
