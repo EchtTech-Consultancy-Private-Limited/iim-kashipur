@@ -981,19 +981,19 @@
 
                                                         </div>
                                                         <div class="col-sm-12">
-                                                            <P class="h6 txt_formate"  >Educational Background: </P> <P> {{$datas->educational_background}}</P>
+                                                            <P class="h6 txt_formate"  >Educational Background: </P> <P> {!! $datas->educational_background !!}</P>
 
                                                         </div>
                                                         <div class="col-sm-12">
-                                                            <P class="h6 txt_formate"  >Work Experience: </P> <P> {{$datas->work_experience}}</P>
+                                                            <P class="h6 txt_formate"  >Work Experience: </P> <P> {!! $datas->work_experience !!}</P>
 
                                                         </div>
 
                                                         <div class="col-sm-12">
-                                                            <P class="h6 txt_formate"  >Research Interests: </P> <P> {{$datas->research_interests}}</P>
+                                                            <P class="h6 txt_formate"  >Research Interests: </P> <P> {!! $datas->research_interests !!}</P>
 
                                                         </div><div class="col-sm-12">
-                                                            <P class="h6 txt_formate"  >Papers and Publications: </P> <P> {{$datas->papers_publications}}</P>
+                                                            <P class="h6 txt_formate"  >Papers and Publications: </P> <P> {!! $datas->papers_publications !!}</P>
 
                                                         </div>
                                                     </div>
