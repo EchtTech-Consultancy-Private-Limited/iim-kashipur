@@ -395,6 +395,15 @@ public function Add_biography(Request $request,$id=null)
         $data->title_h=$request->title_h;
         // $data->Image=$request->Image;
         $data->heading=$request->heading;
+
+        $path=public_path('uploads/organisation');
+        if($request->hasFile('image')){
+
+            $file=$request->file('image');
+            $newname= time().rand(10,99).'.'.$file->getClientOriginalExtension();
+            $file->move($path, $newname);
+            $data->image= $newname;
+        }
         $data->heading_h=$request->heading_h;
         $data->Image_Title=$request->Image_Title;
         $data->description=$request->description;
@@ -500,13 +509,11 @@ public function Add_Edit_Cells(Request $request,$id=null){
         $data->activites= $request->activites;
         $data->status= $request->status;
         $data->event= $request->event;
-        $data->slug=SlugCheck('cells',($request->Cell_name));
+        $data->slug=SlugCheck('cells',($request->title));
         $data->logo_title= $request->cell_logo_title;
         $data->logo_alt= $request->cell_logo_alt;
         $data->image_title= $request->cell_image_title;
         $data->image_alt= $request->cell_image_alt;
-
-
 
         $path=public_path('uploads/club');
         if($request->hasFile('Cell_logo')){
@@ -743,7 +750,7 @@ public function add_Edit_Committee(Request $request,$id=NULL)
         $data->logo_alt= $request->Committee_logo_alt;
         $data->image_title= $request->Committee_image_title;
         $data->image_alt= $request->Committee_image_alt;
-        $data->slug=SlugCheck('commmittees',($request->Commmittee_name));
+        $data->slug=SlugCheck('commmittees',($request->title));
         $data->banner_title= $request->banner_title;
         $data->banner_alt= $request->banner_alt;
 
@@ -939,7 +946,7 @@ public function add_Edit_club(Request $request,$id=NULL){
         $data->about_details= $request->about_details;
         $data->activitie= $request->activitie;
         $data->chairperson= $request->chairperson;
-        $data->slug=SlugCheck('clubs',($request->club_name));
+        $data->slug=SlugCheck('clubs',($request->title));
         $data->status= $request->status;
         $data->event= $request->event;
         $data->type=$request->club_type;

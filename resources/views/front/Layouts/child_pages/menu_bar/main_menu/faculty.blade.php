@@ -401,7 +401,7 @@
                         <div class="profilewithinfo mb-0">
 
                             <div class="row">
-
+                            @if(count($MEMBERS) > 0)
                                 @foreach ($item as $items)
 
                                 @if(($items->department) == '6')
@@ -440,7 +440,7 @@
                                 @endif
 
                                 @endforeach
-
+                            @endif
                             </div>
 
                         </div>
@@ -696,6 +696,8 @@
                     <div class="profilewithinfo mb-0">
 
                         <div class="row">
+
+
 
                             @foreach ($item as $items)
 

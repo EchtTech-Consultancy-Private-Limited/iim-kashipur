@@ -338,12 +338,7 @@
                             @endforeach
                         @endif
                     </table>
-
-
                 </div>
-
-                {{ $item->links('pagination::bootstrap-5') }}
-
             </div>
         </div>
         </div>

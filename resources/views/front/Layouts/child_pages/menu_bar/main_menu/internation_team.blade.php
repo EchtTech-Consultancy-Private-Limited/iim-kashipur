@@ -731,8 +731,8 @@
                                 @endif
                             </a>
 
-                            @foreach ($item as $items)
-                                @if ($items->department == '8')
+                            @if($chairperson != '')
+                                @if ($chairperson->department == '8')
                                     <div class="row mt-4">
 
                                         <div class="col-md-3">
@@ -741,23 +741,23 @@
 
                                                 <div class="profile-img">
 
-                                                    <img src="{{ asset('uploads/organisation/' . $items->image) ?? '' }}"
-                                                        alt="{{ $items->title }}" title="{{ $items->title }}">
+                                                    <img src="{{ asset('uploads/organisation/' . $chairperson->image) ?? '' }}"
+                                                        alt="{{ $chairperson->title  ??''}}" title="{{ $chairperson->title  ??''}}">
 
                                                 </div>
 
                                                 <h5>
                                                     @if (GetLang() == 'en')
-                                                        {{ $items->title ?? '' }}
+                                                        {{ $chairperson->title ?? '' }}
                                                     @else
-                                                        {{ $items->title_h ?? '' }}
+                                                        {{ $chairperson->title_h ?? '' }}
                                                     @endif
                                                 </h5>
                                                 <h6>
                                                     @if (GetLang() == 'en')
-                                                        {{ $items->designation ?? '' }}
+                                                        {{ $chairperson->designation ?? '' }}
                                                     @else
-                                                        {{ $items->designation_h ?? '' }}
+                                                        {{ $chairperson->designation_h ?? '' }}
                                                     @endif
                                                 </h6>
                                             </div>
@@ -768,16 +768,14 @@
 
                                             <p>
                                                 @if (GetLang() == 'en')
-                                                    {!! $items->description ?? '' !!}
+                                                    {!! $chairperson->description ?? '' !!}
                                                 @else
-                                                    {!! $items->description_h ?? '' !!}
+                                                    {!! $chairperson->description_h ?? '' !!}
                                                 @endif
                                             </p>
                                         </div>
                                 @endif
-                            @endforeach
-
-
+                            @endif
                         </div>
 
                     </div>
@@ -785,16 +783,11 @@
 
 
 
-
+                  @if(count($MEMBERS) > 0)
                     <a href="javascript:void(0)" class="btn2 margin_top margin_bottom">SENIOR MEMBERS</a><br><br>
-
                     <div class="profilewithinfo">
-
-
-
                         <div class="row">
-
-                            @foreach ($item as $items)
+                            @foreach ($MEMBERS as $items)
                                 @if ($items->department == '9')
 
                             <div class="col-md-4 mb-4">
@@ -805,7 +798,7 @@
                                         <img src="{{asset('uploads/organisation/'.$items->image) ?? ''}}" alt="{{ $items->title ?? '' }}" title="{{ $items->title ?? '' }}">
                                     </div>
 
-                                    <div class="text-scroll"> 
+                                    <div class="text-scroll">
                                     <h5> @if(GetLang()=='en') {{ $items->title ?? '' }}  @else {{ $items->title_h ?? '' }}  @endif</h5>
 
                                   <h6>  @if(GetLang()=='en') {{ $items->designation ?? '' }}  @else {{ $items->designation_h ?? '' }}  @endif </h6>
@@ -823,7 +816,7 @@
 
 
                     </div>
-
+@endif
 
             </div>
 
