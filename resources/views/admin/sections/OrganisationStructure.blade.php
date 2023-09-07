@@ -96,6 +96,8 @@
 {{--
                               <th>Designation</th> --}}
 
+                              <th>Status</th>
+
                               <th>Department</th>
 
                               <th>Profile Section Pages</th>
@@ -123,6 +125,26 @@
                               @endif</td>
 
                               <td>{{$D->title}}</td>
+
+                              <td>
+                                @if (@checkRoute('StatusChange'))
+                                    @if ($D->status == 1)
+                                        <a href="{{ url('Accounts/status-change/0/' . dEncrypt($D->id) . '/organisation_structures') }}"
+                                            style="color:green;">Active</a>
+                                    @else
+                                        <a href="{{ url('Accounts/status-change/1/' . dEncrypt($D->id) . '/organisation_structures') }}"
+                                            style="color:red;">Inactive</a>
+                                    @endif
+                                @else
+                                    @if ($D->status == 1)
+                                        <span" style="color:green;">Active</span>
+                                        @else
+                                            <span style="color:red;">Inactive</span>
+                                    @endif
+                                @endif
+                            </td>
+
+
 
                               <td>{{$D->designation}}</td>
 

@@ -731,7 +731,7 @@
                                 @endif
                             </a>
 
-                            @foreach ($item as $items)
+                            @if($chairperson != '')
                                 @if ($items->department == '8')
                                     <div class="row mt-4">
 
@@ -775,9 +775,7 @@
                                             </p>
                                         </div>
                                 @endif
-                            @endforeach
-
-
+                            @endif
                         </div>
 
                     </div>
@@ -785,16 +783,11 @@
 
 
 
-
+                  @if(count($MEMBERS) < 0)
                     <a href="javascript:void(0)" class="btn2 margin_top margin_bottom">SENIOR MEMBERS</a><br><br>
-
                     <div class="profilewithinfo">
-
-
-
                         <div class="row">
-
-                            @foreach ($item as $items)
+                            @foreach ($MEMBERS as $items)
                                 @if ($items->department == '9')
 
                             <div class="col-md-4 mb-4">
@@ -805,7 +798,7 @@
                                         <img src="{{asset('uploads/organisation/'.$items->image) ?? ''}}" alt="{{ $items->title ?? '' }}" title="{{ $items->title ?? '' }}">
                                     </div>
 
-                                    <div class="text-scroll"> 
+                                    <div class="text-scroll">
                                     <h5> @if(GetLang()=='en') {{ $items->title ?? '' }}  @else {{ $items->title_h ?? '' }}  @endif</h5>
 
                                   <h6>  @if(GetLang()=='en') {{ $items->designation ?? '' }}  @else {{ $items->designation_h ?? '' }}  @endif </h6>
@@ -823,7 +816,7 @@
 
 
                     </div>
-
+@endif
 
             </div>
 
