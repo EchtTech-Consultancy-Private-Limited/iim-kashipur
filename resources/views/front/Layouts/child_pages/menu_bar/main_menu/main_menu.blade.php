@@ -802,7 +802,7 @@
                                                         </p>
                                                         </div>
                                                     </a>
-                                                       
+
                                                     </div>
 
 
@@ -856,17 +856,17 @@
                         @if($item[0]->video_url  != '')
 
                         <div class="col-md-12 mx-auto">
-            
+
                            <iframe width="100%" height="315" src="{{ $item[0]->video_url  ??'' }}" title="{{ url($item[0]->video_title)  ??''}}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-            
+
                         </div>
-            
+
                         @endif
                     </div>
                 @endif
             </div>
 
-          
+
         </div>
     </section>
 @elseif(isset($sub_menu))
@@ -1112,19 +1112,21 @@
                                 @endif
 
                             </div>
+
+                            @if($item[0]->video_url  != '')
+
+                            <div class="col-md-12 mx-auto">
+            
+                               <iframe width="100%" height="315" src="{{ $item[0]->video_url  ??'' }}" title="{{ url($item[0]->video_title)  ??''}}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+            
+                            </div>
+            
+                            @endif
                         </div>
                     @endforeach
                 @endif
 
-                @if($item[0]->video_url  != '')
-
-                <div class="col-md-8 mx-auto">
-
-                   <iframe width="100%" height="315" src="{{ $item[0]->video_url  ??'' }}" title="{{ url($item[0]->video_title)  ??''}}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-
-                </div>
-
-                @endif
+              
 
 
             </div>
