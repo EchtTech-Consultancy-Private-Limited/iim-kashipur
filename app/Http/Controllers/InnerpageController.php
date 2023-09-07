@@ -1590,25 +1590,19 @@ public function screen_reader_access()
             }
             elseif(isset($type[0]) && $type[0]->tpl_id == 3)
             {
-
-
                 $departments=Department::get();
-
                 if($request->dp){
                     $item=OrganisationStructure::where('department',6)
                             ->where('faculty_id',$request->dp)
                             ->paginate(9);
-
                 }elseif($request->search){
-
                     $item=OrganisationStructure::where('department',6)
                             ->where('title',"like","%$request->search%")
                             ->orwhere('designation',"like","%$request->search%")
-                            ->orwhere('email',"like","%$request->search%")
+                            ->orwhere('email',"like","%$request->search%")->orwhere('status','1')->orderBy('short_order','Asc')
                             ->paginate(9);
                 }else{
-
-                    $item=OrganisationStructure::where('department',6)->paginate(9);
+                    $item=OrganisationStructure::where('department',6)->where('status','1')->orderBy('short_order','Asc')->paginate(9);
                 }
 
                  $item->appends(['dp' => $request->dp]);
