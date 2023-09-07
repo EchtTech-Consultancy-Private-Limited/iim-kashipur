@@ -67,7 +67,7 @@
 
                                                     <th>Commmittee Logo</th>
 
-                                                    <th>Commmittee Image</th>
+                                                    {{-- <th>Commmittee Image</th> --}}
 
                                                     <th>Image Upload</th>
 
@@ -96,9 +96,9 @@
                                                                 alt="" title=""
                                                                 style="height: 100px;  width: 100px;"></td>
 
-                                                        <td><img src="{{ asset('uploads/club/' . $D->image) }}"
+                                                        {{-- <td><img src="{{ asset('uploads/club/' . $D->image) }}"
                                                             alt="" title=""
-                                                            style="height: 100px;  width: 100px;"></td>
+                                                            style="height: 100px;  width: 100px;"></td> --}}
 
 
 

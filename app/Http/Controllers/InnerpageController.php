@@ -102,6 +102,8 @@ public function archive($slug){
 public function search(Request $request){
 
     $search=$request->search;
+
+
     $anti_raggings=anti_raggings::where("title","like","%$search%")->get();
     $BannerSlider=  BannerSlider::where("title","like","%$search%")->orwhere("type","like","%$search%")->orwhere("short","like","%$search%")->orwhere("heading1","like","%$search%")->get();
     $Career= Career::where("name_of_the_post","like","%$search%")->orwhere("detail_advertisement","like","%$search%") ->orwhere("corrigendum","like","%$search%")->orwhere("note","like","%$search%")->get();
@@ -111,7 +113,7 @@ public function search(Request $request){
     $club=club::where("title","like","%$search%")->orwhere("about_details","like","%$search%")->orwhere("event","like","%$search%")->get();
     $commmittee= commmittee::where("title","like","%$search%")->orwhere("about_details","like","%$search%")->orwhere("activites","like","%$search%")->orwhere("event","like","%$search%")->get();
     $committee_multiple_image=committee_multiple_image::where("committee_title","like","%$search%")->orwhere("event","like","%$search%")->get();
-    $content_page=content_page::where("name","like","%$search%")->orwhere("content","like","%$search%")->get() ;
+   // $content_page=content_page::where("name","like","%$search%")->orwhere("content","like","%$search%")->get() ;
     $Events= Events::where("title","like","%$search%")->get();
     $Industry=Industry::where("title","like","%$search%")->get();
     $journal_publication=journal_publication::where("title","like","%$search%")->get();
@@ -135,15 +137,15 @@ public function search(Request $request){
                 ->orwhere("email","like","%$search%")
                 ->get();
 
-    $project_logo = project_logo::where("name","like","%$search%")
-            ->orwhere("number","like","%$search%")
-             ->get();
-    $quick_linkcategory=quick_linkcategory::where("Section","like","%$search%")
-                    ->orwhere("short_note","like","%$search%")
-                ->get();
-    $QuickLink=QuickLink::where("title","like","%$search%")
-        ->orwhere("short","like","%$search%")
-        ->get();
+    // $project_logo = project_logo::where("name","like","%$search%")
+    //         ->orwhere("number","like","%$search%")
+    //          ->get();
+    // $quick_linkcategory=quick_linkcategory::where("Section","like","%$search%")
+    //                 ->orwhere("short_note","like","%$search%")
+    //             ->get();
+    // $QuickLink=QuickLink::where("title","like","%$search%")
+    //     ->orwhere("short","like","%$search%")
+    //     ->get();
     $rit=rti::where("title","like","%$search%")->orwhere("CPIO","like","%$search%")->orwhere("Authority","like","%$search%")->get();
     $student_council=student_council::where("about_details","like","%$search%")->orwhere("student_council","like","%$search%")->get();
 
@@ -187,7 +189,7 @@ public function search(Request $request){
 
 
 
-    return view('front.Layouts.search_details',compact('video_gallery_tittles','wellness_facilitie_image','anti_raggings','BannerSlider','Career','cell_multiple_image','cell','club','commmittee','committee_multiple_image','content_page','Events','Industry','journal_publication_child','multiple_profile','OrganisationStructure','news_event','org','org_journies','press_media','project_logo','wellness_facilitie','video_gallery','Vendorsdebarred','tender','StudentProfile','student_council','rit','QuickLink','quick_linkcategory'));
+    return view('front.Layouts.search_details',compact('video_gallery_tittles','wellness_facilitie_image','anti_raggings','BannerSlider','Career','cell_multiple_image','cell','club','commmittee','committee_multiple_image','Events','Industry','journal_publication_child','multiple_profile','OrganisationStructure','news_event','org','org_journies','press_media','wellness_facilitie','video_gallery','Vendorsdebarred','tender','StudentProfile','student_council','rit'));
 
 }
 
