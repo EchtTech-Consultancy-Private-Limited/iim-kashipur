@@ -579,8 +579,6 @@ public function Delete_cellsImage($id){
         return back()->with('error','You are trying to perform unethical process. Your requst is failed.');
     }
     return redirect()->back()->with('success','Record Deleted Successfully');
-
-
     }
 
     public function add_cellsImage(Request $request)
