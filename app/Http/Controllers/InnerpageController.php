@@ -2085,6 +2085,7 @@ public function Child_barInnerpage($main_slug,$Sub_slug,$slug) //content page
 
         if($slug=="student-profiles")
         {
+           // dd($slug);
             $item = StudentProfile::where('status','1')->orderBy('sort','Asc')->get();
             if(Count($item)>0){
             $type_sub=child_menu::whereslug($slug)->get();

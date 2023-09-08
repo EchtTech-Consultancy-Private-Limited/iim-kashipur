@@ -431,6 +431,9 @@ Route::get('/show',[contentController::class,'firstshow']);
 
 //By Vishal routes for add student profile
 
+
+Route::get('/student-profiles-id',[StudentProfileController::class,'student_profiles_id']);
+
 Route::get('/Manage-students-profile',[StudentProfileController::class,'view_profile']);
 Route::get('/add-students-profile',[StudentProfileController::class,'add_profile']);
 Route::post('/add-students-profile',[StudentProfileController::class,'add_student_profile']);
@@ -612,8 +615,6 @@ Route::get('/student-profile-more-info/{id}',[StudentProfileController::class,'f
 //forget password
 
 
-
-
 });
 Route::get('forget-password', [ForgotPasswordController::class, 'showForgetPasswordForm'])->name('forget.password.get');
 Route::post('forget-password', [ForgotPasswordController::class, 'submitForgetPasswordForm'])->name('forget.password.post');
@@ -627,7 +628,6 @@ Route::get('registeration',[IcmiRegistrationController::class,'registeration']);
 Route::post('search',[InnerpageController::class,'search']);
 
 Route::get('/{slug?}/archive',[InnerpageController::class,'archive']);
-
 //Monu Routes
 // Career
 Route::get('/career',[InnerpageController::class,'career']);
