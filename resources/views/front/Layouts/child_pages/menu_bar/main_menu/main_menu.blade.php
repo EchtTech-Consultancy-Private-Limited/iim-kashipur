@@ -1125,10 +1125,6 @@
                         </div>
                     @endforeach
                 @endif
-
-              
-
-
             </div>
         </div>
     </section>
@@ -1233,8 +1229,6 @@
             </div>
         </section>
     @endif
-
-
 
     @endif
 
