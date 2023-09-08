@@ -678,7 +678,7 @@
                     </div>
                     <div class="col-md-6">
                         <form action="{{ url('/faculty/faculty-directory') }}" method="get">
-                            <label> Search Name or Deparment </label>
+                            <label> Search Name or Department </label>
 
 
                             <div class="d-flex">

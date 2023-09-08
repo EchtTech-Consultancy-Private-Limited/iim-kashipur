@@ -401,6 +401,12 @@ a {
         padding: 30px 0;
     }
 }
+@media (min-width:768px) and (max-width: 991px) {
+    .site-header .logo-wrap {
+        padding: 54px 0px 15px !important;
+        /* padding: 0px !important; */
+    }
+}
 
 .ptb-80 {
     padding: 50px 0;
@@ -3405,10 +3411,10 @@ p {
     text-align: center;
     border-bottom-left-radius: 5px;
     border-bottom-right-radius: 5px;
-    white-space: nowrap;
+    /* white-space: nowrap;
     width: 100%;
     overflow: hidden;
-    text-overflow: ellipsis;
+    text-overflow: ellipsis; */
     
 }
 

@@ -470,7 +470,7 @@
 
             </div>
 
-        </div>
+       
 
 
 
@@ -524,7 +524,7 @@
         </div>
 
         </div>
-
+    </div>
         </div>
     @endif
 
@@ -778,7 +778,7 @@
                             @endif
                         </div>
 
-                    </div>
+                  
 
 
 
@@ -819,7 +819,7 @@
 @endif
 
             </div>
-
+        </div>
         </div>
 
         </div>
