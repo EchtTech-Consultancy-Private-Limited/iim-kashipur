@@ -680,8 +680,9 @@
                         <form action="{{ url('/faculty/faculty-directory') }}" method="get">
                             <label> Search Name or Deparment </label>
 
+
                             <div class="d-flex">
-                              <input type="text" class="form-control" placeholder="search name or deparment!!!!" value="{{ request('search') ??''}} " name="value">
+                              <input type="text" class="form-control"  @if(request('nd') ) value="{{ request('nd') }}" @else placeholder="search name or deparment!!!!" @endif name="nd">
 
                                 <button type="submit" class="btn-info submit-btn-apply">Apply</button>
 
