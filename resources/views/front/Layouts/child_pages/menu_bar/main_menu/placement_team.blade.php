@@ -487,7 +487,7 @@
 
             </div>
 
-        </div>
+       
 
 
 
@@ -546,7 +546,7 @@
     @endif
 
     </div>
-
+</div>
     </div>
 
     </section>
@@ -802,7 +802,7 @@
 
                         </div>
 
-                    </div>
+                  
 
                     @if (count($Administrative) > 0)
                         <a href="javascript:void(0)" class="btn2 margin_top margin_bottom">Administrative</a><br><br>
@@ -869,7 +869,7 @@
 
 
 
-                        </div>
+                       
                     @endif
                     {{-- new section  --}}
 
@@ -923,11 +923,11 @@
                         </div>
                     @endif
 
-
+                </div>
             </div>
 
         </div>
-
+    </div>
         </div>
         @endif
 

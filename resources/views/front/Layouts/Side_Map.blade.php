@@ -168,9 +168,9 @@
 
                         @foreach (Getfooterlink() as $key => $M)
                             <div class="col-md-3">
-                                <h2 class="footer-top-title">
+                                {{-- <h2 class="footer-top-title">
 
-                                </h2>
+                                </h2> --}}
                                 <div class="footer-link">
                                    
                                         @foreach (GETfooterdatalink($M->id) as $key => $Ms)
@@ -194,9 +194,9 @@
 
                         @foreach (Getfooterlink2() as $key => $M)
                             <div class="col-md-3">
-                                <h2 class="footer-top-title">
+                                {{-- <h2 class="footer-top-title">
 
-                                </h2>
+                                </h2> --}}
                                 <div class="footer-link mt-2">
                                         @foreach (GETfooterdatalink($M->id) as $key => $Ms)
                                             <li>
@@ -218,9 +218,9 @@
 
                         @foreach (Getfooterlink3() as $key => $M)
                             <div class="col-md-3">
-                                <h2 class="footer-top-title">
+                                {{-- <h2 class="footer-top-title">
 
-                                </h2>
+                                </h2> --}}
                                 <div class="footer-link mt-2">
                                         @foreach (GETfooterdatalink($M->id) as $key => $Ms)
                                             <li>

@@ -461,7 +461,7 @@ $mmenu = @content_menus($menu[0]->id);
                                             <img  src="{{ asset('gallery/multipimage/'.$values->large_image) }}"
                                                 alt="gallery-img" class="img-fluid"
                                                 loading="lazy">
-                                            <div class="top-text" title="{{ $values->image_title }}"> {{ $values->image_title }} </div>
+                                            <div class="top-text " title="{{ $values->image_title }}"> {{ $values->image_title }} </div>
                                         </div>
 
 
@@ -473,7 +473,7 @@ $mmenu = @content_menus($menu[0]->id);
                                                 <img  src="{{ asset('gallery/multipimage/'.$values->large_image) }}"
                                                     alt="gallery-img" class="img-fluid"
                                                     loading="lazy">
-                                                <div class="top-text" title="{{ $values->image_title }}"> {{ $values->image_title }} </div>
+                                                <div class="top-text mail-team" title="{{ $values->image_title }}"> {{ $values->image_title }} </div>
                                             </div>
 
                                         </a>

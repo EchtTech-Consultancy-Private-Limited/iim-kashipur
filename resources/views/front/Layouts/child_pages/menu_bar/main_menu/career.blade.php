@@ -43,7 +43,7 @@
 
             <div class="d-flex justify-content-end">
                 <a href="{{url(request()->path().'/archive')}}" class="btn2 float-right mb-3" style="border-radius: 30px; background:#174e91">
-                   Archive List
+                   Archive Careers
                   </a>
             </div>
 
