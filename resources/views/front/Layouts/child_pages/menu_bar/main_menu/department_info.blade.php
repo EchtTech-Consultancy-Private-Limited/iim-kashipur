@@ -781,7 +781,7 @@
 
                                         <h5><span>Chairperson</span></h5>
 
-                                        <div class="col-md-3">
+                                        <div class="col-md-4 mx-auto">
 
                                             <div class="addevent-box top text-center mt-0">
                                                 <a href="javascript:void(0)">
@@ -846,18 +846,9 @@
 
                         </div>
 
-                    </div>
-
-
-
-
-
-                    <a href="javascript:void(0)" class="btn2 margin_top margin_bottom">Members</a><br><br>
-
+                    {{-- <a href="javascript:void(0)" class="btn2 margin_top margin_bottom">Members</a><br><br> --}}
+                    <h5 class="mt-4 mb-3"><span>Members</span></h5>
                     <div class="profilewithinfo">
-
-
-
                         <div class="row">
                             @if (count($member) > 0)
                                 @foreach ($member as $items)
@@ -894,13 +885,15 @@
                 @endif
             </div>
 
-
-
         </div>
 
-        @if ($Secretary != '')
-            <a href="javascript:void(0)" class="btn2 margin_bottom">Secretary to the Board</a><br>
+       
 
+        @if ($Secretary != '')
+            {{-- <a href="javascript:void(0)" class="btn2 margin_bottom"></a><br> --}}
+            <h5><span>
+                Secretary to the Board
+            </span></h5>
             <div class="profilewithinfo mb-0">
 
 
@@ -908,7 +901,7 @@
                 @if ($Secretary->department == '4')
                     <div class="row">
 
-                        <div class="col-md-3 col-lg-3">
+                        <div class="col-md-4 col-lg-4 mx-auto">
 
                             <div class="profilewraper withinfo bg-hover">
                                 <a href="{{ url(@$mmenu[0]->slug . '/' . $type[0]->slug . '/' . $Secretary->slug) }}">
@@ -943,7 +936,7 @@
 
         </div>
         @endif
-
+    </div>
         </div>
 
         </div>
