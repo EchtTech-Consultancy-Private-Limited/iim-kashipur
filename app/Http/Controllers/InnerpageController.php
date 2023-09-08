@@ -1597,17 +1597,22 @@ public function screen_reader_access()
                             ->where('faculty_id',$request->dp)
                             ->paginate(9);
 
-                }elseif($request->search){
+                            $item->appends(['dp'=>$request->dp]);
+
+                }elseif($request->nd){
                     $item=OrganisationStructure::where('department',6)
-                            ->where('title',"like","%$request->search%")
-                            ->orwhere('designation',"like","%$request->search%")
-                            ->orwhere('email',"like","%$request->search%")->orwhere('status','1')->orderBy('short_order','Asc')
+                            ->where('title',"like","%$request->nd%")
+                            ->orwhere('designation',"like","%$request->nd%")
+                            ->orwhere('email',"like","%$request->nd%")
                             ->paginate(9);
+
                 }else{
                     $item=OrganisationStructure::where('department',6)->where('status','1')->orderBy('short_order','Asc')->paginate(9);
+                    $item->appends(['dp'=>$request->dp]);
+
                 }
 
-                 $item->appends(['dp' => $request->dp]);
+
                 if(count($item)>0){
                 $type=SubMenu::whereslug($slug)->get();
 

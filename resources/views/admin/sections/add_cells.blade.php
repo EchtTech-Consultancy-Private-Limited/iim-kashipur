@@ -282,24 +282,4 @@
         CKEDITOR.replace('event');
     </script>
 
-    {{-- {{-- <script>
-        console.log(`{{url('ckeditor/upload').'?_token='.csrf_token()}}`);
-
-        console.log(document.getElementsByClassName('easyimage'));
-
-    </script>
-    <script>
-
-        ClassicEditor
-            .create( document.querySelector('#about_details' ),{
-                ckfinder: {
-                    uploadUrl:`{{url('ckeditor/upload').'?_token='.csrf_token()}}`,
-                }
-            })
-
-    </script> --}}
-
-
-
-
 @endsection

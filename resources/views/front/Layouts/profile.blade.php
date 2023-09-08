@@ -1047,7 +1047,7 @@
                             <ul class="nav nav-tabs d-flex" id="myTab" role="tablist">
 
                                 @foreach ($data as $key => $datas)
-                                    {{-- {{ $key }} --}}
+                                   @if($datas->description != '')
                                     <li class="nav-item " role="presentation">
                                         <button
                                             @if ($key == '0') class="nav-link active"  @else  class="nav-link" @endif
@@ -1056,11 +1056,12 @@
                                             role="tab"
                                             aria-controls="profile-tab-pane">{{ $datas->Title }}</button>
                                     </li>
+                                    @endif
                                 @endforeach
                             </ul>
 
                             @foreach ($data as $key => $datas)
-                                {{-- {{ $key }} --}}
+                                 @if($datas->description != '')
                                 <div class="tab-content accordion master-class" id="myTabContent">
                                     <div @if ($key == '0') class="tab-pane fade accordion-item active show"  @else  class="tab-pane fade accordion-item" @endif
                                         id="profile-tab-pane{{ $key }}" role="tabpanel"
@@ -1079,6 +1080,7 @@
                                         </div>
                                     </div>
                                 </div>
+                                @endif
                             @endforeach
 
                         </div>
