@@ -1211,7 +1211,7 @@ $("#url").change(function(e) {
 
         var data3 = $("#url").val();
 
-         alert(data3);
+       //  alert(data3);
 
         if (data3 == 'student-profiles') {
 
