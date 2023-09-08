@@ -315,6 +315,7 @@ class FormController extends Controller
 
              || str_contains($value->getActionname(), 'App\Http\Controllers\middleFormController')
 
+             || str_contains($value->getActionname(), 'App\Http\Controllers\StudentProfileController')
 
              ){
 
