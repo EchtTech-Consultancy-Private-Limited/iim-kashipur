@@ -2082,10 +2082,11 @@ public function Child_barInnerpage($main_slug,$Sub_slug,$slug) //content page
     $data=child_menu::whereslug($slug)->get();
 
     if(Count($data)>0){
+       // dd($data[0]->url);
 
-        if($slug=="student-profiles")
+        if($data[0]->url == "/student-profiles")
         {
-           // dd($slug);
+
             $item = StudentProfile::where('status','1')->orderBy('sort','Asc')->get();
             if(Count($item)>0){
             $type_sub=child_menu::whereslug($slug)->get();
