@@ -127,7 +127,9 @@
                 @endif
 
 
-
+               <div class="col-md-12 mb-3">
+                <b> <u> Online Portal for registering your complaint: </u> </b>
+               </div>
                @if(request()->path() == 'scstobc-cell')
                 <div class="com-md-12">
                     <form action="{{ url('sc-st-obc') }}" method="post"  enctype="multipart/form-data">
