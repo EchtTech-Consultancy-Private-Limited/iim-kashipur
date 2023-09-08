@@ -2746,7 +2746,8 @@ public function Child_barInnerpage($main_slug,$Sub_slug,$slug) //content page
         [
             'name' => 'required|max:32|min:2',
             'mobile_no'=>'required|numeric|min:10|numeric|digits:10',
-            'captcha' => 'required|captcha'
+            'captcha' => 'required|captcha',
+            'image'  => 'image|mimes:jpeg,png,jpg,gif|max:2048',
        ]
    );
     $data= new scstobc_forms;

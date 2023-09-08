@@ -7,6 +7,7 @@ use Image;
 use File;
 use Helper;
 use validataion;
+use App\Models\upload;
 use Redirect;
 
 use Illuminate\Http\Request;
@@ -260,5 +261,77 @@ class contentController extends Controller
     $data=content_page::get();
     return response()->json(['data'=>$data]);
     }
+
+
+//file and image upload
+function view_pdfImage(){
+    $data=upload::orderBy('id','DESC')->cursor();
+    return view('admin.sections.manageImagePdf',compact('data'));
+}
+
+function Delete_pdfImage($id){
+    $exit = upload::where('id',dDecrypt($id))->first();
+    if(!empty($exit)){
+        upload::find(dDecrypt($id))->delete();
+    }else{
+        return redirect('Accounts/pdf-image')->with('error','You are trying to perform unethical process. Your requst is failed.');
+    }
+    return redirect('Accounts/pdf-image')->with('success','Admin Entry Deleted Successfully!');
+}
+
+function Add_pdfImage(Request $request,$id=null){
+    if($id){
+         $title="Edit PDF/Image Upload";
+         $msg="File Edited Successfully!";
+         $data=upload::find(dDecrypt($id));
+
+     }
+     else{
+          $title="Add PDF/Image Upload";
+          $msg="File Added Successfully!";
+          $data=new upload;
+     }
+
+    if($request->isMethod('post')){
+
+        if($id){
+            $request->validate([
+                'title'=>'required',
+                'file'=>'mimes:jpg,jpeg,gif,png,pdf',
+            ]);
+            }
+            else{
+              $request->validate([
+                'title'=>'required|unique:uploads',
+                'file'=>'mimes:jpg,jpeg,gif,png,pdf',
+            ]);
+            }
+
+        $data->title=ucwords($request->title);
+        $data->status=$request->status;
+        $data->type=$request->type;
+        if($request->type == 1){
+            $path=public_path('admin/pdf');
+        }else{
+            $path=public_path('admin/images');
+        }
+        if($request->hasFile('file')){
+            $file=$request->file('file');
+            $newname= time().rand(10,99).'.'.$file->getClientOriginalExtension();
+            $file->move($path, $newname);
+            $data->file= $newname;
+            if($request->type == 1){
+            $data->path=('/admin/pdf/'.$newname);
+            }else{
+               $data->path=('/admin/images/'.$newname);
+            }
+        }
+        $data->save();
+        return redirect('Accounts/pdf-image')->with('success','Url created Successfully',$msg);
+    }
+     return view('admin.sections.addImagePdf',compact('data','title','id'));
+    }
+
+
 
 }

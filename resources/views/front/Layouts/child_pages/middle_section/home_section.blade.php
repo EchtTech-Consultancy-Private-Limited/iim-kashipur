@@ -98,7 +98,7 @@
 
                                                 @foreach ($data as $datas )
 
-                                                <h5><span>{{ $items->name }}</span></h5>
+                                                <h5><span>{{ $datas->name }}</span></h5>
 
 
                                                 <div class="col-md-12 col-lg-12">
@@ -127,36 +127,45 @@
                 @endif
 
 
+
+               @if(request()->path() == 'scstobc-cell' || request()->path() == 'sc-st-obc-cell')
+
                <div class="col-md-12 mb-3">
                 <b> <u> Online Portal for registering your complaint: </u> </b>
                </div>
-               @if(request()->path() == 'scstobc-cell')
+
                 <div class="com-md-12">
+
+
+
                     <form action="{{ url('sc-st-obc') }}" method="post"  enctype="multipart/form-data">
                         <div class="card">
                          @csrf
-                        @if ($errors->any())
-                            <div class="alert alert-danger">
-                                <ul>
-                                    @foreach ($errors->all() as $error)
-                                        <li>{{ $error }}</li>
-                                    @endforeach
-                                </ul>
-                            </div>
-                        @endif
-                        @if (Session::has('success'))
-                            <div class="alert alert-success alert-block" role="alert">
-                                <button class="close" data-dismiss="alert"></button>
-                                {{ Session::get('success') }}
-                            </div>
-                        @endif
+
                             <div class="card-body">
+
+                            @if ($errors->any())
+                                <div class="alert alert-danger">
+                                    <ul>
+                                        @foreach ($errors->all() as $error)
+                                            <li>{{ $error }}</li>
+                                        @endforeach
+                                    </ul>
+                                </div>
+                            @endif
+                            @if (Session::has('success'))
+                                <div class="alert alert-success alert-block" role="alert">
+                                    <button class="close" data-dismiss="alert"></button>
+                                    {{ Session::get('success') }}
+                                </div>
+                            @endif
+
                                 <div class="row align-items-center pt-4 pb-3">
                                     <div class="col-md-3 ps-5">
                                         <h6 class="mb-0" tabindex="0">Name <span class="text-danger">*</span> </h6>
                                     </div>
                                     <div class="col-md-9 pe-5">
-                                        <input type="text" value="" name="name" class="form-control special_no"placeholder="Enter Your Name">
+                                        <input type="text" value="" name="name" class="form-control special_no"placeholder="Enter Your Name" maxlength="250" minlength="2">
                                         @if ($errors->has('name'))
                                         <div class="text-danger">{{ $errors->first('name') }}</div>
                                        @endif
@@ -220,7 +229,7 @@
                                         <h6 class="mb-0">Complaint Details  <span class="text-danger">*</span> </h6>
                                     </div>
                                     <div class="col-md-9 pe-5">
-                                        <textarea class="form-control" rows="3" name="Complaint_Details" placeholder="Complaint Details "></textarea>
+                                        <textarea class="form-control" rows="3" name="Complaint_Details" maxlength="250" minlength="2" placeholder="Complaint Details "></textarea>
 
                                         @if ($errors->has('Complaint_Details'))
                                         <div class="text-danger">{{ $errors->first('Complaint_Details') }}</div>
@@ -236,7 +245,7 @@
                                     </div>
                                     <div class="col-md-9 pe-5">
                                         <input type="text" value="" name="mobile_no" id="mobile_no"
-                                            class="form-control" placeholder="Enter your Contact Number" maxlength="10">
+                                            class="form-control" placeholder="Enter your Contact Number" maxlength="12">
                                             @if ($errors->has('mobile_no'))
                                             <div class="text-danger">{{ $errors->first('mobile_no') }}</div>
                                             @endif
@@ -302,5 +311,20 @@
         </div>
 
     </section>
+
+
+
+    <script type="text/javascript">
+        $('#refresh-captcha').click(function() {
+            $.ajax({
+                type: 'GET',
+                url: '<?php echo url('refresh-captcha'); ?>',
+                success: function(data) {
+                    $(".captcha span").html(data.captcha);
+                }
+            });
+        });
+    </script>
+
 
 @endsection
