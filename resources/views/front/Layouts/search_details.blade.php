@@ -50,14 +50,14 @@
                                 <div class="col-md-5">
                                     <div class="serch-box-show s-box-page p-relative"
                                         style="position: static;display:block !important">
-                                        <form action="#" method="get">
+                                        {{-- <form action="#" method="get">
                                             <div class="d-flex">
                                                 <input type="search" class="form-control" placeholder="Search here..."
                                                     value=" " name="search">
                                                 <button type="submit" class="btn-info submit-btn-apply"> <i
                                                         class="fa fa-search"> </i> </button>
                                             </div>
-                                        </form>
+                                        </form> --}}
                                     </div>
                                 </div>
 
@@ -65,17 +65,48 @@
 
 
                                 <div class="col-md-12">
+                                    @if(count($Career) > 0  &&
+
+                                    count($anti_raggings) > 0 &&
+                                    count($BannerSlider) > 0 &&
+                                    count($cell_multiple_image) > 0 &&
+                                    count($commmittee) > 0 &&
+                                    count($StudentProfile) > 0 &&
+                                    count($tender) > 0 &&
+                                    count($Vendorsdebarred) > 0 &&
+                                    count($video_gallery) > 0 &&
+                                    count($video_gallery_tittles) > 0 &&
+                                    count($wellness_facilitie) > 0 &&
+                                    count($wellness_facilitie_image) > 0 &&
+                                    count($student_council) > 0 &&
+                                    count($org_journies) > 0 &&
+                                    count($press_media) > 0 &&
+                                    count($org) > 0 &&
+                                    count($news_event) > 0 &&
+                                    count($OrganisationStructure) > 0 &&
+                                    count($Industry) > 0 &&
+                                    count($Events) > 0 &&
+                                     count($rit) > 0
+
+                                    )
+
                                     <p class="mt-4 mb-1 text-primary">Search Result</p>
+
+                                    @else
+
+                                    <p class="mt-4 mb-1 text-primary"> No Result Found...</p>
+
+                                    @endif
+
 
                                     {{-- anti raggings --}}
                                     @if (count($anti_raggings) > 0)
                                         @foreach ($anti_raggings as $anti_raggingss)
                                             <div class="search-content-box">
 
+                                                <a href="{{ url('rti') }}">
                                                 <h6>{{ $anti_raggingss->title ?? '' }}</h6>
-                                                <p>
-
-                                                </p>
+                                                </a>
                                             </div>
                                         @endforeach
                                     @endif
@@ -85,13 +116,9 @@
                                     @if (count($BannerSlider) > 0)
                                         @foreach ($BannerSlider as $BannerSliders)
                                             <div class="search-content-box">
-
+                                                 <a href="'/">
                                                 <h6>{{ $BannerSliders->title ?? '' }}</h6>
-                                                <p>
-
-                                                    {{ $BannerSliders->short ?? '' }}
-
-                                                </p>
+                                                 </a>
                                             </div>
                                         @endforeach
                                     @endif
@@ -102,10 +129,10 @@
                                         @foreach ($Career as $Careers)
                                             <div class="search-content-box">
 
-                                            <a href="{{url('career') }}">
-                                                <h6>{{ $Careers->name_of_the_post ?? '' }}</h6>
+                                                <a href="{{ url('career') }}">
+                                                    <h6>{{ $Careers->name_of_the_post ?? '' }}</h6>
 
-                                            </a>
+                                                </a>
                                             </div>
                                         @endforeach
                                     @endif
@@ -116,12 +143,9 @@
                                         @foreach ($cell_multiple_image as $cell_multiple_imagess)
                                             <div class="search-content-box">
 
+                                                <a href="{{ url('students-corner/club-committee-and-cells') }}">
                                                 <h6>{{ $cell_multiple_imagess->title ?? '' }}</h6>
-                                                <p>
-
-
-
-                                                </p>
+                                                </a>
                                             </div>
                                         @endforeach
                                     @endif
@@ -131,11 +155,9 @@
                                     @if (count($commmittee) > 0)
                                         @foreach ($commmittee as $commmittees)
                                             <div class="search-content-box">
-
+                                                <a href="{{ url('students-corner/club-committee-and-cells') }}">
                                                 <h6>{{ $commmittees->title ?? '' }}</h6>
-                                                <p>
-
-                                                </p>
+                                                </a>
                                             </div>
                                         @endforeach
                                     @endif
@@ -144,7 +166,7 @@
 
                                     {{-- content_page --}}
 
-                                    @if (count($content_page) > 0)
+                                    {{-- @if (count($content_page) > 0)
                                         @foreach ($content_page as $content_pages)
                                             <div class="search-content-box">
 
@@ -161,7 +183,7 @@
 
                                             </div>
                                         @endforeach
-                                    @endif
+                                    @endif --}}
 
                                     {{-- Events  --}}
 
@@ -170,11 +192,7 @@
                                             <div class="search-content-box">
 
                                                 <h6>{{ $Eventss->title ?? '' }}</h6>
-                                                <p>
 
-
-
-                                                </p>
                                             </div>
                                         @endforeach
                                     @endif
@@ -183,13 +201,9 @@
                                     @if (count($Industry) > 0)
                                         @foreach ($Industry as $Industrys)
                                             <div class="search-content-box">
-
+                                                <a href="{{ url('industry-connect') }}">
                                                 <h6>{{ $Industrys->title ?? '' }}</h6>
-                                                <p>
 
-
-
-                                                </p>
                                             </div>
                                         @endforeach
                                     @endif
@@ -235,19 +249,15 @@
 
 
                                     {{-- multiple_profile --}}
-                                    @if (count($multiple_profile) > 0)
+                                    {{-- @if (count($multiple_profile) > 0)
                                         @foreach ($multiple_profile as $multiple_profiles)
                                             <div class="search-content-box">
 
                                                 <h6>{{ $multiple_profiles->Title ?? '' }}</h6>
-                                                <p>
 
-
-
-                                                </p>
                                             </div>
                                         @endforeach
-                                    @endif
+                                    @endif --}}
 
 
 
@@ -256,7 +266,7 @@
                                         @foreach ($OrganisationStructure as $OrganisationStructures)
                                             <div class="search-content-box">
 
-                                                <a href="{{ $OrganisationStructures->slug }}">
+                                                <a href="{{url('faculty/faculty-directory/'.$OrganisationStructures->slug)  }}">
                                                     <h6>{{ $OrganisationStructures->title ?? '' }}</h6>
                                                 </a>
                                             </div>
@@ -287,11 +297,6 @@
                                             <div class="search-content-box">
 
                                                 <h6>{{ $orgs->name ?? '' }}</h6>
-                                                <p>
-
-
-
-                                                </p>
                                             </div>
                                         @endforeach
                                     @endif
@@ -301,14 +306,8 @@
                                     @if (count($org_journies) > 0)
                                         @foreach ($org_journies as $org_journiess)
                                             <div class="search-content-box">
-
-                                                <h5><span> Org Journies</span></h5>
-
                                                 <a href="{{ url('about-institute/our-journey') }}">
-                                                <h6>{{ $org_journiess->name ?? '' }}</h6>
-                                                <p>
-                                                    {{ $org_journiess->heading ?? '' }}
-                                                </p>
+                                                    <h6>{{ $org_journiess->name ?? '' }}</h6>
                                                 </a>
                                             </div>
                                         @endforeach
@@ -318,12 +317,8 @@
                                     @if (count($press_media) > 0)
                                         @foreach ($press_media as $press_medias)
                                             <div class="search-content-box">
-
-
-                                                <h5><span> Press Media</span></h5>
-
                                                 <a href="{{ url('press-media') }}">
-                                                <h6>{{ $press_medias->heading ?? '' }}</h6>
+                                                    <h6>{{ $press_medias->heading ?? '' }}</h6>
 
                                                 </a>
                                             </div>
@@ -332,23 +327,17 @@
 
 
                                     {{-- project_logo --}}
-                                    @if (count($project_logo) > 0)
+                                    {{-- @if (count($project_logo) > 0)
                                         @foreach ($project_logo as $project_logos)
                                             <div class="search-content-box">
-
-                                                <h5><span>Project logo</span></h5>
-
-
-
                                                 <h6>{{ $project_logos->name ?? '' }}</h6>
-
                                             </div>
                                         @endforeach
-                                    @endif
+                                    @endif --}}
 
                                     {{-- quick_linkcategory --}}
 
-                                    @if (count($quick_linkcategory) > 0)
+                                    {{-- @if (count($quick_linkcategory) > 0)
                                         @foreach ($quick_linkcategory as $quick_linkcategorys)
                                             <div class="search-content-box">
 
@@ -356,69 +345,54 @@
 
                                                 <h6>{{ $quick_linkcategorys->Section ?? '' }}</h6>
                                                 <p>
-
-
-
                                                 </p>
                                             </div>
                                         @endforeach
-                                    @endif
+                                    @endif --}}
 
                                     {{-- QuickLink  --}}
 
-                                    @if (count($QuickLink) > 0)
+                                    {{-- @if (count($QuickLink) > 0)
                                         @foreach ($QuickLink as $QuickLinks)
                                             <div class="search-content-box">
-
-
 
                                                 <h6>{{ $QuickLinks->title ?? '' }}</h6>
 
                                             </div>
                                         @endforeach
-                                    @endif
+                                    @endif --}}
 
                                     {{-- rit --}}
-
-
                                     @if (count($rit) > 0)
                                         @foreach ($rit as $rits)
                                             <div class="search-content-box">
-
-                                                <h5><span>RTI</span></h5>
-
-                                               <a href="{{ url('rti') }}">
-
-                                                <h6>{{ $rits->title ?? '' }}</h6>
-
-                                               </a>
+                                                <a href="{{ url('rti') }}">
+                                                    <h6>{{ $rits->title ?? '' }}</h6>
+                                                </a>
                                             </div>
                                         @endforeach
                                     @endif
 
 
                                     {{-- student_council --}}
-
                                     @if (count($student_council) > 0)
                                         @foreach ($student_council as $student_councils)
                                             <div class="search-content-box">
 
-                                               <a href="{{ url('students-corner/student-council') }}">
-                                                <h6>{{ $student_councils->student_council ?? '' }}</h6>
-                                                {{-- <p>{!!  $student_councils->about_details  !!}</p> --}}
-                                               </a>
+                                                <a href="{{ url('students-corner/student-council') }}">
+                                                    <h6>{{ $student_councils->student_council ?? '' }}</h6>
+                                                </a>
                                             </div>
                                         @endforeach
                                     @endif
-                                    {{--  --}}
+
 
                                     @if (count($StudentProfile) > 0)
                                         @foreach ($StudentProfile as $StudentProfiles)
                                             <div class="search-content-box">
-
-                                                <a href="{{ url('academics/doctoral-programme/student-profiles') }}">
-                                                <h6>{{ $StudentProfiles->name ?? '' }}</h6>
-                                                 <a>
+                                                <a href="{{ url('student-profile-more-info/'.dEncrypt($StudentProfiles->id)) }}">
+                                                    <h6>{{ $StudentProfiles->name ?? '' }}</h6>
+                                                <a>
                                             </div>
                                         @endforeach
                                     @endif
@@ -427,11 +401,8 @@
                                     @if (count($tender) > 0)
                                         @foreach ($tender as $tenders)
                                             <div class="search-content-box">
-
-                                                <h5><span> Tenders</span></h5>
-
                                                 <a href="{{ url('Tenders') }}">
-                                                <h6>{{ $tenders->title ?? '' }}</h6>
+                                                    <h6>{{ $tenders->title ?? '' }}</h6>
                                                 </a>
                                             </div>
                                         @endforeach
@@ -441,14 +412,9 @@
                                     @if (count($Vendorsdebarred) > 0)
                                         @foreach ($Vendorsdebarred as $Vendorsdebarreds)
                                             <div class="search-content-box">
-
-
-                                                <h5><span>Vendors Debarred</span></h5>
-
                                                 <a href="{{ url('Vendors-Debarred') }}">
                                                     <h6>{{ $Vendorsdebarreds->vendor_name ?? '' }}</h6>
                                                 <a>
-
                                             </div>
                                         @endforeach
                                     @endif
@@ -457,13 +423,8 @@
                                         @foreach ($video_gallery as $video_gallerys)
                                             <div class="search-content-box">
 
-                                                <h5><span>Video gallery</span></h5>
-
-
                                                 <a href="{{ url('video-gallery') }} ">
-
                                                     <h6>{{ $video_gallerys->title ?? '' }}</h6>
-
                                                 </a>
                                             </div>
                                         @endforeach
@@ -475,9 +436,6 @@
                                         @foreach ($video_gallery_tittles as $video_gallery_tittle)
                                             <div class="search-content-box">
 
-                                                <h5><span>Video gallery</span></h5>
-
-
                                                 <a href="{{ url('video-gallery') }} ">
 
                                                     <h6>{{ $video_gallery_tittle->video_title ?? '' }}</h6>
@@ -487,62 +445,31 @@
                                         @endforeach
                                     @endif
 
-
-
-
                                     {{-- wellness_facilitie --}}
-
                                     @if (count($wellness_facilitie) > 0)
                                         @foreach ($wellness_facilitie as $wellness_facilities)
                                             <a href="{{ url('students-corner/wellness-facilities') }}">
                                                 <div class="search-content-box">
 
-                                                    <h5><span>Wellness Facilities</span></h5>
-
                                                     <h6>{{ $wellness_facilities->title ?? '' }}</h6>
-                                                    <p>
 
-                                                        {!! $wellness_facilities->about_details !!}
-
-                                                    </p>
                                                 </div>
                                             </a>
                                         @endforeach
                                     @endif
 
                                     {{-- wellness_facilitie_image --}}
-
                                     @if (count($wellness_facilitie_image) > 0)
                                         @foreach ($wellness_facilitie_image as $wellness_facilitie_images)
                                             <a href="{{ url('students-corner/wellness-facilities') }}">
                                                 <div class="search-content-box">
 
-                                                    <h5><span>Wellness Facilities</span></h5>
-
                                                     <h6>{{ $wellness_facilitie_images->image_title ?? '' }}</h6>
-                                                    <p>
-
-                                                        {!! $wellness_facilitie_images->event !!}
-
-                                                    </p>
-
-                                                    <p>
-
-                                                        {!! $wellness_facilitie_images->DESCRIPTION !!}
-
-                                                    </p>
-
 
                                                 </div>
                                             </a>
                                         @endforeach
                                     @endif
-
-
-
-
-
-
 
                                 </div>
 

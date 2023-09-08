@@ -579,25 +579,18 @@ public function Delete_cellsImage($id){
         return back()->with('error','You are trying to perform unethical process. Your requst is failed.');
     }
     return redirect()->back()->with('success','Record Deleted Successfully');
-
-
     }
 
     public function add_cellsImage(Request $request)
     {
-
         $request->validate(
-
             [
-                'filename'          =>       'image|mimes:jpeg,png,jpg,gif|max:2048',
-                'image_title'    =>           'required|unique:cell_multiple_images'
+                 'filename'          =>       'image|mimes:jpeg,png,jpg,gif|max:2048',
+                 'image_title'    =>           'required|unique:cell_multiple_images'
             ]
-
-
         );
-
         $data= new cell_multiple_image();
-        $data->image_title= $request->image_text;
+        $data->image_title= $request->image_title;
         $data->image_alt= $request->image_alt;
         $data->sort_order= $request->order;
         $data->event= $request->event;
@@ -628,8 +621,8 @@ public function Delete_cellsImage($id){
        $request->validate(
           [
 
-            'filename'          =>       'image|mimes:jpeg,png,jpg,gif|max:2048',
-            'image_text'         =>       'required'
+             //'filename'          =>       'image|mimes:jpeg,png,jpg,gif|max:2048',
+             //'image_text'         =>       'required'
 
           ]
          );
@@ -827,7 +820,6 @@ public function add_Edit_Committee(Request $request,$id=NULL)
         }
         return redirect()->back()->with('success','Record Deleted Successfully');
 
-
         }
 
 
@@ -836,9 +828,8 @@ public function add_Edit_Committee(Request $request,$id=NULL)
             $request->validate(
 
                 [
-                    'filename'          =>       'image|mimes:jpeg,png,jpg,gif|max:2048',
+                     'filename'          =>       'image|mimes:jpeg,png,jpg,gif|max:2048',
                      'committee_title'   =>       'required|unique:committee_multiple_images'
-
                 ]
 
 
@@ -873,15 +864,15 @@ public function add_Edit_Committee(Request $request,$id=NULL)
 
         public function edit_committeeImage(Request $request)
         {
-          //  dd($request->all());
+           //dd($request->all());
            $request->validate(
               [
-                'filename'          =>       'image|mimes:jpeg,png,jpg,gif|max:2048',
-                'image_text'        =>        'required'
+                  'filename'          =>       'image|mimes:jpeg,png,jpg,gif|max:2048',
+                  'committee_title'   =>       'required'
               ]
              );
              $data=committee_multiple_image::find($request->id);
-             $data->committee_title=$request->image_text;
+             $data->committee_title= $request->committee_title;
              $data->committee_alt=$request->image_alt;
              $data->sort_order=$request->order;
              $data->status=$request->status;
@@ -901,8 +892,6 @@ public function add_Edit_Committee(Request $request,$id=NULL)
         }
 
 // club
-
-
 public function add_Edit_club(Request $request,$id=NULL){
     $profile=OrganisationStructure::get();
     if($id){
@@ -1034,20 +1023,20 @@ public function Delete_clubImage($id){
 
     public function add_ClubImage(Request $request){
 
+       // dd($request->all());
+
         $request->validate(
 
             [
-
-            'filename'          =>       'image|mimes:jpeg,png,jpg,gif|max:2048',
-            'image_title'   =>       'required|unique:club_multiple_images'
-
+                 'filename' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
+                 'image_title' => 'required|unique:club_multiple_images'
             ]
-
-
         );
+
+
       //data in database
       $data= new club_multiple_image();
-      $data->image_title= $request->image_text;
+      $data->image_title= $request->image_title;
       $data->image_alt= $request->image_alt;
       $data->sort_order= $request->order;
       $data->event= $request->event;
@@ -1077,13 +1066,13 @@ public function Delete_clubImage($id){
        $request->validate(
           [
 
-            'filename'          =>       'image|mimes:jpeg,png,jpg,gif|max:2048',
-            'image_text'        =>       'required'
+              'filename'          =>       'image|mimes:jpeg,png,jpg,gif|max:2048',
+              'image_title'        =>       'required'
 
           ]
          );
          $data=club_multiple_image::find($request->id);
-         $data->image_title=$request->image_text;
+         $data->image_title=$request->image_title;
          $data->image_alt=$request->image_alt;
          $data->sort_order=$request->order;
          $data->status=$request->status;
@@ -1095,9 +1084,7 @@ public function Delete_clubImage($id){
             $newname= time().rand(10,99).'.'.$file->getClientOriginalExtension();
             $file->move($path, $newname);
             $data->image = $newname;
-
         }
-
         $data->save();
       return back()->with('success','Record Edit Successfully');
     }

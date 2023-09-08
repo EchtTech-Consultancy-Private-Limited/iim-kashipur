@@ -25,20 +25,30 @@
 
         <div class="content-wrapper">
 
-            @if (Session::has('success'))
-                <div class="alert alert-success col-md-12 text-center">
+            <div class="modal-body pb-0">
 
-                    <strong>Success!</strong> {{ Session::get('success') }}
+                @if ($errors->any())
+
+                <div class="alert alert-danger">
+
+                    <ul>
+
+                        @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+
+                    </ul>
 
                 </div>
+
             @endif
 
-            @if (Session::has('error'))
-                <div class="alert alert-danger col-md-12 text-center">
+            @if (Session::has('success'))
+            <div class="alert alert-success col-md-12 text-center">
 
-                    <strong>Oops!</strong> {{ Session::get('error') }}
+                <strong>Oops!</strong> {{ Session::get('success') }}
 
-                </div>
+            </div>
             @endif
 
             <div class="row">
@@ -172,6 +182,31 @@
 
                     <div class="modal-body pb-0">
 
+                        @if ($errors->any())
+
+                        <div class="alert alert-danger">
+
+                            <ul>
+
+                                @foreach ($errors->all() as $error)
+                                    <li>{{ $error }}</li>
+                                @endforeach
+
+                            </ul>
+
+                        </div>
+
+                    @endif
+
+                    @if (Session::has('success'))
+                    <div class="alert alert-success col-md-12 text-center">
+
+                        <strong>Oops!</strong> {{ Session::get('success') }}
+
+                    </div>
+                    @endif
+
+
                         <form role="form" id="regForm" action="{{ url('Accounts/add-club-image') }}" method="post"
                             class="registration-form row" enctype="multipart/form-data" novalidate="novalidate">
                             @csrf
@@ -195,7 +230,7 @@
 
                                 <label for="image_text">Image Title</label>
 
-                                <input type="text" name="image_text" placeholder="Enter your Image Text"
+                                <input type="text" name="image_title" placeholder="Enter your Image Text"
                                     class="form-last-name form-control" id="form-last-name" autocomplete="off">
 
 
@@ -241,7 +276,7 @@
 
 
 
-                            <div class="form-group col-md-6">
+                            {{-- <div class="form-group col-md-6">
 
                                 <label for="status">status</label>
 
@@ -261,7 +296,9 @@
 
 
 
-                            </div>
+                            </div> --}}
+
+                            <input type="hidden" name="status" value="0">
 
 
                             <div class="col-md-12 modal-footer">
@@ -323,7 +360,7 @@
 
                             <label for="image_text">Image Text</label>
 
-                            <input type="text" name="image_text" placeholder="Enter your Image Text"
+                            <input type="text" name="image_title" placeholder="Enter your Image Text"
                                 class="form-last-name form-control imagetext" readonly required=""
                                 autocomplete="off">
 
@@ -401,6 +438,33 @@
 
                     </div>
 
+                    <div class="modal-body pb-0">
+
+                        @if ($errors->any())
+
+                        <div class="alert alert-danger">
+
+                            <ul>
+
+                                @foreach ($errors->all() as $error)
+                                    <li>{{ $error }}</li>
+                                @endforeach
+
+                            </ul>
+
+                        </div>
+
+                    @endif
+
+                    @if (Session::has('success'))
+                    <div class="alert alert-success col-md-12 text-center">
+
+                        <strong>Oops!</strong> {{ Session::get('success') }}
+
+                    </div>
+                    @endif
+
+
                     <div class="modal-body">
 
                         <form action="" id="form" method="post" class="registration-form row"
@@ -426,13 +490,13 @@
 
                             <div class="form-group col-md-6">
 
-                                <label for="image_text">Image Text</label>
+                                <label for="image_title">Image Text</label>
 
-                                <input type="text" name="image_text" placeholder="Enter your Image Text"
+                                <input type="text" name="image_title" placeholder="Enter your Image Text"
                                     class="form-last-name form-control" id="imagetext" required=""
                                     autocomplete="off">
 
-                                <label for="image_text" id="image_text-error" class="error">
+                                <label for="image_title" id="image_title-error" class="error">
                                 </label>
 
 
@@ -486,7 +550,7 @@
 
 
 
-                            <div class="form-group col-md-6">
+                            {{-- <div class="form-group col-md-6">
 
                                 <label for="form-email">status</label>
 
@@ -501,7 +565,9 @@
 
                                 </select>
 
-                            </div>
+                            </div> --}}
+
+                            <input type="hidden" name="status" id="imagestatus" >
 
 
                             <input type="hidden" name="gallery_id" placeholder="Enter your Gallery Tabel ID"

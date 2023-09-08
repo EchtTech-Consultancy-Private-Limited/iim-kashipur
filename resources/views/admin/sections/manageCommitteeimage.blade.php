@@ -4,25 +4,25 @@
 
 @section('content')
 
-<style>
-    .modal-dialog.modal-md {
-        max-width: 900px;
-        margin-top: 5%;
-    }
+    <style>
+        .modal-dialog.modal-md {
+            max-width: 900px;
+            margin-top: 5%;
+        }
 
-    .modal .modal-dialog .modal-content .modal-body {
-        padding: 20px 26px;
-    }
+        .modal .modal-dialog .modal-content .modal-body {
+            padding: 20px 26px;
+        }
 
-    .modal{
-        overflow: auto !important;
-    }
+        .modal {
+            overflow: auto !important;
+        }
 
 
-    .form-group {
-        margin-bottom: 0.5rem;
-    }
-</style>
+        .form-group {
+            margin-bottom: 0.5rem;
+        }
+    </style>
     <div class="main-panel">
         <div class="content-wrapper">
             @if (Session::has('success'))
@@ -31,11 +31,13 @@
                 </div>
             @endif
 
-            @if (Session::has('error'))
-                <div class="alert alert-danger col-md-12 text-center">
-
-                    <strong>Oops!</strong> {{ Session::get('error') }}
-
+            @if ($errors->any())
+                <div class="alert alert-danger">
+                    <ul>
+                        @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
                 </div>
             @endif
 
@@ -80,7 +82,7 @@
                                                 @foreach ($data as $item)
                                                     <tr>
                                                         <td>{{ $item->id }}</td>
-                                                        <td><img src="{{ asset('uploads/multiple/club/'.$item->image) }}"
+                                                        <td><img src="{{ asset('uploads/multiple/club/' . $item->image) }}"
                                                                 alt="" title=""
                                                                 style="height: 120px;  width: 120px;" loading="lazy"></td>
                                                         <td>{{ $item->committee_title }}</td>
@@ -111,15 +113,15 @@
                                                                     class="ti-pencil btn-icon-append"
                                                                     style="color:black;"></i></button>
 
-                                                                    <button type="button" class="btn btn-primary" id="view"
-                                                                    data-id="{{ $item->id }}" data-toggle="modal"
-                                                                    data-target="#exampleModalview"
-                                                                    data-whatever="@getbootstrap"><i
-                                                                        class="ti-eye btn-icon-append"
-                                                                        style="color:black;"></i></button>
+                                                            <button type="button" class="btn btn-primary" id="view"
+                                                                data-id="{{ $item->id }}" data-toggle="modal"
+                                                                data-target="#exampleModalview"
+                                                                data-whatever="@getbootstrap"><i
+                                                                    class="ti-eye btn-icon-append"
+                                                                    style="color:black;"></i></button>
 
                                                             <a class="btn btn-primary"
-                                                                href="{{ url('Accounts/committee-images-delete/'.dEncrypt($item->id))}}"
+                                                                href="{{ url('Accounts/committee-images-delete/' . dEncrypt($item->id)) }}"
                                                                 onclick="return confirm('Are you sure to edit this record?')"><i
                                                                     class="ti-trash btn-icon-append"
                                                                     style="color:black;"></i></a>
@@ -178,6 +180,22 @@
 
                     <div class="modal-body pb-0">
 
+                        @if (Session::has('success'))
+                            <div class="alert alert-success col-md-12 text-center">
+                                <strong>Success!</strong> {{ Session::get('success') }}
+                            </div>
+                        @endif
+
+                        @if ($errors->any())
+                            <div class="alert alert-danger">
+                                <ul>
+                                    @foreach ($errors->all() as $error)
+                                        <li>{{ $error }}</li>
+                                    @endforeach
+                                </ul>
+                            </div>
+                        @endif
+
                         <form role="form" id="regForm" action="{{ url('Accounts/add-committee-image') }}"
                             method="post" class="registration-form row" enctype="multipart/form-data"
                             novalidate="novalidate">
@@ -224,7 +242,7 @@
 
                             </div>
 
-                            <input type="hidden" name="parent_id"  value="{{ $id }}">
+                            <input type="hidden" name="parent_id" value="{{ $id }}">
 
                             <div class="form-group col-md-6">
 
@@ -242,12 +260,12 @@
                             <div class="col-md-12">
                                 <label for="event" class="col-form-label">Events</label>
                                 <div class="">
-                                    <textarea class="form-control"  rows="4" name="event" placeholder="Please enter event"></textarea><br>
+                                    <textarea class="form-control" rows="4" name="event" placeholder="Please enter event"></textarea><br>
                                     <label for="event" id="event-error" class="error"></label>
                                 </div>
                             </div>
 
-                            <div class="form-group col-md-6">
+                            {{-- <div class="form-group col-md-6">
 
                                 <label for="status">status</label>
 
@@ -264,8 +282,9 @@
 
                                 <label for="status" id="status-error" class="error">
                                 </label>
-                            </div>
+                            </div> --}}
 
+                            <input type="hidden" name="status" value="0">
 
                             <div class="col-md-12 modal-footer">
                                 <button type="submit" class="btn btn-primary" id="savebtn">Save</button>
@@ -281,115 +300,114 @@
 
         </div>
 
-{{-- view --}}
+        {{-- view --}}
 
-<div class="modal fade" id="exampleModalview" tabindex="-1" role="dialog"
-aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal fade" id="exampleModalview" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+            aria-hidden="true">
 
-<div class="modal-dialog modal-md" role="document">
+            <div class="modal-dialog modal-md" role="document">
 
-    <div class="modal-content">
+                <div class="modal-content">
 
-        <div class="modal-header">
+                    <div class="modal-header">
 
-            <h5 class="modal-title" id="exampleModalLabel">View Multiple
-                image</h5>
+                        <h5 class="modal-title" id="exampleModalLabel">View Multiple
+                            image</h5>
 
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
 
-                <span aria-hidden="true">×</span>
+                            <span aria-hidden="true">×</span>
 
-            </button>
+                        </button>
 
-        </div>
-
-        <div class="modal-body">
-
-
-
-                <div class="form-group col-md-6">
-
-                    <label for="form-first-name">Multiple Image</label>
-
-                    <input type="file" name="filename" placeholder="Enter your Image"
-                        class="form-first-name form-control" id="form-first-name">
-
-                    <div class="image"></div>
-
-
-
-
-                </div>
-
-
-                <div class="form-group col-md-6">
-
-                    <label for="image_text">Image Text</label>
-
-                    <input type="text" name="image_text" placeholder="Enter your Image Text"
-                        class="form-last-name form-control imagetext" readonly required=""
-                        autocomplete="off">
-
-                    <label for="image_text" id="image_text-error" class="error">
-                    </label>
-
-
-
-                </div>
-
-
-
-
-                <div class="form-group col-md-6">
-
-                    <label for="image_alt">Image Alt</label>
-
-                    <input type="text" name="image_alt" placeholder="Enter your image Alt"
-                        class="form-email form-control imagealt" readonly required="" autocomplete="off">
-
-
-
-                    <label for="image_alt" id="image_alt-error" class="error">
-                    </label>
-
-                </div>
-
-
-
-                <div class="form-group col-md-6">
-
-                    <label for="form-email">sort order</label>
-
-                    <input type="text" placeholder="pls enter sort order" name="order"
-                        class="form-email form-control imagesort" readonly  required="" autocomplete="off">
-
-                    <label for="order" id="order-error" class="error">
-                    </label>
-
-
-
-                </div>
-
-
-                <div class="col-md-12">
-                    <label for="event" class="col-form-label">Events</label>
-                    <div class="">
-                        <textarea class="form-control event" readonly rows="4" name="event" placeholder="Please enter event"></textarea><br>
-                        <label for="event" id="event-error" class="error"></label>
                     </div>
+
+
+
+                    <div class="modal-body">
+
+                        <div class="form-group col-md-6">
+
+                            <label for="form-first-name">Multiple Image</label>
+
+                            <input type="file" name="filename" placeholder="Enter your Image"
+                                class="form-first-name form-control" id="form-first-name">
+
+                            <div class="image"></div>
+
+
+
+
+                        </div>
+
+
+                        <div class="form-group col-md-6">
+
+                            <label for="committee_title">Image Text</label>
+
+                            <input type="text" name="committee_title" placeholder="Enter your Image Text"
+                                class="form-last-name form-control imagetext" readonly required="" autocomplete="off">
+
+                            <label for="committee_title" id="committee_title-error" class="error">
+                            </label>
+
+
+
+                        </div>
+
+
+
+
+                        <div class="form-group col-md-6">
+
+                            <label for="image_alt">Image Alt</label>
+
+                            <input type="text" name="image_alt" placeholder="Enter your image Alt"
+                                class="form-email form-control imagealt" readonly required="" autocomplete="off">
+
+
+
+                            <label for="image_alt" id="image_alt-error" class="error">
+                            </label>
+
+                        </div>
+
+
+
+                        <div class="form-group col-md-6">
+
+                            <label for="form-email">sort order</label>
+
+                            <input type="text" placeholder="pls enter sort order" name="order"
+                                class="form-email form-control imagesort" readonly required="" autocomplete="off">
+
+                            <label for="order" id="order-error" class="error">
+                            </label>
+
+
+
+                        </div>
+
+
+                        <div class="col-md-12">
+                            <label for="event" class="col-form-label">Events</label>
+                            <div class="">
+                                <textarea class="form-control event" readonly rows="4" name="event" placeholder="Please enter event"></textarea><br>
+                                <label for="event" id="event-error" class="error"></label>
+                            </div>
+                        </div>
+
+
+
+
+
+                    </div>
+
                 </div>
 
-
-
-
+            </div>
 
         </div>
-
-    </div>
-
-</div>
-
-</div>
 
         <!-- multiple image table code -->
 
@@ -414,12 +432,28 @@ aria-labelledby="exampleModalLabel" aria-hidden="true">
 
                     </div>
 
+                    @if (Session::has('success'))
+                        <div class="alert alert-success col-md-12 text-center">
+                            <strong>Success!</strong> {{ Session::get('success') }}
+                        </div>
+                    @endif
+
+                    @if ($errors->any())
+                        <div class="alert alert-danger">
+                            <ul>
+                                @foreach ($errors->all() as $error)
+                                    <li>{{ $error }}</li>
+                                @endforeach
+                            </ul>
+                        </div>
+                    @endif
+
                     <div class="modal-body">
 
                         <form action="" id="form" method="post" class="registration-form row"
                             enctype="multipart/form-data">
 
-                          @csrf
+                            @csrf
 
                             <div class="form-group col-md-6">
 
@@ -438,20 +472,20 @@ aria-labelledby="exampleModalLabel" aria-hidden="true">
 
                             <div class="form-group col-md-6">
 
-                                <label for="image_text">Image Text</label>
+                                <label for="committee_title">Image Text</label>
 
-                                <input type="text" name="image_text" placeholder="Enter your Image Text"
+                                <input type="text" name="committee_title" placeholder="Enter your Image Text"
                                     class="form-last-name form-control" id="imagetext" required=""
                                     autocomplete="off">
 
-                                <label for="image_text" id="image_text-error" class="error">
+                                <label for="committee_title" id="committee_title-error" class="error">
                                 </label>
 
 
 
                             </div>
 
-                            <input type="hidden" name="parent_id"  value="{{ $id }}">
+                            <input type="hidden" name="parent_id" value="{{ $id }}">
 
 
                             <div class="form-group col-md-6">
@@ -499,7 +533,7 @@ aria-labelledby="exampleModalLabel" aria-hidden="true">
 
 
 
-                            <div class="form-group col-md-6">
+                            {{-- <div class="form-group col-md-6">
 
                                 <label for="form-email">status</label>
 
@@ -514,18 +548,20 @@ aria-labelledby="exampleModalLabel" aria-hidden="true">
 
                                 </select>
 
+                            </div> --}}
+
+                            <input type="hidden" name="status" id="imagestatus">
+
+
+                            <input type="hidden" name="gallery_id" placeholder="Enter your Gallery Tabel ID"
+                                class="form-first-name form-control" id="gallery_id" readonly="">
+
+                            <div class="modal-footer">
+
+                                <button type="submit" class="btn btn-primary" id="savebtn">Save</button>
+
+
                             </div>
-
-
-                    <input type="hidden" name="gallery_id" placeholder="Enter your Gallery Tabel ID"
-                    class="form-first-name form-control" id="gallery_id" readonly="">
-
-                <div class="modal-footer">
-
-                    <button type="submit" class="btn btn-primary" id="savebtn">Save</button>
-
-
-                </div>
 
                         </form>
                     </div>
@@ -556,79 +592,79 @@ aria-labelledby="exampleModalLabel" aria-hidden="true">
 
 
 
-<script>
-    $(document).on("click", "#update", function() {
-        var UserName = $(this).data('id');
-       //alert(UserName);
-        $.ajaxSetup({
-            headers: {
-                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-            }
-        });
+        <script>
+            $(document).on("click", "#update", function() {
+                var UserName = $(this).data('id');
+                //alert(UserName);
+                $.ajaxSetup({
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    }
+                });
 
 
-        $.ajax({
-            url: "{{ url('/Accounts/committee-id-image') }}",
-            type: "get",
-            data: {
-                id: UserName
-            },
-            success: function(data) {
+                $.ajax({
+                    url: "{{ url('/Accounts/committee-id-image') }}",
+                    type: "get",
+                    data: {
+                        id: UserName
+                    },
+                    success: function(data) {
 
-                $('#form').attr('action', '{{ url('Accounts/edit-committee-image') }}'+
-                    '/'+data.item.id)
-                $("#imagetext").val(data.item.committee_title);
-                $("#imagealt").val(data.item.committee_alt);
-                $("#imagesort").val(data.item.sort_order);
-                $("#imageoldid").val(data.item.committee_image);
-                $("#event").val(data.item.event);
-                $('#image').html('<img src="{{ asset('uploads/multiple/club') }}/' + data.item
-                    .image + '" width="100" height="100" />')
-                $("#imagestatus").val(data.item.status);
-            }
+                        $('#form').attr('action', '{{ url('Accounts/edit-committee-image') }}' +
+                            '/' + data.item.id)
+                        $("#imagetext").val(data.item.committee_title);
+                        $("#imagealt").val(data.item.committee_alt);
+                        $("#imagesort").val(data.item.sort_order);
+                        $("#imageoldid").val(data.item.committee_image);
+                        $("#event").val(data.item.event);
+                        $('#image').html('<img src="{{ asset('uploads/multiple/club') }}/' + data.item
+                            .image + '" width="100" height="100" />')
+                        $("#imagestatus").val(data.item.status);
+                    }
 
-        });
+                });
 
-    });
-</script>
-
-
-<script>
-    $(document).on("click", "#view", function() {
-        var UserName = $(this).data('id');
-        $.ajaxSetup({
-            headers: {
-                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-            }
-        });
+            });
+        </script>
 
 
-        $.ajax({
-            url: "{{ url('/Accounts/committee-id-image') }}",
-            type: "get",
-            data: {
-                id: UserName
-            },
-            success: function(data) {
-
-                console.log(data);
-
-
-                $(".imagetext").val(data.item.committee_title);
-                $(".imagealt").val(data.item.committee_alt);
-                $(".imagesort").val(data.item.sort_order);
-                $(".imageoldid").val(data.item.committee_image);
-                $(".event").val(data.item.event);
-                $('.image').html('<img src="{{ asset('uploads/multiple/club') }}/' + data.item
-                    .image + '" width="100" height="100" />')
-
-            }
-
-        });
-
-    });
-</script>
+        <script>
+            $(document).on("click", "#view", function() {
+                var UserName = $(this).data('id');
+                $.ajaxSetup({
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    }
+                });
 
 
+                $.ajax({
+                    url: "{{ url('/Accounts/committee-id-image') }}",
+                    type: "get",
+                    data: {
+                        id: UserName
+                    },
+                    success: function(data) {
 
-@endsection
+                        console.log(data);
+
+
+                        $(".imagetext").val(data.item.committee_title);
+                        $(".imagealt").val(data.item.committee_alt);
+                        $(".imagesort").val(data.item.sort_order);
+                        $(".imageoldid").val(data.item.committee_image);
+                        $(".event").val(data.item.event);
+                        $('.image').html('<img src="{{ asset('uploads/multiple/club') }}/' + data.item
+                            .image + '" width="100" height="100" />')
+
+                    }
+
+                });
+
+            });
+        </script>
+
+
+
+    @endsection

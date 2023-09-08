@@ -101,7 +101,7 @@
 
 
                             <div class="col-md-3">
-                                <label for="inputText" class="col-form-label">cells Cover Image* <span style="color:green;font-size:12px;"> @if($id) [{{$data->image}}] @endif</span></label>
+                                <label for="inputText" class="col-form-label">Cells Cover Image* <span style="color:green;font-size:12px;"> @if($id) [{{$data->image}}] @endif</span></label>
                                 <div class="">
                                     <input type="file" class="form-control" name="Cell_image"
                                         placeholder="Please enter content page title" value=""><br>
@@ -194,16 +194,16 @@
 
                                 </div>
 
-                                <img src="{{ asset('page/banner/' . $data->bannerimage) }}" width="150"
-                                    height="100" />
-
+                                @if($id)
+                                   <img src="{{ asset('page/banner/' . $data->bannerimage) }}" width="150" height="100" />
+                                @endif
 
                             </div>
 
                             <div class="col-md-12">
                                 <label for="inputText" class="col-sm-12 col-form-label">Banner title </label>
                                 <div class="col-sm-12">
-                                    <input type="text" class="form-control" name="banner_title" @if($id){{$data->banner_title}} @else {{old('banner_title')}} @endif
+                                    <input type="text" class="form-control" name="banner_title" @if($id) value="{{$data->banner_title}}" @else {{old('banner_title')}} @endif
                                         placeholder="Please enter text for title of banner photo, use for seo"
                                       ><br>
 
@@ -222,7 +222,7 @@
                             <div class="col-md-12">
                                 <label for="inputText" class="col-sm-12 col-form-label">Banner Alt </label>
                                 <div class="col-sm-12">
-                                    <input type="text" class="form-control" name="banner_alt" @if($id){{$data->banner_alt}} @else {{old('banner_alt')}} @endif
+                                    <input type="text" class="form-control" name="banner_alt" @if($id) value="{{$data->banner_alt}}" @else {{old('banner_alt')}} @endif
                                         placeholder="Please enter text for alt of banner photo, use for seo"
                                         ><br>
 
@@ -237,14 +237,7 @@
 
 
 
-
-
-
-
-
-
-
-                            <div class="col-md-12">
+                            {{-- <div class="col-md-12">
 
                                 <label for="event" class="col-form-label">Status</label>
 
@@ -258,7 +251,10 @@
 
                                     </select>
 
-                            </div>
+                            </div> --}}
+
+                            <input type="hidden" name="status" @if($id) value="{{ $data->status }}" @else value="0" @endif>
+
 
                             <div class="col-md-12">
                                 <div class="col-sm-10">
