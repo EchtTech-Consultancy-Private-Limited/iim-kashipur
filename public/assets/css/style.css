@@ -6065,3 +6065,11 @@ p{
     .student-p-box {
         height: 80px;
     }
+
+    .sidebarwraper ul li.hasnested ul {
+        display: none !important;
+    }
+/* 
+    .sidebarwraper ul li.hasnested.opened ul li.hasnested ul {
+        display: none !important;
+    } */
