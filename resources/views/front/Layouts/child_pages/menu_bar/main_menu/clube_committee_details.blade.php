@@ -1391,12 +1391,12 @@
                         </h5>
 
                         <div class="row mt-4 mb-5">
-                            <div class="col-md-3">
-                                <div class="top text-center mt-0">
+                            <div class="col-md-2">
+                                <div class="top text-left mt-0">
                                     <div class="profile-img img-fac">
                                         <img src="{{ asset('uploads/organisation/' . $chairperson[0]->image) }}"
                                             alt="A VENKATARAMAN" loading="lazy" class="mb-0">
-                                        <div class="d-flex justify-content-center">
+                                        <div class="d-flex">
                                             <div class="top-text mb-0 p-relative"> {{ $chairperson[0]->title ?? '' }}
                                             </div>
                                         </div>
@@ -1438,9 +1438,8 @@
                                                     @foreach ($chairpersons as $value)
                                                         <div class="col-md-2 col-lg-2">
                                                             <div class="d-flex flex-column h-100">
-
-                                                                <a href="{{ asset('uploads/organisation/' . $value->image) ?? '' }}"
-                                                                    class="image-link">
+                                                                <a href="javascript:void();"
+                                                                    class="">
                                                                     <div class="thumbnail p-relative text-center">
                                                                         <img src="{{ asset('uploads/organisation/' . $value->image) ?? '' }}"
                                                                             alt="gallery-img" class="img-fluid"
