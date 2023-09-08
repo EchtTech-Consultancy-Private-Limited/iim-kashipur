@@ -406,6 +406,10 @@ a {
         padding: 54px 0px 15px !important;
         /* padding: 0px !important; */
     }
+
+    .navbar-collapse{
+        width: 73% !important;
+    }
 }
 
 .ptb-80 {
@@ -6069,7 +6073,9 @@ p{
     .sidebarwraper ul li.hasnested ul {
         display: none !important;
     }
-/* 
-    .sidebarwraper ul li.hasnested.opened ul li.hasnested ul {
-        display: none !important;
-    } */
+
+
+    .nav-tabs .nav-link.active{
+        color: #f03340;
+        font-weight: 600;
+    }
