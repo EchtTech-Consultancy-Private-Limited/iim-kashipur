@@ -277,9 +277,9 @@
     </div>
 
     <script type="text/javascript">
-        CKEDITOR.replace('#about_details');
-        CKEDITOR.replace('#activites');
-        CKEDITOR.replace('#event');
+        CKEDITOR.replace('about_details');
+        CKEDITOR.replace('activites');
+        CKEDITOR.replace('event');
     </script>
 
 @endsection
