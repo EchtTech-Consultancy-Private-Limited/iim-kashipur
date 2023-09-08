@@ -76,8 +76,6 @@ Route::get('dashboard', [AdminController::class,'Dashboard'])->name('dashboard')
     //Route::get('dashboard',[AdminController::class,'Dashboard'])->middleware('Admin')->name('dashboard');
 Route::middleware(['CustomAuth'])->group(function () {   //audit log middleware
 
-
-
 //------------------------------- contentController start  ---------------------------------------------------------//
 
 //content page
@@ -89,6 +87,12 @@ Route::post('/update_page_act/{id}',[contentController::class,'Update_Content_Su
 Route::GET('/delete-page/{id}',[contentController::class,'Delete_Content']);
 Route::get("/pages-list/{id}",[contentController::class,'Show_Content_Child']);
 Route::get('view-content/{id?}',[contentController::class,'Show_Content'])->name('ViewContent');
+
+
+
+Route::match(['get','post'],'add-edit-pdf-image/{id?}',[contentController::class,'Add_pdfImage']);
+Route::get('delete-pdf-image/{id?}',[contentController::class,'Delete_pdfImage']);
+Route::get('pdf-image',[contentController::class,'view_pdfImage'])->name('filetourl');
 
 //------------------------------- contentController end  ---------------------------------------------------------//
 
@@ -271,15 +275,11 @@ Route::get("/rti-pdfsection",[footerController::class,'pdf_section']);
 Route::get("/rti-pdfsection",[footerController::class,'rit_QUARTER']);
 Route::get("/rti-QUARTER-data",[footerController::class,'rti_QUARTER_data']);
 
-
-
 //---------------------------------------- FooterController End  -----------------------------------------------------------//
 
 
 
 //-------------------------------------  MenuFormController start -------------------------------------------------------------//
-
-
 //oug journey
 Route::get('view-journey/{id?}', [menuFormController::class, 'Show_journey'])->name('Show_industry');
 Route::get('Org-journey/{id?}',[menuFormController::class,'Delete_journey']);
@@ -414,7 +414,6 @@ Route::get('cells', [FormController::class, 'cells_list']);
 
 
 //AdminController  ajax
-
 Route::get('/Department_info',[AdminController::class,'Department_info']);
 Route::get('journey-value', [AdminController::class, 'journey_value']);
 Route::get('student-list',[FormController::class, 'student_list']);
@@ -464,7 +463,6 @@ Route::get('/delete-student-profile/{id}',[StudentProfileController::class,'dele
 
 //feedback form & contact us form
 Route::GET('sc-st-obc-list',[FormController::class,'View_scstobc']);
-
 Route::GET('feedback',[FormController::class,'feedback']);
 
 

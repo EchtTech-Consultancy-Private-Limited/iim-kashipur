@@ -90,7 +90,7 @@
                                         <div class="col-md-9 pe-5">
 
                                             <input type="text"  value="{{ old('name') }}"  name="name"
-                                                class="form-control special_no" placeholder="Enter Your Name" />
+                                                class="form-control special_no" placeholder="Enter Your Name"  maxlength="250" maxlength="2" />
 
 
                                                 @error('name')
@@ -162,7 +162,7 @@
                                         <div class="col-md-9 pe-5">
 
                                             <input type="text" value="{{ old('mobile_no') }}" name="mobile_no" id="mobile_no"
-                                                class="form-control" placeholder="Enter your Mobile Number" maxlength="10"  />
+                                                class="form-control" placeholder="Enter your Mobile Number" maxlength="12"  />
 
 
 
@@ -183,7 +183,7 @@
                                         </div>
                                         <div class="col-md-9 pe-5">
 
-                                            <textarea class="form-control" rows="3" name="feedback" placeholder="Feedback">{{ old('feedback') }}</textarea>
+                                            <textarea class="form-control"  maxlength="250" maxlength="2" rows="3" name="feedback" placeholder="Feedback">{{ old('feedback') }}</textarea>
 
 
                                             @error('feedback')
