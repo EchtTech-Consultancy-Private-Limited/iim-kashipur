@@ -1461,14 +1461,16 @@
                                 </div>
                             </div>
                         @endif
-                        <!-- Photo Gallery section End -->
+                        {{-- <h5> Photo Gallery section End </h5> --}}
 
-                        @if ($item[0]->activitie != '')
+
+
+                        @if ($item[0]->activites != '')
                             <h5>
                                 <span>Activity</span>
                             </h5>
 
-                            <p>{!! $item[0]->activitie ?? '' !!}</p>
+                            <p>{!! $item[0]->activites ?? '' !!}</p>
                         @endif
 
 

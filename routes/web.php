@@ -164,8 +164,6 @@ Route::get('manage-people-section',[AdminController::class,'View_OrganisationStr
 Route::post('manage-people-section',[AdminController::class,'View_OrganisationStructure'])->name('people');
 Route::get('delete-people/{id}',[AdminController::class,'Delete_OrganisationStructure']);
 
-
-
 //client logo
 Route::match(['get','post'],'add-edit-file2url/{id?}',[AdminController::class,'Add_ClientLogo']);
 Route::get('delete-file2url/{id?}',[AdminController::class,'Delete_ClientLogo']);
@@ -176,7 +174,6 @@ Route::get('View-Client-logo/{id?}',[AdminController::class,'show_ClientLogo'])-
 Route::get('manage-organisation-detail',[AdminController::class,'View_OrganisationDetails'])->name('organisation');
 Route::get('delete-org/{id}',[AdminController::class,'Delete_OrganisationDetails']);
 Route::match(['get','post'],'add-edit-org/{id?}',[AdminController::class,'Add_OrganisationDetails'])->name('org');
-
 
 //counter
 Route::get('view_index/{id?}',[AdminController::class,'Show_Counter']);
@@ -195,7 +192,7 @@ Route::get('delete-banner/{id}',[AdminController::class,'Delete_Banners']);
 
 //-------------------------------------- middleFormController start ------------------------------------------------------------------//
 
-
+Route::post('ckeditor/upload', [FormController::class,'upload'])->name('ckeditor.upload');
 
 //news & Events
 Route::get('News-Event-delete/{id?}',[middleFormController::class,'delete_NewsEvent']);
