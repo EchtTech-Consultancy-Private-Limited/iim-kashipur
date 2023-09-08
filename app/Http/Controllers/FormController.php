@@ -567,8 +567,6 @@ function Delete_cells($id){
     return redirect()->back()->with('success','Record Deleted Successfully');
 }
 
-
-
 //cells images
 public function Delete_cellsImage($id){
 
@@ -1121,7 +1119,22 @@ public function View_scstobc(){
     return view('admin.sections.sc-st-obc-listing',['data'=>$data]);
 }
 
+public function upload(Request $request): JsonResponse
+{
+    dd($request->all());
+    if ($request->hasFile('upload')) {
+        $originName = $request->file('upload')->getClientOriginalName();
+        $fileName = pathinfo($originName, PATHINFO_FILENAME);
+        $extension = $request->file('upload')->getClientOriginalExtension();
+        $fileName = $fileName . '_' . time() . '.' . $extension;
 
+        $request->file('upload')->move(public_path('media'), $fileName);
+
+        $url = asset('media/' . $fileName);
+
+        return response()->json(['fileName' => $fileName, 'uploaded'=> 1, 'url' => $url]);
+    }
+}
 
 }
 //end

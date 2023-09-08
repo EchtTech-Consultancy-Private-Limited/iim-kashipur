@@ -2215,10 +2215,8 @@ public function Child_barInnerpage($main_slug,$Sub_slug,$slug) //content page
             elseif(isset($data[0]) && $data[0]->tpl_id == 12){     // Alumni Tema arc
 
 
-                $item=OrganisationStructure::where('department',15)->paginate(9);
-
+                $item=OrganisationStructure::where('department',15)->get();
                 if(count($item)>0){
-
                     $type_sub=child_menu::whereslug($slug)->get();
                     $gets=SubMenu::whereid($type_sub[0]->sub_id)->get();
                     $get=MainMenu::whereid($type_sub[0]->menu_id)->get();

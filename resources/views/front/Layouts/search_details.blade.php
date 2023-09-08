@@ -86,7 +86,7 @@
                                     count($OrganisationStructure) > 0 &&
                                     count($Industry) > 0 &&
                                     count($Events) > 0 &&
-                                     count($rit) > 0
+                                    count($rit) > 0
 
                                     )
 
