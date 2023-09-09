@@ -498,11 +498,6 @@ Route::get('/file-export', [log::class, 'fileExport']);
 // Route::match(['get','post'],'add-edit-Student-Council/{id?}',[FormController::class,'Add_student_council'])->name('aadstudentcouncil');
 // Route::get('delete-studentcouncil/{id}',[FormController::class,'Delete_studentcouncil']);
 
-
-
-
-
-
 // Route::get('manage-options-master',[AdminController::class,'View_OptionMaster'])->name('optionsmaster');
 //menu part
 Route::get('/submenushow',[AdminController::class,'submenushow']);

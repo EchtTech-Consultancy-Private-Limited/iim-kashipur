@@ -677,9 +677,8 @@
                         </form>
                     </div>
                     <div class="col-md-6">
-                        <form action="{{ url('/faculty/faculty-directory') }}" method="get">
+                        <form action="{{ url('/Accounts/manage-people-section') }}" method="get">
                             <label> Search </label>
-
 
                             <div class="d-flex">
                               <input type="text" class="form-control"  @if(request('nd') ) value="{{ request('nd') }}" @else placeholder="search !!!!" @endif name="nd">
@@ -689,7 +688,7 @@
                             </div>
                         </form>
                     </div>
-                </div
+                </div>
 
               <a href="javascript:void(0)" class="btn2 margin_bottom"> @if(GetLang()=='en') {{ $type[0]->name ?? '' }}  @else {{ $type[0]->name_h ?? '' }}  @endif </a> <br>
 
@@ -697,8 +696,6 @@
                     <div class="profilewithinfo mb-0">
 
                         <div class="row">
-
-
 
                             @foreach ($item as $items)
 

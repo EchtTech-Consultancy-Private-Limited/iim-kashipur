@@ -74,16 +74,27 @@ class AdminController extends Controller
 
 function View_OrganisationStructure(Request $request){
   //  dd($request->dp);
-   if(!empty($request->dp))
+   if(!empty($request->dp)){
    $data=OrganisationStructure::where('organisation_structures.department',$request->dp)->orderby('id','Desc')->paginate(10);
-   else
+   $data->appends(['dp' => $request->dp]);
+    }elseif($request->nd){
+
+       $data=OrganisationStructure::
+                  where('title',"like","%$request->nd%")
+                  ->orwhere('designation',"like","%$request->nd%")
+                  ->orwhere('email',"like","%$request->nd%")
+                  ->paginate(9);
+                  $data->appends(['dp' => $request->dp]);
+    }else{
    $data=OrganisationStructure::orderby('id','Desc')->paginate(10);
-   $departments=['0'=>'Filter Department','1'=>'Director','2'=>'Chairperson','3'=>'Members','4'=>'Secretary to the Board','6'=>'Faculty Directory','7'=>'Visiting Faculty','8'=>'International Relations Chairperson','9'=>'International Relations SENIOR MEMBERS'  ,'10'=>'MBA Testimonials','16'=>'MBA(analytics)Testimonials','16'=>'Placement(The Team) Chairperson','12'=>'Placement(The Team) Administrative','13'=>'Placement(The Team)  Student Coordinator ','14'=>'Corporate Interactions','15'=>'Alumni(The Team)'];
+
    $data->appends(['dp' => $request->dp]);
 
    //dd($request->dp);
-
+}
+$departments=['0'=>'Filter Department','1'=>'Director','2'=>'Chairperson','3'=>'Members','4'=>'Secretary to the Board','6'=>'Faculty Directory','7'=>'Visiting Faculty','8'=>'International Relations Chairperson','9'=>'International Relations SENIOR MEMBERS'  ,'10'=>'MBA Testimonials','16'=>'MBA(analytics)Testimonials','16'=>'Placement(The Team) Chairperson','12'=>'Placement(The Team) Administrative','13'=>'Placement(The Team)  Student Coordinator ','14'=>'Corporate Interactions','15'=>'Alumni(The Team)'];
    return view('admin.sections.OrganisationStructure',compact('data','departments'));
+
 }
 
 function Delete_OrganisationStructure($id){
