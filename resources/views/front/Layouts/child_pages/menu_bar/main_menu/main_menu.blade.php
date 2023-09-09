@@ -845,7 +845,7 @@
 
                                                     @if(request()->path() == 'about-institute/library/about-library')
 
-                                                    <iframe frameborder="0" height="250px" sandbox="" src="https://widgets.ebscohost.com/prod/customerspecific/testpv/IIMKashipur/iimkashipur_search.html" width="100%"></iframe>
+                                                    <iframe frameborder="0" height="250px" sandbox="allow-same-origin allow-scripts allow-popups allow-forms" src="https://widgets.ebscohost.com/prod/customerspecific/testpv/IIMKashipur/iimkashipur_search.html" width="100%"></iframe>
 
                                                     @endif
 
@@ -1109,7 +1109,7 @@
 
                                                     @if(request()->path() == 'about-institute/library')
 
-                                                    <iframe frameborder="0" height="250px" sandbox="" src="https://widgets.ebscohost.com/prod/customerspecific/testpv/IIMKashipur/iimkashipur_search.html" width="100%"></iframe>
+                                                    <iframe frameborder="0" height="250px" sandbox="allow-same-origin allow-scripts allow-popups allow-forms" src="https://widgets.ebscohost.com/prod/customerspecific/testpv/IIMKashipur/iimkashipur_search.html" width="100%"></iframe>
 
                                                     @endif
 
