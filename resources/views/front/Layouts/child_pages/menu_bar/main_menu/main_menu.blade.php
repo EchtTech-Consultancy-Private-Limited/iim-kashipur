@@ -840,6 +840,16 @@
                                         <div class="commontxt">
                                             <div class="row">
                                                 <div class="col-md-12 col-lg-12">
+
+
+
+                                                    @if(request()->path() == 'about-institute/library/about-library')
+
+                                                    <iframe frameborder="0" height="250px" sandbox="" src="https://widgets.ebscohost.com/prod/customerspecific/testpv/IIMKashipur/iimkashipur_search.html" width="100%"></iframe>
+
+                                                    @endif
+
+
                                                     <p>
                                                         @if (GetLang() == 'en')
                                                             {!! $item[0]->content !!}
@@ -1094,7 +1104,10 @@
 
                                                 <div class="col-md-12 col-lg-12">
 
-                                                    @if(request()->path() == 'library' || request()->path() == 'about-library')
+
+                                                    {{ request()->path() }}
+
+                                                    @if(request()->path() == 'about-institute/library')
 
                                                     <iframe frameborder="0" height="250px" sandbox="" src="https://widgets.ebscohost.com/prod/customerspecific/testpv/IIMKashipur/iimkashipur_search.html" width="100%"></iframe>
 
