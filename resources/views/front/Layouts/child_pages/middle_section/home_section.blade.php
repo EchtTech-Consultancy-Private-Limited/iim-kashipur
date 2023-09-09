@@ -259,10 +259,11 @@
                                     </div>
                                     <div class="col-md-9 pe-5">
                                         <input type="file" name="image" class="form-control">
+                                        @if ($errors->has('image'))
+                                        <div class="text-danger">{{ $errors->first('image') }}</div>
+                                        @endif
                                     </div>
-                                    @if ($errors->has('image'))
-                                    <div class="text-danger">{{ $errors->first('image') }}</div>
-                                    @endif
+
                                 </div>
 
                                 <div class="row align-items-center py-3">
@@ -274,6 +275,9 @@
                                     <div class="col-md-4 pe-5">
                                         <input id="captcha" type="text" class="form-control"
                                             placeholder="Enter Captcha" name="captcha">
+                                            @error('captcha')
+                                            <div class="alert alert-danger">{{ $message }}</div>
+                                           @enderror
                                     </div>
 
                                     <div class="col-md-4 pe-5">
@@ -286,9 +290,7 @@
                                                 &#x21bb;
                                             </button>
                                         </div>
-                                        @error('captcha')
-                                        <div class="alert alert-danger">{{ $message }}</div>
-                                      @enderror
+
                                     </div>
 
 
