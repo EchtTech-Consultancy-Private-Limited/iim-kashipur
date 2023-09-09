@@ -1105,7 +1105,7 @@
                                                 <div class="col-md-12 col-lg-12">
 
 
-                                                    {{ request()->path() }}
+                                                    {{-- {{ request()->path() }} --}}
 
                                                     @if(request()->path() == 'about-institute/library')
 
