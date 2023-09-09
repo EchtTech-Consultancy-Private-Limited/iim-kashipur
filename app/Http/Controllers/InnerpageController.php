@@ -653,7 +653,7 @@ public function add_feedback(Request $request)
     $data->Type=$request->Type;
     $data->feedback=$request->feedback;
     $data->save();
-    return back()->with(['success'=>'Feedback Add Successfully!']);
+    return back()->with(['success'=>'Thank you for your valuable feedback!']);
 }
 
 //countact us form

@@ -4,6 +4,18 @@
 
 @section('content')
 
+<style>
+    .submit-btn-apply {
+    background: #eb6a2a !important;
+    border: 0;
+    color: #fff !important;
+    padding: 8px 30px !important;
+    margin: 0;
+    font-size: 1rem;
+    margin-left: 10px;
+}
+</style>
+
     <div class="main-panel">
         <div class="content-wrapper">
 
@@ -43,12 +55,16 @@
                     <button type="button" class="btn btn-primary" ><a href="{{route('admin.people_department')}}">Add Department </a></button>
  --}}
 
-                                    <button type="button" class="btn btn-primary"><a
-                                            href="{{ route('admin.addpeople') }}">Add New Entry </a></button>
+                                    <button type="button" class="btn btn-primary"><a href="{{ route('admin.addpeople') }}">Add New Entry </a></button>
 
                                 </div>
 
-                                <div>
+
+
+                            </div>
+
+                            <div class="search-f row mt-3 mb-3">
+                                <div class="col-md-5">
 
                                     <form role="form" method="POST" action="{{ url('Accounts/manage-people-section') }}"
                                         id="frmtypes">
@@ -67,19 +83,21 @@
                                     </form>
 
                                 </div>
-                                <form action="{{ url('Accounts/manage-people-section') }}" method="get">
-                                    <label> Search </label>
+<div class="col-md-1"></div>
+                                <div class="col-md-6">
+                                    <form action="{{ url('Accounts/manage-people-section') }}" method="get">
+                                        {{-- <label> Search </label> --}}
 
-                                    <div class="d-flex">
-                                        <input type="text" class="form-control"
-                                            @if (request('nd')) value="{{ request('nd') }}" @else placeholder="search !!!!" @endif
-                                            name="nd">
-                                        <button type="submit" class="btn-info submit-btn-apply">Apply</button>
-                                    </div>
-                                </form>
+                                        <div class="d-flex">
+                                            <input type="text" class="form-control"
+                                                @if (request('nd')) value="{{ request('nd') }}" @else placeholder="search here..." @endif
+                                                name="nd">
+                                            <button type="submit" class="btn-primary submit-btn-apply">Apply</button>
+                                        </div>
+                                    </form>
+                                </div>
 
                             </div>
-
 
 
                             <div class="row">
