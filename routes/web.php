@@ -625,7 +625,7 @@ Route::post('search',[InnerpageController::class,'search']);
 Route::get('/{slug?}/archive',[InnerpageController::class,'archive']);
 //Monu Routes
 // Career
-Route::get('/career',[InnerpageController::class,'career']);
+Route::get('/careers',[InnerpageController::class,'career']);
 // Tenders
 Route::get('/tenders',[InnerpageController::class,'Tenders']);
 // Vendors Debarred
