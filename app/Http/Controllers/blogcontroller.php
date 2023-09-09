@@ -136,10 +136,6 @@ class blogcontroller extends Controller
                     ]
                 );
 
-
-
-
-
 //new banner image upload
 $bannerimage="";
 $input['bannerimage']=$request->bannernameold;
