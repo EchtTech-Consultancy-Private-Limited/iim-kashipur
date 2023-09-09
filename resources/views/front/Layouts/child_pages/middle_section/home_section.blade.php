@@ -165,7 +165,7 @@
                                         <h6 class="mb-0" tabindex="0">Name <span class="text-danger">*</span> </h6>
                                     </div>
                                     <div class="col-md-9 pe-5">
-                                        <input type="text" value="" name="name" class="form-control special_no"placeholder="Enter Your Name" maxlength="250" minlength="2">
+                                        <input type="text" value="" name="name" class="form-control special_no" maxlength="250" minlength="2" placeholder="Enter Your Name" maxlength="250" minlength="2">
                                         @if ($errors->has('name'))
                                         <div class="text-danger">{{ $errors->first('name') }}</div>
                                        @endif
@@ -315,6 +315,19 @@
     </section>
 
 
+    <script>
+        // disable special character
+        $('.special_no').keypress(function (e) {
+    
+            var regex = new RegExp("^[a-zA-Z_]");
+            var str = String.fromCharCode(!e.charCode ? e.which : e.charCode);
+            if (regex.test(str)) {
+                return true;
+            }
+            e.preventDefault();
+            return false;
+        });
+    </script>
 
     <script type="text/javascript">
         $('#refresh-captcha').click(function() {
