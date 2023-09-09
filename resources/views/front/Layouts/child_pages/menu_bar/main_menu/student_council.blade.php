@@ -98,12 +98,12 @@
 
 
 
-            @if ($item[0]->bannerimage != '')
-            <img src="{{ asset('page/banner/' . $item[0]->bannerimage) ?? '' }}"
-                alt="{{ $item[0]->banner_alt ?? '' }}" title="{{ $item[0]->banner_title ?? '' }}">
+            @if ($item->bannerimage != '')
+            <img src="{{ asset('page/banner/' . $item->bannerimage) ?? '' }}"
+                alt="{{ $item->banner_alt ?? '' }}" title="{{ $item->banner_title ?? '' }}">
             @else
             <img src="{{ asset('uploads/site-logo/' . GetOrganisationAllDetails('default_banner_image')) }}"
-                alt="{{ $item[0]->name ?? '' }}" title="{{ $item[0]->name ?? '' }}">
+                alt="{{ $item->name ?? '' }}" title="{{ $item->name ?? '' }}">
             @endif
 
 
@@ -916,14 +916,15 @@
 
 
                             <!-- Content section  start-->
+                        @if($item->student_council != '')
                             <h3>
-                               {{ $item[0]->student_council	??'' }}
+                               {{ $item->student_council	??'' }}
                             </h3>
 
-                            {!! $item[0]->about_details ??'' !!}
-
+                            {!! $item->about_details ??'' !!}
+                        @endif
                             <!-- Chairpersons -->
-
+                        @if($chairperson->title != '')
                                 <h5>
                                     <span> Chairperson </span>
                                 </h5>
@@ -932,10 +933,10 @@
                                     <div class="col-md-3">
                                         <div class="top text-center mt-0">
                                             <div class="profile-img img-fac">
-                                                <img src="{{ asset('uploads/organisation/' . $chairperson[0]->image)}}"
+                                                <img src="{{ asset('uploads/organisation/' . $chairperson->image)}}"
                                                     alt="A VENKATARAMAN" loading="lazy" class="mb-0">
                                                 <div class="d-flex justify-content-center">
-                                                    <div class="top-text mb-0 p-relative"> {{ $chairperson[0]->title ?? '' }}
+                                                    <div class="top-text mb-0 p-relative"> {{ $chairperson->title ?? '' }}
                                                     </div>
                                                 </div>
                                             </div>
@@ -943,13 +944,13 @@
                                     </div>
                                     <div class="col-md-9">
                                         <div class="designation">
-                                                <h6>{{ $chairperson[0]->designation ?? '' }} </h6>
-                                                <h6>{{ $chairperson[0]->title ?? '' }} </h6>
-                                                <h6>{{ $chairperson[0]->phone ?? '' }} </h6>
+                                                <h6>{{ $chairperson->designation ?? '' }} </h6>
+                                                <h6>{{ $chairperson->title ?? '' }} </h6>
+                                                <h6>{{ $chairperson->phone ?? '' }} </h6>
 
 
                                                 <?php
-                                                $email_address=$chairperson[0]->email;
+                                                $email_address=$chairperson->email;
                                                 $str = $email_address;
                                                 $var= str_replace('@','[at]',$str);
                                                 $email= str_replace('.','[dot]',$var);
@@ -959,12 +960,12 @@
                                         </div>
                                     </div>
                                 </div>
-
+                        @endif
 
 
                             <!-- Photo Gallery Section Start -->
 
-                            @if (count($chairpersons) >0)
+                        @if (count($chairpersons) >0)
                                 <h5>
                                     <span> Members</span>
 
@@ -1018,9 +1019,6 @@
                             <!-- Photo Gallery section End -->
 
                             <!-- Event section start  -->
-
-
-
                 </div>
             </div>
         </section>

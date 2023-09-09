@@ -61,7 +61,7 @@
 
                             </tr>
 
-                            @if(count($item) <0 )
+                            @if(count($item) > 0 )
                             @foreach ($item as $K=>$items)
                             <tr>
                                 <td>{{ $K+1 }}</td>

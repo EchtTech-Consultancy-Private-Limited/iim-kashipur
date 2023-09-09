@@ -39,8 +39,6 @@
               </a>
         </div>
 
-
-
         <table>
             <tr>
                 <th class="text-nowrap">Sr.No</th>
