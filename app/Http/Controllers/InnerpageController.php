@@ -2749,7 +2749,7 @@ public function Child_barInnerpage($main_slug,$Sub_slug,$slug) //content page
     $request->validate(
         [
             'name' => 'required|max:32|min:2',
-            'mobile_no'=>'required|numeric|min:10|numeric|digits:10',
+            'mobile_no'=>'required|numeric|min:12|numeric|digits:12',
             'captcha' => 'required|captcha',
             'image'  => 'image|mimes:jpeg,png,jpg,gif|max:2048',
        ]
