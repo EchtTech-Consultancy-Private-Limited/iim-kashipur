@@ -61,10 +61,10 @@
 
                                             <thead>
                                                 <tr>
-                                                    <td>S.No </td>
-                                                    <td>DATE </td>
-                                                    <td>TITLE </td>
-                                                    <td>ATTACHMENT FILE </td>
+                                                    <td>Sr.No </td>
+                                                    <td>Date  </td>
+                                                    <td>Title </td>
+                                                    <td>Attachment File </td>
 
                                                 </tr>
                                             </thead>

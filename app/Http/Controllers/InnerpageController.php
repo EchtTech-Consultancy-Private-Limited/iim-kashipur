@@ -653,7 +653,7 @@ public function add_feedback(Request $request)
     $data->Type=$request->Type;
     $data->feedback=$request->feedback;
     $data->save();
-    return back()->with(['success'=>'Thank you for your valuable feedback!']);
+    return back()->with(['success'=>'Thank you for your valuable feedback']);
 }
 
 //countact us form
@@ -1458,8 +1458,6 @@ public function screen_reader_access()
                 return abort(401);
             }
         }else{
-
-
            if(club::whereslug($slug)->get()->count()){    //club single
 
                 $item=club::whereslug($slug)->get();
@@ -1500,6 +1498,9 @@ public function screen_reader_access()
                     return abort(401);
                 }
             }
+        else{
+            return abort(401);
+        }
         }
 
     }
@@ -2748,7 +2749,7 @@ public function Child_barInnerpage($main_slug,$Sub_slug,$slug) //content page
     $request->validate(
         [
             'name' => 'required|max:32|min:2',
-            'mobile_no'=>'required|numeric|min:10|numeric|digits:10',
+            'mobile_no'=>'required|numeric|min:12|numeric|digits:12',
             'captcha' => 'required|captcha',
             'image'  => 'image|mimes:jpeg,png,jpg,gif|max:2048',
        ]

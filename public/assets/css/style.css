@@ -2844,6 +2844,7 @@ span.text-hili-top {
     color: #343333;
 
     padding: 7px 15px;
+    text-transform: capitalize;
 }
 
 .sidebarwraper ul li a:hover {
@@ -5378,6 +5379,7 @@ img.img-icon {
     background: #ebb6b6;
     display: table;
     padding: 10px 13px;
+    text-transform: capitalize;
 }
 
 

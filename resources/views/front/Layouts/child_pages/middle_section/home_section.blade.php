@@ -165,7 +165,7 @@
                                         <h6 class="mb-0" tabindex="0">Name <span class="text-danger">*</span> </h6>
                                     </div>
                                     <div class="col-md-9 pe-5">
-                                        <input type="text" value="" name="name" class="form-control special_no"placeholder="Enter Your Name" maxlength="250" minlength="2">
+                                        <input type="text" value="" name="name" class="form-control special_no" maxlength="250" minlength="2" placeholder="Enter Your Name" maxlength="250" minlength="2">
                                         @if ($errors->has('name'))
                                         <div class="text-danger">{{ $errors->first('name') }}</div>
                                        @endif
@@ -259,10 +259,11 @@
                                     </div>
                                     <div class="col-md-9 pe-5">
                                         <input type="file" name="image" class="form-control">
+                                        @if ($errors->has('image'))
+                                        <div class="text-danger">{{ $errors->first('image') }}</div>
+                                        @endif
                                     </div>
-                                    @if ($errors->has('image'))
-                                    <div class="text-danger">{{ $errors->first('image') }}</div>
-                                    @endif
+
                                 </div>
 
                                 <div class="row align-items-center py-3">
@@ -274,6 +275,9 @@
                                     <div class="col-md-4 pe-5">
                                         <input id="captcha" type="text" class="form-control"
                                             placeholder="Enter Captcha" name="captcha">
+                                            @error('captcha')
+                                            <div class="alert alert-danger">{{ $message }}</div>
+                                           @enderror
                                     </div>
 
                                     <div class="col-md-4 pe-5">
@@ -286,9 +290,7 @@
                                                 &#x21bb;
                                             </button>
                                         </div>
-                                        @error('captcha')
-                                        <div class="alert alert-danger">{{ $message }}</div>
-                                      @enderror
+
                                     </div>
 
 
@@ -313,6 +315,19 @@
     </section>
 
 
+    <script>
+        // disable special character
+        $('.special_no').keypress(function (e) {
+    
+            var regex = new RegExp("^[a-zA-Z_]");
+            var str = String.fromCharCode(!e.charCode ? e.which : e.charCode);
+            if (regex.test(str)) {
+                return true;
+            }
+            e.preventDefault();
+            return false;
+        });
+    </script>
 
     <script type="text/javascript">
         $('#refresh-captcha').click(function() {
