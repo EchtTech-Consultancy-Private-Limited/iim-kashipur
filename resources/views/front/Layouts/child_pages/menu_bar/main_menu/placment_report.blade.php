@@ -285,7 +285,7 @@
 
 
                     <h5><span>
-                            FINAL PLACEMENT REPORTS
+                        Final Placement Reports
                         </span></h5>
                     <table>
                         <tr>
@@ -312,7 +312,7 @@
                         @endif
                     </table>
                     <h5><span>
-                            SUMMER PLACEMENT REPORTS
+                        Summer Placement Reports
                         </span></h5>
                     <table>
                         <tr>
