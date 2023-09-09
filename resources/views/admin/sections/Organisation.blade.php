@@ -65,17 +65,16 @@
                              <td>
 
 
-                            @if (
-                            \Auth::guard('admin')->user()->id == 3 || \Auth::guard('admin')->user()->id == 1 )
+                          
 
                               <a href="{{url('Accounts/add-edit-org/'.dEncrypt($D->id))}}"><i class="ti-pencil btn-icon-append" style="color:black;"></i></a> &nbsp;
-                            @endif
+                            
 
-                            @if (\Auth::guard('admin')->user()->id == 1 )
+                          
 
                               <a href="{{url('Accounts/delete-org/'.dEncrypt($D->id))}}" onclick="return confirm('Are You Sure?')"><i class="ti-archive btn-icon-append" style="color:black;"></i></a>
 
-                            @endif
+                           
 
                             </td>
 
