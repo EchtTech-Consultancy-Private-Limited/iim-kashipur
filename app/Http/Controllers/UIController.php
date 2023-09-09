@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Http\Request;
 use App\Models\SiteLayout;
 use App\Models\FileToUrl;
+use App\Models\upload;
 use App;
 use App\Models\VisitorCount;
 use App\Models\Announcement;
@@ -384,6 +385,8 @@ class UIController extends Controller
             $input->save();
         }
     }
+
+
 
     //end
 }

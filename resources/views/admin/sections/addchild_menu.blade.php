@@ -1198,4 +1198,44 @@ $("#url").change(function(e) {
         }
     });
 </script>
+
+
+{{-- -------------------------------------------- student-profiles ----------------------------------------------------------- --}}
+<script>
+    $("#url").change(function(e) {
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+        });
+
+        var data3 = $("#url").val();
+
+       //  alert(data3);
+
+        if (data3 == 'student-profiles') {
+
+            $.ajax({
+                url: "{{ url('Accounts/student-profiles-id') }}",
+                type: "get",
+                success: function(data) {
+
+                    var resdata = data
+
+                    //console.log(data[0].name)
+                   // alert(resdata)
+                    var formoption = "<option value='0'>Please select</option>";
+                    for (i = 0; i<resdata.length; i++) {
+                        formoption += "<option value='" + resdata[i].id + "'>" + resdata[i].name +
+                            "</option>";
+                    }
+                    $('#countries').html(formoption);
+
+                }
+            });
+        }
+    });
+</script>
+
+
     @endsection

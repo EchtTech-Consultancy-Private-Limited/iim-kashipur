@@ -496,7 +496,7 @@ public function  career(){
 //evnet& activity
     public function event_activity_image($id)
     {
-        $data=event_image::whereparent_id(dDecrypt($id))->wherestatus(1)->get();
+        $data=event_image::whereparent_id(dDecrypt($id))->wherestatus(1)->orderBy('order','Asc')->get();
         $item=Events::whereid(dDecrypt($id))->get();
         return view('front.Layouts.child_pages.menu_bar.main_menu.event&activity_image',['data'=>$data,'item'=>$item]);
     }
@@ -518,11 +518,10 @@ public function  Vendors_Debarred(){
 //press &media
 public function press_media()
 {
-    $item=press_media::wherestatus(1)->get();
-    if(count($item)){
+    $item=press_media::wherestatus(1)->orderBy('id','desc')->get();
+    if( count($item)){
         $chairperson=OrganisationStructure::whereid($item[0]->chairperson)->get();
         $chairpersons=OrganisationStructure::where('MEDIA_COORDINATORS','=','1')->get();
-
     return view('front.Layouts.child_pages.menu_bar.main_menu.Press&media',['item'=>$item,'chairperson'=>$chairperson,'chairpersons'=>$chairpersons]);
     }else{
         return abort(401);
@@ -1537,7 +1536,7 @@ public function screen_reader_access()
             if(isset($type[0]) && $type[0]->tpl_id == 1)
             {
                     $data=SubMenu::whereslug($slug)->get();
-                    $item=OrganisationStructure::orderBy('short_order','DESC')->where('department','2')->orwhere('department','3')->orwhere('department','4')->get();
+                    $item=OrganisationStructure::orderBy('short_order','Asc')->where('department','2')->orwhere('department','3')->orwhere('department','4')->get();
                     $chairperson=OrganisationStructure::where('status','1')->where('department','2')->first();
                     $member=OrganisationStructure::where('status','1')->where('department','3')->orderBy('short_order','Asc')->get();
                     $Secretary=OrganisationStructure::where('status','1')->where('department','4')->orderBy('short_order','Asc')->first();
@@ -1812,11 +1811,10 @@ public function screen_reader_access()
 
             $data=SubMenu::whereslug($slug)->get();
             if(Count($data)>0){
-            $item=student_council::wherestatus('1')->get();
-            //dd($item);
-            $chairperson=OrganisationStructure::whereid($item[0]->chairperson)->get();
+            $item=student_council::wherestatus('1')->first();
+            if($item != ''){
+            $chairperson=OrganisationStructure::whereid($item->chairperson)->first();
             $chairpersons=OrganisationStructure::where('student_council','=','1')->get();
-           // dd($chairpersons);
             $type=SubMenu::whereslug($slug)->get();
             if(count($type)>0){
 
@@ -1828,13 +1826,16 @@ public function screen_reader_access()
             }else{
                 return abort(401);
             }
+        }else{
+            return abort(401);
         }
+    }
 
         elseif($type[0]->url == '/Events-Activites')
         {
             $item=SubMenu::whereslug($slug)->get();
-            if(Count($item)>0){
-            $data=Events::wherestatus('1')->get();
+            if(count($item) > 0){
+            $data=Events::wherestatus('1')->orderBy('short_order','Asc')->get();
             $type=SubMenu::whereslug($slug)->get();
             if(count($type)>0){
            return view('front.Layouts.child_pages.menu_bar.main_menu.event&activity',['item'=>$item,'sub_menu'=>$sub_menu,'type'=>$type,'data'=>$data]);
@@ -2082,9 +2083,11 @@ public function Child_barInnerpage($main_slug,$Sub_slug,$slug) //content page
     $data=child_menu::whereslug($slug)->get();
 
     if(Count($data)>0){
+       // dd($data[0]->url);
 
-        if($slug=="student-profiles")
+        if($data[0]->url == "/student-profiles")
         {
+
             $item = StudentProfile::where('status','1')->orderBy('sort','Asc')->get();
             if(Count($item)>0){
             $type_sub=child_menu::whereslug($slug)->get();
@@ -2746,7 +2749,8 @@ public function Child_barInnerpage($main_slug,$Sub_slug,$slug) //content page
         [
             'name' => 'required|max:32|min:2',
             'mobile_no'=>'required|numeric|min:10|numeric|digits:10',
-            'captcha' => 'required|captcha'
+            'captcha' => 'required|captcha',
+            'image'  => 'image|mimes:jpeg,png,jpg,gif|max:2048',
        ]
    );
     $data= new scstobc_forms;

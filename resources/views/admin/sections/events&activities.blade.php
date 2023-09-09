@@ -56,7 +56,7 @@
 
                             @csrf
 
-                            <div class="col-md-7">
+                            <div class="col-md-6">
                                 <label for="inputText" class="col-form-label">Title</label>
                                 <div class="">
                                     <input type="text" class="form-control"
@@ -81,6 +81,16 @@
                                     </select>
 
                             </div> --}}
+
+                            <div class="col-md-6">
+                                <label for="inputText" class="col-form-label">short Order</label>
+                                <div class="">
+                                    <input type="text" class="form-control"
+                                        name="short_order"placeholder="Please enter"
+                                        @if ($id) value="{{ $data->short_order }}" @else value="{{ old('short_order') }}" @endif><br>
+                                    <label for="short_order" id="short_order-error" class="error"></label>
+                                </div>
+                            </div>
 
                             <input type="hidden" name="status" @if($id) value="{{ $data->status  }}" @else value="0" @endif>
 

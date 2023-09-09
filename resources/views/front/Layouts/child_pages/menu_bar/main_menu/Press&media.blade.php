@@ -48,19 +48,20 @@
                          {{-- Heading section End Table --}}
 
                         <h5>
-                            <span>PRESS RELEASES</span>
+                            <span>Press Releases</span>
                         </h5>
 
                         <table>
                             <tbody>
                                 <tr>
-                                <td>Sr.No </td>
-                                <td>HEADLINES</td>
-                                <td>MEDIA/PUBLICATION</td>
-                                <td>PUBLISHING LINK</td>
+                                    <td>Sr.no</td>
+                                    <td>Headlines</td>
+                                    <td>Media/Publication</td>
+                                    <td>Publishing Link</td>
 
                             </tr>
 
+                            @if(count($item) > 0 )
                             @foreach ($item as $K=>$items)
                             <tr>
                                 <td>{{ $K+1 }}</td>
@@ -70,7 +71,7 @@
                                 <a @if($items->external=='1')  @if (GetLang() == 'en') onclick="return confirm('This link will take you to an external web site.')"  @else onclick="return confirm('यह लिंक आपको एक बाहरी वेब साइट पर ले जाएगा।')" @endif target="_blank" href="{{url($items->publishing_link) ??''}}"  @else href="{{url($items->publishing_link) ??''}}" @endif  > Read More </a>  </td>
                             </tr>
                             @endforeach
-
+                           @endif
 
                         </tbody>
                     </table>
@@ -79,7 +80,7 @@
 
                         <!-- Content section  start-->
                         <h5>
-                            <span>MEDIA CONTACTS</span>
+                            <span>Media Contacts</span>
                         </h5>
 
                         <p>Please use the following media and public relations contacts for inquiries by the media only. Journalists on deadline are advised to contact by phone rather than email.</p>
@@ -89,9 +90,19 @@
                         <!-- Chairpersons-->
 
                         <h5>
-                            <span>MEDIA AND PUBLIC RELATION COMMITTEE</span>
+                            <span>Media And Public Relation Committee</span>
                         </h5>
 
+                            <span>
+                                Indian Institute of Management Kashipur<br>
+                                Kundeshwari, District- Udham Singh Nagar,<br>
+                                Kashipur 244713 Uttarakhand<br>
+                                Email: mprc[at]iimkashipur.ac.in<br>
+                                Tel: +91-7900444090/91/91/93,7088270882<br>
+                            </span>
+
+
+                   @if(isset($chairperson))
                         <div class="row mt-4 mb-5">
                             <div class="col-md-3">
                                 <div class="top text-center mt-0">
@@ -121,12 +132,12 @@
                                 </div>
                             </div>
                         </div>
-
+                    @endisset
 
 
                         <!-- Photo Gallery Section Start -->
                         <h5>
-                            <span> MEDIA COORDINATORS</span>
+                            <span> Media Coordinators</span>
                         </h5>
                         <div class="excellence-wrap back-img Activities gallery-member img-gallery mb-3 mt-4">
                             <div class="container">
@@ -136,7 +147,7 @@
                                         <div class="excellence-gallery partnership-img">
                                             <div class="row masonry-grid">
 
-
+                                           @if(count($chairpersons) > 0)
                                             @foreach ($chairpersons as $value)
                                                 <div class="col-md-2 col-lg-2">
                                                     <div class="d-flex flex-column h-100">
@@ -147,7 +158,8 @@
                                                                 <img src="{{ asset('uploads/organisation/' . $value->image) ?? '' }}"
                                                                     alt="gallery-img" class="img-fluid"
                                                                     loading="lazy">
-                                                                <div class="top-text">{{ $value->title }}
+                                                                <div class="top-text">
+                                                                    {{ $value->title ??'' }}
                                                                 </div>
 
                                                             </div>
@@ -157,7 +169,7 @@
                                                 </div>
                                             @endforeach
 
-
+                                             @endif
                                             </div>
                                         </div>
                                     </div>

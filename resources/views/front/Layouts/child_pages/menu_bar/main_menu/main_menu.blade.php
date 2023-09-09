@@ -840,6 +840,16 @@
                                         <div class="commontxt">
                                             <div class="row">
                                                 <div class="col-md-12 col-lg-12">
+
+
+
+                                                    @if(request()->path() == 'about-institute/library/about-library')
+
+                                                    <iframe frameborder="0" height="250px" sandbox="allow-same-origin allow-scripts allow-popups allow-forms" src="https://widgets.ebscohost.com/prod/customerspecific/testpv/IIMKashipur/iimkashipur_search.html" width="100%"></iframe>
+
+                                                    @endif
+
+
                                                     <p>
                                                         @if (GetLang() == 'en')
                                                             {!! $item[0]->content !!}
@@ -1094,6 +1104,15 @@
 
                                                 <div class="col-md-12 col-lg-12">
 
+
+                                                    {{-- {{ request()->path() }} --}}
+
+                                                    @if(request()->path() == 'about-institute/library')
+
+                                                    <iframe frameborder="0" height="250px" sandbox="allow-same-origin allow-scripts allow-popups allow-forms" src="https://widgets.ebscohost.com/prod/customerspecific/testpv/IIMKashipur/iimkashipur_search.html" width="100%"></iframe>
+
+                                                    @endif
+
                                                     <p>
 
                                                         @if (GetLang() == 'en')
@@ -1116,11 +1135,11 @@
                             @if($item[0]->video_url  != '')
 
                             <div class="col-md-12 mx-auto">
-            
+
                                <iframe width="100%" height="315" src="{{ $item[0]->video_url  ??'' }}" title="{{ url($item[0]->video_title)  ??''}}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-            
+
                             </div>
-            
+
                             @endif
                         </div>
                     @endforeach

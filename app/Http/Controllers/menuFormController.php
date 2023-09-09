@@ -500,38 +500,32 @@ function View_journey(){
 //evnets & Activites
 public function Add_Event_EventsActivites(Request $request,$id=NULL){
     if($id){
-        $title="Edit Event & Activites Details";
+        $title="Edit Event Activites Details";
         $msg="title Details Edited Successfully!";
         $data=Events::find(dDecrypt($id));
     }
     else{
 
-          $title="Add Event & Activites Details";
+          $title="Add Event Activites Details";
           $msg="title Details Added Successfully!";
           $data=new Events;
-        //  dd($request->all());
     }
-
-
         if($request->isMethod('post')){
             if(!$id){
                 $request->validate([
-
                     'title'=>'required|unique:events&activities',
                 ]);}
             else{
             $request->validate([
-
                 'title'=>'required',
             ]);
         }
         $data->title=$request->title;
         $data->status= $request->status;
+        $data->short_order= $request->short_order;
         $data->save();
-       // dd($request->all());
        return redirect('Accounts/Event-Activites')->with('success',$msg);
     }
-
     return view('admin.sections.events&activities',compact('data','title','id'));
 }
 
@@ -577,34 +571,28 @@ return redirect()->back()->with('success','Record Deleted Successfully');
 
  public function Add_Edit_EventActivity_Image(Request $request,$id=NULL){
  if($id){
-
-
-    $title="Edit Details";
-    $msg="Details Edited Successfully!";
+    $title="Edit Event Activity Image";
+    $msg="Event Activity Image Edited Successfully!";
     $event=event_image::find(dDecrypt($id));
     $data=Events::get();
-    }
-else{
-
-      $title="Add Details";
+    }else{
+      $title="Add Event Activity Image";
       $msg="Details Added Successfully!";
       $event=new event_image;
       $data=Events::get();
-
-}
+    }
  if($request->isMethod('post')){
     if(!$id){
         $request->validate([
-            'image'          =>       'image|mimes:jpeg,png,jpg,gif|max:2048',
+            'image' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
             'image_title'=>'required|unique:events&activities_image',
         ]);}
     else{
     $request->validate([
-        'image'          =>       'image|mimes:jpeg,png,jpg,gif|max:2048',
+        'image'  =>  'image|mimes:jpeg,png,jpg,gif|max:2048',
 
     ]);
 }
-
       $event->image_title= $request->image_title;
       $event->image_alt= $request->image_alt;
       $event->order= $request->order;
@@ -618,20 +606,15 @@ else{
           $event->image    = $newname;
       }
       $event->save();
-
     return back()->with('success',$msg);
 }
-
 return view('admin.sections.event&activitiesimage',compact('event','title','id','data'));
 }
 
-public function View_EventActivety_image($id)
-{
-
+public function View_EventActivety_image($id){
 $data=event_image::orderBy('id')->where('parent_id',dDecrypt($id))->get();
 return view('admin.sections.event&activitiesimageview',['data'=>$data]);
 }
-
 
 public function  Show_EventActivety_image($id){
     $data=event_image::find(dDecrypt($id))->first();

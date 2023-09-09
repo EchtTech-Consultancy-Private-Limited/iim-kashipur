@@ -185,4 +185,12 @@ class StudentProfileController extends Controller
         $student->delete();
         return redirect()->back()->with('success','Student Profile Type Deleted Successfully');
     }
+
+    public function student_profiles_id()
+      {
+       $data=StudentProfile::get();
+       //dd($data);
+     return response()->json($data);
+    }
+
 }
