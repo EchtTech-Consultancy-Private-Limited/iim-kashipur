@@ -653,7 +653,7 @@ public function add_feedback(Request $request)
     $data->Type=$request->Type;
     $data->feedback=$request->feedback;
     $data->save();
-    return back()->with(['success'=>'Thank you for your valuable feedback!']);
+    return back()->with(['success'=>'Thank you for your valuable feedback']);
 }
 
 //countact us form
@@ -1458,8 +1458,6 @@ public function screen_reader_access()
                 return abort(401);
             }
         }else{
-
-
            if(club::whereslug($slug)->get()->count()){    //club single
 
                 $item=club::whereslug($slug)->get();
@@ -1500,6 +1498,9 @@ public function screen_reader_access()
                     return abort(401);
                 }
             }
+        else{
+            return abort(401);
+        }
         }
 
     }
