@@ -1592,27 +1592,35 @@ public function screen_reader_access()
             elseif(isset($type[0]) && $type[0]->tpl_id == 3)
             {
                 $departments=Department::get();
-                if($request->dp){
+
+                if($request->dp && $request->nd ==  NUll){
+
                     $item=OrganisationStructure::where('department',6)
-                            ->where('faculty_id',$request->dp)
+                            ->where('faculty_id',$request->dp)->where('status','1')
                             ->paginate(9);
 
                             $item->appends(['dp'=>$request->dp]);
 
-                }elseif($request->nd){
+                }elseif($request->nd &&  $request->dp == NUll){
                     $item=OrganisationStructure::where('department',6)
+                            ->where('status','1')
                             ->where('title',"like","%$request->nd%")
                             ->orwhere('designation',"like","%$request->nd%")
                             ->orwhere('email',"like","%$request->nd%")
                             ->paginate(9);
 
+                            $item->appends(['nd'=>$request->nd]);
+                }
+                elseif($request->dp && $request->nd){
+                    $item=OrganisationStructure::where('department',6)
+                               ->where('status','1')
+                               ->wherefaculty_id($request->dp)
+                               ->where('title',"like","%$request->nd%")
+                               ->paginate(9);
+                              // $item->appends(['nd'=>$request->nd] || ['dp'=>$request->dp]);
                 }else{
                     $item=OrganisationStructure::where('department',6)->where('status','1')->orderBy('short_order','Asc')->paginate(9);
-                    $item->appends(['dp'=>$request->dp]);
-
                 }
-
-
                 if(count($item)>0){
                 $type=SubMenu::whereslug($slug)->get();
 
