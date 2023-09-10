@@ -377,8 +377,9 @@
 
                                 <input type="hidden" name="status" value="0">
 
-                                <input type="hidden" class="form-control" name="parent_id"
+                                <input type="text" class="form-control" name="parent_id"
                                     value="{{ isset(request()->pid) ? request()->pid : 0 }}">
+
 
 
                                 <div class="col-md-12">

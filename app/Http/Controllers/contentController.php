@@ -131,6 +131,8 @@ class contentController extends Controller
 
     public function Update_Content_Submit(Request $request ,$id){
 
+       // dd($request->all());
+
     $request->validate(
     [
     'name'              =>      'required',
@@ -211,7 +213,7 @@ class contentController extends Controller
         $u->sort_order=$request->sort_order;
         $u->status=$request->status;
         $u->delete_range=$request->delete_range;
-        $u->parent_id=$request-> parent_id;
+        $u->parent_id=$request->parent_id;
         $u->slug=\Str::slug($request->name);
 
         $u->video_url= $request->video_url;

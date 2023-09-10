@@ -677,7 +677,7 @@
                         </form>
                     </div>
                     <div class="col-md-6">
-                        <form action="{{ url('/Accounts/manage-people-section') }}" method="get">
+                        <form action="{{ url('/faculty/faculty-directory') }}" method="get">
                             <label> Search </label>
 
                             <div class="d-flex">
