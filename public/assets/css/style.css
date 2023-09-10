@@ -2626,8 +2626,8 @@ span.text-hili-top {
 
     span.top-text {
         position: absolute;
-        bottom:5% !important;
-        right: 10% !important;
+        bottom:10% !important;
+        right: 5% !important;
         font-size: 9px!important;
     }
 
