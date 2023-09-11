@@ -245,7 +245,7 @@
                                     </div>
                                     <div class="col-md-9 pe-5">
                                         <input type="text" value="" name="mobile_no" id="mobile_no"
-                                            class="form-control" placeholder="Enter your Contact Number" maxlength="12">
+                                            class="form-control" placeholder="Enter your Contact Number" minlength="10" maxlength="12">
                                             @if ($errors->has('mobile_no'))
                                             <div class="text-danger">{{ $errors->first('mobile_no') }}</div>
                                             @endif
@@ -275,9 +275,12 @@
                                     <div class="col-md-4 pe-5">
                                         <input id="captcha" type="text" class="form-control"
                                             placeholder="Enter Captcha" name="captcha">
-                                            @error('captcha')
+                                            {{-- @error('captcha')
                                             <div class="alert alert-danger">{{ $message }}</div>
-                                           @enderror
+                                           @enderror --}}
+                                           @if ($errors->has('captcha'))
+                                           <div class="text-danger">{{ $errors->first('captcha') }}</div>
+                                           @endif
                                     </div>
 
                                     <div class="col-md-4 pe-5">
@@ -318,7 +321,7 @@
     <script>
         // disable special character
         $('.special_no').keypress(function (e) {
-    
+
             var regex = new RegExp("^[a-zA-Z_]");
             var str = String.fromCharCode(!e.charCode ? e.which : e.charCode);
             if (regex.test(str)) {
@@ -341,5 +344,16 @@
         });
     </script>
 
-
+<script>
+    // disable alphate
+    $('#mobile_no').keypress(function (e) {
+        var regex = new RegExp("^[0-9_]");
+        var str = String.fromCharCode(!e.charCode ? e.which : e.charCode);
+        if (regex.test(str)) {
+            return true;
+        }
+        e.preventDefault();
+        return false;
+    });
+    </script>
 @endsection

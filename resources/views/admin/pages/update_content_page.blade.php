@@ -1,13 +1,8 @@
 @extends('admin.Layout.master')
 
-
-
-@section('title', ' update Content Page')
-
-
+@section('title', ' Update Content Page')
 
 @section('content')
-
 
 
     <div class="main-panel">
@@ -15,12 +10,6 @@
 
 
         <div class="content-wrapper">
-
-
-
-
-
-
 
             <div class="row">
 
@@ -494,8 +483,15 @@
                                 <input type="hidden" name="status" value="{{ $data->status }}">
 
 
-                                <input type="hidden" class="form-control" name="id" value="{{ $data->id }}">
+                                @if($data->parent_id != '' || $data->parent_id != Null || $data->parent_id != '0')
 
+                                 <input type="text" class="form-control" name="parent_id" value="{{$data->parent_id }}">
+
+                                @else
+
+                                <input type="text" class="form-control" name="id" value="{{ $data->id }}">
+
+                                @endif
 
 
                                 <div class="col-md-12">

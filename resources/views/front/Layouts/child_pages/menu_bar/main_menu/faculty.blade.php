@@ -655,39 +655,25 @@
             <div class="innerpagecontent">
 
                 <div class="row mb-4">
+
                     <div class="col-md-6">
                         <form role="form" method="get" action="{{ url('/faculty/faculty-directory') }}" id="frmtypes">
-
-                            @csrf
-
                               <label>Area</label>
-
                              <select name="dp" class="form-control" onchange="javascript:$('#frmtypes').submit();" style="padding:10px 15px 9px ">
-
                                 <option value="">Any</option>
-
                                 @foreach($departments as $k=>$v)
-
                                    <option value="{{$v->id}}"  {{ ( $v->id == request('dp') ) ? 'selected' : '' }} >{{$v->dept_name}}</option>
-
                                 @endforeach
-
                              </select>
-
-                        </form>
                     </div>
                     <div class="col-md-6">
-                        <form action="{{ url('/Accounts/manage-people-section') }}" method="get">
                             <label> Search </label>
 
-                            <div class="d-flex">
                               <input type="text" class="form-control"  @if(request('nd') ) value="{{ request('nd') }}" @else placeholder="search..." @endif name="nd">
 
-                                <button type="submit" class="btn-info submit-btn-apply">Apply</button>
-
-                            </div>
-                        </form>
                     </div>
+                    </form>
+
                 </div>
 
               <a href="javascript:void(0)" class="btn2 margin_bottom"> @if(GetLang()=='en') {{ $type[0]->name ?? '' }}  @else {{ $type[0]->name_h ?? '' }}  @endif </a> <br>

@@ -80,10 +80,13 @@
 
                                         </select>
 
-                                    </form>
+                                     </form>
 
                                 </div>
-<div class="col-md-1"></div>
+
+
+                                <div class="col-md-1"></div>
+
                                 <div class="col-md-6">
                                     <form action="{{ url('Accounts/manage-people-section') }}" method="get">
                                         {{-- <label> Search </label> --}}
