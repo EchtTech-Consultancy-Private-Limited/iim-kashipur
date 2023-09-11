@@ -57,7 +57,7 @@
                     @foreach ($data as $value)
                         {{-- {{ Getarchivedata($value->created_at->format('Y-m-d'), $value->archive_date) }} --}}
 
-                        @if (Getarchivedata(now()->format('Y-m-d'),$value->archive_date) == 'True')
+                        @if (Getarchivedata(now()->format('Y-m-d'), $value->archive_date) == 'True')
                             <tr>
                                 <td>{{ $value->name_of_the_post }} </td>
                                 <td> {{ $value->opening_date }} </td>
@@ -66,7 +66,13 @@
 
                                 <td>
                                     @if ($value->online_link != '')
-                                        <a href="{{ $value->online_link }}" target="_blank">Apply Here</a>
+
+                                        <a @if ($value->external == '1') @if (GetLang() == 'en') onclick="return confirm('This link will take you to an external web site.')"  @else onclick="return confirm('यह लिंक आपको एक बाहरी वेब साइट पर ले जाएगा।')" @endif
+                                        target="_blank" href="{{ url($value->online_link) ?? '' }}" @else
+                                            href="{{ url($value->online_link) ?? '' }}" @endif
+                                            >Apply Here</a>
+
+
                                     @endif
                                 </td>
                                 <td>
@@ -148,7 +154,7 @@
                         {{--
                     {{ Getarchivedata($value->created_at->format('Y-m-d'), $value->archive_date) }} --}}
 
-                        @if (Getarchivedata(now()->format('Y-m-d'),$value->archive_date) == 'True')
+                        @if (Getarchivedata(now()->format('Y-m-d'), $value->archive_date) == 'True')
                             <tr>
                                 <td>{{ $K + 1 }}</td>
                                 <td>{{ $value->vendor_name }} </td>
@@ -190,25 +196,25 @@
                     <tbody>
 
                         @foreach ($data as $K => $value)
-                        @if (Getarchivedata(now()->format('Y-m-d'),$value->archive_date) == 'True')
-                            <tr>
-                                <td>{{ $K + 1 }}</td>
-                                <td>{{ $value->date }}</td>
-                                <td>{{ $value->title }}</td>
+                            @if (Getarchivedata(now()->format('Y-m-d'), $value->archive_date) == 'True')
+                                <tr>
+                                    <td>{{ $K + 1 }}</td>
+                                    <td>{{ $value->date }}</td>
+                                    <td>{{ $value->title }}</td>
 
-                                @if ($value->attachement_file != '')
-                                    <td>
-                                        <a href="{{ url('uploads/view/attach/' . $value->attachement_file) }}" download
-                                            class="pdf-links"> <i class="fa fa-file-pdf-o"></i><span>PDF</span></a>
-                                        <span style="font-size: 12px;margin-left: 5px;color: #ed2044;">
-                                            (<?php
-                                            echo formatSizeUnits($value->pdfsize);
-                                            ?>)
-                                        </span>
-                                    </td>
-                                @endif
+                                    @if ($value->attachement_file != '')
+                                        <td>
+                                            <a href="{{ url('uploads/view/attach/' . $value->attachement_file) }}" download
+                                                class="pdf-links"> <i class="fa fa-file-pdf-o"></i><span>PDF</span></a>
+                                            <span style="font-size: 12px;margin-left: 5px;color: #ed2044;">
+                                                (<?php
+                                                echo formatSizeUnits($value->pdfsize);
+                                                ?>)
+                                            </span>
+                                        </td>
+                                    @endif
 
-                            </tr>
+                                </tr>
                             @endif
                         @endforeach
 

@@ -2792,7 +2792,7 @@ public function Child_barInnerpage($main_slug,$Sub_slug,$slug) //content page
         $data->image= $newname2;
     }
     $data->save();
-    return back()->with(['success'=>'sc st obc form Add Successfully!']);
+    return back()->with(['success'=>'Thank You! Your Sc-St-Obc form has been successfully submitted']);
 }
 
 

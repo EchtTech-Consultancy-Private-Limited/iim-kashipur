@@ -365,6 +365,7 @@ public function View_Career()
         $career->archive_date=$request->archive_date;
         $career->closing_date=$request->closing_date;
         $career->online_link=$request->online_link;
+        $career->external=$request->external;
 
         $career->status=$request->status;
         $career->save();

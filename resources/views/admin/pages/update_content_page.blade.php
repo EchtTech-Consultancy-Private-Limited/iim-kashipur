@@ -485,11 +485,11 @@
 
                                 @if($data->parent_id != '' || $data->parent_id != Null || $data->parent_id != '0')
 
-                                 <input type="text" class="form-control" name="parent_id" value="{{$data->parent_id }}">
+                                 <input type="hidden" class="form-control" name="parent_id" value="{{$data->parent_id }}">
 
                                 @else
 
-                                <input type="text" class="form-control" name="id" value="{{ $data->id }}">
+                                <input type="hidden" class="form-control" name="id" value="{{ $data->id }}">
 
                                 @endif
 
