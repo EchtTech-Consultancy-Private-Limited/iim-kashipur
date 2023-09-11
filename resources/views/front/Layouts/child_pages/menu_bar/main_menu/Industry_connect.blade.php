@@ -78,8 +78,9 @@
                                                         <td>{{ $data->date }}</td>
                                                         <td>{{ $data->title }}</td>
 
-                                                        @if ($data->attachement_file != '')
+
                                                             <td>
+                                                                @if ($data->attachement_file != '')
                                                                 <a href="{{ url('uploads/view/attach/' . $data->attachement_file) }}"
                                                                     download class="pdf-links"> <i
                                                                         class="fa fa-file-pdf-o"></i><span>PDF</span></a>
@@ -89,8 +90,9 @@
                                                                     echo formatSizeUnits($data->pdfsize);
                                                                     ?>)
                                                                 </span>
+                                                                @endif
                                                             </td>
-                                                        @endif
+
 
                                                     </tr>
                                                     @endif
