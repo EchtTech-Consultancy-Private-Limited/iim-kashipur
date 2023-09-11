@@ -238,10 +238,12 @@
                                     </div>
                                     <div class="col-md-9 pe-5">
                                         <input type="text" value="" name="mobile_no" id="mobile_no"
-                                            class="form-control" placeholder="Enter your Contact Number" minlength="10" maxlength="10">
+                                            class="form-control" placeholder="Enter your Contact Number" maxlength="10">
+
                                             @if ($errors->has('mobile_no'))
                                             <div class="text-danger">{{ $errors->first('mobile_no') }}</div>
                                             @endif
+
                                     </div>
 
                                 </div>
