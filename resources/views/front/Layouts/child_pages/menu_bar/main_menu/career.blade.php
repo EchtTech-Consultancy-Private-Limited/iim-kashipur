@@ -74,7 +74,12 @@
 
                         <td>
                             @if($value->online_link != '')
-                            <a href="{{ $value->online_link }}" target="_blank">Apply Here</a>
+                            <a
+
+
+                                @if($value->external=='1')  @if (GetLang() == 'en') onclick="return confirm('This link will take you to an external web site.')"  @else onclick="return confirm('यह लिंक आपको एक बाहरी वेब साइट पर ले जाएगा।')" @endif target="_blank" href="{{url($value->online_link) ??''}}"  @else href="{{url($value->online_link) ??''}}" @endif
+
+                                >Apply Here</a>
                             @endif
                         </td>
                         <td>

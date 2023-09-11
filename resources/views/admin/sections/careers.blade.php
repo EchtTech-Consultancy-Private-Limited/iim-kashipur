@@ -88,6 +88,11 @@
 
                             <div class="col-md-12">
                                 <label for="inputText" class="col-form-label">Online Link </label>
+
+                                <input type="radio" value="0" name="external"  @if($id) {{ ($career->external=='0')? "checked" : "" }} @endif style="margin-left:30px;" id="select_box" >  <label> &nbsp;Internal URL </label>
+
+                                <input type="radio" value="1" name="external"  @if($id) {{ ($career->external=="1")? "checked" : "" }}  @endif style="margin-left:30px;" id="checkbox">  <label> &nbsp;External URL  </label>
+
                                 <div class="">
                                     <input type="text" class="form-control" name="online_link"
                                     @if ($id) value="{{ $career->online_link }}" @else value="{{ old('online_link') }}" @endif  placeholder="Please enter" value=""><br>
