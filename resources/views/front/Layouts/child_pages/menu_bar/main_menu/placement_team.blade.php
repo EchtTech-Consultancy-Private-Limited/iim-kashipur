@@ -487,7 +487,7 @@
 
             </div>
 
-       
+
 
 
 
@@ -802,7 +802,7 @@
 
                         </div>
 
-                  
+
 
                     @if (count($Administrative) > 0)
                         <a href="javascript:void(0)" class="btn2 margin_top margin_bottom">Administrative</a><br><br>
@@ -869,14 +869,14 @@
 
 
 
-                       
+
                     @endif
                     {{-- new section  --}}
 
                     @if (count($Coordinator) > 0)
                         <a href="javascript:void(0)" class="btn2 margin_top margin_bottom">Student Coordinator</a><br><br>
 
-                        <span>Email-id: placecomm@iimkashipur.ac.in</span>
+                        <span>Email-id: placecomm[at]iimkashipur[dot]ac[dot]in</span>
                         <div class="profilewithinfo">
 
                             <div class="row">
