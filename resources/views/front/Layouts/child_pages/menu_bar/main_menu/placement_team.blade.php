@@ -852,7 +852,7 @@
                                                     $email = str_replace('.', '[dot]', $var);
                                                     ?>
 
-                                                    <p class="mail-team" title="{{ $email ?? '' }}">
+                                                    <p class="mail-team-2" title="{{ $email ?? '' }}">
                                                         {{ $email ?? '' }}
                                                     </p>
 
