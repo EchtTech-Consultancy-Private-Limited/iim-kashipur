@@ -144,15 +144,6 @@
 
                             <div class="card-body">
 
-                            @if ($errors->any())
-                                <div class="alert alert-danger">
-                                    <ul>
-                                        @foreach ($errors->all() as $error)
-                                            <li>{{ $error }}</li>
-                                        @endforeach
-                                    </ul>
-                                </div>
-                            @endif
                             @if (Session::has('success'))
                                 <div class="alert alert-success alert-block" role="alert">
                                     <button class="close" data-dismiss="alert"></button>
@@ -193,7 +184,7 @@
 
                                 <div class="row align-items-center py-3">
                                     <div class="col-md-3 ps-5">
-                                        <h6 class="mb-0">Roll No/ Employee Id  <span class="text-danger">*</span> </h6>
+                                        <h6 class="mb-0">Roll No/ Employee Id </h6>
                                     </div>
                                     <div class="col-md-9 pe-5">
                                         <input type="text" class="form-control" name="roll_no" placeholder="Roll No/ Employee Id ">
@@ -229,7 +220,7 @@
                                         <h6 class="mb-0">Complaint Details  <span class="text-danger">*</span> </h6>
                                     </div>
                                     <div class="col-md-9 pe-5">
-                                        <textarea class="form-control" rows="3" name="Complaint_Details" maxlength="250" minlength="2" placeholder="Complaint Details "></textarea>
+                                        <textarea class="form-control special_no" rows="3" name="Complaint_Details" maxlength="250" minlength="2" placeholder="Complaint Details "></textarea>
 
                                         @if ($errors->has('Complaint_Details'))
                                         <div class="text-danger">{{ $errors->first('Complaint_Details') }}</div>
@@ -245,7 +236,7 @@
                                     </div>
                                     <div class="col-md-9 pe-5">
                                         <input type="text" value="" name="mobile_no" id="mobile_no"
-                                            class="form-control" placeholder="Enter your Contact Number" minlength="10" maxlength="12">
+                                            class="form-control" placeholder="Enter your Contact Number" minlength="10" maxlength="10">
                                             @if ($errors->has('mobile_no'))
                                             <div class="text-danger">{{ $errors->first('mobile_no') }}</div>
                                             @endif
@@ -255,7 +246,7 @@
 
                                 <div class="row align-items-center py-3">
                                     <div class="col-md-3 ps-5">
-                                        <h6 class="mb-0">Attachment (only Image, if any) <span class="text-danger">*</span> </h6>
+                                        <h6 class="mb-0">Attachment (only Image, if any)</h6>
                                     </div>
                                     <div class="col-md-9 pe-5">
                                         <input type="file" name="image" class="form-control">
