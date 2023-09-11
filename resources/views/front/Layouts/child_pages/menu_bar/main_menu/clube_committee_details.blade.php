@@ -1396,7 +1396,7 @@
                                     <div class="profile-img img-fac">
                                         <img src="{{ asset('uploads/organisation/' . $chairperson[0]->image) }}"
                                             alt="A VENKATARAMAN" loading="lazy" class="mb-0">
-                                        <div class="d-flex">
+                                        <div class="d-flex justify-content-center">
                                             <div class="top-text mb-0 p-relative"> {{ $chairperson[0]->title ?? '' }}
                                             </div>
                                         </div>

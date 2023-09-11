@@ -2309,10 +2309,11 @@ span.text-hili-top {
     .designation h6 {
         font-size: 15px;
         padding-top: 3px;
-        text-overflow: ellipsis;
+        /* text-overflow: ellipsis;
         width: 295px;
         white-space: nowrap;
-        overflow: hidden;
+        overflow: hidden; */
+        word-wrap: break-word;
     }
 
     .blog-newstyle-2 h3 {
