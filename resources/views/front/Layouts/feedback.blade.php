@@ -91,11 +91,12 @@
 
                                             <input type="text"  value="{{ old('name') }}"  name="name"
                                                 class="form-control special_no" placeholder="Enter Your Name"  maxlength="250" maxlength="2" />
+                                                @if ($errors->has('name'))
+                                                <div class="text-danger">{{ $errors->first('name') }}</div>
+                                                @endif
 
 
-                                                @error('name')
-                                                <div class="alert alert-danger">{{ $message }}</div>
-                                                @enderror
+
                                         </div>
 
 
@@ -114,10 +115,12 @@
                                             <input type="email" value="{{ old('email') }}" name="email"
                                                 class="form-control" placeholder="example@example.com" />
 
+                                                @if ($errors->has('email'))
+                                                <div class="text-danger">{{ $errors->first('email') }}</div>
+                                                @endif
 
-                                                @error('email')
-                                                <div class="alert alert-danger">{{ $message }}</div>
-                                               @enderror
+
+
 
                                         </div>
 
@@ -142,11 +145,11 @@
                                                 <option value="Feedback" {{ old('Type') == 'Feedback' ? 'selected' : '' }}>
                                                     Feedback</option>
                                             </select>
+                                            @if ($errors->has('Type'))
+                                            <div class="text-danger">{{ $errors->first('Type') }}</div>
+                                            @endif
 
 
-                                            @error('Type')
-                                            <div class="alert alert-danger">{{ $message }}</div>
-                                            @enderror
                                         </div>
 
 
@@ -162,13 +165,13 @@
                                         <div class="col-md-9 pe-5">
 
                                             <input type="text" value="{{ old('mobile_no') }}" name="mobile_no" id="mobile_no"
-                                                class="form-control" placeholder="Enter your Mobile Number" maxlength="12"  />
+                                                class="form-control" placeholder="Enter your Mobile Number" maxlength="10"  />
+
+                                                @if ($errors->has('mobile_no'))
+                                                <div class="text-danger">{{ $errors->first('mobile_no') }}</div>
+                                                @endif
 
 
-
-                                                @error('mobile_no')
-                                                <div class="alert alert-danger">{{ $message }}</div>
-                                                @enderror
                                         </div>
 
                                     </div>
@@ -183,12 +186,14 @@
                                         </div>
                                         <div class="col-md-9 pe-5">
 
-                                            <textarea class="form-control"  maxlength="250" maxlength="2" rows="3" name="feedback" placeholder="Feedback">{{ old('feedback') }}</textarea>
+                                            <textarea class="form-control special_no"  maxlength="250" maxlength="2" rows="3" name="feedback" placeholder="Feedback">{{ old('feedback') }}</textarea>
 
 
-                                            @error('feedback')
-                                                <div class="alert alert-danger">{{ $message }}</div>
-                                            @enderror
+
+
+                                            @if ($errors->has('feedback'))
+                                            <div class="text-danger">{{ $errors->first('feedback') }}</div>
+                                            @endif
 
                                         </div>
                                     </div>
@@ -214,9 +219,10 @@
                                                     &#x21bb;
                                                 </button>
                                             </div>
-                                            @error('captcha')
-                                            <div class="alert alert-danger">{{ $message }}</div>
-                                          @enderror
+
+                                          @if ($errors->has('captcha'))
+                                            <div class="text-danger">{{ $errors->first('captcha') }}</div>
+                                            @endif
                                         </div>
 
 

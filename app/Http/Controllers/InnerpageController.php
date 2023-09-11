@@ -65,7 +65,7 @@ class InnerpageController extends Controller
 
 public function archive($slug){
 
-   if($slug == 'career' || $slug == 'Career'){
+   if($slug == 'career' || $slug == 'Career' || $slug == 'Careers' || $slug == 'careers'){
      $bread="Career";
      $data =Career::get();
      return view('front.Layouts.child_pages.menu_bar.main_menu.archive',['data'=>$data,'bread'=>$bread]);
@@ -482,6 +482,7 @@ public function RTI_view()
 public function  career(){
 
     $item=Career::wherestatus('1')->paginate(10);
+  //  dd($item);
     return view('front.Layouts.child_pages.menu_bar.main_menu.career',['item'=>$item]);
 
 
@@ -639,7 +640,7 @@ public function add_feedback(Request $request)
         [
             'name' => 'required|max:32|min:2',
             'email' => ['required','string','email','max:50','unique:users','regex:/^([a-z0-9\+_\-]+)(\.[a-z0-9\+_\-]+)*@([a-z0-9\-]+\.)+[a-z]{2,6}$/ix'],
-            'mobile_no'=>'required|numeric|min:10|numeric|digits:10',
+            'mobile_no'=>'required|numeric|min:10|numeric|digits:10|unique:feedback',
             'Type'=>'required',
             'feedback'=>'required',
             'captcha' => 'required|captcha'
@@ -657,8 +658,7 @@ public function add_feedback(Request $request)
 }
 
 //countact us form
-public function contact_page()
-{
+public function contact_page(){
     return view('front.Layouts.contact_us');
 }
 
@@ -1359,7 +1359,7 @@ public function screen_reader_access()
 
                     }elseif(QuickLink::whereslug($slug)->first('section_name')->section_name == 'info3')
                     {
-
+                           // dd('hii');
                                 $data=QuickLink::whereslug($slug)->get('link_option');
 
                                 if(Count($data)>0){
@@ -1600,26 +1600,37 @@ public function screen_reader_access()
                             ->paginate(9);
 
                             $item->appends(['dp'=>$request->dp]);
+                            return view('front.Layouts.child_pages.menu_bar.main_menu.faculty',['item'=>$item,'type'=>$type,'sub_menu'=>$sub_menu,'departments'=>$departments]);
+
+
 
                 }elseif($request->nd &&  $request->dp == NUll){
                     $item=OrganisationStructure::where('department',6)
                             ->where('status','1')
                             ->where('title',"like","%$request->nd%")
-                            ->orwhere('designation',"like","%$request->nd%")
-                            ->orwhere('email',"like","%$request->nd%")
+                            // ->orwhere('designation',"like","%$request->nd%")
+                            // ->orwhere('email',"like","%$request->nd%")
                             ->paginate(9);
-
                             $item->appends(['nd'=>$request->nd]);
+                            return view('front.Layouts.child_pages.menu_bar.main_menu.faculty',['item'=>$item,'type'=>$type,'sub_menu'=>$sub_menu,'departments'=>$departments]);
+
+
                 }
                 elseif($request->dp && $request->nd){
                     $item=OrganisationStructure::where('department',6)
                                ->where('status','1')
                                ->wherefaculty_id($request->dp)
                                ->where('title',"like","%$request->nd%")
-                               ->paginate(9);
-                              // $item->appends(['nd'=>$request->nd] || ['dp'=>$request->dp]);
+                               ->paginate(5);
+                                 $item->appends(['dp'=>$request->dp]);
+                                 $item->appends(['nd'=>$request->nd]);
+                              return view('front.Layouts.child_pages.menu_bar.main_menu.faculty',['item'=>$item,'type'=>$type,'sub_menu'=>$sub_menu,'departments'=>$departments]);
+
                 }else{
                     $item=OrganisationStructure::where('department',6)->where('status','1')->orderBy('short_order','Asc')->paginate(9);
+
+                        return view('front.Layouts.child_pages.menu_bar.main_menu.faculty',['item'=>$item,'type'=>$type,'sub_menu'=>$sub_menu,'departments'=>$departments]);
+
                 }
                 if(count($item)>0){
                 $type=SubMenu::whereslug($slug)->get();
@@ -2757,7 +2768,11 @@ public function Child_barInnerpage($main_slug,$Sub_slug,$slug) //content page
     $request->validate(
         [
             'name' => 'required|max:32|min:2',
-            'mobile_no'=>'required|numeric',
+            'Type' => 'required',
+           // 'roll_no' => 'required',
+            'Discrimination' => 'required',
+            'Complaint_Details' => 'required',
+            'mobile_no'=>'required|numeric|min:10|numeric|digits:10|unique:scstobc_form',
             'captcha' => 'required|captcha',
             'image'  => 'image|mimes:jpeg,png,jpg,gif|max:2048',
        ]
