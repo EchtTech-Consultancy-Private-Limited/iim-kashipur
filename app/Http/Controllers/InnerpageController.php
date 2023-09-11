@@ -640,7 +640,7 @@ public function add_feedback(Request $request)
         [
             'name' => 'required|max:32|min:2',
             'email' => ['required','string','email','max:50','unique:users','regex:/^([a-z0-9\+_\-]+)(\.[a-z0-9\+_\-]+)*@([a-z0-9\-]+\.)+[a-z]{2,6}$/ix'],
-            'mobile_no'=>'required|numeric|min:10|numeric|digits:10|unique:feedback',
+            'mobile_no'=>'required|numeric|min:10|numeric|digits:10',
             'Type'=>'required',
             'feedback'=>'required',
             'captcha' => 'required|captcha'
@@ -2772,7 +2772,7 @@ public function Child_barInnerpage($main_slug,$Sub_slug,$slug) //content page
            // 'roll_no' => 'required',
             'Discrimination' => 'required',
             'Complaint_Details' => 'required',
-            'mobile_no'=>'required|numeric|min:10|numeric|digits:10|unique:scstobc_form',
+            'mobile_no'=>'required|numeric|min:10|numeric|digits:10',
             'captcha' => 'required|captcha',
             'image'  => 'image|mimes:jpeg,png,jpg,gif|max:2048',
        ]
