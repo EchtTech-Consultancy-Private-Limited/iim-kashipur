@@ -14,8 +14,7 @@
 
         </li>
 
-
-        @if (\Auth::guard('admin')->user()->id == 1 || @checkRoute('manageadmin') || @checkRoute('roles'))
+        @if (\Auth::guard('admin')->user()->id == 1 || @checkRoute('View_Admins') || @checkRoute('View_Roles'))
             <li class="nav-item">
 
                 <a class="nav-link" data-toggle="collapse" href="#auth" aria-expanded="false" aria-controls="auth">
@@ -45,20 +44,16 @@
             </li>
         @endif
 
-
-
         @if (
             \Auth::guard('admin')->user()->id == 1 ||
-                @checkRoute('View_OrganisationStructure') ||
                 @checkRoute('View_OrganisationDetails') ||
                 @checkRoute('View_Counter') ||
                 @checkRoute('view_ClientLogo') ||
-                @checkRoute('view_ClientLogo') ||
-                @checkRoute('View_NewsEvent') ||
-                @checkRoute('View_antiRagging') ||
-                @checkRoute('View_tender') ||
-                @checkRoute('View_Career') ||
-                @checkRoute('view_RTI'))
+                @checkRoute('View_OrganisationStructure') ||
+                @checkRoute('view_profile') ||
+                @checkRoute('View_Banners') ||
+                @checkRoute('View_industry') ||
+                @checkRoute('View_NewsEvent'))
             <li class="nav-item">
 
                 <a class="nav-link" data-toggle="collapse" href="#master" aria-expanded="false" aria-controls="master">
@@ -135,8 +130,11 @@
                 @checkRoute('View_journey') ||
                 @checkRoute('View_EventsActivites') ||
                 @checkRoute('View_studentCouncil') ||
-                @checkRoute('View_journalPublications') ||
-                @checkRoute('View_WellnessFacilities'))
+                @checkRoute('View_WellnessFacilities') ||
+                @checkRoute('View_dissertation') ||
+                @checkRoute('View_report') ||
+                @checkRoute('View_research_seminar') ||
+                @checkRoute('view_pdfImage'))
 
             <li class="nav-item">
 
@@ -286,8 +284,6 @@
                             <li class="nav-item"><a class="nav-link" href="{{ url('Accounts/press-media') }}">Manage
                                     Press & Media</a></li>
                         @endif
-
-
 
                     </ul>
 
@@ -679,10 +675,6 @@
 
                     <ul class="nav flex-column sub-menu">
 
-                        {{-- <li class="nav-item"> <a class="nav-link" href="{{ url('/Accounts/Countact-us') }}"> Contact us
-
-                              </a></li> --}}
-
                         <li class="nav-item"> <a class="nav-link" href="{{ url('/Accounts/feedback') }}"> Feedback
                             </a>
                         </li>
@@ -700,7 +692,7 @@
         @if (@checkRoute('View_scstobc'))
             <li class="nav-item">
 
-                <a class="nav-link" data-toggle="collapse" href="#managment" aria-expanded="false"
+                <a class="nav-link" data-toggle="collapse" href="#managments" aria-expanded="false"
                     aria-controls="tables">
 
                     <i class="icon-head menu-icon"></i>
@@ -711,13 +703,9 @@
 
                 </a>
 
-                <div class="collapse" id="managment">
+                <div class="collapse" id="managments">
 
                     <ul class="nav flex-column sub-menu">
-
-                        {{-- <li class="nav-item"> <a class="nav-link" href="{{ url('/Accounts/Countact-us') }}"> Contact us
-
-                              </a></li> --}}
 
                         <li class="nav-item"> <a class="nav-link" href="{{ url('/Accounts/sc-st-obc-list') }}"> Feedback
                             </a>

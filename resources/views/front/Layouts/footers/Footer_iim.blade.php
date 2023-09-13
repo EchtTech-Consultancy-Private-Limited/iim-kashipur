@@ -370,7 +370,7 @@ function decreaseFontSize() {
 
 </script>
 
-{{--
+
 <script>
     // disable right click
     document.addEventListener('contextmenu', event => event.preventDefault());
@@ -398,7 +398,7 @@ function decreaseFontSize() {
         }
     }
 
-</script> --}}
+</script>
 
 
 

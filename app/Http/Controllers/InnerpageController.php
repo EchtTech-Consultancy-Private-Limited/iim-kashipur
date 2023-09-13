@@ -185,21 +185,9 @@ public function search(Request $request){
                 ->orwhere("event","like","%$search%")
                 ->orwhere("DESCRIPTION","like","%$search%")
                 ->get();
-
-
-
-
     return view('front.Layouts.search_details',compact('video_gallery_tittles','wellness_facilitie_image','anti_raggings','BannerSlider','Career','cell_multiple_image','cell','club','commmittee','committee_multiple_image','Events','Industry','journal_publication_child','multiple_profile','OrganisationStructure','news_event','org','org_journies','press_media','wellness_facilitie','video_gallery','Vendorsdebarred','tender','StudentProfile','student_council','rit'));
 
 }
-
-
-
-
-
-
-
-
 
 
 
@@ -445,8 +433,7 @@ public function search(Request $request){
 
 
 
-public function RTI_view()
-    {
+    public function RTI_view(){
         $item=rti::wherestatus('1')->get();
         $data=rit_report_section::wherestatus('1')->get();
         $value=quarter_report::wherestatus('1')->get();
@@ -481,8 +468,8 @@ public function RTI_view()
 
 public function  career(){
 
-    $item=Career::wherestatus('1')->paginate(10);
-  //  dd($item);
+    $item=Career::wherestatus('1')->get();
+    //dd($item);
     return view('front.Layouts.child_pages.menu_bar.main_menu.career',['item'=>$item]);
 
 
