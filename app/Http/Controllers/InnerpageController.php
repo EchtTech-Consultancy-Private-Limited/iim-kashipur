@@ -491,7 +491,7 @@ public function  career(){
 // Tenders
 public function Tenders(){   //->paginate(10)
 
-    $item=Tender::wherestatus('1')->paginate(10);
+    $item=Tender::wherestatus('1')->get();
     return view('front.Layouts.child_pages.menu_bar.main_menu.Tenders',['item'=>$item]);
 
 }
@@ -499,7 +499,7 @@ public function Tenders(){   //->paginate(10)
 // Vendors Debarred
 public function  Vendors_Debarred(){
 
-     $item=Vendorsdebarred::wherestatus('1')->paginate(10);
+     $item=Vendorsdebarred::wherestatus('1')->get();
      return view('front.Layouts.child_pages.menu_bar.main_menu.Vendors_Debarred',['item'=>$item]);
 }
 
@@ -1600,15 +1600,13 @@ public function screen_reader_access()
                             ->paginate(9);
                             $item->appends(['nd'=>$request->nd]);
                             return view('front.Layouts.child_pages.menu_bar.main_menu.faculty',['item'=>$item,'type'=>$type,'sub_menu'=>$sub_menu,'departments'=>$departments]);
-
-
                 }
                 elseif($request->dp && $request->nd){
                     $item=OrganisationStructure::where('department',6)
                                ->where('status','1')
                                ->wherefaculty_id($request->dp)
                                ->where('title',"like","%$request->nd%")
-                               ->paginate(5);
+                               ->paginate(9);
                                  $item->appends(['dp'=>$request->dp]);
                                  $item->appends(['nd'=>$request->nd]);
                               return view('front.Layouts.child_pages.menu_bar.main_menu.faculty',['item'=>$item,'type'=>$type,'sub_menu'=>$sub_menu,'departments'=>$departments]);

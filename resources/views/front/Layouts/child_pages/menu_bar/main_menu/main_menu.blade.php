@@ -62,13 +62,13 @@
                                 <path
                                     d="M10 19v-5h4v5c0 .55.45 1 1 1h3c.55 0 1-.45 1-1v-7h1.7c.46 0 .68-.57.33-.87L12.67 3.6c-.38-.34-.96-.34-1.34 0l-8.36 7.53c-.34.3-.13.87.33.87H5v7c0 .55.45 1 1 1h3c.55 0 1-.45 1-1z" />
                             </svg></a></li>
-                    <li><a href="{{ URL::previous() }}">
-                            @if (GetLang() == 'en')
-                                {{ $mmenu[0]->name ?? '' }}
-                            @else
-                                {{ $mmenu[0]->name_h ?? '' }}
-                            @endif
-                        </a>
+                    <li>
+                        @if (GetLang() == 'en')
+                            {{ $mmenu[0]->name ?? '' }}
+                        @else
+                            {{ $mmenu[0]->name_h ?? '' }}
+                        @endif
+
                     </li>
                     <li>
                         <a href="{{ URL::previous() }}">
@@ -119,11 +119,11 @@
         <div class="internalpagebanner">
 
             @if ($item[0]->banner_image != '')
-            <img src="{{ asset('page/banner/' . $item[0]->banner_image) ?? '' }}"
-                alt="{{ $item[0]->banner_alt ?? '' }}" title="{{ $item[0]->banner_title ?? '' }}">
-             @else
-            <img src="{{ asset('uploads/site-logo/' . GetOrganisationAllDetails('default_banner_image')) }}"
-                alt="{{ $item[0]->name ?? '' }}" title="{{ $item[0]->name ?? '' }}">
+                <img src="{{ asset('page/banner/' . $item[0]->banner_image) ?? '' }}"
+                    alt="{{ $item[0]->banner_alt ?? '' }}" title="{{ $item[0]->banner_title ?? '' }}">
+            @else
+                <img src="{{ asset('uploads/site-logo/' . GetOrganisationAllDetails('default_banner_image')) }}"
+                    alt="{{ $item[0]->name ?? '' }}" title="{{ $item[0]->name ?? '' }}">
             @endif
 
             {{--
@@ -163,13 +163,13 @@
                                 <path
                                     d="M10 19v-5h4v5c0 .55.45 1 1 1h3c.55 0 1-.45 1-1v-7h1.7c.46 0 .68-.57.33-.87L12.67 3.6c-.38-.34-.96-.34-1.34 0l-8.36 7.53c-.34.3-.13.87.33.87H5v7c0 .55.45 1 1 1h3c.55 0 1-.45 1-1z" />
                             </svg></a></li>
-                    <li><a href="{{ URL::previous() }}">
-                            @if (GetLang() == 'en')
-                                {{ $get[0]->name ?? '' }}
-                            @else
-                                {{ $get[0]->name_h ?? '' }}
-                            @endif
-                        </a>
+                    <li>
+                        @if (GetLang() == 'en')
+                            {{ $get[0]->name ?? '' }}
+                        @else
+                            {{ $get[0]->name_h ?? '' }}
+                        @endif
+
                     </li>
                     <li>
                         <a href="{{ URL::previous() }}">
@@ -241,13 +241,12 @@
                                 <path
                                     d="M10 19v-5h4v5c0 .55.45 1 1 1h3c.55 0 1-.45 1-1v-7h1.7c.46 0 .68-.57.33-.87L12.67 3.6c-.38-.34-.96-.34-1.34 0l-8.36 7.53c-.34.3-.13.87.33.87H5v7c0 .55.45 1 1 1h3c.55 0 1-.45 1-1z" />
                             </svg></a></li>
-                    <li><a href="{{ URL::previous() }}">
+                    <li>
                             @if (GetLang() == 'en')
                                 {{ @$mmenu[0]->name ?? '' }}
                             @else
                                 {{ @$mmenu[0]->name_h ?? '' }}
                             @endif
-                        </a>
                     </li>
                     <li>
                         <a href="{{ URL::previous() }}">
@@ -329,7 +328,7 @@
                                 <ul>
 
                                     @if (count(GetchildMenusFront($type[0]->menu_id, $S->id)) > 0)
-                                        <li class="hasnested @if ($S->id  == $sub[0]->id)opened @endif">
+                                        <li class="hasnested @if ($S->id == $sub[0]->id) opened @endif">
                                             <a @if ($S->id == $type[0]->id) class="active" @endif
                                                 href="javascript:void();">
                                                 @if (GetLang() == 'en')
@@ -352,7 +351,8 @@
                                             <ul>
                                                 @foreach (GetchildMenusFront($type[0]->menu_id, $S->id) as $key2 => $C)
                                                     @if (count(GetsubchildMenusFront($type[0]->menu_id, $S->id, $C->id)) > 0)
-                                                        <li class="hasnested @if ($C->id  == $child[0]->id)opened @endif">
+                                                        <li
+                                                            class="hasnested @if ($C->id == $child[0]->id) opened @endif">
                                                             <a @if ($C->id == $type[0]->id) class="active" @endif
                                                                 href="javascript:void();">
                                                                 @if (GetLang() == 'en')
@@ -377,7 +377,7 @@
                                                                 @foreach (GetsubchildMenusFront($type[0]->menu_id, $S->id, $C->id) as $k => $D)
                                                                     @if ($D->external == 'yes')
                                                                         <li><a href="{{ url($D->url) }}"
-                                                                            @if (GetLang() == 'en') onclick="return confirm('This link will take you to an external web site.')"  @else onclick="return confirm('यह लिंक आपको एक बाहरी वेब साइट पर ले जाएगा।')" @endif
+                                                                                @if (GetLang() == 'en') onclick="return confirm('This link will take you to an external web site.')"  @else onclick="return confirm('यह लिंक आपको एक बाहरी वेब साइट पर ले जाएगा।')" @endif
                                                                                 target="_blank">
                                                                                 @if (GetLang() == 'en')
                                                                                     {{ $D->name ?? '' }}
@@ -400,7 +400,7 @@
 
 
                                                                             <a href={{ url($mmenu[0]->slug . '/' . $S->slug . '/' . $C->slug . '/' . $D->slug) }}
-                                                                                      class="@if ($D->id  == $type[0]->id) active-sub @endif">
+                                                                                class="@if ($D->id == $type[0]->id) active-sub @endif">
                                                                                 @if (GetLang() == 'en')
                                                                                     {{ $D->name ?? '' }}
                                                                                 @else
@@ -418,7 +418,7 @@
                                     @else
                                         @if ($C->external == 'yes')
                                             <li><a href="{{ url($C->url) }}"
-                                                @if (GetLang() == 'en') onclick="return confirm('This link will take you to an external web site.')"  @else onclick="return confirm('यह लिंक आपको एक बाहरी वेब साइट पर ले जाएगा।')" @endif
+                                                    @if (GetLang() == 'en') onclick="return confirm('This link will take you to an external web site.')"  @else onclick="return confirm('यह लिंक आपको एक बाहरी वेब साइट पर ले जाएगा।')" @endif
                                                     target="_blank">
                                                     @if (GetLang() == 'en')
                                                         {{ $C->name ?? '' }}
@@ -453,13 +453,11 @@
                         @else
                             @if ($S->external == 'yes')
                                 <li><a href="{{ url($S->url) }}"
-                                    @if (GetLang() == 'en') onclick="return confirm('This link will take you to an external web site.')"  @else onclick="return confirm('यह लिंक आपको एक बाहरी वेब साइट पर ले जाएगा।')" @endif
-                                        @if (GetLang() == 'en')
-                                            {{ $S->name ?? '' }}
+                                        @if (GetLang() == 'en') onclick="return confirm('This link will take you to an external web site.')"  @else onclick="return confirm('यह लिंक आपको एक बाहरी वेब साइट पर ले जाएगा।')" @endif
+                                        @if (GetLang() == 'en') {{ $S->name ?? '' }}
                                         @else
-                                            {{ $S->name_h ?? '' }}
-                                        @endif
-                                    </a></li>
+                                            {{ $S->name_h ?? '' }} @endif
+                                        </a></li>
                             @elseif($S->external == 'no')
                                 <li><a href="{{ url($S->url) }}">
                                         @if (GetLang() == 'en')
@@ -551,14 +549,15 @@
     @endif
     </div>
 
-    @if($item[0]->video_url  != '')
+    @if ($item[0]->video_url != '')
+        <div class="col-md-8 mx-auto">
 
-    <div class="col-md-8 mx-auto">
+            <iframe width="100%" height="315" src="{{ $item[0]->video_url ?? '' }}"
+                title="{{ url($item[0]->video_title) ?? '' }}" frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                allowfullscreen></iframe>
 
-       <iframe width="100%" height="315" src="{{ $item[0]->video_url  ??'' }}" title="{{ url($item[0]->video_title)  ??''}}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-
-    </div>
-
+        </div>
     @endif
     </div>
     </section>
@@ -625,7 +624,7 @@
                                                             @foreach (GetsubchildMenusFront($gets[0]->menu_id, $S->id, $C->id) as $k => $D)
                                                                 @if ($D->external == 'yes')
                                                                     <li><a href="{{ url($D->url) }}"
-                                                                        @if (GetLang() == 'en') onclick="return confirm('This link will take you to an external web site.')"  @else onclick="return confirm('यह लिंक आपको एक बाहरी वेब साइट पर ले जाएगा।')" @endif
+                                                                            @if (GetLang() == 'en') onclick="return confirm('This link will take you to an external web site.')"  @else onclick="return confirm('यह लिंक आपको एक बाहरी वेब साइट पर ले जाएगा।')" @endif
                                                                             target="_blank">
                                                                             @if (GetLang() == 'en')
                                                                                 {{ $D->name ?? '' }}
@@ -662,7 +661,7 @@
                                 @else
                                     @if ($C->external == 'yes')
                                         <li><a href="{{ url($C->url) }}"
-                                            @if (GetLang() == 'en') onclick="return confirm('This link will take you to an external web site.')"  @else onclick="return confirm('यह लिंक आपको एक बाहरी वेब साइट पर ले जाएगा।')" @endif
+                                                @if (GetLang() == 'en') onclick="return confirm('This link will take you to an external web site.')"  @else onclick="return confirm('यह लिंक आपको एक बाहरी वेब साइट पर ले जाएगा।')" @endif
                                                 target="_blank">
                                                 @if (GetLang() == 'en')
                                                     {{ $C->name ?? '' }}
@@ -698,7 +697,8 @@
                     @else
                         @if ($S->external == 'yes')
                             <li><a href="{{ url($S->url) }}"
-                                @if (GetLang() == 'en') onclick="return confirm('This link will take you to an external web site.')"  @else onclick="return confirm('यह लिंक आपको एक बाहरी वेब साइट पर ले जाएगा।')" @endif target="_blank">
+                                    @if (GetLang() == 'en') onclick="return confirm('This link will take you to an external web site.')"  @else onclick="return confirm('यह लिंक आपको एक बाहरी वेब साइट पर ले जाएगा।')" @endif
+                                    target="_blank">
                                     @if (GetLang() == 'en')
                                         {{ $S->name ?? '' }}
                                     @else
@@ -777,104 +777,105 @@
                                                                 title="{{ $membersLists->title ?? '' }}">
                                                         </figure>
                                                         <div class="text-scroll">
-                                                        <h4>
-                                                            @if (GetLang() == 'en')
-                                                                {{ $membersLists->title ?? '' }}
-                                                            @else
-                                                                {{ $membersLists->title_h ?? '' }}
-                                                            @endif
-                                                        </h4>
+                                                            <h4>
+                                                                @if (GetLang() == 'en')
+                                                                    {{ $membersLists->title ?? '' }}
+                                                                @else
+                                                                    {{ $membersLists->title_h ?? '' }}
+                                                                @endif
+                                                            </h4>
 
-                                                        <p>
-                                                            @if (GetLang() == 'en')
-                                                                {{ $membersLists->designation ?? '' }}
-                                                            @else
-                                                                {{ $membersLists->designation_h ?? '' }}
-                                                            @endif
-                                                        </p>
+                                                            <p>
+                                                                @if (GetLang() == 'en')
+                                                                    {{ $membersLists->designation ?? '' }}
+                                                                @else
+                                                                    {{ $membersLists->designation_h ?? '' }}
+                                                                @endif
+                                                            </p>
 
-                                                        <p>
-                                                            @if (GetLang() == 'en')
-                                                                {{ $membersLists->more_designation ?? '' }}
-                                                            @else
-                                                                {{ $membersLists->more_designation ?? '' }}
-                                                            @endif
-                                                        </p>
+                                                            <p>
+                                                                @if (GetLang() == 'en')
+                                                                    {{ $membersLists->more_designation ?? '' }}
+                                                                @else
+                                                                    {{ $membersLists->more_designation ?? '' }}
+                                                                @endif
+                                                            </p>
                                                         </div>
-                                                    </a>
-
-                                                    </div>
-
-
+                                                </a>
 
                                         </div>
-                                    @endforeach
+
+
 
                                 </div>
-                            @endisset
+                    @endforeach
+
+                </div>
+            @endisset
 
 
-                            @if ($item[0]->cover_image != '' && $item[0]->cover_image != 'default.jpg')
-                                <div class="row mt-4">
-                                    <div class="col-md-3">
-                                        <div class=" top text-center mt-0">
-                                            <div class="profile-img">
-                                                <img src="{{ asset('page/image/' . $item[0]->cover_image ?? '') }}"
-                                                    alt="{{ $item[0]->cover_alt ?? '' }}"
-                                                    title="{{ $item[0]->cover_title ?? '' }}">
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div>
-
-                                        <div class="col-md-7 col-lg-8">
-                                            <p>
-                                                @if (GetLang() == 'en')
-                                                    {!! $item[0]->content !!}
-                                                @else
-                                                    {!! $item[0]->content_h !!}
-                                                @endif
-                                            </p>
-                                        </div>
-                                    @else
-                                        <div class="commontxt">
-                                            <div class="row">
-                                                <div class="col-md-12 col-lg-12">
-
-
-
-                                                    @if(request()->path() == 'about-institute/library/about-library')
-
-                                                    <iframe frameborder="0" height="250px" sandbox="allow-same-origin allow-scripts allow-popups allow-forms" src="https://widgets.ebscohost.com/prod/customerspecific/testpv/IIMKashipur/iimkashipur_search.html" width="100%"></iframe>
-
-                                                    @endif
-
-
-                                                    <p>
-                                                        @if (GetLang() == 'en')
-                                                            {!! $item[0]->content !!}
-                                                        @else
-                                                            {!! $item[0]->content_h !!}
-                                                        @endif
-                                                    </p>
-                                                </div>
-                                            </div>
-                                        </div>
-                            @endif
+            @if ($item[0]->cover_image != '' && $item[0]->cover_image != 'default.jpg')
+                <div class="row mt-4">
+                    <div class="col-md-3">
+                        <div class=" top text-center mt-0">
+                            <div class="profile-img">
+                                <img src="{{ asset('page/image/' . $item[0]->cover_image ?? '') }}"
+                                    alt="{{ $item[0]->cover_alt ?? '' }}" title="{{ $item[0]->cover_title ?? '' }}">
+                            </div>
                         </div>
-
-                        @if($item[0]->video_url  != '')
-
-                        <div class="col-md-12 mx-auto">
-
-                           <iframe width="100%" height="315" src="{{ $item[0]->video_url  ??'' }}" title="{{ url($item[0]->video_title)  ??''}}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-
-                        </div>
-
-                        @endif
                     </div>
-                @endif
+                    <div>
+
+                        <div class="col-md-7 col-lg-8">
+                            <p>
+                                @if (GetLang() == 'en')
+                                    {!! $item[0]->content !!}
+                                @else
+                                    {!! $item[0]->content_h !!}
+                                @endif
+                            </p>
+                        </div>
+                    @else
+                        <div class="commontxt">
+                            <div class="row">
+                                <div class="col-md-12 col-lg-12">
+
+
+
+                                    @if (request()->path() == 'about-institute/library/about-library')
+                                        <iframe frameborder="0" height="250px"
+                                            sandbox="allow-same-origin allow-scripts allow-popups allow-forms"
+                                            src="https://widgets.ebscohost.com/prod/customerspecific/testpv/IIMKashipur/iimkashipur_search.html"
+                                            width="100%"></iframe>
+                                    @endif
+
+
+                                    <p>
+                                        @if (GetLang() == 'en')
+                                            {!! $item[0]->content !!}
+                                        @else
+                                            {!! $item[0]->content_h !!}
+                                        @endif
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+            @endif
+        </div>
+
+        @if ($item[0]->video_url != '')
+            <div class="col-md-12 mx-auto">
+
+                <iframe width="100%" height="315" src="{{ $item[0]->video_url ?? '' }}"
+                    title="{{ url($item[0]->video_title) ?? '' }}" frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    allowfullscreen></iframe>
+
             </div>
+        @endif
+        </div>
+        @endif
+        </div>
 
 
         </div>
@@ -941,7 +942,7 @@
                                                             @foreach (GetsubchildMenusFront($type[0]->menu_id, $S->id, $C->id) as $k => $D)
                                                                 @if ($D->external == 'yes')
                                                                     <li><a href="{{ url($D->url) }}"
-                                                                        @if (GetLang() == 'en') onclick="return confirm('This link will take you to an external web site.')"  @else onclick="return confirm('यह लिंक आपको एक बाहरी वेब साइट पर ले जाएगा।')" @endif
+                                                                            @if (GetLang() == 'en') onclick="return confirm('This link will take you to an external web site.')"  @else onclick="return confirm('यह लिंक आपको एक बाहरी वेब साइट पर ले जाएगा।')" @endif
                                                                             target="_blank">
                                                                             @if (GetLang() == 'en')
                                                                                 {{ $D->name ?? '' }}
@@ -978,7 +979,7 @@
                                 @else
                                     @if ($C->external == 'yes')
                                         <li><a href="{{ url($C->url) }}"
-                                            @if (GetLang() == 'en') onclick="return confirm('This link will take you to an external web site.')"  @else onclick="return confirm('यह लिंक आपको एक बाहरी वेब साइट पर ले जाएगा।')" @endif
+                                                @if (GetLang() == 'en') onclick="return confirm('This link will take you to an external web site.')"  @else onclick="return confirm('यह लिंक आपको एक बाहरी वेब साइट पर ले जाएगा।')" @endif
                                                 target="_blank">
                                                 @if (GetLang() == 'en')
                                                     {{ $C->name ?? '' }}
@@ -1013,7 +1014,8 @@
                     @else
                         @if ($S->external == 'yes')
                             <li><a href="{{ url($S->url) }}"
-                                @if (GetLang() == 'en') onclick="return confirm('This link will take you to an external web site.')"  @else onclick="return confirm('यह लिंक आपको एक बाहरी वेब साइट पर ले जाएगा।')" @endif target="_blank">
+                                    @if (GetLang() == 'en') onclick="return confirm('This link will take you to an external web site.')"  @else onclick="return confirm('यह लिंक आपको एक बाहरी वेब साइट पर ले जाएगा।')" @endif
+                                    target="_blank">
                                     @if (GetLang() == 'en')
                                         {{ $S->name ?? '' }}
                                     @else
@@ -1107,10 +1109,11 @@
 
                                                     {{-- {{ request()->path() }} --}}
 
-                                                    @if(request()->path() == 'about-institute/library')
-
-                                                    <iframe frameborder="0" height="250px" sandbox="allow-same-origin allow-scripts allow-popups allow-forms" src="https://widgets.ebscohost.com/prod/customerspecific/testpv/IIMKashipur/iimkashipur_search.html" width="100%"></iframe>
-
+                                                    @if (request()->path() == 'about-institute/library')
+                                                        <iframe frameborder="0" height="250px"
+                                                            sandbox="allow-same-origin allow-scripts allow-popups allow-forms"
+                                                            src="https://widgets.ebscohost.com/prod/customerspecific/testpv/IIMKashipur/iimkashipur_search.html"
+                                                            width="100%"></iframe>
                                                     @endif
 
                                                     <p>
@@ -1132,14 +1135,15 @@
 
                             </div>
 
-                            @if($item[0]->video_url  != '')
+                            @if ($item[0]->video_url != '')
+                                <div class="col-md-12 mx-auto">
 
-                            <div class="col-md-12 mx-auto">
+                                    <iframe width="100%" height="315" src="{{ $item[0]->video_url ?? '' }}"
+                                        title="{{ url($item[0]->video_title) ?? '' }}" frameborder="0"
+                                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                                        allowfullscreen></iframe>
 
-                               <iframe width="100%" height="315" src="{{ $item[0]->video_url  ??'' }}" title="{{ url($item[0]->video_title)  ??''}}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-
-                            </div>
-
+                                </div>
                             @endif
                         </div>
                     @endforeach
@@ -1192,14 +1196,15 @@
                                 </div>
                             </div>
 
-                            @if($item[0]->video_url  != '')
+                            @if ($item[0]->video_url != '')
+                                <div class="col-md-8 mx-auto">
 
-                            <div class="col-md-8 mx-auto">
+                                    <iframe width="100%" height="315" src="{{ $item[0]->video_url ?? '' }}"
+                                        title="{{ url($item[0]->video_title) ?? '' }}" frameborder="0"
+                                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                                        allowfullscreen></iframe>
 
-                               <iframe width="100%" height="315" src="{{ $item[0]->video_url  ??'' }}" title="{{ url($item[0]->video_title)  ??''}}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-
-                            </div>
-
+                                </div>
                             @endif
                         </div>
                     </div>
