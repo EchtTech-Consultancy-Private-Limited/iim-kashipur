@@ -195,14 +195,14 @@
                             </svg></a></li>
                     <li>
                         <span>
-                            <a href="{{ URL::previous() }}">
+
                                 @if (GetLang() == 'en')
                                     Students Corner
                                 @else
                                     Students Corner
                                 @endif
                         </span>
-                        </a>
+
                     </li>
 
                     <li>
