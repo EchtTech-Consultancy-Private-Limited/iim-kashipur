@@ -102,15 +102,15 @@
                             </span>
 
 
-                   @if(isset($chairperson))
+                   @if($chairperson != '')
                         <div class="row mt-4 mb-5">
                             <div class="col-md-3">
                                 <div class="top text-center mt-0">
                                     <div class="profile-img img-fac">
-                                        <img src="{{ asset('uploads/organisation/' . $chairperson[0]->image)}}"
+                                        <img src="{{ asset('uploads/organisation/'.$chairperson->image)}}"
                                             alt="A VENKATARAMAN" loading="lazy" class="mb-0">
                                         <div class="d-flex justify-content-center">
-                                            <div class="top-text mb-0 p-relative"> {{ $chairperson[0]->title ?? '' }} </div>
+                                            <div class="top-text mb-0 p-relative"> {{ $chairperson->title ?? '' }} </div>
                                         </div>
                                     </div>
                                 </div>
@@ -118,11 +118,11 @@
                             </div>
                             <div class="col-md-9">
                                 <div class="designation">
-                                    <h4>{{ $chairperson[0]->designation ?? '' }} </h4>
-                                    <h6>{{ $chairperson[0]->title ?? '' }} </h6>
-                                    <h6>{{ $chairperson[0]->phone ?? '' }} </h6>
+                                    <h4>{{ $chairperson->designation ?? '' }} </h4>
+                                    <h6>{{ $chairperson->title ?? '' }} </h6>
+                                    <h6>{{ $chairperson->phone ?? '' }} </h6>
                                     <?php
-                                    $email_address=$chairperson[0]->email ;
+                                    $email_address=$chairperson->email ;
                                     $str = $email_address;
                                     $var= str_replace('@','[at]',$str);
                                     $email= str_replace('.','[dot]',$var);

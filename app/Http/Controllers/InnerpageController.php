@@ -507,8 +507,10 @@ public function  Vendors_Debarred(){
 public function press_media()
 {
     $item=press_media::wherestatus(1)->orderBy('id','desc')->get();
+    $member=press_media::first();
     if( count($item)){
-        $chairperson=OrganisationStructure::whereid($item[0]->chairperson)->get();
+        $chairperson=OrganisationStructure::whereid($member->chairperson)->first();
+        //dd($chairperson);
         $chairpersons=OrganisationStructure::where('MEDIA_COORDINATORS','=','1')->get();
     return view('front.Layouts.child_pages.menu_bar.main_menu.Press&media',['item'=>$item,'chairperson'=>$chairperson,'chairpersons'=>$chairpersons]);
     }else{
