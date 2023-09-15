@@ -3,9 +3,9 @@
 @section('content')
 
 <div class="internalpagebanner">
-        
+
      <img src="http://localhost/kashipur-design/public/uploads/site-logo/167903423258.jpg" style="height:auto;  min-height:200px; max-height:500px overflow:hidden;" alt="Faculty Director" title="Faculty Director" loading="lazy">
-                
+
         <div class="imagecaption">
 
             <div class="container">
@@ -44,9 +44,9 @@
 
                 <!-- <div class="col-md-3">
 
-                    <div class="sidebarwraper">                        
-                       
-                        <ul>   
+                    <div class="sidebarwraper">
+
+                        <ul>
                           <li><a href="javascript:void();" class="active"> Partnerships and Collaborations  </a></li>
                         </ul>
 
@@ -59,7 +59,7 @@
                     <div class="innerpagecontent">
                   <a href="javascript:void(0)" class="btn2 margin_bottom"> Partnerships and Collaborations  </a><br>
 
-                      
+
 
             <div class="excellence-wrap back-img mt-4">
              <div class="container">
@@ -70,7 +70,7 @@
                         <div class="tab-pane fade show active" id="innovation" role="tabpanel" aria-labelledby="innovation-tab">
 
                             <div class="excellence-gallery partnership-img">
-                                <div class="row masonry-grid">                                   
+                                <div class="row masonry-grid">
 
                                     <div class="col-md-6 col-lg-3">
                                         <div class="d-flex flex-column h-100">
@@ -78,21 +78,21 @@
                                             <div class="thumbnail p-relative">
                                                 <img src="https://www.iimkashipur.ac.in/sites/default/files/styles/large/public/Untitled.jpg?itok=-xBuW9Dc" alt="gallery-img" class="img-fluid" loading="lazy">
                                                 <div class="top-text"> Alba Graduate Business School, Greece </div>
-                                            </div> 
+                                            </div>
                                             </a>
                                         </div>
-                                    </div> 
-                                    
+                                    </div>
+
                                     <div class="col-md-6 col-lg-3">
                                         <div class="d-flex flex-column h-100">
                                         <a href="javascript:void();">
                                             <div class="thumbnail p-relative">
                                                 <img src="https://www.iimkashipur.ac.in/sites/default/files/styles/large/public/Untitle.jpg?itok=eHdrmU-Z" alt="gallery-img" class="img-fluid" loading="lazy">
                                                 <div class="top-text"> ESDES, Lyon, France </div>
-                                            </div> 
+                                            </div>
                                             </a>
                                         </div>
-                                    </div>   
+                                    </div>
 
                                     <div class="col-md-6 col-lg-3">
                                         <div class="d-flex flex-column h-100">
@@ -100,11 +100,11 @@
                                             <div class="thumbnail p-relative">
                                                 <img src="https://www.iimkashipur.ac.in/sites/default/files/styles/large/public/Untit.jpg?itok=zelqHKmo" alt="gallery-img" class="img-fluid" loading="lazy">
                                                 <div class="top-text"> Coller School of Management </div>
-                                          
-                                            </div> 
+
+                                            </div>
                                             </a>
                                         </div>
-                                    </div>   
+                                    </div>
 
                                     <div class="col-md-6 col-lg-3">
                                         <div class="d-flex flex-column h-100">
@@ -112,11 +112,11 @@
                                             <div class="thumbnail p-relative">
                                                 <img src="https://www.iimkashipur.ac.in/sites/default/files/styles/large/public/Unti.jpg?itok=iGmIk4IF" alt="gallery-img" class="img-fluid" loading="lazy">
                                                 <div class="top-text"> Turiba University, Latvia </div>
-                                           
-                                            </div> 
+
+                                            </div>
                                             </a>
                                         </div>
-                                    </div>   
+                                    </div>
 
                                     <div class="col-md-6 col-lg-3">
                                         <div class="d-flex flex-column h-100">
@@ -124,11 +124,11 @@
                                             <div class="thumbnail p-relative">
                                                 <img src="https://www.iimkashipur.ac.in/sites/default/files/styles/large/public/Un.jpg?itok=EklH5EBd" alt="gallery-img" class="img-fluid" loading="lazy">
                                                 <div class="top-text"> University of Lima, Peru </div>
-                                           
-                                            </div> 
+
+                                            </div>
                                             </a>
                                         </div>
-                                    </div>   
+                                    </div>
 
                                     <div class="col-md-6 col-lg-3">
                                         <div class="d-flex flex-column h-100">
@@ -136,23 +136,23 @@
                                             <div class="thumbnail p-relative">
                                                 <img src="https://www.iimkashipur.ac.in/sites/default/files/styles/large/public/solbridge-logo.jpg?itok=2LFVESrI" alt="gallery-img" class="img-fluid" loading="lazy">
                                                 <div class="top-text"> Solbridge International School of Business </div>
-                                            </div> 
+                                            </div>
                                             </a>
                                         </div>
-                                    </div>  
-                                    
+                                    </div>
+
                                     <div class="col-md-6 col-lg-3">
                                         <div class="d-flex flex-column h-100">
                                         <a href="javascript:void();">
                                             <div class="thumbnail p-relative">
                                                 <img src="https://www.iimkashipur.ac.in/sites/default/files/styles/large/public/Linnaeus.jpg?itok=SExMfCsG" alt="gallery-img" class="img-fluid" loading="lazy">
                                                 <div class="top-text">Linnaeus University, Sweden </div>
-                                          
-                                            </div> 
+
+                                            </div>
                                             </a>
                                         </div>
-                                    </div>   
-                                                                       
+                                    </div>
+
                                 </div>
                             </div>
                         </div>
@@ -167,7 +167,7 @@
 
                 </div>
 
-                
+
             </div>
 
         </div>
