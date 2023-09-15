@@ -219,7 +219,7 @@
 
                     <li>
                         <span>
-                            <a href="{{ URL::previous() }}">
+                            <a href="javascript:void(0);">
                                 @if (GetLang() == 'en')
                                     {{ $cccbreadcram }}
                                 @else

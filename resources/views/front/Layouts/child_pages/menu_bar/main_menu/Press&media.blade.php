@@ -101,7 +101,6 @@
                                 Tel: +91-7900444090/91/91/93,7088270882<br>
                             </span>
 
-
                    @if($chairperson != '')
                         <div class="row mt-4 mb-5">
                             <div class="col-md-3">
