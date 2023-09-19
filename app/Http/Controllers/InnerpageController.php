@@ -67,17 +67,17 @@ public function archive($slug){
 
    if($slug == 'career' || $slug == 'Career' || $slug == 'Careers' || $slug == 'careers'){
      $bread="Career";
-     $data =Career::get();
+     $data =Career::orderBy('id','Desc')->get();
      return view('front.Layouts.child_pages.menu_bar.main_menu.archive',['data'=>$data,'bread'=>$bread]);
     }
     elseif($slug == 'tenders' || $slug ==  'Tender' || $slug ==  'tender' ||$slug ==  'Tenders'){
     $bread="Tender";
-    $data =Tender::get();
+    $data =Tender::orderBy('id','Desc')->get();
     return view('front.Layouts.child_pages.menu_bar.main_menu.archive',['data'=>$data,'bread'=>$bread]);
     }
     elseif($slug == 'Vendors-Debarred' || $slug ==  'vendors-debarred'){
     $bread="Vendors-Debarred";
-    $data =Vendorsdebarred::get();
+    $data =Vendorsdebarred::orderBy('id','Desc')->get();
     return view('front.Layouts.child_pages.menu_bar.main_menu.archive',['data'=>$data,'bread'=>$bread]);
     }
     elseif($slug == 'rti'||$slug == 'RTI'||$slug == 'rtis'||$slug == 'RTIS'){
@@ -89,7 +89,7 @@ public function archive($slug){
     }
     elseif($slug == 'industry-connect' || 'Industry-Connect' || 'industry-connects'){
     $bread="industry-connect";
-    $data =Industry::get();
+    $data =Industry::orderBy('id','Desc')->get();
     return view('front.Layouts.child_pages.menu_bar.main_menu.archive',['data'=>$data,'bread'=>$bread]);
     }
    else{
