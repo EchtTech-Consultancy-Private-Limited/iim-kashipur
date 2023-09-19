@@ -92,13 +92,23 @@
                                 </div>
                             </div>
 
-                            <div class="col-md-12">
+                            {{-- <div class="col-md-6">
                                 <label for="corrigendum" class="col-form-label">Corrigendum</label>
                                 <div class="">
                                     <input type="text" class="form-control" name="corrigendum"@if (isset($id)) value="{{ $tender->corrigendum }}" @else value="{{ old('corrigendum') }}" @endif  placeholder="Please enter" value=""><br>
                                     <label for="corrigendum" id="corrigendum-error" class="error"></label>
                                 </div>
+                            </div> --}}
+
+
+                            <div class="col-md-6">
+                                <label for="tender_document" class="col-form-label">Corrigendum Documents <span style="color:green;font-size:12px;"> @if($id) [{{$tender->Corrigendum_Documents }}] @endif</span></label>
+                                <div class="">
+                                    <input type="file" class="form-control" name="Corrigendum_Documents"@if (isset($id)) value="{{ $tender->Corrigendum_Documents }}" @else value="{{ old('Corrigendum_Documents') }}" @endif  placeholder="Please enter" ><br>
+                                    <label for="Corrigendum_Documents" id="Corrigendum_Documents-error" class="error"></label>
+                                </div>
                             </div>
+
 
                             {{-- <div class="col-md-12">
 

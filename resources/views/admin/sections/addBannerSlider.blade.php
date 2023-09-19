@@ -256,7 +256,7 @@
 
                     </div>
 
-                    <div class="col-md-6"   >
+                    {{-- <div class="col-md-6"   >
 
                         <div class="form-group"><label> Link Option  </label> &nbsp;
 
@@ -268,7 +268,7 @@
 
                         </div>
 
-                         </div>
+                         </div> --}}
 
 
 
@@ -297,6 +297,11 @@
                             </div>
 
 
+                        <div class="col-md-6">
+
+                            <div class="form-group"> <label for="form_name">Sort order</label> <input id="Short_order" type="number" name="Short_order" @if($id) value="{{$data->Short_order}}" @else value="{{old('Short_order')}}" @endif class="form-control" placeholder="Please enter Sort order"  required> </div>
+
+                        </div>
 
 
                  <input type="hidden" @if($id) value="{{ $data->status }}" @else value="0" @endif  name="status" >

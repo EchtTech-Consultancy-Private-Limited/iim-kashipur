@@ -1668,7 +1668,7 @@ function Add_ClientLogo(Request $request,$id=null){
             $data->banner_Alt=$request->banner_Alt;
             $data->banner_title=$request->banner_title;
             $data->status=$request->status;
-
+            $data->Short_order=$request->Short_order;
 
 
             if($request->has('external')){

@@ -86,20 +86,21 @@
 
                                                         <td>{{ $D->submission_date }}</td>
 
-                                                        <td>{{$D->title}}</td>
+                                                        <td>{{ $D->title }}</td>
 
                                                         <td>
 
-                                                             <a   href="{{url('uploads/pdf'.$D->tender_document)}}" download>
+                                                            <a href="{{ url('uploads/pdf' . $D->tender_document) }}" download>
 
-                                                                <img src="{{ asset('admin/images/viewpdf.jpg') }}"  width="170" height="70">
+                                                                <img src="{{ asset('admin/images/viewpdf.jpg') }}"
+                                                                    width="170" height="70">
 
                                                             </a>
 
                                                             <span style="font-size: 12px;margin-left: 5px;color: #ed2044;">
                                                                 (
                                                                 <?php
-                                                                    echo formatSizeUnits($D->pdfsize);
+                                                                echo formatSizeUnits($D->pdfsize);
                                                                 ?>)
                                                             </span>
 
@@ -120,8 +121,8 @@
                                                             @else
                                                                 @if ($D->status == 1)
                                                                     <span style="color:green;">Active</span>
-                                                                    @else
-                                                                        <span style="color:red;">Inactive</span>
+                                                                @else
+                                                                    <span style="color:red;">Inactive</span>
                                                                 @endif
                                                             @endif
                                                         </td>
@@ -134,10 +135,10 @@
 
 
 
-                                                                      <a
-                                                                    href="{{ url('Accounts/show-tender/' . dEncrypt($D->id)) }}"><i
-                                                                        class="ti-eye btn-icon-append"
-                                                                        style="color:black;"></i></a> &nbsp;
+                                                            <a
+                                                                href="{{ url('Accounts/show-tender/' . dEncrypt($D->id)) }}"><i
+                                                                    class="ti-eye btn-icon-append"
+                                                                    style="color:black;"></i></a> &nbsp;
 
 
                                                             <a href="{{ url('Accounts/delete-tender/' . dEncrypt($D->id)) }}"
