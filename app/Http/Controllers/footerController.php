@@ -190,7 +190,19 @@ if($request->isMethod('post')){
             $file->move($path,$newname);
         $tender->tender_document=$newname;
         }
-        $tender->corrigendum=$request->corrigendum;
+
+
+        if($request->hasFile('Corrigendum_Documents')){
+            $tender->Corrigendum_pdfsize=$request->Corrigendum_Documents->getSize();
+            $file=$request->file('Corrigendum_Documents');
+            $newname=time().rand(10,99).'.'.$file->getClientOriginalExtension();
+            $path=public_path('uploads/tenders');
+            $file->move($path,$newname);
+           $tender->Corrigendum_Documents=$newname;
+        }
+
+
+        // $tender->corrigendum=$request->corrigendum;
         $tender->status=$request->status;
         $tender->save();
     return redirect()->route('admin.viewtenders')->with('success',$msg);

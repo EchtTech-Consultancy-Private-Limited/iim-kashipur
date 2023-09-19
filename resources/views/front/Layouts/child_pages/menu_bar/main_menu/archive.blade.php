@@ -45,6 +45,7 @@
             @if ($bread == 'Career')
                 <table>
                     <tr>
+                        <th class="text-nowrap">Sr.No</th>
                         <th class="text-nowrap">NAME OF THE POST</th>
                         <th class="text-nowrap"> OPENING DATE</th>
                         <th class="text-nowrap">CLOSING DATE</th>
@@ -54,11 +55,14 @@
                         <th class="text-nowrap">CORRIGENDUM</th>
                     </tr>
 
+
+                    <?php $number = 1; ?>
                     @foreach ($data as $value)
                         {{-- {{ Getarchivedata($value->created_at->format('Y-m-d'), $value->archive_date) }} --}}
 
                         @if (Getarchivedata(now()->format('Y-m-d'), $value->archive_date) == 'True')
                             <tr>
+                                <td>{{ $number }}</td>
                                 <td>{{ $value->name_of_the_post }} </td>
                                 <td> {{ $value->opening_date }} </td>
                                 <td> {{ $value->closing_date }} </td>
@@ -89,6 +93,7 @@
 
                                 <td>{{ $value->corrigendum }}</td>
                             </tr>
+                            <?php $number++; ?>
                         @endif
                     @endforeach
 
@@ -107,13 +112,13 @@
                     </tr>
 
 
-
+                    <?php $number = 1; ?>
                     @foreach ($data as $K => $value)
                         {{-- {{ Getarchivedata($value->created_at->format('Y-m-d'), $value->archive_date) }} --}}
 
                         @if (Getarchivedata(now()->format('Y-m-d'), $value->archive_date) == 'True')
                             <tr>
-                                <td>{{ $K + 1 }}</td>
+                                <td>{{ $number }}</td>
                                 <td>{{ $value->published_date }}</td>
                                 <td>{{ $value->submission_date }}</td>
                                 <td>{{ $value->title }}</td>
@@ -135,6 +140,7 @@
 
 
                             </tr>
+                            <?php $number++; ?>
                         @endif
                     @endforeach
 
@@ -149,6 +155,7 @@
                         <th>Vendor Name</th>
                         <th>Related Documents</th>
                     </tr>
+                    <?php $number = 1; ?>
 
                     @foreach ($data as $K => $value)
                         {{--
@@ -156,7 +163,7 @@
 
                         @if (Getarchivedata(now()->format('Y-m-d'), $value->archive_date) == 'True')
                             <tr>
-                                <td>{{ $K + 1 }}</td>
+                                <td>{{ $number }}</td>
                                 <td>{{ $value->vendor_name }} </td>
 
                                 <td>
@@ -174,6 +181,7 @@
 
                                 </td>
                             </tr>
+                            <?php $number++; ?>
                         @endif
                     @endforeach
 
@@ -195,10 +203,12 @@
 
                     <tbody>
 
+                        <?php $number = 1; ?>
+
                         @foreach ($data as $K => $value)
                             @if (Getarchivedata(now()->format('Y-m-d'), $value->archive_date) == 'True')
                                 <tr>
-                                    <td>{{ $K + 1 }}</td>
+                                    <td>{{ $number }}</td>
                                     <td>{{ $value->date }}</td>
                                     <td>{{ $value->title }}</td>
 
@@ -215,6 +225,7 @@
                                     @endif
 
                                 </tr>
+                                <?php $number++; ?>
                             @endif
                         @endforeach
 

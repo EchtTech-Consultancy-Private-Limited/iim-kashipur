@@ -50,6 +50,7 @@
 
             <table>
                 <tr>
+                    <th class="text-nowrap">Sr.no</th>
                     <th class="text-nowrap">NAME OF THE POST</th>
                     <th class="text-nowrap"> OPENING DATE</th>
                     <th class="text-nowrap">CLOSING DATE</th>
@@ -59,6 +60,8 @@
                     <th class="text-nowrap">CORRIGENDUM</th>
                 </tr>
 
+                <?php $number = 1; ?>
+
                 @foreach ($item as $value)
 
                 {{-- {{Getarchivedata($value->created_at->format('Y-m-d'),$value->archive_date)}} --}}
@@ -67,6 +70,7 @@
                 {{-- {{ Getarchivedata(now()->format('Y-m-d'),$value->closing_date)}} --}}
                 @if(Getarchivedata(now()->format('Y-m-d'),$value->archive_date) != 'True')
                     <tr>
+                        <td>{{ $number }}</td>
                         <td>{{ $value->name_of_the_post }} </td>
                         <td> {{ $value->opening_date }} </td>
                         <td> {{ $value->closing_date }} </td>
@@ -98,6 +102,7 @@
                         <td>{{ $value->corrigendum }}</td>
                     </tr>
 
+                    <?php $number++; ?>
                     @endif
                 @endforeach
 

@@ -48,15 +48,16 @@
 
             <table>
                 <tr>
-                    <th>S.No</th>
+                    <th>Sr.No</th>
                     <th>Vendor Name</th>
                     <th>Related Documents</th>
                 </tr>
 
                 @foreach ($item as $K => $value)
+                <?php $number = 1; ?>
                   @if(Getarchivedata(now()->format('Y-m-d'),$value->archive_date) != 'True')
                     <tr>
-                        <td>{{ $K + 1 }}</td>
+                        <td>{{ $number }}</td>
                         <td>{{ $value->vendor_name }} </td>
 
                         <td>
@@ -71,6 +72,7 @@
                             </span>
                         </td>
                     </tr>
+                    <?php $number++; ?>
                     @endif
                 @endforeach
 

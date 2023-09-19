@@ -487,14 +487,8 @@ function FindQuickLinksNew($placement='',$sort_order=''){
         }
 
 
-
-
-
-
-
-
       function  Getsliderimage(){
-      $data=\App\Models\BannerSlider::where('status','1')->get();
+       $data=\App\Models\BannerSlider::where('status','1')->orderBy('short_order','ASC')->get();
       return @$data;
       }
 
