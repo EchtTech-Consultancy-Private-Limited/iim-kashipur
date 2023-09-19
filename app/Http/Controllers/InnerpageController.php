@@ -453,7 +453,6 @@ public function search(Request $request){
 
     public function anti_raggings(){
       $data=anti_raggings::wherestatus(1)->get();
-
       return view('front.Layouts.child_pages.menu_bar.main_menu.anti-ragging-policy',['data'=>$data]);
     }
 
@@ -468,7 +467,7 @@ public function search(Request $request){
 
 public function  career(){
 
-    $item=Career::wherestatus('1')->get();
+    $item=Career::wherestatus('1')->orderBy('id','Desc')->get();
     //dd($item);
     return view('front.Layouts.child_pages.menu_bar.main_menu.career',['item'=>$item]);
 
@@ -491,7 +490,7 @@ public function  career(){
 // Tenders
 public function Tenders(){   //->paginate(10)
 
-    $item=Tender::wherestatus('1')->get();
+    $item=Tender::wherestatus('1')->orderBy('id','Desc')->get();
     return view('front.Layouts.child_pages.menu_bar.main_menu.Tenders',['item'=>$item]);
 
 }
@@ -499,7 +498,7 @@ public function Tenders(){   //->paginate(10)
 // Vendors Debarred
 public function  Vendors_Debarred(){
 
-     $item=Vendorsdebarred::wherestatus('1')->get();
+     $item=Vendorsdebarred::wherestatus('1')->orderBy('id','Desc')->get();
      return view('front.Layouts.child_pages.menu_bar.main_menu.Vendors_Debarred',['item'=>$item]);
 }
 

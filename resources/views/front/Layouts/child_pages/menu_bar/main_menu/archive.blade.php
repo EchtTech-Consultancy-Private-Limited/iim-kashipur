@@ -91,7 +91,22 @@
                                 </td>
                                 <td>{{ $value->note }}</td>
 
-                                <td>{{ $value->corrigendum }}</td>
+
+                                <td>
+
+
+                                    @if ($value->corrigendum != '')
+                                        <a href="{{ asset('uploads/fo/' . $value->corrigendum) }}" download
+                                            target="_blank"><i class="fa fa-download"></i> Download</a>
+
+                                        <span style="font-size: 12px;margin-left: 5px;color: #ed2044;">
+                                            (
+                                            <?php
+                                            echo formatSizeUnits($value->pdf_corrigendum);
+                                            ?>)
+                                        </span>
+                                    @endif
+                                </td>
                             </tr>
                             <?php $number++; ?>
                         @endif
