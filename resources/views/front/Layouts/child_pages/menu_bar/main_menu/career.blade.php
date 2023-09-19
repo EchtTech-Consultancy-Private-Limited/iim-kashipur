@@ -79,14 +79,13 @@
                         <td>
                             @if($value->online_link != '')
                             <a
-
-
                                 @if($value->external=='1')  @if (GetLang() == 'en') onclick="return confirm('This link will take you to an external web site.')"  @else onclick="return confirm('यह लिंक आपको एक बाहरी वेब साइट पर ले जाएगा।')" @endif target="_blank" href="{{url($value->online_link) ??''}}"  @else href="{{url($value->online_link) ??''}}" @endif
 
                                 >Apply Here</a>
                             @endif
                         </td>
                         <td>
+                           @if($value->detail_advertisement != '')
                             <a href="{{ asset('uploads/fo/' . $value->detail_advertisement) }}" download  target="_blank"><i
                                     class="fa fa-download"></i> Download</a>
 
@@ -96,10 +95,29 @@
                                 echo formatSizeUnits($value->pdfsize);
                             ?>)
                         </span>
+                          @endif
                         </td>
                         <td>{{ $value->note }}</td>
 
-                        <td>{{ $value->corrigendum }}</td>
+                        <td>
+
+
+                            @if($value->corrigendum != '')
+                            <a href="{{ asset('uploads/fo/' . $value->corrigendum) }}" download  target="_blank"><i
+                                    class="fa fa-download"></i> Download</a>
+
+                        <span style="font-size: 12px;margin-left: 5px;color: #ed2044;">
+                            (
+                            <?php
+                                echo formatSizeUnits($value->pdf_corrigendum);
+                            ?>)
+                        </span>
+                          @endif
+
+
+
+
+                        </td>
                     </tr>
 
                     <?php $number++; ?>
