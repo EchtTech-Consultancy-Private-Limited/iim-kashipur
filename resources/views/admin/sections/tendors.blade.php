@@ -1,7 +1,5 @@
 @extends('admin.Layout.master')
 
-
-
 @section('content')
 
     <div class="main-panel">

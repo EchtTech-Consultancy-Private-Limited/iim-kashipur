@@ -1631,7 +1631,7 @@ function Add_ClientLogo(Request $request,$id=null){
                 $request->validate([
                     'title'=>'required',
                     'type'=>'required',
-                    'image'=>'max:5120|mimes:png,jpg|dimensions:max_width=1920,max_height=500',
+                    'image'=>'max:5120|mimes:png,jpg|dimensions:max_width=1920,max_height=550',
 
                 ]);
                 }
@@ -1641,7 +1641,7 @@ function Add_ClientLogo(Request $request,$id=null){
                     'title'=>'required',
                     'title'=>'required|unique:banner_sliders',
                     'type'=>'required',
-                    'image'=>'required|max:5120|mimes:png,jpg|dimensions:max_width=1920,max_height=500',
+                    'image'=>'required|max:5120|mimes:png,jpg|dimensions:max_width=1920,max_height=550',
                 ]);
               }
             }

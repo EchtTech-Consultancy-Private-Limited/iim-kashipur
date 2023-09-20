@@ -1473,6 +1473,14 @@
                         @endif
 
 
+                        @if($cccbreadcram  == 'Club')
+                            <h5>
+                                <span>Activity</span>
+                            </h5>
+
+                          <p>{!! $item[0]->activitie ?? '' !!}</p>
+                        @endif
+
                         @if ($item[0]->event != '')
                             <!-- Event section start  -->
                             <h5>
