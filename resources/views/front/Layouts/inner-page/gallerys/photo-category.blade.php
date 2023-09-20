@@ -54,7 +54,11 @@ img.hover-shadow.cursor {
                           <!-- Image text -->
                         <!-- <span class="top-text">  {{ $M->image_title}}  </span> -->
 
-                            <img src="{{ asset('gallery/multipimage/'.$M->large_image)}}" title="{{ $M->image_title }}"   onclick="openModal();currentSlide(1)" style="height:250px; width:100%" class="hover-shadow cursor">
+                        <a href="{{ asset('gallery/multipimage/'.$M->large_image)}}" class="image-link">
+                        <img src="{{ asset('gallery/multipimage/'.$M->large_image)}}" title="{{ $M->image_title }}" style="height:250px; width:100%" class="hover-shadow cursor">
+
+                        </a>
+
                         </div>
                     @endforeach
                 </div>
