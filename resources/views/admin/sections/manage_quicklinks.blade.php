@@ -120,11 +120,15 @@
                            </td>
 
                               <td>
-                                <a href="{{url('Accounts/add-edit-quicklink/'.dEncrypt($D->id))}}"><i class="ti-pencil btn-icon-append" style="color:black;"></i></a> &nbsp;
+                                {{-- <a href="{{url('Accounts/add-edit-quicklink/'.dEncrypt($D->id))}}"><i class="ti-pencil btn-icon-append" style="color:black;"></i></a> &nbsp; --}}
+                                <a href="{{url('Accounts/add-edit-quicklink/'.dEncrypt($D->id))}}"
+                                    onclick="return confirm('Are you sure to edit this record?')"><i
+                                        class="ti-pencil btn-icon-append"
+                                        style="color:black;"></i></a> &nbsp;
 
 
                                 {{-- <a href="{{url('Accounts/delete-quicklink/'.dEncrypt($D->id))}}" onclick="return confirm('Are You Sure?')"><i class="ti-delete btn-icon-append" style="color:black;"></i></a> --}}
-
+                                {{-- onclick="return confirm('Are you sure to edit this record?')" --}}
 
                                 <a href="{{url('Accounts/delete-quicklink/'.dEncrypt($D->id))}}"
                                     onclick="return confirm('Are you sure to delete this record?')"><i
