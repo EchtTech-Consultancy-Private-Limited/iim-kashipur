@@ -490,12 +490,12 @@
 
                                         @else
 
-                                            <a href="javascript:void();">
+                                            {{-- <a href="javascript:void();"> --}}
                                                 <img src="{{ asset('/banner/' . $M->image) }}"
                                                     class="d-block w-100 @if ($key == 0) img-responsive @endif"
                                                     alt="{{ $M->banner_Alt ?? '' }}"
                                                     title="{{ $M->banner_title ?? '' }}" loading="eager">
-                                            </a>
+                                            {{-- </a> --}}
 
                                     @endif
                                 @endif
