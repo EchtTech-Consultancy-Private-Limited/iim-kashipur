@@ -460,9 +460,11 @@
                                 <div class="banner-image-70">
                                     @if ("$M->image" != '')
                                         <!-- ../public/banner/banner-1.jpg-->
-                                        <img src="{{ asset('/banner/' . $M->image) }}"
+                                        <a @if ($M->external == 'yes') @if (GetLang() == 'en') onclick="return confirm('This link will take you to an external web site.')"  @else onclick="return confirm('यह लिंक आपको एक बाहरी वेब साइट पर ले जाएगा।')" @endif  target="_blank" href="{{ url($M->url) ??'' }}" @else    href="{{ url($M->url) ??'' }}" @endif >
+                                        <img src="{{ asset('/banner/'.$M->image) }}"
                                             class="d-block w-100 @if ($key == 0) img-responsive @endif"
                                             alt="{{ $M->banner_Alt }}" title="{{ $M->banner_title }}" loading="eager">
+                                        </a>
                                     @endif
                                 </div>
                             </div>
