@@ -267,7 +267,7 @@ else{
         else{
             $request->validate([
 
-            'vendor_name'=>'required|unique:Vendorsdebarred',
+            'vendor_name'=>'required|unique:vendorsdebarred',
             "related_document"   =>   "mimes:pdf|max:10000"
 
         ]);
