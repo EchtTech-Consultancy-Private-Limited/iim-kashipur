@@ -193,11 +193,11 @@
 
 
                             <li>
-                                <a href="{{  URL::previous()  }}">
+                                <a href="javascript:void(0);">
                                     <span>
                                 Academics
                             </span></a></li>
-                            <li><a href="{{  URL::previous()  }}"><span>
+                            <li> <a href="javascript:void(0);"><span>
                                 Doctoral Programme
                             </span><a></li>
 

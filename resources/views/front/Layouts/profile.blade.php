@@ -72,11 +72,13 @@
                         </a>
                     </li>
                     <li><span>
+                        <a href="{{ URL::previous() }}">
                             @if (GetLang() == 'en')
                                 {{ $gets[0]->name ?? '' }}
                             @else
                                 {{ $gets[0]->name_h ?? '' }}
                             @endif
+                        </a>
                         </span>
                     </li>
                     <li><span>
@@ -205,61 +207,61 @@
 
 
                     @if (URL::previous() == url('/faculty/academic-areas/communications'))
-                        <li><a href="{{ url('/') }}"><span>Faculty</span></a></li>
-                        <li><a href="{{ URL::previous() }}"><span>Academic Areas</span></a></li>
+                        <li><a href="javascript:void(0);"><span>Faculty</span></a></li>
+                        <li><a href="javascript:void(0);"><span>Academic Areas</span></a></li>
                         <li><a href="{{ URL::previous() }}"><span>Communications</span></a></li>
                     @elseif(URL::previous() == url('/faculty/academic-areas/economics'))
-                        <li><a href="{{ url('/') }}"><span>Faculty</span></a></li>
-                        <li><a href="{{ URL::previous() }}"><span>Academic Areas</span></a></li>
+                        <li><a href="javascript:void(0);"><span>Faculty</span></a></li>
+                        <li><a href="javascript:void(0);"><span>Academic Areas</span></a></li>
                         <li><a href="{{ URL::previous() }}"><span>Economics</span></a></li>
                     @elseif(URL::previous() == url('/faculty/academic-areas/finance-and-accounting'))
-                        <li><a href="{{ url('/') }}"><span>Faculty</span></a></li>
-                        <li><a href="{{ URL::previous() }}"><span>Academic Areas</span></a></li>
+                        <li><a href="javascript:void(0);"><span>Faculty</span></a></li>
+                        <li><a href="javascript:void(0);"><span>Academic Areas</span></a></li>
                         <li><a href="{{ URL::previous() }}"><span>Fnance and Fccounting</span></a></li>
                     @elseif(URL::previous() == url('/faculty/academic-areas/information-technology-systems'))
-                        <li><a href="{{ url('/') }}"><span>Faculty</span></a></li>
-                        <li><a href="{{ URL::previous() }}"><span>Academic Areas</span></a></li>
+                        <li><a href="javascript:void(0);"><span>Faculty</span></a></li>
+                        <li><a href="javascript:void(0);"><span>Academic Areas</span></a></li>
                         <li><a href="{{ URL::previous() }}"><span>Information Technology Systems</span></a></li>
                     @elseif(URL::previous() == url('faculty/academic-areas/marketing'))
                         <li><a href="{{ url('/') }}"><span>Faculty</span></a></li>
-                        <li><a href="{{ URL::previous() }}"><span>Academic Areas</span></a></li>
+                        <li><a href="javascript:void(0);"><span>Academic Areas</span></a></li>
                         <li><a href="{{ URL::previous() }}"><span>Marketing</span></a></li>
                     @elseif(URL::previous() == url('/faculty/academic-areas/operations-management-decision-sciences'))
-                        <li><a href="{{ url('/') }}"><span>Faculty</span></a></li>
-                        <li><a href="{{ URL::previous() }}"><span>Academic Areas</span></a></li>
+                        <li><a href="javascript:void(0);"><span>Faculty</span></a></li>
+                        <li><a href="javascript:void(0);"><span>Academic Areas</span></a></li>
                         <li><a href="{{ URL::previous() }}"><span>Operations Management Decision Sciences</span></a></li>
                     @elseif(URL::previous() == url('/organisational-behaviour-human-resource-management'))
-                        <li><a href="{{ url('/') }}"><span>Faculty</span></a></li>
-                        <li><a href="{{ URL::previous() }}"><span>Academic Areas</span></a></li>
+                        <li><a href="javascript:void(0);"><span>Faculty</span></a></li>
+                        <li><a href="javascript:void(0);"><span>Academic Areas</span></a></li>
                         <li><a href="{{ URL::previous() }}"><span>Organisational Behaviour Human Resource
                                     Management</span></a></li>
                     @elseif(URL::previous() == url('/organisational-behaviour-human-resource-management'))
-                        <li><a href="{{ url('/') }}"><span>Faculty</span></a></li>
-                        <li><a href="{{ URL::previous() }}"><span>Academic Areas</span></a></li>
+                        <li><a href="javascript:void(0);"><span>Faculty</span></a></li>
+                        <li><a href="javascript:void(0);"><span>Academic Areas</span></a></li>
                         <li><a href="{{ URL::previous() }}"><span>Organisational Behaviour Human Resource
                                     Management</span></a></li>
                     @elseif(URL::previous() == url('/faculty/academic-areas/strategy'))
-                        <li><a href="{{ url('/') }}"><span>Faculty</span></a></li>
-                        <li><a href="{{ URL::previous() }}"><span>Academic Areas</span></a></li>
+                        <li><a href="javascript:void(0);"><span>Faculty</span></a></li>
+                        <li><a href="javascript:void(0);"><span>Academic Areas</span></a></li>
                         <li><a href="{{ URL::previous() }}"><span>Strategy</span></a></li>
 
                     @elseif(URL::previous() == url('/faculty/academic-areas/strategy'))
-                        <li><a href="{{ url('/') }}"><span>Academics</span></a></li>
-                        <li><a href="{{ URL::previous() }}"><span>MBA (Analytics)</span></a></li>
+                        <li><a href="javascript:void(0);"><span>Academics</span></a></li>
+                        <li><a href="javascript:void(0);"><span>MBA (Analytics)</span></a></li>
                         <li><a href="{{ URL::previous() }}"><span>MBA (Analytics) Testimonials</span></a></li>
 
                     @elseif(URL::previous() == url('/faculty/academic-areas/strategy'))
-                        <li><a href="{{ url('/') }}"><span>Faculty</span></a></li>
-                        <li><a href="{{ URL::previous() }}"><span>Academic Areas</span></a></li>
+                        <li><a href="javascript:void(0);"><span>Faculty</span></a></li>
+                        <li><a href="javascript:void(0);"><span>Academic Areas</span></a></li>
                         <li><a href="{{ URL::previous() }}"><span>Strategy</span></a></li>
 
                     @elseif(URL::previous() == url('academics/mba/mba-testimonial'))
-                        <li><a href="{{ url('/') }}"><span>Academics</span></a></li>
-                        <li><a href="{{ URL::previous() }}"><span>MBA</span></a></li>
+                        <li><a href="javascript:void(0);"><span>Academics</span></a></li>
+                        <li><a href="javascript:void(0);"><span>MBA</span></a></li>
                         <li><a href="{{ URL::previous() }}"><span>MBA Testimonial</span></a></li>
                     @elseif(URL::previous() == url('academics/mba-analytics/mba-analytics-testimonials'))
-                        <li><a href="{{ url('/') }}"><span>Academics</span></a></li>
-                        <li><a href="{{ URL::previous() }}"><span>MBA Analytics</span></a></li>
+                        <li><a href="javascript:void(0);"><span>Academics</span></a></li>
+                        <li><a href="javascript:void(0);"><span>MBA Analytics</span></a></li>
                          <li><a href="{{ URL::previous() }}"><span>MBA Analytics Testimonials</span></a></li>
 
 
