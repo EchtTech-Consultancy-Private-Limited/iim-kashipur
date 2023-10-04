@@ -206,6 +206,8 @@
                             </svg></a></li>
 
 
+
+
                     @if (URL::previous() == url('/faculty/academic-areas/communications'))
                         <li><a href="javascript:void(0);"><span>Faculty</span></a></li>
                         <li><a href="javascript:void(0);"><span>Academic Areas</span></a></li>
@@ -230,6 +232,11 @@
                         <li><a href="javascript:void(0);"><span>Faculty</span></a></li>
                         <li><a href="javascript:void(0);"><span>Academic Areas</span></a></li>
                         <li><a href="{{ URL::previous() }}"><span>Operations Management Decision Sciences</span></a></li>
+                    @elseif(URL::previous() == url('/faculty/academic-areas/organisational-behaviour-human-resource-management'))
+                        <li><a href="javascript:void(0);"><span>Faculty</span></a></li>
+                        <li><a href="javascript:void(0);"><span>Academic Areas</span></a></li>
+                        <li><a href="{{ URL::previous() }}"><span>Organisational Behaviour Human Resource
+                                    Management</span></a></li>
                     @elseif(URL::previous() == url('/organisational-behaviour-human-resource-management'))
                         <li><a href="javascript:void(0);"><span>Faculty</span></a></li>
                         <li><a href="javascript:void(0);"><span>Academic Areas</span></a></li>
@@ -266,6 +273,8 @@
 
 
                     @endif
+
+
 
                     <li><span>
                             @if (GetLang() == 'en')
