@@ -68,7 +68,7 @@
                         </a>
                     </li>
                     <li>
-                        <a href="{{  URL::previous()  }}">
+                        <a href="javascript:void(0);">
                         <span>
                             @if (GetLang() == 'en')
                                 {{ $gets[0]->name ?? '' }}

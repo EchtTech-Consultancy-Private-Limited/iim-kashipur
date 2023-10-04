@@ -69,7 +69,7 @@ $mmenu = @content_menus($menu[0]->id);
                             @endif
                         </a>
                     </li>
-                    <li><a href="{{  URL::previous()  }}">
+                    <li><a href="javascript:void(0);">
                         <span>
                             @if (GetLang() == 'en')
                                 {{ $gets[0]->name ?? '' }}

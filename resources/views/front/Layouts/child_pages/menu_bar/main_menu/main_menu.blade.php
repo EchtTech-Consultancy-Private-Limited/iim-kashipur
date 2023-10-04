@@ -72,7 +72,7 @@
 
                     </li>
                     <li>
-                        <a href="{{ URL::previous() }}">
+                        <a href="javascript:void(0);">
                             <span>
                                 @if (GetLang() == 'en')
                                     {{ $sub[0]->name ?? '' }}
@@ -250,8 +250,9 @@
                             @endif
                         </a>
                     </li>
+
                     <li>
-                        <a href="{{ URL::previous() }}">
+
                             <span>
                                 @if (GetLang() == 'en')
                                     {{ ucfirst(strtolower($item[0]->name)) ?? '' }}
@@ -259,7 +260,7 @@
                                     {{ ucfirst(strtolower($item[0]->name_h)) ?? '' }}
                                 @endif
                             </span>
-                        </a>
+
 
                     </li>
                 </ul>

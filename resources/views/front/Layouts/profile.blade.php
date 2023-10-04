@@ -72,11 +72,13 @@
                         </a>
                     </li>
                     <li><span>
+                        <a href="{{ URL::previous() }}">
                             @if (GetLang() == 'en')
                                 {{ $gets[0]->name ?? '' }}
                             @else
                                 {{ $gets[0]->name_h ?? '' }}
                             @endif
+                        </a>
                         </span>
                     </li>
                     <li><span>
