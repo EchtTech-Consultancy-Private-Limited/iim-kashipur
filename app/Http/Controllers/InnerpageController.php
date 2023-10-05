@@ -2136,7 +2136,7 @@ public function Child_barInnerpage($main_slug,$Sub_slug,$slug) //content page
             {
                 $membersList=OrganisationStructure::where('faculty_id',8)->get();
             }
-            elseif($slug == 'organisational-behaviour-human-resource-management')
+            elseif($slug == 'organizational-behaviour-human-resource-management')
             {
                 $membersList=OrganisationStructure::where('faculty_id',12)->get();
             }
