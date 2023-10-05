@@ -1474,9 +1474,11 @@
 
 
                         @if($cccbreadcram  == 'Club')
+                         @if($item[0]->activitie  != '')
                             <h5>
                                 <span>Activity</span>
                             </h5>
+                           @endif
 
                           <p>{!! $item[0]->activitie ?? '' !!}</p>
                         @endif
