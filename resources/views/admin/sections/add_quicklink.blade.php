@@ -556,7 +556,7 @@
             $(document).ready(function() {
 
                // alert($(this).val())
-                // $('.archive_show').val()
+                 $('.archive_show').val()
 
                 if($('.archive_show').val() == 3){
                     $(".archive").show();
