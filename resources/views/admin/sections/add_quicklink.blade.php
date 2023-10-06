@@ -87,7 +87,7 @@
                             <div class="col-md-12"
                                 id="@if (isset($data->news_type)) @if (!empty($data->news_type)) @else news_board @endif @endif">
                                 <div class="form-group"> <label for="urlcategory">Select News Type</label>
-                                    <select name="news_type" class="form-control" class="hide_url">
+                                    <select name="news_type" class="form-control Notice" class="hide_url ">
                                         <option value="">Please Select</option>
                                         <option value="1"
                                             @if (isset($id)) {{ $data->news_type == '1' ? 'selected' : '' }} @endif>
@@ -102,6 +102,8 @@
                                     </select>
                                 </div>
                             </div>
+
+                            <input type="hidden" class="archive_show" @if (isset($id)) value="{{$data->news_type}}"  @endif>
 
 
                             <input type="hidden" name="section" id="section" value="">
@@ -245,8 +247,8 @@
 
                             <div class="col-md-6">
 
-                                <div class="form-group"> <label for="image">Image*</label> <input
-                                        id="image" type="file" name="image" accept=".jpeg,.png,.gif,.jpg"
+                                <div class="form-group"> <label for="image">Image*</label> <input id="image"
+                                        type="file" name="image" accept=".jpeg,.png,.gif,.jpg"
                                         class="form-control">
 
 
@@ -302,6 +304,20 @@
                                 </div>
 
                             </div>
+
+
+                            <div class="col-md-6 archive">
+                                <label for="inputText" class="col-form-label">Archive Date</label>
+                                <div class="">
+                                    <input type="date" class="form-control" name="archive_date"
+                                        @if (isset($id)) value="{{ $data->archive_date }}" @else value="{{ old('archive_date') }}" @endif
+                                        placeholder="Please enter"><br>
+                                    <label for="archive_date" id="archive_date-error" class="error"></label>
+                                </div>
+                            </div>
+
+
+
 
 
 
@@ -377,599 +393,629 @@
 
 
 
-{{-- onload content page show --}}
-<script>
-    $( document ).ready(function() {
+        {{-- onload content page show --}}
+        <script>
+            $(document).ready(function() {
 
 
-                    $.ajaxSetup({
-                        headers: {
-                            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                        }
-                    });
-                    var data1 = $("#url").val();
-                    $('#countries').html("<option selected  value=''>Select option blank</option>");
-                    if (data1 == 'content-page') {
-                        $.ajax({
-                            url: "{{ url('/Accounts/dropdown') }}",
-                            type: "get",
-                            success: function(data) {
+                $.ajaxSetup({
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    }
+                });
+                var data1 = $("#url").val();
+                $('#countries').html("<option selected  value=''>Select option blank</option>");
+                if (data1 == 'content-page') {
+                    $.ajax({
+                        url: "{{ url('/Accounts/dropdown') }}",
+                        type: "get",
+                        success: function(data) {
 
-                                var resdata = data.data;
-                                console.log(resdata);
+                            var resdata = data.data;
+                            console.log(resdata);
 
-                                var formoption = "<option selected  value='0'>Please select</option>";
-                                for (i = 0; i < resdata.length; i++) {
-                                    if ('{{ $data->link_option }}' == resdata[i].id) {
-                                        formoption += "<option value='" + resdata[i].id + "' selected>" +
-                                            resdata[i].name + "</option>";
-                                    } else {
-                                        formoption += "<option value='" + resdata[i].id + "'>" + resdata[i]
-                                            .name + "</option>";
-                                    }
+                            var formoption = "<option selected  value='0'>Please select</option>";
+                            for (i = 0; i < resdata.length; i++) {
+                                if ('{{ $data->link_option }}' == resdata[i].id) {
+                                    formoption += "<option value='" + resdata[i].id + "' selected>" +
+                                        resdata[i].name + "</option>";
+                                } else {
+                                    formoption += "<option value='" + resdata[i].id + "'>" + resdata[i]
+                                        .name + "</option>";
                                 }
-                                $('#countries').html(formoption);
+                            }
+                            $('#countries').html(formoption);
+
+                        }
+
+                    });
+                }
+            });
+        </script>
+
+
+        {{-- image section lonload  --}}
+
+
+        <script>
+            $(document).ready(function() {
+                $.ajaxSetup({
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    }
+                });
+
+                var data3 = $("#url").val();
+
+
+
+                if (data3 == 'photo-gallery') {
+
+                    $.ajax({
+                        url: "{{ url('Accounts/photodata') }}",
+                        type: "get",
+                        success: function(data) {
+
+                            console.log(data);
+                            var resdata = data.data;
+
+                            console.log(resdata);
+
+                            var formoption = "<option value='0'>Please select</option>";
+                            for (i = 0; i < resdata.length; i++) {
+                                //    formoption += "<option value='"+resdata[i].id+"'>"+resdata[i].name+"</option>";
+
+                                if ('{{ $data->link_option }}' == resdata[i].id) {
+                                    formoption += "<option value='" + resdata[i].id + "' selected>" +
+                                        resdata[i].name + "</option>";
+                                } else {
+                                    formoption += "<option value='" + resdata[i].id + "'>" + resdata[i]
+                                        .name + "</option>";
+                                }
+
 
                             }
+                            $('#countries').html(formoption);
 
-                        });
-                    }
-                });
-            </script>
-
-
-            {{-- image section lonload  --}}
-
-
-            <script>
-                $(document).ready(function() {
-                    $.ajaxSetup({
-                        headers: {
-                            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                         }
                     });
-
-                    var data3 = $("#url").val();
-
-
-
-                    if (data3 == 'photo-gallery') {
-
-                        $.ajax({
-                            url: "{{ url('Accounts/photodata') }}",
-                            type: "get",
-                            success: function(data) {
-
-                                console.log(data);
-                                var resdata = data.data;
-
-                                console.log(resdata);
-
-                                var formoption = "<option value='0'>Please select</option>";
-                                for (i = 0; i < resdata.length; i++) {
-                                    //    formoption += "<option value='"+resdata[i].id+"'>"+resdata[i].name+"</option>";
-
-                                    if ('{{ $data->link_option }}' == resdata[i].id) {
-                                        formoption += "<option value='" + resdata[i].id + "' selected>" +
-                                            resdata[i].name + "</option>";
-                                    } else {
-                                        formoption += "<option value='" + resdata[i].id + "'>" + resdata[i]
-                                            .name + "</option>";
-                                    }
+                }
+            });
+        </script>
 
 
-                                }
-                                $('#countries').html(formoption);
+        {{-- video section onload  --}}
 
-                            }
-                        });
+        <script>
+            $(document).ready(function() {
+                $.ajaxSetup({
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                     }
                 });
-            </script>
+
+                var data2 = $("#url").val();
 
 
-            {{-- video section onload  --}}
 
-            <script>
-                $(document).ready(function() {
-                    $.ajaxSetup({
-                        headers: {
-                            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                if (data2 == 'video-gallery') {
+
+                    $.ajax({
+                        url: "{{ url('Accounts/videodata') }}",
+                        type: "get",
+                        success: function(data) {
+
+                            console.log(data);
+                            var resdata = data.data;
+
+                            var formoption = "<option value='0'>Please select</option>";
+                            for (i = 0; i < resdata.length; i++) {
+                                //    formoption += "<option value='"+resdata[i].id+"'>"+resdata[i].name+"</option>";
+                                if ('{{ $data->link_option }}' == resdata[i].id) {
+                                    formoption += "<option value='" + resdata[i].id + "' selected>" +
+                                        resdata[i].name + "</option>";
+                                } else {
+                                    formoption += "<option value='" + resdata[i].id + "'>" + resdata[i]
+                                        .name + "</option>";
+                                }
+                            }
+                            $('#countries').html(formoption);
+
                         }
                     });
+                }
+            });
+        </script>
 
-                    var data2 = $("#url").val();
+
+        <script type="text/javascript">
+            $("#select_box").on('change', function() {
+
+                if ($("#select_box").is(':checked')) {
+
+                    $("#url").show();
+                    $("#url_ext").hide();
+                } else {
+                    $("#url").hide();
+                    $("#url_ext").show();
+                }
+            });
+        </script>
+
+        <script type="text/javascript">
+            $("#hide_url").on('change', function() {
+
+                var section_id = $('#hide_url option:selected').text()
+                // alert(section_id)
+                $('#section').val(section_id)
+            });
+        </script>
+
+
+        <script type="text/javascript">
+            $(document).ready(function() {
+
+               // alert($(this).val())
+                // $('.archive_show').val()
+
+                if($('.archive_show').val() == 3){
+                    $(".archive").show();
+                }else{
+                    $(".archive").hide();
+                }
+            });
+        </script>
+
+        <script type="text/javascript">
+            $(".Notice").on('change', function() {
+
+               // alert($(this).val());
+                if ($(this).val() == 3) {
+                    $(".archive").show();
+                } else {
+                    $(".archive").hide();
+                }
+
+                // alert(section_id)
+
+            });
+        </script>
+
+
+        <script type="text/javascript">
+            $(document).ready(function() {
+
+                var section_id = $('#hide_url option:selected').text()
+                // alert(section_id)
+                $('#section').val(section_id)
+            });
+        </script>
+
+
+        <script type="text/javascript">
+            $("#checkbox").on('change', function() {
+                if ($("#checkbox").is(':checked')) {
+                    $("#url").hide();
+                    $("#url_ext").show();
+                } else {
+                    $("#url").show();
+                    $("#url_ext").hide();
+                }
+            });
+        </script>
 
 
 
-                    if (data2 == 'video-gallery') {
 
-                        $.ajax({
-                            url: "{{ url('Accounts/videodata') }}",
-                            type: "get",
-                            success: function(data) {
+        <script type="text/javascript">
+            $("#checkboxs").on('change', function() {
 
-                                console.log(data);
-                                var resdata = data.data;
+                if ($("#checkboxs").is(':checked')) {
+                    $("#url").hide();
+                    $("#url_ext").show();
+                } else {
+                    $("#url").show();
+                    $("#url_ext").hide();
+                }
+            });
+        </script>
 
-                                var formoption = "<option value='0'>Please select</option>";
-                                for (i = 0; i < resdata.length; i++) {
-                                    //    formoption += "<option value='"+resdata[i].id+"'>"+resdata[i].name+"</option>";
-                                    if ('{{ $data->link_option }}' == resdata[i].id) {
-                                        formoption += "<option value='" + resdata[i].id + "' selected>" +
-                                            resdata[i].name + "</option>";
-                                    } else {
-                                        formoption += "<option value='" + resdata[i].id + "'>" + resdata[i]
-                                            .name + "</option>";
-                                    }
+
+
+
+
+
+        <!------------------------------- content page dropdown---------------------------------- -->
+
+
+        <script>
+            $("#url").on('change', function() {
+
+                $.ajaxSetup({
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    }
+                });
+                var data1 = $("#url").val();
+                $('#countries').html("<option selected disabled value='0'>Please select</option>");
+                if (data1 == 'content-page') {
+                    $.ajax({
+                        url: "{{ url('/Accounts/dropdown') }}",
+                        type: "get",
+                        success: function(data) {
+
+                            var resdata = data.data;
+
+                            var formoption = "<option selected  value='0'>Please select</option>";
+                            for (i = 0; i < resdata.length; i++) {
+                                if ('{{ $data->link_option }}' == resdata[i].id) {
+                                    formoption += "<option value='" + resdata[i].id + "' selected>" +
+                                        resdata[i].name + "</option>";
+                                } else {
+                                    formoption += "<option value='" + resdata[i].id + "'>" + resdata[i]
+                                        .name + "</option>";
                                 }
-                                $('#countries').html(formoption);
-
                             }
-                        });
+                            $('#countries').html(formoption);
+
+                        }
+
+                    });
+                }
+            });
+        </script>
+
+        {{-- video section onload --}}
+
+        <script>
+            $("#url").change(function(e) {
+                $.ajaxSetup({
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                     }
                 });
-            </script>
 
-
-            <script type="text/javascript">
-                $("#select_box").on('change', function() {
-
-                    if ($("#select_box").is(':checked')) {
-
-                        $("#url").show();
-                        $("#url_ext").hide();
-                    } else {
-                        $("#url").hide();
-                        $("#url_ext").show();
-                    }
-                });
-            </script>
-
-            <script type="text/javascript">
-                $("#hide_url").on('change', function() {
-
-                    var section_id = $('#hide_url option:selected').text()
-                    // alert(section_id)
-                    $('#section').val(section_id)
-                });
-            </script>
-
-
-            <script type="text/javascript">
-                $(document).ready(function() {
-
-                    var section_id = $('#hide_url option:selected').text()
-                    // alert(section_id)
-                    $('#section').val(section_id)
-                });
-            </script>
-
-
-            <script type="text/javascript">
-                $("#checkbox").on('change', function() {
-                    if ($("#checkbox").is(':checked')) {
-                        $("#url").hide();
-                        $("#url_ext").show();
-                    } else {
-                        $("#url").show();
-                        $("#url_ext").hide();
-                    }
-                });
-            </script>
+                var data2 = $("#url").val();
 
 
 
+                if (data2 == 'video-gallery') {
 
-            <script type="text/javascript">
-                $("#checkboxs").on('change', function() {
+                    $.ajax({
+                        url: "{{ url('Accounts/videodata') }}",
+                        type: "get",
+                        success: function(data) {
 
-                    if ($("#checkboxs").is(':checked')) {
-                        $("#url").hide();
-                        $("#url_ext").show();
-                    } else {
-                        $("#url").show();
-                        $("#url_ext").hide();
-                    }
-                });
-            </script>
+                            console.log(data);
+                            var resdata = data.data;
 
+                            var formoption = "<option value='0'>Please select</option>";
+                            for (i = 0; i < resdata.length; i++) {
+                                formoption += "<option value='" + resdata[i].id + "'>" + resdata[i].name +
+                                    "</option>";
+                            }
+                            $('#countries').html(formoption);
 
-
-
-
-
-            <!------------------------------- content page dropdown---------------------------------- -->
-
-
-            <script>
-                $("#url").on('change', function() {
-
-                    $.ajaxSetup({
-                        headers: {
-                            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                         }
                     });
-                    var data1 = $("#url").val();
-                    $('#countries').html("<option selected disabled value='0'>Please select</option>");
-                    if (data1 == 'content-page') {
-                        $.ajax({
-                            url: "{{ url('/Accounts/dropdown') }}",
-                            type: "get",
-                            success: function(data) {
+                }
+            });
+        </script>
 
-                                var resdata = data.data;
+        {{--  --}}
 
-                                var formoption = "<option selected  value='0'>Please select</option>";
-                                for (i = 0; i < resdata.length; i++) {
-                                    if ('{{ $data->link_option }}' == resdata[i].id) {
-                                        formoption += "<option value='" + resdata[i].id + "' selected>" +
-                                            resdata[i].name + "</option>";
-                                    } else {
-                                        formoption += "<option value='" + resdata[i].id + "'>" + resdata[i]
-                                            .name + "</option>";
-                                    }
-                                }
-                                $('#countries').html(formoption);
 
-                            }
-
-                        });
+        <!--------------------------------------- blog section -------------------------------------->
+        <script>
+            $("#url").change(function(e) {
+                $.ajaxSetup({
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                     }
                 });
-            </script>
 
-            {{-- video section onload --}}
+                var data1 = $("#url").val();
 
-            <script>
-                $("#url").change(function(e) {
-                    $.ajaxSetup({
-                        headers: {
-                            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+
+
+                if (data1 == 'blog') {
+
+                    $.ajax({
+                        url: "{{ url('Accounts/blogdata') }}",
+                        type: "get",
+                        success: function(data) {
+
+                            console.log(data);
+                            var resdata = data.data;
+
+                            var formoption = "<option value='0'>Please select</option>";
+                            for (i = 0; i < resdata.length; i++) {
+                                formoption += "<option value='" + resdata[i].id + "'>" + resdata[i].name +
+                                    "</option>";
+                            }
+                            $('#countries').html(formoption);
+
                         }
                     });
+                }
+            });
+        </script>
 
-                    var data2 = $("#url").val();
+        <!--------------------------------------- video section -------------------------------------->
 
-
-
-                    if (data2 == 'video-gallery') {
-
-                        $.ajax({
-                            url: "{{ url('Accounts/videodata') }}",
-                            type: "get",
-                            success: function(data) {
-
-                                console.log(data);
-                                var resdata = data.data;
-
-                                var formoption = "<option value='0'>Please select</option>";
-                                for (i = 0; i < resdata.length; i++) {
-                                    formoption += "<option value='" + resdata[i].id + "'>" + resdata[i].name +
-                                        "</option>";
-                                }
-                                $('#countries').html(formoption);
-
-                            }
-                        });
+        <script>
+            $("#url").change(function(e) {
+                $.ajaxSetup({
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                     }
                 });
-            </script>
 
-            {{--  --}}
+                var data2 = $("#url").val();
 
 
-            <!--------------------------------------- blog section -------------------------------------->
-            <script>
-                $("#url").change(function(e) {
-                    $.ajaxSetup({
-                        headers: {
-                            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+
+                if (data2 == 'video-gallery') {
+
+                    $.ajax({
+                        url: "{{ url('Accounts/videodata') }}",
+                        type: "get",
+                        success: function(data) {
+
+                            console.log(data);
+                            var resdata = data.data;
+
+                            var formoption = "<option value='0'>Please select</option>";
+                            for (i = 0; i < resdata.length; i++) {
+                                formoption += "<option value='" + resdata[i].id + "'>" + resdata[i].name +
+                                    "</option>";
+                            }
+                            $('#countries').html(formoption);
+
                         }
                     });
+                }
+            });
+        </script>
 
-                    var data1 = $("#url").val();
+        <!--------------------------------------- photo section -------------------------------------->
 
-
-
-                    if (data1 == 'blog') {
-
-                        $.ajax({
-                            url: "{{ url('Accounts/blogdata') }}",
-                            type: "get",
-                            success: function(data) {
-
-                                console.log(data);
-                                var resdata = data.data;
-
-                                var formoption = "<option value='0'>Please select</option>";
-                                for (i = 0; i < resdata.length; i++) {
-                                    formoption += "<option value='" + resdata[i].id + "'>" + resdata[i].name +
-                                        "</option>";
-                                }
-                                $('#countries').html(formoption);
-
-                            }
-                        });
+        <script>
+            $("#url").change(function(e) {
+                $.ajaxSetup({
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                     }
                 });
-            </script>
 
-            <!--------------------------------------- video section -------------------------------------->
+                var data3 = $("#url").val();
 
-            <script>
-                $("#url").change(function(e) {
-                    $.ajaxSetup({
-                        headers: {
-                            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+
+
+                if (data3 == 'photo-gallery') {
+
+                    $.ajax({
+                        url: "{{ url('Accounts/photodata') }}",
+                        type: "get",
+                        success: function(data) {
+
+                            console.log(data);
+                            var resdata = data.data;
+
+                            console.log(resdata);
+
+                            var formoption = "<option value='0'>Please select</option>";
+                            for (i = 0; i < resdata.length; i++) {
+                                formoption += "<option value='" + resdata[i].id + "'>" + resdata[i].name +
+                                    "</option>";
+                            }
+                            $('#countries').html(formoption);
+
                         }
                     });
+                }
+            });
+        </script>
 
-                    var data2 = $("#url").val();
+        <script>
+            $(document).ready(function() {
+                $('#news_board').hide();
 
+            });
 
-
-                    if (data2 == 'video-gallery') {
-
-                        $.ajax({
-                            url: "{{ url('Accounts/videodata') }}",
-                            type: "get",
-                            success: function(data) {
-
-                                console.log(data);
-                                var resdata = data.data;
-
-                                var formoption = "<option value='0'>Please select</option>";
-                                for (i = 0; i < resdata.length; i++) {
-                                    formoption += "<option value='" + resdata[i].id + "'>" + resdata[i].name +
-                                        "</option>";
-                                }
-                                $('#countries').html(formoption);
-
-                            }
-                        });
-                    }
-                });
-            </script>
-
-            <!--------------------------------------- photo section -------------------------------------->
-
-            <script>
-                $("#url").change(function(e) {
-                    $.ajaxSetup({
-                        headers: {
-                            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                        }
-                    });
-
-                    var data3 = $("#url").val();
-
-
-
-                    if (data3 == 'photo-gallery') {
-
-                        $.ajax({
-                            url: "{{ url('Accounts/photodata') }}",
-                            type: "get",
-                            success: function(data) {
-
-                                console.log(data);
-                                var resdata = data.data;
-
-                                console.log(resdata);
-
-                                var formoption = "<option value='0'>Please select</option>";
-                                for (i = 0; i < resdata.length; i++) {
-                                    formoption += "<option value='" + resdata[i].id + "'>" + resdata[i].name +
-                                        "</option>";
-                                }
-                                $('#countries').html(formoption);
-
-                            }
-                        });
-                    }
-                });
-            </script>
-
-            <script>
-                $(document).ready(function() {
+            $(".news_board_main").on("change", function() {
+                // alert("test");
+                var listvalue = $(this).val();
+                //alert(listvalue);
+                if (listvalue == 25) {
+                    $('#news_board').show();
+                } else {
                     $('#news_board').hide();
 
-                });
+                }
 
-                $(".news_board_main").on("change", function() {
-                    // alert("test");
-                    var listvalue = $(this).val();
-                    //alert(listvalue);
-                    if (listvalue == 25) {
-                        $('#news_board').show();
-                    } else {
-                        $('#news_board').hide();
 
+
+            });
+        </script>
+        {{-- -------------------------------------- Cube Cell committee---------------------------------------------------- --}}
+
+        <script>
+            $("#url").change(function(e) {
+                $.ajaxSetup({
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                     }
-
-
-
                 });
-            </script>
-            {{-- -------------------------------------- Cube Cell committee---------------------------------------------------- --}}
 
-            <script>
-                $("#url").change(function(e) {
-                    $.ajaxSetup({
-                        headers: {
-                            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                var data3 = $("#url").val();
+                //alert(data3)
+
+                if (data3 == 'Club-Cells-Committee') {
+
+                    $.ajax({
+                        url: "{{ url('Accounts/cells') }}",
+                        type: "get",
+                        success: function(data) {
+
+                            console.log(data)
+
+                            var resdata = data;
+
+                            // alert(resdata);
+
+                            var formoption = "<option value='0'>Please select</option>";
+                            for (i = 0; i < resdata.length; i++) {
+                                formoption += "<option value='" + resdata[i].id + "'>" + resdata[i].title +
+                                    "</option>";
+                            }
+                            $('#countries').html(formoption);
+
                         }
                     });
+                }
+            });
+        </script>
 
-                    var data3 = $("#url").val();
-                    //alert(data3)
+        {{-- -------------------------------------------- Our journey    ----------------------------------------------------------- --}}
+        <script>
+            $("#url").change(function(e) {
 
-                    if (data3 == 'Club-Cells-Committee') {
-
-                        $.ajax({
-                            url: "{{ url('Accounts/cells') }}",
-                            type: "get",
-                            success: function(data) {
-
-                                console.log(data)
-
-                                var resdata = data;
-
-                                // alert(resdata);
-
-                                var formoption = "<option value='0'>Please select</option>";
-                                for (i = 0; i < resdata.length; i++) {
-                                    formoption += "<option value='" + resdata[i].id + "'>" + resdata[i].title +
-                                        "</option>";
-                                }
-                                $('#countries').html(formoption);
-
-                            }
-                        });
+                // alert('hii');
+                $.ajaxSetup({
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                     }
                 });
-            </script>
 
-            {{-- -------------------------------------------- Our journey    ----------------------------------------------------------- --}}
-            <script>
-                $("#url").change(function(e) {
+                var data3 = $("#url").val();
+                //alert(data3)
 
-                    // alert('hii');
-                    $.ajaxSetup({
-                        headers: {
-                            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                if (data3 == 'Organisation-Journey') {
+
+                    $.ajax({
+                        url: "{{ url('Accounts/journey-value') }}",
+                        type: "get",
+                        success: function(data) {
+                            console.log(data)
+                            var resdata = data;
+
+                            var formoption = "<option value='0'>Please select</option>";
+                            for (i = 0; i < resdata.length; i++) {
+                                formoption += "<option value='" + resdata[i].id + "'>" + resdata[i].title +
+                                    "</option>";
+                            }
+                            $('#countries').html(formoption);
                         }
                     });
+                }
+            });
+        </script>
 
-                    var data3 = $("#url").val();
-                    //alert(data3)
-
-                    if (data3 == 'Organisation-Journey') {
-
-                        $.ajax({
-                            url: "{{ url('Accounts/journey-value') }}",
-                            type: "get",
-                            success: function(data) {
-                                console.log(data)
-                                var resdata = data;
-
-                                var formoption = "<option value='0'>Please select</option>";
-                                for (i = 0; i < resdata.length; i++) {
-                                    formoption += "<option value='" + resdata[i].id + "'>" + resdata[i].title +
-                                        "</option>";
-                                }
-                                $('#countries').html(formoption);
-                            }
-                        });
+        {{-- --------------------------------------------Student council  ----------------------------------------------------------- --}}
+        <script>
+            $("#url").change(function(e) {
+                // alert('hii');
+                $.ajaxSetup({
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                     }
                 });
-            </script>
 
-            {{-- --------------------------------------------Student council  ----------------------------------------------------------- --}}
-            <script>
-                $("#url").change(function(e) {
-                    // alert('hii');
-                    $.ajaxSetup({
-                        headers: {
-                            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                var data3 = $("#url").val();
+                //alert(data3)
+
+                if (data3 == 'student-council') {
+
+                    $.ajax({
+                        url: "{{ url('Accounts/student-list') }}",
+                        type: "get",
+                        success: function(data) {
+                            console.log(data)
+                            var resdata = data;
+
+                            var formoption = "<option value='0'>Please select</option>";
+                            for (i = 0; i < resdata.length; i++) {
+                                formoption += "<option value='" + resdata[i].id + "'>" + resdata[i]
+                                    .student_council +
+                                    "</option>";
+                            }
+                            $('#countries').html(formoption);
                         }
                     });
+                }
+            });
+        </script>
 
-                    var data3 = $("#url").val();
-                    //alert(data3)
 
-                    if (data3 == 'student-council') {
 
-                        $.ajax({
-                            url: "{{ url('Accounts/student-list') }}",
-                            type: "get",
-                            success: function(data) {
-                                console.log(data)
-                                var resdata = data;
-
-                                var formoption = "<option value='0'>Please select</option>";
-                                for (i = 0; i < resdata.length; i++) {
-                                    formoption += "<option value='" + resdata[i].id + "'>" + resdata[i]
-                                        .student_council +
-                                        "</option>";
-                                }
-                                $('#countries').html(formoption);
-                            }
-                        });
+        {{-- -------------------------------------------- journal-publications ----------------------------------------------------------- --}}
+        <script>
+            $("#url").change(function(e) {
+                //  alert('hii');
+                $.ajaxSetup({
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                     }
                 });
-            </script>
 
+                var data3 = $("#url").val();
+                // alert(data3)
 
+                if (data3 == 'journal-publications') {
 
-            {{-- -------------------------------------------- journal-publications ----------------------------------------------------------- --}}
-            <script>
-                $("#url").change(function(e) {
-                    //  alert('hii');
-                    $.ajaxSetup({
-                        headers: {
-                            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    $.ajax({
+                        url: "{{ url('Accounts/journal-publications-list') }}",
+                        type: "get",
+                        success: function(data) {
+                            console.log(data.item)
+                            var resdata = data.item;
+
+                            var formoption = "<option value='0'>Please select</option>";
+                            for (i = 0; i < resdata.length; i++) {
+                                formoption += "<option value='" + resdata[i].id + "'>" + resdata[i].title +
+                                    "</option>";
+                            }
+                            $('#countries').html(formoption);
                         }
                     });
+                }
+            });
+        </script>
 
-                    var data3 = $("#url").val();
-                    // alert(data3)
 
-                    if (data3 == 'journal-publications') {
-
-                        $.ajax({
-                            url: "{{ url('Accounts/journal-publications-list') }}",
-                            type: "get",
-                            success: function(data) {
-                                console.log(data.item)
-                                var resdata = data.item;
-
-                                var formoption = "<option value='0'>Please select</option>";
-                                for (i = 0; i < resdata.length; i++) {
-                                    formoption += "<option value='" + resdata[i].id + "'>" + resdata[i].title +
-                                        "</option>";
-                                }
-                                $('#countries').html(formoption);
-                            }
-                        });
+        {{-- -------------------------------------------- Wellness-Facilities ----------------------------------------------------------- --}}
+        <script>
+            $("#url").change(function(e) {
+                // alert('hii');
+                $.ajaxSetup({
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                     }
                 });
-            </script>
 
+                var data3 = $("#url").val();
+                //alert(data3)
 
-            {{-- -------------------------------------------- Wellness-Facilities ----------------------------------------------------------- --}}
-            <script>
-                $("#url").change(function(e) {
-                    // alert('hii');
-                    $.ajaxSetup({
-                        headers: {
-                            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                if (data3 == 'Wellness-Facilities') {
+
+                    $.ajax({
+                        url: "{{ url('Accounts/Wellness-Facilities-id') }}",
+                        type: "get",
+                        success: function(data) {
+                            console.log(data.item)
+                            var resdata = data.item;
+
+                            var formoption = "<option value='0'>Please select</option>";
+                            for (i = 0; i < resdata.length; i++) {
+                                formoption += "<option value='" + resdata[i].id + "'>" + resdata[i].title +
+                                    "</option>";
+                            }
+                            $('#countries').html(formoption);
                         }
                     });
+                }
+            });
+        </script>
 
-                    var data3 = $("#url").val();
-                    //alert(data3)
-
-                    if (data3 == 'Wellness-Facilities') {
-
-                        $.ajax({
-                            url: "{{ url('Accounts/Wellness-Facilities-id') }}",
-                            type: "get",
-                            success: function(data) {
-                                console.log(data.item)
-                                var resdata = data.item;
-
-                                var formoption = "<option value='0'>Please select</option>";
-                                for (i = 0; i < resdata.length; i++) {
-                                    formoption += "<option value='" + resdata[i].id + "'>" + resdata[i].title +
-                                        "</option>";
-                                }
-                                $('#countries').html(formoption);
-                            }
-                        });
-                    }
-                });
-            </script>
-
-        @endsection
+    @endsection
