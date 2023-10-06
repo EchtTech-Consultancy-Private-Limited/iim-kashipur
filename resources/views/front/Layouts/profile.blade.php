@@ -232,21 +232,21 @@
                         <li><a href="javascript:void(0);"><span>Faculty</span></a></li>
                         <li><a href="javascript:void(0);"><span>Academic Areas</span></a></li>
                         <li><a href="{{ URL::previous() }}"><span>Operations Management Decision Sciences</span></a></li>
-                    @elseif(URL::previous() == url('/faculty/academic-areas/organisational-behaviour-human-resource-management'))
+                    @elseif(URL::previous() == url('/faculty/academic-areas/organizational-behaviour-human-resource-management'))
+                        <li><a href="javascript:void(0);"><span>Faculty</span></a></li>
+                        <li><a href="javascript:void(0);"><span>Academic Areas</span></a></li>
+                        <li><a href="{{ URL::previous() }}"><span>Organizational Behaviour Human Resource
+                                    Management</span></a></li>
+                    {{-- @elseif(URL::previous() == url('/organizational-behaviour-human-resource-management'))
                         <li><a href="javascript:void(0);"><span>Faculty</span></a></li>
                         <li><a href="javascript:void(0);"><span>Academic Areas</span></a></li>
                         <li><a href="{{ URL::previous() }}"><span>Organisational Behaviour Human Resource
-                                    Management</span></a></li>
-                    @elseif(URL::previous() == url('/organisational-behaviour-human-resource-management'))
+                                    Management</span></a></li> --}}
+                    {{-- @elseif(URL::previous() == url('/organizational-behaviour-human-resource-management'))
                         <li><a href="javascript:void(0);"><span>Faculty</span></a></li>
                         <li><a href="javascript:void(0);"><span>Academic Areas</span></a></li>
-                        <li><a href="{{ URL::previous() }}"><span>Organisational Behaviour Human Resource
-                                    Management</span></a></li>
-                    @elseif(URL::previous() == url('/organisational-behaviour-human-resource-management'))
-                        <li><a href="javascript:void(0);"><span>Faculty</span></a></li>
-                        <li><a href="javascript:void(0);"><span>Academic Areas</span></a></li>
-                        <li><a href="{{ URL::previous() }}"><span>Organisational Behaviour Human Resource
-                                    Management</span></a></li>
+                        <li><a href="{{ URL::previous() }}"><span>Organizational Behaviour Human Resource
+                                    Management</span></a></li> --}}
                     @elseif(URL::previous() == url('/faculty/academic-areas/strategy'))
                         <li><a href="javascript:void(0);"><span>Faculty</span></a></li>
                         <li><a href="javascript:void(0);"><span>Academic Areas</span></a></li>
