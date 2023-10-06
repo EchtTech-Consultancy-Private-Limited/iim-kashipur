@@ -453,7 +453,7 @@ public function childmenushow(Request $request){
                     $data->url="/".$request->url;
                     $data->external=$request->external;
                }
-
+            $data->archive_date=$request->archive_date;
             $data->short=$request->short; //shor note
             $data->link_option=$request->link;
             $data->title_h =$request->title_h;

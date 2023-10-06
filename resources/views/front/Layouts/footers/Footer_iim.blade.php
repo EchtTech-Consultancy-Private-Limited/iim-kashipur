@@ -374,7 +374,6 @@ function decreaseFontSize() {
 <script>
     // disable right click
     document.addEventListener('contextmenu', event => event.preventDefault());
-
     document.onkeydown = function (e) {
 
         // disable F12 key

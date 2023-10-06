@@ -6,7 +6,7 @@
                 @foreach(Getheading($M->id) as $key=>$Ms)
 
 
-                
+
                 <div class="col-md-4">
                     <div class="event-card" data-aos="fade-up" data-aos-duration="3000">
                         <h2 class="heading-black text-start">
