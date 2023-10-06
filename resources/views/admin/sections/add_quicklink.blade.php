@@ -103,6 +103,8 @@
                                 </div>
                             </div>
 
+                            <input type="hidden" class="archive_show" @if (isset($id)) value="{{$data->news_type}}"  @endif>
+
 
                             <input type="hidden" name="section" id="section" value="">
 
@@ -553,8 +555,14 @@
         <script type="text/javascript">
             $(document).ready(function() {
 
-                $(".archive").hide();
+               // alert($(this).val())
+                // $('.archive_show').val()
 
+                if($('.archive_show').val() == 3){
+                    $(".archive").show();
+                }else{
+                    $(".archive").hide();
+                }
             });
         </script>
 
