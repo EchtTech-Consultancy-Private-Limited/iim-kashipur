@@ -289,14 +289,14 @@
 
                             <div class="col-md-6">
 
-                                <div class="form-group"> <label for="Image_Alt">Image Alt*</label> <input id="Image_Alt"
+                                <div class="form-group"> <label for="Image_Alt">Image Alt* </label><input id="Image_Alt"
                                         type="text" name="Image_Alt"
                                         @if ($id) value="{{ $data->Image_Alt }}" @else value="{{ old('Image_Alt') }}" @endif
                                         class="form-control" placeholder="Please enter Image Alt">
 
 
-                                    <label for="Image_Alt" id="Image_Alt-error" class="error">
-                                        @error('Image_Alt')
+                                    <label for="Image_Alts" id="Image_Alts-error" class="error">
+                                        @error('Image_Alts')
                                             {{ $message }}
                                         @enderror
                                     </label>
@@ -556,7 +556,7 @@
             $(document).ready(function() {
 
                // alert($(this).val())
-                // $('.archive_show').val()
+                 $('.archive_show').val()
 
                 if($('.archive_show').val() == 3){
                     $(".archive").show();

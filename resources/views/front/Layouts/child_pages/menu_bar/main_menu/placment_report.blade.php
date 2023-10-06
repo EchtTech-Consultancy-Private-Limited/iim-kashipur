@@ -290,7 +290,7 @@
                     <table>
                         <tr>
                             {{-- <th>#Sr.no</th> --}}
-                            <th>MBA Batch</th>
+                            <th>Batch</th>
                             <th>Title</th>
                         </tr>
 
@@ -317,7 +317,7 @@
                     <table>
                         <tr>
                             {{-- <th>#Sr.no</th> --}}
-                            <th>MBA Batch</th>
+                            <th>Batch</th>
                             <th>Title</th>
                         </tr>
 

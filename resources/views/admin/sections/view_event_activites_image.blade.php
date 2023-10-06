@@ -65,8 +65,8 @@
                             <div class="col-md-6">
                                 <label for="Commmittee_type" class="col-form-label">Title</label>
                                 <div class="">
-                                    <select class="form-control" name="parent_id">
-                                        <option value="" disabled> Select Type </option>
+                                    <select class="form-control" name="parent_id" disabled>
+                                        <option value="" > Select Type </option>
                                         @foreach ($event as $title)
                                             <option value="{{ $event->id }}"> {{ $event->title }}</option>
                                         @endforeach

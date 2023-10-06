@@ -40,6 +40,31 @@
     <section class="withsidebar-wrap innerpagecontent ptb-60">
         <div class="container">
 
+        <div class="table-responsive mb-3">
+       <table style="display:table">
+        <tbody>
+            <tr>
+                <td colspan="2">Faculty Recruitment for Emeritus Professor on Rolling Basis</td>
+            </tr>
+            <tr>
+                <td>
+                    <a href="{{asset('uploads/Faculty_Recruitment_Emeritus_Professor_2023-24_adv.pdf')}}" target="_blank">Detailed Advertisement</a>
+                </td>
+                <td>
+                Apply Here : <a  @if (GetLang() == 'en') onclick="return confirm('This link will take you to an external web site.')"  @else onclick="return confirm('यह लिंक आपको एक बाहरी वेब साइट पर ले जाएगा।')" @endif href="{{url('http://58.84.23.37/faculty-recruitment/emeritus/0723/')}}"  target="_blank">Link 1</a> or 
+                
+                <a href="{{url('http://14.139.249.139/faculty-recruitment/emeritus/0723/')}}" @if (GetLang() == 'en') onclick="return confirm('This link will take you to an external web site.')"  @else onclick="return confirm('यह लिंक आपको एक बाहरी वेब साइट पर ले जाएगा।')" @endif href="{{url('http://14.139.249.139/faculty-recruitment/emeritus/0723/')}}" target="_blank">Link 2</a>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                In case of any technical issue, please contact: <a href="javascript:void();">response[at]iimkashipur[dot]ac[dot]in</a>
+                </td>
+            </tr>
+        </tbody>
+       </table>
+
+        </div>
 
             <div class="d-flex justify-content-end">
                 <a href="{{url(request()->path().'/archive')}}" class="btn2 float-right mb-3" style="border-radius: 30px; background:#174e91">
