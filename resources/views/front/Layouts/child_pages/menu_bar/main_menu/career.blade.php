@@ -48,10 +48,12 @@
             </tr>
             <tr>
                 <td>
-                    <a href="{{asset('uploads/Faculty_Recruitment_Emeritus_Professor_2023-24_adv.pdf')}}" target="_blank">Detailed Advertisement</a>
+                    <a href="{{asset('uploads/Faculty_Recruitment_Emeritus_Professor_2023-24_adv.pdf')}}" target="_blank" class="pdf-links"> <i class="fa fa-file-pdf-o"></i> Detailed Advertisement</a> <span style="font-size: 10px;margin-left: 0px;color: #ed2044;" tabindex="0">
+                                                        (153KB)
+                                                    </span>
                 </td>
                 <td>
-                Apply Here : <a  @if (GetLang() == 'en') onclick="return confirm('This link will take you to an external web site.')"  @else onclick="return confirm('यह लिंक आपको एक बाहरी वेब साइट पर ले जाएगा।')" @endif href="{{url('http://58.84.23.37/faculty-recruitment/emeritus/0723/')}}"  target="_blank">Link 1</a> or 
+                Apply Here : <a  @if (GetLang() =='en') onclick="return confirm('This link will take you to an external web site.')"  @else onclick="return confirm('यह लिंक आपको एक बाहरी वेब साइट पर ले जाएगा।')" @endif href="{{url('http://58.84.23.37/faculty-recruitment/emeritus/0723/')}}"  target="_blank">Link 1</a> or 
                 
                 <a href="{{url('http://14.139.249.139/faculty-recruitment/emeritus/0723/')}}" @if (GetLang() == 'en') onclick="return confirm('This link will take you to an external web site.')"  @else onclick="return confirm('यह लिंक आपको एक बाहरी वेब साइट पर ले जाएगा।')" @endif href="{{url('http://14.139.249.139/faculty-recruitment/emeritus/0723/')}}" target="_blank">Link 2</a>
                 </td>
