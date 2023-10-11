@@ -254,7 +254,7 @@ function FindQuickLinksNew($placement='',$sort_order=''){
     //dd($data);
     return @$data;
   }
-  //////////////////////////////////////////
+
 
 
 

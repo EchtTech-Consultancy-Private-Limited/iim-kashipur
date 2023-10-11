@@ -51,6 +51,7 @@ use App\Models\project_logo;
 use App\Models\quick_linkcategory;
 use App\Models\search;
 use App\Models\report;
+use App\Models\enquirie;
 use App\Models\researchSeminars;
 class InnerpageController extends Controller
 {
@@ -2781,6 +2782,34 @@ public function Child_barInnerpage($main_slug,$Sub_slug,$slug) //content page
     return back()->with(['success'=>'Thank You! Your Sc-St-Obc form has been successfully submitted']);
 }
 
+public function enquiriesForm(){
+   return view('front.Layouts.enquiriesForm');
+}
+
+public function enquiriesFormSubmit(Request $request){
+
+    //dd($request->all());
+
+    $request->validate(
+        [
+            'name' => 'required|max:32|min:2',
+            'email' => ['required','string','email','max:50','unique:users','regex:/^([a-z0-9\+_\-]+)(\.[a-z0-9\+_\-]+)*@([a-z0-9\-]+\.)+[a-z]{2,6}$/ix'],
+            'mobile_no'=>'required|numeric|min:10|numeric|digits:10',
+            'origination'=>'required',
+            'query_Details'=>'required',
+            'captcha' => 'required|captcha'
+       ]
+   );
+    $data= new enquirie;
+    $data->name=$request->name;
+    $data->email=$request->email;
+    $data->origination=$request->origination;
+    $data->mobile_no=$request->mobile_no;
+    $data->query_Details=$request->query_Details;
+    $data->save();
+    return back()->with(['success'=>'Thank You! Your enquiries form has been successfully submitted']);
+
+}
 
 
 }
