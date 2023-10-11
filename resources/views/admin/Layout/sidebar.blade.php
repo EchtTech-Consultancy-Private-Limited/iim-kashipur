@@ -654,7 +654,34 @@
 
         @endif
 
+        @if (@checkRoute('View_enquirie'))
+        <li class="nav-item">
 
+            <a class="nav-link" data-toggle="collapse" href="#managments" aria-expanded="false"
+                aria-controls="tables">
+
+                <i class="icon-head menu-icon"></i>
+
+                <span class="menu-title">Enquirie List</span>
+
+                <i class="menu-arrow"></i>
+
+            </a>
+
+            <div class="collapse" id="managments">
+
+                <ul class="nav flex-column sub-menu">
+
+                    <li class="nav-item"> <a class="nav-link" href="{{ url('/Accounts/enquirie-list') }}"> Enquirie
+                        </a>
+                    </li>
+
+                </ul>
+
+            </div>
+
+        </li>
+    @endif
 
 
         @if (@checkRoute('View_Admins'))
