@@ -231,20 +231,20 @@ function FindQuickLinksNew($placement='',$sort_order=''){
 
   /////////////////////////////////////////
   function GetSubMenusFront($id){
-    $data=\App\Models\SubMenu::where('menu_id',$id)->where('status','1')->get();
+    $data=\App\Models\SubMenu::where('menu_id',$id)->orderBy('sort_order','Asc')->where('status','1')->get();
     return @$data;
   }
 
 
   function GetchildMenusFront($menuid,$subid){
-    $data=\App\Models\child_menu::where('menu_id',$menuid)->where('sub_id',$subid)->where('status','1')->get();
+    $data=\App\Models\child_menu::where('menu_id',$menuid)->orderBy('sort_order','Asc')->where('sub_id',$subid)->where('status','1')->get();
     return $data;
   }
 
 
 
   function GetchildMenusFronts($menuid,$subid){
-    $data=\App\Models\child_menu::where('menu_id',$menuid)->where('sub_id',$subid)->where('status','1')->get();
+    $data=\App\Models\child_menu::where('menu_id',$menuid)->orderBy('sort_order','Asc')->where('sub_id',$subid)->where('status','1')->get();
    //dd($data);
     return $data;
   }
