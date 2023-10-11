@@ -83,12 +83,12 @@
 
                                 <div class="row align-items-center pt-4 pb-3">
                                     <div class="col-md-3 ps-5">
-                                        <h6 class="mb-0" tabindex="0">Origination<span class="text-danger">*</span>
+                                        <h6 class="mb-0" tabindex="0">Organization<span class="text-danger">*</span>
                                         </h6>
                                     </div>
                                     <div class="col-md-9 pe-5">
                                         <input type="text"  name="origination" class="form-control"
-                                            placeholder="Enter Your origination">
+                                            placeholder="Enter Your Organization">
                                         @if ($errors->has('origination'))
                                             <div class="text-danger">{{ $errors->first('origination') }}</div>
                                         @endif

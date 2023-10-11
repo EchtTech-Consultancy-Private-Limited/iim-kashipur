@@ -19,6 +19,7 @@ use App\Models\club;
 use App\Models\scstobc_forms;
 use App\Models\feedback;
 use App\Models\committee_multiple_image;
+use App\Models\enquirie;
 use App\Models\club_multiple_image;
 use App\Models\cell_multiple_image;
 use DB;
@@ -446,6 +447,12 @@ public function Add_biography(Request $request,$id=null)
     {
       $data=feedback::whereform_type('feedback')->get();
      return view ('admin.sections.manageFeedback',['data'=>$data]);
+    }
+
+    public function View_enquirie()
+    {
+      $data=enquirie::get();
+     return view ('admin.sections.manageEnquirie',['data'=>$data]);
     }
 
 
