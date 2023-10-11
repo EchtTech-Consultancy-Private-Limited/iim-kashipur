@@ -616,6 +616,8 @@ Route::post('forget-password', [ForgotPasswordController::class, 'submitForgetPa
 Route::get('reset-password/{token}', [ForgotPasswordController::class, 'showResetPasswordForm'])->name('reset.password.get');
 Route::post('reset-password', [ForgotPasswordController::class, 'submitResetPasswordForm'])->name('reset.password.post');
 
+Route::get('enquirie',[InnerpageController::class,'enquiriesForm']);
+Route::post('enquirie',[InnerpageController::class,'enquiriesFormSubmit']);
 
 Route::post('sc-st-obc',[InnerpageController::class,'sc_st_obc']);
 Route::get('registeration',[IcmiRegistrationController::class,'registeration']);
