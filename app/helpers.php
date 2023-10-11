@@ -250,7 +250,7 @@ function FindQuickLinksNew($placement='',$sort_order=''){
   }
 
   function GetsubchildMenusFront($menuid,$subid,$child){
-    $data=\App\Models\subchildmenu::where('menu_id',$menuid)->where('sub_id',$subid)->where('child_id',$child)->where('status','1')->get();
+    $data=\App\Models\subchildmenu::where('menu_id',$menuid)->orderBy('sort_order','Asc')->where('sub_id',$subid)->where('child_id',$child)->where('status','1')->get();
     //dd($data);
     return @$data;
   }
