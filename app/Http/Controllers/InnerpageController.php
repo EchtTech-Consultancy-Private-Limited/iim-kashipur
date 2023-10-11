@@ -2795,7 +2795,7 @@ public function enquiriesFormSubmit(Request $request){
             'name' => 'required|max:32|min:2',
             'email' => ['required','string','email','max:50','unique:users','regex:/^([a-z0-9\+_\-]+)(\.[a-z0-9\+_\-]+)*@([a-z0-9\-]+\.)+[a-z]{2,6}$/ix'],
             'mobile_no'=>'required|numeric|min:10|numeric|digits:10',
-            'origination'=>'required',
+            'organization'=>'required',
             'query_Details'=>'required',
             'captcha' => 'required|captcha'
        ]
@@ -2803,7 +2803,7 @@ public function enquiriesFormSubmit(Request $request){
     $data= new enquirie;
     $data->name=$request->name;
     $data->email=$request->email;
-    $data->origination=$request->origination;
+    $data->organization=$request->organization;
     $data->mobile_no=$request->mobile_no;
     $data->query_Details=$request->query_Details;
     $data->save();

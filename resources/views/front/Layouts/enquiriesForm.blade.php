@@ -41,9 +41,9 @@
                                         <h6 class="mb-0" tabindex="0">Full Name <span class="text-danger">*</span> </h6>
                                     </div>
                                     <div class="col-md-9 pe-5">
-                                        <input type="text" value="" name="name" class="form-control special_no"
-                                            maxlength="250" minlength="2" placeholder="Enter Your Name" maxlength="250"
-                                            minlength="2">
+                                        <input type="text"  name="name" class="form-control special_no"
+                                            maxlength="250" minlength="2" placeholder="Enter Your Name"  value="{{ old('name') }}"   maxlength="250"
+                                            minlength="3">
                                         @if ($errors->has('name'))
                                             <div class="text-danger">{{ $errors->first('name') }}</div>
                                         @endif
@@ -56,8 +56,9 @@
                                         <h6 class="mb-0" tabindex="0">Email<span class="text-danger">*</span> </h6>
                                     </div>
                                     <div class="col-md-9 pe-5">
-                                        <input type="text" value="" name="email" class="form-control"
+                                        <input type="text"  name="email" value="{{ old('email') }}"   class="form-control"
                                             placeholder="Enter Your Email">
+
                                         @if ($errors->has('email'))
                                             <div class="text-danger">{{ $errors->first('email') }}</div>
                                         @endif
@@ -71,7 +72,7 @@
                                     </div>
                                     <div class="col-md-9 pe-5">
                                         <input type="text"  name="mobile_no" id="mobile_no"
-                                            class="form-control" placeholder="Enter your Contact Number" maxlength="10">
+                                            class="form-control" placeholder="Enter your Contact Number" value="{{ old('mobile_no') }}"   maxlength="10">
 
                                         @if ($errors->has('mobile_no'))
                                             <div class="text-danger">{{ $errors->first('mobile_no') }}</div>
@@ -87,10 +88,10 @@
                                         </h6>
                                     </div>
                                     <div class="col-md-9 pe-5">
-                                        <input type="text"  name="origination" class="form-control"
-                                            placeholder="Enter Your Organization">
-                                        @if ($errors->has('origination'))
-                                            <div class="text-danger">{{ $errors->first('origination') }}</div>
+                                        <input type="text"  name="organization" value="{{ old('organization') }}" class="form-control"
+                                            placeholder="Enter Your organization">
+                                        @if ($errors->has('organization'))
+                                            <div class="text-danger">{{ $errors->first('organization') }}</div>
                                         @endif
 
                                     </div>
@@ -103,7 +104,7 @@
                                         <h6 class="mb-0">Query<span class="text-danger">*</span> </h6>
                                     </div>
                                     <div class="col-md-9 pe-5">
-                                        <textarea class="form-control " rows="3" name="query_Details" maxlength="250" minlength="2" placeholder="Enter your query"></textarea>
+                                        <textarea class="form-control " rows="3" name="query_Details" maxlength="250" minlength="2" placeholder="Enter your query">{{ old('query_Details') }}</textarea>
 
                                         @if ($errors->has('query_Details'))
                                         <div class="text-danger">{{ $errors->first('query_Details') }}</div>
