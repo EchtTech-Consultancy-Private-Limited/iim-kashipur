@@ -41,7 +41,7 @@
                                         <h6 class="mb-0" tabindex="0">Full Name <span class="text-danger">*</span> </h6>
                                     </div>
                                     <div class="col-md-9 pe-5">
-                                        <input type="text"  name="name" class="form-control special_no"
+                                        <input type="text"  name="name" class="form-control preventnumeric"
                                             maxlength="250" minlength="2" placeholder="Enter Your Name"  value="{{ old('name') }}"   maxlength="250"
                                             minlength="3">
                                         @if ($errors->has('name'))
@@ -180,7 +180,20 @@
             e.preventDefault();
             return false;
         });
-    </script>
+
+
+$('.preventnumeric').keypress(function(e) {
+    //alert("yes");
+    var regex = new RegExp(/^[a-zA-Z\s]+$/);
+    var str = String.fromCharCode(!e.charCode ? e.which : e.charCode);
+    if (regex.test(str)) {
+        return true;
+    }
+    e.preventDefault();
+    return false;
+});
+
+</script>
 
     <script type="text/javascript">
         $('#refresh-captcha').click(function() {
