@@ -82,7 +82,7 @@
 
                                                         <td>{{ $D->mobile_no }}</td>
 
-                                                        <td>{{ $D->origination }}</td>
+                                                        <td>{{ $D->organization }}</td>
 
                                                         <td>{{ $D->query_Details }}</td>
 
