@@ -6100,3 +6100,11 @@ p{
     .mail-team-2{
         word-wrap: break-word !important;
     }
+
+    .social-icon ul li.text-lg-left1.dot-not-in {
+        list-style: none !important;
+        text-align: center !important;
+    }
+        .social-pl-0{
+            padding-left:0px !important
+        }

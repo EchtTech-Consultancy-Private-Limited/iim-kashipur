@@ -2,7 +2,6 @@
 
 @section('content')
 
-
     @php
         $mmenu = @content_menus($type[0]->menu_id);
     @endphp
@@ -632,36 +631,9 @@
                                             </h5>
                                         </a>
 
-                                        {{-- <div class="profile-socail-icon information">
-                                                    <a href="javascript:void(0);" class="socail-icon"><i
-                                                            class="fab fa fa-facebook-f"></i></a>
-                                                    <a href="javascript:void(0);" class="socail-icon"><i
-                                                            class="fab fa fa-twitter"></i></a>
-
-                                                </div> --}}
-                                    </div>
-                                </div>
-
-
-
-                                <div class="col-md-7 col-lg-8">
-                                    {{-- <p>{{ $items->department  }}</p> --}}
-
-                                    <p>
-                                        @if (GetLang() == 'en')
-                                            {!! $item->description !!}
-                                        @else
-                                            {!! $item->description_h !!}
-                                        @endif
-                                    </p>
-                                </div>
-
-                            </div>
-
-                        </div>
-                        <div class="social-icon">
-                            <ul>
-                                <li class="text-lg-left1">
+                                        <div class="social-icon">
+                            <ul class="social-pl-0">
+                                <li class="text-lg-left1 dot-not-in">
                                     @if ($item->twitter != '')
                                         <a href="{{ url($item->twitter) }}" alt="{{ $item->Twitter_title }}"
                                             title="{{ $item->Twitter_title }}"
@@ -738,6 +710,27 @@
                                 </li>
                             </ul>
                         </div>
+                                    </div>
+                                </div>
+
+
+
+                                <div class="col-md-7 col-lg-8">
+                                    {{-- <p>{{ $items->department  }}</p> --}}
+
+                                    <p>
+                                        @if (GetLang() == 'en')
+                                            {!! $item->description !!}
+                                        @else
+                                            {!! $item->description_h !!}
+                                        @endif
+                                    </p>
+                                </div>
+
+                            </div>
+
+                        </div>
+                       
 
                         <h6>{{ $item->video_title }}</h6>
 
