@@ -41,7 +41,33 @@
         <div class="container">
 
         <div class="table-responsive mb-3">
+
        <table style="display:table">
+        <tbody>
+            <tr>
+                <td colspan="2">Faculty Recruitment - Special Recruitment Drive for SC / ST / NC-OBC / EWS / PwD on Rolling Basis</td>
+            </tr>
+            <tr>
+                <td style="width:52.5%">
+                    <a href="{{asset('uploads/Faculty_Recruitment_Special_Recruitment_Drive_for_SC_ST _NC_OBC _EWS_PwD_on_Rolling_Basis.pdf')}}" target="_blank" class="pdf-links"> <i class="fa fa-file-pdf-o"></i> Detailed Advertisement</a> 
+                    <span style="font-size: 10px;margin-left: 0px;color: #ed2044;" tabindex="0">(133.21KB)</span> 
+                    <div class="mt-1" tabindex="0"><b>Opening Date : </b> 2023-10-28</div> 
+
+                </td>
+                <td>
+                 <a  @if (GetLang() =='en') onclick="return confirm('This link will take you to an external web site.')"  @else onclick="return confirm('यह लिंक आपको एक बाहरी वेब साइट पर ले जाएगा।')" @endif href="{{url('https://faculty.iimkashipur.co.in/fac1023/')}}"  target="_blank">Apply Here</a>                
+            
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                In case of any technical issue, please contact: <a href="javascript:void();">response[at]iimkashipur[dot]ac[dot]in</a>
+                </td>
+            </tr>
+        </tbody>
+       </table>
+
+       <table class="mt-5" style="display:table">
         <tbody>
             <tr>
                 <td colspan="2">Faculty Recruitment for Emeritus Professor on Rolling Basis</td>
