@@ -20,7 +20,10 @@ use App\Models\scstobc_forms;
 use App\Models\feedback;
 use App\Models\committee_multiple_image;
 use App\Models\enquirie;
+use Excel;
+use App\Exports\Exportguidelinesparticipant;
 use App\Models\club_multiple_image;
+use App\Models\guidelinesparticipant;
 use App\Models\cell_multiple_image;
 use DB;
 use Str;
@@ -459,6 +462,11 @@ public function Add_biography(Request $request,$id=null)
     public function pdf_section(Request $request){
         $item=rit_report_section::whereid($request->id)->first();
         return response()->json(['item'=>$item]);
+    }
+
+    public function View_guidelinesParticipants(){
+      $data=guidelinesparticipant::get();
+     return view ('admin.sections.mangeGuidelinesParticipants',['data'=>$data]);
     }
 
 
@@ -1127,6 +1135,11 @@ public function View_scstobc(){
     return view('admin.sections.sc-st-obc-listing',['data'=>$data]);
 }
 
+
+public function fileExportMDP() 
+{
+    return Excel::download(new Exportguidelinesparticipant, 'Exportguidelinesparticipant.php.xlsx');
+}
 
 
 }

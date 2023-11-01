@@ -462,12 +462,11 @@ Route::get('/delete-student-profile/{id}',[StudentProfileController::class,'dele
 //Route::get('/delete-student-profile/{id}',[StudentProfileController::class,'delete_student_profile']);
 
 
-
-
 //feedback form & contact us form
 Route::GET('sc-st-obc-list',[FormController::class,'View_scstobc']);
 Route::GET('feedback',[FormController::class,'feedback']);
 Route::get('enquirie-list',[FormController::class,'View_enquirie']);
+Route::get('guidelines-participants-list',[FormController::class,'View_guidelinesParticipants']);
 
 
 //Auth log  route
@@ -619,6 +618,10 @@ Route::post('reset-password', [ForgotPasswordController::class, 'submitResetPass
 Route::get('enquirie',[InnerpageController::class,'enquiriesForm']);
 Route::post('enquirie',[InnerpageController::class,'enquiriesFormSubmit']);
 
+Route::get('/file-export-mdp', [FormController::class, 'fileExportMDP']);
+
+
+Route::post('Guidelines-for-Participants',[InnerpageController::class,'Guidelines_for_Participants']);
 Route::post('sc-st-obc',[InnerpageController::class,'sc_st_obc']);
 Route::get('registeration',[IcmiRegistrationController::class,'registeration']);
 //website search

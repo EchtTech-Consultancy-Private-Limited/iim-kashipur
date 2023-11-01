@@ -2811,6 +2811,26 @@ public function enquiriesFormSubmit(Request $request){
 
 }
 
+public function Guidelines_for_Participants(Request $request){
+    $request->validate(
+        [
+            'name' => 'required|max:32|min:2',
+            'email' => ['required','string','email','max:50','unique:users','regex:/^([a-z0-9\+_\-]+)(\.[a-z0-9\+_\-]+)*@([a-z0-9\-]+\.)+[a-z]{2,6}$/ix'],
+            'mobile_no'=>'required|numeric|min:10|numeric|digits:10',
+            'organization'=>'required',
+            'captcha' => 'required|captcha'
+       ]
+   );
+    $data= new enquirie;
+    $data->name=$request->name;
+    $data->email=$request->email;
+    $data->organization=$request->organization;
+    $data->mobile_no=$request->mobile_no;
+    $data->save();
+    return back()->with(['success'=>'Thank You! Your enquiries form has been successfully submitted']);
+}
+
+
 
 }
 

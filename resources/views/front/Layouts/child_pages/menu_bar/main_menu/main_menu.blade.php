@@ -1259,6 +1259,27 @@
 
     @endif
 
+    <script>
+        //id="myForm"  form id
+        $(document).ready(function () {
+            $('#myForm').submit(function (e) {
+                e.preventDefault();
+    
+                $.ajax({
+                    type: 'POST',
+                    url: '/submit-form',
+                    data: $('#myForm').serialize(),
+                    success: function (data) {
+                        alert(data.message);
+                        // You can update the UI or perform other actions here
+                    },
+                    error: function (data) {
+                        console.log('Error:', data);
+                    }
+                });
+            });
+        });
 
-
+    </script>
+    
 @endsection
