@@ -3550,7 +3550,7 @@ p {
 }
 
 .carousel .carousel-item img {
-    height: 550px !important;
+    height: 500px !important;
     /* height: 75vh !important; */
 }
 @media (max-width: 767px) {
@@ -3940,6 +3940,8 @@ span {
     border-collapse: collapse;
     width: 100%;
     margin-top: 20px;
+    display: block;
+    overflow-x: auto;
 }
 
 .master-class table tbody,
@@ -6098,3 +6100,11 @@ p{
     .mail-team-2{
         word-wrap: break-word !important;
     }
+
+    .social-icon ul li.text-lg-left1.dot-not-in {
+        list-style: none !important;
+        text-align: center !important;
+    }
+        .social-pl-0{
+            padding-left:0px !important
+        }
