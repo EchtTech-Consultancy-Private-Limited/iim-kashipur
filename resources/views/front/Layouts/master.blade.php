@@ -18,7 +18,7 @@
 
     <link href="{{asset('assets/css/bootstrap.min.css')}}" rel="stylesheet">
 
-
+    <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <link href="{{asset('assets/css/owl.carousel.min.css')}}" rel="stylesheet">
 

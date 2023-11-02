@@ -8,8 +8,6 @@
 
         <div class="content-wrapper">
 
-
-
             <div class="row">
 
                 <div class="col-md-12 grid-margin stretch-card">
@@ -50,7 +48,7 @@
 
 
 
-                            <form class="forms-sample row col-md-12"   id="regForm"    method="POST"
+                            <form class="forms-sample row col-md-12" id="regForm" method="POST"
                                 action="{{ url('/Accounts/add-page-act') }}" enctype="multipart/form-data">
                                 @csrf
 
@@ -60,11 +58,11 @@
                                         <input type="text" class="form-control" name="name"
                                             placeholder="Please enter content page title" value="{{ old('name') }}"><br>
 
-                                            <label for="name" id="name-error" class="error">
-                                                @error('name')
-                                                    {{ $message }}
-                                                @enderror
-                                            </label>
+                                        <label for="name" id="name-error" class="error">
+                                            @error('name')
+                                                {{ $message }}
+                                            @enderror
+                                        </label>
 
                                     </div>
                                 </div>
@@ -76,11 +74,11 @@
                                             placeholder="Please enter content page title in hindi"
                                             value="{{ old('name_h') }}"><br>
 
-                                            <label for="name_h" id="name_h-error" class="error">
-                                                @error('name')
-                                                    {{ $message }}
-                                                @enderror
-                                            </label>
+                                        <label for="name_h" id="name_h-error" class="error">
+                                            @error('name')
+                                                {{ $message }}
+                                            @enderror
+                                        </label>
 
                                     </div>
                                 </div>
@@ -106,11 +104,11 @@
                                         <textarea class="form-control" id="content_h" rows="4" name="content_h"
                                             placeholder="Please enter content in hindi">{{ old('content_h') }}</textarea><br>
 
-                                            <label for="content_h" id="content_h-error" class="error">
-                                                @error('content_h')
-                                                    {{ $message }}
-                                                @enderror
-                                            </label>
+                                        <label for="content_h" id="content_h-error" class="error">
+                                            @error('content_h')
+                                                {{ $message }}
+                                            @enderror
+                                        </label>
 
                                     </div>
                                 </div>
@@ -124,27 +122,27 @@
                                             value="{{ old('tittle') }}"><br>
 
 
-                                            <label for="tittle" id="tittle-error" class="error">
-                                                @error('tittle')
-                                                    {{ $message }}
-                                                @enderror
-                                            </label>
+                                        <label for="tittle" id="tittle-error" class="error">
+                                            @error('tittle')
+                                                {{ $message }}
+                                            @enderror
+                                        </label>
 
-                                        </div>
                                     </div>
+                                </div>
 
-                                    <div class="col-md-12">
+                                <div class="col-md-12">
                                     <label for="inputText" class="col-sm-12 col-form-label">Meta Keywords*</label>
                                     <div class="col-sm-12">
                                         <textarea class="form-control" id="keyword" rows="4" name="keyword"
                                             placeholder="Please enter meta keywords, use for seo">{{ old('keyword') }}</textarea><br>
 
 
-                                            <label for="keyword" id="keyword-error" class="error">
-                                                @error('keyword')
-                                                    {{ $message }}
-                                                @enderror
-                                            </label>
+                                        <label for="keyword" id="keyword-error" class="error">
+                                            @error('keyword')
+                                                {{ $message }}
+                                            @enderror
+                                        </label>
 
 
 
@@ -154,14 +152,14 @@
                                 <div class="col-md-12">
                                     <label for="inputText" class="col-sm-12 col-form-label">Meta Description*</label>
                                     <div class="col-sm-12">
-                                        <textarea class="form-control"  rows="4" name="description"
+                                        <textarea class="form-control" rows="4" name="description"
                                             placeholder="Please enter meta description, use for seo">{{ old('description') }}</textarea><br>
 
-                                            <label for="description" id="description-error" class="error">
-                                                @error('description')
-                                                    {{ $message }}
-                                                @enderror
-                                            </label>
+                                        <label for="description" id="description-error" class="error">
+                                            @error('description')
+                                                {{ $message }}
+                                            @enderror
+                                        </label>
 
 
                                     </div>
@@ -174,7 +172,7 @@
                                         <input type="file" class="form-control" name="imagename"
                                             placeholder="Please browse content image" accept=".jpeg,.jpg,.gif,.png"><br>
 
-                                            {{-- <label for="name" id="name-error" class="error">
+                                        {{-- <label for="name" id="name-error" class="error">
                                                 @error('name')
                                                     {{ $message }}
                                                 @enderror
@@ -191,7 +189,7 @@
                                             placeholder="Please enter text for title of content photo, use for seo"
                                             value="{{ old('cover_title') }}"><br>
 
-                                            {{-- <label for="name" id="name-error" class="error">
+                                        {{-- <label for="name" id="name-error" class="error">
                                                 @error('name')
                                                     {{ $message }}
                                                 @enderror
@@ -209,7 +207,7 @@
                                             placeholder="Please enter text for title of content photo, use for seo"
                                             value="{{ old('cover_alt') }}"><br>
 
-                                            {{-- <label for="name" id="name-error" class="error">
+                                        {{-- <label for="name" id="name-error" class="error">
                                                 @error('name')
                                                     {{ $message }}
                                                 @enderror
@@ -227,7 +225,7 @@
                                             placeholder="Please browse banner image" accept=".jpeg,.jpg,.gif,.png"><br>
 
 
-                                            {{-- <label for="name" id="name-error" class="error">
+                                        {{-- <label for="name" id="name-error" class="error">
                                                 @error('name')
                                                     {{ $message }}
                                                 @enderror
@@ -246,7 +244,7 @@
                                             value="{{ old('banner_title') }}"><br>
 
 
-                                            {{-- <label for="name" id="name-error" class="error">
+                                        {{-- <label for="name" id="name-error" class="error">
                                                 @error('name')
                                                     {{ $message }}
                                                 @enderror
@@ -264,7 +262,7 @@
                                             placeholder="Please enter text for alt of banner photo, use for seo"
                                             value="{{ old('banner_alt') }}"><br>
 
-                                            {{-- <label for="name" id="name-error" class="error">
+                                        {{-- <label for="name" id="name-error" class="error">
                                                 @error('name')
                                                     {{ $message }}
                                                 @enderror
@@ -278,8 +276,9 @@
                                     <label for="inputText" class="col-sm-2 col-form-label">PDF File</label>
                                     <div class="col-sm-12">
                                         <input type="file" class="form-control" name="pdf"
-                                            placeholder="Please browse PDF file" accept="application/pdf,application/vnd.ms-excel"><br>
-{{--
+                                            placeholder="Please browse PDF file"
+                                            accept="application/pdf,application/vnd.ms-excel"><br>
+                                        {{--
                                             <label for="name" id="name-error" class="error">
                                                 @error('name')
                                                     {{ $message }}
@@ -292,17 +291,17 @@
 
                                 <div class="col-md-12">
                                     <label for="inputText" class="col-sm-2 col-form-label">Sort Order
-                                        </label>
+                                    </label>
                                     <div class="col-sm-12">
                                         <input type="text" class="form-control" name="sort_order"
                                             placeholder="Please enter sorting position number"
-                                            value="{{ old('sort_order') }}"  id="mobile"><br>
+                                            value="{{ old('sort_order') }}" id="mobile"><br>
 
-                                            <label for="sort_order" id="sort_order-error" class="error">
-                                                @error('sort_order')
-                                                    {{ $message }}
-                                                @enderror
-                                            </label>
+                                        <label for="sort_order" id="sort_order-error" class="error">
+                                            @error('sort_order')
+                                                {{ $message }}
+                                            @enderror
+                                        </label>
 
 
                                     </div>
@@ -311,17 +310,17 @@
 
                                 <div class="col-md-12">
                                     <label for="inputText" class="col-sm-2 col-form-label">Video url
-                                        </label>
+                                    </label>
                                     <div class="col-sm-12">
                                         <input type="url" class="form-control" name="video_url"
-                                            placeholder="Please enter video url!!"
-                                            value="{{ old('video_url') }}"  id="video_url"><br>
+                                            placeholder="Please enter video url!!" value="{{ old('video_url') }}"
+                                            id="video_url"><br>
 
-                                            <label for="video_url" id="video_url-error" class="error">
-                                                @error('video_url')
-                                                    {{ $message }}
-                                                @enderror
-                                            </label>
+                                        <label for="video_url" id="video_url-error" class="error">
+                                            @error('video_url')
+                                                {{ $message }}
+                                            @enderror
+                                        </label>
 
 
                                     </div>
@@ -329,17 +328,17 @@
 
                                 <div class="col-md-12">
                                     <label for="inputText" class="col-sm-2 col-form-label">Video Title
-                                        </label>
+                                    </label>
                                     <div class="col-sm-12">
                                         <input type="text" class="form-control" name="video_title"
-                                            placeholder="Please enter video title"
-                                            value="{{ old('video_title') }}"  id="video_title"><br>
+                                            placeholder="Please enter video title" value="{{ old('video_title') }}"
+                                            id="video_title"><br>
 
-                                            <label for="video_title" id="video_title-error" class="error">
-                                                @error('video_title')
-                                                    {{ $message }}
-                                                @enderror
-                                            </label>
+                                        <label for="video_title" id="video_title-error" class="error">
+                                            @error('video_title')
+                                                {{ $message }}
+                                            @enderror
+                                        </label>
 
 
                                     </div>
@@ -389,7 +388,8 @@
                                 </div>
                                 <div class="col-md-12">
                                     <div class="col-sm-10">
-                                        <button type="submit" class="btn btn-primary" onclick="load();" class="form-control">Save</button>
+                                        <button type="submit" class="btn btn-primary" onclick="load();"
+                                            class="form-control">Save</button>
                                     </div>
                                 </div>
 
@@ -409,7 +409,6 @@
 
 
         <script type="text/javascript">
-
             CKEDITOR.replace('content');
 
             CKEDITOR.replace('content_h');

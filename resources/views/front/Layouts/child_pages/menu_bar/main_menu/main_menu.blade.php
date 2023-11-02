@@ -63,12 +63,12 @@
                                     d="M10 19v-5h4v5c0 .55.45 1 1 1h3c.55 0 1-.45 1-1v-7h1.7c.46 0 .68-.57.33-.87L12.67 3.6c-.38-.34-.96-.34-1.34 0l-8.36 7.53c-.34.3-.13.87.33.87H5v7c0 .55.45 1 1 1h3c.55 0 1-.45 1-1z" />
                             </svg></a></li>
                     <li><a href="javascript:void(0);">
-                        @if (GetLang() == 'en')
-                            {{ $mmenu[0]->name ?? '' }}
-                        @else
-                            {{ $mmenu[0]->name_h ?? '' }}
-                        @endif
-                    </a>
+                            @if (GetLang() == 'en')
+                                {{ $mmenu[0]->name ?? '' }}
+                            @else
+                                {{ $mmenu[0]->name_h ?? '' }}
+                            @endif
+                        </a>
 
                     </li>
                     <li>
@@ -165,11 +165,11 @@
                                     d="M10 19v-5h4v5c0 .55.45 1 1 1h3c.55 0 1-.45 1-1v-7h1.7c.46 0 .68-.57.33-.87L12.67 3.6c-.38-.34-.96-.34-1.34 0l-8.36 7.53c-.34.3-.13.87.33.87H5v7c0 .55.45 1 1 1h3c.55 0 1-.45 1-1z" />
                             </svg></a></li>
                     <li><a href="javascript:void(0);">
-                        @if (GetLang() == 'en')
-                            {{ $get[0]->name ?? '' }}
-                        @else
-                            {{ $get[0]->name_h ?? '' }}
-                        @endif
+                            @if (GetLang() == 'en')
+                                {{ $get[0]->name ?? '' }}
+                            @else
+                                {{ $get[0]->name_h ?? '' }}
+                            @endif
                         </a>
                     </li>
                     <li>
@@ -253,13 +253,13 @@
 
                     <li>
 
-                            <span>
-                                @if (GetLang() == 'en')
-                                    {{ ucfirst(strtolower($item[0]->name)) ?? '' }}
-                                @else
-                                    {{ ucfirst(strtolower($item[0]->name_h)) ?? '' }}
-                                @endif
-                            </span>
+                        <span>
+                            @if (GetLang() == 'en')
+                                {{ ucfirst(strtolower($item[0]->name)) ?? '' }}
+                            @else
+                                {{ ucfirst(strtolower($item[0]->name_h)) ?? '' }}
+                            @endif
+                        </span>
 
 
                     </li>
@@ -588,8 +588,7 @@
                                             @endif
                                             <svg class="minus" viewBox="0 0 24 24">
                                                 <g data-name="Layer 2">
-                                                    <path d="M19 13H5a1 1 0 0 1 0-2h14a1 1 0 0 1 0 2z"
-                                                        data-name="minus" />
+                                                    <path d="M19 13H5a1 1 0 0 1 0-2h14a1 1 0 0 1 0 2z" data-name="minus" />
                                                 </g>
                                             </svg><svg viewBox="0 0 24 24" class="plus">
                                                 <path
@@ -853,6 +852,228 @@
                                     @endif
 
 
+                                    <style>
+                                        /* The Modal (background) */
+                                        .modal.modal-internal {
+                                            display: none;
+                                            /* Hidden by default */
+                                            position: fixed;
+                                            /* Stay in place */
+                                            z-index: 1;
+                                            /* Sit on top */
+                                            padding-top: 100px;
+                                            /* Location of the box */
+                                            left: 0;
+                                            top: 0;
+                                            width: 100%;
+                                            /* Full width */
+                                            height: 100%;
+                                            /* Full height */
+                                            overflow: auto;
+                                            /* Enable scroll if needed */
+                                            background-color: rgb(0, 0, 0);
+                                            /* Fallback color */
+                                            background-color: rgba(0, 0, 0, 0.4);
+                                            /* Black w/ opacity */
+                                        }
+
+                                        .modal-internal .modal-header {
+                                            justify-content: space-between;
+                                            width: 100%;
+                                            padding: 5px 24px;
+                                        }
+
+                                        /* Modal Content */
+                                        .modal-internal .modal-content {
+                                            background-color: #fefefe;
+                                            margin: auto;
+                                            padding: 0;
+                                            border: 1px solid #888;
+                                            width: 350px;
+                                            padding-bottom: 20px;
+                                        }
+
+                                        /* The Close Button */
+                                        .modal-internal .close {
+                                            color: #aaaaaa;
+                                            float: right;
+                                            font-size: 28px;
+                                            font-weight: bold;
+                                        }
+
+                                        .modal-internal .close:hover,
+                                        .modal-internal .close:focus {
+                                            color: #000;
+                                            text-decoration: none;
+                                            cursor: pointer;
+                                        }
+
+                                        .modal-internal h5.modal-title {
+                                            font-size: 18px;
+                                            font-weight: 600;
+                                        }
+
+                                        .box {
+                                            width: 300px;
+                                        }
+
+                                        .box input {
+                                            padding: 10px 0 5px;
+                                            margin-bottom: 20px;
+                                        }
+
+                                        .box textarea {
+                                            height: 80px;
+                                            padding: 10px 0;
+                                            margin-bottom: 40px;
+                                        }
+
+                                        .box input,
+                                        .box textarea {
+                                            width: 100%;
+                                            box-sizing: border-box;
+                                            box-shadow: none;
+                                            outline: none;
+                                            border: none;
+                                            border-bottom: 2px solid #999;
+                                        }
+
+                                        .box textarea {
+                                            margin-bottom: 20px;
+                                        }
+
+                                        .box input[type="submit"] {
+                                            font-size: 1.1em;
+                                            border-bottom: none;
+                                            cursor: pointer;
+                                            background: #f03340;
+                                            color: #FFF;
+                                            margin-bottom: 0;
+                                            text-transform: uppercase;
+                                        }
+
+                                        .box form div {
+                                            position: relative;
+                                        }
+
+                                        .box form div label {
+                                            position: absolute;
+                                            top: 10px;
+                                            left: 0;
+                                            color: #999;
+                                            pointer-events: none;
+                                            transition: .5s;
+                                        }
+
+                                        .box input:focus~label,
+                                        .box textarea:focus~label,
+                                        .box input:valid~label,
+                                        .box textarea:valid~label {
+                                            top: -15px;
+                                            left: 0;
+                                            color: #f03340;
+                                            font-size: 1em;
+                                            font-weight: bold;
+                                        }
+
+                                        .box input:focus~label,
+                                        .box textarea:focus~label,
+                                        .box input:valid,
+                                        .box textarea:valid {
+                                            border-bottom: 2px solid #f03340;
+                                        }
+                                    </style>
+
+                                   
+                                    <!-- The Modal -->
+                                    <div id="myModal" class="modal modal-internal">
+
+                                        <!-- Modal content -->
+                                        <div class="modal-content">
+                                            <!-- <div class="d-flex justify-content-between">
+                                                           <span class="close">&times;</span>
+                                                            <p>Some text in the Modal..</p>
+                                                           </div> -->
+                                            <div class="modal-header border-bottom-0">
+                                                <h5 class="modal-title">Create Account</h5>
+                                                <a class="close">
+                                                    <span aria-hidden="true">&times;</span>
+                                                </a>
+                                                </button>
+                                            </div>
+
+                                            <div class="modal-body p-0">
+                                                <div class="box-wrapper">
+                                                    <div class="box">
+
+                                                        <form id="form" action="">
+                                                            @csrf
+                                                            <div>
+                                                                <input type="text" name="name" id="name" class="preventnumeric"
+                                                                    required placeholder=" ">
+                                                                <label>Name: </label>
+                                                            </div>
+                                                            <div>
+                                                                <input type="email" name="email" required
+                                                                    placeholder=" "
+                                                                    pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" />
+                                                                <label>Email </label>
+                                                            </div>
+                                                            <div>
+                                                                <input type="text" name="mobile_no" required    class="mobile_no"
+                                                                    maxlength="10" minlength="10" placeholder=" ">
+                                                                <label>Moblie Number</label>
+                                                            </div>
+                                                            <div>
+
+                                                                <input type="text" name="organization" required
+                                                                    placeholder=" ">
+                                                                <label>Organization</label>
+                                                            </div>
+                                                            <input id="submit" type="submit" value="Submit">
+                                                        </form>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+
+                                        </div>
+
+                                    </div>
+
+                                    <script>
+                                        // Get the modal
+                                        var modal = document.getElementById("myModal");
+
+                                        // Get the button that opens the modal
+                                        var btn = document.getElementById("myBtn");
+
+                                        // Get the <span> element that closes the modal
+                                        var span = document.getElementsByClassName("close")[0];
+
+                                        // When the user clicks the button, open the modal 
+                                        btn.onclick = function() {
+                                            modal.style.display = "block";
+                                        }
+
+                                        // When the user clicks on <span> (x), close the modal
+                                        span.onclick = function() {
+                                            modal.style.display = "none";
+                                        }
+
+                                        // When the user clicks anywhere outside of the modal, close it
+                                        window.onclick = function(event) {
+                                            if (event.target == modal) {
+                                                modal.style.display = "none";
+                                            }
+                                        }
+
+                                        function openmodle(id){
+                                            modal.style.display = "block";
+                                        }
+
+                                    </script>
+
                                     <p>
                                         @if (GetLang() == 'en')
                                             {!! $item[0]->content !!}
@@ -909,8 +1130,7 @@
                                             @endif
                                             <svg class="minus" viewBox="0 0 24 24">
                                                 <g data-name="Layer 2">
-                                                    <path d="M19 13H5a1 1 0 0 1 0-2h14a1 1 0 0 1 0 2z"
-                                                        data-name="minus" />
+                                                    <path d="M19 13H5a1 1 0 0 1 0-2h14a1 1 0 0 1 0 2z" data-name="minus" />
                                                 </g>
                                             </svg><svg viewBox="0 0 24 24" class="plus">
                                                 <path
@@ -1259,6 +1479,88 @@
 
     @endif
 
+    <script>
+        $(document).ready(function() {
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                }
+            });
 
+            $('.pdf-button').on('click', function() {
+               var pdf = ($(this).val());
+               // alert(pdf)
+               var pdfFilename = $(this).data('id');
+              // alert(pdfFilename);
+            
+           //  var pdf = ($('#pdfname2').val());
+            // var pdfFilename = $('#pdfname2').data('id');
+
+            $('#form').submit(function(e) {
+                e.preventDefault();
+                $.ajax({
+                    type: 'POST',
+                    url: "{{ url('/Guidelines-for-Participants') }}",
+                    data: $('#form').serialize()+ '&pdf=' + pdf,
+                    success: function(data) {
+                    
+                           if (data.message == 'Form submitted successfully!') {
+                                $('#myModal').hide();
+                                $('#form')[0].reset();
+                               window.open('http://localhost/project_new/iim-kashipur/public/admin/pdf/'+ pdfFilename);
+                               // alert('Form submitted successfully!');
+                           }
+                    },
+                    error: function(data) {
+                        console.log('Error:', data);
+                           console.log(data)
+                    }
+                });
+            });
+
+        });
+
+            // document.getElementById("myModal").addEventListener('click',()=>{
+            //     $("#myModal").hide();
+            // });
+        });
+
+
+      
+   
+   $('.special_no').keypress(function (e) {
+       var regex = new RegExp("^[a-zA-Z_]");
+       var str = String.fromCharCode(!e.charCode ? e.which : e.charCode);
+       if (regex.test(str)) {
+           return true;
+       }
+       e.preventDefault();
+       return false;
+   });
+
+
+   $('.mobile_no').keypress(function (e) {
+    var regex = new RegExp("^[0-9_]");
+    var str = String.fromCharCode(!e.charCode ? e.which : e.charCode);
+    if (regex.test(str)) {
+        return true;
+    }
+    e.preventDefault();
+    return false;
+});
+
+
+    $('.preventnumeric').keypress(function(e) {
+        //alert("yes");
+        var regex = new RegExp(/^[a-zA-Z\s]+$/);
+        var str = String.fromCharCode(!e.charCode ? e.which : e.charCode);
+        if (regex.test(str)) {
+            return true;
+        }
+        e.preventDefault();
+        return false;
+    });
+
+    </script>
 
 @endsection
