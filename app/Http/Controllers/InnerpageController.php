@@ -27,6 +27,7 @@ use App\Models\club_multiple_image;
 use App\Models\committee_multiple_image;
 use App\Models\cell_multiple_image;
 use App\Models\press_media;
+use App\Models\guidelinesparticipant;
 use App\Models\news_event;
 use App\Models\scstobc_forms;
 use App\Models\subchildmenu;
@@ -2812,22 +2813,31 @@ public function enquiriesFormSubmit(Request $request){
 }
 
 public function Guidelines_for_Participants(Request $request){
+     //dd($request->all);
     $request->validate(
         [
             'name' => 'required|max:32|min:2',
             'email' => ['required','string','email','max:50','unique:users','regex:/^([a-z0-9\+_\-]+)(\.[a-z0-9\+_\-]+)*@([a-z0-9\-]+\.)+[a-z]{2,6}$/ix'],
             'mobile_no'=>'required|numeric|min:10|numeric|digits:10',
             'organization'=>'required',
-            'captcha' => 'required|captcha'
+            // 'captcha' => 'required|captcha'
        ]
    );
-    $data= new enquirie;
+    $data= new guidelinesparticipant;
     $data->name=$request->name;
     $data->email=$request->email;
     $data->organization=$request->organization;
     $data->mobile_no=$request->mobile_no;
+    $data->pdf=$request->pdf;
     $data->save();
-    return back()->with(['success'=>'Thank You! Your enquiries form has been successfully submitted']);
+    
+    $responseData = [
+        'message' => 'Form submitted successfully!',
+        'otherData' => 'Additional data you want to include',
+    ];
+
+    // Return a JSON response with data
+    return response()->json($responseData);
 }
 
 

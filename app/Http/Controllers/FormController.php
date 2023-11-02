@@ -42,11 +42,9 @@ use App\Models\wellness_facilitie_image;
 use App\Models\rti;
 use App\Models\rit_report_section;
 use App\Models\quarter_report;
+
 class FormController extends Controller
 {
-
-
-
 
 
 //    function Add_OrganisationStructure(Request $request,$id=null){
@@ -1138,7 +1136,7 @@ public function View_scstobc(){
 
 public function fileExportMDP() 
 {
-    return Excel::download(new Exportguidelinesparticipant, 'Exportguidelinesparticipant.php.xlsx');
+   return  Excel::download(new Exportguidelinesparticipant, 'Exportguidelinesparticipant.php.xlsx');
 }
 
 
