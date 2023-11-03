@@ -165,7 +165,7 @@
                         @if (@checkRoute('View_EventsActivites'))
                             <li class="nav-item"><a class="nav-link"
                                     href="{{ url('Accounts/Event-Activites') }}">Manage Events
-                                    & Activities  </a></li>
+                                    & Activities </a></li>
                         @endif
 
                         @if (@checkRoute('View_studentCouncil'))
@@ -188,29 +188,29 @@
 
 
                         @if (@checkRoute('View_dissertation'))
-                            <li class="nav-item"><a class="nav-link"
-                                    href="{{ url('Accounts/dissertation') }}">Manage Dissertation </a>
+                            <li class="nav-item"><a class="nav-link" href="{{ url('Accounts/dissertation') }}">Manage
+                                    Dissertation </a>
                             </li>
                         @endif
 
                         @if (@checkRoute('View_report'))
-                        <li class="nav-item"><a class="nav-link"
-                                href="{{ url('Accounts/report') }}">Manage placement  report</a>
-                        </li>
+                            <li class="nav-item"><a class="nav-link" href="{{ url('Accounts/report') }}">Manage
+                                    placement report</a>
+                            </li>
                         @endif
 
 
                         @if (@checkRoute('View_research_seminar'))
-                        <li class="nav-item">
-                            <a class="nav-link"
-                                href="{{ url('Accounts/research-seminar') }}">Manage  Research Seminar</a>
-                        </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ url('Accounts/research-seminar') }}">Manage Research
+                                    Seminar</a>
+                            </li>
                         @endif
 
                         @if (@checkRoute('view_pdfImage'))
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ url('/Accounts/pdf-image') }}"> File/Image Upload </a>
-                        </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ url('/Accounts/pdf-image') }}"> File/Image Upload </a>
+                            </li>
                         @endif
 
 
@@ -566,13 +566,13 @@
                     <ul class="nav flex-column sub-menu">
                         @if (@checkRoute('Add_Section'))
                             <li class="nav-item"> <a class="nav-link" href="{{ url('/Accounts/add_link') }}">
-                                Add Link Section</a></li>
+                                    Add Link Section</a></li>
                         @endif
                     </ul>
                     <ul class="nav flex-column sub-menu">
                         @if (@checkRoute('Show_Section'))
                             <li class="nav-item"> <a class="nav-link" href="{{ url('/Accounts/show_link') }}">
-                                Manage Link Section</a></li>
+                                    Manage Link Section</a></li>
                         @endif
                     </ul>
 
@@ -655,33 +655,34 @@
         @endif
 
         @if (@checkRoute('View_enquirie'))
-        <li class="nav-item">
+            <li class="nav-item">
 
-            <a class="nav-link" data-toggle="collapse" href="#managments" aria-expanded="false"
-                aria-controls="tables">
+                <a class="nav-link" data-toggle="collapse" href="#managments" aria-expanded="false"
+                    aria-controls="tables">
 
-                <i class="icon-head menu-icon"></i>
+                    <i class="icon-head menu-icon"></i>
 
-                <span class="menu-title">Enquirie List</span>
+                    <span class="menu-title">Enquirie List</span>
 
-                <i class="menu-arrow"></i>
+                    <i class="menu-arrow"></i>
 
-            </a>
+                </a>
 
-            <div class="collapse" id="managments">
+                <div class="collapse" id="managments">
 
-                <ul class="nav flex-column sub-menu">
+                    <ul class="nav flex-column sub-menu">
 
-                    <li class="nav-item"> <a class="nav-link" href="{{ url('/Accounts/enquirie-list') }}"> Enquirie
-                        </a>
-                    </li>
+                        <li class="nav-item"> <a class="nav-link" href="{{ url('/Accounts/enquirie-list') }}">
+                                Enquirie
+                            </a>
+                        </li>
 
-                </ul>
+                    </ul>
 
-            </div>
+                </div>
 
-        </li>
-    @endif
+            </li>
+        @endif
 
 
         @if (@checkRoute('View_Admins'))
@@ -691,11 +692,8 @@
                     aria-controls="tables">
 
                     <i class="icon-head menu-icon"></i>
-
                     <span class="menu-title">Feedback List</span>
-
                     <i class="menu-arrow"></i>
-
                 </a>
 
                 <div class="collapse" id="managment">
@@ -716,10 +714,11 @@
 
 
 
+
         @if (@checkRoute('View_scstobc'))
             <li class="nav-item">
 
-                <a class="nav-link" data-toggle="collapse" href="#managments" aria-expanded="false"
+                <a class="nav-link" data-toggle="collapse" href="#managment6" aria-expanded="false"
                     aria-controls="tables">
 
                     <i class="icon-head menu-icon"></i>
@@ -730,11 +729,12 @@
 
                 </a>
 
-                <div class="collapse" id="managments">
+                <div class="collapse" id="managment6">
 
                     <ul class="nav flex-column sub-menu">
 
-                        <li class="nav-item"> <a class="nav-link" href="{{ url('/Accounts/sc-st-obc-list') }}"> Feedback
+                        <li class="nav-item"> <a class="nav-link" href="{{ url('/Accounts/sc-st-obc-list') }}">
+                                Feedback
                             </a>
                         </li>
 
@@ -745,6 +745,36 @@
             </li>
         @endif
 
+        @if (@checkRoute('View_Admins'))
+            <li class="nav-item">
+
+                <a class="nav-link" data-toggle="collapse" href="#managment0" aria-expanded="false"
+                    aria-controls="tables">
+
+                    <i class="icon-head menu-icon"></i>
+
+                    <span class="menu-title">MDP Programmes List</span>
+
+                    <i class="menu-arrow"></i>
+
+                </a>
+
+                <div class="collapse" id="managment0">
+
+                    <ul class="nav flex-column sub-menu">
+
+                        <li class="nav-item"> <a class="nav-link"
+                                href="{{ url('/Accounts/guidelines-participants-list') }}">
+                                sMDP Programmes List
+                            </a>
+                        </li>
+
+                    </ul>
+
+                </div>
+
+            </li>
+        @endif
 
 
 
