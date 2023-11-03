@@ -2,9 +2,9 @@
 
 @section('content')
 
-<script>
-const BASE_URL =window.location.origin;
-</script>
+    <script>
+        const BASE_URL = window.location.origin;
+    </script>
     @isset($type)
         @php
             $mmenu = @content_menus($type[0]->menu_id);
@@ -993,9 +993,9 @@ const BASE_URL =window.location.origin;
                                         <!-- Modal content -->
                                         <div class="modal-content">
                                             <!-- <div class="d-flex justify-content-between">
-                                                                   <span class="close">&times;</span>
-                                                                    <p>Some text in the Modal..</p>
-                                                                   </div> -->
+                                                                       <span class="close">&times;</span>
+                                                                        <p>Some text in the Modal..</p>
+                                                                       </div> -->
                                             <div class="modal-header border-bottom-0">
                                                 <h5 class="modal-title">Create Account</h5>
                                                 <a class="close">
@@ -1537,10 +1537,11 @@ const BASE_URL =window.location.origin;
                             if (data.message == 'Form submitted successfully!') {
                                 $('#myModal').hide();
                                 $('#form')[0].reset();
-                               
+
                                 setTimeout(function() {
                                     window.open(
-                                        BASE_URL+'/admin/pdf/'+pdfFilename);
+                                        BASE_URL + '/admin/pdf/' +
+                                        pdfFilename);
 
                                     // Reload the current page after the PDF is opened (e.g., after 2 seconds)
                                     setTimeout(function() {
@@ -1550,8 +1551,19 @@ const BASE_URL =window.location.origin;
                             }
                         },
                         error: function(data) {
-                            console.log('Error:', data);
+                           // console.log('Error:', data);
                             alert(data.responseJSON.message)
+                            if (data.responseJSON.message == 'Invalid Captcha') {
+
+                                $.ajax({
+                                    type: 'GET',
+                                    url: '<?php echo url('refresh-captcha'); ?>',
+                                    success: function(data) {
+                                        $(".captcha span").html(data
+                                            .captcha);
+                                    }
+                                });
+                            }
                         }
                     });
                 });
