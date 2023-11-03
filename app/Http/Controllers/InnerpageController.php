@@ -2820,7 +2820,7 @@ public function Guidelines_for_Participants(Request $request){
             'email' => ['required','string','email','max:50','unique:users','regex:/^([a-z0-9\+_\-]+)(\.[a-z0-9\+_\-]+)*@([a-z0-9\-]+\.)+[a-z]{2,6}$/ix'],
             'mobile_no'=>'required|numeric|min:10|numeric|digits:10',
             'organization'=>'required',
-            // 'captcha' => 'required|captcha'
+            'captcha' => 'required|captcha'
        ]
    );
     $data= new guidelinesparticipant;

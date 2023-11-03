@@ -984,16 +984,16 @@
                                         }
                                     </style>
 
-                                   
+
                                     <!-- The Modal -->
                                     <div id="myModal" class="modal modal-internal">
 
                                         <!-- Modal content -->
                                         <div class="modal-content">
                                             <!-- <div class="d-flex justify-content-between">
-                                                           <span class="close">&times;</span>
-                                                            <p>Some text in the Modal..</p>
-                                                           </div> -->
+                                                                   <span class="close">&times;</span>
+                                                                    <p>Some text in the Modal..</p>
+                                                                   </div> -->
                                             <div class="modal-header border-bottom-0">
                                                 <h5 class="modal-title">Create Account</h5>
                                                 <a class="close">
@@ -1009,8 +1009,8 @@
                                                         <form id="form" action="">
                                                             @csrf
                                                             <div>
-                                                                <input type="text" name="name" id="name" class="preventnumeric"
-                                                                    required placeholder=" ">
+                                                                <input type="text" name="name" id="name"
+                                                                    class="preventnumeric" required placeholder=" ">
                                                                 <label>Name: </label>
                                                             </div>
                                                             <div>
@@ -1020,70 +1020,96 @@
                                                                 <label>Email </label>
                                                             </div>
                                                             <div>
-                                                                <input type="text" name="mobile_no" required    class="mobile_no"
-                                                                    maxlength="10" minlength="10" placeholder=" ">
+                                                                <input type="text" name="mobile_no" required
+                                                                    class="mobile_no" maxlength="10" minlength="10"
+                                                                    placeholder=" ">
                                                                 <label>Moblie Number</label>
                                                             </div>
-                                                            <div>
 
+                                                            <div>
                                                                 <input type="text" name="organization" required
                                                                     placeholder=" ">
                                                                 <label>Organization</label>
                                                             </div>
-                                                            <input id="submit" type="submit" value="Submit">
-                                                        </form>
+
+                                                            <div>
+                                                                <input id="captcha" type="text" class="form-control"
+                                                                    placeholder="Enter Captcha" name="captcha">
+
+                                                                <div class="captcha d-flex justify-content-beetween">
+                                                                    <span
+                                                                        style="margin-right: 10px;">{!! captcha_img('math') !!}</span>
+                                                                    <button type="button"
+                                                                        class="btn btn-danger px-3 py-1 refresh-captcha text-white"
+                                                                        id="refresh-captcha"
+                                                                        style="background:#f03340;color:#fff !important">
+                                                                        &#x21bb;
+                                                                    </button>
+                                                                </div>
+
+                                                            </div>
+
+                                                            <input id="submit" type="submit" class="mt-3"
+                                                                value="Submit">
+
+
                                                     </div>
+
+
+
+
+                                                    </form>
                                                 </div>
                                             </div>
-
-
                                         </div>
+
 
                                     </div>
 
-                                    <script>
-                                        // Get the modal
-                                        var modal = document.getElementById("myModal");
+                                </div>
 
-                                        // Get the button that opens the modal
-                                        var btn = document.getElementById("myBtn");
+                                <script>
+                                    // Get the modal
+                                    var modal = document.getElementById("myModal");
 
-                                        // Get the <span> element that closes the modal
-                                        var span = document.getElementsByClassName("close")[0];
+                                    // Get the button that opens the modal
+                                    var btn = document.getElementById("myBtn");
 
-                                        // When the user clicks the button, open the modal 
-                                        btn.onclick = function() {
-                                            modal.style.display = "block";
-                                        }
+                                    // Get the <span> element that closes the modal
+                                    var span = document.getElementsByClassName("close")[0];
+                                    const closeButton = document.getElementsByClassName("close")[0];
+                                    // When the user clicks the button, open the modal 
+                                    btn.onclick = function() {
+                                        modal.style.display = "block";
+                                    }
 
-                                        // When the user clicks on <span> (x), close the modal
-                                        span.onclick = function() {
+                                    // When the user clicks on <span> (x), close the modal
+                                    span.onclick = function() {
+                                        modal.style.display = "none";
+                                    }
+
+                                    // When the user clicks anywhere outside of the modal, close it
+                                    window.onclick = function(event) {
+                                        if (event.target == modal) {
                                             modal.style.display = "none";
                                         }
+                                    }
 
-                                        // When the user clicks anywhere outside of the modal, close it
-                                        window.onclick = function(event) {
-                                            if (event.target == modal) {
-                                                modal.style.display = "none";
-                                            }
-                                        }
+                                    function openmodle(id) {
+                                        modal.style.display = "block";
+                                    }
+                                </script>
 
-                                        function openmodle(id){
-                                            modal.style.display = "block";
-                                        }
-
-                                    </script>
-
-                                    <p>
-                                        @if (GetLang() == 'en')
-                                            {!! $item[0]->content !!}
-                                        @else
-                                            {!! $item[0]->content_h !!}
-                                        @endif
-                                    </p>
-                                </div>
+                                <p>
+                                    @if (GetLang() == 'en')
+                                        {!! $item[0]->content !!}
+                                    @else
+                                        {!! $item[0]->content_h !!}
+                                    @endif
+                                </p>
                             </div>
                         </div>
+                    </div>
             @endif
         </div>
 
@@ -1488,79 +1514,99 @@
             });
 
             $('.pdf-button').on('click', function() {
-               var pdf = ($(this).val());
-               // alert(pdf)
-               var pdfFilename = $(this).data('id');
-              // alert(pdfFilename);
-            
-           //  var pdf = ($('#pdfname2').val());
-            // var pdfFilename = $('#pdfname2').data('id');
 
-            $('#form').submit(function(e) {
-                e.preventDefault();
-                $.ajax({
-                    type: 'POST',
-                    url: "{{ url('/Guidelines-for-Participants') }}",
-                    data: $('#form').serialize()+ '&pdf=' + pdf,
-                    success: function(data) {
-                    
-                           if (data.message == 'Form submitted successfully!') {
+
+                let pdf = ($(this).val());
+                console.log(pdf)
+                let pdfFilename = ($(this).attr('data-id'));
+                console.log(pdfFilename);
+
+                $('#form').submit(function(e) {
+                    e.preventDefault();
+
+                    $.ajax({
+                        type: 'POST',
+                        url: "{{ url('/Guidelines-for-Participants') }}",
+                        data: $('#form').serialize() + '&pdf=' + pdf,
+                        success: function(data) {
+
+                            toastr.success('Form submitted successfully!', 'Success');
+
+                            if (data.message == 'Form submitted successfully!') {
                                 $('#myModal').hide();
                                 $('#form')[0].reset();
-                               window.open('http://localhost/project_new/iim-kashipur/public/admin/pdf/'+ pdfFilename);
-                               // alert('Form submitted successfully!');
-                           }
-                    },
-                    error: function(data) {
-                        console.log('Error:', data);
-                           console.log(data)
-                    }
+                               
+                                setTimeout(function() {
+                                    window.open(
+                                        'http://localhost/project_new/iim-kashipur/public/admin/pdf/' +
+                                        pdfFilename);
+
+                                    // Reload the current page after the PDF is opened (e.g., after 2 seconds)
+                                    setTimeout(function() {
+                                        location.reload();
+                                    }, 1000); // 2000 milliseconds (2 seconds)
+                                }, 1000); // 2000 milliseconds (2 seconds)
+                            }
+                        },
+                        error: function(data) {
+                            console.log('Error:', data);
+                            alert(data.responseJSON.message)
+                        }
+                    });
                 });
+
             });
 
+            closeButton.addEventListener('click', () => {
+                $("#myModal").hide();
+            });
         });
 
-            // document.getElementById("myModal").addEventListener('click',()=>{
-            //     $("#myModal").hide();
-            // });
+
+
+
+        $('.special_no').keypress(function(e) {
+            var regex = new RegExp("^[a-zA-Z_]");
+            var str = String.fromCharCode(!e.charCode ? e.which : e.charCode);
+            if (regex.test(str)) {
+                return true;
+            }
+            e.preventDefault();
+            return false;
         });
 
 
-      
-   
-   $('.special_no').keypress(function (e) {
-       var regex = new RegExp("^[a-zA-Z_]");
-       var str = String.fromCharCode(!e.charCode ? e.which : e.charCode);
-       if (regex.test(str)) {
-           return true;
-       }
-       e.preventDefault();
-       return false;
-   });
+        $('.mobile_no').keypress(function(e) {
+            var regex = new RegExp("^[0-9_]");
+            var str = String.fromCharCode(!e.charCode ? e.which : e.charCode);
+            if (regex.test(str)) {
+                return true;
+            }
+            e.preventDefault();
+            return false;
+        });
 
 
-   $('.mobile_no').keypress(function (e) {
-    var regex = new RegExp("^[0-9_]");
-    var str = String.fromCharCode(!e.charCode ? e.which : e.charCode);
-    if (regex.test(str)) {
-        return true;
-    }
-    e.preventDefault();
-    return false;
-});
+        $('.preventnumeric').keypress(function(e) {
+            //alert("yes");
+            var regex = new RegExp(/^[a-zA-Z\s]+$/);
+            var str = String.fromCharCode(!e.charCode ? e.which : e.charCode);
+            if (regex.test(str)) {
+                return true;
+            }
+            e.preventDefault();
+            return false;
+        });
 
-
-    $('.preventnumeric').keypress(function(e) {
-        //alert("yes");
-        var regex = new RegExp(/^[a-zA-Z\s]+$/);
-        var str = String.fromCharCode(!e.charCode ? e.which : e.charCode);
-        if (regex.test(str)) {
-            return true;
-        }
-        e.preventDefault();
-        return false;
-    });
-
+        $('#refresh-captcha').click(function() {
+            $.ajax({
+                type: 'GET',
+                url: '<?php echo url('refresh-captcha'); ?>',
+                success: function(data) {
+                    $(".captcha span").html(data.captcha);
+                }
+            });
+        });
     </script>
 
 @endsection
