@@ -2817,7 +2817,7 @@ public function Guidelines_for_Participants(Request $request){
     $request->validate(
         [
             'name' => 'required|max:32|min:2',
-            'email' => ['required','string','email','max:50','unique:users','regex:/^([a-z0-9\+_\-]+)(\.[a-z0-9\+_\-]+)*@([a-z0-9\-]+\.)+[a-z]{2,6}$/ix'],
+            'email' => ['required','string','email','max:50','unique:guidelinesparticipants','regex:/^([a-z0-9\+_\-]+)(\.[a-z0-9\+_\-]+)*@([a-z0-9\-]+\.)+[a-z]{2,6}$/ix'],
             'mobile_no'=>'required|numeric|min:10|numeric|digits:10',
             'organization'=>'required',
             'captcha' => 'required|captcha'
@@ -2835,6 +2835,9 @@ public function Guidelines_for_Participants(Request $request){
         'message' => 'Thank you for your interest. We will reach out shortly.',
         'otherData' => 'Additional data you want to include',
     ];
+
+    //<p><input name="button" type="button"  class="pdf-button" data-id="169899460731.pdf" onclick="openmodle('abc')"   value="Soft Skills for the workplace of tomorrow (February 10-15, 2023)" /></p>
+    //<p><input name="button" type="button"  class="pdf-button" data-id="169899468819.pdf"  onclick="openmodle('abc')"  value="Effective workplace communication for managers of tomorrow (February 1-5, 2023)" /></p>
 
     // Return a JSON response with data
     return response()->json($responseData);
