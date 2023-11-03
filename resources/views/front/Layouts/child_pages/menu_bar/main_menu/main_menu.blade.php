@@ -2,7 +2,9 @@
 
 @section('content')
 
-
+<script>
+const BASE_URL =window.location.origin;
+</script>
     @isset($type)
         @php
             $mmenu = @content_menus($type[0]->menu_id);
@@ -1538,8 +1540,7 @@
                                
                                 setTimeout(function() {
                                     window.open(
-                                        'http://localhost/project_new/iim-kashipur/public/admin/pdf/' +
-                                        pdfFilename);
+                                        BASE_URL+'/admin/pdf/'+pdfFilename);
 
                                     // Reload the current page after the PDF is opened (e.g., after 2 seconds)
                                     setTimeout(function() {
