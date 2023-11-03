@@ -997,7 +997,7 @@
                                                                         <p>Some text in the Modal..</p>
                                                                        </div> -->
                                             <div class="modal-header border-bottom-0">
-                                                <h5 class="modal-title">Create Account</h5>
+                                                <h5 class="modal-title">Enter your details</h5>
                                                 <a class="close">
                                                     <span aria-hidden="true">&times;</span>
                                                 </a>
@@ -1532,11 +1532,14 @@
                         data: $('#form').serialize() + '&pdf=' + pdf,
                         success: function(data) {
 
-                            toastr.success('Form submitted successfully!', 'Success');
+                            toastr.success('Thank you for your interest. We will reach out shortly', 'Success');
 
-                            if (data.message == 'Form submitted successfully!') {
+                           
+                            if (data.message == 'Thank you for your interest. We will reach out shortly.') {
                                 $('#myModal').hide();
                                 $('#form')[0].reset();
+
+                              //  alert(data.message)
 
                                 setTimeout(function() {
                                     window.open(

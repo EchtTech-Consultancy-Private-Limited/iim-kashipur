@@ -2832,7 +2832,7 @@ public function Guidelines_for_Participants(Request $request){
     $data->save();
     
     $responseData = [
-        'message' => 'Form submitted successfully!',
+        'message' => 'Thank you for your interest. We will reach out shortly.',
         'otherData' => 'Additional data you want to include',
     ];
 
