@@ -2826,6 +2826,7 @@ public function Guidelines_for_Participants(Request $request){
     $data->organization=$request->organization;
     $data->mobile_no=$request->mobile_no;
     $data->pdf=$request->pdf;
+    $data->ip_address=getHostByName(getHostName());
     $data->save();
     
     $responseData = [
