@@ -1,6 +1,6 @@
 @extends('admin.Layout.master')
 
-@section('title', 'Guidelines Participants Listing')
+@section('title', 'MDP Programmes Listing')
 
 @section('content')
 
@@ -32,10 +32,14 @@
 
                         <div class="card-body">
 
-                            <div class="top-menu-button">
+                            <div class="top-menu-button mb-3">
 
-                                <p class="card-title">Guidelines Participants Listing </p>
+                            <div class="d-flex align-items-center justify-content-between w-100">
+                                <p class="card-title mb-0">MDP Programmes Listing</p>
+                                <a class="btn btn-warning" href="{{ url('Accounts/file-export-mdp') }}">Export MDP Programmes</a>
 
+                            </div>
+                               
                             </div>
 
 
@@ -45,22 +49,18 @@
 
                                     <div class="table-responsive">
 
+                                     
+
                                         <table id="example" class="display expandable-table" style="width:100%">
 
                                             <thead>
 
                                                 <tr>
-
                                                     <th>Sr.No#</th>
-
                                                     <th>Full Name</th>
-
                                                     <th>Email</th>
-
                                                     <th>Mobile Number</th>
-
                                                     <th>Organization</th>
-
                                                 </tr>
 
                                             </thead>

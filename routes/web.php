@@ -594,13 +594,16 @@ Route::match(['get','post'],'dynamic-form',[UIController::class,'CForm']);
 
 
 
-//my code
+
 
 
 
 });
+
 });
+Route::get('/file-export-mdp',[FormController::class,'fileExportMDP']);
 });
+
 
 
 Route::match(['get','post'],'forgot-password',[AdminController::class,'ForgotPSW'])->name('forgotpsw');
@@ -618,7 +621,7 @@ Route::post('reset-password', [ForgotPasswordController::class, 'submitResetPass
 Route::get('enquirie',[InnerpageController::class,'enquiriesForm']);
 Route::post('enquirie',[InnerpageController::class,'enquiriesFormSubmit']);
 
-Route::get('/file-export-mdp', [FormController::class, 'fileExportMDP']);
+
 
 
 Route::post('Guidelines-for-Participants',[InnerpageController::class,'Guidelines_for_Participants']);
