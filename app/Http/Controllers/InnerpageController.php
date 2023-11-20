@@ -2828,7 +2828,6 @@ public function Guidelines_for_Participants(Request $request){
     $data->pdf=$request->pdf;
     $data->ip_address=getHostByName(getHostName());
     $data->save();
-    
     $responseData = [
         'message' => 'Thank you for your interest. We will reach out shortly.',
         'otherData' => 'Additional data you want to include',
