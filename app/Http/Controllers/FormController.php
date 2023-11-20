@@ -1135,7 +1135,7 @@ public function View_scstobc(){
 
 
 public function fileExportMDP(){
-   return  Excel::download(new Exportguidelinesparticipant, 'Exportguidelinesparticipant.php.xlsx');
+   return  Excel::download(new Exportguidelinesparticipant, 'ExportMDP.php.xlsx');
 }
 
 
