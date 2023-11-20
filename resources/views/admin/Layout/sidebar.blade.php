@@ -711,10 +711,6 @@
             </li>
         @endif
 
-
-
-
-
         @if (@checkRoute('View_scstobc'))
             <li class="nav-item">
 
@@ -734,7 +730,7 @@
                     <ul class="nav flex-column sub-menu">
 
                         <li class="nav-item"> <a class="nav-link" href="{{ url('/Accounts/sc-st-obc-list') }}">
-                                Feedback
+                               SC ST OBC List
                             </a>
                         </li>
 
@@ -745,7 +741,7 @@
             </li>
         @endif
 
-        @if (@checkRoute('View_Admins'))
+        @if (@checkRoute('View_scstobc'))
             <li class="nav-item">
 
                 <a class="nav-link" data-toggle="collapse" href="#managment0" aria-expanded="false"
@@ -765,7 +761,7 @@
 
                         <li class="nav-item"> <a class="nav-link"
                                 href="{{ url('/Accounts/guidelines-participants-list') }}">
-                                sMDP Programmes List
+                                MDP Programmes List
                             </a>
                         </li>
 

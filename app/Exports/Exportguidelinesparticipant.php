@@ -10,8 +10,7 @@ class Exportguidelinesparticipant implements FromCollection
     /**
     * @return \Illuminate\Support\Collection
     */
-    public function collection()
-    {
+    public function collection(){
         return guidelinesparticipant::all();
     }
 }

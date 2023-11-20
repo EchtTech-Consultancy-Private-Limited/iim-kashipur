@@ -432,9 +432,6 @@ public function search(Request $request){
 
 //Monu - 12-07-2023
 
-
-
-
     public function RTI_view(){
         $item=rti::wherestatus('1')->get();
         $data=rit_report_section::wherestatus('1')->get();
