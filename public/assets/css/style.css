@@ -1075,7 +1075,7 @@ span.text-hili-top {
 
 
 .internalpagebanner img {
-    height: 240px !important;
+    height: 530px !important;
     object-fit: cover;
 }
 
@@ -3920,7 +3920,7 @@ span {
     border-collapse: collapse;
     width: 100%;
     margin-top: 20px;
-    display: block;
+/*    display: block;*/
     overflow-x: auto;
 }
 
@@ -4685,6 +4685,8 @@ section.excellence-wrap.pt-5 {
     .sidebarwraper {
         display: none;
     }
+
+
 
 }
 
@@ -6161,4 +6163,31 @@ del {
 
 .social-pl-0 {
     padding-left: 0px !important
+}
+
+
+@media screen and (min-width: 1351px) and (max-width: 1600px){
+    .carousel .carousel-item img {
+        height: 400px !important;
+        /* height: 75vh !important; */
+    }
+
+    
+.internalpagebanner img {
+    height: 450px !important;
+    object-fit: cover;
+}
+}
+
+
+@media screen and (min-width: 991px) and  (max-width: 1350px){
+    .carousel .carousel-item img {
+        height: 350px !important;
+        /* height: 75vh !important; */
+    }
+
+    .internalpagebanner img {
+        height: 360px !important;
+        object-fit: cover;
+    }
 }
