@@ -325,11 +325,18 @@ Route::get('delete-Wellness-image/{id}',[menuFormController::class,'delete_Welln
 Route::get('View-Wellness-Facilities-image/{id}',[menuFormController::class,'show_WellnessFacilitiesImage']);
 
 //tedx url
-Route::get("/tedx-view/{id?}",[menuFormController::class,'showTedx']);
-Route::get("/tdex",[menuFormController::class,'viewTedx']);
-Route::match(['get','post'],'add-edit-tedx/{id?}',[menuFormController::class,'Add_Edit_Tedx'])->name('addedittedx');
-Route::get('delete-tedx/{id}',[menuFormController::class,'deleteTedx']);
+Route::get("/tedx-view/{id?}",[menuFormController::class,'showTDEx']);
+Route::get("/tdex",[menuFormController::class,'viewTDEx']);
+Route::match(['get','post'],'add-edit-tedx/{id?}',[menuFormController::class,'Add_Edit_TDEx'])->name('addedittedx');
+Route::get('delete-tedx/{id}',[menuFormController::class,'deleteTDEx']);
 Route::get('tdex/{id?}',[menuFormController::class,'ajax_tdex']);
+
+//tedx url image
+Route::get('tdex-image-delete/{id?}',[menuFormController::class,'deleteTdexImage']);
+Route::post('add-tdex-image', [menuFormController::class, 'add_TdexImage']);
+Route::get('tdex-image/{id?}', [menuFormController::class, 'view_TdexImage']);
+Route::post('edit-tdex-image/{id?}',[menuFormController::class,'edit_TdexImage']);
+Route::get('tdex_id_image',[menuFormController::class,'tdex_id_image']);
 
 
 //Events & Activites
