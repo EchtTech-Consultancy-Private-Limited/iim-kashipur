@@ -2,11 +2,17 @@
 
 @section('content')
 
+<style>
+   .profile-img.img-fac img{
+      width:100% !important;
+   }
+   </style>
+
 <div class="internalpagebanner">
    <img src="{{ asset('page/banner/1700541845Group_Photo_TEDX1.jpg') }}" alt="" title="" loading="lazy">            
    <div class="imagecaption">
       <div class="container">
-         <h1 tabindex="0">TEDx</h1>
+         <h1 tabindex="0">TEDxIIMKashipur</h1>
       </div>
    </div>
 </div>
@@ -29,7 +35,7 @@
          </li>        
          <li>
             <span tabindex="0">
-            TEDx
+            TEDxIIMKashipur
             </span>
          </li>
       </ul>
@@ -43,7 +49,7 @@
                <!-- Heading section Start -->
                <h3 tabindex="0">
                   <span tabindex="0">
-                  TEDx
+                  TEDxIIMKashipur
                   </span>
                </h3>
                <!-- Heading section End -->
