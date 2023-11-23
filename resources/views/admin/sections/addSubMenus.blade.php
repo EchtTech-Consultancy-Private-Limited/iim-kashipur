@@ -1026,4 +1026,47 @@
 </script>
 
 
+
+<!---------------------------------------Tedx -------------------------------------->
+
+<script >
+    $("#url").change(function(e){
+
+ $.ajaxSetup({
+  headers: {
+  'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+    }
+      });
+
+      var data3=$("#url").val();
+
+        alert(data3);
+
+      if(data3=='tdex')
+      {
+
+      $.ajax({
+        url: "{{url('Accounts/tdex')}}",
+        type: "get",
+        success: function(data){
+
+         console.log(data);
+         var resdata = data.data;
+
+         console.log(resdata);
+
+       var formoption = "<option value='0'>Please select</option>";
+       for(i=0; i<resdata.length; i++)
+       {
+       formoption += "<option value='"+resdata[i].id+"'>"+resdata[i].Speaker+"</option>";
+        }
+        $('#countries').html(formoption);
+
+        }
+     });
+   }
+});
+</script>
+
+
     @endsection

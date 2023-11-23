@@ -324,6 +324,12 @@ Route::get('wellness-facilities/{id}',[menuFormController::class,'view_WellnessI
 Route::get('delete-Wellness-image/{id}',[menuFormController::class,'delete_WellnessImages']);
 Route::get('View-Wellness-Facilities-image/{id}',[menuFormController::class,'show_WellnessFacilitiesImage']);
 
+//tedx url
+Route::get("/tedx-view/{id?}",[menuFormController::class,'showTedx']);
+Route::get("/tdex",[menuFormController::class,'viewTedx']);
+Route::match(['get','post'],'add-edit-tedx/{id?}',[menuFormController::class,'Add_Edit_Tedx'])->name('addedittedx');
+Route::get('delete-tedx/{id}',[menuFormController::class,'deleteTedx']);
+Route::get('tdex/{id?}',[menuFormController::class,'ajax_tdex']);
 
 
 //Events & Activites
