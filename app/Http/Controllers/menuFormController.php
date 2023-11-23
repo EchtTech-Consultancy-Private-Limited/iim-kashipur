@@ -841,4 +841,86 @@ public function ajax_research_seminar(Request $request){
 }
 
 
+//tedx function 
+public function viewTedx(){
+    $data=\App\Models\student_council::get();
+    return view('admin.sections.manageTedx',['data'=>$data]);
+}
+
+public function Add_Edit_Tedx(Request $request,$id=null){
+    $profile=OrganisationStructure::get();
+    if($id){
+
+        $title="Edit Tedx ";
+        $msg="Tedx  Edited Successfully!";
+        $data=student_council::find(dDecrypt($id));
+    }
+    else{
+
+        $title="Add Tedx ";
+        $msg="Tedx  Added Successfully!";
+        $data=new student_council;
+    }
+
+        if($request->isMethod('post')){
+            if(!$id){
+                $request->validate([
+                    'imagename'          =>       'image|mimes:jpeg,png,jpg,gif|max:2048',
+                    "attachement_file"            => "mimes:pdf|max:10000",
+                    'bannerimage'=>'max:5120|mimes:png,jpg|dimensions:max_width=1920,min_width=1920,max_height=500,min_height=500',
+                    'student_council'=>'required|unique:student_councils',
+                ]);}
+            else{
+            $request->validate([
+                 'imagename'          =>       'image|mimes:jpeg,png,jpg,gif|max:2048',
+                 "attachement_file"            =>          "mimes:pdf|max:10000",
+                 'bannerimage'=>'max:5120|mimes:png,jpg|dimensions:max_width=1920,min_width=1920,max_height=500,min_height=500',
+
+            ]);
+        }
+
+        $data->student_council=$request->student_council;
+        $data->chairperson=$request->chairperson;
+        $data->about_details=$request->about_details;
+        $data->status=$request->status;
+
+        $data->banner_title= $request->banner_title;
+        $data->banner_alt= $request->banner_alt;
+        $path=public_path('page/banner');
+        if($request->hasFile('bannerimage')){
+            $file=$request->file('bannerimage');
+            $newname= time().rand(10,99).'.'.$file->getClientOriginalExtension();
+            $file->move($path, $newname);
+            $data->bannerimage= $newname;
+        }
+
+
+
+        $data->save();
+        return redirect('/Accounts/tedx')->with('success',$msg);
+    }
+    return view('admin.sections.addTedx',compact('data','title','id','profile'));
+
+}
+    public function deleteTedx($id){
+        $data=student_council::find(dDecrypt($id));
+        $data->delete();
+     return redirect()->back()->with('success','Tedx deleted Successfully');
+    }
+
+
+    public function  showTedx($id){
+        $data=student_council::find(dDecrypt($id))->first();
+        $data=student_council::where('id',$data->id)->first();
+          $profile=OrganisationStructure::get();
+        return view('admin.sections.view_StudentConsil',['data'=>$data,'profile'=>$profile]);
+    }
+
+
+    public function ajax_tdex(Request $request){
+        $data=researchSeminars::get();
+        return response()->json(['data'=>$data]);
+    }
+
+
 }
