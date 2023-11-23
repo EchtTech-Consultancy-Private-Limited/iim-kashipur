@@ -46,6 +46,8 @@ use App\Models\rti;
 use App\Models\rit_report_section;
 use App\Models\quarter_report;
 use App\Models\BannerSlider;
+use App\Models\tdex;
+use App\Models\tdex_images;
 use App\Models\Org;
 use App\Models\project_logo;
 use App\Models\quick_linkcategory;
@@ -842,50 +844,49 @@ public function ajax_research_seminar(Request $request){
 
 
 //tedx function 
-public function viewTedx(){
-    $data=\App\Models\student_council::get();
+public function viewTDEx(){
+   
+    $data= tdex::get();
     return view('admin.sections.manageTedx',['data'=>$data]);
 }
 
-public function Add_Edit_Tedx(Request $request,$id=null){
+public function Add_Edit_TDEx(Request $request,$id=null){
     $profile=OrganisationStructure::get();
     if($id){
 
-        $title="Edit Tedx ";
-        $msg="Tedx  Edited Successfully!";
-        $data=student_council::find(dDecrypt($id));
+        $title="Edit TDEx ";
+        $msg="TDEx Edited Successfully!";
+        $data=tdex::find(dDecrypt($id));
     }
     else{
 
-        $title="Add Tedx ";
-        $msg="Tedx  Added Successfully!";
-        $data=new student_council;
+        $title="Add TDEx ";
+        $msg="TDEx Added Successfully!";
+        $data=new tdex;
     }
 
         if($request->isMethod('post')){
             if(!$id){
                 $request->validate([
-                    'imagename'          =>       'image|mimes:jpeg,png,jpg,gif|max:2048',
-                    "attachement_file"            => "mimes:pdf|max:10000",
-                    'bannerimage'=>'max:5120|mimes:png,jpg|dimensions:max_width=1920,min_width=1920,max_height=500,min_height=500',
-                    'student_council'=>'required|unique:student_councils',
+                    
+                   // 'bannerimage'=>'max:5120|mimes:png,jpg|dimensions:max_width=1920,min_width=1920,max_height=500,min_height=500',
+                   
                 ]);}
             else{
             $request->validate([
-                 'imagename'          =>       'image|mimes:jpeg,png,jpg,gif|max:2048',
-                 "attachement_file"            =>          "mimes:pdf|max:10000",
-                 'bannerimage'=>'max:5120|mimes:png,jpg|dimensions:max_width=1920,min_width=1920,max_height=500,min_height=500',
+                
+                
+                // 'bannerimage'=>'max:5120|mimes:png,jpg|dimensions:max_width=1920,min_width=1920,max_height=500,min_height=500',
 
             ]);
         }
 
-        $data->student_council=$request->student_council;
         $data->chairperson=$request->chairperson;
         $data->about_details=$request->about_details;
-        $data->status=$request->status;
-
+        $data->event=$request->event;
         $data->banner_title= $request->banner_title;
         $data->banner_alt= $request->banner_alt;
+        $data->status=$request->status;
         $path=public_path('page/banner');
         if($request->hasFile('bannerimage')){
             $file=$request->file('bannerimage');
@@ -894,31 +895,116 @@ public function Add_Edit_Tedx(Request $request,$id=null){
             $data->bannerimage= $newname;
         }
 
-
-
         $data->save();
-        return redirect('/Accounts/tedx')->with('success',$msg);
+        return redirect('/Accounts/tdex')->with('success',$msg);
     }
-    return view('admin.sections.addTedx',compact('data','title','id','profile'));
+    return view('admin.sections.addTdex',compact('data','title','id','profile'));
 
 }
-    public function deleteTedx($id){
-        $data=student_council::find(dDecrypt($id));
+    public function deleteTDEx($id){
+        $data=tdex::find(dDecrypt($id));
         $data->delete();
      return redirect()->back()->with('success','Tedx deleted Successfully');
     }
 
 
-    public function  showTedx($id){
-        $data=student_council::find(dDecrypt($id))->first();
-        $data=student_council::where('id',$data->id)->first();
+    public function  showTDEx($id){
+        $data=tdex::find(dDecrypt($id))->first();
+        $data=tdex::where('id',$data->id)->first();
           $profile=OrganisationStructure::get();
-        return view('admin.sections.view_StudentConsil',['data'=>$data,'profile'=>$profile]);
+        return view('admin.sections.viewTedx',['data'=>$data,'profile'=>$profile]);
     }
 
 
+    //tdex images
+    public function deleteTdexImage($id){
+
+    $exit = tdex_images::where('id',dDecrypt($id))->first();
+    if(!empty($exit)){
+        tdex_images::find(dDecrypt($id))->delete();
+    }else{
+        return back()->with('error','You are trying to perform unethical process. Your requst is failed.');
+    }
+    return redirect()->back()->with('success','Record Deleted Successfully');
+
+    }
+
+    public function add_TdexImage(Request $request){
+
+       // dd($request->all());
+
+        $request->validate(
+
+            [
+                 'filename' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
+                 'image_title' => 'required|unique:club_multiple_images'
+            ]
+        );
+
+
+      //data in database
+      $data= new tdex_images();
+      $data->image_title= $request->image_title;
+      $data->image_alt= $request->image_alt;
+      $data->sort_order= $request->order;
+      $data->parent_id=$request->parent_id;
+      $data->status= $request->status;
+      $path=public_path('uploads/multiple/tdex');
+      if($request->hasFile('filename')){
+          $file=$request->file('filename');
+          $newname= time().rand(10,99).'.'.$file->getClientOriginalExtension();
+          $file->move($path, $newname);
+          $data->filename = $newname;
+      }
+      $data->save();
+      return back()->with('success','Record save Successfully');
+
+    }
+
+    public function view_TdexImage($id)
+    {
+        $data=tdex_images::whereparent_id(dDecrypt($id))->get();
+        $id=dDecrypt($id);
+    return view('admin.sections.mangeTdexImages',['data'=>$data,'id'=>$id]);
+    }
+    
+    public function edit_TdexImage(Request $request)
+    {
+      //  dd($request->all());
+       $request->validate(
+          [
+
+              'filename'          =>       'image|mimes:jpeg,png,jpg,gif|max:2048',
+              'image_title'        =>       'required'
+
+          ]
+         );
+         $data=tdex_images::find($request->id);
+         $data->image_title=$request->image_title;
+         $data->image_alt=$request->image_alt;
+         $data->sort_order=$request->order;
+         $data->status=$request->status;
+         $data->parent_id=$request->parent_id;
+        $path=public_path('uploads/multiple/tdex');
+        if($request->hasFile('filename')){
+            $file=$request->file('filename');
+            $newname= time().rand(10,99).'.'.$file->getClientOriginalExtension();
+            $file->move($path, $newname);
+            $data->image = $newname;
+        }
+        $data->save();
+      return back()->with('success','Record Edit Successfully');
+    }
+
+    public function tdex_id_image(Request $request){
+        $show=tdex_images::find($request->id)->first();
+
+        $item=tdex_images::whereid($show->id)->first();
+        return response()->json(['item'=>$item]);
+    }
+
     public function ajax_tdex(Request $request){
-        $data=researchSeminars::get();
+        $data=tdex::get();
         return response()->json(['data'=>$data]);
     }
 

@@ -1,10 +1,11 @@
 @extends('admin.Layout.master')
 
-@section('title', 'View Press Media')
+@section('title', 'View Tdex')
 
 @section('content')
 
     <div class="main-panel">
+
         <div class="content-wrapper">
 
             <div class="row">
@@ -13,138 +14,95 @@
 
                     <div class="card">
 
-                        <div class="card-body row">
+                        <div class="card-body">
 
-                            <h4 class="card-title col-md-12">View Press Media</h4>
+                            <h4 class="card-title">View Tdex</h4>
 
-                            <p class="card-description">
-
-                                @if ($errors->any())
-
-                                    <div class="alert alert-danger">
-
-                                        <ul>
-
-                                            @foreach ($errors->all() as $error)
-                                                <li>{{ $error }}</li>
-                                            @endforeach
-
-                                        </ul>
-
-                                    </div>
-
-                                @endif
-
-
-
-                            </p>
-
-
-
-
-
-                            <div class="col-md-6">
-
-                                <div class="form-group"> <label for="heading">Heading *</label> <input id="heading"
-                                        type="text"
-                                         value="{{ $data->heading }}"    readonly
-                                        name="heading" class="form-control" placeholder="Please enter heading*">
-
-
-
-
-                                </div>
-
-                            </div>
-
-                            <div class="col-md-6">
-
-                                <div class="form-group"> <label for="heading_h">Heading[hindi] *</label> <input id="heading_h"
-                                        type="text"
-                                        value="{{ $data->heading_h }}" readonly
-                                        name="heading_h" class="form-control" placeholder="Please enter heading Hindi*">
-
-
-
-
-                                </div>
-
-                            </div>
-
-
+                        
                             <div class="col-md-12">
-                                <div class="form-group"> <label for="kdf">Pdf*</label><span
-                                        style="color:green;font-size:12px;">
-
-                                            [{{ $data->pdf }}]
-
-                                    </span>
-                                    @if($data->pdf!= '')
-
-                                    <iframe src="{{ asset('uploads/prss_medias'.$data->pdf) }}" height="800px"
-                                        width="100%" readonly></iframe>
-
-
-                                    @endif
-
-                                </div>
-                            </div>
-
-                            <div class="col-md-6">
-
-                                <div class="form-group"> <label for="media_publication">Media/publication*</label> <input id="media_publication"
-                                        value="{{ $data->media_publication }}" readonly
-                                        type="text" name="media_publication" class="form-control"
-                                        placeholder="Please enter file title*">
-
-
-                                </div>
-
-                            </div>
-
-
-                            <div class="col-md-6">
-                                <label for="inputText" >Chairperson*</label>
+                                <label for="about_details" class="col-form-label">About Details</label>
                                 <div class="">
-                                    <select class="form-control" name="chairperson"  disabled>
-                                        <option value=""> Select Type </option>
-                                        <option value="">{{  $profile[0]->title }}</option>
-                                    </select>
-
-                                    <label for="chairperson" id="chairperson-error" class="error"></label>
+                                    <textarea class="form-control" id="about_details" rows="4" name="about_details"
+                                        placeholder="Please enter About Details" disabled>{{$data->about_details}} </textarea><br>
+                                    <label for="about_details" id="about_details-error" class="error"></label>
                                 </div>
+                            </div>
+
+                          
+
+                            <div class="col-md-12">
+                                <label for="event" class="col-form-label">Events</label>
+                                <div class="">
+                                    <textarea class="form-control" id="event" rows="4" name="event" disabled placeholder="Please enter event">{{$data->event}} </textarea><br>
+                                    <label for="event" id="event-error" class="error"></label>
+                                </div>
+                            </div>
+
+                            
+                            <div class="col-md-6">
+                                <label for="inputText" class="col-form-label">Chairperson*</label>
+                                <div class="">
+                                   
+                                    <select class="form-control" name="chairperson" disabled >
+                                        <option value=""> Select Type </option>
+                                        @foreach ($profile as $profiles )
+                                        <option  value="{{$profiles->id }}" {{$profiles->id == $data->chairperson  ? 'selected' : ''}} >{{$profiles->title}}</option>
+                                        @endforeach
+
+                                    </select>
+                                    
+                                </div>
+                            </div>
+
+
+                            <div class="col-md-12">
+                                <label for="inputText" class="col-sm-12 col-form-label">Banner Image</label>
+                                <div class="col-sm-12">
+                                   
+                                </div>
+                               
+                                  <img src="{{ asset('page/banner/' . $data->bannerimage) }}" width="150"
+                                    height="100" />
+                                
+
                             </div>
 
                             <div class="col-md-12">
-
-                                <div class="form-group"> <label for="publishing_link">Publishing link*</label>
-
-                                   {{-- <input type="radio" value="0" name="external"  @if($id) {{ ($data->external=='0')? "checked" : "" }} @endif style="margin-left:30px;" id="select_box" >  <label> &nbsp;Internal URL </label>
-
-                                    <input type="radio" value="1" name="external"  @if($id) {{ ($data->external=="1")? "checked" : "" }}  @endif style="margin-left:30px;" id="checkbox">  <label> &nbsp;External URL  </label> --}}
-
-
-                                    <input id="publishing_link"
-                                          value="{{ $data->publishing_link }}"  readonly
-                                        type="text" name="publishing_link" class="form-control"
-                                        placeholder="Please enter file Alt*">
-
-
+                                <label for="inputText" class="col-sm-12 col-form-label">Banner title </label>
+                                <div class="col-sm-12">
+                                    <input type="text" class="form-control" name="banner_title" disabled value="{{$data->banner_title}}" 
+                                        placeholder="Please enter text for title of banner photo, use for seo"
+                                      ><br>
 
                                 </div>
-
                             </div>
 
 
-
+                            <div class="col-md-12">
+                                <label for="inputText" class="col-sm-12 col-form-label">Banner Alt </label>
+                                <div class="col-sm-12">
+                                    <input type="text" class="form-control" name="banner_alt" disabled  value="{{$data->banner_alt}}" 
+                                        placeholder="Please enter text for alt of banner photo, use for seo"
+                                        ><br>
+                                </div>
+                            </div>
+                           
                         </div>
-
                     </div>
-
                 </div>
 
             </div>
 
+
         </div>
 
-    @endsection
+    </div>
+
+    </div>
+
+    <script type="text/javascript">
+        CKEDITOR.replace('about_details');
+        CKEDITOR.replace('event');
+    </script>
+
+@endsection

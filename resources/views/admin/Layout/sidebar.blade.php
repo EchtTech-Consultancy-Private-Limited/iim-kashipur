@@ -207,12 +207,16 @@
                             </li>
                         @endif
 
+                        @if (@checkRoute('viewTedx'))
+                        <li class="nav-item"><a class="nav-link"
+                                href="{{ url('/Accounts/tdex') }}">Manage TDEx</a></li>
+                        @endif
+
                         @if (@checkRoute('view_pdfImage'))
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ url('/Accounts/pdf-image') }}"> File/Image Upload </a>
                             </li>
                         @endif
-
 
                     </ul>
 

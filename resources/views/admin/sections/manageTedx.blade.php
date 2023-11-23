@@ -1,6 +1,6 @@
 @extends('admin.Layout.master')
 
-@section('title', 'Manage Club ')
+@section('title', 'Manage TDEx ')
 
 @section('content')
 
@@ -34,15 +34,18 @@
 
                             <div class="top-menu-button">
 
-                                <p class="card-title">Manage Club </p>
-
-                                <div>
-
-                                    <button type="button" class="btn btn-primary"><a
-                                            href="{{ url('/Accounts/add-edit-club') }}">Add New Club </a></button>
+                                <p class="card-title">Manage TDEx </p>
 
 
-                                </div>
+
+                                @if (count($data) <= 0)
+                                    <div>
+
+                                        <button type="button" class="btn btn-primary"><a
+                                                href="{{ url('/Accounts/add-edit-tedx') }}">Add New TDEx </a></button>
+
+                                    </div>
+                                @endif
 
                             </div>
 
@@ -59,15 +62,11 @@
 
                                                 <tr>
 
-                                                    <th>S.No#</th>
+                                                    <th>Sr.No#</th>
 
-                                                    <th>Club name</th>
+                                                    <th>Banner</th>
 
-                                                    <th>Club Logo</th>
-
-                                                    {{-- <th>Clab Image</th> --}}
-
-                                                    <th>Images Upload</th>
+                                                    <th>Upload Image</th>
 
                                                     <th>Status</th>
 
@@ -79,6 +78,65 @@
                                             <tbody>
 
 
+                                                @foreach ($data as $K => $D)
+                                                    <tr>
+
+                                                        <td>{{ $K + 1 }}</td>
+
+
+                                                        <td>
+                                                            @if ($D->bannerimage != null || $D->bannerimage != '')
+                                                                <img class="thumb"
+                                                                    src=  "{{ asset('page/banner/' . $D->bannerimage) }}"
+                                                                    data-toggle="modal" data-target="#exampleModal"
+                                                                    rel="{{ $D->bannerimage }}"
+                                                                    onclick="abc('{{ $D->bannerimage }}')">
+                                                            @endif
+                                                        </td>
+
+                                                        <td>
+
+                                                            <button type="submit" class="btn btn-primary btn-sm"><a href= "{{ url('Accounts/tdex-image/'.dEncrypt($D->id)) }}" >Images</a></button>
+
+                                                        </td>
+
+                                                        <td>
+                                                            @if (@checkRoute('StatusChange'))
+                                                                @if ($D->status == 1)
+                                                                    <a href="{{ url('Accounts/status-change/0/' . dEncrypt($D->id) . '/tdexs') }}"
+                                                                        style="color:green;">Active</a>
+                                                                @else
+                                                                    <a href="{{ url('Accounts/status-change/1/' . dEncrypt($D->id) . '/tdexs') }}"
+                                                                        style="color:red;">Inactive</a>
+                                                                @endif
+                                                            @else
+                                                                @if ($D->status == 1)
+                                                                    <span" style="color:green;">Active</span>
+                                                                    @else
+                                                                        <span style="color:red;">Inactive</span>
+                                                                @endif
+                                                            @endif
+                                                        </td>
+
+                                                        <td>
+                                                            <a href="{{ url('Accounts/add-edit-tedx/' . dEncrypt($D->id)) }}"><i
+                                                                    class="ti-pencil btn-icon-append"
+                                                                    style="color:black;"></i></a> &nbsp;
+
+                                                            <a href="{{ url('Accounts/tedx-view/' . dEncrypt($D->id)) }}"><i
+                                                                    class="ti-eye btn-icon-append"
+                                                                    style="color:black;"></i></a> &nbsp;
+
+                                                            <a href="{{ url('Accounts/delete-tedx/' . dEncrypt($D->id)) }}"
+                                                                onclick="return confirm('Are You Sure?')"><i
+                                                                    class="ti-archive btn-icon-append"
+                                                                    style="color:black;"></i></a>
+                                                        </td>
+
+                                                    </tr>
+                                                @endforeach
+
+
                                             </tbody>
 
                                         </table>
@@ -86,7 +144,7 @@
                                     </div>
 
 
-                        
+
                                 </div>
 
                             </div>
@@ -116,11 +174,11 @@
 
                     <!--   <span style="margin-left:500px;"><b>Press Esc to Exit</b></span>
 
-               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
 
-                  <span aria-hidden="true">&times;</span>
+                              <span aria-hidden="true">&times;</span>
 
-                </button>-->
+                            </button>-->
 
                     <div id="1"></div>
 
@@ -135,7 +193,7 @@
         <script type="text/javascript">
             function abc(id) {
 
-                a = '<?php echo asset('uploads'); ?>';
+                a = '<?php echo asset('page/banner/'); ?>';
 
                 src = a + "/" + id;
 
