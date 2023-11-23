@@ -1499,8 +1499,10 @@ public function screen_reader_access()
     public function sub_barInnerpage($main_slug,$slug ,Request $request)  //content page sub menu
     {
 
+    
     $sub_menu="sub menu";
     $type=SubMenu::whereslug($slug)->get();
+  
     if(Count($type)>0)
     {
         if($type[0]->url == '/content-page')
@@ -1795,6 +1797,7 @@ public function screen_reader_access()
          
         elseif($type[0]->url == 'tdex' ||$type[0]->url == 'TDEX' ||  $type[0]->url == 'TDEx' )
         {
+            
             return view('front.Layouts.child_pages.menu_bar.main_menu.tdex');
         }
         // elseif($type[0]->url == '/Organisation-Journey')
