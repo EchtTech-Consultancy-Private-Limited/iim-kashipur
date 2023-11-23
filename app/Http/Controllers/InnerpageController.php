@@ -1791,7 +1791,6 @@ public function screen_reader_access()
                 return abort(401);
             }
         }
-
          //tdex
         elseif($type[0]->url == 'tdex' ||$type[0]->url == 'TDEX' ||  $type[0]->url == 'TDEx' )
         {
