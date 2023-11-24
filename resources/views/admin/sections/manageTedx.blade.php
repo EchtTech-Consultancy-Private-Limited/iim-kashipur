@@ -1,6 +1,6 @@
 @extends('admin.Layout.master')
 
-@section('title', 'Manage TDEx ')
+@section('title', 'Manage TEDx ')
 
 @section('content')
 
@@ -34,7 +34,7 @@
 
                             <div class="top-menu-button">
 
-                                <p class="card-title">Manage TDEx </p>
+                                <p class="card-title">Manage TEDx </p>
 
 
 
@@ -42,7 +42,7 @@
                                     <div>
 
                                         <button type="button" class="btn btn-primary"><a
-                                                href="{{ url('/Accounts/add-edit-tedx') }}">Add New TDEx </a></button>
+                                                href="{{ url('/Accounts/add-edit-tedx') }}">Add New TEDx </a></button>
 
                                     </div>
                                 @endif
@@ -96,7 +96,7 @@
 
                                                         <td>
 
-                                                            <button type="submit" class="btn btn-primary btn-sm"><a href= "{{ url('Accounts/tdex-image/'.dEncrypt($D->id)) }}" >Images</a></button>
+                                                            <button type="submit" class="btn btn-primary btn-sm"><a href= "{{ url('Accounts/tedx-image/'.dEncrypt($D->id)) }}" >Images</a></button>
 
                                                         </td>
 

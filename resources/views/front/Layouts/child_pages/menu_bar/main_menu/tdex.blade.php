@@ -4,7 +4,7 @@
     <div class="internalpagebanner">
         @isset($item)
             @if ($item->bannerimage != '')
-                <img src="{{ asset('page/banner/' . $item->bannerimage) ?? '' }}" alt="" title="" loading="lazy">
+                <img src="{{ asset('page/banner/' . $item->bannerimage) ?? '' }}" alt="{{ $item->banner_alt ??''   }}" title="{{ $item->banner_title ??'' }}" loading="lazy">
                 <div class="imagecaption">
                     <div class="container">
                         <h1 tabindex="0"> {{ ucwords(str_replace(['_', '-'], ' ', $data->name)) ?? '' }}</h1>
@@ -172,8 +172,7 @@
                                                                     <div class="card3"></div>
                                                                     <div class="card4"></div>
                                                                     <div class="card5"></div>
-                                                                    <img
-                                                                        src="{{ asset('uploads/multiple/tdex/' . $datas->filename) ?? '' }}" />
+                                                                    <img src="{{ asset('uploads/multiple/tdex/' . $datas->filename) ?? ''}}" alt="{{ $datas->image_alt  ??'' }}" title="{{ $datas->image_title ??"" }}"  />
                                                                 </a>
                                                             </div>
                                                         </div>

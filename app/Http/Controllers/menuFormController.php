@@ -861,7 +861,7 @@ class menuFormController extends Controller
 
 
     //tedx function 
-    public function viewTDEx()
+    public function viewTedx()
     {
         try {
             $data = tdex::get();
@@ -871,18 +871,18 @@ class menuFormController extends Controller
         return view('admin.sections.manageTedx', ['data' => $data]);
     }
 
-    public function Add_Edit_TDEx(Request $request, $id = null)
+    public function Add_Edit_Tedx(Request $request, $id = null)
     {
         $profile = OrganisationStructure::get();
         if ($id) {
 
-            $title = "Edit TDEx ";
-            $msg = "TDEx Edited Successfully!";
+            $title = "Edit TEDx ";
+            $msg = "TEDx Edited Successfully!";
             $data = tdex::find(dDecrypt($id));
         } else {
 
-            $title = "Add TDEx ";
-            $msg = "TDEx Added Successfully!";
+            $title = "Add TEDx ";
+            $msg = "TEDx Added Successfully!";
             $data = new tdex;
         }
 
@@ -922,14 +922,14 @@ class menuFormController extends Controller
         }
         return view('admin.sections.addTdex', compact('data', 'title', 'id', 'profile'));
     }
-    public function deleteTDEx($id)
+    public function deleteTedx($id)
     {
         $data = tdex::find(dDecrypt($id));
         $data->delete();
         return redirect()->back()->with('success', 'Tedx deleted Successfully');
     }
 
-    public function  showTDEx($id)
+    public function  showTedx($id)
     {
         $data = tdex::find(dDecrypt($id))->first();
         $data = tdex::where('id', $data->id)->first();
@@ -938,7 +938,7 @@ class menuFormController extends Controller
     }
 
     //tdex images
-    public function deleteTdexImage($id)
+    public function deleteTedxImage($id)
     {
 
         $exit = tdex_images::where('id', dDecrypt($id))->first();
@@ -950,7 +950,7 @@ class menuFormController extends Controller
         return redirect()->back()->with('success', 'Record Deleted Successfully');
     }
 
-    public function add_TdexImage(Request $request)
+    public function add_TedxImage(Request $request)
     {
         $request->validate(
             [
@@ -978,14 +978,14 @@ class menuFormController extends Controller
         return back()->with('success', 'Record save Successfully');
     }
 
-    public function view_TdexImage($id)
+    public function view_TedxImage($id)
     {
         $data = tdex_images::whereparent_id(dDecrypt($id))->get();
         $id = dDecrypt($id);
         return view('admin.sections.mangeTdexImages', ['data' => $data, 'id' => $id]);
     }
 
-    public function edit_TdexImage(Request $request)
+    public function edit_TedxImage(Request $request)
     {
         //  dd($request->all());
         $request->validate(
@@ -1013,13 +1013,13 @@ class menuFormController extends Controller
         return back()->with('success', 'Record Edit Successfully');
     }
 
-    public function tdex_id_image(Request $request)
+    public function Tedx_id_image(Request $request)
     {
         $item = tdex_images::whereid($request->userid)->first();
         return response()->json(['item' => $item]);
     }
 
-    public function ajax_tdex(Request $request)
+    public function ajax_Tedx(Request $request)
     {
         $data = tdex::get();
         return response()->json(['data' => $data]);

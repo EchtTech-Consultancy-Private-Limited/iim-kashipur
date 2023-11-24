@@ -1040,21 +1040,20 @@
 
       var data3=$("#url").val();
 
-        alert(data3);
+        //alert(data3);
 
-      if(data3=='tdex')
+      if(data3 == '/TEDxIIMKashipur' || data3 == '/Tedxiimkashipur' ||  data3 == '/tedxiimkashipur')
       {
 
       $.ajax({
-        url: "{{url('Accounts/ajax-tdex')}}",
+        url: "{{url('Accounts/ajax-Tedx')}}",
         type: "get",
         success: function(data){
 
-         console.log(data);
-
+        
          var resdata = data.data;
 
-         console.log(resdata);
+           console.log(resdata);
 
        var formoption = "<option value='0'>Please select</option>";
        for(i=0; i<resdata.length; i++)
