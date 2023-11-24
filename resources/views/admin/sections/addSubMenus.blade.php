@@ -1046,11 +1046,12 @@
       {
 
       $.ajax({
-        url: "{{url('Accounts/tdex')}}",
+        url: "{{url('Accounts/ajax-tdex')}}",
         type: "get",
         success: function(data){
 
          console.log(data);
+
          var resdata = data.data;
 
          console.log(resdata);
@@ -1058,7 +1059,7 @@
        var formoption = "<option value='0'>Please select</option>";
        for(i=0; i<resdata.length; i++)
        {
-       formoption += "<option value='"+resdata[i].id+"'>"+resdata[i].Speaker+"</option>";
+       formoption += "<option value='"+resdata[i].id+"'>"+resdata[i].banner_title+"</option>";
         }
         $('#countries').html(formoption);
 

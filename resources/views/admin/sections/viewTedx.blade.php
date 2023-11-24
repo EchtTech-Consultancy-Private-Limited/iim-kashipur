@@ -29,15 +29,6 @@
                             </div>
 
                           
-
-                            <div class="col-md-12">
-                                <label for="event" class="col-form-label">Events</label>
-                                <div class="">
-                                    <textarea class="form-control" id="event" rows="4" name="event" disabled placeholder="Please enter event">{{$data->event}} </textarea><br>
-                                    <label for="event" id="event-error" class="error"></label>
-                                </div>
-                            </div>
-
                             
                             <div class="col-md-6">
                                 <label for="inputText" class="col-form-label">Chairperson*</label>
@@ -102,7 +93,6 @@
 
     <script type="text/javascript">
         CKEDITOR.replace('about_details');
-        CKEDITOR.replace('event');
     </script>
 
 @endsection

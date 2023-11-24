@@ -47,74 +47,76 @@ class FormController extends Controller
 {
 
 
-//    function Add_OrganisationStructure(Request $request,$id=null){
-//
-//        if($id){
-//            $title="Edit Organisation Structure";
-//            $msg="Organisation Structure Edited Successfully!";
-//            $data=OrganisationStructure::find(dDecrypt($id));
-//        }
-//        else{
-//             $title="Add Organisation Structure";
-//            $msg="Organisation Structure Added Successfully!";
-//           // dd($request);
-//            $data=new OrganisationStructure;
-//        }
-//
-//        if($request->isMethod('post')){
-//            $request->validate([
-//                'title'=>'required',
-//                'type'=>'required',
-//                'phone'=>'required',
-//                'email'=>'required',
-//            ]);
-//            $data->type=$request->type;
-//            $data->title=ucwords($request->title);
-//            $data->title_h=$request->title_h;
-//            $data->description= $request->description;
-//            $data->description_h= $request->description_h;
-//            $data->department= $request->department;
-//            $data->department_h= $request->department_h;
-//            $data->email=$request->email;
-//            $data->phone=$request->phone;
-//            $data->extension=$request->extension;
-//            $data->designation= $request->designation;
-//            $data->designation_h= $request->designation_h;
-//
-////social mediea links
-//            $data->slug=SlugCheck('organisation_structures',($request->title));
-//            $data->status= $request->status;
-//            $data->instagram= $request->instagram;
-//            $data->Instagram_title= $request->Instagram_title;
-//            $data->Facebook= $request->Facebook;
-//            $data->Facebook_title=$request->Facebook_title;
-//            $data->twitter=$request->twitter;
-//            $data->Twitter_title=$request->Twitter_title;
-//            $data->linkedin= $request->linkedin;
-//            $data->	linkedIn_title= $request->linkedIn_title;
-//            $data->orcid= $request->orcid;
-//            $data->orcid_title=$request->orcid_title;
-//            $data->webofscience=$request->webofscience;
-//            $data->webofscience_title=$request->webofscience_title;
-//            $data->scopus= $request->scopus;
-//            $data->	scopus_title= $request->scopus_title;
-//            $data->scholar= $request->scholar;
-//            $data->scholar_title= $request->scholar_title;
-//
-//            $path=public_path('uploads/organisation');
-//            if($request->hasFile('image')){
-//                $file=$request->file('image');
-//                $newname= time().rand(10,99).'.'.$file->getClientOriginalExtension();
-//                $file->move($path, $newname);
-//                $data->image= $newname;
-//            }
-//
-//            $data->save();
-//            return redirect()->route('admin.people')->with('success',$msg);
-//        }
-//
-//        return view('admin.sections.addOrganisationStructure',compact('data','title','id'));
-//    }
+   function Add_OrganisationStructure(Request $request,$id=null){
+
+       if($id){
+           $title="Edit Organisation Structure";
+           $msg="Organisation Structure Edited Successfully!";
+           $data=OrganisationStructure::find(dDecrypt($id));
+       }
+       else{
+            $title="Add Organisation Structure";
+           $msg="Organisation Structure Added Successfully!";
+          // dd($request);
+           $data=new OrganisationStructure;
+       }
+
+       if($request->isMethod('post')){
+           $request->validate([
+               'title'=>'required',
+               'type'=>'required',
+               'phone'=>'required',
+               'email'=>'required',
+           ]);
+           $data->type=$request->type;
+           $data->title=ucwords($request->title);
+           $data->title_h=$request->title_h;
+           $data->description= $request->description;
+           $data->description_h= $request->description_h;
+           $data->department= $request->department;
+           $data->department_h= $request->department_h;
+           $data->email=$request->email;
+           $data->phone=$request->phone;
+           $data->extension=$request->extension;
+           $data->designation= $request->designation;
+           $data->designation_h= $request->designation_h;
+
+//social mediea links
+           $data->slug=SlugCheck('organisation_structures',($request->title));
+           $data->status= $request->status;
+           $data->instagram= $request->instagram;
+           $data->Instagram_title= $request->Instagram_title;
+           $data->Facebook= $request->Facebook;
+           $data->Facebook_title=$request->Facebook_title;
+           $data->twitter=$request->twitter;
+           $data->Twitter_title=$request->Twitter_title;
+           $data->linkedin= $request->linkedin;
+           $data->	linkedIn_title= $request->linkedIn_title;
+           $data->orcid= $request->orcid;
+           $data->orcid_title=$request->orcid_title;
+           $data->webofscience=$request->webofscience;
+           $data->webofscience_title=$request->webofscience_title;
+           $data->scopus= $request->scopus;
+           $data->tedx= $request->tedx;
+           $data->	scopus_title= $request->scopus_title;
+
+           $data->scholar= $request->scholar;
+           $data->scholar_title= $request->scholar_title;
+
+           $path=public_path('uploads/organisation');
+           if($request->hasFile('image')){
+               $file=$request->file('image');
+               $newname= time().rand(10,99).'.'.$file->getClientOriginalExtension();
+               $file->move($path, $newname);
+               $data->image= $newname;
+           }
+
+           $data->save();
+           return redirect()->route('admin.people')->with('success',$msg);
+       }
+
+       return view('admin.sections.addOrganisationStructure',compact('data','title','id'));
+   }
 
     public function Delete_biography($id)
     {
