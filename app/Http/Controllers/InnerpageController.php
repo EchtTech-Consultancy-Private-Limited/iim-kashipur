@@ -1627,6 +1627,7 @@ class InnerpageController extends Controller
                 } catch (QueryException $e) {
 
                     return abort(401, $e->getMessage());
+                    
                 } catch (\Exception $e) {
 
                     return abort(401, $e->getMessage());
