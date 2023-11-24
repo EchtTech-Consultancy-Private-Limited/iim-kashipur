@@ -425,7 +425,7 @@
 
                         <div class="form-group"> <label for="form_name">TEDx Member </label>
 
-                            <select name="Student_Council" class="form-control">
+                            <select name="tedx" class="form-control">
                                 <option value="">Please Select</option>
                                 <option value="1" {{$data->tedx == '1' ? 'selected' : ''}}>Yes</option>
                                 <option value="0" {{$data->tedx == '0' ? 'selected' : ''}}>NO</option>
