@@ -324,7 +324,7 @@ Route::get('wellness-facilities/{id}',[menuFormController::class,'view_WellnessI
 Route::get('delete-Wellness-image/{id}',[menuFormController::class,'delete_WellnessImages']);
 Route::get('View-Wellness-Facilities-image/{id}',[menuFormController::class,'show_WellnessFacilitiesImage']);
 
-//tedx url
+//tedx url start
 Route::get("/tedx-view/{id?}",[menuFormController::class,'showTedx']);
 Route::get("/tdex",[menuFormController::class,'viewTedx']);
 Route::match(['get','post'],'add-edit-tedx/{id?}',[menuFormController::class,'Add_Edit_Tedx'])->name('addedittedx');
@@ -337,7 +337,7 @@ Route::post('add-tedx-image', [menuFormController::class, 'add_TedxImage']);
 Route::get('tedx-image/{id?}', [menuFormController::class, 'view_TedxImage']);
 Route::post('edit-tedx-image/{id?}',[menuFormController::class,'edit_TedxImage']);
 Route::get('tedx_id_image',[menuFormController::class,'Tedx_id_image']);
-
+//tedx url end
 
 //Events & Activites
 Route::get("/show-Events-Activites/{id?}",[menuFormController::class,'Show_EventsActivites']);

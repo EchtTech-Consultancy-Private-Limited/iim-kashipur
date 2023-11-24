@@ -19,7 +19,7 @@
             @if (Session::has('error'))
                 <div class="alert alert-danger col-md-12 text-center">
 
-                    <strong>Oops!</strong> {{ Session::get('error') }}
+                    <strong></strong> {{ Session::get('error') }}
 
                 </div>
             @endif
