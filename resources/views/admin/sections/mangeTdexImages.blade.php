@@ -1,6 +1,6 @@
 @extends('admin.Layout.master')
 
-@section('title', 'Manage TDEx Image')
+@section('title', 'Manage TEDx Image')
 
 @section('content')
 
@@ -58,7 +58,7 @@
                     <div class="card">
 
                         <div class="card-body">
-                            <h4 class="card-title">Manage TDEx Image</h4>
+                            <h4 class="card-title">Manage TEDx Image</h4>
 
                             <div class="row">
 
@@ -77,7 +77,7 @@
                                         <table id="example" class="display expandable-table" style="width:100%">
                                             <thead>
                                                 <tr>
-                                                    <th>Sr.No#</th>
+                                                    <th>Sr.No</th>
                                                     <th>Image</th>
                                                     <th>Image Title</th>
                                                     <th>Status</th>
@@ -131,7 +131,7 @@
 
 
                                                             <a class="btn btn-primary"
-                                                                href="{{ url('Accounts/tdex-image-delete/'.dEncrypt($item->id)) }}"
+                                                                href="{{ url('Accounts/tedx-image-delete/'.dEncrypt($item->id)) }}"
                                                                 onclick="return confirm('Are you sure to edit this record?')"><i
                                                                     class="ti-trash btn-icon-append"
                                                                     style="color:black;"></i></a>
@@ -169,7 +169,7 @@
 
                     <div class="modal-header">
 
-                        <h5 class="modal-title" id="exampleModalLabel">TDEx Images</h5>
+                        <h5 class="modal-title" id="exampleModalLabel">TEDx Images</h5>
 
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
 
@@ -206,7 +206,7 @@
                     @endif
 
 
-                        <form role="form" id="regForm" action="{{ url('Accounts/add-tdex-image') }}" method="post"
+                        <form role="form" id="regForm" action="{{ url('Accounts/add-tedx-image') }}" method="post"
                             class="registration-form row" enctype="multipart/form-data" novalidate="novalidate">
                             @csrf
 
@@ -298,7 +298,7 @@
 
                 <div class="modal-header">
 
-                    <h5 class="modal-title" id="exampleModalLabel">TDEx Images</h5>
+                    <h5 class="modal-title" id="exampleModalLabel">TEDx Images</h5>
 
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
 
@@ -314,7 +314,7 @@
 
                         <div class="form-group col-md-6">
 
-                            <label for="form-first-name">TDEx Images</label>
+                            <label for="form-first-name">TEDx Images</label>
 
 
                             <div class="image"></div>
@@ -536,7 +536,7 @@
 
 
         $.ajax({
-            url: "{{ url('/Accounts/tdex_id_image') }}",
+            url: "{{ url('/Accounts/tedx_id_image') }}",
             type: "get",
             data: {
                 userid: UserName
@@ -544,7 +544,7 @@
             success: function(data) {
                 //console.log(data.item.short_order);
 
-                $('#form').attr('action', '{{ url('Accounts/edit-tdex-image') }}' +
+                $('#form').attr('action', '{{ url('Accounts/edit-tedx-image') }}' +
                     '/' + data.item.id)
                 $("#imagetext").val(data.item.image_title);
                 $("#imagealt").val(data.item.image_alt);
@@ -564,7 +564,7 @@
 <script>
     $(document).on("click", "#view", function() {
         var UserName = $(this).data('id');
-           alert(UserName);
+          // alert(UserName);
         $.ajaxSetup({
             headers: {
                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -572,13 +572,13 @@
         });
 
         $.ajax({
-            url: "{{ url('/Accounts/tdex_id_image') }}",
+            url: "{{ url('/Accounts/tedx_id_image') }}",
             type: "get",
             data: {
                 userid: UserName
             },
             success: function(data) {
-                 console.log(data);
+                 //console.log(data);
 
                 $(".imagetext").val(data.item.image_title);
                 $(".imagealt").val(data.item.image_alt);
