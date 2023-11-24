@@ -329,7 +329,7 @@ Route::get("/tedx-view/{id?}",[menuFormController::class,'showTDEx']);
 Route::get("/tdex",[menuFormController::class,'viewTDEx']);
 Route::match(['get','post'],'add-edit-tedx/{id?}',[menuFormController::class,'Add_Edit_TDEx'])->name('addedittedx');
 Route::get('delete-tedx/{id}',[menuFormController::class,'deleteTDEx']);
-Route::get('tdex/{id?}',[menuFormController::class,'ajax_tdex']);
+Route::get('ajax-tdex',[menuFormController::class,'ajax_tdex']);
 
 //tedx url image
 Route::get('tdex-image-delete/{id?}',[menuFormController::class,'deleteTdexImage']);

@@ -65,7 +65,7 @@
                                 <div class="col-md-12">
 
                                     <button type="button" class="btn btn-primary float-right" data-toggle="modal"
-                                        data-target="#exampleModal" data-whatever="@mdo">Multiple Image Upload Section</button>
+                                        data-target="#exampleModal" data-whatever="@mdo">Multiple Image Upload </button>
 
                                 </div>
 
@@ -227,14 +227,16 @@
 
                             <div class="form-group col-md-6">
 
-                                <label for="image_text">Image Title</label>
+                              
+                                <label for="image_title">Image Title</label>
 
-                                <input type="text" name="image_title" placeholder="Enter your Image Text"
-                                    class="form-last-name form-control" id="form-last-name" autocomplete="off">
+                                <input type="text" name="image_title" placeholder="Enter your Image Text" required 
+                                value="{{ old('image_title') }}"
+                                    class="form-last-name form-control" id="form-last-name" autocomplete="off"> 
 
 
-                                <label for="image_text" id="image_text-error" class="error">
-                                </label>
+                                    <label for="image_title" id="image_title-error" class="error">
+                                    </label>
 
                             </div>
 
@@ -243,6 +245,7 @@
                                 <label for="image_alt">Image Alt</label>
 
                                 <input type="text" name="image_alt" placeholder="Enter your image Alt"
+                                  value="{{ old('image_title') }}"
                                     class="form-email form-control" id="form-email" autocomplete="off">
 
 
@@ -253,13 +256,14 @@
 
                             <div class="form-group col-md-6">
 
-                                <label for="order">sort order</label>
+                                <label for="short_order">sort order</label>
 
-                                <input type="number" id="order" name="order" placeholder="pls enter sort order"
+                                <input type="number" id="short_order" name="short_order" placeholder="pls enter sort order" required
+                                value="{{ old('short_order') }}"
                                     class="form-email form-control">
 
 
-                                <label for="order" id="order-error" class="error">
+                                <label for="short_order	" id="short_order-error" class="error">
                                 </label>
 
                             </div>
@@ -332,8 +336,6 @@
                             <label for="image_text" id="image_text-error" class="error">
                             </label>
 
-
-
                         </div>
 
 
@@ -353,7 +355,7 @@
 
                             <label for="form-email">sort order</label>
 
-                            <input type="text" placeholder="pls enter sort order" name="order"
+                            <input type="number" placeholder="pls enter sort order" name="order"
                                 class="form-email form-control imagesort" readonly required="" autocomplete="off">
 
                             <label for="order" id="order-error" class="error">
@@ -478,12 +480,12 @@
 
                             <div class="form-group col-md-6">
 
-                                <label for="form-email">sort order</label>
+                                <label for="short_order">sort order</label>
 
-                                <input type="text" placeholder="pls enter sort order" name="order"
+                                <input type="number" placeholder="pls enter sort order" name="short_order" required
                                     class="form-email form-control" id="imagesort" required="" autocomplete="off">
 
-                                <label for="order" id="order-error" class="error">
+                                <label for="short_order" id="short_order-error" class="error">
                                 </label>
 
 
@@ -520,15 +522,12 @@
 
        
 
-
-       
-
-
 <script>
     $(document).on("click", "#update", function() {
 
         var UserName = $(this).data('id');
-        //    alert(UserName);
+
+           // alert(UserName);
         $.ajaxSetup({
             headers: {
                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -540,15 +539,16 @@
             url: "{{ url('/Accounts/tdex_id_image') }}",
             type: "get",
             data: {
-                id: UserName
+                userid: UserName
             },
             success: function(data) {
+                //console.log(data.item.short_order);
 
-                $('#form').attr('action', '{{ url('Accounts/edit-club-image') }}' +
+                $('#form').attr('action', '{{ url('Accounts/edit-tdex-image') }}' +
                     '/' + data.item.id)
                 $("#imagetext").val(data.item.image_title);
                 $("#imagealt").val(data.item.image_alt);
-                $("#imagesort").val(data.item.sort_order);
+                $("#imagesort").val(data.item.short_order);
                 $("#imageoldid").val(data.item.cell_imges);
                 $("#event").val(data.item.event);
                 $('#image').html('<img src="{{ asset('uploads/multiple/tdex') }}/' + data.item
@@ -564,26 +564,25 @@
 <script>
     $(document).on("click", "#view", function() {
         var UserName = $(this).data('id');
-          // alert(UserName);
+           alert(UserName);
         $.ajaxSetup({
             headers: {
                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
             }
         });
 
-
         $.ajax({
             url: "{{ url('/Accounts/tdex_id_image') }}",
             type: "get",
             data: {
-                id: UserName
+                userid: UserName
             },
             success: function(data) {
-
+                 console.log(data);
 
                 $(".imagetext").val(data.item.image_title);
                 $(".imagealt").val(data.item.image_alt);
-                $(".imagesort").val(data.item.sort_order);
+                $(".imagesort").val(data.item.short_order);
                 $(".imageoldid").val(data.item.cell_imges);
                 $(".event").val(data.item.event);
                 $('.image').html('<img src="{{ asset('uploads/multiple/tdex') }}/' + data.item

@@ -421,6 +421,22 @@
 
                     </div>
 
+                    <div class="col-md-6">
+
+                        <div class="form-group"> <label for="form_name">TEDx Member </label>
+
+                            <select name="Student_Council" class="form-control">
+                                <option value="">Please Select</option>
+                                <option value="1" {{$data->tedx == '1' ? 'selected' : ''}}>Yes</option>
+                                <option value="0" {{$data->tedx == '0' ? 'selected' : ''}}>NO</option>
+
+
+                            </select>
+
+                        </div>
+
+                    </div>
+
                      <div class="col-md-6">
 
                         <div class="form-group"> <label for="phone"> Contact No *</label> <input id="phone" type="text" name="phone" @if($id) value="{{$data->phone}}" @else value="{{old('phone')}}" @endif  class="form-control" placeholder="Please enter contact no *"  >
