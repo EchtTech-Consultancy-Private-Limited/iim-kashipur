@@ -62,7 +62,7 @@
 
                                                 <tr>
 
-                                                    <th>Sr.No#</th>
+                                                    <th>Sr.No</th>
 
                                                     <th>Banner</th>
 
@@ -82,7 +82,6 @@
                                                     <tr>
 
                                                         <td>{{ $K + 1 }}</td>
-
 
                                                         <td>
                                                             @if ($D->bannerimage != null || $D->bannerimage != '')

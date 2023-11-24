@@ -86,9 +86,10 @@
                                             </thead>
                                             <tbody>
 
-                                                @foreach ($data as $k => $item)
+                                                @foreach ($data as $K => $item)
                                                     <tr>
-                                                        <td>{{ $item->id }}</td>
+                                                       
+                                                        <td>{{ $K + 1 }}</td>
                                                         <td><img src="{{ asset('uploads/multiple/tdex/'.$item->filename	) }}"
                                                                 alt="" title="" 
                                                                 style="height: 120px;  width: 120px;" loading="lazy"></td>
