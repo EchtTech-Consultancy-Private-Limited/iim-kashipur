@@ -160,12 +160,19 @@
                                            @foreach (Getheading($M->id) as $key => $Ms)
                                                {{-- {{ Getarchivedata(now()->format('Y-m-d'), $Ms->archive_date) != 'True' }} --}}
                                                @if (Getarchivedata(now()->format('Y-m-d'), $Ms->archive_date) != 'True')
+
                                                    <div class="event-content notice-body">
+                                                   <a @if ($Ms->external == 'yes') @if (GetLang() == 'en') onclick="return confirm('This link will take you to an external web site.')"  @else onclick="return confirm('यह लिंक आपको एक बाहरी वेब साइट पर ले जाएगा।')" @endif
+                                                               href="{{ $Ms->url }}"
+                                                           @elseif($Ms->external == 'no')
+                                                               href="{{ url($Ms->url) }}" @endif
+                                                               class="red-link">
                                                        <h3 class="title" tabindex="0">
                                                            @if (GetLang() == 'en')
                                                                {{ $Ms->short }}
                                                            @else
                                                                {{ $Ms->short_h }} @endif
+
                                                        </h3>
 
                                                        <div class="btn-wrap">
@@ -178,8 +185,8 @@
                                                                    alt="read-more" class="img-fluid">
                                                            </a>
                                                        </div>
-
-                                                   </div>
+                                                    </a>
+                                                </div>
                                                @endif
                                            @endforeach
                                        @endif
