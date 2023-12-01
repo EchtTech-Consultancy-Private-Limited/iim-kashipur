@@ -175,7 +175,7 @@
 
                                                        </h3>
 
-                                                       <div class="btn-wrap">
+                                                       <div class="btn-wrap ">
                                                            <a @if ($Ms->external == 'yes') @if (GetLang() == 'en') onclick="return confirm('This link will take you to an external web site.')"  @else onclick="return confirm('यह लिंक आपको एक बाहरी वेब साइट पर ले जाएगा।')" @endif
                                                                href="{{ $Ms->url }}"
                                                            @elseif($Ms->external == 'no')
