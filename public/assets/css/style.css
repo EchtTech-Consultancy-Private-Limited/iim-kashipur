@@ -1086,7 +1086,7 @@ span.text-hili-top {
 
     left: 50%;
 
-    transform: translate(-50%, -50%); 
+    transform: translate(-50%, -50%);
 
     background: #fff;
 
@@ -3615,7 +3615,7 @@ p {
     width: 5px;
     height: 10px;
   }
-  
+
   .bg-hover .text-scroll, .profilewraper.withinfo .text-scroll {
     scrollbar-width: none;
   } */
@@ -3965,7 +3965,7 @@ span {
     text-align: right;
 }
 
-/* 
+/*
 strong {
     font-weight: 600;
 } */
@@ -5375,7 +5375,7 @@ img.img-icon {
     margin: auto;
 }
 
-.marquee--inner {
+/* .marquee--inner {
     display: block;
     width: 100%;
     position: absolute;
@@ -5383,7 +5383,7 @@ img.img-icon {
     padding: 10px;
     behavior: scroll;
 
-}
+} */
 
 .marquee--inner:hover {
     animation-play-state: paused;
@@ -6064,7 +6064,7 @@ p {
 
 }
 
-/* 
+/*
     .sidebarwraper ul li.hasnested a.active + ul {
         display: block !important;
     } */
@@ -6172,7 +6172,7 @@ del {
         /* height: 75vh !important; */
     }
 
-    
+
 .internalpagebanner img {
     height: 450px !important;
     object-fit: cover;
