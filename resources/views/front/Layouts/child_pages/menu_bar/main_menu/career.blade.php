@@ -79,7 +79,7 @@
                                                     </span>
                 </td>
                 <td>
-                Apply Here : <a  @if (GetLang() =='en') onclick="return confirm('This link will take you to an external web site.')"  @else onclick="return confirm('यह लिंक आपको एक बाहरी वेब साइट पर ले जाएगा।')" @endif href="{{url('http://58.84.23.37/faculty-recruitment/emeritus/0723/')}}"  target="_blank">Link 1</a> or 
+                Apply Here : <a  @if (GetLang() =='en') onclick="return confirm('This link will take you to an external web site.')"  @else onclick="return confirm('यह लिंक आपको एक बाहरी वेब साइट पर ले जाएगा।')" @endif href="{{url('http://58.84.23.59/faculty-recruitment/emeritus/0723/')}}"  target="_blank">Link 1</a> or 
                 
                 <a href="{{url('http://14.139.249.139/faculty-recruitment/emeritus/0723/')}}" @if (GetLang() == 'en') onclick="return confirm('This link will take you to an external web site.')"  @else onclick="return confirm('यह लिंक आपको एक बाहरी वेब साइट पर ले जाएगा।')" @endif href="{{url('http://14.139.249.139/faculty-recruitment/emeritus/0723/')}}" target="_blank">Link 2</a>
                 </td>
@@ -154,7 +154,6 @@
 
                         <td>
 
-
                             @if($value->corrigendum != '')
                             <a href="{{ asset('uploads/fo/' . $value->corrigendum) }}" download  target="_blank"><i
                                     class="fa fa-download"></i> Download</a>
@@ -166,9 +165,6 @@
                             ?>)
                         </span>
                           @endif
-
-
-
 
                         </td>
                     </tr>
