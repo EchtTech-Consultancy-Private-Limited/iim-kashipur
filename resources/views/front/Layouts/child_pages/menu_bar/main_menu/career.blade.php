@@ -154,7 +154,6 @@
 
                         <td>
 
-
                             @if($value->corrigendum != '')
                             <a href="{{ asset('uploads/fo/' . $value->corrigendum) }}" download  target="_blank"><i
                                     class="fa fa-download"></i> Download</a>
@@ -166,9 +165,6 @@
                             ?>)
                         </span>
                           @endif
-
-
-
 
                         </td>
                     </tr>
