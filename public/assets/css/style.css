@@ -2242,6 +2242,15 @@ span.text-hili-top {
 
 
 
+    .carousel-indicators{
+        bottom: 0 !important;
+    right: 0 !important;
+    display: flex !important;
+    justify-content: center !important;
+    padding: 0 !important;
+    margin-bottom: 0rem !important;
+    list-style: none !important;
+    }
 
 
     .back-img.img-gallery.gallery-member .thumbnail.p-relative img {
@@ -3559,9 +3568,15 @@ p {
     }
 
     .carousel .carousel-item img {
-        height: 120px !important;
+        height: 95px !important;
+        object-fit: contain;
     }
 
+    .text-banner h2 {
+        font-size: 10px;
+        text-align: left;
+        margin-bottom: 0;
+    }   
     .carousel-caption .text-banner .about-body .btn-orange {
         font-size: 9px;
         font-weight: 600;
