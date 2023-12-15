@@ -6216,3 +6216,7 @@ del {
 .instagram-bg iframe {
     margin: 0 !important;
 }
+
+.instagram-bg iframe {
+    display: none;
+}
