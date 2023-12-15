@@ -75,6 +75,7 @@
                                                 <tr>
                                                     <th>S.No</th>
                                                     <th>pdf</th>
+                                                    <th>year</th>
                                                     <th>Status</th>
                                                     <th>Action </th>
                                                 </tr>
@@ -93,8 +94,9 @@
 
                                                             </a>
                                                         </td>
-
-
+                                                      
+                                                       
+                                                        <td>  <?php echo date('Y', strtotime( $item->year)); ?></td>
                                                         <td>
                                                             @if (@checkRoute('StatusChange'))
                                                                 @if ($item->status == 1)

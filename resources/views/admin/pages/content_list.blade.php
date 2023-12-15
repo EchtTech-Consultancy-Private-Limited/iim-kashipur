@@ -130,8 +130,7 @@
                                                         <td>
 
                                                             <button type="submit" class="btn btn-primary btn-sm"><a
-                                                                    href="{{ url('/Accounts/pages-list/' . dEncrypt($value->id)) }}">Sub
-                                                                    page</a></button>
+                                                                    href="{{ url('/Accounts/pages-list/' . dEncrypt($value->id)) }}">Sub page</a></button>
 
                                                         </td>
 
@@ -167,43 +166,19 @@
 
                                         </table>
 
-
-
                                     </div>
-
-
 
                                 </div>
 
-
-
                             </div>
-
-
 
                         </div>
 
-
-
                     </div>
-
-
-
-
-
-
-
-
-
-
 
                 </div>
 
-
-
             </div>
-
-
 
         </div>
 

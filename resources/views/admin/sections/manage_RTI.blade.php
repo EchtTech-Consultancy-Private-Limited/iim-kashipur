@@ -63,14 +63,10 @@
 
                                                 <tr>
 
-                                                    <th>S.No#</th>
-
-
+                                                    <th>Sr.No#</th>
                                                     <th>PDF</th>
-
-
+                                                     <th>Title</th>
                                                     <th>Status</th>
-
                                                     <th>Action</th>
                                                 </tr>
 
@@ -92,7 +88,7 @@
                                                             </a>
                                                         </td>
 
-
+                                                         <td>{{ $D->title }}</td>
 
                                                         <td>
                                                             @if (@checkRoute('StatusChange'))

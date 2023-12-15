@@ -20,10 +20,6 @@ function decode5t($str)
   return $str;
 }
 
-
-
-
-
  function GetLang(){
    return config('app.locale');
 }
