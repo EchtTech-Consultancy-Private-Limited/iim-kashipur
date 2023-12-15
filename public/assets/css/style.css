@@ -6206,3 +6206,13 @@ del {
         object-fit: cover;
     }
 }
+
+
+
+.marquee-content {
+    padding: 0 14px;
+}
+
+.instagram-bg iframe {
+    margin: 0 !important;
+}

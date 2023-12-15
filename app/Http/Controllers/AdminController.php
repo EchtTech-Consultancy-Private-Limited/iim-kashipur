@@ -238,7 +238,6 @@ function Add_OrganisationStructure(Request $request,$id=null){
 
 
     function StatusChange($status,$id,$db){
-
         DB::table($db)->where('id',dDecrypt($id))->update(['status'=>$status]);
         return redirect()->back()->with('success','Status Changed Successfully');
     }
