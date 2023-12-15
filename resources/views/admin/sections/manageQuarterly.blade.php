@@ -100,10 +100,10 @@
                                                         <td>
                                                             @if (@checkRoute('StatusChange'))
                                                                 @if ($item->status == 1)
-                                                                    <a href="{{ url('Accounts/status-change/0/' . dEncrypt($item->id) . '/rit_report_sections') }}"
+                                                                    <a href="{{ url('Accounts/status-change/0/' . dEncrypt($item->id) . '/quarter_reports') }}"
                                                                         style="color:green;">Active</a>
                                                                 @else
-                                                                    <a href="{{ url('Accounts/status-change/1/' . dEncrypt($item->id) . '/rit_report_sections') }}"
+                                                                    <a href="{{ url('Accounts/status-change/1/' . dEncrypt($item->id) . '/quarter_reports') }}"
                                                                         style="color:red;">Inactive</a>
                                                                 @endif
                                                             @else
