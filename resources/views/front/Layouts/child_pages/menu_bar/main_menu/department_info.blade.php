@@ -876,7 +876,19 @@
                                                 @else
                                                     {{ $items->designation_h ?? '' }}
                                                 @endif
+
+                                                <p>
+                                                    @if (GetLang() == 'en')
+                                                        {{ $items->more_designation ?? '' }}
+                                                    @else
+                                                        {{ $items->more_designation ?? '' }}
+                                                    @endif    
+                                                </p>
                                             </div>
+
+                                          
+
+
                                         </div>
 
                         </div>
@@ -927,6 +939,14 @@
                                     </p>
                                 </a>
                             </div>
+
+                            <p>
+                                @if (GetLang() == 'en')
+                                    {{ $Secretary->more_designation ?? '' }}
+                                @else
+                                    {{ $Secretary->more_designation ?? '' }}
+                                @endif    
+                            </p>
                         </div>
                     </div>
                 @endif
