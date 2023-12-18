@@ -877,7 +877,7 @@
                                                     {{ $items->designation_h ?? '' }}
                                                 @endif
 
-                                                <p>
+                                                <p style="text-align: left;">
                                                     @if (GetLang() == 'en')
                                                         {{ $items->more_designation ?? '' }}
                                                     @else
@@ -937,7 +937,7 @@
                                             {{ $Secretary->designation_h ?? '' }}
                                         @endif
                                     </p>
-                                    <p>
+                                    <p style="text-align: left;">
                                         @if (GetLang() == 'en')
                                             {{ $Secretary->more_designation ?? '' }}
                                         @else
