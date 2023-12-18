@@ -7,7 +7,11 @@
         $mmenu = @content_menus($type[0]->menu_id);
     @endphp
 
-
+<style>
+    .bg-hover .text-scroll, .profilewraper.withinfo .text-scroll {
+    height: 112px !important;
+    }
+</style>    
 
     {{-- banner and  breadcrumbs   --}}
 
