@@ -103,14 +103,14 @@
 
             <table>
                 <tr>
-                    <th class="text-nowrap">Sr.no</th>
-                    <th class="text-nowrap">NAME OF THE POST</th>
-                    <th class="text-nowrap"> OPENING DATE</th>
-                    <th class="text-nowrap">CLOSING DATE</th>
-                    <th class="text-nowrap">ONLINE LINK</th>
-                    <th class="text-nowrap">DETAIL ADVERTISEMENT</th>
-                    <th class="text-nowrap">NOTE</th>
-                    <th class="text-nowrap">CORRIGENDUM</th>
+                    <th class="text-nowrap">S.No</th>
+                    <th class="text-nowrap">Name Of The Post</th>
+                    <th class="text-nowrap">Opening Date</th>
+                    <th class="text-nowrap">Closing Date</th>
+                    <th class="text-nowrap">Online Link</th>
+                    <th class="text-nowrap">Detail" Advertisement Document </th>
+                    <th class="text-nowrap">Note</th>
+                    <th class="text-nowrap">Corrigendum</th>
                 </tr>
 
                 <?php $number = 1; ?>
