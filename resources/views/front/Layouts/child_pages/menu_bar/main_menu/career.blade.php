@@ -108,7 +108,7 @@
                     <th class="text-nowrap">Opening Date</th>
                     <th class="text-nowrap">Closing Date</th>
                     <th class="text-nowrap">Online Link</th>
-                    <th class="text-nowrap">Detail" Advertisement Document </th>
+                    <th class="text-nowrap">Detail Advertisement Document </th>
                     <th class="text-nowrap">Note</th>
                     <th class="text-nowrap">Corrigendum</th>
                 </tr>
