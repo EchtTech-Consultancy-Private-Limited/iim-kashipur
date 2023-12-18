@@ -1444,9 +1444,10 @@
                                                                         <img src="{{ asset('uploads/organisation/' . $value->image) ?? '' }}"
                                                                             alt="gallery-img" class="img-fluid"
                                                                             loading="lazy">
-                                                                        <div class="top-text">{{ $value->title }}
+                                                                        <div class="top-text">{{ $value->title ??"" }}<br/>
+                                                                            {{ $value->phone ?? '' }}
                                                                         </div>
-
+                                                                        
                                                                     </div>
                                                                 </a>
 
