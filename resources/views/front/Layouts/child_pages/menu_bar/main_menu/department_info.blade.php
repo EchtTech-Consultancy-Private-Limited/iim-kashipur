@@ -937,16 +937,17 @@
                                             {{ $Secretary->designation_h ?? '' }}
                                         @endif
                                     </p>
+                                    <p>
+                                        @if (GetLang() == 'en')
+                                            {{ $Secretary->more_designation ?? '' }}
+                                        @else
+                                            {{ $Secretary->more_designation ?? '' }}
+                                        @endif    
+                                    </p>
                                 </a>
                             </div>
 
-                            <p>
-                                @if (GetLang() == 'en')
-                                    {{ $Secretary->more_designation ?? '' }}
-                                @else
-                                    {{ $Secretary->more_designation ?? '' }}
-                                @endif    
-                            </p>
+                           
                         </div>
                     </div>
                 @endif
