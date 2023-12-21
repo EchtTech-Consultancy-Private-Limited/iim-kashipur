@@ -72,11 +72,11 @@ $(document).ready(function() {
             time: {
                 required: true,
             },
-            email: {
-                required: true,
-                email: true,
-                maxlength: 50
-            },
+            // email: {
+            //     required: true,
+            //     email: true,
+            //     maxlength: 50
+            // },
             content:{
                 minlength: 100,
             },
@@ -285,11 +285,11 @@ $(document).ready(function() {
             video_image:{
                 required: "This field is required",
             },
-            email: {
-                required: "Email is required",
-                email: "Email must be a valid email address",
-                maxlength: "Email cannot be more than 50 characters"
-            },
+            // email: {
+            //     required: "Email is required",
+            //     email: "Email must be a valid email address",
+            //     maxlength: "Email cannot be more than 50 characters"
+            // },
             title:{
                 required: "This field is required",
             },

@@ -461,22 +461,12 @@
 
                      <div class="col-md-6">
 
-                        <div class="form-group"> <label for="email"> Email *</label> <input id="email" type="email" name="email" @if($id) value="{{$data->email}}" @else value="{{old('email')}}" @endif class="form-control" placeholder="Please enter email *" required="required" >
+                        <div class="form-group"> 
+                            <label for="email"> Email</label> 
+                            <input id="email" type="email" name="email" @if($id) value="{{$data->email}}" @else value="{{old('email')}}" @endif class="form-control" placeholder="Please enter email " >
 
-
-
-
-                            <label for="email"  id="email-error" class="error">
-                                @error('email')
-                                    {{ $message }}
-                                @enderror
-                            </label>
-
-
-
-
+                           
                         </div>
-
                     </div>
 
                     <div class="col-md-6">
