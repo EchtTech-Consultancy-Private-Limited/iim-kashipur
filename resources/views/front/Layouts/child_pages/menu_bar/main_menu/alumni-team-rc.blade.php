@@ -200,8 +200,6 @@
 
     @if (isset($get)) {{-- child menu section  --}}
 
-
-
         <section class="withsidebar-wrap ptb-60">
 
             <div class="container">
