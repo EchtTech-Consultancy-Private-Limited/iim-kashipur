@@ -111,7 +111,7 @@ function View_OrganisationStructure(Request $request){
 
    //dd($request->dp);
 }
-$departments=['0'=>'Filter Department','1'=>'Director','2'=>'Chairperson','3'=>'Members','4'=>'Secretary to the Board','6'=>'Faculty Directory','7'=>'Visiting Faculty','8'=>'International Relations Chairperson','9'=>'International Relations SENIOR MEMBERS'  ,'10'=>'MBA Testimonials','16'=>'MBA(analytics)Testimonials','16'=>'Placement(The Team) Chairperson','12'=>'Placement(The Team) Administrative','13'=>'Placement(The Team)  Student Coordinator ','14'=>'Corporate Interactions','17'=>'Club','18'=>'Cell','19'=>'Committee'];
+$departments=['0'=>'Filter Department','1'=>'Director','2'=>'Chairperson','3'=>'Members','4'=>'Secretary to the Board','6'=>'Faculty Directory','7'=>'Visiting Faculty','8'=>'International Relations Chairperson','9'=>'International Relations SENIOR MEMBERS'  ,'10'=>'MBA Testimonials','16'=>'MBA(analytics)Testimonials','16'=>'Placement(The Team) Chairperson','12'=>'Placement(The Team) Administrative','13'=>'Placement(The Team) Senior Student Coordinator ','14'=>'Corporate Interactions','17'=>'Club','18'=>'Cell','19'=>'Committee','20'=>'Placement(The Team) junior Student Coordinator '];
    return view('admin.sections.OrganisationStructure',compact('data','departments'));
 
 }
