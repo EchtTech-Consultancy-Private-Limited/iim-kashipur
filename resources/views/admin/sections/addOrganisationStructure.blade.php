@@ -269,7 +269,8 @@
                                     <option value="10"  {{ ($data->department==10) ? 'selected' : '' }} >MBA Testimonials</option>
                                     <option value="11"  {{ ($data->department==11) ? 'selected' : '' }} >Placement(The Team) Chairperson </option>
                                     <option value="12"  {{ ($data->department==12) ? 'selected' : '' }} >Placement(The Team) Administrative </option>
-                                    <option value="13"  {{ ($data->department==13) ? 'selected' : '' }} >Placement(The Team)  Student Coordinator </option>
+                                    <option value="13"  {{ ($data->department==13) ? 'selected' : '' }} >Placement(The Team) Senior Student Coordinator </option>
+                                    <option value="20"  {{ ($data->department==20) ? 'selected' : '' }} >Placement(The Team) junior Student Coordinator </option>
                                     <option value="14"  {{ ($data->department==14) ? 'selected' : '' }} >Corporate Interactions</option>
                                     <option value="15"  {{ ($data->department==15) ? 'selected' : '' }} >Alumni(The Team)</option>
                                     <option value="16"  {{ ($data->department==16) ? 'selected' : '' }} >MBA(analytics)Testimonials</option>

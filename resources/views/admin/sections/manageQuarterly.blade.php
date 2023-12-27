@@ -1,6 +1,6 @@
 @extends('admin.Layout.master')
 
-@section('title', 'Manage Quarter RIT')
+@section('title', 'Manage Quarter RTI')
 
 @section('content')
 
@@ -51,7 +51,7 @@
                     <div class="card">
 
                         <div class="card-body">
-                            <h4 class="card-title">Manage Quarter RIT</h4>
+                            <h4 class="card-title">Manage Quarter RTI</h4>
 
 
 
@@ -61,7 +61,7 @@
                                 <div class="col-md-12">
 
                                     <button type="button" class="btn btn-primary float-right" data-toggle="modal"
-                                        data-target="#exampleModal" data-whatever="@mdo">Add New Quarter RIT</button>
+                                        data-target="#exampleModal" data-whatever="@mdo">Add New Quarter RTI</button>
 
                                 </div>
 
@@ -615,7 +615,7 @@ aria-hidden="true">
         <script>
             $(document).on("click", "#update", function() {
                 var UserName = $(this).data('id');
-                //  alert(UserName);
+                 // alert(UserName);
                 $.ajaxSetup({
                     headers: {
                         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -630,7 +630,7 @@ aria-hidden="true">
                     },
                     success: function(data) {
 
-                      //  console.log(data.item);
+                        console.log(data.item);
 
                         $('#form').attr('action', '{{ url('Accounts/edit_rit') }}' +
                             '/' + data.item.id)
@@ -699,15 +699,6 @@ aria-hidden="true">
 
     });
 </script>
-
-
-
-
-
-
-
-
-
 
 
 <script>

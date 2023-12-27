@@ -552,6 +552,7 @@ public function view_RTI(){
 
         public function Add_Quarter_RTI(Request $request)
         {
+            //dd($request->all());
 
             $request->validate(
                 [
@@ -604,13 +605,13 @@ public function view_RTI(){
                 $data->pdf_fourth = $newname;
             }
             $data->save();
-            return back()->with('success','Record Edit Successfully');
+            return back()->with('success','Record Add Successfully!!!!!!!!');
 
         }
 
         public function Edit_Quarter_RTI(Request $request,$id)
         {
-
+                 //dd($request->all());
 
             $request->validate(
                 [
@@ -665,7 +666,7 @@ public function view_RTI(){
             }
 
             $data->save();
-            return back()->with('success','Record Edit Successfully');
+            return back()->with('success','Record Edit Successfully!!!!!!!');
 
         }
 
@@ -756,9 +757,16 @@ function View_PressMedia(){
 
     //ajax
     public function rit_QUARTER(Request $request){
+
         $item=rit_report_section::whereid($request->id)->first();
         return response()->json(['item'=>$item]);
     }
 
+    public function rti_QUARTER_data(Request $request){
 
+        $item=quarter_report::whereid($request->id)->first();
+        return response()->json(['item'=>$item]);
+    }
+    
+    
 }

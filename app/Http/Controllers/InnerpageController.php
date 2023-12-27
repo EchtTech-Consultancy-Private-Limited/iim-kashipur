@@ -1469,9 +1469,10 @@ class InnerpageController extends Controller
                         $chairperson = OrganisationStructure::where('status', '1')->where('department', '11')->first();
                         $Administrative = OrganisationStructure::where('status', '1')->where('department', '12')->orderBy('short_order', 'Asc')->get();
                         $Coordinator = OrganisationStructure::where('status', '1')->where('department', '13')->orderBy('short_order', 'Asc')->get();
+                        $junior_Coordinator = OrganisationStructure::where('status', '1')->where('department', '20')->orderBy('short_order', 'Asc')->get();
                         if (count($item) > 0) {
                             $type = SubMenu::whereslug($slug)->get();
-                            return view('front.Layouts.child_pages.menu_bar.main_menu.placement_team', ['chairperson' => $chairperson, 'Administrative' => $Administrative, 'Coordinator' => $Coordinator, 'item' => $item, 'type' => $type, 'sub_menu' => $sub_menu]);
+                            return view('front.Layouts.child_pages.menu_bar.main_menu.placement_team', ['junior_Coordinator'=>$junior_Coordinator,'chairperson' => $chairperson, 'Administrative' => $Administrative, 'Coordinator' => $Coordinator, 'item' => $item, 'type' => $type, 'sub_menu' => $sub_menu]);
                         } else {
                             return abort(401);
                         }

@@ -679,10 +679,17 @@
                                         <form action="{{ url('/research/journal-publications') }}" method="get">
                                         <div class="d-flex">
 
-                                            <select class="form-control m-0" style="width: 100px;" name="year" style="padding:10px 15px 9px ">
+                                            {{-- <select class="form-control m-0" style="width: 100px;" name="year" style="padding:10px 15px 9px ">
                                                 <option value="">--Year--</option>
                                                 @for ($i=2011; $i<= date('Y'); $i++)
                                                 <option value="{{ $i }}" {{ (request('year') == $i)?'selected':'' }}> {{ $i }}</option>
+                                                @endfor
+                                            </select> --}}
+
+                                            <select class="form-control m-0" style="width: 100px;" name="year" style="padding:10px 15px 9px ">
+                                                <option value="">--Year--</option>
+                                                @for ($i = date('Y'); $i >= 2011; $i--)
+                                                    <option value="{{ $i }}" {{ (request('year') == $i)? 'selected' : '' }}> {{ $i }}</option>
                                                 @endfor
                                             </select>
 

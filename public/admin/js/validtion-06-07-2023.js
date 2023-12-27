@@ -142,11 +142,11 @@ $(document).ready(function() {
             time: {
                 required: true,
             },
-            email: {
-                required: true,
-                email: true,
-                maxlength: 50
-            },
+            // email: {
+            //     // required: true,
+            //     email: true,
+            //     maxlength: 50
+            // },
             mobile: {
                 required: true,
                 minlength: 10,

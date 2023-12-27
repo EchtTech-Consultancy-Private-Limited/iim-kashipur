@@ -265,11 +265,11 @@ Route::get("/delete-rit-pdf/{id?}",[footerController::class,'Delete_AnnualAudit_
 
 
 //rti section Quarterly
-Route::get("/view-rti",[footerController::class,'view_Quarter_RTI']);
+
 Route::post("/add_rit",[footerController::class,'Add_Quarter_RTI']);
 Route::post("/edit_rit/{id?}",[footerController::class,'Edit_Quarter_RTI']);
 Route::get("/delete_rit/{id?}",[footerController::class,'Delete_Quarter_RTI']);
-
+Route::get("/view-rti",[footerController::class,'view_Quarter_RTI']);
 
 Route::get("/rti-pdfsection",[footerController::class,'pdf_section']);
 Route::get("/rti-pdfsection",[footerController::class,'rit_QUARTER']);

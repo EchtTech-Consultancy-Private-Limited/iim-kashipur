@@ -493,49 +493,49 @@
 
 
 
-        <a href="javascript:void(0)" class="btn2 margin_top margin_bottom">SENIOR MEMBERS</a><br><br>
+            <a href="javascript:void(0)" class="btn2 margin_top margin_bottom">SENIOR MEMBERS</a><br><br>
 
-        <div class="profilewithinfo">
+            <div class="profilewithinfo">
 
 
 
-            <div class="row">
+                <div class="row">
 
-                @foreach ($item as $items)
-                    @if ($items->department == '9')
-                        <div class="col-6 col-lg-4 col-xxl-3 mb-4">
+                    @foreach ($item as $items)
+                        @if ($items->department == '9')
+                            <div class="col-6 col-lg-4 col-xxl-3 mb-4">
 
-                            <div class="profilewraper">
+                                <div class="profilewraper">
 
-                                <figure><img src="{{ asset('uploads/organisation/' . $items->image) ?? '' }}"
-                                        alt="{{ $items->title ?? '' }}" title="{{ $items->title ?? '' }}">
-                                </figure><br>
+                                    <figure><img src="{{ asset('uploads/organisation/' . $items->image) ?? '' }}"
+                                            alt="{{ $items->title ?? '' }}" title="{{ $items->title ?? '' }}">
+                                    </figure><br>
 
-                                <h4>
+                                    <h4>
+                                        @if (GetLang() == 'en')
+                                            {{ $items->title ?? '' }}
+                                        @else
+                                            {{ $items->title_h ?? '' }}
+                                        @endif
+                                    </h4>
+
                                     @if (GetLang() == 'en')
-                                        {{ $items->title ?? '' }}
+                                        {{ $items->designation ?? '' }}
                                     @else
-                                        {{ $items->title_h ?? '' }}
+                                        {{ $items->designation_h ?? '' }}
                                     @endif
-                                </h4>
 
-                                @if (GetLang() == 'en')
-                                    {{ $items->designation ?? '' }}
-                                @else
-                                    {{ $items->designation_h ?? '' }}
-                                @endif
+                                </div>
 
                             </div>
+                        @endif
+                    @endforeach
 
-                        </div>
-                    @endif
-                @endforeach
+                </div>
+
+
 
             </div>
-
-
-
-        </div>
 
 
         </div>
@@ -546,7 +546,7 @@
     @endif
 
     </div>
-</div>
+    </div>
     </div>
 
     </section>
@@ -574,8 +574,7 @@
                                             @endif
                                             <svg class="minus" viewBox="0 0 24 24">
                                                 <g data-name="Layer 2">
-                                                    <path d="M19 13H5a1 1 0 0 1 0-2h14a1 1 0 0 1 0 2z"
-                                                        data-name="minus" />
+                                                    <path d="M19 13H5a1 1 0 0 1 0-2h14a1 1 0 0 1 0 2z" data-name="minus" />
                                                 </g>
                                             </svg><svg viewBox="0 0 24 24" class="plus">
                                                 <path
@@ -760,7 +759,8 @@
                                                 <div class="profile-img">
 
                                                     <img src="{{ asset('uploads/organisation/' . $chairperson->image) ?? '' }}"
-                                                        alt="{{ $chairperson->title }}" title="{{ $chairperson->title }}">
+                                                        alt="{{ $chairperson->title }}"
+                                                        title="{{ $chairperson->title }}">
 
                                                 </div>
 
@@ -802,30 +802,89 @@
 
                         </div>
 
+                        @if (count($Administrative) > 0)
+                            <a href="javascript:void(0)" class="btn2 margin_top margin_bottom">Administrative</a><br><br>
+
+                            <div class="profilewithinfo">
+
+                                <div class="row">
+                                    @foreach ($Administrative as $items)
+                                        @if ($items->department == '12')
+                                            <div class="col-6 col-lg-4 col-xxl-4 mb-4">
 
 
-                    @if (count($Administrative) > 0)
-                        <a href="javascript:void(0)" class="btn2 margin_top margin_bottom">Administrative</a><br><br>
+                                                <div class="addevent-box top text-left mt-0">
 
-                        <div class="profilewithinfo">
+                                                    <div class="profile-img">
+                                                        <img src="{{ asset('uploads/organisation/' . $items->image) ?? '' }}"
+                                                            alt="{{ $items->title ?? '' }}"
+                                                            title="{{ $items->title ?? '' }}">
+                                                    </div>
 
-                            <div class="row">
+                                                    <div class="senear-box">
+                                                        <h5>
+                                                            @if (GetLang() == 'en')
+                                                                {{ $items->title ?? '' }}
+                                                            @else
+                                                                {{ $items->title_h ?? '' }}
+                                                            @endif
+                                                        </h5>
+                                                        <p>
+                                                            @if (GetLang() == 'en')
+                                                                {{ $items->designation ?? '' }}
+                                                            @else
+                                                                {{ $items->designation_h ?? '' }}
+                                                            @endif
+                                                        </p>
 
+                                                        <p>
+                                                            {{ $items->phone ?? '' }}
+                                                        </p>
 
-                                @foreach ($Administrative as $items)
-                                    @if ($items->department == '12')
-                                        <div class="col-6 col-lg-4 col-xxl-4 mb-4">
+                                                        <?php
+                                                        $email_address = $items->email;
+                                                        $str = $email_address;
+                                                        $var = str_replace('@', '[at]', $str);
+                                                        $email = str_replace('.', '[dot]', $var);
+                                                        ?>
 
+                                                        <p class="mail-team-2" title="{{ $email ?? '' }}">
+                                                            {{ $email ?? '' }}
+                                                        </p>
 
-                                            <div class="addevent-box top text-left mt-0">
+                                                        <p> {{ $items->extension ?? '' }}</p>
 
-                                                <div class="profile-img">
-                                                    <img src="{{ asset('uploads/organisation/' . $items->image) ?? '' }}"
-                                                        alt="{{ $items->title ?? '' }}"
-                                                        title="{{ $items->title ?? '' }}">
+                                                    </div>
                                                 </div>
 
-                                                <div class="senear-box">
+                                            </div>
+                                        @endif
+                                    @endforeach
+
+                                </div>
+                        @endif
+
+                        @if (count($Coordinator) > 0)
+                            <a href="javascript:void(0)" class="btn2 margin_top margin_bottom">Senior Student
+                                Coordinator</a><br>
+
+                            <span>Email-id: placecomm[at]iimkashipur[dot]ac[dot]in</span>
+                            <div class="profilewithinfo">
+
+                                <div class="row">
+
+                                    @foreach ($Coordinator as $items)
+                                        @if ($items->department == '13')
+                                            <div class="col-6 col-lg-4 col-xxl-3 mb-4">
+
+                                                <div class="addevent-box top text-left mt-0">
+
+                                                    <div class="profile-img">
+                                                        <img src="{{ asset('uploads/organisation/' . $items->image) ?? '' }}"
+                                                            alt="{{ $items->title ?? '' }}"
+                                                            title="{{ $items->title ?? '' }}">
+                                                    </div>
+
                                                     <h5>
                                                         @if (GetLang() == 'en')
                                                             {{ $items->title ?? '' }}
@@ -833,101 +892,90 @@
                                                             {{ $items->title_h ?? '' }}
                                                         @endif
                                                     </h5>
-                                                    <p>
+                                                    <h6>
                                                         @if (GetLang() == 'en')
                                                             {{ $items->designation ?? '' }}
                                                         @else
                                                             {{ $items->designation_h ?? '' }}
                                                         @endif
-                                                    </p>
+                                                    </h6>
 
-                                                    <p>
-                                                        {{ $items->phone ?? '' }}
-                                                    </p>
-
-                                                    <?php
-                                                    $email_address = $items->email;
-                                                    $str = $email_address;
-                                                    $var = str_replace('@', '[at]', $str);
-                                                    $email = str_replace('.', '[dot]', $var);
-                                                    ?>
-
-                                                    <p class="mail-team-2" title="{{ $email ?? '' }}">
-                                                        {{ $email ?? '' }}
-                                                    </p>
-
-                                                    <p> {{ $items->extension ?? '' }}</p>
+                                                    <p> {{ $items->phone ?? '' }}</p>
 
                                                 </div>
-                                            </div>
 
-                                        </div>
-                                    @endif
-                                @endforeach
+                                            </div>
+                                        @endif
+                                    @endforeach
+
+                                </div>
+
+
 
                             </div>
+                        @endif
 
 
+                        @if (count($junior_Coordinator) > 0)
+                            <a href="javascript:void(0)" class="btn2 margin_top margin_bottom">Junior Student
+                                Coordinator</a><br>
 
+                            {{-- <span>Email-id: placecomm[at]iimkashipur[dot]ac[dot]in</span> --}}
+                            <div class="profilewithinfo">
 
-                    @endif
-                    {{-- new section  --}}
+                                <div class="row">
 
-                    @if (count($Coordinator) > 0)
-                        <a href="javascript:void(0)" class="btn2 margin_top margin_bottom">Student Coordinator</a><br><br>
+                                    @foreach ($junior_Coordinator as $items)
+                                        @if ($items->department == '20')
+                                            <div class="col-6 col-lg-4 col-xxl-3 mb-4">
 
-                        <span>Email-id: placecomm[at]iimkashipur[dot]ac[dot]in</span>
-                        <div class="profilewithinfo">
+                                                <div class="addevent-box top text-left mt-0">
 
-                            <div class="row">
+                                                    <div class="profile-img">
+                                                        <img src="{{ asset('uploads/organisation/' . $items->image) ?? '' }}"
+                                                            alt="{{ $items->title ?? '' }}"
+                                                            title="{{ $items->title ?? '' }}">
+                                                    </div>
 
-                                @foreach ($Coordinator as $items)
-                                    @if ($items->department == '13')
-                                        <div class="col-6 col-lg-4 col-xxl-3 mb-4">
+                                                    <h5>
+                                                        @if (GetLang() == 'en')
+                                                            {{ $items->title ?? '' }}
+                                                        @else
+                                                            {{ $items->title_h ?? '' }}
+                                                        @endif
+                                                    </h5>
+                                                    <h6>
+                                                        @if (GetLang() == 'en')
+                                                            {{ $items->designation ?? '' }}
+                                                        @else
+                                                            {{ $items->designation_h ?? '' }}
+                                                        @endif
+                                                    </h6>
 
-                                            <div class="addevent-box top text-left mt-0">
+                                                    <p> {{ $items->phone ?? '' }}</p>
 
-                                                <div class="profile-img">
-                                                    <img src="{{ asset('uploads/organisation/' . $items->image) ?? '' }}"
-                                                        alt="{{ $items->title ?? '' }}"
-                                                        title="{{ $items->title ?? '' }}">
                                                 </div>
 
-                                                <h5>
-                                                    @if (GetLang() == 'en')
-                                                        {{ $items->title ?? '' }}
-                                                    @else
-                                                        {{ $items->title_h ?? '' }}
-                                                    @endif
-                                                </h5>
-                                                <h6>
-                                                    @if (GetLang() == 'en')
-                                                        {{ $items->designation ?? '' }}
-                                                    @else
-                                                        {{ $items->designation_h ?? '' }}
-                                                    @endif
-                                                </h6>
-
-                                                <p> {{ $items->phone ?? '' }}</p>
-
                                             </div>
+                                        @endif
+                                    @endforeach
 
-                                        </div>
-                                    @endif
-                                @endforeach
+                                </div>
+
+
 
                             </div>
+                        @endif
 
 
 
-                        </div>
-                    @endif
 
-                </div>
+
+                    </div>
             </div>
 
         </div>
-    </div>
+        </div>
         </div>
         @endif
 
