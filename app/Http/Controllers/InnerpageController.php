@@ -517,9 +517,7 @@ class InnerpageController extends Controller
     }
     public function sub_childInnerpage($main_slug, $slug, $subchild, $superchild)  //content page superchild menu
     {
-
         $subchildmenu = subchildmenu::whereslug($superchild)->get();
-
         //dd($subchildmenu);
         if (Count($subchildmenu) > 0) {
             if (Count($subchildmenu) > 0) {
@@ -1436,6 +1434,9 @@ class InnerpageController extends Controller
     {
         $sub_menu = "sub menu";
         $type = SubMenu::whereslug($slug)->get();
+        $menu = SubMenu::whereslug($slug)->first();
+        if($menu->status != '0'){
+
         if (Count($type) > 0) {
             if ($type[0]->url == '/content-page') {
                 if (Count($type) > 0) {
@@ -1885,6 +1886,9 @@ class InnerpageController extends Controller
         } else {
             return abort(401);
         }
+    }else{
+        return abort(401);
+    } 
     }
 
 
@@ -1981,7 +1985,8 @@ class InnerpageController extends Controller
     {
 
         $data = child_menu::whereslug($slug)->get();
-
+        $menu = child_menu::whereslug($slug)->first();
+        if($menu->status != '0'){
         if (Count($data) > 0) {
             // dd($data[0]->url);
 
@@ -2235,6 +2240,10 @@ class InnerpageController extends Controller
                 return abort(401);
             }
         }
+
+    }else{
+        return abort(401);
+    }
     }
 
 
@@ -2260,22 +2269,6 @@ class InnerpageController extends Controller
             return abort(401);
         }
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
     //who is who incomplete
@@ -2529,10 +2522,6 @@ class InnerpageController extends Controller
     // }
 
 
-
-
-
-
     public function  photo_Innerpage($slug)
     {
         //return $slug;
@@ -2551,10 +2540,7 @@ class InnerpageController extends Controller
             return abort(401);
         }
     }
-
-
     //video innner page
-
     public function  video_Innerpage($slug)
     {
         // return $slug;
@@ -2572,10 +2558,6 @@ class InnerpageController extends Controller
             return abort(401);
         }
     }
-
-
-
-
 
     //departmanet  controller
     public function  Add_Department()
