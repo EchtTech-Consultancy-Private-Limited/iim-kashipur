@@ -1391,7 +1391,7 @@
                         </h5>
 
                         <div class="row mt-4 mb-5">
-                            <div class="col-md-2">
+                            <div class="col-md-3 col-lg-2">
                                 <div class="top text-left mt-0">
                                     <div class="profile-img img-fac">
                                         <img src="{{ asset('uploads/organisation/' . $chairperson[0]->image) }}"
@@ -1403,7 +1403,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-md-9">
+                            <div class="col-md-9 col-lg-10">
                                 <div class="designation">
                                     <h4>{{ $chairperson[0]->designation ?? '' }} </h6>
                                         <h6>{{ $chairperson[0]->title ?? '' }} </h6>
@@ -1436,7 +1436,7 @@
                                             <div class="excellence-gallery partnership-img">
                                                 <div class="row masonry-grid">
                                                     @foreach ($chairpersons as $value)
-                                                        <div class="col-md-2 col-lg-2">
+                                                        <div class="col-md-3 col-lg-2">
                                                             <div class="d-flex flex-column h-100">
                                                                 <a href="javascript:void();"
                                                                     class="">
