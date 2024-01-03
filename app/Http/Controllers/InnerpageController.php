@@ -530,13 +530,11 @@ class InnerpageController extends Controller
     }
     public function sub_childInnerpage($main_slug, $slug, $subchild, $superchild)  //content page superchild menu
     {
-        //dd($slug);
+       // dd($superchild);
         try {
             $subchildmenu = subchildmenu::whereslug($superchild)->get();
-            $menu = subchildmenu::whereslug($slug)->first();
-            //dd($menu);
+            $menu = subchildmenu::whereslug($superchild)->first();
             if (isset($menu) !== null && (isset($menu->status) && $menu->status !== 0)) {
-                //dd($subchildmenu);
                 if (Count($subchildmenu) > 0) {
                     if (Count($subchildmenu) > 0) {
                         $type = subchildmenu::whereslug($superchild)->get();
