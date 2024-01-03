@@ -533,10 +533,10 @@ class InnerpageController extends Controller
 
         try {
             $subchildmenu = subchildmenu::whereslug($superchild)->get();
-                if (Count($subchildmenu) > 0) {
-                    $menu = subchildmenu::whereslug($superchild)->first();
-                   if (isset($menu) !== null && (isset($menu->status) && $menu->status !== '0')) {
-                             
+            if (Count($subchildmenu) > 0) {
+                $menu = subchildmenu::whereslug($superchild)->first();
+                if (isset($menu) !== null && (isset($menu->status) && $menu->status !== '0')) {
+
                     if (Count($subchildmenu) > 0) {
                         $type = subchildmenu::whereslug($superchild)->get();
                         $subchildmenu = subchildmenu::whereslug($subchildmenu)->get('link_option');
@@ -550,60 +550,57 @@ class InnerpageController extends Controller
                             return abort(401);
                         }
                     }
-
-                }else{
-                    return abort(401);
-                }
-
-               
-                } elseif (club::whereslug($superchild)->get()->count()) {    //club single
-
-                    $item = club::whereslug($superchild)->get();
-                    if (count($item) > 0) {
-                        $chairperson = OrganisationStructure::whereid($item[0]->chairperson)->get();
-                        $chairpersons = OrganisationStructure::whereClub($item[0]->id)->get();
-                        $data = club_multiple_image::whereparent_id($item[0]->id)->get();
-                        $cccbreadcram = "Club";
-                        return view('front.Layouts.child_pages.menu_bar.main_menu.clube_committee_details', ['cccbreadcram' => $cccbreadcram, 'chairpersons' => $chairpersons, 'chairperson' => $chairperson, 'item' => $item, 'data' => $data]);
-                    } else {
-                        return abort(401);
-                    }
-                } elseif (commmittee::whereslug($superchild)->get()->count()) {    //commitee single
-                    $item = commmittee::whereslug($superchild)->get();
-                    if (count($item) > 0) {
-                        $chairperson = OrganisationStructure::whereid($item[0]->chairperson)->get();
-                        $chairpersons = OrganisationStructure::wherecommittee($item[0]->id)->get();
-                        $data = committee_multiple_image::whereparent_id($item[0]->id)->get();
-                        $cccbreadcram = "Committee";
-                        return view('front.Layouts.child_pages.menu_bar.main_menu.clube_committee_details', ['cccbreadcram' => $cccbreadcram, 'chairpersons' => $chairpersons, 'chairperson' => $chairperson, 'item' => $item, 'data' => $data]);
-                    } else {
-                        return abort(401);
-                    }
-                } elseif (cell::whereslug($superchild)->get()->count()) {    //cell single
-
-                    $item = cell::whereslug($superchild)->get();
-                    // dd($item);
-                    if (count($item) > 0) {
-                        $chairperson = OrganisationStructure::whereid($item[0]->chairperson)->get();
-                        $chairpersons = OrganisationStructure::whereCell($item[0]->id)->get();
-                        // dd($chairpersons);
-                        $data = cell_multiple_image::whereparent_id($item[0]->id)->get();
-                        $cccbreadcram = "Cell";
-                        return view('front.Layouts.child_pages.menu_bar.main_menu.clube_committee_details', ['cccbreadcram' => $cccbreadcram, 'chairpersons' => $chairpersons, 'chairperson' => $chairperson, 'item' => $item, 'data' => $data]);
-                    } else {
-                        return abort(401);
-                    }
-                } elseif (OrganisationStructure::whereslug($superchild)->get()->count()) {
-                    $item = OrganisationStructure::whereslug($superchild)->get();
-                    if (count($item) > 0) {
-                        $data = multiple_profile::whereparent_id($item[0]->id)->get();
-                        return view('front.Layouts.profile', ['item' => $item, 'data' => $data]);
-                    } else {
-                        return abort(401);
-                    }
                 } else {
                     return abort(401);
                 }
+            } elseif (club::whereslug($superchild)->get()->count()) {    //club single
+
+                $item = club::whereslug($superchild)->get();
+                if (count($item) > 0) {
+                    $chairperson = OrganisationStructure::whereid($item[0]->chairperson)->get();
+                    $chairpersons = OrganisationStructure::whereClub($item[0]->id)->get();
+                    $data = club_multiple_image::whereparent_id($item[0]->id)->get();
+                    $cccbreadcram = "Club";
+                    return view('front.Layouts.child_pages.menu_bar.main_menu.clube_committee_details', ['cccbreadcram' => $cccbreadcram, 'chairpersons' => $chairpersons, 'chairperson' => $chairperson, 'item' => $item, 'data' => $data]);
+                } else {
+                    return abort(401);
+                }
+            } elseif (commmittee::whereslug($superchild)->get()->count()) {    //commitee single
+                $item = commmittee::whereslug($superchild)->get();
+                if (count($item) > 0) {
+                    $chairperson = OrganisationStructure::whereid($item[0]->chairperson)->get();
+                    $chairpersons = OrganisationStructure::wherecommittee($item[0]->id)->get();
+                    $data = committee_multiple_image::whereparent_id($item[0]->id)->get();
+                    $cccbreadcram = "Committee";
+                    return view('front.Layouts.child_pages.menu_bar.main_menu.clube_committee_details', ['cccbreadcram' => $cccbreadcram, 'chairpersons' => $chairpersons, 'chairperson' => $chairperson, 'item' => $item, 'data' => $data]);
+                } else {
+                    return abort(401);
+                }
+            } elseif (cell::whereslug($superchild)->get()->count()) {    //cell single
+
+                $item = cell::whereslug($superchild)->get();
+                // dd($item);
+                if (count($item) > 0) {
+                    $chairperson = OrganisationStructure::whereid($item[0]->chairperson)->get();
+                    $chairpersons = OrganisationStructure::whereCell($item[0]->id)->get();
+                    // dd($chairpersons);
+                    $data = cell_multiple_image::whereparent_id($item[0]->id)->get();
+                    $cccbreadcram = "Cell";
+                    return view('front.Layouts.child_pages.menu_bar.main_menu.clube_committee_details', ['cccbreadcram' => $cccbreadcram, 'chairpersons' => $chairpersons, 'chairperson' => $chairperson, 'item' => $item, 'data' => $data]);
+                } else {
+                    return abort(401);
+                }
+            } elseif (OrganisationStructure::whereslug($superchild)->get()->count()) {
+                $item = OrganisationStructure::whereslug($superchild)->get();
+                if (count($item) > 0) {
+                    $data = multiple_profile::whereparent_id($item[0]->id)->get();
+                    return view('front.Layouts.profile', ['item' => $item, 'data' => $data]);
+                } else {
+                    return abort(401);
+                }
+            } else {
+                return abort(401);
+            }
             // } else {
             //     return abort(401);
             // }
@@ -1130,201 +1127,274 @@ class InnerpageController extends Controller
 
 }*/
     public function Menu_barInnerpage($slug) //content page & who in who data
-    {  
-        try{
-        $main_menu = "main-menu";
-        $item = OrganisationStructure::whereslug($slug)->get();
-        if (MainMenu::whereslug($slug)->get('id')->count()) {
-
-            $type = MainMenu::whereslug($slug)->get();
-            if ($type[0]->url == '/content-page') {
-                $item = content_page::whereid($type[0]->link_option)->get();
-
-                return view('front.Layouts.child_pages.menu_bar.main_menu.main_menu', ['item' => $item, 'type' => $type, 'main_menu' => $main_menu]);
-            } elseif ($type[0]->url == '/who-is-who') {
-
-
-                if (isset($type[0]) && $type[0]->tpl_id == 1) //board of gerverner
-                {
-                    //  return "Board of directer";
-                    $item = OrganisationStructure::get();
-                    if (count($item) > 0) {
-                        return view('front.Layouts.child_pages.menu_bar.main_menu.department_info', ['item' => $item, 'type' => $type, 'main_menu' => $main_menu]);
-                    } else {
-                        return abort(401);
-                    }
-                } elseif (isset($type[0]) && $type[0]->tpl_id == 2)     //directer profile
-                {
-                    //return 'member';
-
-                    $item = OrganisationStructure::whereid($type[0]->link_option)->get();
-                    if (count($item) > 0) {
-                        return view('front.Layouts.child_pages.menu_bar.main_menu.member', ['item' => $item, 'type' => $type, 'main_menu' => $main_menu]);
-                    } else {
-                        return abort(401);
-                    }
-                } elseif (isset($type[0]) && $type[0]->tpl_id == 3) {     // factulty directry
-
-                    //dd('hii');
-                    $item = OrganisationStructure::where('department', 6)->paginate(9);
-                    if (count($item) > 0) {
-                        return view('front.Layouts.child_pages.menu_bar.main_menu.faculty', ['item' => $item, 'type' => $type, 'main_menu' => $main_menu]);
-                    } else {
-                        return abort(401);
-                    }
-                } elseif (isset($type[0]) && $type[0]->tpl_id == 4) {    //visiting faculty
-
-                    $item = OrganisationStructure::where('department', 7)->paginate(9);
-                    if (count($item) > 0) {
-
-
-                        return view('front.Layouts.child_pages.menu_bar.main_menu.visiting_faculity', ['item' => $item, 'type' => $type, 'main_menu' => $main_menu]);
-                    } else {
-
-                        return abort(401);
-                    }
-                } elseif (isset($type[0]) && $type[0]->tpl_id == 5) {    //the Team
-
-
-                    $item = OrganisationStructure::get();
-
-                    if (count($item) > 0) {
-
-
-                        return view('front.Layouts.child_pages.menu_bar.main_menu.internation_team', ['item' => $item, 'type' => $type, 'main_menu' => $main_menu]);
-                    } else {
-
-                        return abort(401);
-                    }
-                } else {
-
-                    $item = OrganisationStructure::whereid($type[0]->link_option)->get();
-                    if (count($item) > 0) {
-                        return view('front.Layouts.child_pages.menu_bar.main_menu.member', ['item' => $item, 'type' => $type, 'main_menu' => $main_menu]);
-                    } else {
-                        return abort(401);
-                    }
-                }
-            }
-        } elseif (Count($item) > 0) {
-
-            //dd('faculty profile section user main menu');
+    {
+        try {
+            $main_menu = "main-menu";
             $item = OrganisationStructure::whereslug($slug)->get();
-            if (count($item) > 0) {
-                $data = multiple_profile::whereparent_id($item[0]->id)->get();
-                return view('front.Layouts.profile', ['item' => $item, 'data' => $data, 'main_menu' => $main_menu]);
-            } else {
-                return abort(401);
-            }
-        } elseif (QuickLink::whereslug($slug)->get()->count()) {
+            if (MainMenu::whereslug($slug)->get('id')->count()) {
 
-            //  dd(QuickLink::whereslug($slug)->get());
+                $type = MainMenu::whereslug($slug)->get();
+                if ($type[0]->url == '/content-page') {
+                    $item = content_page::whereid($type[0]->link_option)->get();
 
-            if (QuickLink::whereslug($slug)->first('section_name')->section_name == 'academics') {
+                    return view('front.Layouts.child_pages.menu_bar.main_menu.main_menu', ['item' => $item, 'type' => $type, 'main_menu' => $main_menu]);
+                } elseif ($type[0]->url == '/who-is-who') {
 
-                // dd('hii');
-                $data = QuickLink::whereslug($slug)->get();
-                if (Count($data) > 0) {
-                    $item = content_page::whereid($data[0]->link_option)->get();
-                    if (Count($item) > 0) {
-                        return view('front.Layouts.child_pages.middle_section.home_section', ['item' => $item]);
+
+                    if (isset($type[0]) && $type[0]->tpl_id == 1) //board of gerverner
+                    {
+                        //  return "Board of directer";
+                        $item = OrganisationStructure::get();
+                        if (count($item) > 0) {
+                            return view('front.Layouts.child_pages.menu_bar.main_menu.department_info', ['item' => $item, 'type' => $type, 'main_menu' => $main_menu]);
+                        } else {
+                            return abort(401);
+                        }
+                    } elseif (isset($type[0]) && $type[0]->tpl_id == 2)     //directer profile
+                    {
+                        //return 'member';
+
+                        $item = OrganisationStructure::whereid($type[0]->link_option)->get();
+                        if (count($item) > 0) {
+                            return view('front.Layouts.child_pages.menu_bar.main_menu.member', ['item' => $item, 'type' => $type, 'main_menu' => $main_menu]);
+                        } else {
+                            return abort(401);
+                        }
+                    } elseif (isset($type[0]) && $type[0]->tpl_id == 3) {     // factulty directry
+
+                        //dd('hii');
+                        $item = OrganisationStructure::where('department', 6)->paginate(9);
+                        if (count($item) > 0) {
+                            return view('front.Layouts.child_pages.menu_bar.main_menu.faculty', ['item' => $item, 'type' => $type, 'main_menu' => $main_menu]);
+                        } else {
+                            return abort(401);
+                        }
+                    } elseif (isset($type[0]) && $type[0]->tpl_id == 4) {    //visiting faculty
+
+                        $item = OrganisationStructure::where('department', 7)->paginate(9);
+                        if (count($item) > 0) {
+
+
+                            return view('front.Layouts.child_pages.menu_bar.main_menu.visiting_faculity', ['item' => $item, 'type' => $type, 'main_menu' => $main_menu]);
+                        } else {
+
+                            return abort(401);
+                        }
+                    } elseif (isset($type[0]) && $type[0]->tpl_id == 5) {    //the Team
+
+
+                        $item = OrganisationStructure::get();
+
+                        if (count($item) > 0) {
+
+
+                            return view('front.Layouts.child_pages.menu_bar.main_menu.internation_team', ['item' => $item, 'type' => $type, 'main_menu' => $main_menu]);
+                        } else {
+
+                            return abort(401);
+                        }
                     } else {
-                        return abort(401);
+
+                        $item = OrganisationStructure::whereid($type[0]->link_option)->get();
+                        if (count($item) > 0) {
+                            return view('front.Layouts.child_pages.menu_bar.main_menu.member', ['item' => $item, 'type' => $type, 'main_menu' => $main_menu]);
+                        } else {
+                            return abort(401);
+                        }
                     }
+                }
+            } elseif (Count($item) > 0) {
+
+                //dd('faculty profile section user main menu');
+                $item = OrganisationStructure::whereslug($slug)->get();
+                if (count($item) > 0) {
+                    $data = multiple_profile::whereparent_id($item[0]->id)->get();
+                    return view('front.Layouts.profile', ['item' => $item, 'data' => $data, 'main_menu' => $main_menu]);
                 } else {
                     return abort(401);
                 }
-            } elseif (QuickLink::whereslug($slug)->first('section_name')->section_name == 'student-corner') {
+            } elseif (QuickLink::whereslug($slug)->get()->count()) {
 
-                $data = QuickLink::whereslug($slug)->get('link_option');
-                //dd($data);
-                if (Count($data) > 0) {
-                    $item = content_page::whereid($data[0]->link_option)->get();
-                    if (Count($item) > 0) {
-                        return view('front.Layouts.child_pages.middle_section.home_section', ['item' => $item]);
+                //  dd(QuickLink::whereslug($slug)->get());
+
+                if (QuickLink::whereslug($slug)->first('section_name')->section_name == 'academics') {
+
+                    // dd('hii');
+                    $data = QuickLink::whereslug($slug)->get();
+                    if (Count($data) > 0) {
+                        $item = content_page::whereid($data[0]->link_option)->get();
+                        if (Count($item) > 0) {
+                            return view('front.Layouts.child_pages.middle_section.home_section', ['item' => $item]);
+                        } else {
+                            return abort(401);
+                        }
                     } else {
                         return abort(401);
                     }
-                } else {
-                    return abort(401);
-                }
-            } elseif (QuickLink::whereslug($slug)->first('section_name')->section_name == 'notice-category') {
+                } elseif (QuickLink::whereslug($slug)->first('section_name')->section_name == 'student-corner') {
 
-                //return $slug;
-
-                $data = QuickLink::whereslug($slug)->get('link_option');
-                //dd($data);
-                if (Count($data) > 0) {
-                    $item = content_page::whereid($data[0]->link_option)->get();
-                    if (Count($item) > 0) {
-                        return view('front.Layouts.child_pages.middle_section.home_section', ['item' => $item]);
+                    $data = QuickLink::whereslug($slug)->get('link_option');
+                    //dd($data);
+                    if (Count($data) > 0) {
+                        $item = content_page::whereid($data[0]->link_option)->get();
+                        if (Count($item) > 0) {
+                            return view('front.Layouts.child_pages.middle_section.home_section', ['item' => $item]);
+                        } else {
+                            return abort(401);
+                        }
                     } else {
                         return abort(401);
                     }
-                } else {
-                    return abort(401);
-                }
-            } elseif (QuickLink::whereslug($slug)->first('section_name')->section_name == 'info') {
+                } elseif (QuickLink::whereslug($slug)->first('section_name')->section_name == 'notice-category') {
 
-                // return $slug;
-                $data = QuickLink::whereslug($slug)->get('link_option');
-                //dd($data);
-                if (Count($data) > 0) {
+                    //return $slug;
 
-                    $item = content_page::whereid($data[0]->link_option)->get();
+                    $data = QuickLink::whereslug($slug)->get('link_option');
+                    //dd($data);
+                    if (Count($data) > 0) {
+                        $item = content_page::whereid($data[0]->link_option)->get();
+                        if (Count($item) > 0) {
+                            return view('front.Layouts.child_pages.middle_section.home_section', ['item' => $item]);
+                        } else {
+                            return abort(401);
+                        }
+                    } else {
+                        return abort(401);
+                    }
+                } elseif (QuickLink::whereslug($slug)->first('section_name')->section_name == 'info') {
 
-                    if (Count($item) > 0) {
+                    // return $slug;
+                    $data = QuickLink::whereslug($slug)->get('link_option');
+                    //dd($data);
+                    if (Count($data) > 0) {
+
+                        $item = content_page::whereid($data[0]->link_option)->get();
+
+                        if (Count($item) > 0) {
+                            //dd($item);
+                            return view('front.Layouts.child_pages.middle_section.home_section', ['item' => $item]);
+                        } else {
+                            return abort(401);
+                        }
+                    } else {
+                        return abort(401);
+                    }
+                } elseif (QuickLink::whereslug($slug)->first('section_name')->section_name == 'info2') {
+
+                    $data = QuickLink::whereslug($slug)->get('link_option');
+
+                    if (Count($data) > 0) {
+
+                        $item = content_page::whereid($data[0]->link_option)->get();
+
+                        if (Count($item) > 0) {
+
+                            $data = content_page::whereparent_id($item[0]->id)->get();
+
+                            return view('front.Layouts.child_pages.middle_section.home_section', ['item' => $item, 'data' => $data]);
+                        } else {
+                            return abort(401);
+                        }
+                    } else {
+                        return abort(401);
+                    }
+                } elseif (QuickLink::whereslug($slug)->first('section_name')->section_name == 'centers') {
+
+                    // dd('center');
+                    $data = QuickLink::whereslug($slug)->get('link_option');
+                    //dd($data);
+                    if (Count($data) > 0) {
+                        $item = content_page::whereid($data[0]->link_option)->get();
                         //dd($item);
-                        return view('front.Layouts.child_pages.middle_section.home_section', ['item' => $item]);
+                        if (Count($item) > 0) {
+                            return view('front.Layouts.child_pages.middle_section.home_section', ['item' => $item]);
+                        } else {
+                            return abort(401);
+                        }
                     } else {
                         return abort(401);
                     }
-                } else {
-                    return abort(401);
-                }
-            } elseif (QuickLink::whereslug($slug)->first('section_name')->section_name == 'info2') {
+                } elseif (QuickLink::whereslug($slug)->first('section_name')->section_name == 'photo-gallery') {
 
-                $data = QuickLink::whereslug($slug)->get('link_option');
 
-                if (Count($data) > 0) {
+                    $photo_slug = QuickLink::whereslug($slug)->get();
+                    $data = photo_gallery::whereid($photo_slug[0]->link_option)->get();
+                    if (Count($data) > 0) {
+                        $item = photo_gallery_image::wheregallery_id($data[0]->id)->get();
 
-                    $item = content_page::whereid($data[0]->link_option)->get();
+                        if (Count($item) > 0) {
+                            return view('front.Layouts.inner-page.gallerys.photo-category', ['item' => $item, 'data' => $data]);
+                        } else {
+                            return abort(401);
+                        }
+                    } else {
+                        return abort(401);
+                    }
+                } elseif (QuickLink::whereslug($slug)->first('section_name')->section_name == 'info3') {
+                    // dd('hii');
+                    $data = QuickLink::whereslug($slug)->get('link_option');
+
+                    if (Count($data) > 0) {
+                        $item = content_page::whereid($data[0]->link_option)->get();
+
+                        if (Count($item) > 0) {
+
+                            $data = content_page::whereparent_id($item[0]->id)->get();
+
+                            return view('front.Layouts.child_pages.middle_section.home_section', ['item' => $item, 'data' => $data]);
+                        } else {
+                            return abort(401);
+                        }
+                    } else {
+                        return abort(401);
+                    }
+                } elseif (QuickLink::whereslug($slug)->first('section_name')->section_name == 'video-gallery') {
+
+                    // dd(QuickLink::whereslug($slug)->first('section_name')->section_name == 'video-gallery');
+
+                    $video_slug = QuickLink::whereslug($slug)->get();
+                    $data = video_gallery::whereid($video_slug[0]->link_option)->get();
+                    if (Count($data) > 0) {
+                        $item = video_gallery_tittle::wheregallery_id($data[0]->id)->get();
+
+
+                        if (Count($item) > 0) {
+                            return view('front.Layouts.inner-page.gallerys.video-miltimage', ['item' => $item, 'data' => $data]);
+                        } else {
+                            return abort(401);
+                        }
+                    } else {
+                        return abort(401);
+                    }
+                } elseif (QuickLink::whereslug($slug)->first('section_name')->section_name == 'header-top') {
+                    $video_slug = QuickLink::whereslug($slug)->get();
+
+                    $item = video_gallery::whereid($video_slug[0]->link_option)->get();
 
                     if (Count($item) > 0) {
+                        $values = video_gallery_tittle::wheregallery_id($item[0]->id)->get();
 
-                        $data = content_page::whereparent_id($item[0]->id)->get();
-
-                        return view('front.Layouts.child_pages.middle_section.home_section', ['item' => $item, 'data' => $data]);
+                        if (Count($item) > 0) {
+                            return view('front.Layouts.child_pages.menu_bar.main_menu.video_master', ['video_slug' => $video_slug, 'item' => $item, 'values' => $values]);
+                        } else {
+                            return abort(401);
+                        }
                     } else {
                         return abort(401);
                     }
                 } else {
-                    return abort(401);
+
+                    return abort(402);
                 }
-            } elseif (QuickLink::whereslug($slug)->first('section_name')->section_name == 'centers') {
-
-                // dd('center');
-                $data = QuickLink::whereslug($slug)->get('link_option');
-                //dd($data);
-                if (Count($data) > 0) {
-                    $item = content_page::whereid($data[0]->link_option)->get();
-                    //dd($item);
-                    if (Count($item) > 0) {
-                        return view('front.Layouts.child_pages.middle_section.home_section', ['item' => $item]);
-                    } else {
-                        return abort(401);
-                    }
-                } else {
-                    return abort(401);
-                }
-            } elseif (QuickLink::whereslug($slug)->first('section_name')->section_name == 'photo-gallery') {
-
-
-                $photo_slug = QuickLink::whereslug($slug)->get();
-                $data = photo_gallery::whereid($photo_slug[0]->link_option)->get();
+            }
+            //gallery ka ander ka url
+            elseif (photo_gallery::wherephoto_slug($slug)->get()->count()) {
+                // dd("hii");
+                $data = photo_gallery::wherephoto_slug($slug)->get();
+                // dd($data);
                 if (Count($data) > 0) {
                     $item = photo_gallery_image::wheregallery_id($data[0]->id)->get();
-
+                    //dd($item);
                     if (Count($item) > 0) {
                         return view('front.Layouts.inner-page.gallerys.photo-category', ['item' => $item, 'data' => $data]);
                     } else {
@@ -1333,33 +1403,10 @@ class InnerpageController extends Controller
                 } else {
                     return abort(401);
                 }
-            } elseif (QuickLink::whereslug($slug)->first('section_name')->section_name == 'info3') {
-                // dd('hii');
-                $data = QuickLink::whereslug($slug)->get('link_option');
-
-                if (Count($data) > 0) {
-                    $item = content_page::whereid($data[0]->link_option)->get();
-
-                    if (Count($item) > 0) {
-
-                        $data = content_page::whereparent_id($item[0]->id)->get();
-
-                        return view('front.Layouts.child_pages.middle_section.home_section', ['item' => $item, 'data' => $data]);
-                    } else {
-                        return abort(401);
-                    }
-                } else {
-                    return abort(401);
-                }
-            } elseif (QuickLink::whereslug($slug)->first('section_name')->section_name == 'video-gallery') {
-
-                // dd(QuickLink::whereslug($slug)->first('section_name')->section_name == 'video-gallery');
-
-                $video_slug = QuickLink::whereslug($slug)->get();
-                $data = video_gallery::whereid($video_slug[0]->link_option)->get();
+            } elseif (video_gallery::wherevideo_slug($slug)->get()->count()) {
+                $data = video_gallery::wherevideo_slug($slug)->get();
                 if (Count($data) > 0) {
                     $item = video_gallery_tittle::wheregallery_id($data[0]->id)->get();
-
 
                     if (Count($item) > 0) {
                         return view('front.Layouts.inner-page.gallerys.video-miltimage', ['item' => $item, 'data' => $data]);
@@ -1369,109 +1416,59 @@ class InnerpageController extends Controller
                 } else {
                     return abort(401);
                 }
-            } elseif (QuickLink::whereslug($slug)->first('section_name')->section_name == 'header-top') {
-                $video_slug = QuickLink::whereslug($slug)->get();
+            } else {
+                if (club::whereslug($slug)->get()->count()) {    //club single
 
-                $item = video_gallery::whereid($video_slug[0]->link_option)->get();
+                    $item = club::whereslug($slug)->get();
+                    if (count($item) > 0) {
+                        $chairperson = OrganisationStructure::whereid($item[0]->chairperson)->get();
+                        $chairpersons = OrganisationStructure::whereClub($item[0]->id)->get();
+                        $data = club_multiple_image::whereparent_id($item[0]->id)->get();
+                        $cccbreadcram = "Club";
+                        return view('front.Layouts.child_pages.menu_bar.main_menu.clube_committee_details', ['cccbreadcram' => $cccbreadcram, 'chairpersons' => $chairpersons, 'chairperson' => $chairperson, 'item' => $item, 'data' => $data]);
+                    } else {
+                        return abort(401);
+                    }
+                } elseif (commmittee::whereslug($slug)->get()->count()) {    //commitee single
+                    $item = commmittee::whereslug($slug)->get();
+                    if (count($item) > 0) {
+                        $chairperson = OrganisationStructure::whereid($item[0]->chairperson)->get();
+                        $chairpersons = OrganisationStructure::wherecommittee($item[0]->id)->get();
+                        $data = committee_multiple_image::whereparent_id($item[0]->id)->get();
+                        $cccbreadcram = "Committee";
+                        return view('front.Layouts.child_pages.menu_bar.main_menu.clube_committee_details', ['cccbreadcram' => $cccbreadcram, 'chairpersons' => $chairpersons, 'chairperson' => $chairperson, 'item' => $item, 'data' => $data]);
+                    } else {
+                        return abort(401);
+                    }
+                } elseif (cell::whereslug($slug)->get()->count()) {    //cell single
 
-                if (Count($item) > 0) {
-                    $values = video_gallery_tittle::wheregallery_id($item[0]->id)->get();
-
-                    if (Count($item) > 0) {
-                        return view('front.Layouts.child_pages.menu_bar.main_menu.video_master', ['video_slug' => $video_slug, 'item' => $item, 'values' => $values]);
+                    $item = cell::whereslug($slug)->get();
+                    // dd($item);
+                    if (count($item) > 0) {
+                        $chairperson = OrganisationStructure::whereid($item[0]->chairperson)->get();
+                        $chairpersons = OrganisationStructure::whereCell($item[0]->id)->get();
+                        // dd($chairpersons);
+                        $data = cell_multiple_image::whereparent_id($item[0]->id)->get();
+                        $cccbreadcram = "Cell";
+                        return view('front.Layouts.child_pages.menu_bar.main_menu.clube_committee_details', ['cccbreadcram' => $cccbreadcram, 'chairpersons' => $chairpersons, 'chairperson' => $chairperson, 'item' => $item, 'data' => $data]);
                     } else {
                         return abort(401);
                     }
                 } else {
                     return abort(401);
                 }
-            } else {
-
-                return abort(402);
             }
+        } catch (\Exception $e) {
+            \Log::error('An exception occurred: ' . $e->getMessage());
+            return abort(401);
+        } catch (\PDOException $e) {
+            \Log::error('A PDOException occurred: ' . $e->getMessage());
+            return abort(401);
+        } catch (\Throwable $e) {
+            // Catch any other types of exceptions that implement the Throwable interface.
+            \Log::error('An unexpected exception occurred: ' . $e->getMessage());
+            return abort(401);
         }
-        //gallery ka ander ka url
-        elseif (photo_gallery::wherephoto_slug($slug)->get()->count()) {
-            // dd("hii");
-            $data = photo_gallery::wherephoto_slug($slug)->get();
-            // dd($data);
-            if (Count($data) > 0) {
-                $item = photo_gallery_image::wheregallery_id($data[0]->id)->get();
-                //dd($item);
-                if (Count($item) > 0) {
-                    return view('front.Layouts.inner-page.gallerys.photo-category', ['item' => $item, 'data' => $data]);
-                } else {
-                    return abort(401);
-                }
-            } else {
-                return abort(401);
-            }
-        } elseif (video_gallery::wherevideo_slug($slug)->get()->count()) {
-            $data = video_gallery::wherevideo_slug($slug)->get();
-            if (Count($data) > 0) {
-                $item = video_gallery_tittle::wheregallery_id($data[0]->id)->get();
-
-                if (Count($item) > 0) {
-                    return view('front.Layouts.inner-page.gallerys.video-miltimage', ['item' => $item, 'data' => $data]);
-                } else {
-                    return abort(401);
-                }
-            } else {
-                return abort(401);
-            }
-        } else {
-            if (club::whereslug($slug)->get()->count()) {    //club single
-
-                $item = club::whereslug($slug)->get();
-                if (count($item) > 0) {
-                    $chairperson = OrganisationStructure::whereid($item[0]->chairperson)->get();
-                    $chairpersons = OrganisationStructure::whereClub($item[0]->id)->get();
-                    $data = club_multiple_image::whereparent_id($item[0]->id)->get();
-                    $cccbreadcram = "Club";
-                    return view('front.Layouts.child_pages.menu_bar.main_menu.clube_committee_details', ['cccbreadcram' => $cccbreadcram, 'chairpersons' => $chairpersons, 'chairperson' => $chairperson, 'item' => $item, 'data' => $data]);
-                } else {
-                    return abort(401);
-                }
-            } elseif (commmittee::whereslug($slug)->get()->count()) {    //commitee single
-                $item = commmittee::whereslug($slug)->get();
-                if (count($item) > 0) {
-                    $chairperson = OrganisationStructure::whereid($item[0]->chairperson)->get();
-                    $chairpersons = OrganisationStructure::wherecommittee($item[0]->id)->get();
-                    $data = committee_multiple_image::whereparent_id($item[0]->id)->get();
-                    $cccbreadcram = "Committee";
-                    return view('front.Layouts.child_pages.menu_bar.main_menu.clube_committee_details', ['cccbreadcram' => $cccbreadcram, 'chairpersons' => $chairpersons, 'chairperson' => $chairperson, 'item' => $item, 'data' => $data]);
-                } else {
-                    return abort(401);
-                }
-            } elseif (cell::whereslug($slug)->get()->count()) {    //cell single
-
-                $item = cell::whereslug($slug)->get();
-                // dd($item);
-                if (count($item) > 0) {
-                    $chairperson = OrganisationStructure::whereid($item[0]->chairperson)->get();
-                    $chairpersons = OrganisationStructure::whereCell($item[0]->id)->get();
-                    // dd($chairpersons);
-                    $data = cell_multiple_image::whereparent_id($item[0]->id)->get();
-                    $cccbreadcram = "Cell";
-                    return view('front.Layouts.child_pages.menu_bar.main_menu.clube_committee_details', ['cccbreadcram' => $cccbreadcram, 'chairpersons' => $chairpersons, 'chairperson' => $chairperson, 'item' => $item, 'data' => $data]);
-                } else {
-                    return abort(401);
-                }
-            } else {
-                return abort(401);
-            }
-        }
-    } catch (\Exception $e) {
-        \Log::error('An exception occurred: ' . $e->getMessage());
-        return abort(401);
-    } catch (\PDOException $e) {
-        \Log::error('A PDOException occurred: ' . $e->getMessage());
-        return abort(401);
-    } catch (\Throwable $e) {
-        // Catch any other types of exceptions that implement the Throwable interface.
-        \Log::error('An unexpected exception occurred: ' . $e->getMessage());
-        return abort(401);
-    }
     }
 
 
@@ -1485,7 +1482,7 @@ class InnerpageController extends Controller
             $sub_menu = "sub menu";
             $type = SubMenu::whereslug($slug)->get();
             $menu = SubMenu::whereslug($slug)->first();
-            if (isset($menu) !== null && (isset($menu->status) && $menu->status !== '0' )) {
+            if (isset($menu) !== null && (isset($menu->status) && $menu->status !== '0')) {
                 if (Count($type) > 0) {
                     if ($type[0]->url == '/content-page') {
                         if (Count($type) > 0) {
@@ -1729,9 +1726,7 @@ class InnerpageController extends Controller
                     } elseif ($type[0]->url == '/TEDxIIMKashipur' || $type[0]->url == 'tedxiimkashipur' ||  $type[0]->url == 'TDEx') {
 
                         return view('front.Layouts.child_pages.menu_bar.main_menu.tdex');
-                    }
-                   
-                    elseif ($type[0]->url == '/student-council') {
+                    } elseif ($type[0]->url == '/student-council') {
 
                         $data = SubMenu::whereslug($slug)->get();
                         if (Count($data) > 0) {
@@ -1990,28 +1985,30 @@ class InnerpageController extends Controller
 
     public function Child_barInnerpage($main_slug, $Sub_slug, $slug) //content page
     {
-        //dd($slug)
+        // dd($slug);
         try {
             $data = child_menu::whereslug($slug)->get();
-            $menu = child_menu::whereslug($slug)->first();
-            if (isset($menu) !== null && (isset($menu->status) && $menu->status !== '0' )) {
-                if (Count($data) > 0) {
-                    if ($data[0]->url == "/student-profiles") {
 
-                        $item = StudentProfile::where('status', '1')->orderBy('sort', 'Asc')->get();
-                        if (Count($item) > 0) {
-                            $type_sub = child_menu::whereslug($slug)->get();
-                            $gets = SubMenu::whereid($type_sub[0]->sub_id)->get();
-                            $get = MainMenu::whereid($type_sub[0]->menu_id)->get();
-                            $type_child = child_menu::whereslug($slug)->get();
-                            return view('front.Layouts.child_pages.student-profile.student-profile-front', ['item' => $item, 'type_sub' => $type_sub, 'type_child' => $type_child, 'gets' => $gets, 'get' => $get]);
-                        } else {
-                            return abort(401);
-                        }
+            if (Count($data) > 0) {
+
+                if ($data[0]->url == "/student-profiles") {
+
+                    $item = StudentProfile::where('status', '1')->orderBy('sort', 'Asc')->get();
+                    if (Count($item) > 0) {
+                        $type_sub = child_menu::whereslug($slug)->get();
+                        $gets = SubMenu::whereid($type_sub[0]->sub_id)->get();
+                        $get = MainMenu::whereid($type_sub[0]->menu_id)->get();
+                        $type_child = child_menu::whereslug($slug)->get();
+                        return view('front.Layouts.child_pages.student-profile.student-profile-front', ['item' => $item, 'type_sub' => $type_sub, 'type_child' => $type_child, 'gets' => $gets, 'get' => $get]);
+                    } else {
+                        return abort(401);
                     }
-                    if ($data[0]->url == '/content-page') {
+                }
 
+                if ($data[0]->url == '/content-page') {
 
+                    $menu = child_menu::whereslug($slug)->first();
+                    if (isset($menu) !== null && (isset($menu->status) && $menu->status !== '0')) {
                         $item = content_page::whereid($data[0]->link_option)->get();
 
                         if ($slug == 'communications') {
@@ -2051,29 +2048,130 @@ class InnerpageController extends Controller
                         } else {
                             return abort(401);
                         }
-                    } elseif ($data[0]->url == '/who-is-who') {
+                    } else {
+                        return abort(401);
+                    }
+                } elseif ($data[0]->url == '/who-is-who') {
 
-                        if (isset($data[0]) && $data[0]->tpl_id == 1) //default degian
-                        {
+                    if (isset($data[0]) && $data[0]->tpl_id == 1) //default degian
+                    {
+                        //return "Board of directer";
+                        $item = OrganisationStructure::get();
+                        if (count($item) > 0) {
+                            $type_sub = child_menu::whereslug($slug)->get();
+                            $gets = SubMenu::whereid($type_sub[0]->sub_id)->get();
+                            $get = MainMenu::whereid($type_sub[0]->menu_id)->get();
+                            $type_child = child_menu::whereslug($slug)->get();
+                            return view('front.Layouts.child_pages.menu_bar.main_menu.department_info', ['item' => $item, 'type_sub' => $type_sub, 'type_child' => $type_child, 'gets' => $gets, 'get' => $get]);
+                        } else {
+                            return abort(401);
+                        }
+                    } elseif (isset($data[0]) && $data[0]->tpl_id == 2)     //directer profile
+                    {
+                        //return 'member';
+
+                        $item = OrganisationStructure::whereid($data[0]->link_option)->get();
+                        // dd($item);
+                        if (count($item) > 0) {
+
+                            $type_sub = child_menu::whereslug($slug)->get();
+                            $gets = SubMenu::whereid($type_sub[0]->sub_id)->get();
+                            $get = MainMenu::whereid($type_sub[0]->menu_id)->get();
+                            $type_child = child_menu::whereslug($slug)->get();
+
+                            return view('front.Layouts.child_pages.menu_bar.main_menu.member', ['item' => $item, 'type_sub' => $type_sub, 'type_child' => $type_child, 'gets' => $gets, 'get' => $get]);
+                        } else {
+                            return abort(401);
+                        }
+                    } elseif (isset($data[0]) && $data[0]->tpl_id == 5)     //the team
+                    {
+                        // return 'member';
+
+                        $item = OrganisationStructure::get();
+
+                        if (count($item) > 0) {
+
+                            $type_sub = child_menu::whereslug($slug)->get();
+                            $gets = SubMenu::whereid($type_sub[0]->sub_id)->get();
+                            $get = MainMenu::whereid($type_sub[0]->menu_id)->get();
+                            $type_child = child_menu::whereslug($slug)->get();
+
+                            return view('front.Layouts.child_pages.menu_bar.main_menu.internation_team', ['item' => $item, 'type_sub' => $type_sub, 'type_child' => $type_child, 'gets' => $gets, 'get' => $get]);
+                        } else {
+                            return abort(401);
+                        }
+                    } elseif (isset($data[0]) && $data[0]->tpl_id == 12) {     // Alumni Tema arc
 
 
-                            //return "Board of directer";
-                            $item = OrganisationStructure::get();
-                            if (count($item) > 0) {
-                                $type_sub = child_menu::whereslug($slug)->get();
-                                $gets = SubMenu::whereid($type_sub[0]->sub_id)->get();
-                                $get = MainMenu::whereid($type_sub[0]->menu_id)->get();
-                                $type_child = child_menu::whereslug($slug)->get();
-                                return view('front.Layouts.child_pages.menu_bar.main_menu.department_info', ['item' => $item, 'type_sub' => $type_sub, 'type_child' => $type_child, 'gets' => $gets, 'get' => $get]);
-                            } else {
-                                return abort(401);
-                            }
-                        } elseif (isset($data[0]) && $data[0]->tpl_id == 2)     //directer profile
-                        {
-                            //return 'member';
+                        $item = OrganisationStructure::where('department', 15)->get();
+                        if (count($item) > 0) {
+                            $type_sub = child_menu::whereslug($slug)->get();
+                            $gets = SubMenu::whereid($type_sub[0]->sub_id)->get();
+                            $get = MainMenu::whereid($type_sub[0]->menu_id)->get();
+                            $type_child = child_menu::whereslug($slug)->get();
 
+                            return view('front.Layouts.child_pages.menu_bar.main_menu.alumni-team-rc', ['item' => $item, 'type_sub' => $type_sub, 'type_child' => $type_child, 'gets' => $gets, 'get' => $get]);
+                        } else {
+                            return abort(401);
+                        }
+                    } elseif (isset($data[0]) && $data[0]->tpl_id == 3) {     // factulty directry
+
+                        $item = OrganisationStructure::where('department', 6)->paginate(9);
+
+                        if (count($item) > 0) {
+
+                            $type_sub = child_menu::whereslug($slug)->get();
+                            $gets = SubMenu::whereid($type_sub[0]->sub_id)->get();
+                            $get = MainMenu::whereid($type_sub[0]->menu_id)->get();
+                            $type_child = child_menu::whereslug($slug)->get();
+
+                            return view('front.Layouts.child_pages.menu_bar.main_menu.faculty', ['item' => $item, 'type_sub' => $type_sub, 'type_child' => $type_child, 'gets' => $gets, 'get' => $get]);
+                        } else {
+                            return abort(401);
+                        }
+                    } elseif (isset($data[0]) && $data[0]->tpl_id == 7) {     //mba testionials
+
+                        $item = OrganisationStructure::where('department', 10)->paginate(9);
+                        if (count($item) > 0) {
+
+                            $type_sub = child_menu::whereslug($slug)->get();
+                            $gets = SubMenu::whereid($type_sub[0]->sub_id)->get();
+                            $get = MainMenu::whereid($type_sub[0]->menu_id)->get();
+                            $type_child = child_menu::whereslug($slug)->get();
+
+                            return view('front.Layouts.child_pages.menu_bar.main_menu.testionials', ['item' => $item, 'type_sub' => $type_sub, 'type_child' => $type_child, 'gets' => $gets, 'get' => $get]);
+                        } else {
+                            return abort(401);
+                        }
+                    } elseif (isset($data[0]) && $data[0]->tpl_id == 13) {     //mba analytics testionials
+
+
+                        $item = OrganisationStructure::where('department', 16)->paginate(9);
+
+                        if (count($item) > 0) {
+
+                            $type_sub = child_menu::whereslug($slug)->get();
+                            $gets = SubMenu::whereid($type_sub[0]->sub_id)->get();
+                            $get = MainMenu::whereid($type_sub[0]->menu_id)->get();
+                            $type_child = child_menu::whereslug($slug)->get();
+
+                            return view('front.Layouts.child_pages.menu_bar.main_menu.mba-analytics-testionials', ['item' => $item, 'type_sub' => $type_sub, 'type_child' => $type_child, 'gets' => $gets, 'get' => $get]);
+                        } else {
+                            return abort(401);
+                        }
+                    } elseif (isset($data[0]) && $data[0]->tpl_id == 4) {    //visiting faculty
+                        $item = OrganisationStructure::where('department', 7)->paginate(9);
+                        if (count($item) > 0) {
+
+                            $type_sub = child_menu::whereslug($slug)->get();
+                            $gets = SubMenu::whereid($type_sub[0]->sub_id)->get();
+                            $get = MainMenu::whereid($type_sub[0]->menu_id)->get();
+                            $type_child = child_menu::whereslug($slug)->get();
+
+                            return view('front.Layouts.child_pages.menu_bar.main_menu.visiting_faculity', ['item' => $item, 'type_sub' => $type_sub, 'type_child' => $type_child, 'gets' => $gets, 'get' => $get]);
+                        } else {
                             $item = OrganisationStructure::whereid($data[0]->link_option)->get();
-                            // dd($item);
+                            //dd($item);
                             if (count($item) > 0) {
 
                                 $type_sub = child_menu::whereslug($slug)->get();
@@ -2085,169 +2183,66 @@ class InnerpageController extends Controller
                             } else {
                                 return abort(401);
                             }
-                        } elseif (isset($data[0]) && $data[0]->tpl_id == 5)     //the team
-                        {
-                            // return 'member';
-
-                            $item = OrganisationStructure::get();
-
-                            if (count($item) > 0) {
-
-                                $type_sub = child_menu::whereslug($slug)->get();
-                                $gets = SubMenu::whereid($type_sub[0]->sub_id)->get();
-                                $get = MainMenu::whereid($type_sub[0]->menu_id)->get();
-                                $type_child = child_menu::whereslug($slug)->get();
-
-                                return view('front.Layouts.child_pages.menu_bar.main_menu.internation_team', ['item' => $item, 'type_sub' => $type_sub, 'type_child' => $type_child, 'gets' => $gets, 'get' => $get]);
-                            } else {
-                                return abort(401);
-                            }
-                        } elseif (isset($data[0]) && $data[0]->tpl_id == 12) {     // Alumni Tema arc
-
-
-                            $item = OrganisationStructure::where('department', 15)->get();
-                            if (count($item) > 0) {
-                                $type_sub = child_menu::whereslug($slug)->get();
-                                $gets = SubMenu::whereid($type_sub[0]->sub_id)->get();
-                                $get = MainMenu::whereid($type_sub[0]->menu_id)->get();
-                                $type_child = child_menu::whereslug($slug)->get();
-
-                                return view('front.Layouts.child_pages.menu_bar.main_menu.alumni-team-rc', ['item' => $item, 'type_sub' => $type_sub, 'type_child' => $type_child, 'gets' => $gets, 'get' => $get]);
-                            } else {
-                                return abort(401);
-                            }
-                        } elseif (isset($data[0]) && $data[0]->tpl_id == 3) {     // factulty directry
-
-                            $item = OrganisationStructure::where('department', 6)->paginate(9);
-
-                            if (count($item) > 0) {
-
-                                $type_sub = child_menu::whereslug($slug)->get();
-                                $gets = SubMenu::whereid($type_sub[0]->sub_id)->get();
-                                $get = MainMenu::whereid($type_sub[0]->menu_id)->get();
-                                $type_child = child_menu::whereslug($slug)->get();
-
-                                return view('front.Layouts.child_pages.menu_bar.main_menu.faculty', ['item' => $item, 'type_sub' => $type_sub, 'type_child' => $type_child, 'gets' => $gets, 'get' => $get]);
-                            } else {
-                                return abort(401);
-                            }
-                        } elseif (isset($data[0]) && $data[0]->tpl_id == 7) {     //mba testionials
-
-                            $item = OrganisationStructure::where('department', 10)->paginate(9);
-                            if (count($item) > 0) {
-
-                                $type_sub = child_menu::whereslug($slug)->get();
-                                $gets = SubMenu::whereid($type_sub[0]->sub_id)->get();
-                                $get = MainMenu::whereid($type_sub[0]->menu_id)->get();
-                                $type_child = child_menu::whereslug($slug)->get();
-
-                                return view('front.Layouts.child_pages.menu_bar.main_menu.testionials', ['item' => $item, 'type_sub' => $type_sub, 'type_child' => $type_child, 'gets' => $gets, 'get' => $get]);
-                            } else {
-                                return abort(401);
-                            }
-                        } elseif (isset($data[0]) && $data[0]->tpl_id == 13) {     //mba analytics testionials
-
-
-                            $item = OrganisationStructure::where('department', 16)->paginate(9);
-
-                            if (count($item) > 0) {
-
-                                $type_sub = child_menu::whereslug($slug)->get();
-                                $gets = SubMenu::whereid($type_sub[0]->sub_id)->get();
-                                $get = MainMenu::whereid($type_sub[0]->menu_id)->get();
-                                $type_child = child_menu::whereslug($slug)->get();
-
-                                return view('front.Layouts.child_pages.menu_bar.main_menu.mba-analytics-testionials', ['item' => $item, 'type_sub' => $type_sub, 'type_child' => $type_child, 'gets' => $gets, 'get' => $get]);
-                            } else {
-                                return abort(401);
-                            }
-                        } elseif (isset($data[0]) && $data[0]->tpl_id == 4) {    //visiting faculty
-                            $item = OrganisationStructure::where('department', 7)->paginate(9);
-                            if (count($item) > 0) {
-
-                                $type_sub = child_menu::whereslug($slug)->get();
-                                $gets = SubMenu::whereid($type_sub[0]->sub_id)->get();
-                                $get = MainMenu::whereid($type_sub[0]->menu_id)->get();
-                                $type_child = child_menu::whereslug($slug)->get();
-
-                                return view('front.Layouts.child_pages.menu_bar.main_menu.visiting_faculity', ['item' => $item, 'type_sub' => $type_sub, 'type_child' => $type_child, 'gets' => $gets, 'get' => $get]);
-                            } else {
-                                $item = OrganisationStructure::whereid($data[0]->link_option)->get();
-                                //dd($item);
-                                if (count($item) > 0) {
-
-                                    $type_sub = child_menu::whereslug($slug)->get();
-                                    $gets = SubMenu::whereid($type_sub[0]->sub_id)->get();
-                                    $get = MainMenu::whereid($type_sub[0]->menu_id)->get();
-                                    $type_child = child_menu::whereslug($slug)->get();
-
-                                    return view('front.Layouts.child_pages.menu_bar.main_menu.member', ['item' => $item, 'type_sub' => $type_sub, 'type_child' => $type_child, 'gets' => $gets, 'get' => $get]);
-                                } else {
-                                    return abort(401);
-                                }
-                            }
-                        } else {
-                            return abort(401);
-                        }
-                    } elseif ($data[0]->url == '/photo-gallery') {
-
-                        //dd($data[0]->url);
-
-                        $item = photo_gallery::whereid($data[0]->link_option)->get();
-                        if (Count($item) > 0) {
-                            $value = photo_gallery_image::wheregallery_id($item[0]->id)->get();
-                            // dd($value);
-                            $type_sub = child_menu::whereslug($slug)->get();
-                            $gets = SubMenu::whereid($type_sub[0]->sub_id)->get();
-                            $get = MainMenu::whereid($type_sub[0]->menu_id)->get();
-                            $type_child = child_menu::whereslug($slug)->get();
-                            return view('front.Layouts.child_pages.menu_bar.main_menu.master', ['value' => $value, 'item' => $item, 'type_sub' => $type_sub, 'type_child' => $type_child, 'gets' => $gets, 'get' => $get]);
-                        }
-                    } elseif ($data[0]->url == '/dissertation') {
-
-                        $item = dissertation::where('status', 1)->get();
-                        if (Count($item) > 0) {
-                            $type_sub = child_menu::whereslug($slug)->get();
-                            $gets = SubMenu::whereid($type_sub[0]->sub_id)->get();
-                            $get = MainMenu::whereid($type_sub[0]->menu_id)->get();
-                            $type_child = child_menu::whereslug($slug)->get();
-                            $item = dissertation::where('status', 1)->paginate(10);
-                            return view('front.Layouts.child_pages.menu_bar.main_menu.dissertation', ['item' => $item, 'type_sub' => $type_sub, 'type_child' => $type_child, 'gets' => $gets, 'get' => $get]);
-                        } else {
-                            return abort(401);
-                        }
-                    } elseif ($data[0]->url == '/video-gallery') {
-                        $item = video_gallery::whereid($data[0]->link_option)->get();
-                        //dd($item);
-                        if (Count($item) > 0) {
-                            $values = video_gallery_tittle::wheregallery_id($item[0]->id)->get();
-                            //dd($values);
-                            $type_sub = child_menu::whereslug($slug)->get();
-                            $gets = SubMenu::whereid($type_sub[0]->sub_id)->get();
-                            $get = MainMenu::whereid($type_sub[0]->menu_id)->get();
-                            $type_child = child_menu::whereslug($slug)->get();
-                            return view('front.Layouts.child_pages.menu_bar.main_menu.master', ['values' => $values, 'item' => $item, 'type_sub' => $type_sub, 'type_child' => $type_child, 'gets' => $gets, 'get' => $get]);
                         }
                     } else {
                         return abort(401);
+                    }
+                } elseif ($data[0]->url == '/photo-gallery') {
+
+                    //dd($data[0]->url);
+
+                    $item = photo_gallery::whereid($data[0]->link_option)->get();
+                    if (Count($item) > 0) {
+                        $value = photo_gallery_image::wheregallery_id($item[0]->id)->get();
+                        // dd($value);
+                        $type_sub = child_menu::whereslug($slug)->get();
+                        $gets = SubMenu::whereid($type_sub[0]->sub_id)->get();
+                        $get = MainMenu::whereid($type_sub[0]->menu_id)->get();
+                        $type_child = child_menu::whereslug($slug)->get();
+                        return view('front.Layouts.child_pages.menu_bar.main_menu.master', ['value' => $value, 'item' => $item, 'type_sub' => $type_sub, 'type_child' => $type_child, 'gets' => $gets, 'get' => $get]);
+                    }
+                } elseif ($data[0]->url == '/dissertation') {
+
+                    $item = dissertation::where('status', 1)->get();
+                    if (Count($item) > 0) {
+                        $type_sub = child_menu::whereslug($slug)->get();
+                        $gets = SubMenu::whereid($type_sub[0]->sub_id)->get();
+                        $get = MainMenu::whereid($type_sub[0]->menu_id)->get();
+                        $type_child = child_menu::whereslug($slug)->get();
+                        $item = dissertation::where('status', 1)->paginate(10);
+                        return view('front.Layouts.child_pages.menu_bar.main_menu.dissertation', ['item' => $item, 'type_sub' => $type_sub, 'type_child' => $type_child, 'gets' => $gets, 'get' => $get]);
+                    } else {
+                        return abort(401);
+                    }
+                } elseif ($data[0]->url == '/video-gallery') {
+                    $item = video_gallery::whereid($data[0]->link_option)->get();
+                    //dd($item);
+                    if (Count($item) > 0) {
+                        $values = video_gallery_tittle::wheregallery_id($item[0]->id)->get();
+                        //dd($values);
+                        $type_sub = child_menu::whereslug($slug)->get();
+                        $gets = SubMenu::whereid($type_sub[0]->sub_id)->get();
+                        $get = MainMenu::whereid($type_sub[0]->menu_id)->get();
+                        $type_child = child_menu::whereslug($slug)->get();
+                        return view('front.Layouts.child_pages.menu_bar.main_menu.master', ['values' => $values, 'item' => $item, 'type_sub' => $type_sub, 'type_child' => $type_child, 'gets' => $gets, 'get' => $get]);
                     }
                 } else {
-
-
-                    $item = OrganisationStructure::whereslug($slug)->get();
-                    if (count($item) > 0) {
-                        $data = multiple_profile::whereparent_id($item[0]->id)->get();
-
-                        $type_sub = $item;
-                        $gets = SubMenu::whereslug($Sub_slug)->get();
-                        $get = MainMenu::whereslug($main_slug)->get();
-                        return view('front.Layouts.profile', ['item' => $item, 'data' => $data, 'type_sub' => $type_sub, 'gets' => $gets, 'get' => $get]);
-                    } else {
-                        return abort(401);
-                    }
+                    return abort(401);
                 }
             } else {
-                return abort(401);
+
+
+                $item = OrganisationStructure::whereslug($slug)->get();
+                if (count($item) > 0) {
+                    $data = multiple_profile::whereparent_id($item[0]->id)->get();
+
+                    $type_sub = $item;
+                    $gets = SubMenu::whereslug($Sub_slug)->get();
+                    $get = MainMenu::whereslug($main_slug)->get();
+                    return view('front.Layouts.profile', ['item' => $item, 'data' => $data, 'type_sub' => $type_sub, 'gets' => $gets, 'get' => $get]);
+                } else {
+                    return abort(401);
+                }
             }
         } catch (\Exception $e) {
             \Log::error('An exception occurred: ' . $e->getMessage());

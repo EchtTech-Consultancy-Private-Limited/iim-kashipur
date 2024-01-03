@@ -406,7 +406,7 @@
                             </h5>
 
                             <div class="row mt-4 mb-5">
-                                <div class="col-md-3">
+                                <div class="col-md-4 col-lg-3">
                                     <div class="top text-center mt-0">
                                         <div class="profile-img img-fac">
                                             <img src="http://localhost/kashipur-design1/public/uploads/organisation/167903612045.jpg"
@@ -418,7 +418,7 @@
                                     </div>
 
                                 </div>
-                                <div class="col-md-9">
+                                <div class="col-md-8 col-lg-9">
                                     <div class="designation">
                                         <h4>Assistant Professor Organizational Behavior</h6>
                                             <h6>Economics</h6>
@@ -440,7 +440,7 @@
                                             <div class="excellence-gallery partnership-img">
                                                 <div class="row masonry-grid">
 
-                                                    <div class="col-md-3 col-lg-3">
+                                                    <div class="col-md-4 col-lg-3">
                                                         <div class="d-flex flex-column h-100">
                                                             <a href="http://localhost/kashipur-design1/public/gallery/image/1677405700.png"
                                                                 class="image-link">
@@ -978,7 +978,7 @@
                                                 <div class="excellence-gallery partnership-img">
                                                     <div class="row masonry-grid">
                                                         @foreach ($chairpersons as  $chairperson)
-                                                            <div class="col-md-3 col-lg-3 width-50-sm">
+                                                            <div class="col-md-4 col-lg-3 width-50-sm">
                                                                 <div class="d-flex flex-column h-100">
 
                                                                     <div>
@@ -1173,7 +1173,7 @@
                                                 <div class="excellence-gallery partnership-img">
                                                     <div class="row masonry-grid">
                                                         @foreach ($chairpersons as $value)
-                                                            <div class="col-md-3 col-lg-3">
+                                                            <div class="col-md-4 col-lg-3">
                                                                 <div class="d-flex flex-column h-100">
 
                                                                     <a href="{{ asset('uploads/organisation/' . $value->image) ?? '' }}"

@@ -439,7 +439,7 @@
                             <div class="excellence-gallery partnership-img">
                                 <div class="row masonry-grid">
 
-                                    <div class="col-md-3 col-lg-3">
+                                    <div class="col-md-4 col-lg-3">
                                         <div class="d-flex flex-column h-100">
                                             <div>
                                                 <div class="thumbnail p-relative">
@@ -916,7 +916,7 @@
 
                         @isset($chairperson[0]->image)
                             <div class="row mt-4 mb-5">
-                                <div class="col-md-3">
+                                <div class="col-md-4 col-lg-3">
                                     <div class="top text-left mt-0">
                                         <div class="profile-img img-fac">
                                             <img src="{{ asset('uploads/organisation/' . $chairperson[0]->image) }}"
@@ -928,7 +928,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-md-9">
+                                <div class="col-md-8 col-lg-9">
                                     <div class="designation">
                                         <h4>{{ $chairperson[0]->designation ?? '' }} </h6>
                                             <h6>{{ $chairperson[0]->title ?? '' }} </h6>
@@ -953,7 +953,7 @@
 
                         @isset($chairpersone[0]->image)
                             <div class="row mt-4 mb-5">
-                                <div class="col-md-3">
+                                <div class="col-md-4 col-lg-3">
                                     <div class="top text-left mt-0">
                                         <div class="profile-img img-fac">
                                             <img src="{{ asset('uploads/organisation/' . $chairpersone[0]->image) }}"
@@ -965,7 +965,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-md-9">
+                                <div class="col-md-8 col-lg-9">
                                     <div class="designation">
                                         <h4>{{ $chairpersone[0]->designation ?? '' }} </h6>
                                             <h6>{{ $chairpersone[0]->title ?? '' }} </h6>
@@ -1006,7 +1006,7 @@
                                                                     <div class="excellence-gallery partnership-img">
                                                                         <div class="row masonry-grid">
                                                                             @foreach ($chairpersons as $value)
-                                                                                <div class="col-md-3 col-lg-3">
+                                                                                <div class="col-md-4 col-lg-3">
                                                                                     <div class="d-flex flex-column h-100">
 
                                                                                         <div class="">
@@ -1103,7 +1103,7 @@
 
                                                 @foreach ($data as $k => $datas)
                                                     @if ($k == '1')
-                                                        <div class="col-md-3">
+                                                        <div class="col-md-4 col-lg-3">
 
                                                             <div class="multi-image-popup p-relative">
                                                                 <a href="#gallery-1" class="btn-gallery multi-card">
@@ -1239,7 +1239,7 @@
                         </h5>
 
                         <div class="row mt-4 mb-5">
-                            <div class="col-md-3">
+                            <div class="col-md-4 col-lg-3">
                                 <div class="top text-left mt-0">
                                     <div class="profile-img img-fac">
                                         <img src="{{ asset('uploads/organisation/' . $chairperson[0]->image) }}"
@@ -1251,7 +1251,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-md-9">
+                            <div class="col-md-8 col-lg-9">
                                 <div class="designation">
                                     <h4>{{ $chairperson[0]->designation ?? '' }} </h6>
                                         <h6>{{ $chairperson[0]->title ?? '' }} </h6>
@@ -1284,7 +1284,7 @@
                                             <div class="excellence-gallery partnership-img">
                                                 <div class="row masonry-grid">
                                                     @foreach ($chairpersons as $value)
-                                                        <div class="col-md-3 col-lg-3">
+                                                        <div class="col-md-4 col-lg-3">
                                                             <div class="d-flex flex-column h-100 grid-4">
 
                                                                 <div>

@@ -6225,8 +6225,28 @@ del {
     .img-fac .top-text{font-size: 12px !important;}
 }
 
-/* @media screen and (min-width: 768px) and  (max-width: 991px){
-    .profile-img.img-fac img {
-        width: 150px !important;
+ @media screen and (min-width: 768px) and  (max-width: 991px){
+    .carousel .carousel-item img {
+        height: auto !important;
     }
-} */
+    h2.life_kashipur {
+        font-size: 30px;
+    }
+    .internalpagebanner img {
+        height: 200px !important;
+    }
+    .sidebarwraper ul li ul{margin: 0 2px 10px !important;}
+    .addevent-box p {font-size: 12px !important;}
+    .master-class ul.pagination {padding-left: 0rem !important;}
+    .d-sm-flex {
+        display: block!important;
+    }
+    .addevent-box{padding: 3px !important;}
+
+    .col {
+        flex: 1 0 0%;
+        width: 75% !important;
+    }
+    /* .designation {
+        padding-top: 5px !important} */
+}   
