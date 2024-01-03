@@ -30,13 +30,17 @@
                 <li>
                     <span tabindex="0">
 
+                        @isset($main_slug)
                         {{ ucwords(str_replace(['_', '-'], ' ', $main_slug)) ?? '' }}
-
+                        @endisset
                     </span>
                 </li>
                 <li>
                     <span tabindex="0">
+                        @isset($data->name)
                         {{ ucwords(str_replace(['_', '-'], ' ', $data->name)) ?? '' }}
+                        @endisset
+                      
                     </span>
                 </li>
             </ul>
@@ -50,7 +54,9 @@
                         <!-- Heading section Start -->
                         <h3 tabindex="0">
                             <span tabindex="0">
+                                @isset($data->name)
                                 {{ ucwords(str_replace(['_', '-'], ' ', $data->name)) ?? '' }}
+                                @endisset
                             </span>
                         </h3>
                         <!-- Heading section End -->
