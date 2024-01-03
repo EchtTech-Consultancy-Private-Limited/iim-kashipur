@@ -530,15 +530,13 @@ class InnerpageController extends Controller
     }
     public function sub_childInnerpage($main_slug, $slug, $subchild, $superchild)  //content page superchild menu
     {
-       // dd($superchild);
+
         try {
             $subchildmenu = subchildmenu::whereslug($superchild)->get();
-            // $menu = subchildmenu::whereslug($superchild)->first();
-            // dd($subchildmenu);
-
-            // if (isset($menu) !== null && (isset($menu->status) && $menu->status !== 0)) {
-                    
                 if (Count($subchildmenu) > 0) {
+                    $menu = subchildmenu::whereslug($superchild)->first();
+                   if (isset($menu) !== null && (isset($menu->status) && $menu->status !== 0)) {
+                             
                     if (Count($subchildmenu) > 0) {
                         $type = subchildmenu::whereslug($superchild)->get();
                         $subchildmenu = subchildmenu::whereslug($subchildmenu)->get('link_option');
@@ -552,6 +550,12 @@ class InnerpageController extends Controller
                             return abort(401);
                         }
                     }
+
+                }else{
+                    return abort(401);
+                }
+
+               
                 } elseif (club::whereslug($superchild)->get()->count()) {    //club single
 
                     $item = club::whereslug($superchild)->get();
@@ -1126,8 +1130,8 @@ class InnerpageController extends Controller
 
 }*/
     public function Menu_barInnerpage($slug) //content page & who in who data
-    {
-
+    {  
+        try{
         $main_menu = "main-menu";
         $item = OrganisationStructure::whereslug($slug)->get();
         if (MainMenu::whereslug($slug)->get('id')->count()) {
@@ -1457,6 +1461,17 @@ class InnerpageController extends Controller
                 return abort(401);
             }
         }
+    } catch (\Exception $e) {
+        \Log::error('An exception occurred: ' . $e->getMessage());
+        return abort(401);
+    } catch (\PDOException $e) {
+        \Log::error('A PDOException occurred: ' . $e->getMessage());
+        return abort(401);
+    } catch (\Throwable $e) {
+        // Catch any other types of exceptions that implement the Throwable interface.
+        \Log::error('An unexpected exception occurred: ' . $e->getMessage());
+        return abort(401);
+    }
     }
 
 
@@ -1471,7 +1486,6 @@ class InnerpageController extends Controller
             $type = SubMenu::whereslug($slug)->get();
             $menu = SubMenu::whereslug($slug)->first();
             if (isset($menu) !== null && (isset($menu->status) && $menu->status !== 0 )) {
-                // if($menu->status != 0){
                 if (Count($type) > 0) {
                     if ($type[0]->url == '/content-page') {
                         if (Count($type) > 0) {
@@ -1980,11 +1994,8 @@ class InnerpageController extends Controller
         try {
             $data = child_menu::whereslug($slug)->get();
             $menu = child_menu::whereslug($slug)->first();
-            if (isset($menu) !== null && (isset($menu->status) && $menu->status !== 0)) {
-                // if($menu->status != 0){
+            if (isset($menu) !== null && (isset($menu->status) && $menu->status !== 0 )) {
                 if (Count($data) > 0) {
-                    // dd($data[0]->url);
-
                     if ($data[0]->url == "/student-profiles") {
 
                         $item = StudentProfile::where('status', '1')->orderBy('sort', 'Asc')->get();
