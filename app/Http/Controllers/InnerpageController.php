@@ -1469,7 +1469,7 @@ class InnerpageController extends Controller
             $sub_menu = "sub menu";
             $type = SubMenu::whereslug($slug)->get();
             $menu = SubMenu::whereslug($slug)->first();
-            if (isset($menu) !== null && (isset($menu->status) && $menu->status !== 0)) {
+            if (isset($menu) !== null && (isset($menu->status) && $menu->status !== 0 )) {
                 if (Count($type) > 0) {
                     if ($type[0]->url == '/content-page') {
                         if (Count($type) > 0) {
@@ -1714,26 +1714,7 @@ class InnerpageController extends Controller
 
                         return view('front.Layouts.child_pages.menu_bar.main_menu.tdex');
                     }
-                    // elseif($type[0]->url == '/Organisation-Journey')
-                    // {
-
-
-                    //     $data=SubMenu::whereslug($slug)->get();
-                    //     $item=press_media::get();
-                    //     if(Count($item)>0){
-                    //     $chairperson=OrganisationStructure::whereid($item[0]->chairperson)->get();
-                    //     $chairpersons=OrganisationStructure::where('MEDIA_COORDINATORS','=','1')->get();
-                    //     $type=SubMenu::whereslug($slug)->get();
-                    //     if(count($type)>0){
-                    //     return view('front.Layouts.child_pages.menu_bar.main_menu.story',['item'=>$item,'item'=>$item,'type'=>$type,'sub_menu'=>$sub_menu,'chairperson'=>$chairperson,'chairpersons'=>$chairpersons]);
-
-                    //     }else{
-                    //         return abort(401);
-                    //     }
-                    //     }else{
-                    //         return abort(401);
-                    //     }
-                    // }
+                   
                     elseif ($type[0]->url == '/student-council') {
 
                         $data = SubMenu::whereslug($slug)->get();
