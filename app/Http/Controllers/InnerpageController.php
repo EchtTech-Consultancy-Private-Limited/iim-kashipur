@@ -535,7 +535,7 @@ class InnerpageController extends Controller
             $subchildmenu = subchildmenu::whereslug($superchild)->get();
                 if (Count($subchildmenu) > 0) {
                     $menu = subchildmenu::whereslug($superchild)->first();
-                   if (isset($menu) !== null && (isset($menu->status) && $menu->status !== 0)) {
+                   if (isset($menu) !== null && (isset($menu->status) && $menu->status !== '0')) {
                              
                     if (Count($subchildmenu) > 0) {
                         $type = subchildmenu::whereslug($superchild)->get();
@@ -1485,7 +1485,7 @@ class InnerpageController extends Controller
             $sub_menu = "sub menu";
             $type = SubMenu::whereslug($slug)->get();
             $menu = SubMenu::whereslug($slug)->first();
-            if (isset($menu) !== null && (isset($menu->status) && $menu->status !== 0 )) {
+            if (isset($menu) !== null && (isset($menu->status) && $menu->status !== '0' )) {
                 if (Count($type) > 0) {
                     if ($type[0]->url == '/content-page') {
                         if (Count($type) > 0) {
@@ -1994,7 +1994,7 @@ class InnerpageController extends Controller
         try {
             $data = child_menu::whereslug($slug)->get();
             $menu = child_menu::whereslug($slug)->first();
-            if (isset($menu) !== null && (isset($menu->status) && $menu->status !== 0 )) {
+            if (isset($menu) !== null && (isset($menu->status) && $menu->status !== '0' )) {
                 if (Count($data) > 0) {
                     if ($data[0]->url == "/student-profiles") {
 
