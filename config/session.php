@@ -61,6 +61,8 @@ return [
 
     'files' => storage_path('framework/sessions'),
 
+    'timeout' => env('SESSION_TIMEOUT', 30),
+
     /*
     |--------------------------------------------------------------------------
     | Session Database Connection
