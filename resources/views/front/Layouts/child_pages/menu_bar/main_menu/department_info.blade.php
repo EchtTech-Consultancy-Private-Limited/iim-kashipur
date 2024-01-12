@@ -785,7 +785,7 @@
 
                                         <h5><span>Chairperson</span></h5>
 
-                                        <div class="col-md-4 mx-auto">
+                                        <div class="col-md-6 col-lg-4 mx-auto">
 
                                             <div class="addevent-box top text-center mt-0">
                                                 <a href="javascript:void(0)">
@@ -917,7 +917,7 @@
                 @if ($Secretary->department == '4')
                     <div class="row">
 
-                        <div class="col-md-4 col-lg-4 mx-auto">
+                        <div class="col-md-6 col-lg-4 mx-auto">
 
                             <div class="profilewraper withinfo bg-hover">
                                 <a href="{{ url(@$mmenu[0]->slug . '/' . $type[0]->slug . '/' . $Secretary->slug) }}">
