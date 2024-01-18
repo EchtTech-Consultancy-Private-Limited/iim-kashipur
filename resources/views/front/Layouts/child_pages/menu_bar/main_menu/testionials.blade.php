@@ -438,7 +438,10 @@
 
                                         <p> @if(GetLang()=='en') {{ $items->designation ?? '' }}  @else {{ $items->designation_h ?? '' }}  @endif</p>
 
-                                     </div>
+
+                                        <p> @if(GetLang()=='en') {{ $items->more_designation ?? '' }}  @else {{ $items->more_designation_h ?? '' }}  @endif</p>
+
+                                    </div>
                                     </div>
 
 

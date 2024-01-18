@@ -67,13 +67,10 @@ Route::get('log-out',[AdminController::class,'Logout'])->name('logout');
 Route::match(['get','post'],'change-password',[AdminController::class,'Change_Password'])->name('password-change');
 
 
-//Route::middleware(['preventBackHistory'])->group(function () {
-
-
-Route::middleware(['preventBackHistory','EnsureTokenIsValid'])->group(function () {
+Route::middleware(['preventBackHistory','EnsureTokenIsValid','CheckUserActivity'])->group(function () {
 Route::get('dashboard', [AdminController::class,'Dashboard'])->name('dashboard');
 
-    //Route::get('dashboard',[AdminController::class,'Dashboard'])->middleware('Admin')->name('dashboard');
+//Route::get('dashboard',[AdminController::class,'Dashboard'])->middleware('Admin')->name('dashboard');
 Route::middleware(['CustomAuth'])->group(function () {   //audit log middleware
 
 //------------------------------- contentController start  ---------------------------------------------------------//
@@ -677,14 +674,18 @@ Route::post('/add_feedback',[InnerpageController::class,'add_feedback']);
 Route::get('/photo-gallery',[InnerpageController::class,'photo_multi_Innerpage']);
 //video section
 Route::get('/video-gallery',[InnerpageController::class,'video_multi_Innerpage']);
+
+
 //main menu inner page
 Route::get('{slug?}',[InnerpageController::class,'Menu_barInnerpage']);
 //sub menu inner page
 Route::get('{main_slug?}/{slug?}',[InnerpageController::class,'sub_barInnerpage']);
 //Child menu inner page
 Route::get('{main_slug?}/{Sub_slug?}/{slug?}',[InnerpageController::class,'Child_barInnerpage']);
-
+//subchild innerpage
 Route::get('{main_slug}/{slug}/{subchild}/{superchild}',[InnerpageController::class,'sub_childInnerpage']);
+
+
 //department function
 Route::get('/Add_Department',[InnerpageController::class,'Add_Department']);
 //error routes

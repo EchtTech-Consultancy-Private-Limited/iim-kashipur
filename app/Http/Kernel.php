@@ -39,12 +39,14 @@ class Kernel extends HttpKernel
             \App\Http\Middleware\VerifyCsrfToken::class,
             \Illuminate\Routing\Middleware\SubstituteBindings::class,
              \App\Http\Middleware\LocaleManager::class,
+            //  \App\Http\Middleware\CheckUserActivity::class,
         ],
 
         'api' => [
             // \Laravel\Sanctum\Http\Middleware\EnsureFrontendRequestsAreStateful::class,
             'throttle:api',
             \Illuminate\Routing\Middleware\SubstituteBindings::class,
+            
         ],
     ];
 
@@ -69,6 +71,6 @@ class Kernel extends HttpKernel
         'CustomAuth' => \App\Http\Middleware\CustomAuth::class,
         'preventBackHistory' => \App\Http\Middleware\PreventBackHistory::class,
         'EnsureTokenIsValid' => \App\Http\Middleware\EnsureTokenIsValid::class,
-
+        'CheckUserActivity' =>   \App\Http\Middleware\CheckUserActivity::class,
     ];
 }

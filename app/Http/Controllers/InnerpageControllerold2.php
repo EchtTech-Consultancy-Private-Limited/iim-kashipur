@@ -530,10 +530,9 @@ class InnerpageController extends Controller
     }
     public function sub_childInnerpage($main_slug, $slug, $subchild, $superchild)  //content page superchild menu
     {
-            //dd($slug);
+
         try {
             $subchildmenu = subchildmenu::whereslug($superchild)->get();
-            
             if (Count($subchildmenu) > 0) {
                 $menu = subchildmenu::whereslug($superchild)->first();
                 if (isset($menu) !== null && (isset($menu->status) && $menu->status !== '0')) {
@@ -593,9 +592,6 @@ class InnerpageController extends Controller
                 }
             } elseif (OrganisationStructure::whereslug($superchild)->get()->count()) {
                 $item = OrganisationStructure::whereslug($superchild)->get();
-               // dd($item);
-
-                
                 if (count($item) > 0) {
                     $data = multiple_profile::whereparent_id($item[0]->id)->get();
                     return view('front.Layouts.profile', ['item' => $item, 'data' => $data]);
@@ -1486,9 +1482,7 @@ class InnerpageController extends Controller
             $sub_menu = "sub menu";
             $type = SubMenu::whereslug($slug)->get();
             $menu = SubMenu::whereslug($slug)->first();
-            //dd($menu->status);
             if (isset($menu) !== null && (isset($menu->status) && $menu->status !== '0')) {
-
                 if (Count($type) > 0) {
                     if ($type[0]->url == '/content-page') {
                         if (Count($type) > 0) {
@@ -1991,7 +1985,7 @@ class InnerpageController extends Controller
 
     public function Child_barInnerpage($main_slug, $Sub_slug, $slug) //content page
     {
-        //dd($slug);
+        // dd($slug);
         try {
             $data = child_menu::whereslug($slug)->get();
 
@@ -2236,20 +2230,16 @@ class InnerpageController extends Controller
                     return abort(401);
                 }
             } else {
-                $item = OrganisationStructure::whereslug($slug)->get();
-                $profileStatus = OrganisationStructure::whereslug($slug)->first();
-                //dd($profileStatus->status);
-                if (isset($profileStatus) !== null && (isset($profileStatus->status) && $profileStatus->status !== 0)) {
-                    if (count($item) > 0) {
-                        $data = multiple_profile::whereparent_id($item[0]->id)->get();
 
-                        $type_sub = $item;
-                        $gets = SubMenu::whereslug($Sub_slug)->get();
-                        $get = MainMenu::whereslug($main_slug)->get();
-                        return view('front.Layouts.profile', ['item' => $item, 'data' => $data, 'type_sub' => $type_sub, 'gets' => $gets, 'get' => $get]);
-                    } else {
-                        return abort(401);
-                    }
+
+                $item = OrganisationStructure::whereslug($slug)->get();
+                if (count($item) > 0) {
+                    $data = multiple_profile::whereparent_id($item[0]->id)->get();
+
+                    $type_sub = $item;
+                    $gets = SubMenu::whereslug($Sub_slug)->get();
+                    $get = MainMenu::whereslug($main_slug)->get();
+                    return view('front.Layouts.profile', ['item' => $item, 'data' => $data, 'type_sub' => $type_sub, 'gets' => $gets, 'get' => $get]);
                 } else {
                     return abort(401);
                 }
