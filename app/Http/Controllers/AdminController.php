@@ -179,7 +179,7 @@ function Add_OrganisationStructure(Request $request,$id=null){
            'type'=>'required',
           // 'phone'=>'required',
           // 'email'=>'required|unique:organisation_structures',
-           'email'=>'unique:organisation_structures',
+         //  'email'=>'unique:organisation_structures',
            'image'=>'image|mimes:jpeg,png,jpg,gif|max:2048'
 
        ]);

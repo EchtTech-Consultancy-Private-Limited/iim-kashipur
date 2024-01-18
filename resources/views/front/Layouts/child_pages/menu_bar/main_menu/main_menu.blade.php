@@ -555,7 +555,34 @@
     </div>
 
     @if ($item[0]->video_url != '')
-        <div class="col-md-8 mx-auto">
+        <div class="col-md-6">
+
+            <iframe width="100%" height="315" src="{{ $item[0]->video_url ?? '' }}"
+                title="{{ url($item[0]->video_title) ?? '' }}" frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                allowfullscreen></iframe>
+
+        </div>
+        <div class="col-md-6">
+
+            <iframe width="100%" height="315" src="{{ $item[0]->video_url ?? '' }}"
+                title="{{ url($item[0]->video_title) ?? '' }}" frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                allowfullscreen></iframe>
+
+        </div>
+    @endif
+
+    @if ($item[0]->video_url != '')
+        <div class="col-md-6">
+
+            <iframe width="100%" height="315" src="{{ $item[0]->video_url ?? '' }}"
+                title="{{ url($item[0]->video_title) ?? '' }}" frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                allowfullscreen></iframe>
+
+        </div>
+        <div class="col-md-6">
 
             <iframe width="100%" height="315" src="{{ $item[0]->video_url ?? '' }}"
                 title="{{ url($item[0]->video_title) ?? '' }}" frameborder="0"
@@ -993,9 +1020,9 @@
                                         <!-- Modal content -->
                                         <div class="modal-content">
                                             <!-- <div class="d-flex justify-content-between">
-                                                                       <span class="close">&times;</span>
-                                                                        <p>Some text in the Modal..</p>
-                                                                       </div> -->
+                                                                                   <span class="close">&times;</span>
+                                                                                    <p>Some text in the Modal..</p>
+                                                                                   </div> -->
                                             <div class="modal-header border-bottom-0">
                                                 <h5 class="modal-title">Enter your details</h5>
                                                 <a class="close">
@@ -1109,22 +1136,76 @@
                                         {!! $item[0]->content_h !!}
                                     @endif
                                 </p>
+
+                            </div>
+                            <div class="row">
+
+                                @if ($item[0]->video_url != '')
+
+                                    <div class="col-md-6">
+                                        @php
+                                        $url = $item[0]->video_url ??" ";
+                                        $title=  $item[0]->video_title ??" ";
+                                       @endphp
+                                        <iframe width="100%" height="315" src="{{ $url ?? '' }}"
+                                            title="{{ url($title) ?? '' }}" frameborder="0"
+                                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                                            allowfullscreen></iframe>
+
+                                    </div>
+                                @endif
+
+                                @if ($item[0]->video_url_2 != '')
+
+                                @php
+                                $url2 = $item[0]->video_url_2  ??'' ;
+                                $title2=  $item[0]->video_title_2 ??"";
+                               @endphp
+                                    <div class="col-md-6">
+
+                                        <iframe width="100%" height="315" src="{{ $url2 ?? '' }}"
+                                            title="{{ url($title2) ?? '' }}" frameborder="0"
+                                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                                            allowfullscreen></iframe>
+
+                                    </div>
+                                @endif
+
+                                @if ($item[0]->video_url_3 != '')
+                                    <div class="col-md-6">
+
+                                        @php
+                                        $url3 = $item[0]->video_url_3 ??"" ;
+                                        $title3=  $item[0]->video_title_3 ??"";
+                                       @endphp
+                                        <iframe width="100%" height="315" src="{{ $url3 ?? '' }}"
+                                            title="{{ url($title3) ?? '' }}" frameborder="0"
+                                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                                            allowfullscreen></iframe>
+
+                                    </div>
+                                @endif
+                                @if ($item[0]->video_url_4 != '')
+                                    <div class="col-md-6">
+
+                                        @php
+                                               $url4 = $item[0]->video_url_4 ??"" ;
+                                               $title4=  $item[0]->video_title_4 ??"";
+                                        @endphp
+
+                                        <iframe width="100%" height="315" src="{{ $url4 ?? '' }}"
+                                            title="{{ url($title4) ?? '' }}" frameborder="0"
+                                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                                            allowfullscreen></iframe>
+
+                                    </div>
+                                @endif
                             </div>
                         </div>
                     </div>
             @endif
         </div>
 
-        @if ($item[0]->video_url != '')
-            <div class="col-md-12 mx-auto">
-
-                <iframe width="100%" height="315" src="{{ $item[0]->video_url ?? '' }}"
-                    title="{{ url($item[0]->video_title) ?? '' }}" frameborder="0"
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                    allowfullscreen></iframe>
-
-            </div>
-        @endif
         </div>
         @endif
         </div>
@@ -1379,24 +1460,82 @@
 
                                                 </div>
 
+                                                <div class="row mt-3">
+
+                                                    @if ($items->video_url != '')
+                    
+                                                        <div class="col-md-6 mb-3">
+                                                            @php
+                                                            $url = $items->video_url ??" ";
+                                                            $title=  $items->video_title ??" ";
+                                                           @endphp
+                                                            <h5>{{ $items->video_title ?? '' }} </h5>
+                                                            <iframe width="100%" height="315" src="{{ $url ?? '' }}"
+                                                                title="{{ $items->video_title ?? '' }}" frameborder="0"
+                                                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                                                                allowfullscreen></iframe>
+                    
+                                                        </div>
+                                                    @endif
+                    
+                                                    @if ($items->video_url_2 != '')
+                    
+                                                    @php
+                                                    $url2 = $items->video_url_2  ??'' ;
+                                                    $title2=  $items->video_title_2 ??"";
+                                                   @endphp
+                                                        <div class="col-md-6 mb-3">
+                                                            <h5>{{ $items->video_title2 ?? '' }}</h5>
+                                                            <iframe width="100%" height="315" src="{{ $url2 ?? '' }}"
+                                                                title="{{ $items->video_title2 ?? '' }}" frameborder="0"
+                                                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                                                                allowfullscreen></iframe>
+                    
+                                                        </div>
+                                                    @endif
+                    
+                                                    @if ($items->video_url_3 != '')
+                                                        <div class="col-md-6 mb-3">
+                    
+                                                            @php
+                                                            $url3 = $items->video_url_3 ??"" ;
+                                                            $title3=  $items->video_title_3 ??"";
+                                                           @endphp
+                                                           <h5>{{ $items->video_title3 ?? '' }}</h5>
+                                                            <iframe width="100%" height="315" src="{{ $url3 ?? '' }}"
+                                                                title="{{ $items->video_title3 ?? '' }}" frameborder="0"
+                                                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                                                                allowfullscreen></iframe>
+                    
+                                                        </div>
+                                                    @endif
+                                                    @if ($items->video_url_4 != '')
+                                                        <div class="col-md-6 mb-3">
+                    
+                                                            @php
+                                                                   $url4 = $items->video_url_4 ??"" ;
+                                                                   $title4=  $items->video_title_4 ??"";
+                                                            @endphp
+                                                           <h5>{{ $items->video_title4 ?? '' }}</h5>
+                                                            <iframe width="100%" height="315" src="{{ $url4 ?? '' }}"
+                                                                title="{{ $items->video_title4 ?? '' }}" frameborder="0"
+                                                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                                                                allowfullscreen></iframe>
+                    
+                                                        </div>
+                                                    @endif
+                                                </div>
+                                                
                                             </div>
+
+
 
                                         </div>
                                 @endif
 
                             </div>
 
-                            @if ($item[0]->video_url != '')
-                                <div class="col-md-12 mx-auto">
-
-                                    <iframe width="100%" height="315" src="{{ $item[0]->video_url ?? '' }}"
-                                        title="{{ url($item[0]->video_title) ?? '' }}" frameborder="0"
-                                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                                        allowfullscreen></iframe>
-
-                                </div>
-                            @endif
-                        </div>
+                                                  </div>
                     @endforeach
                 @endif
             </div>
@@ -1448,7 +1587,15 @@
                             </div>
 
                             @if ($item[0]->video_url != '')
-                                <div class="col-md-8 mx-auto">
+                                <div class="col-md-6">
+
+                                    <iframe width="100%" height="315" src="{{ $item[0]->video_url ?? '' }}"
+                                        title="{{ url($item[0]->video_title) ?? '' }}" frameborder="0"
+                                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                                        allowfullscreen></iframe>
+
+                                </div>
+                                <div class="col-md-6">
 
                                     <iframe width="100%" height="315" src="{{ $item[0]->video_url ?? '' }}"
                                         title="{{ url($item[0]->video_title) ?? '' }}" frameborder="0"
@@ -1457,6 +1604,27 @@
 
                                 </div>
                             @endif
+
+                            @if ($item[0]->video_url != '')
+                                <div class="col-md-6">
+
+                                    <iframe width="100%" height="315" src="{{ $item[0]->video_url ?? '' }}"
+                                        title="{{ url($item[0]->video_title) ?? '' }}" frameborder="0"
+                                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                                        allowfullscreen></iframe>
+
+                                </div>
+                                <div class="col-md-6">
+
+                                    <iframe width="100%" height="315" src="{{ $item[0]->video_url ?? '' }}"
+                                        title="{{ url($item[0]->video_title) ?? '' }}" frameborder="0"
+                                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                                        allowfullscreen></iframe>
+
+                                </div>
+                            @endif
+
+
                         </div>
                     </div>
                 </div>
@@ -1532,14 +1700,18 @@
                         data: $('#form').serialize() + '&pdf=' + pdf,
                         success: function(data) {
 
-                            toastr.success('Thank you for your interest. We will reach out shortly', 'Success');
+                            toastr.success(
+                                'Thank you for your interest. We will reach out shortly',
+                                'Success');
 
-                           
-                            if (data.message == 'Thank you for your interest. We will reach out shortly.') {
+
+                            if (data.message ==
+                                'Thank you for your interest. We will reach out shortly.'
+                            ) {
                                 $('#myModal').hide();
                                 $('#form')[0].reset();
 
-                              //  alert(data.message)
+                                //  alert(data.message)
 
                                 setTimeout(function() {
                                     window.open(
@@ -1554,7 +1726,7 @@
                             }
                         },
                         error: function(data) {
-                           // console.log('Error:', data);
+                            // console.log('Error:', data);
                             alert(data.responseJSON.message)
                             if (data.responseJSON.message == 'Invalid Captcha') {
 
