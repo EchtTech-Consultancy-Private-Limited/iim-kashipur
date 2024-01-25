@@ -23,6 +23,7 @@ use App\Models\club;
 use App\Models\cell;
 use App\Models\commmittee;
 use App\Models\Department;
+use App\Models\placement;
 use App\Models\org_journies;
 use App\Models\club_multiple_image;
 use App\Models\committee_multiple_image;
@@ -1992,10 +1993,26 @@ class InnerpageController extends Controller
     public function Child_barInnerpage($main_slug, $Sub_slug, $slug) //content page
     {
         //dd($slug);
-        try {
+        // try {
             $data = child_menu::whereslug($slug)->get();
-
+           
             if (Count($data) > 0) {
+
+               
+                if ($data[0]->url == "/placement") {
+                  
+                    $item = placement::where('status', '1')->orderBy('id', 'Asc')->get();
+                   
+                    if (Count($item) > 0) {
+                        $type_sub = child_menu::whereslug($slug)->get();
+                        $gets = SubMenu::whereid($type_sub[0]->sub_id)->get();
+                        $get = MainMenu::whereid($type_sub[0]->menu_id)->get();
+                        $type_child = child_menu::whereslug($slug)->get();
+                        return view('front.Layouts.child_pages.menu_bar.main_menu.placement', ['item' => $item, 'type_sub' => $type_sub, 'type_child' => $type_child, 'gets' => $gets, 'get' => $get]);
+                    } else {
+                        return abort(401);
+                    }
+                }
 
                 if ($data[0]->url == "/student-profiles") {
 
@@ -2193,7 +2210,8 @@ class InnerpageController extends Controller
                     } else {
                         return abort(401);
                     }
-                } elseif ($data[0]->url == '/photo-gallery') {
+
+                 } elseif ($data[0]->url == '/photo-gallery') {
 
                     //dd($data[0]->url);
 
@@ -2254,17 +2272,17 @@ class InnerpageController extends Controller
                     return abort(401);
                 }
             }
-        } catch (\Exception $e) {
-            \Log::error('An exception occurred: ' . $e->getMessage());
-            return abort(401);
-        } catch (\PDOException $e) {
-            \Log::error('A PDOException occurred: ' . $e->getMessage());
-            return abort(401);
-        } catch (\Throwable $e) {
-            // Catch any other types of exceptions that implement the Throwable interface.
-            \Log::error('An unexpected exception occurred: ' . $e->getMessage());
-            return abort(401);
-        }
+        // } catch (\Exception $e) {
+        //     \Log::error('An exception occurred: ' . $e->getMessage());
+        //     return abort(401);
+        // } catch (\PDOException $e) {
+        //     \Log::error('A PDOException occurred: ' . $e->getMessage());
+        //     return abort(401);
+        // } catch (\Throwable $e) {
+        //     // Catch any other types of exceptions that implement the Throwable interface.
+        //     \Log::error('An unexpected exception occurred: ' . $e->getMessage());
+        //     return abort(401);
+        // }
     }
 
 
@@ -2706,8 +2724,8 @@ class InnerpageController extends Controller
             'otherData' => 'Additional data you want to include',
         ];
 
-        //<p><input name="button" type="button"  class="pdf-button" data-id="169899460731.pdf" onclick="openmodle('abc')"   value="Soft Skills for the workplace of tomorrow (February 10-15, 2023)" /></p>
-        //<p><input name="button" type="button"  class="pdf-button" data-id="169899468819.pdf"  onclick="openmodle('abc')"  value="Effective workplace communication for managers of tomorrow (February 1-5, 2023)" /></p>
+        //<p><input name="button" type="button"  class="pdf-button" data-id="169899460731.pdf" onclick="openmodle('abc')"   value="Soft Skills for the workplace of tomorrow (February 10-15, 2024)" /></p>
+        //<p><input name="button" type="button"  class="pdf-button" data-id="169899468819.pdf"  onclick="openmodle('abc')"  value="Effective workplace communication for managers of tomorrow (February 1-5, 2024)" /></p>
 
         // Return a JSON response with data
         return response()->json($responseData);

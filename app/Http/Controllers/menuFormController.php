@@ -13,6 +13,7 @@ use App\Models\video_gallery;
 use App\Models\video_gallery_tittle;
 use App\Models\feedback;
 use App\Models\StudentProfile;
+use App\Models\placement;
 use App\Models\photo_gallery_image;
 use App\Models\OrganisationStructure;
 use App\Models\multiple_profile;
@@ -937,91 +938,82 @@ class menuFormController extends Controller
         return view('admin.sections.viewTedx', ['data' => $data, 'profile' => $profile]);
     }
 
-    //tdex images
-    public function deleteTedxImage($id)
-    {
 
-        $exit = tdex_images::where('id', dDecrypt($id))->first();
+
+
+    //placment
+    public function deletePlacement($id){
+        $exit = placement::where('id', dDecrypt($id))->first();
         if (!empty($exit)) {
-            tdex_images::find(dDecrypt($id))->delete();
+            placement::find(dDecrypt($id))->delete();
         } else {
             return back()->with('error', 'You are trying to perform unethical process. Your requst is failed.');
         }
         return redirect()->back()->with('success', 'Record Deleted Successfully');
     }
 
-    public function add_TedxImage(Request $request)
-    {
-        $request->validate(
-            [
-                'filename' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
-                'image_title' => 'required|unique:tdex_images',
-                'short_order' => 'required',
-                'image_alt' => 'required'
-            ]
-        );
-
-        $data = new tdex_images();
-        $data->image_title = $request->image_title;
-        $data->image_alt = $request->image_alt;
-        $data->short_order	 = $request->short_order;
-        $data->parent_id = $request->parent_id;
-        $data->status = $request->status;
-        $path = public_path('uploads/multiple/tdex');
-        if ($request->hasFile('filename')) {
-            $file = $request->file('filename');
-            $newname = time() . rand(10, 99) . '.' . $file->getClientOriginalExtension();
-            $file->move($path, $newname);
-            $data->filename = $newname;
-        }
-        $data->save();
-        return back()->with('success', 'Record save Successfully');
+    public function viewPlacement(){
+      try {
+          $data = placement::get();
+      } catch (\Exception $e) {
+          return $e->getMessage();
+      }
+      return view('admin.sections.managePlacement', ['data' => $data]);
     }
 
-    public function view_TedxImage($id)
-    {
-        $data = tdex_images::whereparent_id(dDecrypt($id))->get();
-        $id = dDecrypt($id);
-        return view('admin.sections.mangeTdexImages', ['data' => $data, 'id' => $id]);
+  public function addEditPlacement(Request $request, $id = null)
+  {
+     
+      if ($id) {
+          $title = "Edit Placement ";
+          $msg = "Placement Edited Successfully!";
+          $data = placement::find(dDecrypt($id));
+      } else {
+          $title = "Add Placement ";
+          $msg = "Placement Added Successfully!";
+          $data = new placement;
+      }
+
+      if ($request->isMethod('post')) {
+          if (!$id) {
+              $request->validate([
+
+                  'name'=> 'required',
+                  'graduation_year'=>'required',
+                  'area' => 'required',
+                  'designation' => 'required',
+                  'institute_organization'=> 'required',
+                  
+              ]);
+          }else {
+              $request->validate([
+
+                'name'=> 'required',
+                'graduation_year'=>'required',
+                'area' => 'required',
+                'designation' => 'required',
+                'institute_organization'=> 'required',
+             
+              ]);
+          }
+          $data->name = $request->name;
+          $data->graduation_year = $request->graduation_year;
+          $data->area = $request->area;
+          $data->institute_organization = $request->institute_organization;
+          $data->status = $request->status;
+          $data->designation = $request->designation;
+          $data->save();
+          return redirect('/Accounts/placement')->with('success', $msg);
+      }
+      return view('admin.sections.addPlacement', compact('data', 'title', 'id'));
+  }
+  
+    public function ajaxPlacement(Request $request){
+      $data = placement::get();
+      return response()->json(['data' => $data]);
     }
 
-    public function edit_TedxImage(Request $request)
-    {
-        //  dd($request->all());
-        $request->validate(
-            [
-                'filename' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
-                'image_title' => 'required',
-                'short_order' => 'required',
-                'image_alt' => 'required'
-            ]
-        );
-        $data = tdex_images::find($request->id);
-        $data->image_title = $request->image_title;
-        $data->image_alt = $request->image_alt;
-        $data->short_order = $request->short_order;
-        $data->status = $request->status;
-        $data->parent_id = $request->parent_id;
-        $path = public_path('uploads/multiple/tdex');
-        if ($request->hasFile('filename')) {
-            $file = $request->file('filename');
-            $newname = time() . rand(10, 99) . '.' . $file->getClientOriginalExtension();
-            $file->move($path, $newname);
-            $data->filename = $newname;
-        }
-        $data->save();
-        return back()->with('success', 'Record Edit Successfully');
-    }
+  
 
-    public function Tedx_id_image(Request $request)
-    {
-        $item = tdex_images::whereid($request->userid)->first();
-        return response()->json(['item' => $item]);
-    }
 
-    public function ajax_Tedx(Request $request)
-    {
-        $data = tdex::get();
-        return response()->json(['data' => $data]);
-    }
 }

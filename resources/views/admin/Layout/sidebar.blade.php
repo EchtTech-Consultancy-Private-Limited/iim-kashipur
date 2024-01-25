@@ -777,6 +777,37 @@
         @endif
 
 
+        @if (@checkRoute('viewPlacement'))
+            <li class="nav-item">
+
+                <a class="nav-link" data-toggle="collapse" href="#managment19" aria-expanded="false"
+                    aria-controls="tables">
+
+                    <i class="icon-head menu-icon"></i>
+
+                    <span class="menu-title">Placement list</span>
+
+                    <i class="menu-arrow"></i>
+
+                </a>
+
+                <div class="collapse" id="managment19">
+
+                    <ul class="nav flex-column sub-menu">
+
+                        <li class="nav-item"> <a class="nav-link"
+                                href="{{ url('/Accounts/placement') }}">
+                                placement list
+                            </a>
+                        </li>
+
+                    </ul>
+
+                </div>
+
+            </li>
+        @endif
+
 
     </ul>
 </nav>
