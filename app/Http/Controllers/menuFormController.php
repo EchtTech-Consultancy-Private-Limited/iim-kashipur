@@ -978,21 +978,21 @@ class menuFormController extends Controller
           if (!$id) {
               $request->validate([
 
-                  'name'=> 'required',
+                  'name'=> 'required|string',
                   'graduation_year'=>'required',
-                  'area' => 'required',
-                  'designation' => 'required',
-                  'institute_organization'=> 'required',
+                  'area' => 'required|string',
+                  'designation' => 'required|string',
+                  'institute_organization'=> 'required|string',
                   
               ]);
           }else {
               $request->validate([
 
-                'name'=> 'required',
+                'name'=> 'required|string',
                 'graduation_year'=>'required',
-                'area' => 'required',
-                'designation' => 'required',
-                'institute_organization'=> 'required',
+                'area' => 'required|string',
+                'designation' => 'required|string',
+                'institute_organization'=> 'required|string',
              
               ]);
           }
