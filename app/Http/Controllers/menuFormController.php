@@ -954,7 +954,7 @@ class menuFormController extends Controller
 
     public function viewPlacement(){
       try {
-          $data = placement::get();
+         $data = placement::orderBy('id', 'desc')->get();
       } catch (\Exception $e) {
           return $e->getMessage();
       }
