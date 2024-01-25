@@ -2001,8 +2001,8 @@ class InnerpageController extends Controller
                
                 if ($data[0]->url == "/placement") {
                   
-                    $item = placement::where('status', '1')->orderBy('id', 'Asc')->get();
-                   
+                    $item = placement::where('status', '1')->orderBy('id', 'desc')->get();
+
                     if (Count($item) > 0) {
                         $type_sub = child_menu::whereslug($slug)->get();
                         $gets = SubMenu::whereid($type_sub[0]->sub_id)->get();
