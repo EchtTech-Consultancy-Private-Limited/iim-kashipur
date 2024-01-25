@@ -277,6 +277,14 @@ Route::get("/rti-QUARTER-data",[footerController::class,'rti_QUARTER_data']);
 
 
 //-------------------------------------  MenuFormController start -------------------------------------------------------------//
+
+//placement
+Route::get('delete-placement/{id?}',[menuFormController::class,'deletePlacement']);
+Route::get('placement',[menuFormController::class,'viewPlacement']);
+Route::match(['get','post'],'add-edit-placement/{id?}',[menuFormController::class,'addEditPlacement']);
+Route::get('placement-ajax',[menuFormController::class,'ajaxPlacement']);
+
+
 //oug journey
 Route::get('view-journey/{id?}', [menuFormController::class, 'Show_journey'])->name('Show_industry');
 Route::get('Org-journey/{id?}',[menuFormController::class,'Delete_journey']);
