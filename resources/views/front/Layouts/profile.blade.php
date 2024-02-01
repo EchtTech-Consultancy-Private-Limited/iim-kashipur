@@ -15,6 +15,15 @@
             flex-wrap: wrap !important;
         }
     }
+
+    .accordion{border-color: #f8e0e0 !important}
+
+    .accordion-button:not(.collapsed) {
+    background: #fef2f2 !important;
+    color: #92001d !important   ;
+    border-color: #fef2f2;
+}
+.accordion-button:focus{border-color: transparent !important; box-shadow: none !important}
 </style>
 
 @section('content')
@@ -72,13 +81,13 @@
                         </a>
                     </li>
                     <li><span>
-                        <a href="{{ URL::previous() }}">
-                            @if (GetLang() == 'en')
-                                {{ $gets[0]->name ?? '' }}
-                            @else
-                                {{ $gets[0]->name_h ?? '' }}
-                            @endif
-                        </a>
+                            <a href="{{ URL::previous() }}">
+                                @if (GetLang() == 'en')
+                                    {{ $gets[0]->name ?? '' }}
+                                @else
+                                    {{ $gets[0]->name_h ?? '' }}
+                                @endif
+                            </a>
                         </span>
                     </li>
                     <li><span>
@@ -86,7 +95,6 @@
 
                                 {{ ucfirst(strtolower($item[0]->title)) ?? '' }}
                             @else
-
                                 {{ ucfirst(strtolower($item[0]->tittle_h)) ?? '' }}
                             @endif
                         </span>
@@ -237,12 +245,12 @@
                         <li><a href="javascript:void(0);"><span>Academic Areas</span></a></li>
                         <li><a href="{{ URL::previous() }}"><span>Organizational Behaviour Human Resource
                                     Management</span></a></li>
-                    {{-- @elseif(URL::previous() == url('/organizational-behaviour-human-resource-management'))
+                        {{-- @elseif(URL::previous() == url('/organizational-behaviour-human-resource-management'))
                         <li><a href="javascript:void(0);"><span>Faculty</span></a></li>
                         <li><a href="javascript:void(0);"><span>Academic Areas</span></a></li>
                         <li><a href="{{ URL::previous() }}"><span>Organisational Behaviour Human Resource
                                     Management</span></a></li> --}}
-                    {{-- @elseif(URL::previous() == url('/organizational-behaviour-human-resource-management'))
+                        {{-- @elseif(URL::previous() == url('/organizational-behaviour-human-resource-management'))
                         <li><a href="javascript:void(0);"><span>Faculty</span></a></li>
                         <li><a href="javascript:void(0);"><span>Academic Areas</span></a></li>
                         <li><a href="{{ URL::previous() }}"><span>Organizational Behaviour Human Resource
@@ -251,17 +259,14 @@
                         <li><a href="javascript:void(0);"><span>Faculty</span></a></li>
                         <li><a href="javascript:void(0);"><span>Academic Areas</span></a></li>
                         <li><a href="{{ URL::previous() }}"><span>Strategy</span></a></li>
-
                     @elseif(URL::previous() == url('/faculty/academic-areas/strategy'))
                         <li><a href="javascript:void(0);"><span>Academics</span></a></li>
                         <li><a href="javascript:void(0);"><span>MBA (Analytics)</span></a></li>
                         <li><a href="{{ URL::previous() }}"><span>MBA (Analytics) Testimonials</span></a></li>
-
                     @elseif(URL::previous() == url('/faculty/academic-areas/strategy'))
                         <li><a href="javascript:void(0);"><span>Faculty</span></a></li>
                         <li><a href="javascript:void(0);"><span>Academic Areas</span></a></li>
                         <li><a href="{{ URL::previous() }}"><span>Strategy</span></a></li>
-
                     @elseif(URL::previous() == url('academics/mba/mba-testimonial'))
                         <li><a href="javascript:void(0);"><span>Academics</span></a></li>
                         <li><a href="javascript:void(0);"><span>MBA</span></a></li>
@@ -269,7 +274,7 @@
                     @elseif(URL::previous() == url('academics/mba-analytics/mba-analytics-testimonials'))
                         <li><a href="javascript:void(0);"><span>Academics</span></a></li>
                         <li><a href="javascript:void(0);"><span>MBA Analytics</span></a></li>
-                         <li><a href="{{ URL::previous() }}"><span>MBA Analytics Testimonials</span></a></li>
+                        <li><a href="{{ URL::previous() }}"><span>MBA Analytics Testimonials</span></a></li>
 
 
                     @endif
@@ -281,7 +286,6 @@
 
                                 {{ ucfirst(strtolower($item[0]->title)) ?? '' }}
                             @else
-
                                 {{ ucfirst(strtolower($item[0]->title_h)) ?? '' }}
                             @endif
                         </span></li>
@@ -937,7 +941,13 @@
                                             @endif
                                         </div>
 
-                                        <p> @if(GetLang()=='en')  @if(isset($items->id))   <?php echo get_dept_name($items->id); ?> @endif @endif</p>
+                                        <p>
+                                            @if (GetLang() == 'en')
+                                                @if (isset($items->id))
+                                                    <?php echo get_dept_name($items->id); ?>
+                                                @endif
+                                            @endif
+                                        </p>
 
                                         <span>{{ $items->phone ?? '' }}</span><br>
                                         <span>{{ $items->extension ?? '' }}</span>
@@ -1047,7 +1057,39 @@
 
                     <div class="col-xl-8 col-md-8 col-lg-8">
 
-                        <div class="import-dates">
+                        <!-- Accordion Section start -->
+
+                        <div class="accordion accordion-flush" id="accordionFlushExample"
+                            style="border:var(--bs-accordion-border-width) solid var(--bs-accordion-border-color)">
+                            @isset($data)
+                            @foreach ($data as $key => $datas)
+                                @if ($datas->description != '')
+                                    <div class="accordion-item">
+                                        <h2 class="accordion-header" id="flush-headingOne">
+                                            <button class="accordion-button" type="button"
+                                                data-bs-toggle="collapse"
+                                                data-bs-target="#flush-collapseOne_{{ $key }}"
+                                                aria-expanded="true" aria-controls="flush-collapseOne">
+                                                {{ $datas->Title ?? '' }}
+                                            </button>
+                                        </h2>
+                                        <div id="flush-collapseOne_{{ $key }}"
+                                            @if ($key == '0') class="accordion-collapse collapse show" @else class="accordion-collapse collapse " @endif
+                                             aria-labelledby="flush-headingOne"
+                                            data-bs-parent="#accordionFlushExample">
+                                            <div class="accordion-body">
+                                                {!! $datas->description !!}
+                                            </div>
+                                        </div>
+                                    </div>
+                                @endif
+                            @endforeach
+                            @endisset
+                        </div>
+
+                        <!-- Accordion Section end -->
+
+                        {{-- <div class="import-dates">
                             <div class="title"></div>
                             <div class="import-main">
                                 <div class="import-left"></div>
@@ -1058,7 +1100,7 @@
                             <ul class="nav nav-tabs d-flex" id="myTab" role="tablist">
 
                                 @foreach ($data as $key => $datas)
-                                   @if($datas->description != '')
+                                   @if ($datas->description != '')
                                     <li class="nav-item " role="presentation">
                                         <button
                                             @if ($key == '0') class="nav-link active"  @else  class="nav-link" @endif
@@ -1072,7 +1114,7 @@
                             </ul>
 
                             @foreach ($data as $key => $datas)
-                                 @if($datas->description != '')
+                                 @if ($datas->description != '')
                                 <div class="tab-content accordion master-class" id="myTabContent">
                                     <div @if ($key == '0') class="tab-pane fade accordion-item active show"  @else  class="tab-pane fade accordion-item" @endif
                                         id="profile-tab-pane{{ $key }}" role="tabpanel"
@@ -1094,8 +1136,11 @@
                                 @endif
                             @endforeach
 
-                        </div>
+                        </div> --}}
                     </div>
+
+
+
                 </div>
 
             </div>
