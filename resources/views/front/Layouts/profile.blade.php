@@ -1064,6 +1064,19 @@
                             @isset($data)
                             @foreach ($data as $key => $datas)
                                 @if ($datas->description != '')
+
+                                @if ($key == '0')
+                               <div class="p-3">
+                                <h5 tabindex="0" class="mb-2">
+                                    <span tabindex="0">  {{ $datas->Title ?? '' }} </span>
+                                </h5>
+                                <p>
+                                    {!! $datas->description !!}
+                                </p>
+                                </div>
+
+                               @else
+
                                     <div class="accordion-item">
                                         <h2 class="accordion-header" id="flush-headingOne">
                                             <button class="accordion-button" type="button"
@@ -1074,7 +1087,7 @@
                                             </button>
                                         </h2>
                                         <div id="flush-collapseOne_{{ $key }}"
-                                            @if ($key == '0') class="accordion-collapse collapse show" @else class="accordion-collapse collapse " @endif
+                                          class="accordion-collapse collapse "
                                              aria-labelledby="flush-headingOne"
                                             data-bs-parent="#accordionFlushExample">
                                             <div class="accordion-body">
@@ -1082,6 +1095,8 @@
                                             </div>
                                         </div>
                                     </div>
+
+                                 @endif   
                                 @endif
                             @endforeach
                             @endisset
