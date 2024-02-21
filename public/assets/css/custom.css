@@ -305,6 +305,33 @@ a.readmore {left: 105px;}
 .margin_right {
     margin-right:10px !important;
 }
+
+.accordion-button{
+    color:#92001d !important;
+    background: #fef2f2 !important;
+    border-color: #fef2f2;
+}
+.accordion-button::before{
+    transition: none;
+}
+.accordion-button::after{
+    background: none !important;
+    transition: none;
+}
+.accordion-button:not(.collapsed)::after{
+    content: "\f067";
+    font-family: 'fontAwesome';
+    color: #872f3d;
+    background: none !important;
+}
+.accordion-button.collapsed::before{
+      content: "\f068";
+    font-family: 'fontAwesome';
+    color: #872f3d;
+    position: absolute;
+    right: 15px;
+    background: none !important;
+}
 /***close @media query****/
 
 /*

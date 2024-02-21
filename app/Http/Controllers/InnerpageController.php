@@ -2259,7 +2259,7 @@ class InnerpageController extends Controller
                 //dd($profileStatus->status);
                 if (isset($profileStatus) !== null && (isset($profileStatus->status) && $profileStatus->status !== 0)) {
                     if (count($item) > 0) {
-                        $data = multiple_profile::whereparent_id($item[0]->id)->get();
+                        $data = multiple_profile::whereparent_id($item[0]->id)->orderBy('sort_id')->get();
 
                         $type_sub = $item;
                         $gets = SubMenu::whereslug($Sub_slug)->get();
