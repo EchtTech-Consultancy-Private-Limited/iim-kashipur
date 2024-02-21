@@ -358,10 +358,35 @@ class FormController extends Controller
 
 public function view_biography($id)
 {
-
-    $data=\App\Models\multiple_profile::where('parent_id','=',dDecrypt($id))->get();
-    return view('admin.sections.manage_profile_details',['data'=>$data]);
+    $data=\App\Models\multiple_profile::where('parent_id','=',dDecrypt($id))->orderBy('sort_id')->get();
+    return view('admin.sections.manage_profile_details',['data'=>$data, 'id'=>dDecrypt($id)]);
 }
+
+//for data sort
+public function datareorder(Request $request){
+    $elementid = $request->elementid;
+    
+    $data=\App\Models\multiple_profile::where('parent_id','=',$elementid)->get();
+        foreach ($data as $post) {
+            $elementSortId = $post->id;
+            
+            foreach ($request->order as $order) {
+                if ($order['id'] == $elementSortId) {
+                    //$data->update(['sort_id' => $order['position']]);
+                    DB::table('multiple_profile')
+                    ->where('id', $elementSortId)
+                    ->update(['sort_id' => $order['position']]);
+                }
+            }
+            
+            
+            
+        }
+
+        //return response(['message' => 'Update Successfully'], 200);
+}
+
+
 
 public function Add_biography(Request $request,$id=null)
 {

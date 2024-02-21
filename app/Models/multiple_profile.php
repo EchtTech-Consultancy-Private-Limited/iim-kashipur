@@ -9,6 +9,4 @@ class multiple_profile extends Model
 {
     use HasFactory;
     protected $table = 'multiple_profile';
-
-
 }

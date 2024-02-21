@@ -706,3 +706,5 @@ Route::post('/add_contact',[InnerpageController::class,'add_contact']);
 
 
 
+//Sortable JS Routes
+Route::post('post-reorder/{id?}', [FormController::class, 'datareorder']);

@@ -3,7 +3,6 @@
 @section('title', 'Manage Profile Sections')
 
 @section('content')
-
       <div class="main-panel">
 
         <div class="content-wrapper">
@@ -60,8 +59,8 @@
                     <div class="col-12">
 
                       <div class="table-responsive">
-
-                        <table id="example" class="display expandable-table" style="width:100%">
+                          <input type="hidden" name="elemid" id="elemid" value="{{ $id }}"/>  
+                        <table id="profile_sort" class="display expandable-table" style="width:100%">
 
                           <thead>
 
@@ -83,11 +82,11 @@
 
                           </thead>
 
-                          <tbody>
+                          <tbody id="tablecontents">
 
                             @foreach($data as $K=>$D)
-
-                            <tr>
+                          
+                            <tr class="row1" data-id="{{ $D->id }}">
 
                               <td>{{$K+1}}</td>
 
@@ -165,8 +164,23 @@
   </div>
 
 </div>
+       <style>
+           
+           #profile_sort_wrapper .dataTables_length{
+display:none;
+}
 
+#profile_sort_wrapper .dataTables_filter{
+display:none;
+}
+#profile_sort_wrapper .sorting_asc::after, #profile_sort_wrapper .sorting_asc::before, #profile_sort_wrapper .sorting_desc::after,
+#profile_sort_wrapper .sorting_desc::before, #profile_sort_wrapper .sorting::before, #profile_sort_wrapper .sorting::after{
+    
+    content: " " !important;
+}
+       </style>
 
+  
 
 <script type="text/javascript">
 
@@ -182,9 +196,7 @@ function abc(id){
 
 </script>
 
-
-
-       @endsection
+@endsection
 
 
 

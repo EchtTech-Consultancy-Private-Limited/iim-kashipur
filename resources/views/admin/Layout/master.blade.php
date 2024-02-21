@@ -58,6 +58,7 @@
   <script src="{{url('admin/js/jquery-3.6.0.min.js')}}"></script>
 
 
+
   <meta name="csrf_token" content="{{ csrf_token() }}" />
 
 
@@ -273,11 +274,7 @@
 
   <script src="{{url('admin/vendors/chart.js/Chart.min.js')}}"></script>
 
-   {{-- <script src="{{url('admin/vendors/datatables.net/jquery.dataTables.js')}}"></script>
 
-  <script src="{{url('admin/vendors/datatables.net-bs4/dataTables.bootstrap4.js')}}"></script>
-
-  <script src="{{url('admin/js/dataTables.select.min.js')}}"></script> --}}
 
 
 
@@ -366,6 +363,60 @@
       });
     </script>
 
+    
+<?php 
+$url = url()->current(); 
+if(strpos($url ,'manage-people-profile'))
+{
+?>    
+    
+<script src="{{url('admin/js/bootstrap.bundle.min.js')}}"></script>
+<script src="{{url('admin/js/jquery-ui.min.js')}}"></script>    
+<script src="{{url('admin/vendors/datatables.net/jquery.dataTables.js')}}"></script>
+<script src="{{url('admin/js/dataTables.select.min.js')}}"></script>
+<script type="text/javascript">
+$(function ()
+ {
+$("#profile_sort").DataTable();
+$( "#tablecontents" ).sortable({
+items: "tr",
+cursor: 'move',
+opacity: 0.6,
+update: function() {
+sendOrderToServer();
+}
+});
+function sendOrderToServer() {
+        var order = [];
+        var token = $('meta[name="csrf-token"]').attr('content');
+        var eleid = $('#elemid').val();
+        $('tr.row1').each(function(index,element) {
+            order.push({
+                id: $(this).attr('data-id'),
+                position: index+1
+            });
+        });
+        $.ajax({
+            type: "POST",
+            dataType: "json",
+            url: "{{ url('post-reorder') }}",
+            data: {
+                order: order,
+                _token: token,
+                elementid: eleid
+            },
+            success: function(response) {
+                if (response.status == "success") {
+                    console.log(response);
+                } else {
+                    console.log(response)
+                }
+            }
+        });
+}
+});
+</script> 
+<?php } ?>
 <style>
 button.btn {
    width:auto;
