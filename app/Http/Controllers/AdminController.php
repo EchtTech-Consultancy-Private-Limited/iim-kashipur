@@ -873,7 +873,7 @@ function Add_childMenu(Request $request,$id=null){
                     $data=Admin::find(\Auth::guard('admin')->user()->id);
                     $userId = Auth::guard('admin')->user()->id;
                     $br= $this->getBrowser();
-                    $sqlUpdate = DB::table('admins')->where('id', $userId)->update(array('login_time'=>date('d-m-Y H:i:s'),'ip'=>$request->ip(),'user_agent'=>$br['name'],'login_check'=>'1'));
+                    $sqlUpdate = DB::table('admins')->where('id', $userId)->update(array('login_time'=>date('d-m-Y H:i:s'),'ip'=>$request->ip(),'user_agent'=>$br['name'],'login_check'=>'0'));
 
 
                     return redirect()->route('admin.dashboard')->with('success','Hello '.$data->name.'. Welcome to admin panel !');
