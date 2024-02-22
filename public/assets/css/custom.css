@@ -313,24 +313,35 @@ a.readmore {left: 105px;}
 }
 .accordion-button::before{
     transition: none;
+    font-size: 14px;
 }
 .accordion-button::after{
     background: none !important;
     transition: none;
+    font-size: 14px;
 }
-.accordion-button:not(.collapsed)::after{
+.accordion-item:has(.show) .accordion-button:not(.collapsed)::after{
+    content: "\f068" !important;
+    transition: none;
+    font-size: 14px;
+}
+.accordion-item .accordion-button:not(.collapsed)::after{
     content: "\f067";
     font-family: 'fontAwesome';
     color: #872f3d;
     background: none !important;
+    font-size: 14px;
 }
 .accordion-button.collapsed::before{
-      content: "\f068";
+      /* content: "\f068"; */
+      content: "\f067";
     font-family: 'fontAwesome';
     color: #872f3d;
     position: absolute;
-    right: 15px;
+    right: 20px;
     background: none !important;
+    top: 19px;
+    font-size: 14px;
 }
 /***close @media query****/
 
