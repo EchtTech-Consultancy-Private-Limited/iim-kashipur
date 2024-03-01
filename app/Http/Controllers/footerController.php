@@ -16,6 +16,7 @@ use App\Models\StudentProfile;
 use App\Models\photo_gallery_image;
 use App\Models\OrganisationStructure;
 use App\Models\multiple_profile;
+use Illuminate\Support\Facades\DB;
 use PhpOffice\PhpSpreadsheet\Calculation\MathTrig\Trunc;
 use PHPUnit\Framework\Constraint\Count;
 use App\Models\club;
@@ -317,7 +318,7 @@ public function Show_career($id){
 
 public function View_Career()
     {
-        $career=Career::orderBy('id')->get();
+        $career=Career::orderBy('position')->get();
         return view('admin.sections.managecareer',['career'=>$career]);
     }
 
@@ -767,6 +768,17 @@ function View_PressMedia(){
         $item=quarter_report::whereid($request->id)->first();
         return response()->json(['item'=>$item]);
     }
-    
-    
+
+    public function updateCareerListOrder(Request $request){
+//      dd($request->all());
+        $order = $request->input('order');
+
+        foreach ($order as $index => $careerId) {
+            DB::table('career')->where('id', $careerId)->update(['position' => $index + 1]);
+        }
+
+        return response()->json(['success' => true]);
+    }
+
+
 }
