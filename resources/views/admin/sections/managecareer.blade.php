@@ -57,80 +57,105 @@
 
                                             <thead>
 
-                                                <tr>
+                                            <tr>
+                                                <th></th>
+                                                <th>Sr.No</th>
 
-                                                    <th>Sr.No</th>
+                                                <th>Name Of The Post</th>
 
-                                                    <th>Name Of The Post </th>
+                                                <th>Opening Date</th>
 
-                                                    <th>Opening Date </th>
+                                                <th>Closeing Date</th>
 
-                                                    <th>Closeing Date</th>
+                                                <th>Online Link</th>
 
-                                                    <th>Online Link</th>
+                                                <th>Status</th>
 
-                                                    <th>Status</th>
-
-                                                    <th>Action</th>
-                                                </tr>
+                                                <th>Action</th>
+                                            </tr>
 
                                             </thead>
 
-                                            <tbody>
+                                            <tbody id="sortable">
 
-                                                @foreach ($career as $K => $D)
-                                                    <tr>
+                                            @foreach ($career as $K => $D)
+                                                <tr data-id="{{ $D->id }}">
 
-                                                        <td>{{ $K + 1 }}</td>
+                                                    <td style="cursor: pointer">
 
-                                                        <td>{{ $D->name_of_the_post }}</td>
+                                                            <? xml version = "1.0" encoding = "utf-8" ?>
+                                                            <!-- Uploaded to: SVG Repo, www.svgrepo.com, Generator: SVG Repo Mixer Tools -->
+                                                        <svg fill="#000000" version="1.1" id="icon"
+                                                             xmlns="http://www.w3.org/2000/svg"
+                                                             xmlns:xlink="http://www.w3.org/1999/xlink"
+                                                             width="30" height="40" viewBox="0 0 32 32"
+                                                             xml:space="preserve">
+<style type="text/css">
+    .st0 {
+        fill: none;
+    }
+</style>
+                                                            <title>draggable</title>
+                                                            <rect x="10" y="6" width="4" height="4"/>
+                                                            <rect x="18" y="6" width="4" height="4"/>
+                                                            <rect x="10" y="14" width="4" height="4"/>
+                                                            <rect x="18" y="14" width="4" height="4"/>
+                                                            <rect x="10" y="22" width="4" height="4"/>
+                                                            <rect x="18" y="22" width="4" height="4"/>
+                                                            <rect id="_Transparent_Rectangle_" class="st0" width="32"
+                                                                  height="32"/>
+</svg>
+                                                    </td>
+                                                    <td>{{ $K + 1 }}</td>
 
-                                                        <td>{{ $D->opening_date }}</td>
+                                                    <td>{{ $D->name_of_the_post }}</td>
 
-                                                        <td>{{ $D->closing_date }}</td>
+                                                    <td>{{ $D->opening_date }}</td>
 
-                                                        <td>
-                                                            {{ $D->note }} </td>
+                                                    <td>{{ $D->closing_date }}</td>
 
-                                                        <td>
-                                                            @if (@checkRoute('StatusChange'))
-                                                                @if ($D->status == 1)
-                                                                    <a href="{{ url('Accounts/status-change/0/' . dEncrypt($D->id) . '/career') }}"
-                                                                        style="color:green;">Active</a>
-                                                                @else
-                                                                    <a href="{{ url('Accounts/status-change/1/' . dEncrypt($D->id) . '/career') }}"
-                                                                        style="color:red;">Inactive</a>
-                                                                @endif
+                                                    <td>
+                                                        {{ $D->note }} </td>
+
+                                                    <td>
+                                                        @if (@checkRoute('StatusChange'))
+                                                            @if ($D->status == 1)
+                                                                <a href="{{ url('Accounts/status-change/0/' . dEncrypt($D->id) . '/career') }}"
+                                                                   style="color:green;">Active</a>
                                                             @else
-                                                                @if ($D->status == 1)
-                                                                    <span" style="color:green;">Active</span>
-                                                                    @else
-                                                                        <span style="color:red;">Inactive</span>
-                                                                @endif
+                                                                <a href="{{ url('Accounts/status-change/1/' . dEncrypt($D->id) . '/career') }}"
+                                                                   style="color:red;">Inactive</a>
                                                             @endif
-                                                        </td>
+                                                        @else
+                                                            @if ($D->status == 1)
+                                                                <span" style="color:green;">Active</span>
+                                                            @else
+                                                                <span style="color:red;">Inactive</span>
+                                                            @endif
+                                                        @endif
+                                                    </td>
 
-                                                        <td>
-                                                            <a
-                                                                href="{{ url('Accounts/add-edit-career/' . dEncrypt($D->id)) }}"><i
-                                                                    class="ti-pencil btn-icon-append"
-                                                                    style="color:black;"></i></a> &nbsp;
+                                                    <td>
+                                                        <a
+                                                            href="{{ url('Accounts/add-edit-career/' . dEncrypt($D->id)) }}"><i
+                                                                class="ti-pencil btn-icon-append"
+                                                                style="color:black;"></i></a> &nbsp;
 
-                                                                    <a
-                                                                    href="{{ url('Accounts/show-Career/' . dEncrypt($D->id)) }}"><i
-                                                                        class="ti-eye btn-icon-append"
-                                                                        style="color:black;"></i></a> &nbsp;
+                                                        <a
+                                                            href="{{ url('Accounts/show-Career/' . dEncrypt($D->id)) }}"><i
+                                                                class="ti-eye btn-icon-append"
+                                                                style="color:black;"></i></a> &nbsp;
 
-                                                            <a href="{{ url('Accounts/delete-career/' . dEncrypt($D->id)) }}"
-                                                                onclick="return confirm('Are You Sure?')"><i
-                                                                    class="ti-archive btn-icon-append"
-                                                                    style="color:black;"></i></a>
+                                                        <a href="{{ url('Accounts/delete-career/' . dEncrypt($D->id)) }}"
+                                                           onclick="return confirm('Are You Sure?')"><i
+                                                                class="ti-archive btn-icon-append"
+                                                                style="color:black;"></i></a>
 
 
-                                                        </td>
+                                                    </td>
 
-                                                    </tr>
-                                                @endforeach
+                                                </tr>
+                                            @endforeach
 
                                             </tbody>
 
@@ -147,7 +172,6 @@
                             </div>
 
 
-
                         </div>
 
                     </div>
@@ -162,8 +186,8 @@
 
         <!--modal-->
 
-        <div class="modal fade "id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-            aria-hidden="true">
+        <div class="modal fade " id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+             aria-hidden="true">
 
             <div class="modal-dialog" role="document">
 
@@ -186,7 +210,6 @@
         </div>
 
 
-
         <script type="text/javascript">
             function abc(id) {
 
@@ -199,4 +222,4 @@
             }
         </script>
 
-    @endsection
+@endsection

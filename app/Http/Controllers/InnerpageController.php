@@ -75,7 +75,7 @@ class InnerpageController extends Controller
         try {
             if ($slug == 'career' || $slug == 'Career' || $slug == 'Careers' || $slug == 'careers') {
                 $bread = "Career";
-                $data = Career::orderBy('id', 'Desc')->get();
+                $data = Career::orderBy('position', 'asc')->get();
                 return view('front.Layouts.child_pages.menu_bar.main_menu.archive', ['data' => $data, 'bread' => $bread]);
             } elseif ($slug == 'tenders' || $slug ==  'Tender' || $slug ==  'tender' || $slug ==  'Tenders') {
                 $bread = "Tender";
@@ -534,7 +534,7 @@ class InnerpageController extends Controller
             //dd($slug);
         try {
             $subchildmenu = subchildmenu::whereslug($superchild)->get();
-            
+
             if (Count($subchildmenu) > 0) {
                 $menu = subchildmenu::whereslug($superchild)->first();
                 if (isset($menu) !== null && (isset($menu->status) && $menu->status !== '0')) {
@@ -596,7 +596,7 @@ class InnerpageController extends Controller
                 $item = OrganisationStructure::whereslug($superchild)->get();
                // dd($item);
 
-                
+
                 if (count($item) > 0) {
                     $data = multiple_profile::whereparent_id($item[0]->id)->get();
                     return view('front.Layouts.profile', ['item' => $item, 'data' => $data]);
@@ -1995,12 +1995,12 @@ class InnerpageController extends Controller
         //dd($slug);
         // try {
             $data = child_menu::whereslug($slug)->get();
-           
+
             if (Count($data) > 0) {
 
-               
+
                 if ($data[0]->url == "/placement") {
-                  
+
                     $item = placement::where('status', '1')->orderBy('id', 'desc')->get();
 
                     if (Count($item) > 0) {
@@ -2716,7 +2716,7 @@ class InnerpageController extends Controller
         $data->pdf = $request->pdf;
         $data->ip_address = getHostByName(getHostName());
 
-        //dd($data); 
+        //dd($data);
         $data->save();
 
         $responseData = [

@@ -363,15 +363,15 @@
       });
     </script>
 
-    
-<?php 
-$url = url()->current(); 
+
+<?php
+$url = url()->current();
 if(strpos($url ,'manage-people-profile'))
 {
-?>    
-    
+?>
+
 <script src="{{url('admin/js/bootstrap.bundle.min.js')}}"></script>
-<script src="{{url('admin/js/jquery-ui.min.js')}}"></script>    
+<script src="{{url('admin/js/jquery-ui.min.js')}}"></script>
 <script src="{{url('admin/vendors/datatables.net/jquery.dataTables.js')}}"></script>
 <script src="{{url('admin/js/dataTables.select.min.js')}}"></script>
 <script type="text/javascript">
@@ -415,7 +415,7 @@ function sendOrderToServer() {
         });
 }
 });
-</script> 
+</script>
 <?php } ?>
 <style>
 button.btn {
@@ -446,7 +446,38 @@ button.btn {
         document.getElementById("timer").innerHTML=count + " secs"; // watch for spelling
     }
     </script>
+  <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+  <script>
+      $(function() {
+          $("#sortable").sortable({
+              update: function(event, ui) {
+                  var newOrder = [];
+                  $("#sortable tr").each(function(index) {
+                      newOrder.push($(this).data('id'));
+                  });
 
+                  $.ajax({
+                      url: '{{ route("career.updateOrder") }}',
+                      method: 'POST',
+                      data: {
+                          _token: '{{ csrf_token() }}',
+                          order: newOrder
+                      },
+                      success: function(response) {
+                          alert('Order updated successfully.');
+                          // Reload the page
+                          location.reload();
+                      },
+                      error: function(xhr, status, error) {
+                          console.error(xhr.responseText);
+                      }
+                  });
+              }
+          });
+
+          // display alert message and after that reload page
+      });
+  </script>
 
 </body>
 
