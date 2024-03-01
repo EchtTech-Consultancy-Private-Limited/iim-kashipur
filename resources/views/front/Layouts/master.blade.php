@@ -123,6 +123,8 @@
             color: #FFFFFF;
 
         }
+
+
     </style>
 
 
@@ -140,7 +142,33 @@
         var baseurl = '{{ url('/') }}';
     </script>
 
+    <link rel="stylesheet" href="https://cdn.datatables.net/2.0.1/css/dataTables.dataTables.css" />
 
+    <style>
+        .dt-length label {
+            text-transform: uppercase; /* Capitalize text */
+            margin-left: 5px; /* Add space between select and text */
+        }
+
+        /* Change background color */
+        .dt-paging-button {
+            background-color: #fef2f2 !important; /* Use !important to override other styles if needed */
+        }
+
+        /* Change active color */
+        .dt-paging-button.current {
+            background-color: #ed2044 !important; /* Use !important to override other styles if needed */
+        }
+
+        /* Decrease padding */
+        .dt-paging-button {
+            padding: 5px 10px !important;
+        }
+        .dt-paging-button:hover {
+            background-color: #fef2f2 !important;
+            color: #bbbbbb !important; /* Optionally, change text color on hover */
+        }
+    </style>
 </head>
 
 
@@ -195,11 +223,11 @@
 
     <script src="{{ asset('front/js/custom.js') }}"></script>
 
-
+    <script src="https://cdn.datatables.net/2.0.1/js/dataTables.js"></script>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
 
-   
+
 
     <!-- custom js file link  -->
 
@@ -218,9 +246,9 @@
 
 
     <?php
-    
+
     echo html_entity_decode(GetOrganisationAllDetails('body_google_tags'));
-    
+
     ?>
 
     <script
@@ -356,7 +384,19 @@
         });
     </script>
 
-
+    <script>
+        $(document).ready(function() {
+            $('#careerTable').DataTable({
+                "pagingType": "simple_numbers", // Customize pagination
+                "language": {
+                    "paginate": {
+                        "previous": "<", // Customize Previous button
+                        "next": ">"      // Customize Next button
+                    }
+                }
+            });
+        });
+    </script>
 
 </body>
 

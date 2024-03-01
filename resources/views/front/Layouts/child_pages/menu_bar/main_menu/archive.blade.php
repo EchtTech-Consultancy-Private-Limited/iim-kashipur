@@ -43,76 +43,56 @@
 
 
             @if ($bread == 'Career')
-                <table>
+                <table id="careerTable" class="display">
+                    <thead>
                     <tr>
                         <th class="text-nowrap">S.No</th>
                         <th class="text-nowrap">Name Of The Post</th>
                         <th class="text-nowrap">Opening Date</th>
                         <th class="text-nowrap">Closing Date</th>
                         <th class="text-nowrap">Online Link</th>
-                        <th class="text-nowrap">Document </th>
+                        <th class="text-nowrap">Document</th>
                         <th class="text-nowrap">Note</th>
                         <th class="text-nowrap">Corrigendum</th>
                     </tr>
-
-
-                    <?php $number = 1; ?>
+                    </thead>
+                    <tbody>
+                        <?php $number = 1; ?>
                     @foreach ($data as $value)
                         {{-- {{ Getarchivedata($value->created_at->format('Y-m-d'), $value->archive_date) }} --}}
 
                         @if (Getarchivedata(now()->format('Y-m-d'), $value->archive_date) == 'True')
                             <tr>
                                 <td>{{ $number }}</td>
-                                <td>{{ $value->name_of_the_post }} </td>
-                                <td> {{ $value->opening_date }} </td>
-                                <td> {{ $value->closing_date }} </td>
-
+                                <td>{{ $value->name_of_the_post }}</td>
+                                <td>{{ $value->opening_date }}</td>
+                                <td>{{ $value->closing_date }}</td>
 
                                 <td>
                                     @if ($value->online_link != '')
-
-                                        <a @if ($value->external == '1') @if (GetLang() == 'en') onclick="return confirm('This link will take you to an external web site.')"  @else onclick="return confirm('यह लिंक आपको एक बाहरी वेब साइट पर ले जाएगा।')" @endif
-                                        target="_blank" href="{{ url($value->online_link) ?? '' }}" @else
-                                            href="{{ url($value->online_link) ?? '' }}" @endif
-                                            >Apply Here</a>
-
-
+                                        <a @if ($value->external == '1') @if (GetLang() == 'en') onclick="return confirm('This link will take you to an external web site.')" @else onclick="return confirm('यह लिंक आपको एक बाहरी वेब साइट पर ले जाएगा।')" @endif target="_blank" href="{{ url($value->online_link) ?? '' }}" @else href="{{ url($value->online_link) ?? '' }}" @endif>Apply Here</a>
                                     @endif
                                 </td>
                                 <td>
-                                    <a href="{{ asset('uploads/fo/' . $value->detail_advertisement) }}" download
-                                        target="_blank"><i class="fa fa-download"></i> Download</a>
+                                    <a href="{{ asset('uploads/fo/' . $value->detail_advertisement) }}" download target="_blank"><i class="fa fa-download"></i> Download</a>
 
-                                    <span style="font-size: 12px;margin-left: 5px;color: #ed2044;">
-                                        (<?php
-                                        echo formatSizeUnits($value->pdfsize);
-                                        ?>)
-                                    </span>
+                                    <span style="font-size: 12px;margin-left: 5px;color: #ed2044;">({{ formatSizeUnits($value->pdfsize) }})</span>
                                 </td>
                                 <td>{{ $value->note }}</td>
 
-
                                 <td>
-
-
                                     @if ($value->corrigendum != '')
-                                        <a href="{{ asset('uploads/fo/' . $value->corrigendum) }}" download
-                                            target="_blank"><i class="fa fa-download"></i> Download</a>
-
-                                        <span style="font-size: 12px;margin-left: 5px;color: #ed2044;">
-                                            (
-                                            <?php
-                                            echo formatSizeUnits($value->pdf_corrigendum);
-                                            ?>)
-                                        </span>
+                                        <a href="{{ asset('uploads/fo/' . $value->corrigendum) }}" download target="_blank"><i class="fa fa-download"></i> Download</a>
+                                        <span style="font-size: 12px;margin-left: 5px;color: #ed2044;">({{ formatSizeUnits($value->pdf_corrigendum) }})</span>
                                     @endif
                                 </td>
                             </tr>
-                            <?php $number++; ?>
+                                <?php $number++; ?>
                         @endif
                     @endforeach
-
+                    </tbody>
                 </table>
+
             @endif
 
             @if ($bread == 'Tender')
