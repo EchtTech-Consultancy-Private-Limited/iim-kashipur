@@ -365,11 +365,11 @@ public function view_biography($id)
 //for data sort
 public function datareorder(Request $request){
     $elementid = $request->elementid;
-    
+
     $data=\App\Models\multiple_profile::where('parent_id','=',$elementid)->get();
         foreach ($data as $post) {
             $elementSortId = $post->id;
-            
+
             foreach ($request->order as $order) {
                 if ($order['id'] == $elementSortId) {
                     //$data->update(['sort_id' => $order['position']]);
@@ -378,9 +378,9 @@ public function datareorder(Request $request){
                     ->update(['sort_id' => $order['position']]);
                 }
             }
-            
-            
-            
+
+
+
         }
 
         //return response(['message' => 'Update Successfully'], 200);

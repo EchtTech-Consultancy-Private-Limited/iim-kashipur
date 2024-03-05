@@ -59,7 +59,7 @@
                     <div class="col-12">
 
                       <div class="table-responsive">
-                          <input type="hidden" name="elemid" id="elemid" value="{{ $id }}"/>  
+                          <input type="hidden" name="elemid" id="elemid" value="{{ $id }}"/>
                         <table id="profile_sort" class="display expandable-table" style="width:100%">
 
                           <thead>
@@ -85,7 +85,7 @@
                           <tbody id="tablecontents">
 
                             @foreach($data as $K=>$D)
-                          
+
                             <tr class="row1" data-id="{{ $D->id }}">
 
                               <td>{{$K+1}}</td>
@@ -104,9 +104,9 @@
                               <a href="{{url('Accounts/add-edit-profile/'.dEncrypt($D->id))}}"><i class="ti-pencil btn-icon-append" style="color:black;"></i></a> &nbsp;
 
 
-                              @if (\Auth::guard('admin')->user()->id == 1  )
+{{--                              @if (\Auth::guard('admin')->user()->id == 1  )--}}
                               <a href="{{url('Accounts/delete-profile/'.dEncrypt($D->id))}}" onclick="return confirm('Are You Sure?')"><i class="ti-archive btn-icon-append" style="color:black;"></i></a>
-                               @endif
+{{--                               @endif--}}
                              </td>
 
 
@@ -165,7 +165,7 @@
 
 </div>
        <style>
-           
+
            #profile_sort_wrapper .dataTables_length{
 display:none;
 }
@@ -175,12 +175,12 @@ display:none;
 }
 #profile_sort_wrapper .sorting_asc::after, #profile_sort_wrapper .sorting_asc::before, #profile_sort_wrapper .sorting_desc::after,
 #profile_sort_wrapper .sorting_desc::before, #profile_sort_wrapper .sorting::before, #profile_sort_wrapper .sorting::after{
-    
+
     content: " " !important;
 }
        </style>
 
-  
+
 
 <script type="text/javascript">
 
