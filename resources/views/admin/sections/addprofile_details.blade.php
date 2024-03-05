@@ -94,7 +94,7 @@
 
                     <div class="col-md-6">
 
-                        <div class="form-group"> <label for="form_name"> Image_Title *</label> <input id="form_name" type="text" name="Image_Title" @if($id) value="{{$data->Image_Title}}" @else value="{{old('Image_Title')}}" @endif class="form-control" placeholder="Please enter Image_Title *"  > </div>
+                        <div class="form-group"> <label for="form_name"> Image Title</label> <input id="form_name" type="text" name="Image_Title" @if($id) value="{{$data->Image_Title}}" @else value="{{old('Image_Title')}}" @endif class="form-control" placeholder="Please enter Image_Title *"  > </div>
 
                     </div>
 

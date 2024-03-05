@@ -90,7 +90,7 @@ $(document).ready(function() {
                 required: true,
             },
             Image_Title: {
-                required: true,
+                required: false,
             },
             Image_Alt:{
                 required: true,
