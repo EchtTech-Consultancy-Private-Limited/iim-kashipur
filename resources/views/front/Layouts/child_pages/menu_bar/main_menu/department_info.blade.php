@@ -11,7 +11,7 @@
     .bg-hover .text-scroll, .profilewraper.withinfo .text-scroll {
     height: 112px !important;
     }
-</style>    
+</style>
 
     {{-- banner and  breadcrumbs   --}}
 
@@ -886,11 +886,11 @@
                                                         {{ $items->more_designation ?? '' }}
                                                     @else
                                                         {{ $items->more_designation ?? '' }}
-                                                    @endif    
+                                                    @endif
                                                 </p>
                                             </div>
 
-                                          
+
 
 
                                         </div>
@@ -920,7 +920,7 @@
                         <div class="col-md-6 col-lg-4 mx-auto">
 
                             <div class="profilewraper withinfo bg-hover">
-                                <a href="{{ url(@$mmenu[0]->slug . '/' . $type[0]->slug . '/' . $Secretary->slug) }}">
+                                <a href="javascript:void(0)">
                                     <figure><img src="{{ asset('uploads/organisation/' . $Secretary->image) }}"
                                             alt="{{ $Secretary->title ?? '' }}" title="{{ $Secretary->title ?? '' }}">
                                     </figure>
@@ -946,12 +946,12 @@
                                             {{ $Secretary->more_designation ?? '' }}
                                         @else
                                             {{ $Secretary->more_designation ?? '' }}
-                                        @endif    
+                                        @endif
                                     </p>
                                 </a>
                             </div>
 
-                           
+
                         </div>
                     </div>
                 @endif

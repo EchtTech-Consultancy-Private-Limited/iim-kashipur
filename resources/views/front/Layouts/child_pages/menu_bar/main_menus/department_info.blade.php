@@ -841,7 +841,7 @@ $mmenu = @content_menus($type[0]->menu_id);
                                 <div class="profilewraper bg-hover">
 
                                     <figure><img src="{{asset('uploads/organisation/'.$items->image) ?? ''}}" alt="{{ $items->title ?? '' }}" title="{{ $items->title ?? '' }}"></figure><br>
-                                    <div class="text-scroll"> 
+                                    <div class="text-scroll">
                                     <h4> @if(GetLang()=='en') {{ $items->title ?? '' }}  @else {{ $items->title_h ?? '' }}  @endif</h4>
 
                                     @if(GetLang()=='en') {{ $items->designation ?? '' }}  @else {{ $items->designation_h ?? '' }}  @endif
