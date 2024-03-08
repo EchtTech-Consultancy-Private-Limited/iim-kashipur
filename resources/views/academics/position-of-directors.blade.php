@@ -8,7 +8,7 @@
         <div class="imagecaption">
             <div class="container">
                 <h1 tabindex="0">
-                    Position of Director
+                    Position of Director at IIM Kashipur
                 </h1>
             </div>
         </div>
@@ -28,7 +28,7 @@
                 <li>
 
                         <span tabindex="0">
-                                                           Position of Director
+                                                          Position of Director at IIM Kashipur
                                                     </span>
 
 
