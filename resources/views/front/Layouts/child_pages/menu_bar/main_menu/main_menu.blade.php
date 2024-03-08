@@ -1107,7 +1107,7 @@
                                     // Get the <span> element that closes the modal
                                     var span = document.getElementsByClassName("close")[0];
                                     const closeButton = document.getElementsByClassName("close")[0];
-                                    // When the user clicks the button, open the modal 
+                                    // When the user clicks the button, open the modal
                                     btn.onclick = function() {
                                         modal.style.display = "block";
                                     }
@@ -1463,7 +1463,7 @@
                                                 <div class="row mt-3">
 
                                                     @if ($items->video_url != '')
-                    
+
                                                         <div class="col-md-6 mb-3">
                                                             @php
                                                             $url = $items->video_url ??" ";
@@ -1474,12 +1474,12 @@
                                                                 title="{{ $items->video_title ?? '' }}" frameborder="0"
                                                                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                                                                 allowfullscreen></iframe>
-                    
+
                                                         </div>
                                                     @endif
-                    
+
                                                     @if ($items->video_url_2 != '')
-                    
+
                                                     @php
                                                     $url2 = $items->video_url_2  ??'' ;
                                                     $title2=  $items->video_title_2 ??"";
@@ -1490,13 +1490,13 @@
                                                                 title="{{ $items->video_title2 ?? '' }}" frameborder="0"
                                                                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                                                                 allowfullscreen></iframe>
-                    
+
                                                         </div>
                                                     @endif
-                    
+
                                                     @if ($items->video_url_3 != '')
                                                         <div class="col-md-6 mb-3">
-                    
+
                                                             @php
                                                             $url3 = $items->video_url_3 ??"" ;
                                                             $title3=  $items->video_title_3 ??"";
@@ -1506,12 +1506,12 @@
                                                                 title="{{ $items->video_title3 ?? '' }}" frameborder="0"
                                                                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                                                                 allowfullscreen></iframe>
-                    
+
                                                         </div>
                                                     @endif
                                                     @if ($items->video_url_4 != '')
                                                         <div class="col-md-6 mb-3">
-                    
+
                                                             @php
                                                                    $url4 = $items->video_url_4 ??"" ;
                                                                    $title4=  $items->video_title_4 ??"";
@@ -1521,11 +1521,11 @@
                                                                 title="{{ $items->video_title4 ?? '' }}" frameborder="0"
                                                                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                                                                 allowfullscreen></iframe>
-                    
+
                                                         </div>
                                                     @endif
                                                 </div>
-                                                
+
                                             </div>
 
 

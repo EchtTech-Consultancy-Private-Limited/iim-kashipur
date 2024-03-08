@@ -50,6 +50,8 @@ Route::get('/vendor-publish', function() {
 
 
 
+Route::get('/academics/position-of-director-iimk',[InnerpageController::class,"positionOfDirector"]);
+
 
 Route::get('/', function () { return view('welcome');});
 Route::get('/refresh-captcha', [FormController::class, 'refreshCaptcha']);
@@ -710,3 +712,5 @@ Route::post('/add_contact',[InnerpageController::class,'add_contact']);
 Route::post('post-reorder/{id?}', [FormController::class, 'datareorder']);
 
 Route::post('career/update-list-order',[footerController::class,"updateCareerListOrder"])->name('career.updateOrder');
+
+

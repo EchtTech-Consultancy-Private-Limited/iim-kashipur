@@ -2730,4 +2730,9 @@ class InnerpageController extends Controller
         // Return a JSON response with data
         return response()->json($responseData);
     }
+
+    public  function positionOfDirector(){
+        $pageTitle = "Position of Director at IIM Kashipur";
+        return view("academics.position-of-directors",compact('pageTitle'));
+    }
 }
