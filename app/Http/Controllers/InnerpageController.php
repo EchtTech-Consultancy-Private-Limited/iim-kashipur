@@ -2742,6 +2742,10 @@ class InnerpageController extends Controller
 
         $pageDetails = IndividualContentPage::where('slug', $slug)->first();
 
+        if (!$pageDetails){
+            return abort(401);
+        }
+
         if ($pageDetails->status === 0){
             return abort(401);
         }
