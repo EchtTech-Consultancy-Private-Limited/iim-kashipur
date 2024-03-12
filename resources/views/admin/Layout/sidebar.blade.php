@@ -13,6 +13,17 @@
             </a>
 
         </li>
+        <li class="nav-item">
+
+            <a class="nav-link" href="{{ route('admin.individual-pages') }}">
+
+                <i class="icon-grid menu-icon"></i>
+
+                <span class="menu-title">Individual Content Pages</span>
+
+            </a>
+
+        </li>
 
         @if (\Auth::guard('admin')->user()->id == 1 || @checkRoute('View_Admins') || @checkRoute('View_Roles'))
             <li class="nav-item">

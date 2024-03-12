@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\IndividualContentPage;
 use App\Models\MainMenu;
 use App\Models\SubMenu;
 use App\Models\child_menu;
@@ -2734,5 +2735,17 @@ class InnerpageController extends Controller
     public  function positionOfDirector(){
         $pageTitle = "Position of Director at IIM Kashipur";
         return view("academics.position-of-directors",compact('pageTitle'));
+    }
+
+    public function individualPage(Request $request){
+        $slug = $request->get('params');
+
+        $pageDetails = IndividualContentPage::where('slug', $slug)->first();
+
+        if ($pageDetails->status === 0){
+            return abort(401);
+        }
+
+        return view('front.pages.individual.show',compact('pageDetails'));
     }
 }
