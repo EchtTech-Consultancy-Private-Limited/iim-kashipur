@@ -233,6 +233,10 @@ ul.list-unstyled.d-flex.align-items-center.mb-0 {display: block !important;}
 .midalheader .container {display: block;text-align: center;}
 img.img-logo {width: 60%;}
 div#Ourlogo img {width: 50%;text-align: center;display: block;margin: 0 auto;margin-bottom: 18px;}
+.profilewraper.withinfo img {
+    height: auto !important;
+    max-height: fit-content !important;
+}
 }
 
 @media(max-width:575.8px){
@@ -260,7 +264,7 @@ a.readmore {left: 36px;}
 @media(max-width:376.8px){
 .addevent-grid{grid-template-columns: repeat(1 ,1fr);}
 .addevent-box {max-width:inherit;height:490px;}
-.addevent-box.top {max-width: initial;}
+/* .addevent-box.top {max-width: initial;} */
 .addevent-box h5 {font-size: 16px;}
 a.readmore {left: 156px;}
 .addevent-box p {margin-bottom: 5px;font-size: 14px;}

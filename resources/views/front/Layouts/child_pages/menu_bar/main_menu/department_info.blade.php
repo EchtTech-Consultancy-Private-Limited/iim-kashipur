@@ -919,7 +919,7 @@
 
                         <div class="col-md-6 col-lg-4 mx-auto">
 
-                            <div class="profilewraper withinfo bg-hover">
+                            <div class="profilewraper withinfo bg-hover addevent-box top">
                                 <a href="javascript:void(0)">
                                     <figure><img src="{{ asset('uploads/organisation/' . $Secretary->image) }}"
                                             alt="{{ $Secretary->title ?? '' }}" title="{{ $Secretary->title ?? '' }}">
