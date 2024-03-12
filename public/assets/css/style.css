@@ -986,8 +986,8 @@ span.text-hili-top {
     }
 
     .profilewraper.withinfo img {
-        height: 220px !important;
-        max-height: 235px !important;
+        height: 220px ;
+        max-height: 235px ;
     }
 
 }
