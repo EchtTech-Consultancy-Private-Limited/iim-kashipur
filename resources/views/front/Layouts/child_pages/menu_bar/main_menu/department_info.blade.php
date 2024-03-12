@@ -791,7 +791,7 @@
                                                 <a href="javascript:void(0)">
 
                                                     <a
-                                                        href="{{ url(@$mmenu[0]->slug . '/' . $type[0]->slug . '/' . $chairperson->slug) }}">
+                                                        href="javascript:void(0)">
                                                         <div class="profile-img">
 
 
