@@ -51,6 +51,7 @@ Route::get('/vendor-publish', function() {
 
 
 Route::get('/academics/position-of-director-iimk',[InnerpageController::class,"positionOfDirector"]);
+Route::get('/individual-page/page',[InnerpageController::class,"individualPage"]);
 
 
 Route::get('/', function () { return view('welcome');});
@@ -71,9 +72,17 @@ Route::match(['get','post'],'change-password',[AdminController::class,'Change_Pa
 
 Route::middleware(['preventBackHistory','EnsureTokenIsValid','CheckUserActivity'])->group(function () {
 Route::get('dashboard', [AdminController::class,'Dashboard'])->name('dashboard');
+Route::get('individual-pages', [AdminController::class,'individualPageLIst'])->name('individual-pages');
+Route::get('individual-pages/create', [AdminController::class,'individualPageCreate'])->name('create.individual-pages');
+Route::post('individual-pages/store', [AdminController::class,'individualPageStore'])->name('store.individual-pages');
+Route::get('individual-pages/{id}/edit', [AdminController::class,'individualPageSEdit'])->name('edit.individual-pages');
+Route::post('individual-pages/{id}/update', [AdminController::class,'individualPageUpdate'])->name('update.individual-pages');
+Route::get('individual-pages/{id}/change-status',[AdminController::class,"changeIndividualPageStatus"])->name('individual-page.change-status');
+Route::get('individual-pages/{id}/delete',[AdminController::class,"changeIndividualPageDelete"])->name('individual-page.delete');
 
 //Route::get('dashboard',[AdminController::class,'Dashboard'])->middleware('Admin')->name('dashboard');
 Route::middleware(['CustomAuth'])->group(function () {   //audit log middleware
+
 
 //------------------------------- contentController start  ---------------------------------------------------------//
 
