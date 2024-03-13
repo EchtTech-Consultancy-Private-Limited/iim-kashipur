@@ -83,15 +83,17 @@
                                                     <td>{{$page->name}}</td>
                                                     <td>{{$page->name_h}}</td>
                                                     <td>
+{{--                                                        {{$page->status}}--}}
                                                         @if($page->status === 0)
-                                                            <a style="cursor: pointer;" href="{{ route('admin.individual-page.change-status',dEncrypt($page->id)) }}">
-                                                                <span class="badge badge-danger">InActive</span>
+                                                            <a style="cursor: pointer;" href="{{ route('admin.individual-page.status', ['id' => dEncrypt($page->id), 'status' => 1]) }}">
+                                                                <span class="badge badge-danger">Inactive</span>
                                                             </a>
                                                         @else
-                                                            <a style="cursor: pointer;" href="{{ route('admin.individual-page.change-status',dEncrypt($page->id)) }}">
-                                                            <span class="badge badge-success">Active</span>
+                                                            <a style="cursor: pointer;" href="{{ route('admin.individual-page.status', ['id' => dEncrypt($page->id), 'status' => 0]) }}">
+                                                                <span class="badge badge-success">Active</span>
                                                             </a>
                                                         @endif
+
                                                     </td>
 
                                                     <td>
@@ -99,7 +101,7 @@
                                                         <a href="{{ route('admin.edit.individual-pages',dEncrypt($page->id)) }}"
                                                            onclick="return confirm('Are you sure to edit this record?')"><i
                                                                 class="ti-pencil btn-icon-append"
-                                                                style="color:black;"></i> sada</a> &nbsp;
+                                                                style="color:black;"></i> </a> &nbsp;
 
 
                                                         <a href="{{ route('admin.individual-page.delete',dEncrypt($page->id)) }}"
