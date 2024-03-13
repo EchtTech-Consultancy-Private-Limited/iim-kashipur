@@ -1970,7 +1970,42 @@ class AdminController extends Controller
         return redirect()->route('admin.individual-pages')->with('success', 'Record Update Successfully');
     }
 
-    public function changeIndividualPageStatus($id)
+//    public function changeIndividualPageStatus($id)
+//    {
+//        // Decrypt the ID
+//        $id = dDecrypt($id);
+//
+//        // Find the page by ID
+//        $page = App\Models\IndividualContentPage::find($id);
+//
+//        // Toggle the status
+//        $page->status = 1;
+//
+//        // Save the updated status
+//        $page->save();
+//
+//        // Redirect back with success message
+//        return redirect()->back()->with('success', 'Record Updated Successfully');
+//    }
+//    public function changeIndividualPageStatusInactive($id)
+//    {
+//        // Decrypt the ID
+//        $id = dDecrypt($id);
+//
+//        // Find the page by ID
+//        $page = App\Models\IndividualContentPage::find($id);
+//
+//        // Toggle the status
+//        $page->status = 0;
+//
+//        // Save the updated status
+//        $page->save();
+//
+//        // Redirect back with success message
+//        return redirect()->back()->with('success', 'Record Updated Successfully');
+//    }
+
+    public function changeIndividualPageStatus($id, $status)
     {
         // Decrypt the ID
         $id = dDecrypt($id);
@@ -1978,8 +2013,8 @@ class AdminController extends Controller
         // Find the page by ID
         $page = App\Models\IndividualContentPage::find($id);
 
-        // Toggle the status
-        $page->status = ($page->status === 0) ? 1 : 0;
+        // Set the status
+        $page->status = $status;
 
         // Save the updated status
         $page->save();
@@ -1987,6 +2022,7 @@ class AdminController extends Controller
         // Redirect back with success message
         return redirect()->back()->with('success', 'Record Updated Successfully');
     }
+
 
     public function changeIndividualPageDelete($id){
         // Decrypt the ID
