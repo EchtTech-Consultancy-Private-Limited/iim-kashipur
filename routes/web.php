@@ -70,15 +70,17 @@ Route::get('log-out',[AdminController::class,'Logout'])->name('logout');
 Route::match(['get','post'],'change-password',[AdminController::class,'Change_Password'])->name('password-change');
 
 
+    Route::get('individual-pages', [AdminController::class,'individualPageLIst'])->name('individual-pages');
+    Route::get('individual-pages/create', [AdminController::class,'individualPageCreate'])->name('create.individual-pages');
+    Route::post('individual-pages/store', [AdminController::class,'individualPageStore'])->name('store.individual-pages');
+    Route::get('individual-pages/{id}/edit', [AdminController::class,'individualPageSEdit'])->name('edit.individual-pages');
+    Route::post('individual-pages/{id}/update', [AdminController::class,'individualPageUpdate'])->name('update.individual-pages');
+    Route::post('individual-pages/change-status/{id}',[AdminController::class,"changeIndividualPageStatus"])->name('individual-page.status');
+    Route::get('individual-pages/{id}/delete',[AdminController::class,"changeIndividualPageDelete"])->name('individual-page.delete');
+
 Route::middleware(['preventBackHistory','EnsureTokenIsValid','CheckUserActivity'])->group(function () {
 Route::get('dashboard', [AdminController::class,'Dashboard'])->name('dashboard');
-Route::get('individual-pages', [AdminController::class,'individualPageLIst'])->name('individual-pages');
-Route::get('individual-pages/create', [AdminController::class,'individualPageCreate'])->name('create.individual-pages');
-Route::post('individual-pages/store', [AdminController::class,'individualPageStore'])->name('store.individual-pages');
-Route::get('individual-pages/{id}/edit', [AdminController::class,'individualPageSEdit'])->name('edit.individual-pages');
-Route::post('individual-pages/{id}/update', [AdminController::class,'individualPageUpdate'])->name('update.individual-pages');
-Route::post('individual-pages/change-status/{id}',[AdminController::class,"changeIndividualPageStatus"])->name('individual-page.status');
-Route::get('individual-pages/{id}/delete',[AdminController::class,"changeIndividualPageDelete"])->name('individual-page.delete');
+
 
 //Route::get('dashboard',[AdminController::class,'Dashboard'])->middleware('Admin')->name('dashboard');
 Route::middleware(['CustomAuth'])->group(function () {   //audit log middleware
