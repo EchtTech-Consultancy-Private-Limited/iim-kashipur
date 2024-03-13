@@ -2005,7 +2005,7 @@ class AdminController extends Controller
 //        return redirect()->back()->with('success', 'Record Updated Successfully');
 //    }
 
-    public function changeIndividualPageStatus($id, $status)
+    public function changeIndividualPageStatus(Request $request,$id)
     {
         // Decrypt the ID
         $id = dDecrypt($id);
@@ -2014,7 +2014,7 @@ class AdminController extends Controller
         $page = App\Models\IndividualContentPage::find($id);
 
         // Set the status
-        $page->status = $status;
+        $page->status = $request->status;
 
         // Save the updated status
         $page->save();

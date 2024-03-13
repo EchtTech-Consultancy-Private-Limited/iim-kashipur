@@ -77,7 +77,7 @@ Route::get('individual-pages/create', [AdminController::class,'individualPageCre
 Route::post('individual-pages/store', [AdminController::class,'individualPageStore'])->name('store.individual-pages');
 Route::get('individual-pages/{id}/edit', [AdminController::class,'individualPageSEdit'])->name('edit.individual-pages');
 Route::post('individual-pages/{id}/update', [AdminController::class,'individualPageUpdate'])->name('update.individual-pages');
-Route::get('individual-pages/{id}/{status}change-status',[AdminController::class,"changeIndividualPageStatus"])->name('individual-page.status');
+Route::post('individual-pages/change-status/{id}',[AdminController::class,"changeIndividualPageStatus"])->name('individual-page.status');
 Route::get('individual-pages/{id}/delete',[AdminController::class,"changeIndividualPageDelete"])->name('individual-page.delete');
 
 //Route::get('dashboard',[AdminController::class,'Dashboard'])->middleware('Admin')->name('dashboard');

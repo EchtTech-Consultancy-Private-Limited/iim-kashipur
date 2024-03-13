@@ -85,13 +85,26 @@
                                                     <td>
 {{--                                                        {{$page->status}}--}}
                                                         @if($page->status === 0)
-                                                            <a style="cursor: pointer;" href="{{ route('admin.individual-page.status', ['id' => dEncrypt($page->id), 'status' => 1]) }}">
-                                                                <span class="badge badge-danger">Inactive</span>
-                                                            </a>
+                                                            <form action="{{ route('admin.individual-page.status',dEncrypt($page->id)) }}" method="post">
+                                                                @csrf
+                                                                <input type="hidden" value="1" name="status">
+                                                                <input type="hidden" value="{{$page->status}}">
+                                                                <button style="cursor: pointer; border: none; background: transparent;" type="submit">
+                                                                    <span class="badge badge-danger">Inactive</span>
+                                                                </button>
+                                                            </form>
+
                                                         @else
-                                                            <a style="cursor: pointer;" href="{{ route('admin.individual-page.status', ['id' => dEncrypt($page->id), 'status' => 0]) }}">
-                                                                <span class="badge badge-success">Active</span>
-                                                            </a>
+                                                            <form action="{{ route('admin.individual-page.status',dEncrypt($page->id)) }}" method="post">
+                                                                @csrf
+                                                                <input type="hidden" value="0" name="status">
+                                                                <input type="hidden" value="{{$page->status}}">
+                                                                <button style="cursor: pointer;  border: none; background: transparent;" href="{{ route('admin.individual-page.status',dEncrypt($page->id)) }}">
+
+                                                                    <span class="badge badge-success">Active</span>
+                                                                </button>
+                                                            </form>
+
                                                         @endif
 
                                                     </td>
