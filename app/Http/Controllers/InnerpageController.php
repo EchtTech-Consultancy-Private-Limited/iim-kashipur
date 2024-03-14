@@ -2746,7 +2746,7 @@ class InnerpageController extends Controller
             return abort(401);
         }
 
-        if ($pageDetails->status === 0){
+        if ($pageDetails->status == 0){
             return abort(401);
         }
 
