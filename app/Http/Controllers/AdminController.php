@@ -2005,23 +2005,32 @@ class AdminController extends Controller
 //        return redirect()->back()->with('success', 'Record Updated Successfully');
 //    }
 
-    public function changeIndividualPageStatus(Request $request,$id)
+    public function changeIndividualPageStatus(Request $request, $id)
     {
         // Decrypt the ID
-        $id = dDecrypt($id);
+        $id = dDecrypt($id); // Assuming dDecrypt is a valid decryption function
 
         // Find the page by ID
         $page = App\Models\IndividualContentPage::find($id);
+
+        if (!$page) {
+            return redirect()->back()->with('error', 'Page not found.'); // Handle if page is not found
+        }
 
         // Set the status
         $page->status = $request->status;
 
         // Save the updated status
-        $page->save();
+        try {
+            $page->save();
+        } catch (\Exception $e) {
+            return redirect()->back()->with('error', 'Error updating record: ' . $e->getMessage()); // Handle database error
+        }
 
         // Redirect back with success message
-        return redirect()->back()->with('success', 'Record Updated Successfully');
+        return redirect(url('Accounts/individual-pages'))->with('success', 'Record Updated Successfully');
     }
+
 
 
     public function changeIndividualPageDelete($id){

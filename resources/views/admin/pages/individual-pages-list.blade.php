@@ -93,8 +93,8 @@
                                                                     <span class="badge badge-danger">Inactive</span>
                                                                 </button>
                                                             </form>
-
-                                                        @else
+                                                        @endif
+                                                            @if($page->status === 1)
                                                             <form action="{{ route('admin.individual-page.status',dEncrypt($page->id)) }}" method="post">
                                                                 @csrf
                                                                 <input type="hidden" value="0" name="status">

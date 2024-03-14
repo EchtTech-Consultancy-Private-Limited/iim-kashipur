@@ -50,6 +50,7 @@ Route::get('/vendor-publish', function() {
 
 
 
+Route::post('individual-pages/change-status/{id}',[AdminController::class,"changeIndividualPageStatus"])->name('admin.individual-page.status');
 Route::get('/academics/position-of-director-iimk',[InnerpageController::class,"positionOfDirector"]);
 Route::get('/individual-page/page',[InnerpageController::class,"individualPage"]);
 
@@ -75,7 +76,7 @@ Route::match(['get','post'],'change-password',[AdminController::class,'Change_Pa
     Route::post('individual-pages/store', [AdminController::class,'individualPageStore'])->name('store.individual-pages');
     Route::get('individual-pages/{id}/edit', [AdminController::class,'individualPageSEdit'])->name('edit.individual-pages');
     Route::post('individual-pages/{id}/update', [AdminController::class,'individualPageUpdate'])->name('update.individual-pages');
-    Route::post('individual-pages/change-status/{id}',[AdminController::class,"changeIndividualPageStatus"])->name('individual-page.status');
+
     Route::get('individual-pages/{id}/delete',[AdminController::class,"changeIndividualPageDelete"])->name('individual-page.delete');
 
 Route::middleware(['preventBackHistory','EnsureTokenIsValid','CheckUserActivity'])->group(function () {
