@@ -84,7 +84,7 @@
                                                     <td>{{$page->name_h}}</td>
                                                     <td>
 {{--                                                        {{$page->status}}--}}
-                                                        @if($page->status === 0)
+                                                        @if($page->status == 0)
                                                             <form action="{{ route('admin.individual-page.status',dEncrypt($page->id)) }}" method="post">
                                                                 @csrf
                                                                 <input type="hidden" value="1" name="status">
@@ -94,7 +94,7 @@
                                                                 </button>
                                                             </form>
                                                         @endif
-                                                            @if($page->status === 1)
+                                                            @if($page->status == 1)
                                                             <form action="{{ route('admin.individual-page.status',dEncrypt($page->id)) }}" method="post">
                                                                 @csrf
                                                                 <input type="hidden" value="0" name="status">
