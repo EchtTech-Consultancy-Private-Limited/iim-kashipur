@@ -2037,21 +2037,21 @@ class InnerpageController extends Controller
 
                         if ($slug == 'communications') {
 
-                            $membersList = OrganisationStructure::where('faculty_id', 2)->get();
+                            $membersList = OrganisationStructure::where('faculty_id', 2)->orderBy('title','asc')->get();
                         } elseif ($slug == 'economics') {
-                            $membersList = OrganisationStructure::where('faculty_id', 3)->get();
+                            $membersList = OrganisationStructure::where('faculty_id', 3)->orderBy('title','asc')->get();
                         } elseif ($slug == 'finance-and-accounting') {
-                            $membersList = OrganisationStructure::where('faculty_id', 4)->get();
+                            $membersList = OrganisationStructure::where('faculty_id', 4)->orderBy('title','asc')->get();
                         } elseif ($slug == 'information-technology-systems') {
-                            $membersList = OrganisationStructure::where('faculty_id', 6)->get();
+                            $membersList = OrganisationStructure::where('faculty_id', 6)->orderBy('title','asc')->get();
                         } elseif ($slug == 'marketing') {
-                            $membersList = OrganisationStructure::where('faculty_id', 7)->get();
+                            $membersList = OrganisationStructure::where('faculty_id', 7)->orderBy('title','asc')->get();
                         } elseif ($slug == 'operations-management-decision-sciences') {
-                            $membersList = OrganisationStructure::where('faculty_id', 8)->get();
+                            $membersList = OrganisationStructure::where('faculty_id', 8)->orderBy('title','asc')->get();
                         } elseif ($slug == 'organizational-behaviour-human-resource-management') {
-                            $membersList = OrganisationStructure::where('faculty_id', 12)->get();
+                            $membersList = OrganisationStructure::where('faculty_id', 12)->orderBy('title','asc')->get();
                         } elseif ($slug == 'strategy') {
-                            $membersList = OrganisationStructure::where('faculty_id', 13)->get();
+                            $membersList = OrganisationStructure::where('faculty_id', 13)->orderBy('title','asc')->get();
                         } else {
 
                             if (Count($item) > 0) {
