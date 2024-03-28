@@ -5870,8 +5870,8 @@ span.percentage {
 }
 
 .social-icon a img {
-    width: 36px;
-    height: 36px;
+    width: 36px !important;
+    height: 36px ;
     margin-top: -6px;
 }
 
@@ -5914,7 +5914,7 @@ img.hover-shadow.cursor {
 .social-icon i,
 .social-icon img {
     margin-top: 10px !important;
-    margin-bottom: 15px !important;
+    margin-bottom: 10px !important;
 }
 
 .social-icon ul li {
