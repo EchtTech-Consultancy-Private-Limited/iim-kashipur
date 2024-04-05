@@ -1555,12 +1555,15 @@ class InnerpageController extends Controller
                                 return abort(401);
                             }
                         } elseif (isset($type[0]) && $type[0]->tpl_id == 3) {
+                           
+                            // filtered faculty directory
                             $departments = Department::get();
 
                             if ($request->dp && $request->nd ==  NUll) {
 
                                 $item = OrganisationStructure::where('department', 6)
                                     ->where('faculty_id', $request->dp)->where('status', '1')
+                                    ->orderBy('title','asc')
                                     ->paginate(9);
 
                                 $item->appends(['dp' => $request->dp]);
@@ -1573,6 +1576,7 @@ class InnerpageController extends Controller
                                     // ->orwhere('email',"like","%$request->nd%")
                                     ->paginate(9);
                                 $item->appends(['nd' => $request->nd]);
+                                
                                 return view('front.Layouts.child_pages.menu_bar.main_menu.faculty', ['item' => $item, 'type' => $type, 'sub_menu' => $sub_menu, 'departments' => $departments]);
                             } elseif ($request->dp && $request->nd) {
                                 $item = OrganisationStructure::where('department', 6)
@@ -1623,6 +1627,7 @@ class InnerpageController extends Controller
                                 return abort(401);
                             }
                         } else {
+                            
                             $data = SubMenu::whereslug($slug)->get();
                             if (Count($data) > 0) {
 
