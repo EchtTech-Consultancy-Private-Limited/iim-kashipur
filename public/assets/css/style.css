@@ -3429,14 +3429,14 @@ p {
 }
 
 .social-icon i {
-    height: 35px;
-    width: 35px;
+    height: 30px;
+    width: 30px;
     background: #4c6cb3;
     border-radius: 100px;
     color: #fff;
     text-align: center;
-    line-height: 35px;
-    font-size: 20px;
+    line-height: 30px;
+    font-size: 18px;
 }
 
 .social-icon i.fa-instagram {
@@ -5870,8 +5870,8 @@ span.percentage {
 }
 
 .social-icon a img {
-    width: 36px !important;
-    height: 36px ;
+    width: 30px !important;
+    height: 30px ;
     margin-top: -6px;
     border-radius: 100%;
 }
