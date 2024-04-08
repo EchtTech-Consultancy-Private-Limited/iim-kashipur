@@ -532,7 +532,7 @@ class InnerpageController extends Controller
     }
     public function sub_childInnerpage($main_slug, $slug, $subchild, $superchild)  //content page superchild menu
     {
-            //dd($slug);
+        //dd($slug);
         try {
             $subchildmenu = subchildmenu::whereslug($superchild)->get();
 
@@ -595,7 +595,7 @@ class InnerpageController extends Controller
                 }
             } elseif (OrganisationStructure::whereslug($superchild)->get()->count()) {
                 $item = OrganisationStructure::whereslug($superchild)->get();
-               // dd($item);
+                // dd($item);
 
 
                 if (count($item) > 0) {
@@ -1522,9 +1522,9 @@ class InnerpageController extends Controller
                             if (Count($data) > 0) {
                                 $item = OrganisationStructure::get();
                                 $chairperson = OrganisationStructure::where('status', '1')->where('department', '11')->first();
-                                $Administrative = OrganisationStructure::where('status', '1')->where('department', '12')->orderBy('short_order', 'Asc')->get();
-                                $Coordinator = OrganisationStructure::where('status', '1')->where('department', '13')->orderBy('short_order', 'Asc')->get();
-                                $junior_Coordinator = OrganisationStructure::where('status', '1')->where('department', '20')->orderBy('short_order', 'Asc')->get();
+                                $Administrative = OrganisationStructure::where('status', '1')->where('department', '12')->orderBy('title', 'asc')->get();
+                                $Coordinator = OrganisationStructure::where('status', '1')->where('department', '13')->orderBy('title', 'asc')->get();
+                                $junior_Coordinator = OrganisationStructure::where('status', '1')->where('department', '20')->orderBy('title', 'asc')->get();
                                 if (count($item) > 0) {
                                     $type = SubMenu::whereslug($slug)->get();
                                     return view('front.Layouts.child_pages.menu_bar.main_menu.placement_team', ['junior_Coordinator' => $junior_Coordinator, 'chairperson' => $chairperson, 'Administrative' => $Administrative, 'Coordinator' => $Coordinator, 'item' => $item, 'type' => $type, 'sub_menu' => $sub_menu]);
@@ -1541,8 +1541,8 @@ class InnerpageController extends Controller
                             if (Count($data) > 0) {
 
                                 $item = OrganisationStructure::where('department', '8')->orwhere('department', '9')->get();
-                                $chairperson = OrganisationStructure::where('status', '1')->where('department', '8')->orderBy('short_order', 'Asc')->first();
-                                $MEMBERS = OrganisationStructure::where('status', '1')->where('department', '9')->orderBy('short_order', 'Asc')->get();
+                                $chairperson = OrganisationStructure::where('status', '1')->where('department', '8')->rderBy('title', 'asc')->first();
+                                $MEMBERS = OrganisationStructure::where('status', '1')->where('department', '9')->orderBy('title', 'asc')->get();
                                 if (count($item) > 0) {
 
                                     $type = SubMenu::whereslug($slug)->get();
@@ -1555,7 +1555,7 @@ class InnerpageController extends Controller
                                 return abort(401);
                             }
                         } elseif (isset($type[0]) && $type[0]->tpl_id == 3) {
-                           
+
                             // filtered faculty directory
                             $departments = Department::get();
 
@@ -1563,7 +1563,7 @@ class InnerpageController extends Controller
 
                                 $item = OrganisationStructure::where('department', 6)
                                     ->where('faculty_id', $request->dp)->where('status', '1')
-                                    ->orderBy('title','asc')
+                                    ->orderBy('title', 'asc')
                                     ->paginate(9);
 
                                 $item->appends(['dp' => $request->dp]);
@@ -1572,23 +1572,25 @@ class InnerpageController extends Controller
                                 $item = OrganisationStructure::where('department', 6)
                                     ->where('status', '1')
                                     ->where('title', "like", "%$request->nd%")
+                                    ->orderBy('title', 'asc')
                                     // ->orwhere('designation',"like","%$request->nd%")
                                     // ->orwhere('email',"like","%$request->nd%")
                                     ->paginate(9);
                                 $item->appends(['nd' => $request->nd]);
-                                
+
                                 return view('front.Layouts.child_pages.menu_bar.main_menu.faculty', ['item' => $item, 'type' => $type, 'sub_menu' => $sub_menu, 'departments' => $departments]);
                             } elseif ($request->dp && $request->nd) {
                                 $item = OrganisationStructure::where('department', 6)
                                     ->where('status', '1')
                                     ->wherefaculty_id($request->dp)
                                     ->where('title', "like", "%$request->nd%")
+                                    ->orderBy('title', 'asc')
                                     ->paginate(9);
                                 $item->appends(['dp' => $request->dp]);
                                 $item->appends(['nd' => $request->nd]);
                                 return view('front.Layouts.child_pages.menu_bar.main_menu.faculty', ['item' => $item, 'type' => $type, 'sub_menu' => $sub_menu, 'departments' => $departments]);
                             } else {
-                                $item = OrganisationStructure::where('department', 6)->where('status', '1')->orderBy('short_order', 'Asc')->paginate(9);
+                                $item = OrganisationStructure::where('department', 6)->where('status', '1')->orderBy('title', 'asc')->paginate(9);
 
                                 return view('front.Layouts.child_pages.menu_bar.main_menu.faculty', ['item' => $item, 'type' => $type, 'sub_menu' => $sub_menu, 'departments' => $departments]);
                             }
@@ -1600,7 +1602,7 @@ class InnerpageController extends Controller
                                 return abort(401);
                             }
                         } elseif (isset($type[0]) && $type[0]->tpl_id == 4) {
-                            $item = OrganisationStructure::where('department', 7)->where('status', '1')->orderBy('short_order', 'Asc')->paginate(9);
+                            $item = OrganisationStructure::where('department', 7)->where('status', '1')->orderBy('title', 'asc')->paginate(9);
 
                             if (count($item) > 0) {
 
@@ -1627,11 +1629,11 @@ class InnerpageController extends Controller
                                 return abort(401);
                             }
                         } else {
-                            
+
                             $data = SubMenu::whereslug($slug)->get();
                             if (Count($data) > 0) {
 
-                                $item = OrganisationStructure::whereid($data[0]->link_option)->get();
+                                $item = OrganisationStructure::whereid($data[0]->link_option)->orderBy('title', 'asc')->get();
 
                                 if (count($item) > 0) {
 
@@ -2000,107 +2002,207 @@ class InnerpageController extends Controller
     {
         //dd($slug);
         // try {
-            $data = child_menu::whereslug($slug)->get();
+        $data = child_menu::whereslug($slug)->get();
 
-            if (Count($data) > 0) {
+        if (Count($data) > 0) {
 
 
-                if ($data[0]->url == "/placement") {
+            if ($data[0]->url == "/placement") {
 
-                    $item = placement::where('status', '1')->orderBy('id', 'desc')->get();
+                $item = placement::where('status', '1')->orderBy('id', 'desc')->get();
 
-                    if (Count($item) > 0) {
-                        $type_sub = child_menu::whereslug($slug)->get();
-                        $gets = SubMenu::whereid($type_sub[0]->sub_id)->get();
-                        $get = MainMenu::whereid($type_sub[0]->menu_id)->get();
-                        $type_child = child_menu::whereslug($slug)->get();
-                        return view('front.Layouts.child_pages.menu_bar.main_menu.placement', ['item' => $item, 'type_sub' => $type_sub, 'type_child' => $type_child, 'gets' => $gets, 'get' => $get]);
-                    } else {
-                        return abort(401);
-                    }
+                if (Count($item) > 0) {
+                    $type_sub = child_menu::whereslug($slug)->get();
+                    $gets = SubMenu::whereid($type_sub[0]->sub_id)->get();
+                    $get = MainMenu::whereid($type_sub[0]->menu_id)->get();
+                    $type_child = child_menu::whereslug($slug)->get();
+                    return view('front.Layouts.child_pages.menu_bar.main_menu.placement', ['item' => $item, 'type_sub' => $type_sub, 'type_child' => $type_child, 'gets' => $gets, 'get' => $get]);
+                } else {
+                    return abort(401);
                 }
+            }
 
-                if ($data[0]->url == "/student-profiles") {
+            if ($data[0]->url == "/student-profiles") {
 
-                    $item = StudentProfile::where('status', '1')->orderBy('sort', 'Asc')->get();
-                    if (Count($item) > 0) {
-                        $type_sub = child_menu::whereslug($slug)->get();
-                        $gets = SubMenu::whereid($type_sub[0]->sub_id)->get();
-                        $get = MainMenu::whereid($type_sub[0]->menu_id)->get();
-                        $type_child = child_menu::whereslug($slug)->get();
-                        return view('front.Layouts.child_pages.student-profile.student-profile-front', ['item' => $item, 'type_sub' => $type_sub, 'type_child' => $type_child, 'gets' => $gets, 'get' => $get]);
-                    } else {
-                        return abort(401);
-                    }
+                $item = StudentProfile::where('status', '1')->orderBy('sort', 'Asc')->get();
+                if (Count($item) > 0) {
+                    $type_sub = child_menu::whereslug($slug)->get();
+                    $gets = SubMenu::whereid($type_sub[0]->sub_id)->get();
+                    $get = MainMenu::whereid($type_sub[0]->menu_id)->get();
+                    $type_child = child_menu::whereslug($slug)->get();
+                    return view('front.Layouts.child_pages.student-profile.student-profile-front', ['item' => $item, 'type_sub' => $type_sub, 'type_child' => $type_child, 'gets' => $gets, 'get' => $get]);
+                } else {
+                    return abort(401);
                 }
+            }
 
-                if ($data[0]->url == '/content-page') {
+            if ($data[0]->url == '/content-page') {
 
-                    $menu = child_menu::whereslug($slug)->first();
-                    if (isset($menu) !== null && (isset($menu->status) && $menu->status !== '0')) {
-                        $item = content_page::whereid($data[0]->link_option)->get();
+                $menu = child_menu::whereslug($slug)->first();
+                if (isset($menu) !== null && (isset($menu->status) && $menu->status !== '0')) {
+                    $item = content_page::whereid($data[0]->link_option)->get();
 
-                        if ($slug == 'communications') {
+                    if ($slug == 'communications') {
 
-                            $membersList = OrganisationStructure::where('faculty_id', 2)->orderBy('title','asc')->get();
-                        } elseif ($slug == 'economics') {
-                            $membersList = OrganisationStructure::where('faculty_id', 3)->orderBy('title','asc')->get();
-                        } elseif ($slug == 'finance-and-accounting') {
-                            $membersList = OrganisationStructure::where('faculty_id', 4)->orderBy('title','asc')->get();
-                        } elseif ($slug == 'information-technology-systems') {
-                            $membersList = OrganisationStructure::where('faculty_id', 6)->orderBy('title','asc')->get();
-                        } elseif ($slug == 'marketing') {
-                            $membersList = OrganisationStructure::where('faculty_id', 7)->orderBy('title','asc')->get();
-                        } elseif ($slug == 'operations-management-decision-sciences') {
-                            $membersList = OrganisationStructure::where('faculty_id', 8)->orderBy('title','asc')->get();
-                        } elseif ($slug == 'organizational-behaviour-human-resource-management') {
-                            $membersList = OrganisationStructure::where('faculty_id', 12)->orderBy('title','asc')->get();
-                        } elseif ($slug == 'strategy') {
-                            $membersList = OrganisationStructure::where('faculty_id', 13)->orderBy('title','asc')->get();
-                        } else {
-
-                            if (Count($item) > 0) {
-                                $type_sub = child_menu::whereslug($slug)->get();
-                                $gets = SubMenu::whereid($type_sub[0]->sub_id)->get();
-                                $get = MainMenu::whereid($type_sub[0]->menu_id)->get();
-                                $type_child = child_menu::whereslug($slug)->get();
-                                return view('front.Layouts.child_pages.menu_bar.main_menu.main_menu', ['item' => $item, 'type_sub' => $type_sub, 'type_child' => $type_child, 'gets' => $gets, 'get' => $get]);
-                            }
-                        }
+                        $membersList = OrganisationStructure::where('faculty_id', 2)->orderBy('title', 'asc')->get();
+                    } elseif ($slug == 'economics') {
+                        $membersList = OrganisationStructure::where('faculty_id', 3)->orderBy('title', 'asc')->get();
+                    } elseif ($slug == 'finance-and-accounting') {
+                        $membersList = OrganisationStructure::where('faculty_id', 4)->orderBy('title', 'asc')->get();
+                    } elseif ($slug == 'information-technology-systems') {
+                        $membersList = OrganisationStructure::where('faculty_id', 6)->orderBy('title', 'asc')->get();
+                    } elseif ($slug == 'marketing') {
+                        $membersList = OrganisationStructure::where('faculty_id', 7)->orderBy('title', 'asc')->get();
+                    } elseif ($slug == 'operations-management-decision-sciences') {
+                        $membersList = OrganisationStructure::where('faculty_id', 8)->orderBy('title', 'asc')->get();
+                    } elseif ($slug == 'organizational-behaviour-human-resource-management') {
+                        $membersList = OrganisationStructure::where('faculty_id', 12)->orderBy('title', 'asc')->get();
+                    } elseif ($slug == 'strategy') {
+                        $membersList = OrganisationStructure::where('faculty_id', 13)->orderBy('title', 'asc')->get();
+                    } else {
 
                         if (Count($item) > 0) {
                             $type_sub = child_menu::whereslug($slug)->get();
                             $gets = SubMenu::whereid($type_sub[0]->sub_id)->get();
                             $get = MainMenu::whereid($type_sub[0]->menu_id)->get();
                             $type_child = child_menu::whereslug($slug)->get();
-                            return view('front.Layouts.child_pages.menu_bar.main_menu.main_menu', ['item' => $item, 'type_sub' => $type_sub, 'type_child' => $type_child, 'gets' => $gets, 'get' => $get, 'membersList' => $membersList]);
-                        } else {
-                            return abort(401);
+                            return view('front.Layouts.child_pages.menu_bar.main_menu.main_menu', ['item' => $item, 'type_sub' => $type_sub, 'type_child' => $type_child, 'gets' => $gets, 'get' => $get]);
                         }
+                    }
+
+                    if (Count($item) > 0) {
+                        $type_sub = child_menu::whereslug($slug)->get();
+                        $gets = SubMenu::whereid($type_sub[0]->sub_id)->get();
+                        $get = MainMenu::whereid($type_sub[0]->menu_id)->get();
+                        $type_child = child_menu::whereslug($slug)->get();
+                        return view('front.Layouts.child_pages.menu_bar.main_menu.main_menu', ['item' => $item, 'type_sub' => $type_sub, 'type_child' => $type_child, 'gets' => $gets, 'get' => $get, 'membersList' => $membersList]);
                     } else {
                         return abort(401);
                     }
-                } elseif ($data[0]->url == '/who-is-who') {
+                } else {
+                    return abort(401);
+                }
+            } elseif ($data[0]->url == '/who-is-who') {
 
-                    if (isset($data[0]) && $data[0]->tpl_id == 1) //default degian
-                    {
-                        //return "Board of directer";
-                        $item = OrganisationStructure::get();
-                        if (count($item) > 0) {
-                            $type_sub = child_menu::whereslug($slug)->get();
-                            $gets = SubMenu::whereid($type_sub[0]->sub_id)->get();
-                            $get = MainMenu::whereid($type_sub[0]->menu_id)->get();
-                            $type_child = child_menu::whereslug($slug)->get();
-                            return view('front.Layouts.child_pages.menu_bar.main_menu.department_info', ['item' => $item, 'type_sub' => $type_sub, 'type_child' => $type_child, 'gets' => $gets, 'get' => $get]);
-                        } else {
-                            return abort(401);
-                        }
-                    } elseif (isset($data[0]) && $data[0]->tpl_id == 2)     //directer profile
-                    {
-                        //return 'member';
+                if (isset($data[0]) && $data[0]->tpl_id == 1) //default degian
+                {
+                    //return "Board of directer";
+                    $item = OrganisationStructure::get();
+                    if (count($item) > 0) {
+                        $type_sub = child_menu::whereslug($slug)->get();
+                        $gets = SubMenu::whereid($type_sub[0]->sub_id)->get();
+                        $get = MainMenu::whereid($type_sub[0]->menu_id)->get();
+                        $type_child = child_menu::whereslug($slug)->get();
+                        return view('front.Layouts.child_pages.menu_bar.main_menu.department_info', ['item' => $item, 'type_sub' => $type_sub, 'type_child' => $type_child, 'gets' => $gets, 'get' => $get]);
+                    } else {
+                        return abort(401);
+                    }
+                } elseif (isset($data[0]) && $data[0]->tpl_id == 2)     //directer profile
+                {
+                    //return 'member';
 
+                    $item = OrganisationStructure::whereid($data[0]->link_option)->get();
+                    // dd($item);
+                    if (count($item) > 0) {
+
+                        $type_sub = child_menu::whereslug($slug)->get();
+                        $gets = SubMenu::whereid($type_sub[0]->sub_id)->get();
+                        $get = MainMenu::whereid($type_sub[0]->menu_id)->get();
+                        $type_child = child_menu::whereslug($slug)->get();
+
+                        return view('front.Layouts.child_pages.menu_bar.main_menu.member', ['item' => $item, 'type_sub' => $type_sub, 'type_child' => $type_child, 'gets' => $gets, 'get' => $get]);
+                    } else {
+                        return abort(401);
+                    }
+                } elseif (isset($data[0]) && $data[0]->tpl_id == 5)     //the team
+                {
+                    // return 'member';
+
+                    $item = OrganisationStructure::get();
+
+                    if (count($item) > 0) {
+
+                        $type_sub = child_menu::whereslug($slug)->get();
+                        $gets = SubMenu::whereid($type_sub[0]->sub_id)->get();
+                        $get = MainMenu::whereid($type_sub[0]->menu_id)->get();
+                        $type_child = child_menu::whereslug($slug)->get();
+
+                        return view('front.Layouts.child_pages.menu_bar.main_menu.internation_team', ['item' => $item, 'type_sub' => $type_sub, 'type_child' => $type_child, 'gets' => $gets, 'get' => $get]);
+                    } else {
+                        return abort(401);
+                    }
+                } elseif (isset($data[0]) && $data[0]->tpl_id == 12) {     // Alumni Tema arc
+
+
+                    $item = OrganisationStructure::where('department', 15)->get();
+                    if (count($item) > 0) {
+                        $type_sub = child_menu::whereslug($slug)->get();
+                        $gets = SubMenu::whereid($type_sub[0]->sub_id)->get();
+                        $get = MainMenu::whereid($type_sub[0]->menu_id)->get();
+                        $type_child = child_menu::whereslug($slug)->get();
+
+                        return view('front.Layouts.child_pages.menu_bar.main_menu.alumni-team-rc', ['item' => $item, 'type_sub' => $type_sub, 'type_child' => $type_child, 'gets' => $gets, 'get' => $get]);
+                    } else {
+                        return abort(401);
+                    }
+                } elseif (isset($data[0]) && $data[0]->tpl_id == 3) {     // factulty directry
+
+                    $item = OrganisationStructure::where('department', 6)->paginate(9);
+
+                    if (count($item) > 0) {
+
+                        $type_sub = child_menu::whereslug($slug)->get();
+                        $gets = SubMenu::whereid($type_sub[0]->sub_id)->get();
+                        $get = MainMenu::whereid($type_sub[0]->menu_id)->get();
+                        $type_child = child_menu::whereslug($slug)->get();
+
+                        return view('front.Layouts.child_pages.menu_bar.main_menu.faculty', ['item' => $item, 'type_sub' => $type_sub, 'type_child' => $type_child, 'gets' => $gets, 'get' => $get]);
+                    } else {
+                        return abort(401);
+                    }
+                } elseif (isset($data[0]) && $data[0]->tpl_id == 7) {     //mba testionials
+
+                    $item = OrganisationStructure::where('department', 10)->paginate(9);
+                    if (count($item) > 0) {
+
+                        $type_sub = child_menu::whereslug($slug)->get();
+                        $gets = SubMenu::whereid($type_sub[0]->sub_id)->get();
+                        $get = MainMenu::whereid($type_sub[0]->menu_id)->get();
+                        $type_child = child_menu::whereslug($slug)->get();
+
+                        return view('front.Layouts.child_pages.menu_bar.main_menu.testionials', ['item' => $item, 'type_sub' => $type_sub, 'type_child' => $type_child, 'gets' => $gets, 'get' => $get]);
+                    } else {
+                        return abort(401);
+                    }
+                } elseif (isset($data[0]) && $data[0]->tpl_id == 13) {     //mba analytics testionials
+
+
+                    $item = OrganisationStructure::where('department', 16)->paginate(9);
+
+                    if (count($item) > 0) {
+
+                        $type_sub = child_menu::whereslug($slug)->get();
+                        $gets = SubMenu::whereid($type_sub[0]->sub_id)->get();
+                        $get = MainMenu::whereid($type_sub[0]->menu_id)->get();
+                        $type_child = child_menu::whereslug($slug)->get();
+
+                        return view('front.Layouts.child_pages.menu_bar.main_menu.mba-analytics-testionials', ['item' => $item, 'type_sub' => $type_sub, 'type_child' => $type_child, 'gets' => $gets, 'get' => $get]);
+                    } else {
+                        return abort(401);
+                    }
+                } elseif (isset($data[0]) && $data[0]->tpl_id == 4) {    //visiting faculty
+                    $item = OrganisationStructure::where('department', 7)->paginate(9);
+                    if (count($item) > 0) {
+
+                        $type_sub = child_menu::whereslug($slug)->get();
+                        $gets = SubMenu::whereid($type_sub[0]->sub_id)->get();
+                        $get = MainMenu::whereid($type_sub[0]->menu_id)->get();
+                        $type_child = child_menu::whereslug($slug)->get();
+
+                        return view('front.Layouts.child_pages.menu_bar.main_menu.visiting_faculity', ['item' => $item, 'type_sub' => $type_sub, 'type_child' => $type_child, 'gets' => $gets, 'get' => $get]);
+                    } else {
                         $item = OrganisationStructure::whereid($data[0]->link_option)->get();
-                        // dd($item);
+                        //dd($item);
                         if (count($item) > 0) {
 
                             $type_sub = child_menu::whereslug($slug)->get();
@@ -2112,172 +2214,71 @@ class InnerpageController extends Controller
                         } else {
                             return abort(401);
                         }
-                    } elseif (isset($data[0]) && $data[0]->tpl_id == 5)     //the team
-                    {
-                        // return 'member';
-
-                        $item = OrganisationStructure::get();
-
-                        if (count($item) > 0) {
-
-                            $type_sub = child_menu::whereslug($slug)->get();
-                            $gets = SubMenu::whereid($type_sub[0]->sub_id)->get();
-                            $get = MainMenu::whereid($type_sub[0]->menu_id)->get();
-                            $type_child = child_menu::whereslug($slug)->get();
-
-                            return view('front.Layouts.child_pages.menu_bar.main_menu.internation_team', ['item' => $item, 'type_sub' => $type_sub, 'type_child' => $type_child, 'gets' => $gets, 'get' => $get]);
-                        } else {
-                            return abort(401);
-                        }
-                    } elseif (isset($data[0]) && $data[0]->tpl_id == 12) {     // Alumni Tema arc
-
-
-                        $item = OrganisationStructure::where('department', 15)->get();
-                        if (count($item) > 0) {
-                            $type_sub = child_menu::whereslug($slug)->get();
-                            $gets = SubMenu::whereid($type_sub[0]->sub_id)->get();
-                            $get = MainMenu::whereid($type_sub[0]->menu_id)->get();
-                            $type_child = child_menu::whereslug($slug)->get();
-
-                            return view('front.Layouts.child_pages.menu_bar.main_menu.alumni-team-rc', ['item' => $item, 'type_sub' => $type_sub, 'type_child' => $type_child, 'gets' => $gets, 'get' => $get]);
-                        } else {
-                            return abort(401);
-                        }
-                    } elseif (isset($data[0]) && $data[0]->tpl_id == 3) {     // factulty directry
-
-                        $item = OrganisationStructure::where('department', 6)->paginate(9);
-
-                        if (count($item) > 0) {
-
-                            $type_sub = child_menu::whereslug($slug)->get();
-                            $gets = SubMenu::whereid($type_sub[0]->sub_id)->get();
-                            $get = MainMenu::whereid($type_sub[0]->menu_id)->get();
-                            $type_child = child_menu::whereslug($slug)->get();
-
-                            return view('front.Layouts.child_pages.menu_bar.main_menu.faculty', ['item' => $item, 'type_sub' => $type_sub, 'type_child' => $type_child, 'gets' => $gets, 'get' => $get]);
-                        } else {
-                            return abort(401);
-                        }
-                    } elseif (isset($data[0]) && $data[0]->tpl_id == 7) {     //mba testionials
-
-                        $item = OrganisationStructure::where('department', 10)->paginate(9);
-                        if (count($item) > 0) {
-
-                            $type_sub = child_menu::whereslug($slug)->get();
-                            $gets = SubMenu::whereid($type_sub[0]->sub_id)->get();
-                            $get = MainMenu::whereid($type_sub[0]->menu_id)->get();
-                            $type_child = child_menu::whereslug($slug)->get();
-
-                            return view('front.Layouts.child_pages.menu_bar.main_menu.testionials', ['item' => $item, 'type_sub' => $type_sub, 'type_child' => $type_child, 'gets' => $gets, 'get' => $get]);
-                        } else {
-                            return abort(401);
-                        }
-                    } elseif (isset($data[0]) && $data[0]->tpl_id == 13) {     //mba analytics testionials
-
-
-                        $item = OrganisationStructure::where('department', 16)->paginate(9);
-
-                        if (count($item) > 0) {
-
-                            $type_sub = child_menu::whereslug($slug)->get();
-                            $gets = SubMenu::whereid($type_sub[0]->sub_id)->get();
-                            $get = MainMenu::whereid($type_sub[0]->menu_id)->get();
-                            $type_child = child_menu::whereslug($slug)->get();
-
-                            return view('front.Layouts.child_pages.menu_bar.main_menu.mba-analytics-testionials', ['item' => $item, 'type_sub' => $type_sub, 'type_child' => $type_child, 'gets' => $gets, 'get' => $get]);
-                        } else {
-                            return abort(401);
-                        }
-                    } elseif (isset($data[0]) && $data[0]->tpl_id == 4) {    //visiting faculty
-                        $item = OrganisationStructure::where('department', 7)->paginate(9);
-                        if (count($item) > 0) {
-
-                            $type_sub = child_menu::whereslug($slug)->get();
-                            $gets = SubMenu::whereid($type_sub[0]->sub_id)->get();
-                            $get = MainMenu::whereid($type_sub[0]->menu_id)->get();
-                            $type_child = child_menu::whereslug($slug)->get();
-
-                            return view('front.Layouts.child_pages.menu_bar.main_menu.visiting_faculity', ['item' => $item, 'type_sub' => $type_sub, 'type_child' => $type_child, 'gets' => $gets, 'get' => $get]);
-                        } else {
-                            $item = OrganisationStructure::whereid($data[0]->link_option)->get();
-                            //dd($item);
-                            if (count($item) > 0) {
-
-                                $type_sub = child_menu::whereslug($slug)->get();
-                                $gets = SubMenu::whereid($type_sub[0]->sub_id)->get();
-                                $get = MainMenu::whereid($type_sub[0]->menu_id)->get();
-                                $type_child = child_menu::whereslug($slug)->get();
-
-                                return view('front.Layouts.child_pages.menu_bar.main_menu.member', ['item' => $item, 'type_sub' => $type_sub, 'type_child' => $type_child, 'gets' => $gets, 'get' => $get]);
-                            } else {
-                                return abort(401);
-                            }
-                        }
-                    } else {
-                        return abort(401);
                     }
+                } else {
+                    return abort(401);
+                }
+            } elseif ($data[0]->url == '/photo-gallery') {
 
-                 } elseif ($data[0]->url == '/photo-gallery') {
+                //dd($data[0]->url);
 
-                    //dd($data[0]->url);
+                $item = photo_gallery::whereid($data[0]->link_option)->get();
+                if (Count($item) > 0) {
+                    $value = photo_gallery_image::wheregallery_id($item[0]->id)->get();
+                    // dd($value);
+                    $type_sub = child_menu::whereslug($slug)->get();
+                    $gets = SubMenu::whereid($type_sub[0]->sub_id)->get();
+                    $get = MainMenu::whereid($type_sub[0]->menu_id)->get();
+                    $type_child = child_menu::whereslug($slug)->get();
+                    return view('front.Layouts.child_pages.menu_bar.main_menu.master', ['value' => $value, 'item' => $item, 'type_sub' => $type_sub, 'type_child' => $type_child, 'gets' => $gets, 'get' => $get]);
+                }
+            } elseif ($data[0]->url == '/dissertation') {
 
-                    $item = photo_gallery::whereid($data[0]->link_option)->get();
-                    if (Count($item) > 0) {
-                        $value = photo_gallery_image::wheregallery_id($item[0]->id)->get();
-                        // dd($value);
-                        $type_sub = child_menu::whereslug($slug)->get();
-                        $gets = SubMenu::whereid($type_sub[0]->sub_id)->get();
-                        $get = MainMenu::whereid($type_sub[0]->menu_id)->get();
-                        $type_child = child_menu::whereslug($slug)->get();
-                        return view('front.Layouts.child_pages.menu_bar.main_menu.master', ['value' => $value, 'item' => $item, 'type_sub' => $type_sub, 'type_child' => $type_child, 'gets' => $gets, 'get' => $get]);
-                    }
-                } elseif ($data[0]->url == '/dissertation') {
+                $item = dissertation::where('status', 1)->get();
+                if (Count($item) > 0) {
+                    $type_sub = child_menu::whereslug($slug)->get();
+                    $gets = SubMenu::whereid($type_sub[0]->sub_id)->get();
+                    $get = MainMenu::whereid($type_sub[0]->menu_id)->get();
+                    $type_child = child_menu::whereslug($slug)->get();
+                    $item = dissertation::where('status', 1)->paginate(10);
+                    return view('front.Layouts.child_pages.menu_bar.main_menu.dissertation', ['item' => $item, 'type_sub' => $type_sub, 'type_child' => $type_child, 'gets' => $gets, 'get' => $get]);
+                } else {
+                    return abort(401);
+                }
+            } elseif ($data[0]->url == '/video-gallery') {
+                $item = video_gallery::whereid($data[0]->link_option)->get();
+                //dd($item);
+                if (Count($item) > 0) {
+                    $values = video_gallery_tittle::wheregallery_id($item[0]->id)->get();
+                    //dd($values);
+                    $type_sub = child_menu::whereslug($slug)->get();
+                    $gets = SubMenu::whereid($type_sub[0]->sub_id)->get();
+                    $get = MainMenu::whereid($type_sub[0]->menu_id)->get();
+                    $type_child = child_menu::whereslug($slug)->get();
+                    return view('front.Layouts.child_pages.menu_bar.main_menu.master', ['values' => $values, 'item' => $item, 'type_sub' => $type_sub, 'type_child' => $type_child, 'gets' => $gets, 'get' => $get]);
+                }
+            } else {
+                return abort(401);
+            }
+        } else {
+            $item = OrganisationStructure::whereslug($slug)->get();
+            $profileStatus = OrganisationStructure::whereslug($slug)->first();
+            //dd($profileStatus->status);
+            if (isset($profileStatus) !== null && (isset($profileStatus->status) && $profileStatus->status !== 0)) {
+                if (count($item) > 0) {
+                    $data = multiple_profile::whereparent_id($item[0]->id)->orderBy('sort_id')->get();
 
-                    $item = dissertation::where('status', 1)->get();
-                    if (Count($item) > 0) {
-                        $type_sub = child_menu::whereslug($slug)->get();
-                        $gets = SubMenu::whereid($type_sub[0]->sub_id)->get();
-                        $get = MainMenu::whereid($type_sub[0]->menu_id)->get();
-                        $type_child = child_menu::whereslug($slug)->get();
-                        $item = dissertation::where('status', 1)->paginate(10);
-                        return view('front.Layouts.child_pages.menu_bar.main_menu.dissertation', ['item' => $item, 'type_sub' => $type_sub, 'type_child' => $type_child, 'gets' => $gets, 'get' => $get]);
-                    } else {
-                        return abort(401);
-                    }
-                } elseif ($data[0]->url == '/video-gallery') {
-                    $item = video_gallery::whereid($data[0]->link_option)->get();
-                    //dd($item);
-                    if (Count($item) > 0) {
-                        $values = video_gallery_tittle::wheregallery_id($item[0]->id)->get();
-                        //dd($values);
-                        $type_sub = child_menu::whereslug($slug)->get();
-                        $gets = SubMenu::whereid($type_sub[0]->sub_id)->get();
-                        $get = MainMenu::whereid($type_sub[0]->menu_id)->get();
-                        $type_child = child_menu::whereslug($slug)->get();
-                        return view('front.Layouts.child_pages.menu_bar.main_menu.master', ['values' => $values, 'item' => $item, 'type_sub' => $type_sub, 'type_child' => $type_child, 'gets' => $gets, 'get' => $get]);
-                    }
+                    $type_sub = $item;
+                    $gets = SubMenu::whereslug($Sub_slug)->get();
+                    $get = MainMenu::whereslug($main_slug)->get();
+                    return view('front.Layouts.profile', ['item' => $item, 'data' => $data, 'type_sub' => $type_sub, 'gets' => $gets, 'get' => $get]);
                 } else {
                     return abort(401);
                 }
             } else {
-                $item = OrganisationStructure::whereslug($slug)->get();
-                $profileStatus = OrganisationStructure::whereslug($slug)->first();
-                //dd($profileStatus->status);
-                if (isset($profileStatus) !== null && (isset($profileStatus->status) && $profileStatus->status !== 0)) {
-                    if (count($item) > 0) {
-                        $data = multiple_profile::whereparent_id($item[0]->id)->orderBy('sort_id')->get();
-
-                        $type_sub = $item;
-                        $gets = SubMenu::whereslug($Sub_slug)->get();
-                        $get = MainMenu::whereslug($main_slug)->get();
-                        return view('front.Layouts.profile', ['item' => $item, 'data' => $data, 'type_sub' => $type_sub, 'gets' => $gets, 'get' => $get]);
-                    } else {
-                        return abort(401);
-                    }
-                } else {
-                    return abort(401);
-                }
+                return abort(401);
             }
+        }
         // } catch (\Exception $e) {
         //     \Log::error('An exception occurred: ' . $e->getMessage());
         //     return abort(401);
@@ -2737,24 +2738,26 @@ class InnerpageController extends Controller
         return response()->json($responseData);
     }
 
-    public  function positionOfDirector(){
+    public  function positionOfDirector()
+    {
         $pageTitle = "Position of Director at IIM Kashipur";
-        return view("academics.position-of-directors",compact('pageTitle'));
+        return view("academics.position-of-directors", compact('pageTitle'));
     }
 
-    public function individualPage(Request $request){
+    public function individualPage(Request $request)
+    {
         $slug = $request->get('params');
 
         $pageDetails = IndividualContentPage::where('slug', $slug)->first();
 
-        if (!$pageDetails){
+        if (!$pageDetails) {
             return abort(401);
         }
 
-        if ($pageDetails->status == 0){
+        if ($pageDetails->status == 0) {
             return abort(401);
         }
 
-        return view('front.pages.individual.show',compact('pageDetails'));
+        return view('front.pages.individual.show', compact('pageDetails'));
     }
 }
