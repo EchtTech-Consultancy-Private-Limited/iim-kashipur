@@ -6220,6 +6220,20 @@ del {
 }
 
 
+img.mfp-img {
+    width: auto !important;
+    max-width: 100%;
+    height: auto !important;
+    max-height: 100% !important;
+    overflow: auto !important;
+    display: block;
+    line-height: 0;
+    box-sizing: border-box;
+    padding: 40px 0 40px;
+    margin: 0 auto;
+}
+
+
 @media screen and (min-width: 768px) and  (max-width: 1299px){
     .profile-img.img-fac img {
         width: 100% !important;
