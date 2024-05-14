@@ -373,6 +373,16 @@ a {
     .ptb-60 {
         padding: 30px 0;
     }
+
+    .mfp-wrap{
+        top: 0 !important;
+        height: 100% !important;
+    }
+
+    img.hover-shadow.cursor {
+        object-fit: cover;
+    }
+
 }
 
 @media (min-width:600px) and (max-width: 991px) {
@@ -849,7 +859,7 @@ span.text-hili-top {
 
         top: 0px;
 
-        z-index: 10000;
+        z-index: 1000;
 
         padding: 5px 0;
     }
@@ -6217,6 +6227,20 @@ del {
 
 .instagram-bg iframe {
     display: none;
+}
+
+
+img.mfp-img {
+    width: auto !important;
+    max-width: 100%;
+    height: auto !important;
+    max-height: 100% !important;
+    overflow: auto !important;
+    display: block;
+    line-height: 0;
+    box-sizing: border-box;
+    padding: 40px 0 40px;
+    margin: 0 auto;
 }
 
 
